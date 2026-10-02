@@ -29,8 +29,8 @@
 /**
  * @brief Neutral-B Copy Ability (Pikachu) logic for doEnter
  * @param gobj
- * @param pk_msid 
- * @param pc_msid 
+ * @param pk_msid
+ * @param pc_msid
  */
 static void doEnter(Fighter_GObj* gobj, ftKirby_MotionState pk_msid,
                     ftKirby_MotionState pc_msid)

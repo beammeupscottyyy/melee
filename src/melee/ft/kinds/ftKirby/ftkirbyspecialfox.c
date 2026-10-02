@@ -38,7 +38,7 @@ static u32 ftKb_Init_804D3DC0[] = {
 /**
  * @brief Neutral-B Copy Ability (Fox) logic for ftKb_SpecialNFx_800FDC00
  * @param gobj
- * @param vec 
+ * @param vec
  */
 void ftKb_SpecialNFx_800FDC00(Fighter_GObj* gobj, Vec3* vec)
 {
@@ -59,7 +59,7 @@ void ftKb_SpecialNFx_800FDC00(Fighter_GObj* gobj, Vec3* vec)
 /**
  * @brief Neutral-B Copy Ability (Fox) logic for ftKb_SpecialNFx_800FDC70
  * @param gobj
- * @param vec 
+ * @param vec
  */
 void ftKb_SpecialNFx_800FDC70(Fighter_GObj* gobj, Vec3* vec)
 {

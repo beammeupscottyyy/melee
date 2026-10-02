@@ -31,7 +31,7 @@
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_NsSpecialNStart_Anim_inline
  * @param gobj
- * @param flash_pos 
+ * @param flash_pos
  */
 static void ftKb_NsSpecialNStart_Anim_inline(HSD_GObj* gobj, Vec3* flash_pos)
 {

@@ -124,8 +124,8 @@ static inline s32 fn_800F9260_inline(HSD_GObj* gobj)
 
 /**
  * @brief Neutral-B Copy Ability (Mario) logic for fn_800F9260_GetPartJoint
- * @param bone 
- * @param fp 
+ * @param bone
+ * @param fp
  */
 static inline HSD_JObj* fn_800F9260_GetPartJoint(s32 bone, Fighter* fp)
 {
@@ -133,7 +133,7 @@ static inline HSD_JObj* fn_800F9260_GetPartJoint(s32 bone, Fighter* fp)
 }
 /**
  * @brief Neutral-B Copy Ability (Mario) logic for fn_800F9260_GetLHandBone
- * @param fp 
+ * @param fp
  */
 static inline s32 fn_800F9260_GetLHandBone(Fighter* fp)
 {

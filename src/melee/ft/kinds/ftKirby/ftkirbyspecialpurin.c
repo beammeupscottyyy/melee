@@ -47,7 +47,7 @@
 /**
  * @brief Neutral-B Copy Ability (Purin) logic for ftKb_PrScaleAnimStep
  * @param gobj
- * @param scale 
+ * @param scale
  */
 static inline void ftKb_PrScaleAnimStep(Fighter_GObj* gobj, Vec3* scale)
 {
@@ -186,9 +186,9 @@ void ftKb_SpecialNPr_80100F94(Fighter_GObj* gobj)
 /**
  * @brief Neutral-B Copy Ability (Purin) logic for ftKb_SpecialNPr_801010D4
  * @param gobj
- * @param unk 
- * @param flags 
- * @param anim_start 
+ * @param unk
+ * @param flags
+ * @param anim_start
  */
 void ftKb_SpecialNPr_801010D4(Fighter_GObj* gobj, bool unk, MotionFlags flags,
                               f32 anim_start)
@@ -231,10 +231,10 @@ void ftKb_SpecialNPr_801010D4(Fighter_GObj* gobj, bool unk, MotionFlags flags,
 /**
  * @brief Neutral-B Copy Ability (Purin) logic for ftKb_PrWallBounceEffect
  * @param gobj
- * @param fp 
- * @param dir 
- * @param pos 
- * @param angle 
+ * @param fp
+ * @param dir
+ * @param pos
+ * @param angle
  */
 static void ftKb_PrWallBounceEffect(Fighter_GObj* gobj, Fighter* fp, f32 dir,
                                     Vec3* pos, f32* angle)
@@ -301,7 +301,7 @@ static inline void ftKb_PrPlayRollSFX(Fighter_GObj* gobj)
 /**
  * @brief Neutral-B Copy Ability (Purin) logic for ftKb_SpecialNPr_8010140C
  * @param gobj
- * @param arg1 
+ * @param arg1
  */
 void ftKb_SpecialNPr_8010140C(Fighter_GObj* gobj, bool flag)
 {
@@ -648,8 +648,8 @@ void ftKb_PrSpecialAirNFull_Anim(Fighter_GObj* gobj)
 /**
  * @brief Neutral-B Copy Ability (Purin) logic for ftKb_AirScaleAnimStep
  * @param gobj
- * @param scale 
- * @param scale_base 
+ * @param scale
+ * @param scale_base
  */
 static inline void ftKb_AirScaleAnimStep(Fighter_GObj* gobj, Vec3* scale,
                                          const f32* scale_base)

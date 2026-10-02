@@ -66,7 +66,7 @@ static void fn_8010AA64(Fighter_GObj* gobj)
 /**
  * @brief Yoshi Egg logic for inlineB0
  * @param gobj
- * @param hurt 
+ * @param hurt
  */
 static inline void inlineB0(Fighter_GObj* gobj, ftHurtboxInit* hurt)
 {
@@ -86,7 +86,7 @@ static inline void inlineB0(Fighter_GObj* gobj, ftHurtboxInit* hurt)
 
 /**
  * @brief Yoshi Egg logic for ftKb_SpecialNYs_8010AC78
- * @param victim 
+ * @param victim
  * @param gobj
  */
 void ftKb_SpecialNYs_8010AC78(Fighter_GObj* victim, Fighter_GObj* gobj)

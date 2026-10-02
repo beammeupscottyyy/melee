@@ -72,7 +72,7 @@ void fn_8010B2E8(Fighter_GObj* gobj)
 /**
  * @brief Neutral-B Copy Ability (Mars) logic for setupStartAccessory
  * @param gobj
- * @param scale 
+ * @param scale
  */
 static inline void setupStartAccessory(HSD_GObj* gobj, Vec3* scale)
 {

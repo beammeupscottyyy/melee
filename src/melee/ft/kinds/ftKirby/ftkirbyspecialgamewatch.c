@@ -193,7 +193,7 @@ bool ftKb_SpecialNGw_8010D160(Fighter_GObj* gobj)
 /// #ftGameWatch_SpecialN_SetVars with callback arg
 /**
  * @brief Neutral-B Copy Ability (Gamewatch) logic for setGwVars
- * @param fighter_gobj 
+ * @param fighter_gobj
  */
 static inline void setGwVars(HSD_GObj* fighter_gobj)
 {
@@ -402,7 +402,7 @@ static inline void inline1(Fighter_GObj* gobj)
 /**
  * @brief Neutral-B Copy Ability (Gamewatch) logic for ftKb_SpecialNGw_8010D660
  * @param gobj
- * @param arg1 
+ * @param arg1
  */
 void ftKb_SpecialNGw_8010D660(Fighter_GObj* gobj, f32 val)
 {
@@ -416,7 +416,7 @@ void ftKb_SpecialNGw_8010D660(Fighter_GObj* gobj, f32 val)
 /**
  * @brief Neutral-B Copy Ability (Gamewatch) logic for ftKb_SpecialNGw_8010D6D0
  * @param gobj
- * @param arg1 
+ * @param arg1
  */
 void ftKb_SpecialNGw_8010D6D0(Fighter_GObj* gobj, f32 val)
 {

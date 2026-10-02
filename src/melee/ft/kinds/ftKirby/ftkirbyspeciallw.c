@@ -485,7 +485,7 @@ void ftKb_SpecialLw1_Anim(Fighter_GObj* gobj)
 /**
  * @brief Down-B (Stone) logic for ftKbUnkInline
  * @param gobj
- * @param val 
+ * @param val
  */
 static inline void ftKbUnkInline(Fighter_GObj* gobj, int val)
 {
@@ -827,8 +827,8 @@ void ftKb_SpecialLwEnd_Coll(Fighter_GObj* gobj)
 /**
  * @brief Down-B (Stone) logic for ftKb_SpecialLw_SetStoneVecs
  * @param gobj
- * @param fp 
- * @param da 
+ * @param fp
+ * @param da
  */
 static inline void ftKb_SpecialLw_SetStoneVecs(Fighter_GObj* gobj, Fighter* fp,
                                                ftKb_DatAttrs* da)

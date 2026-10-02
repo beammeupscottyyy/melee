@@ -29,8 +29,8 @@
 /**
  * @brief Side-B (Hammer) logic for ftKb_SpecialNSs_800FCC14
  * @param gobj
- * @param out1 
- * @param out2 
+ * @param out1
+ * @param out2
  */
 int ftKb_SpecialNSs_800FCC14(Fighter_GObj* gobj, int* out1, int* out2)
 {
@@ -201,7 +201,7 @@ static inline void ftKb_SpecialNSs_800FCDE0_inline(Fighter_GObj* gobj)
 
 /**
  * @brief Side-B (Hammer) logic for facing_to_angle
- * @param fp 
+ * @param fp
  */
 static inline f64 facing_to_angle(Fighter* fp)
 {

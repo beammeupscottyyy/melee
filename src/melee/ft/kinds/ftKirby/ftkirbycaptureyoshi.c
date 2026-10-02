@@ -23,7 +23,7 @@
 /**
  * @brief Yoshi Capture logic for fn_8010A930
  * @param gobj
- * @param attacker_gobj 
+ * @param attacker_gobj
  */
 void fn_8010A930(Fighter_GObj* gobj, Fighter_GObj* attacker_gobj)
 {

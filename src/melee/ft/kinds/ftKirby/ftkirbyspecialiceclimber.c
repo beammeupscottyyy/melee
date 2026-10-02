@@ -36,7 +36,7 @@
 /**
  * @brief Neutral-B Copy Ability (Iceclimber) logic for ftKb_SpecialNIc_80108CE8
  * @param gobj
- * @param it_gobj 
+ * @param it_gobj
  */
 void ftKb_SpecialNIc_80108CE8(Fighter_GObj* gobj, Item_GObj* it_gobj)
 {

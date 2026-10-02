@@ -236,7 +236,7 @@ void ftKb_SpecialAirS_Coll(Fighter_GObj* gobj)
 /**
  * @brief Side-B (Hammer) logic for ftKb_SpecialN_800F5800
  * @param gobj
- * @param vec 
+ * @param vec
  */
 void ftKb_SpecialN_800F5800(HSD_GObj* gobj, Vec3* vec)
 {
@@ -247,8 +247,8 @@ void ftKb_SpecialN_800F5800(HSD_GObj* gobj, Vec3* vec)
 /**
  * @brief Side-B (Hammer) logic for ftKb_SpecialN_800F5820
  * @param gobj
- * @param victim_coll_box 
- * @param victim_scale_x 
+ * @param victim_coll_box
+ * @param victim_scale_x
  */
 void ftKb_SpecialN_800F5820(Fighter_GObj* gobj,
                             ftCollisionBox* victim_coll_box,
@@ -267,7 +267,7 @@ void ftKb_SpecialN_800F5820(Fighter_GObj* gobj,
 
 /**
  * @brief Side-B (Hammer) logic for ftKb_SpecialN_800F5874
- * @param vec 
+ * @param vec
  */
 void ftKb_SpecialN_800F5874(Vec2* vec)
 {

@@ -154,7 +154,7 @@ static void inlineA0(HSD_GObj* gobj)
 /**
  * @brief Neutral-B Copy Ability (Peach) logic for inlineA1
  * @param gobj
- * @param msid 
+ * @param msid
  */
 static void inlineA1(HSD_GObj* gobj, ftKirby_MotionState msid)
 {
@@ -189,7 +189,7 @@ void ftKb_SpecialNPe_8010C560(HSD_GObj* gobj)
 /**
  * @brief Neutral-B Copy Ability (Peach) logic for doPeAnim
  * @param gobj
- * @param cb 
+ * @param cb
  */
 static inline void doPeAnim(HSD_GObj* gobj, HSD_GObjEvent cb)
 {
@@ -375,7 +375,7 @@ void ftKb_SpecialNPe_8010C9CC(HSD_GObj* gobj)
 /**
  * @brief Neutral-B Copy Ability (Peach) logic for doPeHitAnim
  * @param gobj
- * @param cb 
+ * @param cb
  */
 static inline void doPeHitAnim(HSD_GObj* gobj, HSD_GObjEvent cb)
 {

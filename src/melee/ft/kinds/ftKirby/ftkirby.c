@@ -2670,7 +2670,7 @@ void ftKb_Init_UnkMotionStates4(HSD_GObj* gobj)
 /**
  * @brief Main Logic logic for ftKb_Init_OnItemPickup
  * @param gobj
- * @param costume_id 
+ * @param costume_id
  */
 void ftKb_Init_OnItemPickup(HSD_GObj* gobj, bool costume_id)
 {
@@ -2719,7 +2719,7 @@ void ftKb_Init_OnItemVisible(HSD_GObj* gobj)
 /**
  * @brief Main Logic logic for ftKb_Init_OnItemDrop
  * @param gobj
- * @param bool1 
+ * @param bool1
  */
 void ftKb_Init_OnItemDrop(HSD_GObj* gobj, bool bool1)
 {
@@ -2738,7 +2738,7 @@ void ftKb_Init_LoadSpecialAttrs(HSD_GObj* gobj)
 /**
  * @brief Main Logic logic for ftKb_Init_800EEB00
  * @param gobj
- * @param costume_id 
+ * @param costume_id
  */
 void ftKb_Init_800EEB00(Fighter_GObj* gobj, BoneDynamicsTemplate** costume_id)
 {
@@ -2750,7 +2750,7 @@ void ftKb_Init_800EEB00(Fighter_GObj* gobj, BoneDynamicsTemplate** costume_id)
 /**
  * @brief Main Logic logic for ftKb_Init_800EEB1C
  * @param gobj
- * @param costume_id 
+ * @param costume_id
  */
 void ftKb_Init_800EEB1C(Fighter_GObj* gobj, s32* costume_id)
 {
@@ -2778,9 +2778,9 @@ void ftKb_Init_OnKnockbackExit(HSD_GObj* gobj)
 
 /**
  * @brief Main Logic logic for ftKb_Init_UnkDemoCallbacks0
- * @param kind 
- * @param out1 
- * @param out2 
+ * @param kind
+ * @param out1
+ * @param out2
  */
 void ftKb_Init_UnkDemoCallbacks0(int kind, int* out1, int* out2)
 {
@@ -2803,7 +2803,7 @@ case14:
 
 /**
  * @brief Main Logic logic for ftKb_Init_GetMotionFileString
- * @param copy_id 
+ * @param copy_id
  */
 char* ftKb_Init_GetMotionFileString(enum_t copy_id)
 {
@@ -2824,9 +2824,9 @@ float const ftKb_Init_803B7548[10] = { 0 };
 
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800EEC34
- * @param copy_id 
- * @param costume_id 
- * @param arg2 
+ * @param copy_id
+ * @param costume_id
+ * @param arg2
  */
 void ftKb_SpecialN_800EEC34(int copy_id, int costume_id, int arg2)
 {
@@ -2858,8 +2858,8 @@ void ftKb_SpecialN_800EEC34(int copy_id, int costume_id, int arg2)
 
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800EED50
- * @param copy_id 
- * @param costume_id 
+ * @param copy_id
+ * @param costume_id
  */
 void ftKb_SpecialN_800EED50(s32 copy_id, s32 costume_id)
 {
@@ -2908,7 +2908,7 @@ void ftKb_Init_UnkMotionStates5(void)
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800EEEC4
  * @param gobj
- * @param kind 
+ * @param kind
  */
 void ftKb_SpecialN_800EEEC4(HSD_GObj* gobj, FighterKind kind)
 {
@@ -2922,8 +2922,8 @@ void ftKb_SpecialN_800EEEC4(HSD_GObj* gobj, FighterKind kind)
 /**
  * @brief Main Logic logic for ftKb_UnkMtxFunc0
  * @param gobj
- * @param costume_id 
- * @param mtx 
+ * @param costume_id
+ * @param mtx
  */
 void ftKb_UnkMtxFunc0(Fighter_GObj* gobj, int costume_id, Mtx mtx)
 {
@@ -2968,8 +2968,8 @@ HSD_JObj* ftKb_Init_UnkMotionStates6(Fighter_GObj* gobj)
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800EF040
  * @param gobj
- * @param costume_id 
- * @param hat 
+ * @param costume_id
+ * @param hat
  */
 void ftKb_SpecialN_800EF040(Fighter_GObj* gobj, int costume_id, KirbyHatStruct* hat)
 {
@@ -2993,13 +2993,13 @@ void ftKb_SpecialN_800EF040(Fighter_GObj* gobj, int costume_id, KirbyHatStruct* 
 /// destination offset from `total_dobjs` instead.
 /**
  * @brief Main Logic logic for ftKb_SpecialN_insert_joint_refs
- * @param total_dobjs 
- * @param root 
- * @param fp 
- * @param part_idx 
- * @param joint 
- * @param joint_idx 
- * @param byte_base 
+ * @param total_dobjs
+ * @param root
+ * @param fp
+ * @param part_idx
+ * @param joint
+ * @param joint_idx
+ * @param byte_base
  */
 static inline void
 ftKb_SpecialN_insert_joint_refs(s32* total_dobjs, HSD_Joint* root, Fighter* fp,
@@ -3025,10 +3025,10 @@ ftKb_SpecialN_insert_joint_refs(s32* total_dobjs, HSD_Joint* root, Fighter* fp,
 
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800EF0E4_find_bone
- * @param fp 
- * @param part_idx 
- * @param arg2_idx 
- * @param jobj 
+ * @param fp
+ * @param part_idx
+ * @param arg2_idx
+ * @param jobj
  */
 static inline void ftKb_SpecialN_800EF0E4_find_bone(Fighter* fp, s32* part_idx,
                                                     s32* arg2_idx,
@@ -3046,8 +3046,8 @@ static inline void ftKb_SpecialN_800EF0E4_find_bone(Fighter* fp, s32* part_idx,
 
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800EF0E4_finish
- * @param fp 
- * @param total_dobjs 
+ * @param fp
+ * @param total_dobjs
  */
 static inline void ftKb_SpecialN_800EF0E4_finish(Fighter* fp, s32 total_dobjs)
 {
@@ -3059,8 +3059,8 @@ static inline void ftKb_SpecialN_800EF0E4_finish(Fighter* fp, s32 total_dobjs)
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800EF0E4
  * @param gobj
- * @param costume_id 
- * @param arg2 
+ * @param costume_id
+ * @param arg2
  */
 void ftKb_SpecialN_800EF0E4(Fighter_GObj* gobj, int costume_id, u8* arg2)
 {
@@ -3147,8 +3147,8 @@ void ftKb_SpecialN_800EF0E4(Fighter_GObj* gobj, int costume_id, u8* arg2)
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800EF35C
  * @param gobj
- * @param costume_id 
- * @param arg2 
+ * @param costume_id
+ * @param arg2
  */
 void ftKb_SpecialN_800EF35C(Fighter_GObj* gobj, int costume_id, u8* arg2)
 {
@@ -3177,7 +3177,7 @@ void ftKb_SpecialN_800EF35C(Fighter_GObj* gobj, int costume_id, u8* arg2)
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800EF438
  * @param gobj
- * @param hat 
+ * @param hat
  */
 void ftKb_SpecialN_800EF438(Fighter_GObj* gobj, KirbyHatStruct* hat)
 {
@@ -3272,7 +3272,7 @@ void ftKb_SpecialN_800EF438(Fighter_GObj* gobj, KirbyHatStruct* hat)
 /**
  * @brief Main Logic logic for ftKb_RemoveHatParts
  * @param gobj
- * @param mask 
+ * @param mask
  */
 static inline void ftKb_RemoveHatParts(Fighter_GObj* gobj, u32 mask)
 {
@@ -3288,8 +3288,8 @@ static inline void ftKb_RemoveHatParts(Fighter_GObj* gobj, u32 mask)
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800EF69C
  * @param gobj
- * @param costume_id 
- * @param hat 
+ * @param costume_id
+ * @param hat
  */
 void ftKb_SpecialN_800EF69C(Fighter_GObj* gobj, int costume_id, KirbyHatStruct* hat)
 {
@@ -3336,9 +3336,9 @@ void ftKb_SpecialN_800EF69C(Fighter_GObj* gobj, int costume_id, KirbyHatStruct* 
 
 /**
  * @brief Main Logic logic for ftKb_UnkIntBoolFunc0
- * @param fp 
- * @param costume_id 
- * @param arg2 
+ * @param fp
+ * @param costume_id
+ * @param arg2
  */
 void ftKb_UnkIntBoolFunc0(Fighter* fp, int costume_id, bool arg2)
 {
@@ -3397,8 +3397,8 @@ void ftKb_Init_UnkCallbackPairs0_0(Fighter_GObj* gobj)
 /**
  * @brief Main Logic logic for ftKb_Init_UnkCallbackPairs0_1
  * @param gobj
- * @param costume_id 
- * @param arg2 
+ * @param costume_id
+ * @param arg2
  */
 void ftKb_Init_UnkCallbackPairs0_1(Fighter_GObj* gobj, int costume_id, float arg2)
 {
@@ -3456,8 +3456,8 @@ void ftKb_SpecialN_800EFAF0(Fighter_GObj* gobj)
 /**
  * @brief Main Logic logic for ftKb_LoadHat
  * @param gobj
- * @param fp 
- * @param hat 
+ * @param fp
+ * @param hat
  */
 static inline void ftKb_LoadHat(Fighter_GObj* gobj, Fighter* fp,
                                 KirbyHatStruct* hat)
@@ -3941,8 +3941,8 @@ void ftKb_SpecialN_800F0F5C(Fighter_GObj* gobj)
 /**
  * @brief Main Logic logic for ftKb_LoadHatParts
  * @param gobj
- * @param costume_id 
- * @param hat 
+ * @param costume_id
+ * @param hat
  */
 static inline void ftKb_LoadHatParts(Fighter_GObj* gobj, int costume_id,
                                      KirbyHatStruct* hat)
@@ -4061,7 +4061,7 @@ void ftKb_SpecialN_800F13F0(Fighter_GObj* gobj)
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800F1420
  * @param gobj
- * @param costume_id 
+ * @param costume_id
  */
 u8* ftKb_SpecialN_800F1420(Fighter_GObj* gobj, const u32* costume_id)
 {
@@ -4163,7 +4163,7 @@ void ftKb_SpecialAirN_Enter(Fighter_GObj* gobj)
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800F16D0
  * @param gobj
- * @param kind 
+ * @param kind
  */
 void ftKb_SpecialN_800F16D0(Fighter_GObj* gobj, FighterKind kind)
 {
@@ -4278,7 +4278,7 @@ void ftKb_SpecialN_800F16D0(Fighter_GObj* gobj, FighterKind kind)
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800F190C
  * @param gobj
- * @param kind 
+ * @param kind
  */
 void ftKb_SpecialN_800F190C(Fighter_GObj* gobj, FighterKind kind)
 {
@@ -4441,8 +4441,8 @@ void ftKb_Init_UnkMotionStates3(Fighter_GObj* gobj)
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800F1BAC
  * @param gobj
- * @param kind 
- * @param arg2 
+ * @param kind
+ * @param arg2
  */
 void ftKb_SpecialN_800F1BAC(Fighter_GObj* gobj, s32 kind, bool arg2)
 {
@@ -4568,7 +4568,7 @@ void ftKb_SpecialN_800F1DAC(HSD_GObj* gobj)
 /**
  * @brief Main Logic logic for ftKb_SpecialN_800F1F1C
  * @param gobj
- * @param pos 
+ * @param pos
  */
 void ftKb_SpecialN_800F1F1C(Fighter_GObj* gobj, Vec3* pos)
 {

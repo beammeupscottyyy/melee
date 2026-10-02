@@ -71,8 +71,8 @@ static MotionFlags const ftKb_MF_SpecialN_LoopRumble_Coll =
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_SpecialN_800F58AC
  * @param gobj
- * @param victim_self_vel 
- * @param victim_facing_dir 
+ * @param victim_self_vel
+ * @param victim_facing_dir
  */
 float ftKb_SpecialN_800F58AC(Fighter_GObj* gobj, Vec3* victim_self_vel,
                              float victim_facing_dir)
@@ -89,8 +89,8 @@ float ftKb_SpecialN_800F58AC(Fighter_GObj* gobj, Vec3* victim_self_vel,
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_SpecialN_800F58D8
  * @param gobj
- * @param victim_self_vel 
- * @param victim_facing_dir 
+ * @param victim_self_vel
+ * @param victim_facing_dir
  */
 float ftKb_SpecialN_800F58D8(Fighter_GObj* gobj, Vec3* victim_self_vel,
                              float victim_facing_dir)
@@ -130,7 +130,7 @@ bool ftKb_SpecialN_800F597C(Fighter_GObj* gobj)
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_SpecialN_800F598C
  * @param gobj
- * @param val 
+ * @param val
  */
 void ftKb_SpecialN_800F598C(Fighter_GObj* gobj, int val)
 {
@@ -147,7 +147,7 @@ void ftKb_SpecialN_800F598C(Fighter_GObj* gobj, int val)
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_SpecialN_800F5A04
  * @param gobj
- * @param val 
+ * @param val
  */
 void ftKb_SpecialN_800F5A04(Fighter_GObj* gobj, f32 val)
 {
@@ -163,7 +163,7 @@ void ftKb_SpecialN_800F5A04(Fighter_GObj* gobj, f32 val)
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_SpecialN_800F5A38
  * @param gobj
- * @param victim_fp 
+ * @param victim_fp
  */
 bool ftKb_SpecialN_800F5A38(Fighter_GObj* gobj, Fighter* victim_fp)
 {
@@ -276,7 +276,7 @@ f32 ftKb_SpecialN_800F5B10(Fighter_GObj* gobj)
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_SpecialN_800F5B20
  * @param gobj
- * @param out 
+ * @param out
  */
 void ftKb_SpecialN_800F5B20(Fighter_GObj* gobj, Vec2* out)
 {
@@ -311,7 +311,7 @@ f32 ftKb_SpecialN_800F5B4C(Fighter_GObj* gobj)
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_SpecialN_800F5B5C
  * @param gobj
- * @param output 
+ * @param output
  */
 void ftKb_SpecialN_800F5B5C(Fighter_GObj* gobj, Vec3* output)
 {
@@ -324,7 +324,7 @@ void ftKb_SpecialN_800F5B5C(Fighter_GObj* gobj, Vec3* output)
 
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_SpecialN_800F5BA4
- * @param fp 
+ * @param fp
  */
 void ftKb_SpecialN_800F5BA4(Fighter* fp)
 {
@@ -341,7 +341,7 @@ void ftKb_SpecialN_800F5BA4(Fighter* fp)
 
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_SpecialN_800F5C34
- * @param fp 
+ * @param fp
  */
 void ftKb_SpecialN_800F5C34(Fighter* fp)
 {
@@ -369,7 +369,7 @@ void ftKb_SpecialN_800F5C34(Fighter* fp)
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_SpecialN_800F5D04
  * @param gobj
- * @param val 
+ * @param val
  */
 void ftKb_SpecialN_800F5D04(Fighter_GObj* gobj, bool flag)
 {
@@ -570,7 +570,7 @@ static void fn_800F6318(HSD_GObj* gobj)
 /**
  * @brief Neutral-B (Inhale) logic for enterCaptureState
  * @param gobj
- * @param msid 
+ * @param msid
  */
 static inline void enterCaptureState(Fighter_GObj* gobj, FtMotionId msid)
 {
@@ -616,7 +616,7 @@ void fn_800F6450(HSD_GObj* gobj)
 /**
  * @brief Neutral-B (Inhale) logic for fn_800F64C8
  * @param gobj
- * @param anim_start 
+ * @param anim_start
  */
 void fn_800F64C8(Fighter_GObj* gobj, float anim_start)
 {
@@ -964,8 +964,8 @@ void fn_800F702C(HSD_GObj* gobj)
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_SpecialN_SetHitlagCb
  * @param gobj
- * @param ms 
- * @param mf 
+ * @param ms
+ * @param mf
  */
 static inline void ftKb_SpecialN_SetHitlagCb(Fighter_GObj* gobj, s32 ms,
                                              MotionFlags mf)
@@ -1137,7 +1137,7 @@ void ftKb_SpecialAirNCaptureWait_Anim(Fighter_GObj* gobj) {}
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_SpecialNSpit_Anim_inline
  * @param gobj
- * @param victim 
+ * @param victim
  */
 static inline void ftKb_SpecialNSpit_Anim_inline(Fighter_GObj* gobj,
                                                  Fighter_GObj* victim)
@@ -1288,7 +1288,7 @@ void ftKb_SpecialNDrink0_Anim(Fighter_GObj* gobj)
 /**
  * @brief Neutral-B (Inhale) logic for ftKb_SpecialNDrink_Anim_inline
  * @param gobj
- * @param victim_gobj 
+ * @param victim_gobj
  */
 static inline void ftKb_SpecialNDrink_Anim_inline(Fighter_GObj* gobj,
                                                   Fighter_GObj* victim_gobj)

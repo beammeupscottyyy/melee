@@ -41,8 +41,8 @@
 /**
  * @brief Neutral-B Copy Ability (Mewtwo) logic for ftKb_SpecialNMt_80106F44
  * @param gobj
- * @param out_charge 
- * @param out_max 
+ * @param out_charge
+ * @param out_max
  */
 s32 ftKb_SpecialNMt_80106F44(Fighter_GObj* gobj, s32* out_charge, s32* out_max)
 {
@@ -446,8 +446,8 @@ void ftKb_MtSpecialNStart_Anim(Fighter_GObj* gobj)
 /**
  * @brief Neutral-B Copy Ability (Mewtwo) logic for ftKb_SpecialNMt_CreateHeldShadow
  * @param gobj
- * @param pos1 
- * @param pos2 
+ * @param pos1
+ * @param pos2
  */
 static inline void ftKb_SpecialNMt_CreateHeldShadow(Fighter_GObj* gobj,
                                                     Vec3* pos1, Vec3* pos2)

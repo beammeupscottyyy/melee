@@ -41,7 +41,7 @@
 /**
  * @brief Neutral-B Copy Ability (Yoshi) logic for ftKb_SpecialNYs_80109260
  * @param gobj
- * @param vec 
+ * @param vec
  */
 void ftKb_SpecialNYs_80109260(Fighter_GObj* gobj, Vec3* vec)
 {
@@ -152,7 +152,7 @@ int ftKb_SpecialNYs_8010933C(void)
 
 /**
  * @brief Neutral-B Copy Ability (Yoshi) logic for ftKb_SpecialNYs_80109354
- * @param v 
+ * @param v
  */
 void ftKb_SpecialNYs_80109354(Vec3* v)
 {

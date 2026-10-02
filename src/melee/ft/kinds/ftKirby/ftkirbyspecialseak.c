@@ -590,7 +590,7 @@ void ftKb_SkSpecialAirNEnd_Coll(Fighter_GObj* gobj)
 // permuter-generated helper, almost certainly fake
 /**
  * @brief Side-B (Hammer) logic for perm_randi
- * @param n 
+ * @param n
  */
 static inline s32 perm_randi(int n)
 {
