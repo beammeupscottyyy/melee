@@ -37,35 +37,6 @@
 #include <sysdolphin/baselib/sislib.h>
 #include <sysdolphin/baselib/wobj.h>
 
-typedef struct BracketSrcEntry {
-    /* 0x00 */ u8 x0;
-    /* 0x01 */ u8 x1;
-    /* 0x02 */ u8 x2;
-    /* 0x03 */ u8 x3;
-    /* 0x04 */ u8 x4;
-    /* 0x05 */ u8 x5;
-    /* 0x06 */ u8 x6;
-    /* 0x07 */ u8 pad7;
-    /* 0x08 */ s32 x8;
-    /* 0x0C */ s32 xC;
-    /* 0x10 */ s32 x10;
-    /* 0x14 */ s32 x14;
-    /* 0x18 */ u8 x18;
-    /* 0x19 */ u8 x19;
-    /* 0x1A */ u8 x1A;
-    /* 0x1B */ u8 x1B;
-    /* 0x1C */ u8 x1C;
-    /* 0x1D */ u8 x1D;
-    /* 0x1E */ u8 x1E;
-    /* 0x1F */ u8 x1F;
-    /* 0x20 */ u8 x20;
-    /* 0x21 */ u8 x21;
-    /* 0x22 */ u8 x22;
-    /* 0x23 */ u8 x23;
-    /* 0x24 */ u8 x24;
-    /* 0x25 */ u8 pad25[3];
-} BracketSrcEntry;
-
 struct lbl_803D9D20_t lbl_803D9D20 = {
     {
         0x04, 0x06, 0x08, 0x0C, 0x10, 0x18, 0x20, 0x30, 0x40, 0x06, 0x09,
@@ -202,6 +173,7 @@ static inline void gmTournament_SetBracketByes(BracketEntry* entries,
 
 void fn_8018A514(int count, float val)
 {
+    int j;
     s32 region;
     BracketEntry* entries;
     BracketSrcEntry* src;
@@ -257,14 +229,10 @@ void fn_8018A514(int count, float val)
         lbl_80473AB8[i].x26 = src->x1D;
         lbl_80473AB8[i].x27 = src->x1F;
         lbl_80473AB8[i].x28 = src->x20;
-        lbl_80473AB8[i].slots[0].x52 = 9;
-        lbl_80473AB8[i].slots[0].x32 = 0;
-        lbl_80473AB8[i].slots[1].x52 = 9;
-        lbl_80473AB8[i].slots[1].x32 = 0;
-        lbl_80473AB8[i].slots[2].x52 = 9;
-        lbl_80473AB8[i].slots[2].x32 = 0;
-        lbl_80473AB8[i].slots[3].x52 = 9;
-        lbl_80473AB8[i].slots[3].x32 = 0;
+        for (j = 0; j < 4; j++) {
+            lbl_80473AB8[i].slots[j].x52 = 9;
+            lbl_80473AB8[i].slots[j].x32 = 0;
+        }
         lbl_80473AB8[i].slots[0].x30 = src->x21;
         lbl_80473AB8[i].slots[1].x30 = src->x22;
         lbl_80473AB8[i].slots[2].x30 = src->x23;
@@ -275,7 +243,7 @@ void fn_8018A514(int count, float val)
     if (region == 0) {
         gmTournament_SetBracketByes(entries, count);
     }
-    PAD_STACK(24);
+    PAD_STACK(8);
 }
 
 void fn_8018A970(int arg0)
@@ -1809,8 +1777,7 @@ void fn_8018E618(int arg0, f32 farg0, int arg1)
         }
     }
     GObj_SetupGXLinkMax(gobj, HSD_GObj_803910D8, 1);
-    ((u32*) &gobj->gxlink_prios)[1] = 0x10;
-    ((u32*) &gobj->gxlink_prios)[0] = 0;
+    gobj->gxlink_prios = 0x10;
 
     gmTournament_InitBracket(arg0, farg0, arg1);
 }
@@ -1836,13 +1803,13 @@ void fn_8018E85C(DynamicModelDesc* model, s32 flag)
 
     for (outer_idx = 0; outer_idx < 0x40; outer_idx++) {
         if (lbl_80473AB8[outer_idx].x0 == 0) {
-            goto next_entry;
+            continue;
         }
         inner_idx = 0;
         for (; inner_idx < 4; inner_idx++) {
             sub = &lbl_80473AB8[outer_idx].x0 + inner_idx * 0x2C;
             if (sub[0x30] == 0) {
-                goto next_sub;
+                continue;
             }
 
             if (flag != 0) {
@@ -1895,10 +1862,7 @@ void fn_8018E85C(DynamicModelDesc* model, s32 flag)
                 fn_8018FDC4(jobj, (f32) * (s32*) (sub + 0x44),
                             -(f32) * (s32*) (sub + 0x48), 666.0f);
             }
-
-        next_sub:;
         }
-    next_entry:;
     }
 }
 

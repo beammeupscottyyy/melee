@@ -210,7 +210,7 @@ struct CollData {
     // position before collision routine started
     /* fp+70C */ Vec3 last_pos;
     /* fp+718 */ Vec3 x28_vec;
-    /* fp+724 */ ECBFlagStruct x34_flags;
+    /* fp+724 */ ECBFlagStruct x34_flags; // Make an enum? (See it_80275E98)
     /* fp+725 */ ECBFlagStruct x35_flags;
     /* fp+726 */ s16 facing_dir;
     /* fp+728 */ int x38;
@@ -427,7 +427,8 @@ struct lb_80014638_arg1_t {
 ASSERT_SIZE(struct lb_80014638_arg1_t, 0x14);
 
 struct Fighter_804D653C_t {
-    void* unk;
+    /// A color animation's script
+    union ColorOverlay_x8_t* unk DAT_SCRIPT(colAnimCommandLength(_command));
     u8 unk4;
     u8 unk5;
 };

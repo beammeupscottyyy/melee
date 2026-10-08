@@ -98,6 +98,10 @@ pub struct Walk {
     pub objects: BTreeMap<u32, BTreeSet<CanonId>>,
     /// The first path each object was reached by.
     pub paths: BTreeMap<u32, String>,
+    /// Each object's type as the code first spelled it, by its start and
+    /// canonical type: through typedefs, e.g. `Mtx` rather than
+    /// `float[3][4]`, for declaring it.
+    pub spelled: BTreeMap<(u32, CanonId), DieId>,
     /// Typed data the walk laid out: from each object or element, the
     /// furthest it reaches. Raw bytes (`u8` not named by a `DAT_BLOB`
     /// typedef) say nothing of what the data is, and aren't included.
@@ -117,8 +121,8 @@ pub struct Walk {
     pub issues: BTreeSet<Issue>,
 }
 
-/// Names a `DAT_BIND` gives values to, for everything reached through the
-/// member it is on. Inner bindings shadow outer ones.
+/// Names bound by a root or `DAT_BIND`, for everything reached within
+/// that scope. Inner bindings shadow outer ones.
 #[derive(Debug)]
 struct Scope {
     name: String,
@@ -137,6 +141,30 @@ fn lookup(env: &Env, name: &str) -> Option<u64> {
         scope = s.outer.as_deref();
     }
     None
+}
+
+fn root_env(bindings: &[(String, u64)]) -> Env {
+    bindings.iter().fold(None, |outer, (name, value)| {
+        Some(Rc::new(Scope {
+            name: name.clone(),
+            value: *value,
+            outer,
+        }))
+    })
+}
+
+/// The opcodes every command script shares, which `Command_Execute`
+/// (`lbcommand.c`) runs; a script's own commands come after.
+const GENERIC_COMMANDS: u64 = 10;
+
+/// How many words a generic command is (`lbCommand_803B9840`): the
+/// subroutine call and goto (5, 7) take a pointer too.
+fn generic_command_length(opcode: u64) -> Option<u64> {
+    match opcode {
+        5 | 7 => Some(2),
+        0..GENERIC_COMMANDS => Some(1),
+        _ => None,
+    }
 }
 
 pub struct Walker<'a> {
@@ -197,8 +225,15 @@ impl<'a> Walker<'a> {
     }
 
     /// Walk everything reachable from an object of type `die` at `offset`.
-    pub fn root(&mut self, offset: u32, die: DieId, name: &str) {
-        self.queue.push((offset, die, name.to_owned(), None));
+    pub fn root(
+        &mut self,
+        offset: u32,
+        die: DieId,
+        name: &str,
+        bindings: &[(String, u64)],
+    ) {
+        self.queue
+            .push((offset, die, name.to_owned(), root_env(bindings)));
         while let Some((offset, die, path, env)) = self.queue.pop() {
             self.env = env;
             self.object(offset, die, path);
@@ -208,13 +243,51 @@ impl<'a> Walker<'a> {
     /// Walk `count` consecutive elements of type `element` at `offset`, or
     /// if `count` is `None`, as many as fit before the next public symbol or
     /// pointer target.
+    /// How many `element`s a list at `offset` holds up to and including
+    /// the first whose first word (or whole value, if smaller) is
+    /// `terminator` and not a relocated pointer, as `DAT_TERMINATED`
+    /// counts them; the elements that fit if none is.
+    pub fn terminated_count(
+        &self,
+        offset: u32,
+        element: DieId,
+        terminator: u64,
+    ) -> Option<u64> {
+        let element = self.resolve(Some(element))?;
+        let size = self.canonical.byte_size(self.graph, element)?;
+        if size == 0 {
+            return None;
+        }
+        let width = size.min(4) as usize;
+        let mask = u64::MAX >> (64 - 8 * width);
+        let mut n = 0;
+        loop {
+            let at = offset as usize + (n * size) as usize;
+            if at + size as usize > self.data.len() {
+                break;
+            }
+            n += 1;
+            let first = self.data[at..at + width]
+                .iter()
+                .fold(0, |v, &b| v << 8 | u64::from(b));
+            if first == terminator & mask && !self.relocs.contains(&(at as u32))
+            {
+                break;
+            }
+        }
+        Some(n)
+    }
+
     pub fn root_array(
         &mut self,
         offset: u32,
         element: DieId,
         count: Option<u64>,
         name: &str,
+        bindings: &[(String, u64)],
     ) {
+        let env = root_env(bindings);
+        self.env = env.clone();
         let raw = element;
         let Some(element) = self.resolve(Some(element)) else {
             return;
@@ -228,7 +301,7 @@ impl<'a> Walker<'a> {
         if size == 0 || !self.visited.insert((offset, id)) {
             return;
         }
-        self.walk.objects.entry(offset).or_default().insert(id);
+        self.reached(offset, id, Some(raw));
         self.walk
             .paths
             .entry(offset)
@@ -272,6 +345,9 @@ impl<'a> Walker<'a> {
             return;
         }
         for i in 0..count {
+            // Following an element's pointers may leave an inner scope in
+            // effect. Each element starts with this root's bindings.
+            self.env = env.clone();
             let at = offset + (i * size) as u32;
             self.layout(at, element, &format!("{name}[{i}]"), None);
             while let Some((offset, die, path, env)) = self.queue.pop() {
@@ -283,6 +359,15 @@ impl<'a> Walker<'a> {
 
     pub fn finish(self) -> Walk {
         self.walk
+    }
+
+    /// Record an object of type `id` at `offset`, which the code spells as
+    /// `spelled`.
+    fn reached(&mut self, offset: u32, id: CanonId, spelled: Option<DieId>) {
+        self.walk.objects.entry(offset).or_default().insert(id);
+        if let Some(spelled) = spelled {
+            self.walk.spelled.entry((offset, id)).or_insert(spelled);
+        }
     }
 
     fn object(&mut self, offset: u32, die: DieId, path: String) {
@@ -297,12 +382,14 @@ impl<'a> Walker<'a> {
             return;
         }
         self.typed_extent(offset, raw, 1);
-        self.walk.objects.entry(offset).or_default().insert(id);
+        self.reached(offset, id, Some(raw));
         self.walk
             .paths
             .entry(offset)
             .or_insert_with(|| path.clone());
-        self.layout(offset, die, &path, None);
+        // Unresolved, so that the tags of a typedef it was reached as apply,
+        // e.g. a list's `DAT_TERMINATED`
+        self.layout(offset, raw, &path, None);
     }
 
     /// Lay the type `die` over the data at `offset`. `parent` is the record
@@ -314,8 +401,16 @@ impl<'a> Walker<'a> {
         path: &str,
         parent: Option<(DieId, u32)>,
     ) {
-        if let Some(value) = self.typedef_terminator(die) {
-            return self.terminated(offset, die, path, &value);
+        if let Some((value, length)) = self.typedef_terminator(die) {
+            return self.terminated(offset, die, path, &value, length);
+        }
+        if let Some(count) = self.typedef_count(die) {
+            let count = eval_expr(self.macros, &count, &|name| {
+                lookup(&self.env, name)
+            });
+            if let Some(count) = count {
+                return self.counted(offset, die, None, count, path, &[], None);
+            }
         }
         if let Some(target) = self.typedef_type(die) {
             return self.typed(offset, target, path);
@@ -367,8 +462,8 @@ impl<'a> Walker<'a> {
                         self.script(at, ty, &script, &path);
                     } else if self.is_extent(member) {
                         self.extent(at, ty, &path, &binds, parent);
-                    } else if let Some(value) = self.terminator(member) {
-                        self.terminated(at, ty, &path, &value);
+                    } else if let Some((value, length)) = self.terminator(member) {
+                        self.terminated(at, ty, &path, &value, length);
                     } else if !binds.is_empty()
                         && let Some((element, size, count)) = self.array(ty)
                     {
@@ -421,17 +516,20 @@ impl<'a> Walker<'a> {
                 };
                 if let Some(ty) = member.ty {
                     let path = field(path, member.name.map(|n| graph.str(n)));
+                    let outer = self.env.clone();
+                    self.env = self.bound(&outer, &self.binds(member), parent, 0);
                     if let Some(script) = self.script_tag(member) {
                         self.script(offset, ty, &script, &path);
-                    } else if let Some(value) = self.terminator(member) {
-                        self.terminated(offset, ty, &path, &value);
+                    } else if let Some((value, length)) = self.terminator(member) {
+                        self.terminated(offset, ty, &path, &value, length);
                     } else {
                         self.layout(offset, ty, &path, parent);
                     }
+                    self.env = outer;
                 }
             }
             TypeKind::Array { element, dims } => {
-                let Some(element) = self.resolve(*element) else {
+                let Some(element) = *element else {
                     return;
                 };
                 let Some(size) = self.canonical.byte_size(graph, element)
@@ -442,6 +540,7 @@ impl<'a> Walker<'a> {
                 let count: u64 = dims.iter().map(|d| d.unwrap_or(1)).product();
                 for i in 0..count {
                     let path = format!("{path}[{i}]");
+                    // Keep typedef tags, e.g. a counted list in each slot.
                     self.layout(
                         offset + (i * size) as u32,
                         element,
@@ -516,7 +615,7 @@ impl<'a> Walker<'a> {
                 if !self.visited.insert((value, id)) {
                     return;
                 }
-                self.walk.objects.entry(value).or_default().insert(id);
+                self.reached(value, id, raw);
                 self.walk
                     .paths
                     .entry(value)
@@ -598,7 +697,7 @@ impl<'a> Walker<'a> {
         }
     }
 
-    /// The number of elements a `DAT_COUNT` pointer member refers to,
+    /// The number of elements a `DAT_COUNT` member holds or refers to,
     /// evaluated against the other fields of its record.
     fn count(&self, member: &Member, record: DieId, base: u32) -> Option<u64> {
         let count = member.annotations.iter().find_map(|a| {
@@ -612,8 +711,8 @@ impl<'a> Walker<'a> {
         })
     }
 
-    /// Follow a pointer to `count` consecutive elements, of the type it
-    /// points to or else `element` (from `DAT_TYPE`).
+    /// Walk an inline array or follow a pointer to `count` consecutive
+    /// elements, of its element type or else `element` (from `DAT_TYPE`).
     #[allow(clippy::too_many_arguments)]
     fn counted(
         &mut self,
@@ -630,6 +729,11 @@ impl<'a> Walker<'a> {
         };
         let target = match self.graph.types[&pointer].kind {
             TypeKind::Pointer { target } => target,
+            TypeKind::Array { .. } => {
+                return self.counted_array(
+                    offset, pointer, count, path, binds, parent,
+                );
+            }
             // A pointer-sized integer given a type
             _ if element.is_some() => None,
             _ => return self.layout(offset, pointer, path, None),
@@ -666,7 +770,7 @@ impl<'a> Walker<'a> {
             if !self.visited.insert((value, id)) {
                 return;
             }
-            self.walk.objects.entry(value).or_default().insert(id);
+            self.reached(value, id, Some(raw));
             self.walk
                 .paths
                 .entry(value)
@@ -698,6 +802,46 @@ impl<'a> Walker<'a> {
                 env,
             ));
         }
+    }
+
+    /// An explicit count does not stop at symbols or pointer targets
+    /// inside the array, unlike `DAT_EXTENT`.
+    fn counted_array(
+        &mut self,
+        offset: u32,
+        array: DieId,
+        count: u64,
+        path: &str,
+        binds: &[(String, Expr)],
+        parent: Option<(DieId, u32)>,
+    ) {
+        let TypeKind::Array { element, dims } = &self.graph.types[&array].kind
+        else {
+            return;
+        };
+        let Some(raw) = *element else { return };
+        let Some(size) = self.canonical.byte_size(self.graph, raw) else {
+            return;
+        };
+        let room = (self.data.len() as u64).saturating_sub(offset.into());
+        let capacity: Option<u64> = dims.iter().copied().product();
+        if count > room / size.max(1)
+            || capacity.is_some_and(|capacity| count > capacity)
+        {
+            self.issue(Issue::OutOfBounds {
+                at: offset,
+                path: format!("{path}[{count}]"),
+            });
+            return;
+        }
+        let outer = self.env.clone();
+        for i in 0..count {
+            let at = offset + (i * size) as u32;
+            self.env = self.bound(&outer, binds, parent, i);
+            self.typed_extent(at, raw, 1);
+            self.layout(at, raw, &format!("{path}[{i}]"), parent);
+        }
+        self.env = outer;
     }
 
     fn untyped(&mut self, path: &str) {
@@ -825,7 +969,7 @@ impl<'a> Walker<'a> {
         else {
             return None;
         };
-        let element = self.resolve(*element)?;
+        let element = (*element)?;
         let size = self.canonical.byte_size(self.graph, element)?;
         Some((element, size, dims.iter().map(|d| d.unwrap_or(1)).product()))
     }
@@ -843,18 +987,43 @@ impl<'a> Walker<'a> {
         })
     }
 
-    /// A member's `DAT_TERMINATED` value.
-    fn terminator(&self, member: &Member) -> Option<Expr> {
+    /// A member's `DAT_TERMINATED` value and length.
+    fn terminator(&self, member: &Member) -> Option<(Expr, u64)> {
         member.annotations.iter().find_map(|a| {
             match DatTag::parse(self.graph.str(a.value?))? {
-                DatTag::Terminated(value) => Some(value),
+                DatTag::Terminated(value, length) => Some((value, length)),
                 _ => None,
             }
         })
     }
 
-    /// A `DAT_TERMINATED` value on a typedef, or one it names.
-    fn typedef_terminator(&self, mut die: DieId) -> Option<Expr> {
+    /// A `DAT_COUNT` on a pointer typedef, or one it names: an expression
+    /// in the bindings, for lists of counted lists.
+    fn typedef_count(&self, mut die: DieId) -> Option<Expr> {
+        while let Some(ty) = self.graph.types.get(&die) {
+            let TypeKind::Typedef {
+                target: Some(target),
+            } = ty.kind
+            else {
+                return None;
+            };
+            let count =
+                ty.annotations.iter().find_map(|a| {
+                    match DatTag::parse(self.graph.str(a.value?))? {
+                        DatTag::Count(count) => Some(count),
+                        _ => None,
+                    }
+                });
+            if count.is_some() {
+                return count;
+            }
+            die = target;
+        }
+        None
+    }
+
+    /// A `DAT_TERMINATED` value and length on a typedef, or one it names.
+    fn typedef_terminator(&self, mut die: DieId) -> Option<(Expr, u64)> {
         while let Some(ty) = self.graph.types.get(&die) {
             let TypeKind::Typedef {
                 target: Some(target),
@@ -865,7 +1034,9 @@ impl<'a> Walker<'a> {
             let value =
                 ty.annotations.iter().find_map(|a| {
                     match DatTag::parse(self.graph.str(a.value?))? {
-                        DatTag::Terminated(value) => Some(value),
+                        DatTag::Terminated(value, length) => {
+                            Some((value, length))
+                        }
                         _ => None,
                     }
                 });
@@ -886,26 +1057,32 @@ impl<'a> Walker<'a> {
         })
     }
 
-    /// The length in words of a script command, from `DAT_SCRIPT`'s own
-    /// lengths or else its table in the code.
-    fn command_length(&self, script: &Script, opcode: u8) -> Option<u64> {
-        let opcode = u64::from(opcode);
-        let first = script.lengths.len() as u64;
-        if opcode < first {
-            return script.lengths.get(opcode as usize).copied();
+    /// How many words the command whose first word is `command` is: one of
+    /// the generic commands, or else one of the script's own.
+    fn command_length(&self, script: &Script, command: u32) -> Option<u64> {
+        let opcode = u64::from(command >> 26);
+        if let Some(length) = generic_command_length(opcode) {
+            return Some(length);
         }
-        let table = self
-            .graph
-            .globals
-            .get(&self.graph.strings.get(&script.table)?)?;
-        let size = table
-            .ty
-            .and_then(|ty| self.canonical.byte_size(self.graph, ty))?;
-        let index = opcode - first;
-        if index >= size {
-            return None;
+        match script {
+            Script::Table(table) => {
+                let table = self
+                    .graph
+                    .globals
+                    .get(&self.graph.strings.get(table)?)?;
+                let size = table
+                    .ty
+                    .and_then(|ty| self.canonical.byte_size(self.graph, ty))?;
+                let index = opcode - GENERIC_COMMANDS;
+                if index >= size {
+                    return None;
+                }
+                Some(self.graph.bytes(table.address + index, 1)?[0].into())
+            }
+            Script::Length(length) => eval_expr(self.macros, length, &|name| {
+                (name == "_command").then_some(u64::from(command))
+            }),
         }
-        Some(self.graph.bytes(table.address + index, 1)?[0].into())
     }
 
     /// Follow a `DAT_SCRIPT` pointer, and every script its commands point to.
@@ -928,17 +1105,42 @@ impl<'a> Walker<'a> {
             return self.unrelocated(offset, value, path);
         }
         self.walk.pointers.insert(offset);
+        self.script_at(value, target, script, format!("{path}->"));
+    }
+
+    /// Walk a command script nothing points to at `offset`, as `element`.
+    pub fn root_script(
+        &mut self,
+        offset: u32,
+        element: DieId,
+        script: &Script,
+        name: &str,
+    ) {
+        self.env = root_env(&[]);
+        self.script_at(offset, Some(element), script, name.to_owned());
+    }
+
+    /// Walk the script at `value`, and every script its commands point to.
+    fn script_at(
+        &mut self,
+        value: u32,
+        target: Option<DieId>,
+        script: &Script,
+        path: String,
+    ) {
         let id = self.pointee(target).and_then(|t| self.canonical.of(t));
-        let mut queue = vec![(value, format!("{path}->"))];
+        let mut queue = vec![(value, path)];
         while let Some((start, path)) = queue.pop() {
             if !self.scripts.insert(start) {
                 continue;
             }
             if let Some(id) = id {
-                self.walk.objects.entry(start).or_default().insert(id);
+                self.reached(start, id, target);
             }
             self.walk.paths.entry(start).or_insert_with(|| path.clone());
             let mut at = start;
+            // Typed data up to its end command, if it gets there
+            let mut ended = None;
             loop {
                 let Some(&first) = self.data.get(at as usize) else {
                     self.issue(Issue::OutOfBounds {
@@ -948,7 +1150,8 @@ impl<'a> Walker<'a> {
                     break;
                 };
                 let opcode = first >> 2;
-                let Some(length) = self.command_length(script, opcode) else {
+                let Some(length) = self.command_length(script, self.word(at))
+                else {
                     self.issue(Issue::UnknownCommand {
                         at,
                         opcode,
@@ -973,16 +1176,24 @@ impl<'a> Walker<'a> {
                         ));
                     }
                 }
-                if opcode == 0 {
+                // A length expression ends the script with a command of 0 words
+                if opcode == 0
+                    || (length == 0 && matches!(script, Script::Length(_)))
+                {
+                    ended = Some(end);
                     break;
                 }
                 at = end;
+            }
+            if let Some(end) = ended {
+                let furthest = self.walk.extents.entry(start).or_insert(end);
+                *furthest = end.max(*furthest);
             }
         }
     }
 
     /// The type a `DAT_TYPE` typedef on the way from `die` to its underlying
-    /// type refers to.
+    /// type refers to, as named: through its own typedefs, e.g. `Mtx`.
     fn typedef_type(&self, mut die: DieId) -> Option<DieId> {
         while let Some(ty) = self.graph.types.get(&die) {
             let TypeKind::Typedef {
@@ -1003,7 +1214,7 @@ impl<'a> Walker<'a> {
                     .canonical
                     .lookup(self.graph, &name)
                     .into_iter()
-                    .find_map(|die| self.resolve(Some(die)));
+                    .find(|&die| self.resolve(Some(die)).is_some());
             }
             die = target;
         }
@@ -1053,13 +1264,15 @@ impl<'a> Walker<'a> {
     }
 
     /// Follow a `DAT_TERMINATED` pointer: elements up to one whose first
-    /// word is the terminator value, which is walked too.
+    /// word is the terminator value, which is walked too, with the
+    /// `length - 1` after it.
     fn terminated(
         &mut self,
         offset: u32,
         pointer: DieId,
         path: &str,
         terminator: &Expr,
+        length: u64,
     ) {
         let Some(pointer) = self.resolve(Some(pointer)) else {
             return;
@@ -1085,7 +1298,7 @@ impl<'a> Walker<'a> {
         if size == 0 {
             return;
         }
-        self.walk.objects.entry(value).or_default().insert(id);
+        self.reached(value, id, target);
         self.walk
             .paths
             .entry(value)
@@ -1099,6 +1312,7 @@ impl<'a> Walker<'a> {
             return;
         };
         let env = self.env.clone();
+        let mut ended = 0;
         for i in 0.. {
             let at = value + (i * size) as u32;
             if at as usize + size as usize > self.data.len() {
@@ -1123,7 +1337,10 @@ impl<'a> Walker<'a> {
                 self.layout(at, ty, &format!("{path}->[{i}]"), None);
             }
             self.env = env.clone();
-            if end {
+            if end || ended > 0 {
+                ended += 1;
+            }
+            if ended >= length.max(1) {
                 break;
             }
         }
@@ -1173,7 +1390,10 @@ impl<'a> Walker<'a> {
     /// The first union member whose `dat:if` condition holds. Conditions
     /// read the fields of the record containing the union, or else those of
     /// the union's own record members, for a union whose members share a
-    /// common initial sequence. A lone member needs no condition.
+    /// common initial sequence. A lone member needs no condition. A
+    /// condition that can't be evaluated makes the choice ambiguous rather
+    /// than falling through to a later member, such as a `dat:if(true)`
+    /// catch-all.
     fn choose<'m>(
         &self,
         members: &'m [Member],
@@ -1191,6 +1411,7 @@ impl<'a> Walker<'a> {
                     _ => None,
                 }
             });
+            let conditioned = condition.is_some();
             let holds = condition.and_then(|cond| {
                 eval_expr(self.macros, &cond, &|name| {
                     if let Some((record, at)) = parent
@@ -1206,10 +1427,13 @@ impl<'a> Walker<'a> {
                         .or_else(|| lookup(&self.env, name))
                 })
             });
-            match holds {
-                Some(0) => {}
-                Some(_) => return Choice::Member(member),
-                None => decided = false,
+            match (conditioned, holds) {
+                (_, Some(0)) => {}
+                (_, Some(_)) => return Choice::Member(member),
+                // A condition that can't be evaluated might hold: a later
+                // member, which may be a catch-all, can't be chosen over it
+                (true, None) => return Choice::Ambiguous,
+                (false, None) => decided = false,
             }
         }
         if decided {
@@ -1230,6 +1454,14 @@ impl<'a> Walker<'a> {
         else {
             return None;
         };
+        // A member of a nested record, `x0.count`
+        if let Some((head, rest)) = name.split_once('.') {
+            let member = members
+                .iter()
+                .find(|m| m.name.map(|n| self.graph.str(n)) == Some(head))?;
+            let inner = self.resolve(member.ty)?;
+            return self.field_value(inner, base + member.offset? as u32, rest);
+        }
         let member = members
             .iter()
             .find(|m| m.name.map(|n| self.graph.str(n)) == Some(name))?;

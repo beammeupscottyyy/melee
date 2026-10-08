@@ -42,87 +42,6 @@ typedef struct grBb_TrackEntry {
     Vec3 delta;
 } grBb_TrackEntry;
 
-typedef struct grBb_YakumonoParam {
-    f32 x0;
-    f32 x4;
-    f32 x8;
-    f32 xC;
-    s32 x10;
-    s32 x14;
-    s32 x18;
-    s32 x1C;
-    s32 x20;
-    f32 x24;
-    f32 x28;
-    f32 x2C;
-    f32 x30;
-    f32 x34;
-    f32 x38;
-    f32 x3C;
-    f32 x40;
-    f32 x44;
-    f32 x48;
-    f32 x4C;
-    f32 x50;
-    f32 x54;
-    f32 x58;
-    f32 x5C;
-    f32 x60;
-    u8 pad64[0x68 - 0x64];
-    f32 x68;
-    f32 x6C;
-    f32 x70;
-    f32 x74;
-    f32 x78;
-    f32 x7C;
-    f32 x80;
-    f32 x84;
-    /* 0x88 */ s32 x88;
-    /* 0x8C */ s32 x8C;
-    /* 0x90 */ f32 x90;
-    /* 0x94 */ f32 x94;
-    /* 0x98 */ f32 x98;
-    /* 0x9C */ f32 x9C;
-    /* 0xA0 */ f32 xA0;
-    /* 0xA4 */ f32 xA4;
-    /* 0xA8 */ f32 xA8;
-    /* 0xAC */ f32 xAC;
-    /* 0xB0 */ s32 xB0;
-    /* 0xB4 */ s32 xB4;
-    /* 0xB8 */ s32 xB8;
-    /* 0xBC */ f32 xBC;
-    /* 0xC0 */ f32 xC0;
-    /* 0xC4 */ f32 xC4;
-    /* 0xC8 */ f32 xC8;
-    f32 xCC;
-    f32 xD0;
-    f32 xD4;
-    f32 xD8;
-    /* 0xDC */ s32 xDC;
-    /* 0xE0 */ s32 xE0;
-    f32 xE4;
-    f32 xE8;
-    f32 xEC;
-    f32 xF0;
-    f32 xF4;
-    f32 xF8;
-    f32 xFC;
-    f32 x100;
-    f32 x104;
-    f32 x108;
-    s32 x10C;
-    s32 x110;
-    /* 0x114 */ u8 pad114[0x11C - 0x114];
-    /* 0x11C */ s32 x11C;
-    /* 0x120 */ s32 x120;
-    f32 x124;
-    f32 x128;
-    f32 x12C;
-    f32 x130;
-    Vec3 x134_translate;
-    f32 x140_scale;
-} grBb_YakumonoParam;
-
 #ifdef MUST_MATCH
 #include <MetroTRK/intrinsics.h>
 #endif
@@ -2457,38 +2376,22 @@ void grBigBlue_801EB004(Ground_GObj* gobj)
     for (i = 0; i < 12; i++, entry++) {
         HSD_JObj* start_jobj;
         HSD_JObj* end_jobj;
-        jobj = Ground_801C3FA4(gobj, entry->jobj_index);
-
-        /* goto required for match: skips to assert block on NULL */
-        if (jobj == NULL) {
-            goto assert_block;
+        if ((jobj = Ground_801C3FA4(gobj, entry->jobj_index)) != NULL &&
+            (start_jobj = Ground_801C3FA4(gobj, entry->start_index)) != NULL &&
+            (end_jobj = Ground_801C3FA4(gobj, entry->end_index)) != NULL)
+        {
+            HSD_JObjSetScale(jobj, &scale);
+            lb_8000B1CC(start_jobj, NULL, &start_pos);
+            lb_8000B1CC(end_jobj, NULL, &end_pos);
+            lbVector_Diff(&end_pos, &start_pos, &diff);
+            entry->delta.x = diff.x;
+            entry->delta.y = diff.y;
+            entry->delta.z = diff.z;
+        } else {
+            HSD_ASSERT(2328, jobj);
+            HSD_ASSERT(2329, start_jobj);
+            HSD_ASSERT(2330, end_jobj);
         }
-
-        start_jobj = Ground_801C3FA4(gobj, entry->start_index);
-        if (start_jobj == NULL) {
-            goto assert_block;
-        }
-
-        end_jobj = Ground_801C3FA4(gobj, entry->end_index);
-        if (end_jobj == NULL) {
-            goto assert_block;
-        }
-
-        HSD_JObjSetScale(jobj, &scale);
-
-        lb_8000B1CC(start_jobj, NULL, &start_pos);
-        lb_8000B1CC(end_jobj, NULL, &end_pos);
-        lbVector_Diff(&end_pos, &start_pos, &diff);
-
-        entry->delta.x = diff.x;
-        entry->delta.y = diff.y;
-        entry->delta.z = diff.z;
-        continue;
-
-    assert_block:
-        HSD_ASSERT(2328, jobj);
-        HSD_ASSERT(2329, start_jobj);
-        HSD_ASSERT(2330, end_jobj);
     }
 
     gp->u.bigblue.x0_u.x0_s.x0_u.x0_2.prev_lane = 0xFFFF;
@@ -3819,36 +3722,34 @@ void grBigBlue_801ED694(Ground_GObj* gobj, s32 lane)
         ground_y = grBigBlue_801EC58C(&gp->data.lanes[lane].pos, &sp_vec,
                                       (f32) 500.0f);
 
-        if (-F32_MAX != ground_y && ground_y > rank_factor) {
-            if (gp->data.lanes[lane].angular_velocity < 0.0F) {
-                ((grBb_ByteBits*) lane_flags)->b6 = 0;
-                /* goto required for match: skip collision/grounding,
-                 * jump to rotation convergence */
-                goto heading_converge;
-            }
-        }
-
-        if (-F32_MAX != ground_y) {
-            gp->data.lanes[lane].angular_velocity -=
-                3.0F * (yakumono_param->x80 * Ground_801C0498());
-        } else {
-            gp->data.lanes[lane].angular_velocity -=
-                yakumono_param->x80 * Ground_801C0498();
-        }
-
-        /* Lateral position += angular velocity */
-        gp->data.lanes[lane].pos.y += gp->data.lanes[lane].angular_velocity;
-
-        /* Track reference adjustment */
+        if (-F32_MAX != ground_y && ground_y > rank_factor &&
+            gp->data.lanes[lane].angular_velocity < 0.0F)
         {
-            HSD_GObj* map_gobj = Ground_GetMapGObj(34);
-            u8* gp2;
+            ((grBb_ByteBits*) lane_flags)->b6 = 0;
+        } else {
+            if (-F32_MAX != ground_y) {
+                gp->data.lanes[lane].angular_velocity -=
+                    3.0F * (yakumono_param->x80 * Ground_801C0498());
+            } else {
+                gp->data.lanes[lane].angular_velocity -=
+                    yakumono_param->x80 * Ground_801C0498();
+            }
 
-            HSD_ASSERT(3255, map_gobj);
-            gp2 = (u8*) map_gobj->user_data;
-            HSD_ASSERT(3256, gp2);
+            /* Lateral position += angular velocity */
             gp->data.lanes[lane].pos.y +=
-                *(f32*) (gp2 + 0xCC) - *(f32*) (gp2 + 0xD8);
+                gp->data.lanes[lane].angular_velocity;
+
+            /* Track reference adjustment */
+            {
+                HSD_GObj* map_gobj = Ground_GetMapGObj(34);
+                u8* gp2;
+
+                HSD_ASSERT(3255, map_gobj);
+                gp2 = (u8*) map_gobj->user_data;
+                HSD_ASSERT(3256, gp2);
+                gp->data.lanes[lane].pos.y +=
+                    *(f32*) (gp2 + 0xCC) - *(f32*) (gp2 + 0xD8);
+            }
         }
     } else {
         /* Non-grounded path */
@@ -3869,7 +3770,6 @@ void grBigBlue_801ED694(Ground_GObj* gobj, s32 lane)
         }
     }
 
-heading_converge:
     /* Update rotation: smooth toward target angle */
     if (-F32_MAX != ground_y && !((lane_flags[0] >> 1) & 1)) {
         f32 angle = atan2f(-sp_vec.x, sp_vec.y);

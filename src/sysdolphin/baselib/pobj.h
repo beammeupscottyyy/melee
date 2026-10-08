@@ -38,6 +38,10 @@ typedef HSD_EnvelopeDesc* HSD_EnvelopeList DAT_TERMINATED(0);
 /// blocks.
 typedef u8 HSD_DisplayList DAT_BLOB;
 
+/// One attribute's vertex data, as #GXSetArray takes it: elements of
+/// `stride` bytes, which a shape's display lists index.
+typedef u8 HSD_VertexArray DAT_BLOB;
+
 struct HSD_PObjDesc {
     char* class_name;
     HSD_PObjDesc* next;
@@ -61,7 +65,8 @@ struct HSD_VtxDescList {
     GXCompType comp_type;
     u8 frac;
     u16 stride;
-    void* vertex;
+    /// @todo Its length is the largest index the display lists use.
+    HSD_VertexArray* vertex;
 };
 
 struct HSD_Envelope {
@@ -80,10 +85,10 @@ struct HSD_ShapeSet {
     u16 nb_shape;
     int nb_vertex_index;
     HSD_VtxDescList* vertex_desc;
-    u8** vertex_idx_list;
+    u8** vertex_idx_list DAT_COUNT(nb_shape);
     s32 nb_normal_index;
     HSD_VtxDescList* normal_desc;
-    u8** normal_idx_list;
+    u8** normal_idx_list DAT_COUNT(nb_shape);
     union HSD_ShapeSet_blend {
         f32* bp;
         f32 bl;
@@ -96,10 +101,10 @@ struct HSD_ShapeSetDesc {
     u16 nb_shape;
     s32 nb_vertex_index;
     HSD_VtxDescList* vertex_desc;
-    u8** vertex_idx_list;
+    u8** vertex_idx_list DAT_COUNT(nb_shape);
     s32 nb_normal_index;
     HSD_VtxDescList* normal_desc;
-    u8** normal_idx_list;
+    u8** normal_idx_list DAT_COUNT(nb_shape);
 };
 
 struct HSD_ShapeAnim {

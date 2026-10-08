@@ -3,10 +3,10 @@
 use super::expr::{Expr, expr, identifier};
 use winnow::{
     ModalResult, Parser,
-    ascii::{digit1, multispace0, multispace1},
+    ascii::{dec_uint, multispace0, multispace1},
     combinator::{
-        alt, cut_err, delimited, dispatch, empty, eof, fail, preceded, repeat,
-        separated, terminated,
+        alt, cut_err, delimited, dispatch, empty, eof, fail, opt, peek, preceded,
+        repeat, separated, terminated,
     },
     token::{any, rest, take_while},
 };
@@ -18,8 +18,9 @@ pub enum DatTag {
     Count(Expr),
     /// `DAT_TERMINATED`: the pointer refers to
     /// elements up to the first whose first word is this value and isn't a
-    /// relocated pointer.
-    Terminated(Expr),
+    /// relocated pointer, then as many more as make the terminator this many
+    /// elements long.
+    Terminated(Expr, u64),
     /// `DAT_EXTENT`: the array holds as many elements as the data does.
     Extent,
     /// `DAT_BLOB`: the typedef names a format of opaque bytes.
@@ -37,13 +38,17 @@ pub enum DatTag {
     Script(Script),
 }
 
-/// How to read a `DAT_SCRIPT` command script.
+/// How long a `DAT_SCRIPT` command script's own commands are: those from
+/// opcode 10, after the generic ones every script shares
+/// (`Command_Execute`).
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct Script {
-    /// The array in the code holding the lengths of the other opcodes.
-    pub table: String,
-    /// The lengths in words of the first opcodes.
-    pub lengths: Vec<u64>,
+pub enum Script {
+    /// `table`: an array in the code of their lengths in words, from
+    /// opcode 10.
+    Table(String),
+    /// `length`: an expression in `_command`, the command's first word,
+    /// e.g. a helper's call.
+    Length(Expr),
 }
 
 /// The name argument of an archive loader call.
@@ -66,7 +71,8 @@ impl DatTag {
 fn tag(input: &mut &str) -> ModalResult<DatTag> {
     dispatch! {take_while(1.., |c: char| c.is_ascii_alphabetic());
         "count" => args(expr).map(DatTag::Count),
-        "terminated" => args(expr).map(DatTag::Terminated),
+        "terminated" => args(terminator)
+            .map(|(value, length)| DatTag::Terminated(value, length)),
         "extent" => eof.value(DatTag::Extent),
         "blob" => eof.value(DatTag::Blob),
         "if" => args(expr).map(DatTag::If),
@@ -91,25 +97,31 @@ fn args<'i, O>(
     delimited('(', inner, cut_err((')', eof)))
 }
 
-/// `table, length, length, ...`.
+/// A table's name, or else a length expression.
 fn script(input: &mut &str) -> ModalResult<Script> {
-    let table =
-        delimited(multispace0, identifier, multispace0).parse_next(input)?;
-    let lengths: Vec<u64> = repeat(
-        0..,
-        preceded(
-            (',', multispace0),
-            terminated(digit1.try_map(str::parse::<u64>), multispace0),
-        ),
-    )
-    .parse_next(input)?;
-    Ok(Script {
-        table: table.to_owned(),
-        lengths,
-    })
+    alt((
+        terminated(
+            delimited(multispace0, identifier, multispace0),
+            peek(')'),
+        )
+        .map(|table: &str| Script::Table(table.to_owned())),
+        expr.map(Script::Length),
+    ))
+    .parse_next(input)
 }
 
 /// `name, expr`.
+/// A terminator's value, then optionally how many elements it takes.
+fn terminator(input: &mut &str) -> ModalResult<(Expr, u64)> {
+    let value = expr.parse_next(input)?;
+    let length = opt(preceded(
+        ',',
+        delimited(multispace0, dec_uint::<_, u64, _>, multispace0),
+    ))
+    .parse_next(input)?;
+    Ok((value, length.unwrap_or(1)))
+}
+
 fn bind(input: &mut &str) -> ModalResult<(String, Expr)> {
     let name =
         delimited(multispace0, identifier, multispace0).parse_next(input)?;
@@ -227,14 +239,22 @@ mod tests {
     fn tags() {
         assert!(matches!(
             DatTag::parse("dat:terminated(GX_VA_NULL)"),
-            Some(DatTag::Terminated(_))
+            Some(DatTag::Terminated(_, 1))
+        ));
+        assert!(matches!(
+            DatTag::parse("dat:terminated(0x83D60, 2)"),
+            Some(DatTag::Terminated(Expr::Int(0x83D60), 2))
         ));
         assert_eq!(
-            DatTag::parse("dat:script(lengths, 1, 2 ,1)"),
-            Some(DatTag::Script(Script {
-                table: "lengths".into(),
-                lengths: vec![1, 2, 1],
-            }))
+            DatTag::parse("dat:script( lengths )"),
+            Some(DatTag::Script(Script::Table("lengths".into())))
+        );
+        assert_eq!(
+            DatTag::parse("dat:script(itCommandLength(_command))"),
+            Some(DatTag::Script(Script::Length(Expr::Call(
+                "itCommandLength".into(),
+                vec![Expr::Name("_command".into())],
+            ))))
         );
         assert_eq!(DatTag::parse("dat:extent"), Some(DatTag::Extent));
         assert_eq!(DatTag::parse("dat:blob"), Some(DatTag::Blob));
@@ -251,7 +271,7 @@ mod tests {
             Some(DatTag::Type("HSD_Joint".into()))
         );
         assert!(matches!(
-            DatTag::parse("dat:bind(Article::kind, _index + It_Kind_Kuriboh)"),
+            DatTag::parse("dat:bind(Article::kind, _index + It_Kind_Section_Monster_Character_Misc_Start)"),
             Some(DatTag::Bind(name, _)) if name == "Article::kind"
         ));
         assert_eq!(DatTag::parse("dat:bind(kind)"), None);

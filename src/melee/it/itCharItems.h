@@ -9,6 +9,8 @@
 #include <melee/lb/forward.h>
 #include <sysdolphin/baselib/forward.h>
 
+#include <dat_macros.h>
+
 #include <dolphin/mtx.h>
 #include <melee/ft/types.h>
 #include <melee/gm/types.h>
@@ -266,14 +268,14 @@ typedef struct {
 typedef struct FoxLaserAttr {
     /* +0 */ float lifetime; // [35]
     /* +4 */ float scale;    // [3]
-    /* +8 */ float x8;
-    /* +C */ float xC;
-    /* +10 */ float x10;
-    /* +14 */ float x14;
-    /* +18 */ float x18;
-    /* +1C */ float x1C;
-    /* +20 */ float x20;
-    /* +24 */ float x24; // [1]
+    /* +8 */ float x8;       // [0]
+    /* +C */ float xC;       // [0]
+    /* +10 */ float x10;     // [0]
+    /* +14 */ float x14;     // [0]
+    /* +18 */ float x18;     // [0]
+    /* +1C */ float x1C;     // [0]
+    /* +20 */ float x20;     // [0]
+    /* +24 */ float x24;     // [1]
 } FoxLaserAttr;
 
 typedef struct {
@@ -855,12 +857,12 @@ typedef struct itGamewatchchefAttributes {
     /* +4 */ f32 x4;
     /* +8 */ f32 x8;
     /* +C */ f32 xC;
-    /* +10 */ itGamewatchchefAttrEntry entries[1];
+    /* +10 */ itGamewatchchefAttrEntry entries[5];
 } itGamewatchchefAttributes;
 
-typedef struct itGamewatchparachuteAttributes {
+typedef struct itGamewatchAttributes {
     /* +0 */ void* x0;
-} itGamewatchparachuteAttributes;
+} itGamewatchAttributes;
 
 typedef struct itHinoarashi_ItemVars {
     /* xDD4 */ u8 _0[0x60 - 0x0];
@@ -900,7 +902,7 @@ typedef struct itToolsAttributes {
     /* +04 */ f32 x4;
     /* +08 */ f32 x8;
     /* +0C */ s32 xC;
-    /* +10 */ itToolsMotionAttrs motions[1];
+    /* +10 */ itToolsMotionAttrs motions[] DAT_EXTENT;
 } itToolsAttributes;
 
 typedef struct itNessYoyo_ItemVars {
