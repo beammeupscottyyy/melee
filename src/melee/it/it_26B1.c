@@ -202,15 +202,15 @@ int it_8026B3C0(ItemKind kind)
 }
 
 /// Store Item article pointer to table
-void it_8026B3F8(Article* article, s32 kind)
+void it_8026B3F8(Article* article, ItemKind kind)
 {
-    it_804D6D38[kind - It_Kind_Item_End] = article;
+    it_804D6D38[kind - It_Kind_Section_Monster_Character_Misc_Start] = article;
 }
 
 /// Store Stage Item article pointer to table
-void it_8026B40C(Article* article, s32 kind)
+void it_8026B40C(Article* article, ItemKind kind)
 {
-    it_804A0F60[kind - It_Kind_Monster2_Start] = article;
+    it_804A0F60[kind - It_Kind_Section_Stage_Extended_Start] = article;
 }
 
 /// Item Damage Math
@@ -263,32 +263,32 @@ bool it_8026B4F0(HSD_GObj* gobj)
     }
 }
 
-/// Get unknown float from 0x0 of item's special attributes
+/// Get unknown float from 0x0 of Bunny Hood's special attributes
 float it_8026B54C(HSD_GObj* gobj)
 {
     Item* temp_item = gobj->user_data;
-    itUnkAttributes* unk_attr =
-        temp_item->xC4_article_data->x4_specialAttributes;
+    itRabbitCAttributes* unk_attr =
+        &temp_item->xC4_article_data->x4_specialAttributes->rabbit_c;
 
-    return unk_attr->x0_float;
+    return unk_attr->x0;
 }
 
-/// Identical to 0x8026B54C but likely using a different itAttributes struct
+/// Get unknown float from 0x0 of Metal Box's special attributes
 float it_8026B560(HSD_GObj* gobj)
 {
     Item* temp_item = gobj->user_data;
-    itUnkAttributes* unk_attr =
-        temp_item->xC4_article_data->x4_specialAttributes;
-    return unk_attr->x0_float;
+    itMetalBAttributes* unk_attr =
+        &temp_item->xC4_article_data->x4_specialAttributes->metal_b;
+    return unk_attr->x0;
 }
 
-/// Get unknown float from 0x4 of item's special attributes
+/// Get unknown float from 0x4 of Metal Box's special attributes
 float it_8026B574(HSD_GObj* gobj)
 {
     Item* temp_item = gobj->user_data;
-    itUnkAttributes* unk_attr =
-        temp_item->xC4_article_data->x4_specialAttributes;
-    return unk_attr->x4_float;
+    itMetalBAttributes* unk_attr =
+        &temp_item->xC4_article_data->x4_specialAttributes->metal_b;
+    return unk_attr->x4;
 }
 
 /// Get unknown integer from itCommonData
@@ -364,7 +364,8 @@ bool it_8026B6C8(HSD_GObj* gobj)
     ip = gobj->user_data;
     kind = ip->kind;
     if (((kind >= It_Kind_Monster_Start) && (kind < It_Kind_Monster_End)) ||
-        ((itemID_2 = ip->kind, ((itemID_2 < It_Kind_Pokemon_End) == false)) &&
+        ((itemID_2 = ip->kind,
+          ((itemID_2 < It_Kind_Section_Stage_Extended_Start) == false)) &&
          (itemID_2 < It_Kind_Stage_End)))
     {
         itemID_3 = ip->kind;
@@ -1039,8 +1040,9 @@ bool it_8026C1B4(HSD_GObj* gobj)
 
 u32 it_8026C1D4(void)
 {
-    itLGun_ItemVars* lgun = it_804D6D24[It_Kind_L_Gun]->x4_specialAttributes;
-    return lgun->timer;
+    ItLGunAttr* lgun =
+        &it_804D6D24[It_Kind_L_Gun]->x4_specialAttributes->l_gun;
+    return lgun->max_ammo;
 }
 
 /// Check if item has grabbed a GObj?

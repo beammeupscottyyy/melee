@@ -125,6 +125,84 @@ fn macros_resolve_constants() {
 }
 
 #[test]
+fn item_kind_matches_from_dwarf() {
+    use melee_dat::{
+        dwarf::{
+            annotation::DatTag,
+            expr::{eval, eval_expr},
+        },
+        walk::macros,
+    };
+
+    let Some(graph) = GRAPH.as_ref() else { return };
+    let macros = macros(graph);
+    let binding = |ty, field| {
+        let TypeKind::Record { members, .. } = &record(graph, ty).kind else {
+            unreachable!()
+        };
+        let member = members
+            .iter()
+            .find(|m| m.name.map(|n| graph.str(n)) == Some(field))
+            .unwrap();
+        let bindings: Vec<_> = member
+            .annotations
+            .iter()
+            .filter_map(|a| a.value)
+            .filter_map(|value| DatTag::parse(graph.str(value)))
+            .filter_map(|tag| match tag {
+                DatTag::Bind(name, value) => Some((name, value)),
+                _ => None,
+            })
+            .collect();
+        assert_eq!(bindings.len(), 1, "{ty}.{field}");
+        assert_eq!(bindings[0].0, "Article::kind");
+        bindings.into_iter().next().unwrap().1
+    };
+    let fighter = binding("ftData_Item", "article");
+    let copy = binding("ftKbCopyHat_Item", "item");
+    // Every use of the shared macro must emit the complete binding, on
+    // both single pointers and arrays of pointers.
+    for (ty, field) in [
+        ("ftKbCopyHat_Items", "items"),
+        ("ftKbCopyHat_ItemsDynamics", "items"),
+        ("ftKbCopyHat_ItemDynamics", "item"),
+        ("ftKbCopyHat_Popo", "ice"),
+        ("ftKbCopyHat_Yoshi", "egg"),
+        ("ftKbCopyParts_ItemDynamics", "item"),
+        ("ftKbCopyParts_Items", "items"),
+        ("ftKbCopyParts_GameWatch", "items"),
+    ] {
+        assert_eq!(binding(ty, field), copy, "{ty}.{field}");
+    }
+    for (table, kind, index, item) in [
+        (&fighter, "Ft_Kind_Koopa", 0, "It_Kind_Koopa_Flame"),
+        (&fighter, "Ft_Kind_GKoops", 0, "It_Kind_Koopa_Flame"),
+        (&fighter, "Ft_Kind_Nana", 1, "It_Kind_IceClimber_Blizzard"),
+        (&fighter, "Ft_Kind_Mario", 1, "It_Kind_None"),
+        (&copy, "Ft_Kind_Fox", 1, "It_Kind_Kirby_FoxBlaster"),
+        (
+            &copy,
+            "Ft_Kind_GameWatch",
+            1,
+            "It_Kind_Kirby_GameWatchChefPan",
+        ),
+        (&copy, "Ft_Kind_Fox", 2, "It_Kind_None"),
+    ] {
+        let kind = eval(&macros, kind, &|_| None).unwrap();
+        let expected = eval(&macros, item, &|_| None).unwrap();
+        assert_eq!(
+            eval_expr(&macros, table, &|name| match name {
+                "fighter_kind" => Some(kind),
+                "item_index" | "_index" => Some(index),
+                _ => None,
+            }),
+            Some(expected),
+            "fighter {kind}, slot {index}"
+        );
+    }
+}
+
+#[test]
 fn canonical_covers_every_die() {
     let Some(graph) = GRAPH.as_ref() else { return };
     let canonical = Canonical::new(graph);
@@ -193,4 +271,132 @@ fn root_witnesses() {
     let ty = &graph.types[&root.ty.unwrap()];
     assert_eq!(ty.name.map(|n| graph.str(n)), Some("HSD_Joint"));
     assert!(root.location(&graph).starts_with("melee/mn/mnmain.c:"));
+}
+
+#[test]
+fn food_inline_count_from_dwarf_matches_the_archive() {
+    use melee_dat::{
+        hsd::Archive,
+        walk::{Walker, macros},
+    };
+    let Some(graph) = GRAPH.as_ref() else { return };
+    let files = std::env::var_os("MELEE_DAT_FILES")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| {
+            PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+                .join("../../orig/GALE01/files")
+        });
+    let path = files.join("ItCo.dat");
+    if !path.exists() {
+        eprintln!("skipping: {} not found", path.display());
+        return;
+    }
+    let bytes = std::fs::read(path).unwrap();
+    let archive = Archive::parse(&bytes).unwrap();
+    let public = archive
+        .publics
+        .iter()
+        .find(|p| {
+            archive.symbol_at(p.symbol) == Some(b"itPublicData".as_slice())
+        })
+        .unwrap();
+    let word = |at: u32| {
+        u32::from_be_bytes(
+            archive.data[at as usize..at as usize + 4]
+                .try_into()
+                .unwrap(),
+        )
+    };
+    let kind = graph
+        .types
+        .values()
+        .find_map(|ty| {
+            let TypeKind::Enum { enumerators, .. } = &ty.kind else {
+                return None;
+            };
+            enumerators
+                .iter()
+                .find(|e| {
+                    e.name.map(|n| graph.str(n)) == Some("It_Kind_Foods")
+                })
+                .map(|e| e.value as u32)
+        })
+        .unwrap();
+    let table = word(public.offset + 4);
+    let article = word(table + 4 * kind);
+    let attrs = word(article + 4);
+    let count = word(attrs);
+    assert!(count > 1);
+    let die = graph
+        .named("ItemSpecialAttributes")
+        .find_map(|(die, ty)| {
+            matches!(
+                ty.kind,
+                TypeKind::Record {
+                    declaration: false,
+                    ..
+                }
+            )
+            .then_some(die)
+        })
+        .unwrap();
+    let canonical = Canonical::new(graph);
+    let macros = macros(graph);
+    let mut walker = Walker::new(graph, &canonical, &macros, &archive);
+    walker.root(
+        attrs,
+        die,
+        "foods",
+        &[("Article::kind".into(), kind.into())],
+    );
+    let walked = walker.finish();
+    assert!(walked.issues.is_empty(), "{:?}", walked.issues);
+    for i in 0..count {
+        let entry = attrs + 4 + i * 16;
+        assert!(walked.pointers.contains(&entry), "food {i}");
+        assert_eq!(walked.extents[&entry], entry + 16);
+        assert!(walked.objects.contains_key(&word(entry)), "food {i} joint");
+    }
+    assert!(!walked.extents.contains_key(&(attrs + 4 + count * 16)));
+}
+
+#[test]
+fn untyped_kirby_loader_keeps_bindings_in_the_type_cache() {
+    use melee_dat::dwarf::cache::TypesFile;
+
+    let Some(graph) = GRAPH.as_ref() else { return };
+    let canonical = Canonical::new(graph);
+    let witnesses = roots(graph, &canonical);
+    let root = witnesses.iter().find(|r| {
+        r.name == RootName::Literal("ftDataKirbyCopyCaptain".into())
+    });
+    let Some(root) = root else {
+        // The default single fighter.c object does not contain Kirby's loader.
+        assert!(std::env::var_os("MELEE_DWARF_ELF").is_none());
+        return;
+    };
+    assert!(root.ty.is_none());
+    let captain = graph
+        .types
+        .values()
+        .find_map(|ty| {
+            let TypeKind::Enum { enumerators, .. } = &ty.kind else {
+                return None;
+            };
+            enumerators.iter().find_map(|e| {
+                (e.name.map(|n| graph.str(n)) == Some("Ft_Kind_Captain"))
+                    .then_some(e.value as u64)
+            })
+        })
+        .unwrap();
+    assert_eq!(root.bindings, [("fighter_kind".into(), captain)]);
+
+    // dat_symbols.txt supplies this root's type; compacting the DWARF must
+    // still retain the discriminator needed by its item-attribute union.
+    let cached = TypesFile::build(graph);
+    assert!(!cached.roots.contains_key("ftDataKirbyCopyCaptain"));
+    assert_eq!(
+        cached.root_bindings["ftDataKirbyCopyCaptain"],
+        root.bindings
+    );
 }

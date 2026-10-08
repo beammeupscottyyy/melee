@@ -1,4 +1,5 @@
 mod coverage;
+mod motions;
 
 use super::project::Project;
 
@@ -34,6 +35,9 @@ enum Command {
 
     /// Check the roots' types against the archives that define them
     Check(args::Check),
+
+    /// Check packed animations against the game's motion tables
+    CheckMotions(motions::Args),
 
     /// Type each archive's data by walking it from its roots
     Walk(args::Check),
@@ -80,10 +84,14 @@ pub fn run(Args { command }: Args) -> Result<()> {
     match command {
         Command::Roots(args) => list_roots(args),
         Command::Check(args) => check(args),
+        Command::CheckMotions(args) => motions::run(args),
         Command::Walk(args) => walk(args),
         Command::Coverage(args) => coverage::run(args),
     }
 }
+
+/// Call sites, by the type they load a symbol as (`None` for `void`).
+type SitesByType = BTreeMap<Option<String>, Vec<String>>;
 
 fn list_roots(args: args::Roots) -> Result<()> {
     let graph = TypeGraph::load(dwarf_path(args.dwarf)?)?;
@@ -93,10 +101,8 @@ fn list_roots(args: args::Roots) -> Result<()> {
     // Call sites by name, then by the type they load the symbol as. The
     // same expression in different functions names unrelated symbols, so
     // expressions are also keyed by their function.
-    let mut by_name: BTreeMap<
-        (RootName, Option<String>),
-        BTreeMap<Option<String>, Vec<String>>,
-    > = BTreeMap::new();
+    let mut by_name: BTreeMap<(RootName, Option<String>), SitesByType> =
+        BTreeMap::new();
     for root in roots(&graph, &canonical) {
         let ty = root.ty.map(|ty| renderer.declare(Some(ty), ""));
         let site = match root.function(&graph) {

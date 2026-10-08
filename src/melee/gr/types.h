@@ -56,6 +56,11 @@ typedef struct StageCameraInfo {
     f32 fixed_cam_horz_angle;  // 0x70
 } StageCameraInfo;
 
+/// An item script, as #StageInfo::ald_yaku_all lists them.
+typedef struct GroundItemScript {
+    union CmdUnion* script DAT_SCRIPT(itCommandLength(_command));
+} GroundItemScript;
+
 struct StageInfo {
     StageCameraInfo cam_info;  // 0x00 - 0x70
     StageBlastZone blast_zone; // 0x74 - 0x80
@@ -89,12 +94,17 @@ struct StageInfo {
     void* x694[4];
     void* x6A4;
     /* +6A8 */ struct GroundItemData {
-        s32 unk0;
-        Article* unk4 DAT_BIND(Article::kind, unk0);
+        ItemKind gr_itkind;
+        /// Stored in it_804A0F60 by it_8026B40C (Ground_801C0800), unlike
+        /// the other items' data (see it_804D6D20_t). @c gr_itkind is the
+        /// whole kind, not an index into its section.
+        Article* article_data DAT_BIND(Article::kind, gr_itkind);
     }** itemdata;
     /* +6AC */ MapCollData* coll_data;
     /* +6B0 */ GroundParam* param;
-    /* +6B4 */ UNK_T** ald_yaku_all;
+    /// Item scripts for the stage's objects (#ItemStateDesc::xC_script),
+    /// from index 1, up to NULL.
+    /* +6B4 */ GroundItemScript* ald_yaku_all;
     /* +6B8 */ void* map_ptcl;
     /* +6BC */ void* map_texg;
     /* +6C0 */ void* yakumono_param;
@@ -157,7 +167,7 @@ struct GrJoint { ///< @todo rename fields
 struct StageData {
     GrKind grkind;
     StageCallbacks* callbacks;
-    char* data1;
+    char* data1; // filename?
     Event on_init;
     void (*on_demo_init)(int);
     Event on_load;
@@ -1988,7 +1998,7 @@ struct GroundParam {
      * One row per #StKind this ground serves, looked up by
      * #StageParam::stkind.
      */
-    StageParam* stage_params;
+    StageParam* stage_params DAT_COUNT(stage_param_count);
     s32 stage_param_count;
     GXColor xB8;
     GXColor xBC;
@@ -2010,10 +2020,10 @@ struct UnkStageDat_x8_t {
     /* +14 */ UNK_T x14;
     /* +18 */ LightList** x18 DAT_TERMINATED(0);
     /* +1C */ HSD_FogDesc* x1C;
-    /* +20 */ GrJoint* unk20;
+    /* +20 */ GrJoint* unk20 DAT_COUNT(unk24);
     /* +24 */ s32 unk24; // size of unk20 array
-    /* +28 */ UNK_T x28;
-    /* +2C */ s16* x2C;
+    /* +28 */ u8* x28;   ///< Loop flags by animation ID (#grAnime_801C7C1C).
+    /* +2C */ s16* x2C DAT_COUNT(x30); ///< #Ground_GetStageGObj indices.
     /* +30 */ int x30;
 };
 
@@ -2022,9 +2032,20 @@ struct GroundShadowEntry {
     u8 flag : 1;
 };
 
+struct GroundJointPair {
+    /* +0 */ s16 joint_index;
+    /* +2 */ s16 stage_joint_index;
+};
+
+struct Ground_801C34AC_entry {
+    /* +0 */ HSD_Joint* joint;
+    /* +4 */ struct GroundJointPair* pairs DAT_COUNT(pair_count);
+    /* +8 */ ssize_t pair_count;
+};
+
 struct UnkStageDat {
-    void* unk0 DAT_COUNT(unk4);
-    s32 unk4;
+    struct Ground_801C34AC_entry* unk0 DAT_COUNT(count);
+    ssize_t count;
 
     // Suspect this may not be a consistent type based on un_802FD708 callers
     struct UnkStageDat_x8_t* unk8 DAT_COUNT(unkC);
@@ -2033,7 +2054,9 @@ struct UnkStageDat {
     HSD_Spline** unk10 DAT_COUNT(unk14);
     s32 unk14;
 
-    void* unk18 DAT_COUNT(unk1C);
+    /// The game searches \c unk1C entries, but the archives' counts run
+    /// past the table into the data after it.
+    struct LightOverrideEntry* unk18 DAT_EXTENT;
     s32 unk1C;
 
     struct GroundShadowEntry* unk20 DAT_COUNT(unk24);
@@ -2047,7 +2070,7 @@ ASSERT_SIZE(struct UnkStageDat_x8_t, 0x34);
 
 struct UnkArchiveStruct {
     HSD_Archive* unk0;
-    UnkStageDat* unk4;
+    UnkStageDat* unk4; // symbols?
     u32 unk8;
 };
 

@@ -19,12 +19,6 @@
 #include <melee/mp/mplib.h>
 #include <sysdolphin/baselib/jobj.h>
 
-typedef struct ArwingLaserAttr {
-    /* +0 */ ItemAttr* x0;
-    /* +4 */ f32 x4;
-    /* +8 */ f32 x8;
-} ArwingLaserAttr;
-
 static void itArwinglaser_UnkMotion2_Anim(Item_GObj*);
 static void itArwinglaser_UnkMotion3_Anim(Item_GObj*);
 static void itArwinglaser_UnkMotion2_Phys(Item_GObj*);
@@ -366,7 +360,8 @@ static void itArwinglaser_UnkMotion2_Phys(Item_GObj* gobj)
     Vec3 scale_vec;
     HSD_JObj* jobj = GET_JOBJ(gobj);
     ArwingLaserAttr* attrs =
-        ((Item*) gobj->user_data)->xC4_article_data->x4_specialAttributes;
+        &((Item*) gobj->user_data)
+             ->xC4_article_data->x4_specialAttributes->arwing_laser;
     Item* ip = gobj->user_data;
     float f1;
     float f2;
@@ -377,7 +372,7 @@ static void itArwinglaser_UnkMotion2_Phys(Item_GObj* gobj)
     case 0:
     case 2:
         if (ip->xDD4_itemVar.arwinglaser.xE30 == 1) {
-            ip->x40_vel.x = attrs->x0->x4_throw_speed_mul * ip->facing_dir;
+            ip->x40_vel.x = attrs->x0->x4 * ip->facing_dir;
             ip->x40_vel.z = 0.0f;
             ip->x40_vel.y = 0.0f;
         } else {
@@ -406,19 +401,20 @@ static void itArwinglaser_UnkMotion3_Phys(Item_GObj* gobj)
     Vec3 corneria_offset;
     HSD_JObj* jobj = GET_JOBJ(gobj);
     ArwingLaserAttr* attrs =
-        ((Item*) gobj->user_data)->xC4_article_data->x4_specialAttributes;
+        &((Item*) gobj->user_data)
+             ->xC4_article_data->x4_specialAttributes->arwing_laser;
     Item* ip = gobj->user_data;
     switch (ip->xDD4_itemVar.arwinglaser.xE38) {
     case 2:
         break;
     case 1:
     case 3:
-        ip->x40_vel.x = ip->xDD4_itemVar.arwinglaser.xE0C.x *
-                        (attrs->x0->x4_throw_speed_mul * attrs->x4);
-        ip->x40_vel.y = ip->xDD4_itemVar.arwinglaser.xE0C.y *
-                        (attrs->x0->x4_throw_speed_mul * attrs->x4);
-        ip->x40_vel.z = ip->xDD4_itemVar.arwinglaser.xE0C.z *
-                        (attrs->x0->x4_throw_speed_mul * attrs->x4);
+        ip->x40_vel.x =
+            ip->xDD4_itemVar.arwinglaser.xE0C.x * (attrs->x0->x4 * attrs->x4);
+        ip->x40_vel.y =
+            ip->xDD4_itemVar.arwinglaser.xE0C.y * (attrs->x0->x4 * attrs->x4);
+        ip->x40_vel.z =
+            ip->xDD4_itemVar.arwinglaser.xE0C.z * (attrs->x0->x4 * attrs->x4);
         break;
     }
     {

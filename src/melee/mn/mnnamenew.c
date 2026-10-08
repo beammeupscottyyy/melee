@@ -1746,12 +1746,13 @@ void mnNameNew_8023E0D8(NameNewEntry* arg0)
 
 s32 InitNameEntryUIState(NameNewEntry* arg0, s32 arg1)
 {
+    int i;
     s32 result;
     s8 count;
     u8** names;
     s8 null_char;
 
-    PAD_STACK(0x20);
+    PAD_STACK(20);
 
     arg0->x1 = (count = (u8) mn_804A04F0.hovered_selection);
     result = lbLang_IsSavedLanguageUS();
@@ -1774,11 +1775,9 @@ s32 InitNameEntryUIState(NameNewEntry* arg0, s32 arg1)
         names++;
         count++;
     }
-    arg0->auto_history[0] = count;
-    arg0->auto_history[1] = count;
-    arg0->auto_history[2] = count;
-    arg0->auto_history[3] = count;
-    arg0->auto_history[4] = count;
+    for (i = 0; i < 5; i++) {
+        arg0->auto_history[i] = count;
+    }
     return result;
 }
 
@@ -1897,7 +1896,7 @@ void mnNameNew_EnterFromMnCharSel(HSD_Archive* arg0, s32 arg1)
         arg0,
 
         // Background
-        (void**) &MenMainBack_Top.joint, "MenMainBack_Top_joint",
+        &MenMainBack_Top.joint, "MenMainBack_Top_joint",
         &MenMainBack_Top.animjoint, "MenMainBack_Top_animjoint",
         &MenMainBack_Top.matanim_joint, "MenMainBack_Top_matanim_joint",
         &MenMainBack_Top.shapeanim_joint, "MenMainBack_Top_shapeanim_joint",
@@ -1946,11 +1945,11 @@ void mnNameNew_EnterFromMnCharSel(HSD_Archive* arg0, s32 arg1)
     is_us = lbLang_IsSavedLanguageUS();
 
     if (is_us) {
-        lbArchive_LoadSections(arg0, (void**) &AutoNamesList,
-                               "mnNameAutoNameUs", &NotAllowedNamesList,
-                               "mnNameRefuseNameUs", NULL);
+        lbArchive_LoadSections(arg0, &AutoNamesList, "mnNameAutoNameUs",
+                               &NotAllowedNamesList, "mnNameRefuseNameUs",
+                               NULL);
     } else {
-        lbArchive_LoadSections(arg0, (void**) &AutoNamesList, "mnNameAutoName",
+        lbArchive_LoadSections(arg0, &AutoNamesList, "mnNameAutoName",
                                &NotAllowedNamesList, "mnNameRefuseName", NULL);
     }
 

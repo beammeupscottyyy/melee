@@ -1,5 +1,6 @@
 #include "ftkirby.h"
 
+#include <stdbool.h>
 #include <stddef.h>
 
 #include "ftkirbyattackdash.h"
@@ -2563,24 +2564,24 @@ void ftKb_Init_OnDeath(HSD_GObj* gobj)
     if (Player_GetFlagsBit1(fp->player_idx) &&
         Player_GetUnk4D(fp->player_idx) != 4)
     {
-        ftKb_SpecialN_800F1BAC(gobj, Player_GetUnk4D(fp->player_idx), 0);
+        ftKb_SpecialN_800F1BAC(gobj, Player_GetUnk4D(fp->player_idx), false);
     }
 }
 
 void ftKb_Init_OnLoad(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    void** item_list = fp->ft_data->x48_items;
+    union ftData_Item* item_list = fp->ft_data->x48_items;
 
     PUSH_ATTRS(fp, ftKb_DatAttrs);
 
     fp->can_multijump = true;
     fp->x2D0 = fp->dat_attrs;
     fp->u.kb.hat.x8_b0 = Player_GetFlagsAEBit1(fp->player_idx);
-    it_8026B3F8(item_list[0], It_Kind_Kirby_CBeam);
-    it_8026B3F8(item_list[1], It_Kind_Kirby_Hammer);
-    it_8026B3F8(item_list[2], It_Kind_Unk1);
-    it_8026B3F8(item_list[3], It_Kind_Unk2);
+    it_8026B3F8(item_list[0].article, It_Kind_Kirby_CBeam);
+    it_8026B3F8(item_list[1].article, It_Kind_Kirby_Hammer);
+    it_8026B3F8(item_list[2].article, It_Kind_Unk1);
+    it_8026B3F8(item_list[3].article, It_Kind_Unk2);
 }
 
 void ftKb_Init_800EE74C(HSD_GObj* gobj)
@@ -2614,23 +2615,23 @@ void ftKb_Init_UnkMotionStates4(HSD_GObj* gobj)
     switch (fp->u.kb.hat.kind) {
     case Ft_Kind_Donkey:
         if (fp->u.kb.xBC == da->specialn_dk_swings_to_full_charge) {
-            ftCo_800BFFD0(fp, 58, 0);
+            ftCo_800BFFD0(fp, 58, false);
         }
         break;
     case Ft_Kind_Samus:
         if (fp->u.kb.xA8 == da->specialn_ss_charge_time) {
-            ftCo_800BFFD0(fp, 54, 0);
+            ftCo_800BFFD0(fp, 54, false);
         }
         break;
     case Ft_Kind_Mewtwo:
         if (fp->u.kb.x9C == da->specialn_mt_charge_time) {
-            ftCo_800BFFD0(fp, 93, 0);
+            ftCo_800BFFD0(fp, 93, false);
             return;
         }
         break;
     case Ft_Kind_Seak:
         if (fp->u.kb.xB4 == 6) {
-            ftCo_800BFFD0(fp, 87, 0);
+            ftCo_800BFFD0(fp, 87, false);
         }
         break;
     default:
@@ -2664,19 +2665,19 @@ void ftKb_Init_OnItemPickup(HSD_GObj* gobj, bool arg1)
 void ftKb_Init_OnItemInvisible(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if (itIsHeavy(fp->item_gobj) == 0) {
+    if (itIsHeavy(fp->item_gobj) == false) {
         ftAnim_80070CC4(gobj, 1);
     }
 }
 
 void ftKb_Init_OnItemVisible(HSD_GObj* gobj)
 {
-    Fighter_OnItemVisible(gobj, 1);
+    Fighter_OnItemVisible(gobj, true);
 }
 
 void ftKb_Init_OnItemDrop(HSD_GObj* gobj, bool bool1)
 {
-    Fighter_OnItemDrop(gobj, bool1, 1, 1);
+    Fighter_OnItemDrop(gobj, bool1, true, true);
 }
 
 void ftKb_Init_LoadSpecialAttrs(HSD_GObj* gobj)
@@ -2709,21 +2710,18 @@ void ftKb_Init_OnKnockbackExit(HSD_GObj* gobj)
 
 void ftKb_Init_UnkDemoCallbacks0(int kind, int* out1, int* out2)
 {
-    if (kind == 14) {
-        goto case14;
+    switch (kind) {
+    case 11:
+    case 12:
+    case 13:
+        *out1 = 14;
+        *out2 = 16;
+        break;
+    case 14:
+        *out2 = 17;
+        *out1 = 17;
+        break;
     }
-    if (kind >= 14) {
-        return;
-    }
-    if (kind < 11) {
-        return;
-    }
-    *out1 = 14;
-    *out2 = 16;
-    return;
-case14:
-    *out2 = 17;
-    *out1 = 17;
 }
 
 char* ftKb_Init_GetMotionFileString(enum_t arg0)

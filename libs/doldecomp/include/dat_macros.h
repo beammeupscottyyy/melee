@@ -10,7 +10,9 @@
  * table.
  *
  * Union members are tested in declaration order; the first match is valid.
- * If every member has a condition and none holds, the union is unused.
+ * A condition that can't be evaluated stops the search, so a last member
+ * marked @c DAT_IF(true) is a catch-all for the others. If every member has a
+ * condition and none holds, the union is unused.
  */
 #ifndef DOLDECOMP_DAT_MACROS_H
 #define DOLDECOMP_DAT_MACROS_H
@@ -21,15 +23,19 @@
 #define DAT_TAG(tag)
 #endif
 
-/// The pointer refers to @p count elements: an expression of sibling
-/// fields and constants, which may call the functions the tool ports, e.g.
-/// @c GXGetTexBufferSize.
+/// The array holds, or the pointer refers to, @p count elements: an expression
+/// of sibling fields (or their members, @c x0.count) and constants, which may
+/// call the functions the tool ports, e.g. @c GXGetTexBufferSize. On a pointer
+/// typedef, for lists of counted lists, names resolve to bindings (#DAT_BIND).
 #define DAT_COUNT(count) DAT_TAG("count(" #count ")")
 
 /// The pointer refers to elements up to and including a terminator: the
 /// first element whose first word is @p value and not a relocated pointer,
-/// e.g. @c DAT_TERMINATED(GX_VA_NULL) for a vertex descriptor list.
-#define DAT_TERMINATED(value) DAT_TAG("terminated(" #value ")")
+/// e.g. @c DAT_TERMINATED(GX_VA_NULL) for a vertex descriptor list. An
+/// optional second argument, a number, is how many elements the terminator
+/// takes, for lists that end in it more than once:
+/// @c DAT_TERMINATED(0x83D60, 2).
+#define DAT_TERMINATED(...) DAT_TAG("terminated(" #__VA_ARGS__ ")")
 
 /// The array holds as many elements as the data does: they continue until
 /// the next symbol, the next address a pointer refers to, or an element that
@@ -56,13 +62,28 @@
 /// bindings shadow outer ones.
 #define DAT_BIND(name, value) DAT_TAG("bind(" #name ", " #value ")")
 
+/// Bind @p name to the result of matching the tuple @p values against the
+/// remaining arguments: @c (pattern, ...): value cases, ending with
+/// @c _: value. Cases are comma-separated.
+/// Patterns are constants, @c | alternatives, or @c _ to ignore a tuple
+/// component. The first matching case supplies the binding, with the same
+/// scope as #DAT_BIND.
+#define DAT_MATCH(name, values, ...)                                          \
+    DAT_TAG("bind(" #name ", (match " #values " { " #__VA_ARGS__ " }))")
+
 /// The pointer refers to a command script: commands of whole words, each
 /// with its opcode in the top 6 bits of its first byte, up to one with opcode
-/// 0. Opcode @c n is as many words long as the @c n th of the lengths
-/// following @p table, or past those, as @p table (an array in the code)
-/// says at @c n minus their number. Relocated words within a command point
-/// to more script, such as a goto's target.
-#define DAT_SCRIPT(table, ...) DAT_TAG("script(" #table ", " #__VA_ARGS__ ")")
+/// 0. Relocated words within a command point to more script, such as a
+/// goto's target. Opcodes 0 to 9 are the generic commands every script
+/// shares (#Command_Execute). The script's own commands, from opcode 10,
+/// are as many words long as either
+/// - @c table, an array in the code of their lengths, from opcode 10:
+///   @c DAT_SCRIPT(ftAction_803C0870); or
+/// - an expression in @c _command, the command's first word, such as a call
+///   to a tool-side helper: @c DAT_SCRIPT(itCommandLength(_command)). A
+///   length of 0 ends the script there, for scripts that stop at a command
+///   of their own (a color animation's opcode 10).
+#define DAT_SCRIPT(...) DAT_TAG("script(" #__VA_ARGS__ ")")
 
 /// On a typedef of @c u8: the bytes are data of one format the archive
 /// doesn't break down further, such as an animation's keyframe stream. Raw
@@ -281,5 +302,19 @@ static inline void GXTexCoord1x16(const u16 index)
 }
 /// @}
 #endif
+
+/** @name SDK types
+ * The SDK's typedefs, declared again with annotations: its headers aren't
+ * the decomp's to annotate, and C23 allows the same typedef twice. Only for
+ * the DWARF build, whose clang reads them.
+ * @{
+ */
+#if defined(__clang__) && defined(DAT_ANNOTATIONS)
+/// Each points to its first row, but to a whole matrix.
+typedef float (*MtxPtr)[4] DAT_TYPE(Mtx);
+typedef float (*Mtx44Ptr)[4] DAT_TYPE(Mtx44);
+typedef float (*ROMtxPtr)[3] DAT_TYPE(ROMtx);
+#endif
+/// @}
 
 #endif

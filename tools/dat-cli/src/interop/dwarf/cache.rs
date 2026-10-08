@@ -9,7 +9,7 @@
 
 use super::{
     DieId, Global, Type, TypeGraph, TypeKind,
-    annotation::DatTag,
+    annotation::{DatTag, Script},
     canonical::Canonical,
     roots::{RootName, roots},
 };
@@ -32,6 +32,8 @@ pub struct TypesFile {
     /// The type each root name is loaded as, by the loaders the DWARF
     /// records.
     pub roots: BTreeMap<String, DieId>,
+    /// Values bound while resolving each root's name in the loader table.
+    pub root_bindings: BTreeMap<String, Vec<(String, u64)>>,
 }
 
 impl TypesFile {
@@ -41,8 +43,16 @@ impl TypesFile {
             canonical.of(die).map_or(die, |id| canonical.get(id).rep)
         };
         let mut roots_by_name = BTreeMap::new();
+        let mut root_bindings = BTreeMap::new();
         for root in roots(graph, &canonical) {
-            if let (RootName::Literal(name), Some(ty)) = (root.name, root.ty) {
+            // Untyped roots keep their bindings, for `dat_symbols.txt` types
+            let RootName::Literal(name) = root.name else {
+                continue;
+            };
+            if !root.bindings.is_empty() {
+                root_bindings.entry(name.clone()).or_insert(root.bindings);
+            }
+            if let Some(ty) = root.ty {
                 roots_by_name.entry(name).or_insert(rep(ty));
             }
         }
@@ -59,7 +69,7 @@ impl TypesFile {
             .flatten()
             .flat_map(|m| &m.annotations)
             .filter_map(|a| match DatTag::parse(graph.str(a.value?))? {
-                DatTag::Script(script) => Some(script.table),
+                DatTag::Script(Script::Table(table)) => Some(table),
                 _ => None,
             });
         for table in tables {
@@ -111,6 +121,7 @@ impl TypesFile {
             graph: compact,
             macros: macros(graph),
             roots: roots_by_name,
+            root_bindings,
         }
     }
 

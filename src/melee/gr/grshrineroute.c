@@ -28,20 +28,6 @@
 #include <sysdolphin/baselib/lobj.h>
 #include <sysdolphin/baselib/random.h>
 
-struct grShrineRoute_YakumonoParam {
-    void* x0;
-    void* x4;
-    void* x8;
-    void* xC;
-    int x10;
-    f32 x14;
-    f32 x18;
-    f32 x1C;
-    f32 x20;
-    int x24;
-    grZakoGenerator_SpawnDesc spawn_desc;
-};
-
 struct grSh_Route_LightConfig {
     /* 0x00 */ GXColor color;
     /* 0x04 */ Vec3 pos;
@@ -286,14 +272,11 @@ void fn_80208A38(HSD_GObj* gobj)
     HSD_JObj* ejobj;
     int i;
     float unused1;
-    PAD_STACK(16);
+    PAD_STACK(8);
 
-    flags[0] = 0;
-    flags[1] = 0;
-    flags[2] = 0;
-    flags[3] = 0;
-    flags[4] = 0;
-    flags[5] = 0;
+    for (i = 0; i < 6; i++) {
+        flags[i] = 0;
+    }
     {
         int idx = HSD_Randi(6);
         flag[idx] = 1;
@@ -326,7 +309,7 @@ void grShrineRoute_80208D14(Ground_GObj* gobj)
     Ground* gp = gobj->user_data;
     Vec3 center;
     int i;
-    PAD_STACK(12);
+    PAD_STACK(4);
 
     mpLib_80058560();
     grAnime_801C8138(gobj, gp->map_id, 0);
@@ -370,9 +353,9 @@ void grShrineRoute_80208D14(Ground_GObj* gobj)
             }
         }
     } else {
-        gp->u.shrineroute.platforms[0].jobj = NULL;
-        gp->u.shrineroute.platforms[1].jobj = NULL;
-        gp->u.shrineroute.platforms[2].jobj = NULL;
+        for (i = 0; i < 3; i++) {
+            gp->u.shrineroute.platforms[i].jobj = NULL;
+        }
     }
 
     Ground_801C10B8(gobj, fn_80208A38);
@@ -1482,7 +1465,7 @@ s32 grShrineRoute_8020AE08(HSD_GObj* gobj, HSD_GObj* player_gobj, s32* out)
 
     if (pos.y < lo.y) {
         if (lo.x < pos.x && pos.x < hi.x) {
-            *out = yakumono_param->x10;
+            *out = (s32) yakumono_param->x10;
             return 1;
         }
     }

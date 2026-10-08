@@ -38,30 +38,6 @@
 #include <sysdolphin/baselib/tobj.h>
 #include <sysdolphin/baselib/wobj.h>
 
-struct grIzumi_YakumonoParam {
-    float x0;
-    int x4;
-    float x8;
-    float xC;
-    float x10;
-    float x14;
-    float x18;
-    float x1C;
-    float x20;
-    float x24;
-    float x28;
-    float x2C;
-    float x30;
-    float x34;
-    float x38;
-    float x3C;
-    float x40;
-    float x44;
-    float x48;
-    float x4C;
-    float x50;
-};
-
 typedef struct IzumiReflection {
     Mtx texture_matrix;
     HSD_ImageDesc* image;
@@ -640,49 +616,40 @@ void grIzumi_801CCB90(HSD_GObj* gobj, intptr_t renderpass)
 
 HSD_GObj* grIzumi_801CCBDC(float height, Vec3* a, int b, HSD_JObj* jobj)
 {
-    HSD_GObj* gobj;
-    gobj = grIzumi_801CBCE8(4);
-    if (gobj != NULL) {
-        Ground* gp = GET_GROUND(gobj);
-        if (gobj && gobj) {
-        } // permuter
-        if (gp != NULL) {
-            HSD_JObj* jobj2;
-            jobj2 = HSD_GObjGetHSDObj(gobj);
-            if (jobj2 != NULL) { // permuter
-                Vec3 aa = *a;
-                HSD_JObjSetTranslate(jobj2, &aa);
-                gp->u.izumi3.xD4 = height;
-                gp->u.izumi3.xD0 = height;
-                gp->u.izumi3.xC8 = b;
-                gp->u.izumi3.xCC = jobj;
-                if (height < 0.0f) {
-                    gp->u.izumi3.xC4 = 3;
-                } else {
-                    gp->u.izumi3.xC4 = 0;
-                    grAnime_801C7FF8(gobj, 0, 7, 0, 0.0f, 1.0f);
-                }
-                jobj2 = Ground_801C3FA4(gobj, 2);
-                if (jobj2 != NULL) {
-                    Vec3 vec;
-                    u8 _[4];
-                    lb_8000B1CC(jobj2, NULL, &vec);
-                    gp->u.izumi3.xD8 = (vec.y - aa.y) / Ground_801C0498();
-                } else {
-                    gp->u.izumi3.xD8 = 45.0f;
-                }
-                grIzumi_801CC358(gobj);
-                goto ret; // return has to be after the loop, but idk how to
-                          // controlflow it any better
-            }
+    HSD_GObj* gobj = grIzumi_801CBCE8(4);
+    Ground* gp;
+    HSD_JObj* jobj2;
+
+    if (gobj != NULL && (gp = GET_GROUND(gobj)) != NULL &&
+        (jobj2 = HSD_GObjGetHSDObj(gobj)) != NULL)
+    {
+        Vec3 aa = *a;
+        HSD_JObjSetTranslate(jobj2, &aa);
+        gp->u.izumi3.xD4 = height;
+        gp->u.izumi3.xD0 = height;
+        gp->u.izumi3.xC8 = b;
+        gp->u.izumi3.xCC = jobj;
+        if (height < 0.0f) {
+            gp->u.izumi3.xC4 = 3;
+        } else {
+            gp->u.izumi3.xC4 = 0;
+            grAnime_801C7FF8(gobj, 0, 7, 0, 0.0f, 1.0f);
+        }
+        jobj2 = Ground_801C3FA4(gobj, 2);
+        if (jobj2 != NULL) {
+            Vec3 vec;
+            u8 _[4];
+            lb_8000B1CC(jobj2, NULL, &vec);
+            gp->u.izumi3.xD8 = (vec.y - aa.y) / Ground_801C0498();
+        } else {
+            gp->u.izumi3.xD8 = 45.0f;
+        }
+        grIzumi_801CC358(gobj);
+    } else {
+        OSReport("%s:%d:oioi...\n", __FILE__, 892);
+        while (true) {
         }
     }
-
-    OSReport("%s:%d:oioi...\n", __FILE__, 892);
-    while (true) {
-    }
-
-ret:
     return gobj;
 }
 
