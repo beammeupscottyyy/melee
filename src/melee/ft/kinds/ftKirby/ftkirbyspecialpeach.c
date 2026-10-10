@@ -221,10 +221,10 @@ void ftKb_PeSpecialAirLw_Coll(HSD_GObj* gobj)
 
 void ftKb_SpecialNPe_8010C8D8(HSD_GObj* gobj)
 {
-    /// @todo Flag names.
-    static u32 const mf = (1 << 2) | (1 << 3) | (1 << 7) | (1 << 12) |
-                          (1 << 14) | (1 << 18) | (1 << 19) | (1 << 22) |
-                          (1 << 26) | (1 << 27);
+    static u32 const mf =
+        Ft_MF_KeepColAnimHitStatus | Ft_MF_SkipHit | Ft_MF_SkipMatAnim |
+        Ft_MF_SkipColAnim | Ft_MF_UpdateCmd | Ft_MF_SkipItemVis | Ft_MF_Unk19 |
+        Ft_MF_SkipModelPartVis | Ft_MF_SkipModelFlags | Ft_MF_Unk27;
     Fighter* fp = GET_FIGHTER(gobj);
     PAD_STACK(4 * 2);
     ftCommon_GroundToAirStateChange(gobj, fp, ftKb_MS_PeSpecialAirLw, mf);
@@ -255,10 +255,10 @@ void ftKb_SpecialNPe_8010C8D8(HSD_GObj* gobj)
 
 void ftKb_SpecialNPe_8010C9CC(HSD_GObj* gobj)
 {
-    /// @todo Named flags.
-    static u32 const mf = (1 << 2) | (1 << 3) | (1 << 7) | (1 << 12) |
-                          (1 << 14) | (1 << 18) | (1 << 19) | (1 << 22) |
-                          (1 << 26) | (1 << 27);
+    static u32 const mf =
+        Ft_MF_KeepColAnimHitStatus | Ft_MF_SkipHit | Ft_MF_SkipMatAnim |
+        Ft_MF_SkipColAnim | Ft_MF_UpdateCmd | Ft_MF_SkipItemVis | Ft_MF_Unk19 |
+        Ft_MF_SkipModelPartVis | Ft_MF_SkipModelFlags | Ft_MF_Unk27;
     Fighter* fp = GET_FIGHTER(gobj);
     fp->u.kb.xCC = false;
     ftCommon_AirToGroundStateChange(gobj, fp, ftKb_MS_PeSpecialLw, mf);
@@ -341,10 +341,10 @@ void ftKb_PeSpecialAirLwHit_Coll(HSD_GObj* gobj)
 
 void ftKb_SpecialNGw_8010CC6C(HSD_GObj* gobj)
 {
-    /// @todo Named flags.
-    static u32 const mf = (1 << 2) | (1 << 3) | (1 << 7) | (1 << 12) |
-                          (1 << 14) | (1 << 18) | (1 << 19) | (1 << 22) |
-                          (1 << 26) | (1 << 27);
+    static u32 const mf =
+        Ft_MF_KeepColAnimHitStatus | Ft_MF_SkipHit | Ft_MF_SkipMatAnim |
+        Ft_MF_SkipColAnim | Ft_MF_UpdateCmd | Ft_MF_SkipItemVis | Ft_MF_Unk19 |
+        Ft_MF_SkipModelPartVis | Ft_MF_SkipModelFlags | Ft_MF_Unk27;
     Fighter* fp = GET_FIGHTER(gobj);
     ftCommon_GroundToAirStateChange(gobj, fp, ftKb_MS_PeSpecialAirLwHit, mf);
     ftKb_SpecialNGw_8010CD44(gobj);
@@ -352,10 +352,10 @@ void ftKb_SpecialNGw_8010CC6C(HSD_GObj* gobj)
 
 void ftKb_SpecialNGw_8010CCD4(HSD_GObj* gobj)
 {
-    /// @todo Named flags.
-    static u32 const mf = (1 << 2) | (1 << 3) | (1 << 7) | (1 << 12) |
-                          (1 << 14) | (1 << 18) | (1 << 19) | (1 << 22) |
-                          (1 << 26) | (1 << 27);
+    static u32 const mf =
+        Ft_MF_KeepColAnimHitStatus | Ft_MF_SkipHit | Ft_MF_SkipMatAnim |
+        Ft_MF_SkipColAnim | Ft_MF_UpdateCmd | Ft_MF_SkipItemVis | Ft_MF_Unk19 |
+        Ft_MF_SkipModelPartVis | Ft_MF_SkipModelFlags | Ft_MF_Unk27;
     Fighter* fp = GET_FIGHTER(gobj);
     fp->u.kb.xCC = false;
     ftCommon_AirToGroundStateChange(gobj, fp, ftKb_MS_PeSpecialLwHit, mf);
