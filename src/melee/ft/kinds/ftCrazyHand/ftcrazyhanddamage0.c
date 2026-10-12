@@ -19,7 +19,8 @@
 
 void fn_80157080(Fighter_GObj* gobj)
 {
-    Fighter_ChangeMotionState(gobj, 0x158, Ft_MF_None, 0.0f, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftMh_MS_Damage, Ft_MF_None, 0.0f, 1.0f,
+                              0.0f, NULL);
     ftAnim_8006EBA4(gobj);
 }
 void ftCh_Damage_Anim(HSD_GObj* gobj)
