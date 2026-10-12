@@ -162,7 +162,7 @@ void ftGw_Attack11_Enter(HSD_GObj* gobj)
                                   1.0f, 0.0f, NULL);
         ftAnim_8006EBA4(gobj);
         fp->hitlag_mul = fp->co_attrs.jab_2_input_window;
-        fp->unk_msid = 44;
+        fp->unk_msid = ftCo_MS_Attack11;
         fp->x2218_b2 = 0;
         fp->mv.gw.Attack11.unk = 0;
         fp->x1A54 = 0;

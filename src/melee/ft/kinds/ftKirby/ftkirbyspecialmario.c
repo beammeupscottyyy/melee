@@ -181,15 +181,15 @@ void ftKb_SpecialNLg_800F951C(Fighter_GObj* gobj)
     ftCommon_8007D5D4(fp);
 
     fp2 = gobj->user_data;
-    motion_id = 0x190;
+    motion_id = ftKb_MS_MrSpecialAirN;
     anim_frame = fp->cur_anim_frame;
 
     if (fp2->u.kb.hat.kind != 0) {
-        motion_id = 0x201;
+        motion_id = ftKb_MS_DrSpecialAirN;
     }
 
-    Fighter_ChangeMotionState(gobj, motion_id, 0x5000, anim_frame, 1.0F, 0.0F,
-                              NULL);
+    Fighter_ChangeMotionState(gobj, motion_id, ftKb_MF_SpecialNLg, anim_frame,
+                              1.0F, 0.0F, NULL);
     fp->accessory4_cb = fn_800F9260;
 }
 
@@ -203,14 +203,14 @@ void ftKb_SpecialNLg_800F9598(Fighter_GObj* gobj)
     ftCommon_8007D7FC(fp);
 
     fp2 = gobj->user_data;
-    motion_id = 0x18F;
+    motion_id = ftKb_MS_MrSpecialN;
     anim_frame = fp->cur_anim_frame;
 
     if (fp2->u.kb.hat.kind != 0) {
-        motion_id = 0x200;
+        motion_id = ftKb_MS_DrSpecialN;
     }
 
-    Fighter_ChangeMotionState(gobj, motion_id, 0x5000, anim_frame, 1.0f, 0.0f,
-                              NULL);
+    Fighter_ChangeMotionState(gobj, motion_id, ftKb_MF_SpecialNLg, anim_frame,
+                              1.0f, 0.0f, NULL);
     fp->accessory4_cb = fn_800F9260;
 }
