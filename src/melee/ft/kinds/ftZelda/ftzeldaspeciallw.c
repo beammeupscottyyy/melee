@@ -296,10 +296,10 @@ void ftZd_SpecialLw_8013B4D8(HSD_GObj* gobj)
 
     {
         enum_t msid;
-        if (fp->ground_or_air == 0) {
-            msid = 356;
+        if (fp->ground_or_air == GA_Ground) {
+            msid = ftZd_MS_SpecialLw2;
         } else {
-            msid = 358;
+            msid = ftZd_MS_SpecialAirLw2;
         }
 
         Fighter_ChangeMotionState(gobj, msid, Ft_MF_None, sa->x80, 1.0, 0,
@@ -317,7 +317,8 @@ s32 ftZd_SpecialLw_8013B540(HSD_GObj* gobj)
     fp = GET_FIGHTER(gobj);
     actionStateIndex = fp->motion_id;
 
-    if (((actionStateIndex == 344) || (actionStateIndex == 347)) &&
+    if ((actionStateIndex == ftZd_MS_SpecialSLoop ||
+         actionStateIndex == ftZd_MS_SpecialAirSLoop) &&
         (fp->u.zd.x222C != 0U))
     {
         return 1;
@@ -332,8 +333,8 @@ bool ftZd_SpecialLw_8013B574(HSD_GObj* gobj)
 
     if (fp->u.zd.x222C != 0) {
         switch (fp->motion_id) {
-        case 348:
-        case 345:
+        case ftZd_MS_SpecialAirSEnd:
+        case ftZd_MS_SpecialSEnd:
             if (fp->cmd_vars[1] == 1) {
                 fp->cmd_vars[1] = 0;
                 return true;
