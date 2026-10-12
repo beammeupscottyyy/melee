@@ -6,6 +6,7 @@
 
 #include <placeholder.h>
 
+#include "forward.h"
 #include "ftcrazyhandcapturewaitcrazyhand.h"
 #include "ftcrazyhandtagcancel.h"
 #include "inlines.h"
@@ -76,7 +77,8 @@ void ftCh_Fail_Coll(HSD_GObj* gobj) {}
 void ftCh_GrabUnk1_8015A888(HSD_GObj* gobj)
 {
     PAD_STACK(8);
-    Fighter_ChangeMotionState(gobj, 0x17E, Ft_MF_None, 0.0f, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftMh_MS_TagCrush, Ft_MF_None, 0.0f, 1.0f,
+                              0.0f, NULL);
     ftAnim_8006EBA4(gobj);
 }
 
