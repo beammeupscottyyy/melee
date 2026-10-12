@@ -4,6 +4,7 @@
 
 #include <sysdolphin/baselib/forward.h>
 
+#include "forward.h"
 #include <melee/ft/fighter.h>
 #include <melee/ft/ft_084E.h>
 #include <melee/ft/ftbosslib.h>
@@ -15,7 +16,8 @@
 void ftCh_Init_801597F0(HSD_GObj* gobj, HSD_GObjEvent cb)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    Fighter_ChangeMotionState(gobj, 0x173, Ft_MF_None, 0.0f, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftMh_MS_BackCrush, Ft_MF_None, 0.0f, 1.0f,
+                              0.0f, NULL);
     ftAnim_8006EBA4(gobj);
     fp->mv.ch.unk0.x4 = cb;
 }

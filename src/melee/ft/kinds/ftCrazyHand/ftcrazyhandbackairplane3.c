@@ -4,6 +4,7 @@
 
 #include <sysdolphin/baselib/forward.h>
 
+#include "forward.h"
 #include "ftcrazyhandtagcancel.h"
 #include "ftcrazyhandthrowncrazyhand.h"
 #include <melee/ft/fighter.h>
@@ -20,7 +21,8 @@
 void ftCh_Init_80159670(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    Fighter_ChangeMotionState(gobj, 0x171, Ft_MF_None, 0.0f, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftMh_MS_BackAirplane3, Ft_MF_None, 0.0f,
+                              1.0f, 0.0f, NULL);
     ftAnim_8006EBA4(gobj);
     fp->cmd_vars[0] = 0;
 }
@@ -31,7 +33,7 @@ void ftCh_BackAirplane3_Anim(HSD_GObj* gobj)
     u8 _[8];
     if (fp->cmd_vars[0] != 0) {
         fp->cmd_vars[0] = 0;
-        ftCh_GrabUnk1_8015B850(fp->victim_gobj, 0x153);
+        ftCh_GrabUnk1_8015B850(fp->victim_gobj, ftCo_MS_ThrownCrazyHand);
         if (fp->victim_gobj != NULL) {
             HSD_GObj* victim = fp->victim_gobj;
             ftCommon_8007E2F4(fp, 0);
