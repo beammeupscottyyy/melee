@@ -23,7 +23,8 @@ void ftCh_Init_8015868C(HSD_GObj* gobj);
 void fn_801582D8(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    Fighter_ChangeMotionState(gobj, 0x166, Ft_MF_None, 0.0f, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftMh_MS_PaperCrush, Ft_MF_None, 0.0f, 1.0f,
+                              0.0f, NULL);
     ftAnim_8006EBA4(gobj);
     fp->mv.ch.unk0.x38 = -1;
     fp->mv.ch.unk0.x3C = -1;
@@ -55,7 +56,8 @@ void ftCh_PaperCrush_Coll(HSD_GObj* gobj) {}
 void ftCh_Init_801583E4(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    Fighter_ChangeMotionState(gobj, 0x167, Ft_MF_None, 0.0f, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftMh_MS_Poke1, Ft_MF_None, 0.0f, 1.0f,
+                              0.0f, NULL);
     ftAnim_8006EBA4(gobj);
     fp->accessory4_cb = fn_80158534;
     fp->cmd_vars[0] = 1;
@@ -128,7 +130,8 @@ void fn_80158534(HSD_GObj* gobj)
 void ftCh_Init_8015868C(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    Fighter_ChangeMotionState(gobj, 0x168, Ft_MF_None, 0.0f, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftMh_MS_Poke2, Ft_MF_None, 0.0f, 1.0f,
+                              0.0f, NULL);
     ftAnim_8006EBA4(gobj);
     lbAudioAx_800236B8(fp->mv.ch.unk0.x38);
     lbAudioAx_800236B8(fp->mv.ch.unk0.x3C);
