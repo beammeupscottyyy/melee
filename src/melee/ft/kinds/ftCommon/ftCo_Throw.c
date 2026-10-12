@@ -107,20 +107,20 @@ bool ftCo_800DD1E4(Fighter_GObj* gobj)
     FtMotionId msid = fp->motion_id;
     if (ftCo_800DD1E4_inline1(fp)) {
         if (fp->input.lstick[0].x * fp->facing_dir > 0.0f) {
-            msid = 219;
+            msid = ftCo_MS_ThrowF;
         } else {
-            msid = 220;
+            msid = ftCo_MS_ThrowB;
         }
     } else if (ftCo_800DF7F4(fp)) {
         if (fp->input.cstick[0].x * fp->facing_dir > 0.0f) {
-            msid = 219;
+            msid = ftCo_MS_ThrowF;
         } else {
-            msid = 220;
+            msid = ftCo_MS_ThrowB;
         }
     } else if (ftCo_800DD1E4_inline2(fp) || ftCo_800DF844(fp)) {
-        msid = 221;
+        msid = ftCo_MS_ThrowHi;
     } else if (ftCo_800DD1E4_inline3(fp) || ftCo_800DF878(fp)) {
-        msid = 222;
+        msid = ftCo_MS_ThrowLw;
     }
     if (msid != fp->motion_id) {
         ftCo_800DD4B0(gobj, msid);
@@ -173,13 +173,13 @@ void ftCo_800DD4B0(Fighter_GObj* gobj, FtMotionId msid)
             1.0f / (victim->ft_data->x0->weight * p_ftCommonData->x37C);
     }
     switch (msid) {
-    case 222:
+    case ftCo_MS_ThrowLw:
         switch (fp->kind) {
         case Ft_Kind_GKoops:
         case Ft_Kind_Koopa:
             if (victim->kind == Ft_Kind_Peach || victim->kind == Ft_Kind_Zelda)
             {
-                victim_msid = 243;
+                victim_msid = ftCo_MS_ThrownlwWomen;
             }
         default:
             break;

@@ -375,12 +375,12 @@ void ftCo_8008DCE0(Fighter_GObj* gobj, int arg1, float facing_dir)
                 if (kb_angle > p_ftCommonData->x234_radians &&
                     kb_angle < p_ftCommonData->x238_radians)
                 {
-                    msid = 0x5A;
+                    msid = ftCo_MS_DamageFlyTop;
                 } else {
                     if (fp->dmg.x1830_percent >= p_ftCommonData->x23C &&
                         HSD_Randf() < p_ftCommonData->x240)
                     {
-                        msid = 0x5B;
+                        msid = ftCo_MS_DamageFlyRoll;
                     }
                 }
             }
@@ -388,10 +388,10 @@ void ftCo_8008DCE0(Fighter_GObj* gobj, int arg1, float facing_dir)
         if (arg1 != -1) {
             msid = arg1;
         }
-        if (msid != 0x145 && kb_level_base >= 2 &&
+        if (msid != ftCo_MS_DamageIce && kb_level_base >= 2 &&
             fp->dmg.x1860_element == HitElement_Ice)
         {
-            msid = 0x5A;
+            msid = ftCo_MS_DamageFlyTop;
         }
         fp->dmg.x18A4_knockbackMagnitude = un_803222EC(kb_applied, kb_angle);
         un_8032233C(fp->dmg.x18C0, fp->x8_spawnNum);

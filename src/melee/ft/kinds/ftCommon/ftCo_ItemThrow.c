@@ -252,12 +252,12 @@ static void ftCo_80095700(Fighter_GObj* gobj, enum_t arg1)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     switch (arg1) {
-    case 95:
-    case 101:
-    case 105:
-    case 109:
-    case 113:
-    case 117:
+    case ftCo_MS_LightThrowB:
+    case ftCo_MS_LightThrowAirB:
+    case ftCo_MS_HeavyThrowB:
+    case ftCo_MS_LightThrowB4:
+    case ftCo_MS_LightThrowAirB4:
+    case ftCo_MS_HeavyThrowB4:
         fp->mv.co.itemthrow.facing_dir = -fp->facing_dir;
         return;
     default:

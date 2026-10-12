@@ -62,10 +62,10 @@ bool ftCo_Attack1_CheckInput(Fighter_GObj* gobj)
         }
         if (fp->hitlag_mul > 0 && fp->x2218_b1) {
             switch (fp->unk_msid) {
-            case 44:
+            case ftCo_MS_Attack11:
                 doAttack12(gobj);
                 return true;
-            case 45:
+            case ftCo_MS_Attack12:
                 doAttack13(gobj);
                 return true;
             }
