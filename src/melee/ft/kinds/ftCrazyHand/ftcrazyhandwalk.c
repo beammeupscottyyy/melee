@@ -61,8 +61,8 @@ void ftCh_WalkWait_Anim(HSD_GObj* gobj)
         ftCh_Init_80157B58(gobj);
     }
     if (!ftAnim_IsFramesRemaining(gobj)) {
-        Fighter_ChangeMotionState(gobj, 0x160, Ft_MF_None, 0, 1.0f, 0.0f,
-                                  NULL);
+        Fighter_ChangeMotionState(gobj, ftMh_MS_WalkWait, Ft_MF_None, 0, 1.0f,
+                                  0.0f, NULL);
         ftAnim_8006EBA4(gobj);
     }
 }

@@ -52,7 +52,8 @@ void ftCh_SweepWait_Coll(HSD_GObj* gobj) {}
 void ftCh_Init_8015764C(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    Fighter_ChangeMotionState(gobj, 0x15D, Ft_MF_None, 0.0f, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftMh_MS_Slap, Ft_MF_None, 0.0f, 1.0f, 0.0f,
+                              NULL);
     ftAnim_8006EBA4(gobj);
     fp->accessory4_cb = fn_801577B4;
 }
@@ -61,8 +62,8 @@ void ftCh_Slap_Anim(HSD_GObj* gobj)
 {
     if (ftAnim_IsFramesRemaining(gobj) == 0) {
         Fighter* fp = GET_FIGHTER(gobj);
-        Fighter_ChangeMotionState(gobj, 0x15D, Ft_MF_None, 0.0f, 1.0f, 0.0f,
-                                  NULL);
+        Fighter_ChangeMotionState(gobj, ftMh_MS_Slap, Ft_MF_None, 0.0f, 1.0f,
+                                  0.0f, NULL);
         ftAnim_8006EBA4(gobj);
         fp->accessory4_cb = fn_801577B4;
     }
