@@ -60,12 +60,12 @@ bool ftKb_SpecialNSs_800FCC6C(Fighter_GObj* gobj)
         fp = GET_FIGHTER(gobj);
 
         switch (fp->motion_id) {
-        case 0x197:
-        case 0x198:
-        case 0x199:
-        case 0x19A:
-        case 0x19B:
-        case 0x19C:
+        case ftKb_MS_SsSpecialNStart:
+        case ftKb_MS_SsSpecialNHold:
+        case ftKb_MS_SsSpecialNCancel:
+        case ftKb_MS_SsSpecialN:
+        case ftKb_MS_SsSpecialAirNStart:
+        case ftKb_MS_SsSpecialAirN:
             if (fp->x2070.x0.x2071_b6) {
                 return true;
             }
@@ -87,11 +87,11 @@ bool ftKb_SpecialNSs_800FCCBC(Fighter_GObj* gobj)
         motion_id = fp->motion_id;
 
         switch (motion_id) {
-        case 0x197:
-        case 0x198:
-        case 0x19A:
-        case 0x19B:
-        case 0x19C:
+        case ftKb_MS_SsSpecialNStart:
+        case ftKb_MS_SsSpecialNHold:
+        case ftKb_MS_SsSpecialN:
+        case ftKb_MS_SsSpecialAirNStart:
+        case ftKb_MS_SsSpecialAirN:
             return false;
         default:
             return true;
