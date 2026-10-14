@@ -147,7 +147,7 @@ bool itNokonoko_UnkMotion2_Anim(Item_GObj* gobj)
 {
     PAD_STACK(8);
     if (it_80272C6C(gobj) == 0) {
-        it_802DD4A8(gobj, 2, 0x12);
+        it_802DD4A8(gobj, 2, ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
     }
     return 0;
 }
@@ -389,12 +389,12 @@ void static inline it_802DD290_inline(Item_GObj* gobj, s32 val)
 
 void it_802DD290(Item_GObj* gobj)
 {
-    it_802DD290_inline(gobj, 0x12);
+    it_802DD290_inline(gobj, ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
 }
 
 void it_802DD2DC(HSD_GObj* gobj)
 {
-    it_802DD290_inline(gobj, 2);
+    it_802DD290_inline(gobj, ITEM_ANIM_UPDATE);
 }
 
 bool itNokonoko_UnkMotion3_Anim(Item_GObj* gobj)
