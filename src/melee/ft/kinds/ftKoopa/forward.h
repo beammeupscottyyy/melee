@@ -36,6 +36,16 @@ static MotionFlags const ftKp_MF_SpecialNLoop = ftKp_MF_SpecialN | Ft_MF_Unk19;
 static MotionFlags const ftKp_MF_SpecialAirNLoop =
     ftKp_MF_SpecialNLoop | Ft_MF_SkipParasol;
 
+static MotionFlags const ftKp_MF_SpecialN_Coll =
+    ftCommon_GroundAirColl_MF | Ft_MF_SkipRumble;
+
+static MotionFlags const ftKp_MF_SpecialHi_Coll =
+    ftCommon_GroundAirColl_MF | Ft_MF_KeepGfx | Ft_MF_SkipModel |
+    Ft_MF_KeepSfx;
+
+static MotionFlags const ftKp_MF_SpecialLw_Coll =
+    ftCommon_GroundAirColl_MF | Ft_MF_SkipHit;
+
 typedef enum ftKoopa_MotionState {
     ftKp_MS_SpecialNStart = ftCo_MS_Count,
     ftKp_MS_SpecialN,

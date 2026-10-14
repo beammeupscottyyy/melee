@@ -136,8 +136,8 @@ void ftKp_SpecialAirLw_Coll(Fighter_GObj* gobj)
 
 void ftKp_SpecialLw_80134988(Fighter_GObj* gobj)
 {
-    Fighter_ChangeMotionState(gobj, ftKp_MS_SpecialAirLw, 0x0C4C5088, 30.0f,
-                              1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftKp_MS_SpecialAirLw,
+                              ftKp_MF_SpecialLw_Coll, 30.0f, 1.0f, 0.0f, NULL);
 }
 
 void ftKp_SpecialLwLanding_Anim(Fighter_GObj* gobj)

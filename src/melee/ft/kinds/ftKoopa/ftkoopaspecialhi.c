@@ -147,8 +147,9 @@ void ftKp_SpecialHi_Coll(Fighter_GObj* gobj)
     PAD_STACK(8);
     if (ft_80082708(gobj) == GA_Ground) {
         ftCommon_8007D60C(fp);
-        Fighter_ChangeMotionState(gobj, ftKp_MS_SpecialAirHi, 0x0C4C5292,
-                                  fp->cur_anim_frame, 1.0f, 0.0f, NULL);
+        Fighter_ChangeMotionState(gobj, ftKp_MS_SpecialAirHi,
+                                  ftKp_MF_SpecialHi_Coll, fp->cur_anim_frame,
+                                  1.0f, 0.0f, NULL);
         Fighter_SetDamageCallback(gobj, ftKp_Init_80132B38);
         ftCommon_ClampSelfVelX(fp, da->x64);
         Fighter_SetEffectHitlagCallbacks(fp);
@@ -169,13 +170,14 @@ static inline void ftKp_SpecialAirHi_Coll_inline(Fighter_GObj* gobj,
     if ((da->x70 < fp->mv.co.walk.middle_anim_frame) &&
         (fp->mv.co.walk.middle_anim_frame < da->x70))
     {
-        Fighter_ChangeMotionState(gobj, ftKp_MS_SpecialHi, 0x0C4C5292,
-                                  fp->cur_anim_frame - da->x78, 1.0f, 0.0f,
-                                  NULL);
+        Fighter_ChangeMotionState(
+            gobj, ftKp_MS_SpecialHi, ftKp_MF_SpecialHi_Coll,
+            fp->cur_anim_frame - da->x78, 1.0f, 0.0f, NULL);
         Fighter_SetDamageCallback(gobj, ftKp_Init_80132B38);
     } else {
-        Fighter_ChangeMotionState(gobj, ftKp_MS_SpecialHi, 0x0C4C5292,
-                                  fp->cur_anim_frame, 1.0f, 0.0f, NULL);
+        Fighter_ChangeMotionState(gobj, ftKp_MS_SpecialHi,
+                                  ftKp_MF_SpecialHi_Coll, fp->cur_anim_frame,
+                                  1.0f, 0.0f, NULL);
         Fighter_SetDamageCallback(gobj, ftKp_Init_80132B38);
     }
     ftCommon_ClampGroundVel(fp, da->x60);
