@@ -1482,7 +1482,8 @@ void ftColl_80078C70(Fighter_GObj* this_gobj)
                                     ((((u8) hit0->x40_b2) &&
                                       (this_fp->ground_or_air == GA_Air)) ||
                                      (((u8) hit0->x40_b3) &&
-                                      ((int) this_fp->ground_or_air == 0))) &&
+                                      (this_fp->ground_or_air ==
+                                       GA_Ground))) &&
                                     (!((u8) (hit0->x134
                                                  .hit_grabbed_victim_only)) ||
                                      ((victim_fp->victim_gobj == NULL) != 0) ||

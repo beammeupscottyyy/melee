@@ -1390,7 +1390,7 @@ void Item_802697D4(HSD_GObj* gobj)
     if (item_data->xDC8_word.flags.x13 == 0) {
         if (item_data->xDC8_word.flags.x9 == 0) {
             PSVECAdd(&item_data->x40_vel, &item_data->x70_nudge, &sp1C);
-            if ((item_data->ground_or_air == 0) &&
+            if ((item_data->ground_or_air == GA_Ground) &&
                 (item_data->xDCD_flag.x0.b3 == 0))
             {
                 it_8027737C(gobj, &sp1C);
@@ -1402,16 +1402,18 @@ void Item_802697D4(HSD_GObj* gobj)
         {
             return;
         }
-        if (item_data->xD3C_spinSpeed && item_data->ground_or_air == 1) {
+        if (item_data->xD3C_spinSpeed && item_data->ground_or_air == GA_Air) {
             it_80274A64(gobj);
         }
     }
-    if ((item_data->xDD1_flag.x0.b1 != 0) && (item_data->ground_or_air == 1)) {
+    if ((item_data->xDD1_flag.x0.b1 != 0) &&
+        (item_data->ground_or_air == GA_Air))
+    {
         grLib_801C9E60(&item_data->x58_vec_unk);
     }
     PSVECAdd(&item_data->pos, &item_data->x58_vec_unk, &item_data->pos);
     it_80273484(gobj);
-    if (item_data->ground_or_air == 0) {
+    if (item_data->ground_or_air == GA_Ground) {
         if ((item_data->xDCE_flag.x0.b3 != 0) && (it_8026D604(gobj) != 0)) {
             mpGetSpeed(item_data->xC30, &item_data->pos,
                        &item_data->x64_vec_unk2);

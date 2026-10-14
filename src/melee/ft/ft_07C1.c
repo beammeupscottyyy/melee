@@ -108,7 +108,7 @@ void ft_8007C2E0(Fighter* fp0, HitCapsule* hit0, Fighter* fp1,
 
     { // inlineA0(fp1, fp0, hit0);
         lbColl_80008688(hit0, 3, fp1);
-        if (fp0->ground_or_air == 1) {
+        if (fp0->ground_or_air == GA_Air) {
             float weight_ratio = fp1->co_attrs.weight / fp0->co_attrs.weight;
             if (weight_ratio > 1) {
                 weight_ratio = 1;

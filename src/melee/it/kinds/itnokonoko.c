@@ -242,7 +242,7 @@ bool itNokonoko_UnkMotion8_Anim(Item_GObj* gobj)
 void itNokonoko_UnkMotion7_Phys(HSD_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
-    if (ip->ground_or_air == 1) {
+    if (ip->ground_or_air == GA_Air) {
         ip->x40_vel.y -= ip->xCC_item_attr->x10_fall_speed;
     }
 }

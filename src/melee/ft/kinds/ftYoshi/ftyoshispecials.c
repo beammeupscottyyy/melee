@@ -255,7 +255,7 @@ void fn_8012EFF4(Fighter_GObj* gobj)
         }
     }
     fp->mv.ys.specials.x0 -= attributes->x50;
-    temp_f2 = fp->ground_or_air == 1 ? attributes->x8C : attributes->x7C;
+    temp_f2 = fp->ground_or_air == GA_Air ? attributes->x8C : attributes->x7C;
     if (ABS(fp->mv.ys.specials.x1C) > temp_f2) {
         if (fp->mv.ys.specials.x1C > 0.0F) {
             fp->mv.ys.specials.x1C -= attributes->xCC;

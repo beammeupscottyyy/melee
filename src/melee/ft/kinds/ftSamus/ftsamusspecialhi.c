@@ -171,7 +171,7 @@ void ftSs_SpecialHi_Phys(HSD_GObj* gobj)
         fp->cmd_vars[0] = 0;
         fp->self_vel.x = samus_attr->x38 * fp->facing_dir;
     }
-    if (fp->ground_or_air == 1) {
+    if (fp->ground_or_air == GA_Air) {
         ft_800851C0(gobj);
         ftCommon_CalcSelfAccel_DriftSimple(fp, 0.0f, samus_attr->x3C,
                                            samus_attr->x40);

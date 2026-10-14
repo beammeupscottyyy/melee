@@ -187,7 +187,7 @@ void ftDrawCommon_800805C8(HSD_GObj* gobj, s32 arg1, bool arg2)
     }
     if (fighter->x21FC_flag.x0.b2 != 0) {
         itPickup* temp_r24 = &fighter->x294_itPickup;
-        if (fighter->ground_or_air == 0) {
+        if (fighter->ground_or_air == GA_Ground) {
             if (lbGx_8001E2F8(&temp_r24->gr_light_offset, &fighter->cur_pos,
                               &ftDrawCommon_804D3A88, arg1,
                               fighter->facing_dir))

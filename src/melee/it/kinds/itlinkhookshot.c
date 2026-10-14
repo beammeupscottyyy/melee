@@ -708,7 +708,7 @@ void it_802A3630(Item_GObj* arg0)
         return;
     }
     it_802A7384(item, &pos, fp2->x34_scale.y);
-    if (fp2->ground_or_air != 1) {
+    if (fp2->ground_or_air != GA_Air) {
         it_802A77DC(arg0);
         return;
     }
@@ -765,7 +765,7 @@ void it_802A3828(Item_GObj* gobj)
     fp2->cur_pos.x = pos.x + x_offset;
     fp2->cur_pos.y = pos.y + y_offset;
     it_802A7384(item, &pos, fp2->x34_scale.y);
-    if (fp2->ground_or_air != 1) {
+    if (fp2->ground_or_air != GA_Air) {
         it_802A77DC(gobj);
     }
 }
@@ -842,7 +842,7 @@ void it_802A39FC(Item_GObj* gobj)
     fp->self_vel.y = temp_f0_2;
     fp->pos_delta.y = temp_f0_2;
     it_802A7384(item, &pos, fp->x34_scale.y);
-    if (fp->ground_or_air != 1) {
+    if (fp->ground_or_air != GA_Air) {
         it_802A77DC(gobj);
         return;
     }

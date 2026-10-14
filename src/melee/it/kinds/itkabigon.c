@@ -95,7 +95,7 @@ void itKabigon_UnkMotion0_Phys(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
 
     if (ip->xDB0_itcmd_var1 == 0) {
-        if (ip->ground_or_air == 1) {
+        if (ip->ground_or_air == GA_Air) {
             ItemAttr* attrs = ip->xCC_item_attr;
             it_80272860(gobj, attrs->x10_fall_speed,
                         attrs->x14_fall_speed_max);
