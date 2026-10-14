@@ -119,9 +119,10 @@ bool ftPp_SpecialS_80120FE0(Fighter_GObj* gobj)
         }
     }
     return false;
-end: {
-    // original code returns without a value
-}
+end:
+    {
+        // original code returns without a value
+    }
 }
 
 void ftPp_SpecialS_801210C8(Fighter_GObj* arg0)
@@ -369,8 +370,9 @@ void ftPp_SpecialHi_801217EC(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     ftCommon_8007D60C(fp);
-    Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirHiStart_0, 0x0C4C508A,
-                              fp->cur_anim_frame, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirHiStart_0,
+                              ftPp_MF_SpecialHi_Coll, fp->cur_anim_frame, 1.0f,
+                              0.0f, NULL);
 }
 
 void ftPp_SpecialHi_8012184C(Fighter_GObj* gobj)
@@ -559,8 +561,9 @@ void ftPp_SpecialHi_80121CE0(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     ftCommon_8007D60C(fp);
-    Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirHiThrow_0, 0x0C4C508A,
-                              fp->cur_anim_frame, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirHiThrow_0,
+                              ftPp_MF_SpecialHi_Coll, fp->cur_anim_frame, 1.0f,
+                              0.0f, NULL);
 }
 
 void ftPp_SpecialHi_80121D40(Fighter_GObj* gobj)
@@ -648,8 +651,9 @@ void ftPp_SpecialHi_80121FD8(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     ftCommon_8007D60C(fp);
-    Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirHiStart_1, 0x0C4C508A,
-                              fp->cur_anim_frame, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirHiStart_1,
+                              ftPp_MF_SpecialHi_Coll, fp->cur_anim_frame, 1.0f,
+                              0.0f, NULL);
 }
 
 void ftPp_SpecialHi_80122038(Fighter_GObj* gobj)
@@ -733,14 +737,15 @@ void ftPp_SpecialHi_801222E8(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     ftCommon_8007D60C(fp);
-    Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirHiThrow_1, 0x0C4C508A,
-                              fp->cur_anim_frame, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirHiThrow_1,
+                              ftPp_MF_SpecialHi_Coll, fp->cur_anim_frame, 1.0f,
+                              0.0f, NULL);
 }
 
 void ftPp_SpecialHi_80122348(Fighter_GObj* arg0)
 {
-    Fighter_ChangeMotionState(arg0, ftPp_MS_SpecialHiThrow_1, 0U, 0.0f, 1.0f,
-                              0.0f, NULL);
+    Fighter_ChangeMotionState(arg0, ftPp_MS_SpecialHiThrow_1, Ft_MF_None, 0.0f,
+                              1.0f, 0.0f, NULL);
 }
 
 void ftPp_SpecialHi_80122380(Fighter_GObj* gobj)
@@ -877,8 +882,9 @@ void ftPp_SpecialHi_801227AC(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     ftCommon_8007D60C(fp);
-    Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirHiThrow2, 0x0C4C508A,
-                              fp->cur_anim_frame, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirHiThrow2,
+                              ftPp_MF_SpecialHi_Coll, fp->cur_anim_frame, 1.0f,
+                              0.0f, NULL);
 }
 
 void ftPp_SpecialHi_8012280C(Fighter_GObj* gobj)

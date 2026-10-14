@@ -378,7 +378,8 @@ void ftPp_SpecialS1_Phys(Fighter_GObj* gobj)
         temp_r28 = temp_r27->dat_attrs;
         ftCommon_8007D5D4(temp_r27);
         temp_r27->x74_self_accel.x = temp_r27->xE4_ground_accel_1;
-        Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirS1, 0x0C4C528A,
+        Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirS1,
+                                  ftPp_MF_SpecialS_Coll,
                                   temp_r27->cur_anim_frame, 1.0F, 0.0F, NULL);
         temp_r5_2 = GET_FIGHTER(gobj);
         temp_r5_2->take_dmg_cb = ftPp_Init_8011F060;
@@ -440,7 +441,8 @@ void ftPp_SpecialS2_Phys(Fighter_GObj* gobj)
         temp_r28 = temp_r27->dat_attrs;
         ftCommon_8007D5D4(temp_r27);
         temp_r27->x74_self_accel.x = temp_r27->xE4_ground_accel_1;
-        Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirS2, 0xC4C528A,
+        Fighter_ChangeMotionState(gobj, ftPp_MS_SpecialAirS2,
+                                  ftPp_MF_SpecialS_Coll,
                                   temp_r27->cur_anim_frame, 1.0F, 0.0F, NULL);
         temp_r5_2 = GET_FIGHTER(gobj);
         temp_r5_2->take_dmg_cb = ftPp_Init_8011F060;
@@ -536,8 +538,8 @@ static inline void inline3(Fighter_GObj* gobj, int msid)
     ftIceClimberAttributes* temp_r30 = fp->dat_attrs;
     ftCommon_8007D5D4(fp);
     fp->x74_self_accel.x = fp->xE4_ground_accel_1;
-    Fighter_ChangeMotionState(gobj, msid, 0xC4C528A, fp->cur_anim_frame, 1.0F,
-                              0.0F, NULL);
+    Fighter_ChangeMotionState(gobj, msid, ftPp_MF_SpecialS_Coll,
+                              fp->cur_anim_frame, 1.0F, 0.0F, NULL);
     inlineA0(gobj);
     ftCommon_ClampSelfVelX(fp, temp_r30->x3C);
 }

@@ -138,8 +138,9 @@ void fn_80122B54(Fighter_GObj* gobj)
     PAD_STACK(8);
     ftCommon_8007D7FC(fp);
     fp2 = fp;
-    Fighter_ChangeMotionState(new_var, ftPp_MS_SpecialLw, 0x0C4C5282,
-                              fp2->cur_anim_frame, 1.0F, 0.0F, 0L);
+    Fighter_ChangeMotionState(new_var, ftPp_MS_SpecialLw,
+                              ftPp_MF_SpecialLw_Coll, fp2->cur_anim_frame,
+                              1.0F, 0.0F, 0L);
     ftPp_set_cbs(new_var);
     ftPp_SpecialLw_Coll_inline(gobj);
     fp->accessory4_cb = fn_80122D2C;
