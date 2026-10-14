@@ -166,7 +166,7 @@ void it_802E4DB4(Item_GObj* gobj)
     itOctarockAttributes* attr =
         &ip->xC4_article_data->x4_specialAttributes->octarock;
     ip->x40_vel.x *= attr->x4;
-    Item_80268E5C(gobj, 2, 3);
+    Item_80268E5C(gobj, 2, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
 }
 
 bool itOctarock_UnkMotion2_Anim(Item_GObj* gobj)
@@ -457,7 +457,7 @@ void it_802E58A0(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     Item_UpdateZakoVelocity(gobj, ip);
-    Item_80268E5C(gobj, 8, 3);
+    Item_80268E5C(gobj, 8, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
 }
 
 bool itOctarock_UnkMotion8_Anim(Item_GObj* gobj)

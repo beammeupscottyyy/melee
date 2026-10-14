@@ -400,7 +400,7 @@ void it_802EBE5C(Item_GObj* gobj)
     ip->xDD4_itemVar.tincle.x20 = data->x40;
     ip->xDD4_itemVar.tincle.x4C = ip->pos.y;
 
-    Item_80268E5C(gobj, 4, 2);
+    Item_80268E5C(gobj, 4, ITEM_ANIM_UPDATE);
 }
 
 bool itTincle_UnkMotion4_Anim(Item_GObj* gobj)
@@ -508,7 +508,7 @@ void it_802EC18C(Item_GObj* gobj)
     itResetVelocity(ip);
     it_802756D0(gobj);
     ip->xDD4_itemVar.tincle.x20 = 3;
-    Item_80268E5C(gobj, 6, 0x12);
+    Item_80268E5C(gobj, 6, ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
     it_802EC9E8(gobj);
 }
 
@@ -519,7 +519,7 @@ void it_802EC1F4(Item_GObj* gobj)
     itResetVelocity(ip);
     it_802756D0(gobj);
     ip->xDD4_itemVar.tincle.x20 = 0;
-    Item_80268E5C(gobj, 7, 0x12);
+    Item_80268E5C(gobj, 7, ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
     it_802EC9E8(gobj);
 }
 
@@ -531,7 +531,7 @@ bool itTincle_UnkMotion7_Anim(Item_GObj* gobj)
     if (ip->xDD4_itemVar.tincle.x20 == 0) {
         ip->xDD4_itemVar.tincle.x20 = -1;
         if (ip->msid == 6) {
-            Item_80268E5C(gobj, 7, 1);
+            Item_80268E5C(gobj, 7, ITEM_UNK_0x1);
         }
     } else if (ip->xDD4_itemVar.tincle.x20 > 0) {
         ip->xDD4_itemVar.tincle.x20 -= 1;
@@ -630,7 +630,7 @@ void it_802EC4D0(Item_GObj* gobj)
     ip->xDD4_itemVar.tincle.x20 = HSD_Randi(range);
     ip->xDD4_itemVar.tincle.x20 += data->x54;
 
-    Item_80268E5C(gobj, 10, 2);
+    Item_80268E5C(gobj, 10, ITEM_ANIM_UPDATE);
 }
 
 bool itTincle_UnkMotion10_Anim(Item_GObj* gobj)
@@ -641,7 +641,7 @@ bool itTincle_UnkMotion10_Anim(Item_GObj* gobj)
     if (it_80272C6C(gobj) == 0) {
         ip->xDD4_itemVar.tincle.x20--;
         if (ip->xDD4_itemVar.tincle.x20 != 0) {
-            Item_80268E5C(gobj, 10, 2);
+            Item_80268E5C(gobj, 10, ITEM_ANIM_UPDATE);
         } else {
             it_802EC604(gobj);
         }

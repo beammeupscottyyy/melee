@@ -217,7 +217,7 @@ void itSonans_UnkMotion2_Phys(Item_GObj* gobj)
         it_802754D4(gobj);
         it_802754BC(gobj);
         ip = GET_ITEM(gobj);
-        Item_80268E5C(gobj, 0, 2);
+        Item_80268E5C(gobj, 0, ITEM_ANIM_UPDATE);
         Item_SetEffectHitlagCallbacks(ip);
     }
 }

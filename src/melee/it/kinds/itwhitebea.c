@@ -199,7 +199,7 @@ void it_802E3528(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     Item_UpdateZakoVelocity(gobj, ip);
-    Item_80268E5C(gobj, 0xB, 3);
+    Item_80268E5C(gobj, 0xB, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
 }
 
 bool itOldottosea_UnkMotion11_Anim(Item_GObj* gobj)
@@ -526,7 +526,7 @@ void it_802E3ED0(Item_GObj* gobj)
         facing = 1;
     }
     mpCollSetFacingDir(&ip->x378_itemColl, facing);
-    Item_80268E5C(gobj, 4, 3);
+    Item_80268E5C(gobj, 4, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
 }
 
 bool itWhitebea_UnkMotion4_Anim(Item_GObj* gobj)
@@ -840,7 +840,7 @@ void it_802E4980(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     Item_UpdateZakoVelocity(gobj, ip);
-    Item_80268E5C(gobj, 0xB, 3);
+    Item_80268E5C(gobj, 0xB, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
 }
 
 bool itWhitebea_UnkMotion11_Anim(Item_GObj* gobj)
