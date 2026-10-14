@@ -41,6 +41,12 @@
 static MotionFlags const ftYs_MF_SpecialS_Coll =
     ftCommon_GroundAirColl_MF | Ft_MF_KeepGfx | Ft_MF_SkipModel;
 
+static MotionFlags const ftYs_MF_SpecialAirSLoop3_Coll =
+    ftYs_MF_SpecialS_Coll | Ft_MF_SkipHit;
+
+static MotionFlags const ftYs_MF_SpecialAirSLoop3_Rumble_Coll =
+    ftYs_MF_SpecialS_Coll | Ft_MF_SkipRumble;
+
 /* 3CED84 */ static f32 ftYs_Unk3_803CED84[] = { 0.65, 0.7, 0.8, 1 };
 /* 3CED94 */ static f32 ftYs_Unk3_803CED94[] = { 1.1, 1.35, 1.3, 1.2 };
 /* 3CEDA4 */ static ftCollisionBox ftYs_Unk3_803CEDA4 = {
@@ -1143,7 +1149,8 @@ void ftYs_SpecialAirSLoop_0_Coll(Fighter_GObj* gobj)
         fp->self_vel.y = attributes->xB0;
     } else if (coll_result == 0) {
         ftCommon_8007D5D4(fp);
-        Fighter_ChangeMotionState(gobj, ftYs_MS_SpecialAirSLoop_3, 0x0C4C509AU,
+        Fighter_ChangeMotionState(gobj, ftYs_MS_SpecialAirSLoop_3,
+                                  ftYs_MF_SpecialAirSLoop3_Coll,
                                   fp->cur_anim_frame, 0.0F, 0.0F, NULL);
         ftYoshi_SpecialS_SetCall(gobj);
         ftYs_SpecialS_WrapAndSetRotX(gobj);
@@ -1182,7 +1189,8 @@ void ftYs_SpecialAirSLoop_1_Coll(Fighter_GObj* gobj)
         fp->self_vel.y = attributes->xB0;
     } else if (coll_result == 0) {
         ftCommon_8007D5D4(fp);
-        Fighter_ChangeMotionState(gobj, ftYs_MS_SpecialAirSLoop_3, 0x0C4C5892U,
+        Fighter_ChangeMotionState(gobj, ftYs_MS_SpecialAirSLoop_3,
+                                  ftYs_MF_SpecialAirSLoop3_Rumble_Coll,
                                   fp->cur_anim_frame, 0.0F, 0.0F, NULL);
         ftYoshi_SpecialS_SetCall(gobj);
 
@@ -1338,8 +1346,8 @@ void ftYs_SpecialAirSLoop_3_Coll(Fighter_GObj* gobj)
         if (abs_y < attributes->xB8) {
             ftCommon_8007D7FC(fp);
             Fighter_ChangeMotionState(gobj, ftYs_MS_SpecialAirSLoop_0,
-                                      0x0C4C509AU, fp->cur_anim_frame, 0.0F,
-                                      0.0F, NULL);
+                                      ftYs_MF_SpecialAirSLoop3_Coll,
+                                      fp->cur_anim_frame, 0.0F, 0.0F, NULL);
             ft_PlaySFX(GET_FIGHTER(gobj), 0x44621, 0x7F, 0x40);
             ftYoshi_SpecialS_SetCall(gobj);
 

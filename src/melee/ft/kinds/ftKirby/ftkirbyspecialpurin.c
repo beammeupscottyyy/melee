@@ -38,6 +38,13 @@
 /* 3CB710 */ static float ftKb_Init_803CB710[] = { 0.65F, 0.7F, 0.8F, 1.0F };
 /* 3CB720 */ static float ftKb_Init_803CB720[] = { 1.1F, 1.35F, 1.3F, 1.2F };
 
+static MotionFlags const ftKb_MF_PrSpecialN_Coll =
+    ftCommon_GroundAirColl_MF | Ft_MF_KeepGfx | Ft_MF_SkipModel;
+
+static MotionFlags const ftKb_MF_PrSpecialNTurn_Coll =
+    (ftCommon_GroundAirColl_MF & ~(Ft_MF_SkipColAnim | Ft_MF_UpdateCmd)) |
+    Ft_MF_KeepGfx | Ft_MF_SkipModel | Ft_MF_KeepSfx;
+
 static inline void ftKb_PrScaleAnimStep(Fighter_GObj* gobj, Vec3* scale)
 {
     Fighter* fp = GET_FIGHTER(gobj);
@@ -719,8 +726,8 @@ void ftKb_PrSpecialN1_IASA(Fighter_GObj* gobj)
             fp->mv.pr.specialn.facing_dir = sign;
             fp->mv.pr.specialn.x34.x = -sign;
             Fighter_ChangeMotionState(gobj, ftKb_MS_PrSpecialNTurn,
-                                      0x0C4C0292U, fp->cur_anim_frame, 0, 0,
-                                      NULL);
+                                      ftKb_MF_PrSpecialNTurn_Coll,
+                                      fp->cur_anim_frame, 0, 0, NULL);
             ftKb_PrSetCallbacks(gobj);
             fp->mv.pr.specialn.x10 = fp->gr_vel;
             fp->mv.pr.specialn.x1C = -0.05f * fp->gr_vel;
@@ -1052,8 +1059,8 @@ void ftKb_PrSpecialNStart_Coll(Fighter_GObj* gobj)
         } else {
             msid = ftKb_MS_PrSpecialAirNStartL;
         }
-        Fighter_ChangeMotionState(gobj, msid, 0x0C4C5092U, fp->cur_anim_frame,
-                                  1.0f, 0.0f, NULL);
+        Fighter_ChangeMotionState(gobj, msid, ftKb_MF_PrSpecialN_Coll,
+                                  fp->cur_anim_frame, 1.0f, 0.0f, NULL);
         ftKb_PrSetCallbacks(gobj);
     }
 }
@@ -1155,21 +1162,20 @@ void ftKb_PrSpecialNTurn_Coll(Fighter_GObj* gobj)
     }
     if (result == 0) {
         ftCommon_8007D5D4(fp);
-        Fighter_ChangeMotionState(gobj, ftKb_MS_PrSpecialN0, 0x0C4C5092U,
-                                  fp->cur_anim_frame, 0, 0, NULL);
+        Fighter_ChangeMotionState(gobj, ftKb_MS_PrSpecialN0,
+                                  ftKb_MF_PrSpecialN_Coll, fp->cur_anim_frame,
+                                  0, 0, NULL);
         ftKb_PrSetCallbacks(gobj);
     }
 }
 
 void ftKb_PrSpecialNEnd_Coll(Fighter_GObj* gobj)
 {
-    static u32 const mf = (1 << 1) | (1 << 4) | (1 << 7) | (1 << 12) |
-                          (1 << 14) | (1 << 18) | (1 << 19) | (1 << 22) |
-                          (1 << 26) | (1 << 27);
     Fighter* fp = GET_FIGHTER(gobj);
     if (ft_80082708(gobj) == GA_Ground) {
         ftCommon_8007D5D4(fp);
-        ftKb_SpecialNPr_801010D4(gobj, true, mf, fp->cur_anim_frame);
+        ftKb_SpecialNPr_801010D4(gobj, true, ftKb_MF_PrSpecialN_Coll,
+                                 fp->cur_anim_frame);
     }
 }
 
@@ -1184,8 +1190,8 @@ void ftKb_PrSpecialAirNStart_Coll(Fighter_GObj* gobj)
         } else {
             msid = ftKb_MS_PrSpecialNStartL;
         }
-        Fighter_ChangeMotionState(gobj, msid, 0x0C4C5092U, fp->cur_anim_frame,
-                                  1.0F, 0.0F, NULL);
+        Fighter_ChangeMotionState(gobj, msid, ftKb_MF_PrSpecialN_Coll,
+                                  fp->cur_anim_frame, 1.0F, 0.0F, NULL);
         ftKb_PrSetCallbacks(gobj);
     }
 }
@@ -1306,8 +1312,9 @@ void ftKb_PrSpecialN_Coll(Fighter_GObj* gobj)
     PAD_STACK(12);
     if (ft_800824A0(gobj, &ftKb_Init_803CB758)) {
         ftCommon_8007D7FC(fp);
-        Fighter_ChangeMotionState(gobj, ftKb_MS_PrSpecialNTurn, 0x0C4C5092U,
-                                  fp->cur_anim_frame, 0.0F, 0.0F, NULL);
+        Fighter_ChangeMotionState(gobj, ftKb_MS_PrSpecialNTurn,
+                                  ftKb_MF_PrSpecialN_Coll, fp->cur_anim_frame,
+                                  0.0F, 0.0F, NULL);
         ftKb_PrSetCallbacks(gobj);
         fp->gr_vel = fp->self_vel.x;
         fp->self_vel.z = 0;
@@ -1317,13 +1324,11 @@ void ftKb_PrSpecialN_Coll(Fighter_GObj* gobj)
 
 void ftKb_PrSpecialAirNEndR_Coll(Fighter_GObj* gobj)
 {
-    static u32 const mf = (1 << 1) | (1 << 4) | (1 << 7) | (1 << 12) |
-                          (1 << 14) | (1 << 18) | (1 << 19) | (1 << 22) |
-                          (1 << 26) | (1 << 27);
     Fighter* fp = GET_FIGHTER(gobj);
     if (ft_80081D0C(gobj) != GA_Ground) {
         ftCommon_8007D7FC(fp);
-        ftKb_SpecialNPr_801010D4(gobj, false, mf, fp->cur_anim_frame);
+        ftKb_SpecialNPr_801010D4(gobj, false, ftKb_MF_PrSpecialN_Coll,
+                                 fp->cur_anim_frame);
     }
 }
 
