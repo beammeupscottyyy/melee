@@ -117,12 +117,12 @@ void itMball_Motion2_Phys(Item_GObj* gobj) {}
 
 void itMball_Dropped(Item_GObj* arg0)
 {
-    Item_80268E5C(arg0, 3, 6);
+    Item_80268E5C(arg0, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itMball_Thrown(Item_GObj* arg0)
 {
-    Item_80268E5C(arg0, 3, 6);
+    Item_80268E5C(arg0, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itMball_Motion3_Phys(Item_GObj* arg0)

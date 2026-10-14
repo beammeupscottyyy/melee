@@ -361,7 +361,7 @@ void it_3F14_Logic15_Thrown(Item_GObj* gobj)
         &ip->xC4_article_data->x4_specialAttributes->r_shell;
     ip->xDD4_itemVar.rshell.xDE8 = 1;
     ip->xDD4_itemVar.rshell.xDD8 = attrs->x3C;
-    Item_80268E5C(gobj, 3, 6);
+    Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
     Item_8026AE84(ip, 0xF2, 0x7F, 0x40);
 }
 
@@ -397,7 +397,7 @@ void it_3F14_Logic15_Dropped(Item_GObj* gobj)
     itRShell_Attrs* attrs =
         &ip->xC4_article_data->x4_specialAttributes->r_shell;
     ip->xDD4_itemVar.rshell.xDD8 = attrs->x3C;
-    Item_80268E5C(gobj, 4, 6);
+    Item_80268E5C(gobj, 4, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 bool itRshell_UnkMotion4_Anim(Item_GObj* gobj)

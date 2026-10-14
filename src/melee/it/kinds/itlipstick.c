@@ -107,7 +107,7 @@ void itLipstick_UnkMotion2_Phys(Item_GObj* gobj) {}
 
 void itLipstick_Logic23_Dropped(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 4, 6);
+    Item_80268E5C(gobj, 4, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 bool itLipstick_UnkMotion4_Coll(Item_GObj* gobj)
@@ -123,7 +123,7 @@ bool itLipstick_UnkMotion4_Coll(Item_GObj* gobj)
 
 void itLipstick_Logic23_Thrown(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 3, 6);
+    Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itLipstick_UnkMotion4_Phys(Item_GObj* gobj)

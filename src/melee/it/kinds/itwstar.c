@@ -145,7 +145,7 @@ void it_802946B0(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     HSD_JObj* jobj;
-    Item_80268E5C(gobj, 3, 2);
+    Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE);
     jobj = it_80272C90(gobj);
     it_80272F7C(jobj, ip->xDD4_itemVar.wstar.xDD4);
     it_802755C0(gobj, ip->xDD4_itemVar.wstar.xDD8);
@@ -157,7 +157,7 @@ void it_3F14_Logic29_PickedUp(Item_GObj* gobj)
 {
     HSD_JObj* jobj;
     PAD_STACK(16);
-    Item_80268E5C(gobj, 2, 2);
+    Item_80268E5C(gobj, 2, ITEM_ANIM_UPDATE);
     jobj = it_80272CC0(gobj, 3);
     efAsync_Spawn((HSD_GObj*) gobj, &GET_ITEM(gobj)->xBC0, 0U, 0x43d, jobj);
 }
@@ -169,7 +169,7 @@ bool itWstar_UnkMotion3_Anim(Item_GObj* gobj)
 
 void itWStar_Logic29_Dropped(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 1, 6);
+    Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
     efLib_DestroyAll(gobj);
 }
 

@@ -100,7 +100,7 @@ void itMSBomb_Logic19_Thrown(Item_GObj* gobj)
     itMsBomb_Attrs* attrs =
         &ip->xC4_article_data->x4_specialAttributes->ms_bomb;
     itECB ecb;
-    Item_80268E5C(gobj, 3, 6);
+    Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
     ip->xBFC = ecb = attrs->x8;
     it_80275D5C(gobj, &ecb);
     ip->xDCE_flag.x0.b7 = 0;

@@ -273,12 +273,12 @@ bool itFreeze_UnkMotion2_Anim(Item_GObj* gobj)
 
 void itFreeze_Logic17_Dropped(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 1, 6);
+    Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itFreeze_Logic17_Thrown(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 3, 6);
+    Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itFreeze_UnkMotion3_Phys(Item_GObj* gobj)

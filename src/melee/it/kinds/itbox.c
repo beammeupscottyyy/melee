@@ -521,9 +521,9 @@ void itBox_Logic1_EnteredAir(Item_GObj* gobj)
         ip = GET_ITEM(gobj);
         it_8026B390(gobj);
         itResetVelocity(ip);
-        Item_80268E5C(gobj, 0, 2);
+        Item_80268E5C(gobj, 0, ITEM_ANIM_UPDATE);
     } else {
-        Item_80268E5C(gobj, 5, 2);
+        Item_80268E5C(gobj, 5, ITEM_ANIM_UPDATE);
     }
 }
 
@@ -637,11 +637,11 @@ void it_8028733C(Item_GObj* gobj)
             ip->x40_vel = vel;
             mpColl_80043680(&ip->x378_itemColl, &ip->pos);
             it_8026B3A8(gobj);
-            Item_80268E5C(gobj, 1, 2);
+            Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
         }
     } else {
         mpColl_80043680(&ip->x378_itemColl, &ip->pos);
         it_8026B3A8(gobj);
-        Item_80268E5C(gobj, 1, 2);
+        Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
     }
 }
