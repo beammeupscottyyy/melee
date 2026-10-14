@@ -930,7 +930,7 @@ GXColor gm_80160968(u32 arg0)
 }
 
 /// Get SJIS character name for a given CharacterKind
-const char* gm_80160980(u8 ckind)
+const char* gm_80160980(CharacterKind ckind)
 {
     if (lbLang_IsSavedLanguageUS()) {
         return lbl_803D4FDC[ckind];
@@ -939,7 +939,7 @@ const char* gm_80160980(u8 ckind)
     }
 }
 
-const char* fn_801609E0(u8 ckind)
+const char* fn_801609E0(CharacterKind ckind)
 {
     if (lbLang_IsSavedLanguageUS()) {
         if (lbl_803D50E4[ckind] != NULL) {
@@ -956,7 +956,7 @@ const char* fn_801609E0(u8 ckind)
 
 const char* gm_80160A60(int arg0)
 {
-    u8 ckind;
+    CharacterKind ckind;
 
     if (Player_GetPlayerSlotType(arg0) != Gm_PKind_NA) {
         ckind = Player_GetPlayerCharacter(arg0);
@@ -1055,11 +1055,11 @@ void gm_80160C90(HSD_Text* text, u8 fighter_id, u8 arg2)
         size, 1.0F);
 }
 
-void fn_80160DE8(HSD_JObj* arg0, u8 arg1, s32 arg2, u8 arg3, f32 farg0,
-                 f32 farg1)
+void fn_80160DE8(HSD_JObj* arg0, CharacterKind arg1, s32 arg2, u8 arg3,
+                 f32 farg0, f32 farg1)
 {
     HSD_Text* tmp_text = (HSD_Text*) arg0;
-    u8 tmp_ckind = arg1;
+    CharacterKind tmp_ckind = arg1;
     const char* str;
     f32 size;
     bool use_alt_name;
@@ -1098,7 +1098,7 @@ void fn_80160DE8(HSD_JObj* arg0, u8 arg1, s32 arg2, u8 arg3, f32 farg0,
     HSD_SisLib_803A7548(tmp_text, arg2, size * farg0, farg1);
 }
 
-f32 fn_80160F58(u8 ckind)
+f32 fn_80160F58(CharacterKind ckind)
 {
     f32 result;
     if (lbLang_IsSavedLanguageUS()) {
@@ -1732,16 +1732,16 @@ void gm_IncrementPowerCount(void)
     *ptr = result;
 }
 
-int gm_80162BD8(u8 arg0)
+int gm_80162BD8(SelectableCharacterKind arg0)
 {
     return *gmMainLib_8015D0C0(arg0);
 }
 
-bool fn_80162BFC(s8 ckind, int arg1)
+bool fn_80162BFC(CharacterKind ckind, int arg1)
 {
     int* temp_r3;
 
-    temp_r3 = (int*) gmMainLib_8015D0C0(gm_CKindToSelKind((u8) ckind));
+    temp_r3 = (int*) gmMainLib_8015D0C0(gm_CKindToSelKind(ckind));
     if ((u32) *temp_r3 < (u32) arg1) {
         *temp_r3 = arg1;
         return true;
@@ -1804,12 +1804,12 @@ u8 gm_80162D6C(void)
     return min;
 }
 
-int gm_80162DD4(u8 i)
+int gm_80162DD4(SelectableCharacterKind i)
 {
     return *gmMainLib_8015D1E8(i);
 }
 
-s32 fn_80162DF8(u8 ckind, u32 arg1)
+s32 fn_80162DF8(CharacterKind ckind, u32 arg1)
 {
     s32* temp_r3;
 
@@ -1879,12 +1879,12 @@ u8 gm_80162F68(void)
     return min;
 }
 
-int gm_80162FD0(u8 i)
+int gm_80162FD0(SelectableCharacterKind i)
 {
     return *gmMainLib_8015D310(i);
 }
 
-bool fn_80162FF4(u8 ckind, u32 arg1)
+bool fn_80162FF4(CharacterKind ckind, u32 arg1)
 {
     s32* temp_r3;
 
@@ -1951,7 +1951,7 @@ u8 gm_80163164(void)
     return min;
 }
 
-u32 gm_801631CC(u8 i)
+u32 gm_801631CC(SelectableCharacterKind i)
 {
     return *gmMainLib_8015D06C(i);
 }
@@ -1976,14 +1976,14 @@ u32 gm_801631F0(void)
     return sum;
 }
 
-u16 gm_80163274(u8 i)
+u16 gm_80163274(SelectableCharacterKind i)
 {
     return *gmMainLib_8015D7EC(i);
 }
 
-bool gm_80163298(s8 c_kind, u16 arg1)
+bool gm_80163298(CharacterKind c_kind, u16 arg1)
 {
-    u8 index;
+    SelectableCharacterKind index;
     u16* record;
     u16 score;
 

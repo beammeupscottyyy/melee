@@ -188,7 +188,7 @@ void gm_80173B30(u32 arg0)
     }
 }
 
-void gm_80173BC4(s8 ckind)
+void gm_80173BC4(CharacterKind ckind)
 {
     u8 temp_r31;
     int selkind;
@@ -211,7 +211,7 @@ void gm_80173BC4(s8 ckind)
     }
 }
 
-void gm_80173C70(s8 c_kind, u32 arg1, u32 arg2, int arg3)
+void gm_80173C70(CharacterKind c_kind, u32 arg1, u32 arg2, int arg3)
 {
     if (arg3 != 0) {
         if (gm_GetCurrentGameMode() == GM_15MIN_VS) {
