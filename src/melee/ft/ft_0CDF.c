@@ -1,3 +1,5 @@
+#include <melee/ft/kinds/ftCommon/forward.h>
+
 #include "fighter.h"
 #include "ft_081B.h"
 #include "ft_0877.h"
@@ -17,11 +19,11 @@ void ftCo_800CDF5C(Fighter_GObj* fighter_gobj)
     fighter = fighter_gobj->user_data;
     fighter->x2210.throw_flags = 0;
     if (it_8026B594(fighter->item_gobj) == false) {
-        Fighter_ChangeMotionState(fighter_gobj, ftCo_MS_LGunShoot, 0U, 0.0f,
-                                  1.0f, 0.0f, NULL);
-    } else {
-        Fighter_ChangeMotionState(fighter_gobj, ftCo_MS_LGunShootEmpty, 0U,
+        Fighter_ChangeMotionState(fighter_gobj, ftCo_MS_LGunShoot, Ft_MF_None,
                                   0.0f, 1.0f, 0.0f, NULL);
+    } else {
+        Fighter_ChangeMotionState(fighter_gobj, ftCo_MS_LGunShootEmpty,
+                                  Ft_MF_None, 0.0f, 1.0f, 0.0f, NULL);
     }
     ftAnim_8006EBA4(fighter_gobj);
     fighter->accessory4_cb = ftCo_800CE1D4;
@@ -38,11 +40,11 @@ void ftCo_800CE010(Fighter_GObj* fighter_gobj)
     fighter = fighter_gobj->user_data;
     fighter->x2210.throw_flags = 0;
     if (it_8026B594(fighter->item_gobj) == false) {
-        Fighter_ChangeMotionState(fighter_gobj, ftCo_MS_LGunShootAir, 0U, 0.0f,
-                                  1.0f, 0.0f, NULL);
+        Fighter_ChangeMotionState(fighter_gobj, ftCo_MS_LGunShootAir,
+                                  Ft_MF_None, 0.0f, 1.0f, 0.0f, NULL);
     } else {
-        Fighter_ChangeMotionState(fighter_gobj, ftCo_MS_LGunShootAirEmpty, 0U,
-                                  0.0f, 1.0f, 0.0f, NULL);
+        Fighter_ChangeMotionState(fighter_gobj, ftCo_MS_LGunShootAirEmpty,
+                                  Ft_MF_None, 0.0f, 1.0f, 0.0f, NULL);
     }
     ftAnim_8006EBA4(fighter_gobj);
     ftCommon_ClampAirDrift(fighter);
@@ -69,8 +71,8 @@ void ftCo_800CE0CC(HSD_GObj* fighter_gobj)
     }
     f1 = fighter->cur_anim_frame;
     f2 = fighter->frame_speed_mul;
-    Fighter_ChangeMotionState(fighter_gobj, id, 0x0C4C5080, f1, f2, 0.0f,
-                              NULL);
+    Fighter_ChangeMotionState(fighter_gobj, id, ftCommon_GroundAirColl_MF, f1,
+                              f2, 0.0f, NULL);
     fighter->accessory4_cb = ftCo_800CE1D4;
 }
 
@@ -91,8 +93,8 @@ void ftCo_800CE14C(HSD_GObj* fighter_gobj)
     }
     f1 = fighter->cur_anim_frame;
     f2 = fighter->frame_speed_mul;
-    Fighter_ChangeMotionState(fighter_gobj, id, 0x0C4C5080, f1, f2, 0.0f,
-                              NULL);
+    Fighter_ChangeMotionState(fighter_gobj, id, ftCommon_GroundAirColl_MF, f1,
+                              f2, 0.0f, NULL);
     ftCommon_ClampAirDrift(fighter);
     fighter->accessory4_cb = ftCo_800CE1D4;
 }

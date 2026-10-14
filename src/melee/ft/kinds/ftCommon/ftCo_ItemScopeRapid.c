@@ -1,3 +1,4 @@
+#include "forward.h"
 #include "ftCo_Attack100.h"
 #include "ftCo_ItemScopeFire.h"
 #include <melee/ft/fighter.h>
@@ -54,8 +55,9 @@ void fn_800D7CEC(Fighter_GObj* gobj)
 
     ftCommon_8007D7FC(fp);
     msid = fn_800D769C(fp, ftCo_MS_ItemScopeRapid);
-    Fighter_ChangeMotionState(gobj, msid, 0x0C4C5080, fp->cur_anim_frame,
-                              fp->frame_speed_mul, 0.0F, NULL);
+    Fighter_ChangeMotionState(gobj, msid, ftCommon_GroundAirColl_MF,
+                              fp->cur_anim_frame, fp->frame_speed_mul, 0.0F,
+                              NULL);
     fp->accessory4_cb = fn_800D80F4;
     fp->take_dmg_cb = fn_800D8378;
 }
@@ -67,8 +69,9 @@ void fn_800D7D70(Fighter_GObj* gobj)
 
     ftCommon_8007D5D4(fp);
     msid = fn_800D769C(fp, ftCo_MS_ItemScopeAirRapid);
-    Fighter_ChangeMotionState(gobj, msid, 0x0C4C5080, fp->cur_anim_frame,
-                              fp->frame_speed_mul, 0.0F, NULL);
+    Fighter_ChangeMotionState(gobj, msid, ftCommon_GroundAirColl_MF,
+                              fp->cur_anim_frame, fp->frame_speed_mul, 0.0F,
+                              NULL);
     ftCommon_ClampAirDrift(fp);
     fp->accessory4_cb = fn_800D80F4;
     fp->take_dmg_cb = fn_800D8378;
@@ -93,11 +96,13 @@ void ftCo_ItemScopeRapid_Anim(Fighter_GObj* gobj)
 
             if (fp->ground_or_air == GA_Ground) {
                 Fighter_ChangeMotionState(gobj, ftCo_MS_ItemScopeRapidEmpty,
-                                          0x0C4C5080, fp->cur_anim_frame,
+                                          ftCommon_GroundAirColl_MF,
+                                          fp->cur_anim_frame,
                                           fp->frame_speed_mul, 0.0F, NULL);
             } else {
                 Fighter_ChangeMotionState(gobj, ftCo_MS_ItemScopeAirRapidEmpty,
-                                          0x0C4C5080, fp->cur_anim_frame,
+                                          ftCommon_GroundAirColl_MF,
+                                          fp->cur_anim_frame,
                                           fp->frame_speed_mul, 0.0F, NULL);
             }
             fp->accessory4_cb = fn_800D80F4;
@@ -125,11 +130,13 @@ void ftCo_ItemScopeAirRapid_Anim(Fighter_GObj* gobj)
 
             if (fp->ground_or_air == GA_Ground) {
                 Fighter_ChangeMotionState(gobj, ftCo_MS_ItemScopeRapidEmpty,
-                                          0x0C4C5080, fp->cur_anim_frame,
+                                          ftCommon_GroundAirColl_MF,
+                                          fp->cur_anim_frame,
                                           fp->frame_speed_mul, 0.0F, NULL);
             } else {
                 Fighter_ChangeMotionState(gobj, ftCo_MS_ItemScopeAirRapidEmpty,
-                                          0x0C4C5080, fp->cur_anim_frame,
+                                          ftCommon_GroundAirColl_MF,
+                                          fp->cur_anim_frame,
                                           fp->frame_speed_mul, 0.0F, NULL);
             }
             fp->accessory4_cb = fn_800D80F4;

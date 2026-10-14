@@ -1,4 +1,5 @@
 #include <melee/ft/forward.h>
+#include <melee/ft/kinds/ftCommon/forward.h>
 
 #include "ftkirby.h"
 #include <melee/cm/camera.h>
@@ -15,6 +16,9 @@
 #include <melee/it/kinds/itkoopaflame.h>
 #include <melee/lb/lb_00B0.h>
 #include <sysdolphin/baselib/random.h>
+
+static MotionFlags const ftKb_MF_KpSpecialN_Coll =
+    ftCommon_GroundAirColl_MF | Ft_MF_SkipRumble;
 
 enum_t ftKb_Init_803CB540[] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -437,8 +441,8 @@ void ftKb_KpSpecialNStart_Coll(Fighter_GObj* gobj)
             default:
                 break;
             }
-            Fighter_ChangeMotionState(gobj, msid, 0x0C4C5080, anim_frame, 1.0f,
-                                      0.0f, NULL);
+            Fighter_ChangeMotionState(gobj, msid, ftCommon_GroundAirColl_MF,
+                                      anim_frame, 1.0f, 0.0f, NULL);
         }
     }
 }
@@ -460,8 +464,8 @@ void ftKb_KpSpecialN_Coll(Fighter_GObj* gobj)
             default:
                 break;
             }
-            Fighter_ChangeMotionState(gobj, msid, 0x0C4C5880, anim_frame, 1.0f,
-                                      0.0f, NULL);
+            Fighter_ChangeMotionState(gobj, msid, ftKb_MF_KpSpecialN_Coll,
+                                      anim_frame, 1.0f, 0.0f, NULL);
         }
     }
 }
@@ -483,8 +487,8 @@ void ftKb_KpSpecialNEnd_Coll(Fighter_GObj* gobj)
             default:
                 break;
             }
-            Fighter_ChangeMotionState(gobj, msid, 0x0C4C5080, anim_frame, 1.0f,
-                                      0.0f, NULL);
+            Fighter_ChangeMotionState(gobj, msid, ftCommon_GroundAirColl_MF,
+                                      anim_frame, 1.0f, 0.0f, NULL);
         }
     }
 }
@@ -506,8 +510,8 @@ void ftKb_KpSpecialAirNStart_Coll(Fighter_GObj* gobj)
             default:
                 break;
             }
-            Fighter_ChangeMotionState(gobj, msid, 0x0C4C5080, anim_frame, 1.0f,
-                                      0.0f, NULL);
+            Fighter_ChangeMotionState(gobj, msid, ftCommon_GroundAirColl_MF,
+                                      anim_frame, 1.0f, 0.0f, NULL);
         }
     }
 }
@@ -529,8 +533,8 @@ void ftKb_KpSpecialAirN_Coll(Fighter_GObj* gobj)
             default:
                 break;
             }
-            Fighter_ChangeMotionState(gobj, msid, 0x0C4C5880, anim_frame, 1.0f,
-                                      0.0f, NULL);
+            Fighter_ChangeMotionState(gobj, msid, ftKb_MF_KpSpecialN_Coll,
+                                      anim_frame, 1.0f, 0.0f, NULL);
         }
     }
 }
@@ -552,8 +556,8 @@ void ftKb_KpSpecialAirNEnd_Coll(Fighter_GObj* gobj)
             default:
                 break;
             }
-            Fighter_ChangeMotionState(gobj, msid, 0x0C4C5080, anim_frame, 1.0f,
-                                      0.0f, NULL);
+            Fighter_ChangeMotionState(gobj, msid, ftCommon_GroundAirColl_MF,
+                                      anim_frame, 1.0f, 0.0f, NULL);
         }
     }
 }

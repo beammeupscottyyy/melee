@@ -108,9 +108,9 @@ void fn_800D17FC(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     fn_800D2CA0(fp);
-    Fighter_ChangeMotionState(gobj, ftCo_MS_KinokoGiantStart, 0xC4C5080,
-                              fp->cur_anim_frame, fp->frame_speed_mul, 0.0F,
-                              NULL);
+    Fighter_ChangeMotionState(gobj, ftCo_MS_KinokoGiantStart,
+                              ftCommon_GroundAirColl_MF, fp->cur_anim_frame,
+                              fp->frame_speed_mul, 0.0F, NULL);
     fp->take_dmg_cb = ftCo_800D15D0;
 }
 
@@ -140,9 +140,9 @@ void fn_800D19BC(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     fn_800D2CD4(fp);
-    Fighter_ChangeMotionState(gobj, ftCo_MS_KinokoGiantStartAir, 0xC4C5080,
-                              fp->cur_anim_frame, fp->frame_speed_mul, 0.0F,
-                              NULL);
+    Fighter_ChangeMotionState(gobj, ftCo_MS_KinokoGiantStartAir,
+                              ftCommon_GroundAirColl_MF, fp->cur_anim_frame,
+                              fp->frame_speed_mul, 0.0F, NULL);
     fp->take_dmg_cb = ftCo_800D15D0;
 }
 

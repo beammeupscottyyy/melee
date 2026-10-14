@@ -1,3 +1,4 @@
+#include "forward.h"
 #include "ftCo_Attack100.h"
 #include <melee/ft/fighter.h>
 #include <melee/ft/ft_081B.h>
@@ -9,8 +10,8 @@ FtMotionId fn_800D769C(Fighter* ft, FtMotionId msid);
 void fn_800D86E0(Fighter_GObj* gobj)
 {
     Fighter* fp = gobj->user_data;
-    Fighter_ChangeMotionState(gobj, fn_800D769C(fp, ftCo_MS_ItemScopeEnd), 0,
-                              0.0F, 1.0F, 0.0F, NULL);
+    Fighter_ChangeMotionState(gobj, fn_800D769C(fp, ftCo_MS_ItemScopeEnd),
+                              Ft_MF_None, 0.0F, 1.0F, 0.0F, NULL);
     fp->take_dmg_cb = fn_800D8378;
 }
 
@@ -37,8 +38,9 @@ void fn_800D87C0(Fighter_GObj* gobj)
 
     ftCommon_8007D7FC(fp);
     msid = fn_800D769C(fp, ftCo_MS_ItemScopeEnd);
-    Fighter_ChangeMotionState(gobj, msid, 0x0C4C5080, fp->cur_anim_frame,
-                              fp->frame_speed_mul, 0.0F, NULL);
+    Fighter_ChangeMotionState(gobj, msid, ftCommon_GroundAirColl_MF,
+                              fp->cur_anim_frame, fp->frame_speed_mul, 0.0F,
+                              NULL);
     fp->take_dmg_cb = fn_800D8378;
 }
 
@@ -49,8 +51,9 @@ void fn_800D8838(Fighter_GObj* gobj)
 
     ftCommon_8007D5D4(fp);
     msid = fn_800D769C(fp, ftCo_MS_ItemScopeAirEnd);
-    Fighter_ChangeMotionState(gobj, msid, 0x0C4C5080, fp->cur_anim_frame,
-                              fp->frame_speed_mul, 0.0F, NULL);
+    Fighter_ChangeMotionState(gobj, msid, ftCommon_GroundAirColl_MF,
+                              fp->cur_anim_frame, fp->frame_speed_mul, 0.0F,
+                              NULL);
     ftCommon_ClampAirDrift(fp);
     fp->take_dmg_cb = fn_800D8378;
 }
