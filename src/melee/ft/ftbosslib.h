@@ -32,7 +32,7 @@
  * Fighter_GetState(FighterKind)
  * @returns A fighter action state ID.
  */
-/* 15C44C */ enum_t ftBossLib_GetMotionId(FighterKind kind);
+/* 15C44C */ FtMotionId ftBossLib_GetMotionId(FighterKind kind);
 
 /* 15C4C4 */ enum_t ftBossLib_8015C4C4(void);
 /* 15C530 */ s32 ftBossLib_8015C530(int cpu_level);

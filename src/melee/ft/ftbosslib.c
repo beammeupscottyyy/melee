@@ -166,8 +166,7 @@ bool ftBossLib_IsMasterHandEntry(void)
 
 bool ftBossLib_8015C2A8(void)
 {
-    /// @todo Get msid
-    if (ftBossLib_GetMotionId(Ft_Kind_CrezyH) == 0x183) {
+    if (ftBossLib_GetMotionId(Ft_Kind_CrezyH) == ftMh_MS_TagFail) {
         return true;
     }
 
@@ -176,9 +175,8 @@ bool ftBossLib_8015C2A8(void)
 
 bool ftBossLib_8015C2E0(void)
 {
-    /// @todo Get ASIDs
-    enum_t msid = ftBossLib_GetMotionId(Ft_Kind_MasterH);
-    if (msid == 0x158 || msid == 0x159) {
+    FtMotionId msid = ftBossLib_GetMotionId(Ft_Kind_MasterH);
+    if (msid == ftMh_MS_Damage || msid == ftMh_MS_Damage2) {
         return true;
     }
 
@@ -187,9 +185,8 @@ bool ftBossLib_8015C2E0(void)
 
 bool ftBossLib_8015C31C(void)
 {
-    /// @todo Get ASIDs
-    enum_t msid = ftBossLib_GetMotionId(Ft_Kind_CrezyH);
-    if (msid == 0x181 || msid == 0x182) {
+    FtMotionId msid = ftBossLib_GetMotionId(Ft_Kind_CrezyH);
+    if (msid == ftMh_MS_TagGrab || msid == ftMh_MS_TagSqueeze) {
         return true;
     }
 
@@ -232,7 +229,7 @@ HSD_GObj* ftBossLib_GetFighterGObj(FighterKind kind)
     return NULL;
 }
 
-enum_t ftBossLib_GetMotionId(FighterKind kind)
+FtMotionId ftBossLib_GetMotionId(FighterKind kind)
 {
     HSD_GObj* gobj = ftBossLib_GetFighterGObj(kind);
 

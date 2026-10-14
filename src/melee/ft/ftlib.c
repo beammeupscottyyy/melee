@@ -594,7 +594,7 @@ void ftLib_GetPosDelta(HSD_GObj* gobj, Vec3* v)
     *v = fp->pos_delta;
 }
 
-enum_t ftLib_GetMotionId(HSD_GObj* gobj)
+FtMotionId ftLib_GetMotionId(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     return fp->motion_id;

@@ -60,7 +60,7 @@
 /* 086BEC */ void ftLib_GetPosDelta(HSD_GObj*, Vec3*);
 
 /// @returns A fighter action state ID.
-/* 086C0C */ enum_t ftLib_GetMotionId(HSD_GObj*);
+/* 086C0C */ FtMotionId ftLib_GetMotionId(HSD_GObj*);
 
 /* 086C18 */ void ftLib_StartRumble(HSD_GObj*, s32, s32);
 /* 086C9C */ void ftLib_StartRumbleAll(s32, s32);
