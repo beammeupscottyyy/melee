@@ -272,7 +272,7 @@ bool ftDr_Init_80149844(HSD_GObj* gobj)
         return true;
     }
     tmp = fp->motion_id;
-    if (tmp != 0x155 && tmp != 0x156) {
+    if (tmp != ftMr_MS_AppealSR && tmp != ftMr_MS_AppealSL) {
         return true;
     }
     if (fp->u.mr.x2240 == NULL) {
