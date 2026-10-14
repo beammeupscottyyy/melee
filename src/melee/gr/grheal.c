@@ -2,6 +2,8 @@
 
 #include <Runtime/platform.h>
 
+#include <melee/ft/forward.h>
+
 #include <placeholder.h>
 
 #include "forward.h"
@@ -56,7 +58,7 @@
 /* 21F6FC */ static bool stageGObj4_Callback1(Ground_GObj*);
 /* 21F704 */ static void stageGObj4_GObjProc(Ground_GObj*);
 /* 21F708 */ static void stageGObj4_Callback3(Ground_GObj*);
-/* 21F70C */ static int grHeal_8021F70C(enum_t character_id);
+/* 21F70C */ static int grHeal_8021F70C(CharacterKind character_id);
 /* 21F79C */ static void grHeal_8021F79C(s32, s32, s32);
 /* 21F830 */ static lbColl_80008D30_arg1* grHeal_8021F830(enum_t);
 /* 21F838 */ static bool grHeal_8021F838(Vec3*, int, HSD_JObj*);
@@ -69,9 +71,15 @@ static s16 grHeal_803E83B8[] = { 29, 30, 31, 32, 33, 34, 35, 36, 37,
                                  38, 39, 40, 41, 42, 43, 44, 45, 46,
                                  47, 48, 49, 50, 51, 52, 53, 54 };
 
-static enum_t frame_to_character_id[] = { 0,  21, 1,  22, 20, 2,  25, 3,  14,
-                                          4,  5,  7,  6,  8,  9,  10, 11, 24,
-                                          12, 13, 15, 16, 17, 18, 23, -1 };
+static enum_t frame_to_character_id[] = {
+    CKind_Captain,  CKind_CLink, CKind_Donkey, CKind_DrMario,
+    CKind_Falco,    CKind_Fox,   CKind_Ganon,  CKind_GameWatch,
+    CKind_PopoNana, CKind_Kirby, CKind_Koopa,  CKind_Luigi,
+    CKind_Link,     CKind_Mario, CKind_Mars,   CKind_Mewtwo,
+    CKind_Ness,     CKind_Pichu, CKind_Peach,  CKind_Pikachu,
+    CKind_Purin,    CKind_Samus, CKind_Yoshi,  CKind_Zelda,
+    CKind_Emblem,   -1,
+};
 
 static StageCallbacks stage_callbacks[] = {
     {
@@ -257,8 +265,8 @@ void stageGObj1_OnInit(Ground_GObj* gobj)
         }
 
         for (i = 0; i < ARRAY_SIZE(grHeal_803E83B8); i++) {
-            enum_t character_id = gm_80473A18.x76[i];
-            if (character_id != 33) {
+            CharacterKind character_id = gm_80473A18.x76[i];
+            if (character_id != ChKind_Max) {
                 grHeal_8021F628(grHeal_8021F70C(character_id),
                                 player_jobjs[i]);
             }
@@ -385,13 +393,12 @@ void stageGObj4_GObjProc(Ground_GObj* gobj) {}
 
 void stageGObj4_Callback3(Ground_GObj* gobj) {}
 
-/// @todo Use enum members
-int grHeal_8021F70C(enum_t character_id)
+int grHeal_8021F70C(CharacterKind character_id)
 {
     int frame = 0;
 
-    if (character_id == 19) {
-        character_id = 18;
+    if (character_id == CKind_Seak) {
+        character_id = CKind_Zelda;
     }
     while (frame_to_character_id[frame] != -1) {
         if (character_id == frame_to_character_id[frame]) {
