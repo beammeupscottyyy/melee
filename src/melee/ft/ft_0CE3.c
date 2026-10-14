@@ -1,3 +1,5 @@
+#include <melee/ft/kinds/ftCommon/forward.h>
+
 #include "fighter.h"
 #include "ft_081B.h"
 #include "ft_0877.h"
@@ -54,7 +56,8 @@ void ft_800CE528(Fighter_GObj* fighter_gobj)
     fighter = fighter_gobj->user_data;
     ftCommon_8007D7FC(fighter);
     Fighter_ChangeMotionState(fighter_gobj, ftCo_MS_FireFlowerShoot,
-                              0x0C4C5880U, fighter->cur_anim_frame,
+                              ftCommon_GroundAirColl_MF | Ft_MF_SkipRumble,
+                              fighter->cur_anim_frame,
                               fighter->frame_speed_mul, 0.0f, NULL);
     fighter->accessory4_cb = ftCo_800CE650;
     fighter->take_dmg_cb = ftCo_800CE620;
@@ -67,7 +70,8 @@ void ft_800CE5A0(Fighter_GObj* fighter_gobj)
     fighter = fighter_gobj->user_data;
     ftCommon_8007D5D4(fighter);
     Fighter_ChangeMotionState(fighter_gobj, ftCo_MS_FireFlowerShootAir,
-                              0x0C4C5880U, fighter->cur_anim_frame,
+                              ftCommon_GroundAirColl_MF | Ft_MF_SkipRumble,
+                              fighter->cur_anim_frame,
                               fighter->frame_speed_mul, 0.0f, NULL);
     ftCommon_ClampAirDrift(fighter);
     fighter->accessory4_cb = ftCo_800CE650;

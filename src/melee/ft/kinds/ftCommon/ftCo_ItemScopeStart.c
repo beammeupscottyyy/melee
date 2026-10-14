@@ -1,3 +1,4 @@
+#include "forward.h"
 #include "ftCo_Attack100.h"
 #include <melee/ft/fighter.h>
 #include <melee/ft/ft_081B.h>
@@ -92,8 +93,9 @@ void fn_800D7830(Fighter_GObj* gobj)
     } else {
         msid = ftCo_MS_ItemScopeStart;
     }
-    Fighter_ChangeMotionState(gobj, msid, 0x0C4C5280, fp->cur_anim_frame,
-                              fp->frame_speed_mul, 0.0F, NULL);
+    Fighter_ChangeMotionState(
+        gobj, msid, ftCommon_GroundAirColl_MF | Ft_MF_KeepSfx,
+        fp->cur_anim_frame, fp->frame_speed_mul, 0.0F, NULL);
     fp->take_dmg_cb = (HSD_GObjEvent) fn_800D7938;
 }
 
@@ -108,8 +110,9 @@ void fn_800D78B0(Fighter_GObj* gobj)
     } else {
         msid = ftCo_MS_ItemScopeAirStart;
     }
-    Fighter_ChangeMotionState(gobj, msid, 0x0C4C5280, fp->cur_anim_frame,
-                              fp->frame_speed_mul, 0.0F, NULL);
+    Fighter_ChangeMotionState(
+        gobj, msid, ftCommon_GroundAirColl_MF | Ft_MF_KeepSfx,
+        fp->cur_anim_frame, fp->frame_speed_mul, 0.0F, NULL);
     ftCommon_ClampAirDrift(fp);
     fp->take_dmg_cb = (HSD_GObjEvent) fn_800D7938;
 }
