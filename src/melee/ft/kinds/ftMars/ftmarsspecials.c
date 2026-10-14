@@ -34,7 +34,7 @@ void ftMs_SpecialS_Enter(HSD_GObj* gobj)
         fp->mv.ms.specials.x0 = 0;
 
         {
-            enum_t msid;
+            FtMotionId msid;
             if (fp->ground_or_air == GA_Ground) {
                 msid = ftMs_MS_SpecialS1;
             } else {
@@ -68,7 +68,7 @@ void ftMs_SpecialAirS_Enter(HSD_GObj* gobj)
         fp1->mv.ms.specials.x0 = 0;
 
         {
-            enum_t msid;
+            FtMotionId msid;
             if (fp1->ground_or_air == GA_Ground) {
                 msid = ftMs_MS_SpecialS1;
             } else {
@@ -241,7 +241,7 @@ void ftMs_SpecialS2_Coll(HSD_GObj* gobj)
 void ftMs_SpecialS_80137940(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    enum_t msid;
+    FtMotionId msid;
 
     ftCommon_8007D5D4(fp);
 
@@ -261,7 +261,7 @@ void ftMs_SpecialS_80137940(HSD_GObj* gobj)
 void ftMs_SpecialS_801379D0(HSD_GObj* gobj)
 {
     Fighter* fp = gobj->user_data;
-    enum_t msid;
+    FtMotionId msid;
 
     fp->u.ms.x222C = 0;
     ftCommon_8007D7FC(fp);
@@ -288,7 +288,7 @@ void ftMs_SpecialS_80137A68(HSD_GObj* gobj)
 void ftMs_SpecialS_80137A9C(HSD_GObj* gobj)
 {
     Fighter* fp = gobj->user_data;
-    enum_t msid;
+    FtMotionId msid;
 
     fp->cmd_vars[1] = 0;
     fp->cmd_vars[0] = 0;
@@ -380,7 +380,7 @@ void ftMs_SpecialS3_Coll(HSD_GObj* gobj)
 void ftMs_SpecialS_80137CBC(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    enum_t msid;
+    FtMotionId msid;
 
     // Air_StoreBool_LoseGroundJump_NoECBfor10Frames
     ftCommon_8007D5D4(fp);
@@ -403,7 +403,7 @@ void ftMs_SpecialS_80137CBC(HSD_GObj* gobj)
 void ftMs_SpecialS_80137D60(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    enum_t msid;
+    FtMotionId msid;
     fp->u.ms.x222C = 0;
 
     // Air_SetAsGrounded2
@@ -428,7 +428,7 @@ void ftMs_SpecialS_80137D60(HSD_GObj* gobj)
 void ftMs_SpecialS_80137E0C(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    enum_t msid;
+    FtMotionId msid;
 
     fp->cmd_vars[1] = 0;
     fp->cmd_vars[0] = 0;
@@ -513,7 +513,7 @@ void ftMs_SpecialS4_Coll(HSD_GObj* gobj)
 void ftMs_SpecialS_80137FF8(HSD_GObj* gobj)
 {
     Fighter* fp = gobj->user_data;
-    enum_t msid;
+    FtMotionId msid;
 
     // Air_StoreBool_LoseGroundJump_NoECBfor10Frames
     ftCommon_8007D5D4(fp);
@@ -537,7 +537,7 @@ void ftMs_SpecialS_80137FF8(HSD_GObj* gobj)
 void ftMs_SpecialS_8013809C(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    enum_t msid;
+    FtMotionId msid;
 
     fp->u.ms.x222C = 0;
 
@@ -563,7 +563,7 @@ void ftMs_SpecialS_8013809C(HSD_GObj* gobj)
 void ftMs_SpecialS_80138148(HSD_GObj* gobj)
 {
     Fighter* fp = gobj->user_data;
-    enum_t msid;
+    FtMotionId msid;
 
     fp->cmd_vars[1] = 0;
     fp->cmd_vars[0] = 0;

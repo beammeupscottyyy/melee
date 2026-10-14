@@ -317,7 +317,7 @@ void ftYs_SpecialAirN1_0_Anim(Fighter_GObj* gobj)
     checkAnimEnd(gobj, ftCo_Fall_Enter);
 }
 
-static void changeMotionState(Fighter_GObj* gobj, enum_t msid,
+static void changeMotionState(Fighter_GObj* gobj, FtMotionId msid,
                               HSD_GObj* (*target_getter)(Fighter* fp),
                               bool arg3)
 {

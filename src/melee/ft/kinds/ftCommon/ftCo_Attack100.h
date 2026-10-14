@@ -13,7 +13,7 @@
 /* 0D69C4 */ bool ftCo_800D69C4(Fighter_GObj* gobj);
 /* 0D6A50 */ bool ftCo_Attack_800D6A50(Fighter_GObj* gobj);
 /* 0D6AC4 */ void fn_800D6AC4(Fighter_GObj*);
-/* 0D6B00 */ void ftCo_800D6B00(Fighter_GObj*, enum_t msid);
+/* 0D6B00 */ void ftCo_800D6B00(Fighter_GObj*, FtMotionId msid);
 /* 0D6B8C */ void fn_800D6B8C(Fighter_GObj*);
 /* 0D6C0C */ void ftCo_Attack100Start_Anim(Fighter_GObj* gobj);
 /* 0D6C60 */ void ftCo_800D6C60(Fighter_GObj*, HSD_GObjEvent callback);

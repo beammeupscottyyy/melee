@@ -334,7 +334,7 @@ void ftMs_SpecialLw_80139140(HSD_GObj* gobj)
         lb_800119DC(&sp18, 120, 0.9, 0.02, M_PI / 3);
 
         {
-            enum_t msid;
+            FtMotionId msid;
 
             if (fp->ground_or_air == GA_Ground) {
                 msid = ftMs_MS_SpecialLwHit;

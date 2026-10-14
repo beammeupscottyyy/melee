@@ -143,7 +143,7 @@ void fn_800D6AC4(Fighter_GObj* gobj)
     }
 }
 
-void ftCo_800D6B00(Fighter_GObj* gobj, enum_t msid)
+void ftCo_800D6B00(Fighter_GObj* gobj, FtMotionId msid)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     if (!ftpickupitem_80094790(gobj)) {
