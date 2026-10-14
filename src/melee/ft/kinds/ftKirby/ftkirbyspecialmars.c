@@ -23,6 +23,16 @@
 #include <melee/lb/lb_00B0.h>
 #include <sysdolphin/baselib/gobj.h>
 
+static MotionFlags const ftKb_MF_MsSpecialN_Coll = ftCommon_GroundAirColl_MF |
+                                                   Ft_MF_KeepAccessory |
+                                                   Ft_MF_KeepColAnimHitStatus;
+
+static MotionFlags const ftKb_MF_MsSpecialNLoop_Coll =
+    ftKb_MF_MsSpecialN_Coll | Ft_MF_KeepGfx | Ft_MF_SkipRumble;
+
+static MotionFlags const ftKb_MF_MsSpecialNEnd_Coll =
+    ftKb_MF_MsSpecialN_Coll | Ft_MF_KeepGfx | Ft_MF_SkipHit;
+
 /* 10B2E8 */ static void fn_8010B2E8(Fighter_GObj* gobj);
 
 void fn_8010B1F4(Fighter_GObj* gobj)
@@ -261,8 +271,9 @@ void ftKb_SpecialNMs_8010B868(Fighter_GObj* gobj)
     Fighter* fp = GET_FIGHTER(gobj);
 
     ftCommon_8007D5D4(fp);
-    Fighter_ChangeMotionState(gobj, getAirSpecialMotionId(gobj), 0x0C4C7084,
-                              fp->cur_anim_frame, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, getAirSpecialMotionId(gobj),
+                              ftKb_MF_MsSpecialN_Coll, fp->cur_anim_frame,
+                              1.0f, 0.0f, NULL);
 }
 
 static inline FtMotionId getGroundSpecialMotionId(Fighter_GObj* gobj)
@@ -280,8 +291,9 @@ void ftKb_SpecialNMs_8010B8E0(Fighter_GObj* gobj)
     Fighter* fp = GET_FIGHTER(gobj);
 
     ftCommon_8007D7FC(fp);
-    Fighter_ChangeMotionState(gobj, getGroundSpecialMotionId(gobj), 0x0C4C7084,
-                              fp->cur_anim_frame, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, getGroundSpecialMotionId(gobj),
+                              ftKb_MF_MsSpecialN_Coll, fp->cur_anim_frame,
+                              1.0f, 0.0f, NULL);
 }
 
 void ftKb_MsSpecialNLoop_Anim(Fighter_GObj* gobj)
@@ -370,8 +382,8 @@ void ftKb_SpecialNMs_8010BB50(Fighter_GObj* gobj)
     } else {
         msid = ftKb_MS_FeSpecialAirNLoop;
     }
-    Fighter_ChangeMotionState(gobj, msid, 0x0C4C7A86, fp->cur_anim_frame, 1.0f,
-                              0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, msid, ftKb_MF_MsSpecialNLoop_Coll,
+                              fp->cur_anim_frame, 1.0f, 0.0f, NULL);
 }
 
 void ftKb_SpecialNMs_8010BBC8(Fighter_GObj* gobj)
@@ -384,8 +396,8 @@ void ftKb_SpecialNMs_8010BBC8(Fighter_GObj* gobj)
     } else {
         msid = ftKb_MS_FeSpecialNLoop;
     }
-    Fighter_ChangeMotionState(gobj, msid, 0x0C4C7A86, fp->cur_anim_frame, 1.0f,
-                              0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, msid, ftKb_MF_MsSpecialNLoop_Coll,
+                              fp->cur_anim_frame, 1.0f, 0.0f, NULL);
 }
 
 void ftKb_SpecialNMs_8010BC40(Fighter_GObj* gobj)
@@ -529,8 +541,8 @@ void ftKb_SpecialNPe_8010BF90(Fighter_GObj* gobj)
                    : ftKb_MS_FeSpecialAirNEnd0 + 1;
     }
     ftCommon_8007D5D4(fp);
-    Fighter_ChangeMotionState(gobj, msid, 0x0C4C708E, fp->cur_anim_frame, 1.0f,
-                              0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, msid, ftKb_MF_MsSpecialNEnd_Coll,
+                              fp->cur_anim_frame, 1.0f, 0.0f, NULL);
     if (fp->x2219_b0 == true) {
         Fighter_SetEffectHitlagCallbacks(fp);
     }
@@ -551,8 +563,8 @@ void ftKb_SpecialNPe_8010C06C(Fighter_GObj* gobj)
                    : ftKb_MS_FeSpecialNEnd0 + 1;
     }
     ftCommon_8007D7FC(fp);
-    Fighter_ChangeMotionState(gobj, msid, 0x0C4C708E, fp->cur_anim_frame, 1.0f,
-                              0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, msid, ftKb_MF_MsSpecialNEnd_Coll,
+                              fp->cur_anim_frame, 1.0f, 0.0f, NULL);
     if (fp->x2219_b0 == true) {
         Fighter_SetEffectHitlagCallbacks(fp);
     }

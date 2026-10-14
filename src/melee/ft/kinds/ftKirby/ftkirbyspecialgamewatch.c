@@ -312,8 +312,9 @@ static inline void inline1(Fighter_GObj* gobj)
 void ftKb_SpecialNGw_8010D660(Fighter_GObj* gobj, f32 arg1)
 {
     PAD_STACK(8);
-    Fighter_ChangeMotionState(gobj, ftKb_MS_GwSpecialN, 0x0C4C508C,
-                              arg1 - 1.0F, 1.0F, 0.0F, NULL);
+    Fighter_ChangeMotionState(gobj, ftKb_MS_GwSpecialN,
+                              ftKb_MF_GwSpecialN_Coll, arg1 - 1.0F, 1.0F, 0.0F,
+                              NULL);
     ftAnim_8006EBA4(gobj);
     inline1(gobj);
 }
@@ -321,8 +322,9 @@ void ftKb_SpecialNGw_8010D660(Fighter_GObj* gobj, f32 arg1)
 void ftKb_SpecialNGw_8010D6D0(Fighter_GObj* gobj, f32 arg1)
 {
     PAD_STACK(8);
-    Fighter_ChangeMotionState(gobj, ftKb_MS_GwSpecialAirN, 0x0C4C508C,
-                              arg1 - 1.0F, 1.0F, 0.0F, NULL);
+    Fighter_ChangeMotionState(gobj, ftKb_MS_GwSpecialAirN,
+                              ftKb_MF_GwSpecialN_Coll, arg1 - 1.0F, 1.0F, 0.0F,
+                              NULL);
     ftAnim_8006EBA4(gobj);
     inline1(gobj);
 }

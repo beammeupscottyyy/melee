@@ -16,6 +16,9 @@
 #include <melee/ft/kinds/ftCommon/ftCo_Fall.h>
 #include <melee/ft/types.h>
 
+static MotionFlags const ftKb_MF_AttackDash_Coll =
+    ftCommon_GroundAirColl_MF | Ft_MF_KeepGfx;
+
 /* 0F1FDC */ static void fn_800F1FDC(Fighter_GObj* gobj);
 /* 0F20C4 */ static void fn_800F20C4(Fighter_GObj* gobj);
 
@@ -34,9 +37,9 @@ void fn_800F1FDC(Fighter_GObj* gobj)
     Fighter* fp = GET_FIGHTER(gobj);
 
     ftCommon_8007D7FC(fp);
-    Fighter_ChangeMotionState(gobj, ftKb_MS_AttackDash, 0x0C4C5082U,
-                              fp->cur_anim_frame, fp->frame_speed_mul, 0,
-                              NULL);
+    Fighter_ChangeMotionState(gobj, ftKb_MS_AttackDash,
+                              ftKb_MF_AttackDash_Coll, fp->cur_anim_frame,
+                              fp->frame_speed_mul, 0, NULL);
 }
 
 void ftKb_AttackDash_Anim(Fighter_GObj* gobj)
@@ -63,9 +66,9 @@ void fn_800F20C4(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     ftCommon_8007D5D4(fp);
-    Fighter_ChangeMotionState(gobj, ftKb_MS_AttackDashAir, 0x0C4C5082,
-                              fp->cur_anim_frame, fp->frame_speed_mul, 0.0f,
-                              NULL);
+    Fighter_ChangeMotionState(gobj, ftKb_MS_AttackDashAir,
+                              ftKb_MF_AttackDash_Coll, fp->cur_anim_frame,
+                              fp->frame_speed_mul, 0.0f, NULL);
 }
 
 void ftKb_AttackDashAir_Anim(Fighter_GObj* gobj)

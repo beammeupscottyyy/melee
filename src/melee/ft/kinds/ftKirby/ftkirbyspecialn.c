@@ -502,8 +502,9 @@ void fn_800F6638(HSD_GObj* gobj)
     ftCommon_8007D7FC(fp);
     if (new_var2) {
     }
-    Fighter_ChangeMotionState(gobj, ftKb_MS_SpecialN, 0x0C4C529A,
-                              fp->cur_anim_frame, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftKb_MS_SpecialN,
+                              ftKb_MF_SpecialN_Loop_Coll, fp->cur_anim_frame,
+                              1.0f, 0.0f, NULL);
     Fighter_SetEffectHitlagCallbacks(fp);
     new_var = HSD_GObjGetUserData(gobj);
     fp = (Fighter*) new_var;
@@ -516,7 +517,8 @@ void fn_800F66E8(HSD_GObj* gobj)
     Fighter* fp = GET_FIGHTER(gobj);
     PAD_STACK(8);
     ftCommon_8007D5D4(fp);
-    Fighter_ChangeMotionState(gobj, ftKb_MS_SpecialAirNLoop, 0x0C4C5A9A,
+    Fighter_ChangeMotionState(gobj, ftKb_MS_SpecialAirNLoop,
+                              ftKb_MF_SpecialN_LoopRumble_Coll,
                               fp->cur_anim_frame, 1.0f, 0.0f, 0L);
     Fighter_SetEffectHitlagCallbacks(fp);
     fp = GET_FIGHTER(gobj);
