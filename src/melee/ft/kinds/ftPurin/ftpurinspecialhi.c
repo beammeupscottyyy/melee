@@ -134,11 +134,13 @@ void ftPr_SpecialHi_8013CD34(HSD_GObj* gobj)
     ftCommon_8007D5D4(fp);
 
     if (-1 == fp->facing_dir) {
-        Fighter_ChangeMotionState(gobj, ftPr_MS_SpecialAirHiL, 0x0C4C508A,
-                                  fp->cur_anim_frame, 1, 0, NULL);
+        Fighter_ChangeMotionState(gobj, ftPr_MS_SpecialAirHiL,
+                                  ftPr_MF_SpecialHi_Coll, fp->cur_anim_frame,
+                                  1, 0, NULL);
     } else {
-        Fighter_ChangeMotionState(gobj, ftPr_MS_SpecialAirHiR, 0x0C4C508A,
-                                  fp->cur_anim_frame, 1, 0, NULL);
+        Fighter_ChangeMotionState(gobj, ftPr_MS_SpecialAirHiR,
+                                  ftPr_MF_SpecialHi_Coll, fp->cur_anim_frame,
+                                  1, 0, NULL);
     }
 
     fp->accessory4_cb = ftPr_Init_8013C94C;
@@ -150,12 +152,12 @@ void ftPr_SpecialHi_8013CDD8(Fighter_GObj* fighter_gobj)
     ftCommon_8007D7FC(fighter);
     if (-1 == fighter->facing_dir) {
         Fighter_ChangeMotionState(fighter_gobj, ftPr_MS_SpecialHiL,
-                                  0x0C4C508AU, fighter->cur_anim_frame, 1, 0,
-                                  NULL);
+                                  ftPr_MF_SpecialHi_Coll,
+                                  fighter->cur_anim_frame, 1, 0, NULL);
     } else {
         Fighter_ChangeMotionState(fighter_gobj, ftPr_MS_SpecialHiR,
-                                  0x0C4C508AU, fighter->cur_anim_frame, 1, 0,
-                                  NULL);
+                                  ftPr_MF_SpecialHi_Coll,
+                                  fighter->cur_anim_frame, 1, 0, NULL);
     }
     fighter->accessory4_cb = ftPr_Init_8013C94C;
 }

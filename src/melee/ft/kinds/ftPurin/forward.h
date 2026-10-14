@@ -38,6 +38,16 @@ static MotionFlags const ftPr_MF_SpecialNCharged =
 static MotionFlags const ftPr_SpecialAirNCharged =
     ftPr_MF_SpecialNCharged | Ft_MF_SkipParasol;
 
+static MotionFlags const ftPr_MF_SpecialHi_Coll =
+    ftCommon_GroundAirColl_MF | Ft_MF_KeepGfx | Ft_MF_SkipHit;
+
+static MotionFlags const ftPr_MF_SpecialLw_Coll =
+    ftCommon_GroundAirColl_MF | Ft_MF_KeepGfx | Ft_MF_KeepColAnimHitStatus |
+    Ft_MF_SkipHit;
+
+static MotionFlags const ftPr_MF_SpecialS_Coll =
+    ftCommon_GroundAirColl_MF | Ft_MF_KeepGfx | Ft_MF_SkipHit;
+
 typedef enum ftPurin_MotionState {
     ftPr_MS_JumpAerialF1 = ftCo_MS_Count,
     ftPr_MS_JumpAerialF2,

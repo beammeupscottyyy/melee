@@ -96,12 +96,14 @@ void ftPr_SpecialLw_8013D104(Fighter_GObj* gobj)
     Fighter* fp = gobj->user_data;
     ftCommon_8007D5D4(fp);
     if (-1 == fp->facing_dir) {
-        Fighter_ChangeMotionState(gobj, ftPr_MS_SpecialAirLwL, 0x0C4C508EU,
-                                  fp->cur_anim_frame, 1, 0, NULL);
+        Fighter_ChangeMotionState(gobj, ftPr_MS_SpecialAirLwL,
+                                  ftPr_MF_SpecialLw_Coll, fp->cur_anim_frame,
+                                  1, 0, NULL);
         return;
     }
-    Fighter_ChangeMotionState(gobj, ftPr_MS_SpecialAirLwR, 0x0C4C508EU,
-                              fp->cur_anim_frame, 1, 0, NULL);
+    Fighter_ChangeMotionState(gobj, ftPr_MS_SpecialAirLwR,
+                              ftPr_MF_SpecialLw_Coll, fp->cur_anim_frame, 1, 0,
+                              NULL);
 }
 
 void ftPr_SpecialLw_8013D19C(Fighter_GObj* gobj)
@@ -109,10 +111,11 @@ void ftPr_SpecialLw_8013D19C(Fighter_GObj* gobj)
     Fighter* fp = gobj->user_data;
     ftCommon_8007D7FC(fp);
     if (-1 == fp->facing_dir) {
-        Fighter_ChangeMotionState(gobj, ftPr_MS_SpecialLwL, 0x0C4C508EU,
-                                  fp->cur_anim_frame, 1, 0, NULL);
+        Fighter_ChangeMotionState(gobj, ftPr_MS_SpecialLwL,
+                                  ftPr_MF_SpecialLw_Coll, fp->cur_anim_frame,
+                                  1, 0, NULL);
         return;
     }
-    Fighter_ChangeMotionState(gobj, ftPr_MS_SpecialLwR, 0x0C4C508EU,
+    Fighter_ChangeMotionState(gobj, ftPr_MS_SpecialLwR, ftPr_MF_SpecialLw_Coll,
                               fp->cur_anim_frame, 1, 0, NULL);
 }
