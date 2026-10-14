@@ -331,7 +331,7 @@ void it_802E7A4C(Item_GObj* gobj)
 
     item = GET_ITEM(gobj);
     it_8026B3A8(gobj);
-    Item_80268E5C(gobj, item->xDD4_itemVar.arwinglaser.xE38, 2);
+    Item_80268E5C(gobj, item->xDD4_itemVar.arwinglaser.xE38, ITEM_ANIM_UPDATE);
 }
 
 static void itArwinglaser_UnkMotion2_Anim(Item_GObj* gobj)

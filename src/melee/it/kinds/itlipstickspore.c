@@ -131,7 +131,7 @@ void it_8029A498(Item_GObj* gobj, Fighter_GObj* owner)
     it_8026B3A8(gobj);
     it_80274740(gobj);
     it_80275158(gobj, 5.0f);
-    Item_80268E5C(gobj, 1, 2);
+    Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
 
     ip->xDCE_flag.x0.b7 = false;
 }

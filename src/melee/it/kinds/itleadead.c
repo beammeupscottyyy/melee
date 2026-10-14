@@ -776,7 +776,7 @@ void itLeadead_Logic1_Thrown(Item_GObj* gobj)
 bool itLeadead_UnkMotion14_Anim(Item_GObj* gobj)
 {
     if (it_80272C6C(gobj) == 0) {
-        Item_80268E5C(gobj, 0xE, 0x12);
+        Item_80268E5C(gobj, 0xE, ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
     }
     return false;
 }
@@ -800,7 +800,7 @@ void it_802EA2A0(Item_GObj* gobj)
     it_8027B964(gobj, 0);
     ip->facing_dir = ip->init_facing_dir;
     ip->xDD4_itemVar.leadead.xDEC = 0;
-    Item_80268E5C(gobj, 0xF, 3);
+    Item_80268E5C(gobj, 0xF, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
 }
 
 bool itLeadead_UnkMotion15_Anim(Item_GObj* gobj)
@@ -819,7 +819,7 @@ void it_802EA334(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     Item_UpdateZakoVelocity(gobj, ip);
-    Item_80268E5C(gobj, 0x10, 3);
+    Item_80268E5C(gobj, 0x10, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
 }
 
 bool itLeadead_UnkMotion16_Anim(Item_GObj* gobj)

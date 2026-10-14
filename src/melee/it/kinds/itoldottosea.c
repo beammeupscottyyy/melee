@@ -222,7 +222,8 @@ bool itOldottosea_UnkMotion2_Anim(Item_GObj* gobj)
                 if (ip->xDD4_itemVar.oldottosea.x20 != NULL) {
                     Item_80268E5C(gobj, 2, ITEM_ANIM_UPDATE);
                 } else {
-                    Item_80268E5C(gobj, 1, 0x12);
+                    Item_80268E5C(gobj, 1,
+                                  ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
                 }
             }
         }
@@ -318,7 +319,7 @@ void it_802E2C80(Item_GObj* gobj)
     }
 
     ip->facing_dir = ip->init_facing_dir;
-    Item_80268E5C(gobj, 5, 2);
+    Item_80268E5C(gobj, 5, ITEM_ANIM_UPDATE);
 }
 
 bool itOldottosea_UnkMotion5_Anim(Item_GObj* gobj)
@@ -327,7 +328,7 @@ bool itOldottosea_UnkMotion5_Anim(Item_GObj* gobj)
 
     if (!it_80272C6C(gobj)) {
         if (ip->ground_or_air == GA_Air) {
-            Item_80268E5C(gobj, 5, 2);
+            Item_80268E5C(gobj, 5, ITEM_ANIM_UPDATE);
         } else {
             it_802E2DF4(gobj);
         }
@@ -451,7 +452,7 @@ void it_802E3098(Item_GObj* gobj)
     }
     ip->xDD4_itemVar.oldottosea.x28 = val;
 
-    Item_80268E5C(gobj, 3, 2);
+    Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE);
     it_8026BDB4(gobj);
 }
 

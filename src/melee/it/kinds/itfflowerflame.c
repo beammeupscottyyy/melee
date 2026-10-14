@@ -174,7 +174,7 @@ bool itFflowerflame_UnkMotion2_Anim(Item_GObj* gobj)
 
 void itFFlowerFlame_Logic41_Dropped(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 1, 6);
+    Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
     it_8026B3A8(gobj);
 }
 

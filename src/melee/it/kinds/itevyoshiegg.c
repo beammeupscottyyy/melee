@@ -129,7 +129,7 @@ void itEvYoshiEgg_Logic42_Dropped(Item_GObj* gobj)
 
 void itEvYoshiEgg_Logic42_Thrown(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 3, 6);
+    Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itEvyoshiegg_UnkMotion3_Phys(Item_GObj* gobj)
