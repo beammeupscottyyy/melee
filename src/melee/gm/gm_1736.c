@@ -304,15 +304,15 @@ void gm_80173DE4(MatchEnd* arg0)
     }
 }
 
-static inline bool gm_80173EEC_inline(u8 arg0, int arg1)
+static inline bool gm_80173EEC_inline(CharacterKind arg0, GameModeKind arg1)
 {
     return gm_80160474(arg0, arg1);
 }
 
 void gm_80173EEC(void)
 {
-    int selkind;
-    u8 ckind;
+    SelectableCharacterKind selkind;
+    CharacterKind ckind;
     u16* temp_r29;
 
     for (selkind = 0; selkind < SELKIND_COUNT; selkind++) {

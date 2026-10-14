@@ -811,7 +811,7 @@ static inline u8 get_unlockable_selkind_by_bit_index(int unlock_bit_index)
     return SELKIND_COUNT;
 }
 
-u8 gm_GetCKindByUnlockIndex(int unlockable_character_bit_index)
+CharacterKind gm_GetCKindByUnlockIndex(int unlockable_character_bit_index)
 {
     return gm_SelKindToCKind(
         get_unlockable_selkind_by_bit_index(unlockable_character_bit_index));
@@ -2302,12 +2302,12 @@ int fn_80163FA4(u8 arg0)
     return count;
 }
 
-u8 gm_SelKindToCKind(u8 selkind)
+CharacterKind gm_SelKindToCKind(SelectableCharacterKind selkind)
 {
     return selkind_to_ckind_map[selkind];
 }
 
-u8 gm_CKindToSelKind(u8 ckind)
+SelectableCharacterKind gm_CKindToSelKind(CharacterKind ckind)
 {
     return ckind_to_selkind_map[ckind];
 }

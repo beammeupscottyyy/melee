@@ -42,7 +42,7 @@
  */
 /* 160638 */ s8 gm_CKindToUnlockIndex(CharacterKind);
 
-/* 1606A8 */ u8 gm_GetCKindByUnlockIndex(int);
+/* 1606A8 */ CharacterKind gm_GetCKindByUnlockIndex(int);
 /* 160710 */ u8 fn_80160710(int);
 /* 16075C */ StKind gm_GetChallengerStKind(SelectableCharacterKind);
 /* 1607A8 */ u8 fn_801607A8(int);
@@ -140,7 +140,7 @@
  * @see #gm_CKindToSelKind for the inverse (lossy) mapping.
  * @see #selkind_to_ckind_map
  */
-/* 16400C */ u8 gm_SelKindToCKind(u8 selkind);
+/* 16400C */ CharacterKind gm_SelKindToCKind(SelectableCharacterKind selkind);
 
 /**
  * @brief Convert a #CharacterKind into its #SelectableCharacterKind.
@@ -155,7 +155,7 @@
  * @see #gm_SelKindToCKind for the inverse mapping.
  * @see #ckind_to_selkind_map
  */
-/* 164024 */ u8 gm_CKindToSelKind(u8 ckind);
+/* 164024 */ SelectableCharacterKind gm_CKindToSelKind(CharacterKind ckind);
 
 /* 16403C */ bool gm_8016403C(u8 item);
 /* 1640B0 */ void fn_801640B0(u64* item_mask);

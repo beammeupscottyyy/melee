@@ -2331,7 +2331,7 @@ u8 gm_80173224(int arg0, int arg1)
 }
 
 /// check for event character unlocks?
-u8 gm_801732D8(u8 arg0)
+CharacterKind gm_801732D8(u8 arg0)
 {
     if (!gm_IsCKindUnlocked(CKind_Ganon) && gm_801BEBC0(arg0) == 0x1C) {
         return CKind_Ganon;

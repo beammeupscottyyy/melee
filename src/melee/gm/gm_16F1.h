@@ -1,6 +1,7 @@
 #ifndef MELEE_GM_16F1_H
 #define MELEE_GM_16F1_H
 
+#include <melee/ft/forward.h>
 #include <melee/gm/forward.h>
 #include <sysdolphin/baselib/forward.h>
 
@@ -81,7 +82,7 @@ struct lbl_804D65A8_t;
 /* 172FAC */ bool fn_80172FAC(void);
 /* 173098 */ u8 fn_80173098(int);
 /* 173224 */ u8 gm_80173224(int, int);
-/* 1732D8 */ u8 gm_801732D8(u8);
+/* 1732D8 */ CharacterKind gm_801732D8(u8);
 /* 17335C */ u16 gm_8017335C(void);
 /* 1733D8 */ u8 gm_801733D8(void);
 /* 17341C */ u16 gm_8017341C(void);
