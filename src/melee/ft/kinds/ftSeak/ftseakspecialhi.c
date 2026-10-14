@@ -30,6 +30,9 @@ static MotionFlags const ftSk_MF_SpecialHi_Coll =
     ftCommon_GroundAirColl_MF | Ft_MF_KeepGfx | Ft_MF_KeepColAnimHitStatus |
     Ft_MF_SkipHit;
 
+static MotionFlags const ftSk_MF_SpecialAirHi_Coll =
+    ftCommon_GroundAirColl_MF | Ft_MF_KeepGfx | Ft_MF_SkipHit;
+
 /* 112ED8 */ static void fn_80112ED8(Fighter_GObj* gobj);
 /* 112F48 */ static void ftSk_SpecialHi_80112F48(Fighter_GObj* gobj);
 /* 112FA8 */ static void ftSk_SpecialHi_80112FA8(Fighter_GObj* gobj);
@@ -181,8 +184,9 @@ void ftSk_SpecialHi_80113324(Fighter_GObj* arg0)
 
     temp_r31 = arg0->user_data;
     ftCommon_8007D60C(temp_r31);
-    Fighter_ChangeMotionState(arg0, ftSk_MS_SpecialAirHiStart_0, 0x0C4C508EU,
-                              temp_r31->cur_anim_frame, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(arg0, ftSk_MS_SpecialAirHiStart_0,
+                              ftSk_MF_SpecialHi_Coll, temp_r31->cur_anim_frame,
+                              1.0f, 0.0f, NULL);
     temp_r31->accessory4_cb = fn_80112ED8;
 }
 
@@ -492,8 +496,8 @@ void ftSk_SpecialHi_80113A30(Fighter_GObj* gobj)
         (((attributes->x44 * var_f31) + attributes->x48) * cosf(var_f30));
     fp->self_vel.y =
         ((attributes->x44 * var_f31) + attributes->x48) * sinf(var_f30);
-    Fighter_ChangeMotionState(gobj, ftSk_MS_SpecialAirHiStart_1, 0U, 35.0f,
-                              1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftSk_MS_SpecialAirHiStart_1, Ft_MF_None,
+                              35.0f, 1.0f, 0.0f, NULL);
     ftAnim_8006EBA4(gobj);
     ftAnim_SetAnimRate(gobj, 0.0f);
     inlineA0(gobj);
@@ -579,8 +583,9 @@ void ftSk_SpecialHi_80113E40(Fighter_GObj* gobj)
     Fighter* fp = GET_FIGHTER(gobj);
 
     ftCommon_8007D60C(fp);
-    Fighter_ChangeMotionState(gobj, ftSk_MS_SpecialAirHi, 0x0C4C508AU,
-                              fp->cur_anim_frame, 1.0f, 0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftSk_MS_SpecialAirHi,
+                              ftSk_MF_SpecialAirHi_Coll, fp->cur_anim_frame,
+                              1.0f, 0.0f, NULL);
     fp->accessory4_cb = fn_80113038;
 }
 
@@ -599,8 +604,8 @@ void ftSk_SpecialHi_80113EAC(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     ftSeakAttributes* attributes = fp->dat_attrs;
-    Fighter_ChangeMotionState(gobj, ftSk_MS_SpecialHi, 0U, 0.0f, 1.0f, 0.0f,
-                              NULL);
+    Fighter_ChangeMotionState(gobj, ftSk_MS_SpecialHi, Ft_MF_None, 0.0f, 1.0f,
+                              0.0f, NULL);
     ftAnim_8006EBA4(gobj);
     ftSk_SpecialHi_80113EAC_inline(gobj);
     fp->gr_vel = fp->mv.co.common.x18 * attributes->x54;
@@ -622,8 +627,8 @@ void ftSk_SpecialHi_80113F68(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     ftSeakAttributes* attributes = fp->dat_attrs;
-    Fighter_ChangeMotionState(gobj, ftSk_MS_SpecialAirHi, 0U, 0.0f, 1.0f, 0.0f,
-                              NULL);
+    Fighter_ChangeMotionState(gobj, ftSk_MS_SpecialAirHi, Ft_MF_None, 0.0f,
+                              1.0f, 0.0f, NULL);
     ftAnim_8006EBA4(gobj);
     ftSk_SpecialHi_80113F68_inline(gobj);
     fp->self_vel.x = fp->mv.co.walk.fast_anim_frame * attributes->x54;
