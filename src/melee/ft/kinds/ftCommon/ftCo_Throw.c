@@ -528,8 +528,8 @@ void ftCo_800DDDE4(Fighter_GObj* gobj, Fighter_GObj* gobj2, bool arg)
     fp->x221B.x221B_b5 = 0;
     fp->x221B.x221B_b7 = 0;
     ftColl_8007891C(gobj, gobj2, hit[0].damage);
-    if (fp2->x1988 != 0) {
-        ftColl_8007B62C(gobj2, 0);
+    if (fp2->x1988 != HurtCapsule_Enabled) {
+        ftColl_8007B62C(gobj2, HurtCapsule_Enabled);
     }
     lb_8000B1CC(fp3->parts[ftParts_GetBoneIndex(fp3, FtPart_TransN2)].joint,
                 NULL, &vec);

@@ -39,7 +39,7 @@ void ftCo_8009EB18(Fighter_GObj* gobj)
     fp->death2_cb = ftCo_8009EAF8;
     fp->accessory1_cb = ftCo_8009EC44;
     ftCommon_8007E2FC(gobj);
-    fp->x1988 = 2;
+    fp->x1988 = HurtCapsule_Intangible;
     fp->invisible = true;
     ftCommon_8007E2F4(fp, 0x1FF);
     setCamData(p_ftCommonData, fp->x890_cameraBox);

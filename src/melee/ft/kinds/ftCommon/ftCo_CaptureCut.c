@@ -214,8 +214,8 @@ void ftCo_800DCFD4(Fighter_GObj* gobj)
     HitCapsule* hit = &victim_fp->xDF4[1];
     Vec3 sp18;
 
-    if (fp->x1988 != 0) {
-        ftColl_8007B62C(gobj, 0);
+    if (fp->x1988 != HurtCapsule_Enabled) {
+        ftColl_8007B62C(gobj, HurtCapsule_Enabled);
     }
     ftCommon_8007D5D4(fp);
     ftColl_8007891C(fp->victim_gobj, gobj, hit->damage);

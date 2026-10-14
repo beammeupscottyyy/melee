@@ -104,9 +104,9 @@ void fn_8017C1A4(HSD_GObj* unused)
             Player_SetMoreFlagsBit4(0, 1);
             Player_SetMoreFlagsBit3(0, 1);
             tmp->x10 = ft_80087C58(Player_GetEntity(0));
-            ft_80087C64(Player_GetEntity(0), 2);
+            ft_80087C64(Player_GetEntity(0), HurtCapsule_Intangible);
             tmp->x14 = ft_80087C58(Player_GetEntity(2));
-            ft_80087C64(Player_GetEntity(2), 2);
+            ft_80087C64(Player_GetEntity(2), HurtCapsule_Intangible);
             tmp->x8 = 1;
         } else if (tmp->x8 == 1) {
             lbAudioAx_800237A8(0x81651, 0x7F, 0x40);

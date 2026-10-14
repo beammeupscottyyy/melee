@@ -46,5 +46,5 @@ void ftKb_SpecialNYs_8010AA2C(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     fp->invisible = true;
-    ftColl_8007B62C(gobj, 2);
+    ftColl_8007B62C(gobj, HurtCapsule_Intangible);
 }

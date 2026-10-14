@@ -2765,18 +2765,18 @@ void ftColl_HurtboxInit(Fighter* fp, FighterHurtCapsule* hurt,
     fp->x221A_b6 = true;
 }
 
-void ftColl_8007B62C(Fighter_GObj* gobj, enum_t arg1)
+void ftColl_8007B62C(Fighter_GObj* gobj, HurtCapsuleState arg1)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     fp->x1988 = arg1;
     switch (arg1) {
-    case 0:
+    case HurtCapsule_Enabled:
         ftCo_800BFFD0(fp, 1, false);
         return;
-    case 1:
+    case HurtCapsule_Disabled:
         ftCo_800BFFD0(fp, 3, false);
         return;
-    case 2:
+    case HurtCapsule_Intangible:
         ftCo_800BFFD0(fp, 2, false);
         return;
     }

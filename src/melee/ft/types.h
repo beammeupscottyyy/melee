@@ -1734,7 +1734,7 @@ struct Fighter {
     /* fp+197C */ HSD_GObj* x197C;  ///< bunny hood
     /* fp+1980 */ HSD_GObj* x1980;
     /* fp+1984 */ Item_GObj* x1984_heldItemSpec;
-    /* fp+1988 */ enum_t x1988; // possibly HurtCapsuleState?
+    /* fp+1988 */ HurtCapsuleState x1988;
     /* fp+198C */ s32 x198C;
     /* fp+1990 */ s32 x1990;
     /* fp+1994 */ int x1994;

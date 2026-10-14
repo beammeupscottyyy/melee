@@ -32,7 +32,7 @@ void ftCo_80098B20(Fighter_GObj* gobj)
     ftCo_SpawnEf(gobj, fp->parts[fp->ft_data->x8->x11].joint, 0, 1051);
     ft_PlaySFX(fp, 130, 127, 64);
     ftCommon_8007EBAC(fp, 24, 0U);
-    ftColl_8007B62C(gobj, 2);
+    ftColl_8007B62C(gobj, HurtCapsule_Intangible);
 }
 
 void ftCo_ShieldBreakFly_Anim(Fighter_GObj* gobj)

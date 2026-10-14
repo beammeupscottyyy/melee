@@ -50,7 +50,7 @@ void ftCo_800C78B0(HSD_GObj* gobj, HSD_GObj* owner)
         tmp2 += tmp1;
         ftCommon_InitGrab(fp, 0, fp->dmg.x1830_percent * cd->x754 + tmp2);
     }
-    fp->x1988 = 2;
+    fp->x1988 = HurtCapsule_Intangible;
     fp->invisible = true;
     ftCommon_8007E2F4(fp, 0x1FF);
 }

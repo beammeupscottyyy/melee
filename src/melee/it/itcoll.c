@@ -346,8 +346,9 @@ void it_802701BC(Item_GObj* gobj)
              ip->xDCD_flag.x0.b5) &&
             (!gm_8016B168() || gm_8016B0D4() || ip->xDCD_flag.x0.b6 ||
              (ip->x20_team_id != fp->team)) &&
-            !fp->x2219_b1 && !fp->x222A_b0 && (fp->x1988 == 0) &&
-            (fp->x198C == 0) && !fp->x221D_b6 && !(fp->x1A6A & ip->xD08))
+            !fp->x2219_b1 && !fp->x222A_b0 &&
+            (fp->x1988 == HurtCapsule_Enabled) && (fp->x198C == 0) &&
+            !fp->x221D_b6 && !(fp->x1A6A & ip->xD08))
         {
             u32 it_hit_index = 0U;
             while (it_hit_index < 4U) {

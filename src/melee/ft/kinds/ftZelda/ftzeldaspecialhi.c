@@ -446,7 +446,7 @@ void ftZd_SpecialHi_8013A058(HSD_GObj* gobj)
                 fp->x1968_jumpsUsed = fp->co_attrs.max_jumps;
                 fp->x2223_b4 = 1;
 
-                ftColl_8007B62C(gobj, 2);
+                ftColl_8007B62C(gobj, HurtCapsule_Intangible);
                 fp->invisible = true;
                 return;
             }
@@ -539,7 +539,7 @@ void ftZd_SpecialHi_8013A244(HSD_GObj* gobj)
     fp->x1968_jumpsUsed = fp->co_attrs.max_jumps;
     fp->x2223_b4 = 1;
 
-    ftColl_8007B62C(gobj, 2);
+    ftColl_8007B62C(gobj, HurtCapsule_Intangible);
 
     fp->invisible = true;
 }

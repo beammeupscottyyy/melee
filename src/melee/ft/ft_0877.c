@@ -257,13 +257,13 @@ s32 ft_GetFtKindMask(void)
     return result;
 }
 
-s32 ft_80087C58(HSD_GObj* gobj)
+HurtCapsuleState ft_80087C58(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     return fp->x1988;
 }
 
-void ft_80087C64(HSD_GObj* gobj, s32 arg1)
+void ft_80087C64(HSD_GObj* gobj, HurtCapsuleState arg1)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     fp->x1988 = arg1;

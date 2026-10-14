@@ -367,7 +367,7 @@ static inline void inlineA0(Fighter_GObj* gobj)
     fp->mv.sk.specialhi.x0 = attributes->x38;
     fp->x1968_jumpsUsed = (u8) fp->co_attrs.max_jumps;
     fp->x2223_b4 = 1;
-    ftColl_8007B62C(gobj, 2);
+    ftColl_8007B62C(gobj, HurtCapsule_Intangible);
     fp->invisible = 1;
     fp->accessory4_cb = fn_80112ED8;
 }

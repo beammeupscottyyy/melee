@@ -28,8 +28,8 @@
 /* 087BC0 */ void ft_80087BC0(Fighter_GObj*, int);
 /* 087BEC */ void ft_80087BEC(Fighter_GObj*, int);
 /* 087C1C */ s32 ft_GetFtKindMask(void);
-/* 087C58 */ s32 ft_80087C58(Fighter_GObj* gobj);
-/* 087C64 */ void ft_80087C64(Fighter_GObj*, s32);
+/* 087C58 */ HurtCapsuleState ft_80087C58(Fighter_GObj* gobj);
+/* 087C64 */ void ft_80087C64(Fighter_GObj*, HurtCapsuleState);
 /* 087C70 */ s32 ft_80087C70(Fighter*, s32);
 /* 087D0C */ s32 ft_80087D0C(Fighter*, s32);
 /* 08805C */ void ft_8008805C(Fighter*, s32);

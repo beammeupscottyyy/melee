@@ -116,7 +116,7 @@ static inline void inlineB2(Fighter_GObj* gobj, Fighter* fp,
     fp->take_dmg_cb = ftCo_800BE7C0;
     ftCommon_8007E2F4(fp, 0x1FF);
     fp->invisible = true;
-    ftColl_8007B62C(gobj, 2);
+    ftColl_8007B62C(gobj, HurtCapsule_Intangible);
     ftCommon_8007EFC0(fp, 1);
     ftCommon_InitGrab(fp, 0, get_float(thrower_gobj));
     ftAnim_8006EBA4(gobj);
@@ -259,7 +259,7 @@ void ftCo_800BE494(Fighter_GObj* gobj)
     fp->take_dmg_cb = ftCo_800BE7C0;
     ftCommon_8007E2F4(fp, 0x1FF);
     fp->invisible = false;
-    ftColl_8007B62C(gobj, 0);
+    ftColl_8007B62C(gobj, HurtCapsule_Enabled);
     if (!fp->mv.co.thrownkirby.x18_u.x0.x18_b0) {
         Vec2 self_vel;
         ftKb_SpecialN_800F5874(&self_vel);

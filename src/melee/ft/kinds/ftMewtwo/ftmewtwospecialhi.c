@@ -373,7 +373,7 @@ static inline void ftMewtwo_SpecialHi_SetVars(HSD_GObj* gobj)
     fp->x1968_jumpsUsed = fp->co_attrs.max_jumps;
     fp->x2223_b4 = true;
 
-    ftColl_8007B62C(gobj, 2);
+    ftColl_8007B62C(gobj, HurtCapsule_Intangible);
 
     fp->invisible = true;
 

@@ -93,7 +93,7 @@
 /* 07B4E0 */ void ftColl_8007B4E0(Fighter_GObj*);
 /* 07B5AC */ void ftColl_HurtboxInit(Fighter* fp, FighterHurtCapsule*,
                                      ftHurtboxInit*);
-/* 07B62C */ void ftColl_8007B62C(Fighter_GObj*, enum_t);
+/* 07B62C */ void ftColl_8007B62C(Fighter_GObj*, HurtCapsuleState);
 /* 07B6A0 */ void ftColl_8007B6A0(Fighter_GObj* gobj);
 /* 07B6EC */ void ftColl_8007B6EC(Fighter_GObj*);
 /* 07B760 */ void ftColl_8007B760(Fighter_GObj*, int);

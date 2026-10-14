@@ -31,7 +31,7 @@ void ftCo_800DE3FC(Fighter_GObj* gobj, FtMotionId msid, float anim_speed)
     Fighter_ChangeMotionState(gobj, msid, Ft_MF_None, 0.0f, anim_speed, 0.0f,
                               fp->victim_gobj);
     if (thrower_fp->kind == Ft_Kind_Yoshi) {
-        ftColl_8007B62C(gobj, 2);
+        ftColl_8007B62C(gobj, HurtCapsule_Intangible);
     }
     if (thrower_fp->kind != Ft_Kind_Kirby || msid - ftCo_MS_ThrownF > 1U) {
         pl_80040614(thrower_fp->player_idx, thrower_fp->is_sub_fighter,

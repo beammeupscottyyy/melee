@@ -380,7 +380,7 @@ void Fighter_UnkInitReset_80067C98(Fighter* fp)
     fp->x221E_b3 = 1;
 
     fp->x1984_heldItemSpec = NULL;
-    fp->x1988 = 0;
+    fp->x1988 = HurtCapsule_Enabled;
     fp->x198C = 0;
 
     fp->x2221_b0 = 0;
@@ -966,8 +966,8 @@ void Fighter_ChangeMotionState(Fighter_GObj* gobj, FtMotionId msid,
     }
 
     if ((flags & Ft_MF_KeepColAnimHitStatus) == 0) {
-        if (fp->x1988 != 0) {
-            ftColl_8007B62C(gobj, 0);
+        if (fp->x1988 != HurtCapsule_Enabled) {
+            ftColl_8007B62C(gobj, HurtCapsule_Enabled);
         }
         if (fp->x221A_b5 != 0) {
             ftColl_8007B0C0(gobj, HurtCapsule_Enabled);
