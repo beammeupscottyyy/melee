@@ -89,7 +89,7 @@ void ftSk_SpecialS_80110610(HSD_GObj* gobj, s32 arg1, float arg2)
 
     HSD_Joint* item;
 
-    if (arg1 == 305) {
+    if (arg1 == ftSk_SM_SpecialS) {
         item = items[4].joint;
     } else {
         item = items[5].joint;
@@ -708,7 +708,7 @@ void ftSk_SpecialS_Anim(HSD_GObj* gobj)
         }
     }
 
-    ftSk_SpecialS_80110610(gobj, 305, 1);
+    ftSk_SpecialS_80110610(gobj, ftSk_SM_SpecialS, 1);
 }
 
 void ftSk_SpecialAirS_Anim(HSD_GObj* gobj)
@@ -738,7 +738,7 @@ void ftSk_SpecialAirS_Anim(HSD_GObj* gobj)
         }
     }
 
-    ftSk_SpecialS_80110610(gobj, 308, 1);
+    ftSk_SpecialS_80110610(gobj, ftSk_SM_SpecialAirS, 1);
 }
 
 void ftSk_SpecialS_IASA(HSD_GObj* gobj)
@@ -798,7 +798,7 @@ void ftSk_SpecialS_80111830(HSD_GObj* gobj)
 
     Fighter_ChangeMotionState(gobj, ftSk_MS_SpecialS, Ft_MF_SkipHit, 0.0, 1, 0,
                               NULL);
-    ftSk_SpecialS_80110610(gobj, 305, 0);
+    ftSk_SpecialS_80110610(gobj, ftSk_SM_SpecialS, 0);
 
     fp2 = gobj->user_data;
     fp2->mv.sk.specials.x0 = 0;
@@ -844,7 +844,7 @@ void ftSk_SpecialS_80111988(HSD_GObj* gobj)
 {
     Fighter_ChangeMotionState(gobj, ftSk_MS_SpecialAirS, Ft_MF_SkipHit, 0.0,
                               1.0, 0.0, NULL);
-    ftSk_SpecialS_80110610(gobj, 308, 0.0);
+    ftSk_SpecialS_80110610(gobj, ftSk_SM_SpecialAirS, 0.0);
 
     {
         Fighter* fp = gobj->user_data;

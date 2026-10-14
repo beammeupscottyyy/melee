@@ -326,7 +326,7 @@ void ftCl_Init_OnLoad(HSD_GObj* gobj)
 
     fp->can_walljump = true;
     ea->attackairlw_hit_anim_frame_end =
-        lbAnim_8001E8F8(ftData_80085E50(fp, 72));
+        lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_SM_AttackAirLw));
     ftLk_Init_OnLoadForCLink(fp);
     ea = fp->dat_attrs;
     it_8026B3F8(items[0].article, ea->x48);
@@ -488,6 +488,6 @@ bool ftCl_Init_801492F4(HSD_GObj* gobj)
 void ftCl_Init_80149318(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    ftCo_800DEAE8(gobj, 342, 343);
+    ftCo_800DEAE8(gobj, ftLk_MS_AppealSR, ftLk_MS_AppealSL);
     fp->cmd_vars[1] = false;
 }

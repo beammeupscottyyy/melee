@@ -439,8 +439,10 @@ void ftPe_Init_OnLoad(HSD_GObj* gobj)
     Fighter* fp = GET_FIGHTER(gobj);
     ftPe_DatAttrs* extAtrrs = &fp->ft_data->ext_attr->peach;
     union ftData_Item* items = fp->ft_data->x48_items;
-    extAtrrs->floatfallf_anim_start = lbAnim_8001E8F8(ftData_80085E50(fp, 18));
-    extAtrrs->floatfallb_anim_start = lbAnim_8001E8F8(ftData_80085E50(fp, 19));
+    extAtrrs->floatfallf_anim_start =
+        lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_SM_JumpAerialF));
+    extAtrrs->floatfallb_anim_start =
+        lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_SM_JumpAerialB));
     PUSH_ATTRS(fp, ftPe_DatAttrs);
     it_8026B3F8(items[0].article, It_Kind_Peach_Explode);
     it_8026B3F8(items[1].article, It_Kind_Peach_Turnip);

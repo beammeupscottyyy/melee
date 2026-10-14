@@ -835,12 +835,13 @@ static void Fighter_Create_Inline2(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     if (!fp->no_normal_motion) {
-        fp->x2EC = lbAnim_8001E8F8(ftData_80085E50(fp, 0x23));
+        fp->x2EC = lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_SM_Landing));
         if (!fp->is_sandbag) {
-            fp->x2DC = lbAnim_8001E8F8(ftData_80085E50(fp, 7));
-            fp->x2E0 = lbAnim_8001E8F8(ftData_80085E50(fp, 8));
-            fp->x2E4 = lbAnim_8001E8F8(ftData_80085E50(fp, 9));
-            fp->x2E8 = lbAnim_8001E8F8(ftData_80085E50(fp, 0x25));
+            fp->x2DC = lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_SM_WalkSlow));
+            fp->x2E0 =
+                lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_SM_WalkMiddle));
+            fp->x2E4 = lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_SM_WalkFast));
+            fp->x2E8 = lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_SM_GuardOn));
         }
     }
 }

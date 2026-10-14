@@ -341,9 +341,9 @@ void ftKb_SpecialN_800F5F68(HSD_GObj* gobj)
     // Ends up being 00 28 according to data sheet
     fp->u.kb.xE4 = da->jumpaerial_unk;
 
-    fp->u.kb.xE8 = lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_MS_HammerFall));
-    fp->u.kb.xEC = lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_MS_HammerJump));
-    fp->u.kb.xF0 = lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_MS_HammerLanding));
+    fp->u.kb.xE8 = lbAnim_8001E8F8(ftData_80085E50(fp, ftKb_SM_EatWalkSlow));
+    fp->u.kb.xEC = lbAnim_8001E8F8(ftData_80085E50(fp, ftKb_SM_EatWalkMiddle));
+    fp->u.kb.xF0 = lbAnim_8001E8F8(ftData_80085E50(fp, ftKb_SM_EatWalkFast));
 
     Fighter_ChangeMotionState(gobj, ftKb_MS_SpecialN, Ft_MF_None, 0, 1, 0,
                               NULL);
@@ -366,9 +366,9 @@ void ftKb_SpecialN_800F6070(HSD_GObj* gobj)
     fp->cmd_vars[0] = fp->cmd_vars[1] = 0;
     fp->u.kb.xE0 = 4;
     fp->u.kb.xE4 = da->jumpaerial_unk;
-    fp->u.kb.xE8 = lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_MS_HammerFall));
-    fp->u.kb.xEC = lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_MS_HammerJump));
-    fp->u.kb.xF0 = lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_MS_HammerLanding));
+    fp->u.kb.xE8 = lbAnim_8001E8F8(ftData_80085E50(fp, ftKb_SM_EatWalkSlow));
+    fp->u.kb.xEC = lbAnim_8001E8F8(ftData_80085E50(fp, ftKb_SM_EatWalkMiddle));
+    fp->u.kb.xF0 = lbAnim_8001E8F8(ftData_80085E50(fp, ftKb_SM_EatWalkFast));
 
     Fighter_ChangeMotionState(gobj, ftKb_MS_SpecialAirN, Ft_MF_None, 0, 1, 0,
                               NULL);

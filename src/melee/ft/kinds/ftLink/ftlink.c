@@ -334,7 +334,7 @@ void ftLk_Init_OnLoad(HSD_GObj* gobj)
     ftLk_DatAttrs* da = &fp->ft_data->ext_attr->link;
     union ftData_Item* item_list = fp->ft_data->x48_items;
     da->attackairlw_hit_anim_frame_end =
-        lbAnim_8001E8F8(ftData_80085E50(fp, 72));
+        lbAnim_8001E8F8(ftData_80085E50(fp, ftCo_SM_AttackAirLw));
     PUSH_ATTRS(fp, ftLk_DatAttrs);
     da = fp->dat_attrs;
     it_8026B3F8(item_list[0].article, da->x48);

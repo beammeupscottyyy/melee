@@ -92,9 +92,8 @@ void ft_8008A348(Fighter_GObj* gobj, float anim_blend)
     }
     Fighter_ChangeMotionState(gobj, ftCo_MS_Wait, Ft_MF_None, 0.0f, 1.0f,
                               anim_blend, NULL);
-    if (ftCo_8008A698(fp) && ftData_80085FD4(fp, ftCo_MS_DeadUpFall)->x8 != 0)
-    {
-        ftCo_8008A6D8(gobj, ftCo_MS_DeadUpFall);
+    if (ftCo_8008A698(fp) && ftData_80085FD4(fp, ftCo_SM_Wait1_1)->x8 != 0) {
+        ftCo_8008A6D8(gobj, ftCo_SM_Wait1_1);
     }
     ftCommon_8007EFC0(fp, p_ftCommonData->x5F0);
     switch (fp->kind) {

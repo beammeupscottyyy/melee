@@ -38,7 +38,7 @@ void ftCo_8008A6D8(Fighter_GObj* gobj, s32 anim_id)
 
 static inline bool inlineA0(Fighter* fp)
 {
-    if (fp->anim_id == 2 || fp->anim_id == 31) {
+    if (fp->anim_id == ftCo_SM_Wait1_0 || fp->anim_id == ftCo_SM_SquatWait) {
         return true;
     }
     return false;

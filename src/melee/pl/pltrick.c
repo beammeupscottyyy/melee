@@ -16,7 +16,22 @@
                                      s32);
 
 int pl_803BCE70[16] = {
-    -1, 0x2F, 0x30, 0x31, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+    -1,
+    ftCo_SM_Attack12,
+    ftCo_SM_Attack13,
+    ftCo_SM_Attack100Start,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
 };
 
 int pl_80037B2C(struct plActionStats* arg0, int h_player, int idx)

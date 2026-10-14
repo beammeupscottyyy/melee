@@ -16,7 +16,7 @@ void ftCo_DownSpot_Enter(Fighter_GObj* gobj)
     Fighter* fp = GET_FIGHTER(gobj);
     FtMotionId msid;
 
-    if (ftData_80085FD4(fp, ftCo_MS_DownSpotU)->x14) {
+    if (ftData_80085FD4(fp, ftCo_SM_DownSpotU)->x14) {
         msid = ftCo_MS_DownSpotU;
     } else {
         msid = ftCo_MS_DownSpotD;
