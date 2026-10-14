@@ -488,7 +488,7 @@ void ftNs_SpecialHi_Enter(
 #endif
             GET_FIGHTER(gobj);
     {
-        enum_t msid = fighter_data3->motion_id;
+        FtMotionId msid = fighter_data3->motion_id;
         switch (msid) {
         case ftNs_MS_SpecialHiStart:
         case ftNs_MS_SpecialHiHold:

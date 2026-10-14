@@ -93,8 +93,7 @@ void ftGw_SpecialLw_ItemPanicExitHitlag(HSD_GObj* gobj)
 bool ftGw_SpecialLw_ItemCheckPanicRemove(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    /// @todo @c enum
-    enum_t msid = fp->motion_id;
+    FtMotionId msid = fp->motion_id;
 
     if (msid >= ftGw_MS_SpecialLwShoot && msid <= ftGw_MS_SpecialAirLwShoot) {
         return false;
@@ -544,8 +543,7 @@ void ftGw_SpecialLw_AbsorbThink_DecideAction(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
 
-    /// @todo @c enum
-    enum_t msid;
+    FtMotionId msid;
 
     fp->u.gw.x2238_panicCharge += fp->AbsorbAttr.x1A48_hitsTaken;
     fp->u.gw.x223C_panicDamage += fp->AbsorbAttr.x1A44_damageTaken;

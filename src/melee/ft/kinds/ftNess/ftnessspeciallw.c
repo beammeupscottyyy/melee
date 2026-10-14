@@ -866,7 +866,7 @@ void ftNs_AbsorbThink_DecideAction(
 {
     u8 _[8];
 
-    enum_t msid;
+    FtMotionId msid;
     Fighter* fp = GET_FIGHTER(gobj);
     ftNessAttributes* sa = fp->dat_attrs;
 
@@ -896,7 +896,7 @@ void ftNs_AbsorbThink_DecideAction(
     if ((msid != ftNs_MS_SpecialLwHit && msid != ftNs_MS_SpecialAirLwHit) ||
         !(fp->cur_anim_frame <= sa->x7C_PSI_MAGNET_UNK2))
     {
-        enum_t msid;
+        FtMotionId msid;
         if (fp->ground_or_air == GA_Ground) {
             msid = ftNs_MS_SpecialLwHit;
         } else {

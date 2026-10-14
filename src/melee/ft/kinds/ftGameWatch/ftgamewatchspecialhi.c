@@ -57,7 +57,7 @@ void ftGw_SpecialHi_ItemRescueSetup(HSD_GObj* gobj)
 /// Fire Rescue
 bool ftGw_SpecialHi_ItemCheckRescueRemove(HSD_GObj* gobj)
 {
-    enum_t msid = GET_FIGHTER(gobj)->motion_id;
+    FtMotionId msid = GET_FIGHTER(gobj)->motion_id;
 
     switch (msid) {
     case ftGw_MS_SpecialHi:

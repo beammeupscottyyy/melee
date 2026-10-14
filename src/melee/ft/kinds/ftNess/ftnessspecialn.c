@@ -35,7 +35,7 @@ bool ftNs_SpecialN_CheckSpecialNHold(HSD_GObj* gobj)
     if (gobj != NULL) {
         Fighter* fp = GET_FIGHTER(gobj);
         if (fp != NULL && fp->u.ns.pkflash_gobj != NULL) {
-            enum_t msid = fp->motion_id;
+            FtMotionId msid = fp->motion_id;
             if (msid == ftNs_MS_SpecialNHold ||
                 msid == ftNs_MS_SpecialAirNHold)
             {

@@ -107,8 +107,7 @@ static void ftGw_SpecialS_ItemJudgementExitHitlag(HSD_GObj* gobj)
 /// his SpecialS Motion States
 bool ftGw_SpecialS_ItemCheckJudgementRemove(HSD_GObj* gobj)
 {
-    /// @todo @c enum
-    enum_t msid = GET_FIGHTER(gobj)->motion_id;
+    FtMotionId msid = GET_FIGHTER(gobj)->motion_id;
 
     if (msid >= ftGw_MS_SpecialS1 && msid <= ftGw_MS_SpecialAirS9) {
         return false;

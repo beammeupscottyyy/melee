@@ -101,7 +101,7 @@ void ftMr_SpecialS_ExitHitlag(HSD_GObj* gobj)
 bool ftMr_SpecialS_CheckItemCapeRemove(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    enum_t msid = fp->motion_id;
+    FtMotionId msid = fp->motion_id;
 
     if (msid >= ftMr_MS_SpecialS && msid <= ftMr_MS_SpecialAirS) {
         return false;
