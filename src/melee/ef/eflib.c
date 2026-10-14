@@ -1,5 +1,9 @@
 #include "eflib.h"
 
+#include <melee/ft/kinds/ftKoopa/forward.h>
+#include <melee/ft/kinds/ftLuigi/forward.h>
+#include <melee/ft/kinds/ftMario/forward.h>
+
 #include <math.h>
 #include <stdarg.h>
 
@@ -1190,7 +1194,7 @@ void efLib_Cb_ftMr_SpecialLw(EF_Effect* effect)
 
     fighter = GET_FIGHTER(effect->parent_gobj);
 
-    if (fighter->motion_id == 349) {
+    if (fighter->motion_id == ftMr_MS_SpecialLw) {
         HSD_JObjClearFlagsAll(eff_child_nxt_jobj, JOBJ_HIDDEN);
     } else {
         HSD_JObjSetFlagsAll(eff_child_nxt_jobj, JOBJ_HIDDEN);
@@ -1204,7 +1208,7 @@ void efLib_Cb_ftMr_SpecialLw(EF_Effect* effect)
     }
 }
 
-// Shows child jobj on motion 357, rotZ from floor slope.
+// Shows child jobj on SpecialLw, rotZ from floor slope.
 void efLib_Cb_ftLg_SpecialLw(EF_Effect* effect)
 {
     HSD_JObj* eff_jobj;
@@ -1218,7 +1222,7 @@ void efLib_Cb_ftLg_SpecialLw(EF_Effect* effect)
 
     fighter = GET_FIGHTER(effect->parent_gobj);
 
-    if (fighter->motion_id == 357) {
+    if (fighter->motion_id == ftLg_MS_SpecialLw) {
         HSD_JObjClearFlagsAll(eff_child_nxt_jobj, JOBJ_HIDDEN);
     } else {
         HSD_JObjSetFlagsAll(eff_child_nxt_jobj, JOBJ_HIDDEN);
@@ -1233,7 +1237,7 @@ void efLib_Cb_ftLg_SpecialLw(EF_Effect* effect)
     }
 }
 
-// Shows child jobj on motion 359, rotZ from floor slope.
+// Shows child jobj on SpecialHi, rotZ from floor slope.
 void efLib_Cb_ftKp_SpecialHi(EF_Effect* effect)
 {
     f32 rotate_z;
@@ -1243,7 +1247,9 @@ void efLib_Cb_ftKp_SpecialHi(EF_Effect* effect)
 
     jobj_1 = GET_JOBJ(effect->gobj);
     jobj_2 = GET_JOBJ(effect->next->gobj);
-    if ((fighter = GET_FIGHTER(effect->parent_gobj))->motion_id == 359) {
+    if ((fighter = GET_FIGHTER(effect->parent_gobj))->motion_id ==
+        ftKp_MS_SpecialHi)
+    {
         HSD_JObjClearFlagsAll(jobj_2, JOBJ_HIDDEN);
     } else {
         HSD_JObjSetFlagsAll(jobj_2, JOBJ_HIDDEN);
