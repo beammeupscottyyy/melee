@@ -230,7 +230,7 @@ Item_GObj* grMaterial_801C8D44(int arg0, int arg1, Ground* arg2, Vec3* arg3,
 void grMaterial_801C8D98(HSD_GObj* gobj, int id)
 {
     it_802725D4(gobj);
-    Item_80268E5C(gobj, id, 2);
+    Item_80268E5C(gobj, id, ITEM_ANIM_UPDATE);
 }
 
 void grMaterial_801C8DE0(Item_GObj* gobj, float arg8, float arg9, float argA,

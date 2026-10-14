@@ -299,7 +299,7 @@ void grGarden_80203250(Ground_GObj* gobj)
     switch (gp->u.garden2.xc8) {
     case 0:
         if (gp->u.garden2.xcc == 0) {
-            Item_80268E5C(gp->u.garden2.xc4, 2, 2);
+            Item_80268E5C(gp->u.garden2.xc4, 2, ITEM_ANIM_UPDATE);
             grAnime_801C8138(gobj, gp->map_id, 0);
             dVar1 = yakumono_param->x18;
             iVar1 = (yakumono_param->x1C - yakumono_param->x18) < 0.0f
@@ -327,7 +327,7 @@ void grGarden_80203250(Ground_GObj* gobj)
             Ground_801C53EC(410002);
         }
         if (grAnime_801C83D0(gobj, 0, 7)) {
-            Item_80268E5C(gp->u.garden2.xc4, 0, 2);
+            Item_80268E5C(gp->u.garden2.xc4, 0, ITEM_ANIM_UPDATE);
             HSD_JObjRemoveAnimAll(jobj);
             if (yakumono_param->x14 != 0) {
                 iVar1 = HSD_Randi(yakumono_param->x14);
