@@ -862,8 +862,8 @@ void gm_Scene_TouAlt_OnFrame(void)
                                 } else {
                                     chr = fn_8018F6DC(0x19);
                                 }
-                            } while (gm_IsCKindUnlocked((u8) fn_8018F6FC(
-                                         (CSSIconHud) chr)) == 0);
+                            } while (gm_IsCKindUnlocked(
+                                         fn_8018F6FC((CSSIconHud) chr)) == 0);
                             tmd->x4B8[i].x1 = chr;
 
                             j = get_match_player_index(i);
@@ -890,8 +890,8 @@ void gm_Scene_TouAlt_OnFrame(void)
                                 } else {
                                     chr = fn_8018F6DC(0);
                                 }
-                            } while (gm_IsCKindUnlocked((u8) fn_8018F6FC(
-                                         (CSSIconHud) chr)) == 0);
+                            } while (gm_IsCKindUnlocked(
+                                         fn_8018F6FC((CSSIconHud) chr)) == 0);
                             tmd->x4B8[i].x1 = chr;
 
                             j = get_match_player_index(i);

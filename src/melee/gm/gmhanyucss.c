@@ -31,7 +31,7 @@ void gm_801BED3C(GameModeState* arg0)
 
     gm_80164F18();
     if (temp_r31->match_type & 1) {
-        gm_80164A0C(7);
+        gm_80164A0C(CKind_Luigi);
     }
 }
 

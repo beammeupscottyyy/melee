@@ -993,7 +993,7 @@ void ftLib_LoadFighterAllCostumes(s8 ft_kind)
 
 void ftLib_LoadKirbyHats(u8 arg0)
 {
-    u8 i;
+    CharacterKind i;
     for (i = 0; i <= SELKIND_COUNT; i++) {
         if (gm_IsCKindUnlocked(i)) {
             ftKb_SpecialN_800EED50(Player_800325C8(i, 0), arg0);

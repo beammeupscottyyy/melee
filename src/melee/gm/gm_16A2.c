@@ -284,7 +284,7 @@ void fn_80169A84(u8 arg0, s8* arg1, s8* arg2)
         }
         p = list;
         do {
-            if (i != 4 && gm_IsCKindUnlocked((u8) i) != 0) {
+            if (i != CKind_Kirby && gm_IsCKindUnlocked(i) != 0) {
                 *p = i;
             } else {
                 *p = -1;
