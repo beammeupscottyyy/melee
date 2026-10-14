@@ -33,8 +33,9 @@ void ftCo_800C7590(Fighter_GObj* gobj)
     ftCo_ReleaseItemAndVictim(gobj);
     ftCo_8008DCE0(gobj, -1, 0.0f);
     ftCommon_8007D7FC(fp);
-    Fighter_ChangeMotionState(gobj, ftCo_MS_CaptureLeadead, 0x1080, 0.0f, 1.0f,
-                              0.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftCo_MS_CaptureLeadead,
+                              Ft_MF_SkipColAnim | Ft_MF_SkipMatAnim, 0.0f,
+                              1.0f, 0.0f, NULL);
     Fighter_SetDamageCallbacks(fp, fn_800C74CC, fn_800C7568);
     fp->mv.co.captureleadead.x0 = (Item_GObj*) fp->dmg.x1868_source;
     ftCommon_8007E2FC(gobj);

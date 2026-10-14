@@ -259,8 +259,9 @@ void ftCo_800C6B6C(Fighter_GObj* gobj)
         Fighter* fp2 = GET_FIGHTER(gobj2);
         temp_r31->cur_pos.y = fp2->cur_pos.y;
     }
-    Fighter_ChangeMotionState(gobj, ftCo_MS_EntryEnd, 0x3000, 0.0F, 1.0F, 0.0F,
-                              NULL);
+    Fighter_ChangeMotionState(gobj, ftCo_MS_EntryEnd,
+                              Ft_MF_KeepAccessory | Ft_MF_SkipColAnim, 0.0F,
+                              1.0F, 0.0F, NULL);
     temp_r31->x2219_b1 = true;
     temp_r31->accessory1_cb = fn_800C6F34;
 }

@@ -402,7 +402,7 @@ void ftCo_8008DCE0(Fighter_GObj* gobj, int arg1, float facing_dir)
 
     ftCo_8008DA4C(gobj, fp->dmg.x1860_element, kb_level);
     ftCo_8008DB10(gobj, (s32) fp->dmg.x1860_element, kb_applied);
-    Fighter_ChangeMotionState(gobj, msid, 0x40U, 0, 1, 0, NULL);
+    Fighter_ChangeMotionState(gobj, msid, Ft_MF_Unk06, 0, 1, 0, NULL);
     ftAnim_8006EBA4(gobj);
     if (gm_8016B014()) {
         ftColl_8007B6A0(gobj);
