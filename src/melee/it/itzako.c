@@ -1,5 +1,7 @@
 #include "itzako.h"
 
+#include <melee/ft/kinds/ftCommon/forward.h>
+
 #include "inlines.h"
 #include "it_2725.h"
 #include "it_3F14.h"
@@ -560,10 +562,10 @@ bool it_8027CA7C(HSD_GObj* gobj)
     bool chk;
 
     chk = false;
-    if (ftLib_GetMotionId(gobj) == 0x14E) {
+    if (ftLib_GetMotionId(gobj) == ftCo_MS_CaptureLikelike) {
         chk = true;
     }
-    if (ftLib_GetMotionId(gobj) == 0x14D) {
+    if (ftLib_GetMotionId(gobj) == ftCo_MS_CaptureLeadead) {
         chk = true;
     }
     return chk;

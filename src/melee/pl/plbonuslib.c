@@ -2,6 +2,8 @@
 
 #include <Runtime/platform.h>
 
+#include <melee/ft/kinds/ftCommon/forward.h>
+
 #include <math.h>
 #include <placeholder.h>
 
@@ -181,13 +183,13 @@ void pl_8003D644(int arg0, int arg1, int arg2, int arg3)
         if (ftLib_IsDeadUp(temp_r3) != 0) {
             temp_r26->xDD1.x0.bit2 = true;
         }
-        if (temp_r27 == 0) {
+        if (temp_r27 == ftCo_MS_DeadDown) {
             temp_r26->xDD1.x0.bit3 = true;
         }
-        if (temp_r27 == 2) {
+        if (temp_r27 == ftCo_MS_DeadRight) {
             temp_r26->xDD1.x0.bit0 = true;
         }
-        if (temp_r27 == 1) {
+        if (temp_r27 == ftCo_MS_DeadLeft) {
             temp_r26->xDD1.x0.bit1 = true;
         }
         if (ft_80087858(temp_r3) != 0) {
@@ -263,7 +265,7 @@ void pl_8003D644(int arg0, int arg1, int arg2, int arg3)
             if (ftLib_IsDeadUpStar(temp_r3) != 0) {
                 pl_80038824(temp_r23, 0x6D);
             }
-            if (temp_r27 == 3) {
+            if (temp_r27 == ftCo_MS_DeadUp) {
                 temp_r3_3 = Player_GetStaleMoveTableIndexPtr2(temp_r23);
                 temp_r3_3->x0_staleMoveTable.xCB4 += 1;
             }

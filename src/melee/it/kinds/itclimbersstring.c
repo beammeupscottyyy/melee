@@ -1,5 +1,7 @@
 #include "itclimbersstring.h"
 
+#include <melee/ft/kinds/ftPopo/forward.h>
+
 #include "inlines.h"
 #include "itlinkhookshot.h"
 #include <melee/ft/ftlib.h>
@@ -264,7 +266,9 @@ bool itClimbersstring_UnkMotion3_Anim(Item_GObj* gobj)
 
     if (ip->owner != NULL) {
         enum_t action = ftLib_GetMotionId(ip->owner);
-        if (action >= 0x15B && action <= 0x164) {
+        if (action >= ftPp_MS_SpecialHiStart_0 &&
+            action <= ftPp_MS_SpecialAirHiThrow_1)
+        {
             should_cleanup = 0;
         } else {
             should_cleanup = 1;

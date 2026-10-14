@@ -1,5 +1,7 @@
 #include "plbonus.h"
 
+#include <melee/ft/kinds/ftCommon/forward.h>
+
 #include "inlines.h"
 #include "pl_040D.h"
 #include "plattack.h"
@@ -1131,18 +1133,18 @@ void fn_8003CC84(int player)
         pl_800418F4(player);
         if (Player_8003221C(player) != 0) {
             switch (ftLib_GetMotionId(temp_r29)) {
-            case 0xC:
-            case 0xD:
+            case ftCo_MS_Rebirth:
+            case ftCo_MS_RebirthWait:
                 setFlag(player, 0x89);
                 break;
-            case 0:
-            case 1:
-            case 2:
+            case ftCo_MS_DeadDown:
+            case ftCo_MS_DeadLeft:
+            case ftCo_MS_DeadRight:
                 if ((gm_8016B3D8() != 0) || (gm_801720F8() == 0)) {
                     setFlag(player, 0x8C);
                 }
                 break;
-            case 4:
+            case ftCo_MS_DeadUpStar:
                 if ((gm_8016B3D8() != 0) || (gm_801720F8() == 0)) {
                     setFlag(player, 0x8D);
                 }

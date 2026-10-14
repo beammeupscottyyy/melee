@@ -1,5 +1,7 @@
 #include "itnessyoyo.h"
 
+#include <melee/ft/kinds/ftNess/forward.h>
+
 #include "inlines.h"
 #include "itlinkhookshot.h"
 #include <melee/ft/ftlib.h>
@@ -297,7 +299,8 @@ static inline bool itNessyoyo_UnkMotion3_Anim_inline(Item_GObj* gobj)
 {
     if (GET_ITEM(gobj)->owner) {
         enum_t action = ftLib_GetMotionId(GET_ITEM(gobj)->owner);
-        if (action >= 0x156 && action <= 0x15B) {
+        if (action >= ftNs_MS_AttackHi4 && action <= ftNs_MS_AttackLw4Release)
+        {
             return false;
         } else {
             return true;
