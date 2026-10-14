@@ -1453,15 +1453,15 @@ typedef struct Fighter_x20B0_t {
 typedef struct Fighter_x2D0_t {
     /// @warning i didnt confirm these comments, they come from altimors
     /// ghidra db
-    int x0;       ///< turn frames
-    float x4;     ///< turn threshold
-    float x8;     ///< x impulse
-    float xC;     ///< accel mult
-    float x10;    ///< speed mult
-    float x14[5]; ///< y impulse
-    int x28;      ///< state count
-    enum_t x2C;   ///< start state
-    enum_t x30;   ///< start state helmet
+    int x0;         ///< turn frames
+    float x4;       ///< turn threshold
+    float x8;       ///< x impulse
+    float xC;       ///< accel mult
+    float x10;      ///< speed mult
+    float x14[5];   ///< y impulse
+    int x28;        ///< state count
+    FtMotionId x2C; ///< start state
+    FtMotionId x30; ///< start state helmet
 } Fighter_x2D0_t;
 
 typedef struct Fighter_x1670_t {
@@ -1728,7 +1728,7 @@ struct Fighter {
     /* fp+1968 */ u8 x1968_jumpsUsed;
     /* fp+1969 */ u8 x1969_walljumpUsed;
     /* fp+196C */ float hitlag_mul;
-    /* fp+1970 */ enum_t unk_msid;
+    /* fp+1970 */ FtMotionId unk_msid;
     /* fp+1974 */ Item_GObj* item_gobj;
     /* fp+1978 */ Item_GObj* x1978; // held item
     /* fp+197C */ HSD_GObj* x197C;  ///< bunny hood

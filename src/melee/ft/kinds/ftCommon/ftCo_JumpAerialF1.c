@@ -85,7 +85,7 @@ void ftCo_800D74A4(Fighter_GObj* gobj)
     Fighter* fp;
     struct Fighter_x2D0_t* tmp;
     s32 msid;
-    s32 msid2;
+    FtMotionId msid2;
     struct Fighter_x2D0_t* p;
     PAD_STACK(0x14);
 
