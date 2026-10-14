@@ -504,7 +504,7 @@ void ftMs_SpecialS4_Coll(HSD_GObj* gobj)
         }
     } else {
         // EnvironmentCollision_CheckForGroundOnly(NoLedgeGrab)
-        if (ft_80081D0C(gobj) != 0) {
+        if (ft_80081D0C(gobj) != GA_Ground) {
             ftMs_SpecialS_8013809C(gobj);
         }
     }

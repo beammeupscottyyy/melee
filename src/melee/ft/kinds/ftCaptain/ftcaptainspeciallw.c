@@ -309,10 +309,10 @@ void ftCa_SpecialLw_Coll(HSD_GObj* gobj)
     u8 _[8];
     Fighter* fp = GET_FIGHTER(gobj);
     if ((s32) fp->ground_or_air == GA_Ground) {
-        if (ft_80082708(gobj) == 0) {
+        if (ft_80082708(gobj) == GA_Ground) {
             ftCommon_8007D5D4(fp);
         }
-    } else if (ft_80081D0C(gobj) != 0) {
+    } else if (ft_80081D0C(gobj) != GA_Ground) {
         ftCommon_8007D7FC(fp);
     }
     {

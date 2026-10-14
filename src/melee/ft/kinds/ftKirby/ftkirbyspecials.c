@@ -149,7 +149,7 @@ void ftKb_SpecialAirS_Phys(Fighter_GObj* gobj)
 void ftKb_SpecialS_Coll(Fighter_GObj* gobj)
 {
     Fighter* fp;
-    if (ft_80082708(gobj) != 0) {
+    if (ft_80082708(gobj) != GA_Ground) {
         return;
     }
     fp = GET_FIGHTER(gobj);

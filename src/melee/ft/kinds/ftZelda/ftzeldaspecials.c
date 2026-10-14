@@ -510,7 +510,7 @@ void ftZd_SpecialSStart_Coll(HSD_GObj* gobj)
     Fighter* fp;
 
     fp = GET_FIGHTER(gobj);
-    if (ft_80082708(gobj) == 0) {
+    if (ft_80082708(gobj) == GA_Ground) {
         ftCommon_GroundToAirStateChange(gobj, fp, ftZd_MS_SpecialAirSStart,
                                         ftZd_MF_SpecialSStart_Coll);
     }
@@ -522,7 +522,7 @@ void ftZd_SpecialSLoop_Coll(HSD_GObj* gobj)
     Fighter* fp;
 
     fp = GET_FIGHTER(gobj);
-    if (ft_80082708(gobj) == 0) {
+    if (ft_80082708(gobj) == GA_Ground) {
         ftCommon_GroundToAirStateChange(gobj, fp, ftZd_MS_SpecialAirSLoop,
                                         ftCommon_GroundAirColl_MF);
     }
@@ -534,7 +534,7 @@ void ftZd_SpecialSEnd_Coll(HSD_GObj* gobj)
     Fighter* fp;
 
     fp = GET_FIGHTER(gobj);
-    if (ft_80082708(gobj) == 0) {
+    if (ft_80082708(gobj) == GA_Ground) {
         ftCommon_GroundToAirStateChange(gobj, fp, ftZd_MS_SpecialAirSEnd,
                                         ftCommon_GroundAirColl_MF);
     }
@@ -546,7 +546,7 @@ void ftZd_SpecialAirSStart_Coll(HSD_GObj* gobj)
     Fighter* fp;
 
     fp = GET_FIGHTER(gobj);
-    if (ft_80081D0C(gobj) != 0) {
+    if (ft_80081D0C(gobj) != GA_Ground) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftZd_MS_SpecialSStart,
                                         ftZd_MF_SpecialSStart_Coll);
     }
@@ -558,7 +558,7 @@ void ftZd_SpecialAirSLoop_Coll(HSD_GObj* gobj)
     Fighter* fp;
 
     fp = GET_FIGHTER(gobj);
-    if (ft_80081D0C(gobj) != 0) {
+    if (ft_80081D0C(gobj) != GA_Ground) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftZd_MS_SpecialSLoop,
                                         ftCommon_GroundAirColl_MF);
     }
@@ -570,7 +570,7 @@ void ftZd_SpecialAirSEnd_Coll(HSD_GObj* gobj)
     Fighter* fp;
 
     fp = GET_FIGHTER(gobj);
-    if (ft_80081D0C(gobj) != 0) {
+    if (ft_80081D0C(gobj) != GA_Ground) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftZd_MS_SpecialSEnd,
                                         ftCommon_GroundAirColl_MF);
     }

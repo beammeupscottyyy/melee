@@ -507,7 +507,7 @@ void ftDk_SpecialNFull_Coll(HSD_GObj* gobj)
 void ftDk_SpecialAirNStart_Coll(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if (ft_80081D0C(gobj) == 1) {
+    if (ft_80081D0C(gobj) == GA_Air) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftDk_MS_SpecialNStart,
                                         ftDk_MF_SpecialN_CollCancel);
         setCallbacks(gobj);
@@ -517,7 +517,7 @@ void ftDk_SpecialAirNStart_Coll(HSD_GObj* gobj)
 void ftDk_SpecialAirNLoop_Coll(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if (ft_80081D0C(gobj) == 1) {
+    if (ft_80081D0C(gobj) == GA_Air) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftDk_MS_SpecialNLoop,
                                         ftDk_MF_SpecialN_CollCancel);
         setCallbacks(gobj);
@@ -527,7 +527,7 @@ void ftDk_SpecialAirNLoop_Coll(HSD_GObj* gobj)
 void ftDk_SpecialAirNCancel_Coll(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if (ft_80081D0C(gobj) == 1) {
+    if (ft_80081D0C(gobj) == GA_Air) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftDk_MS_SpecialNCancel,
                                         ftDk_MF_SpecialN_CollCancel);
         setCallbacks(gobj);

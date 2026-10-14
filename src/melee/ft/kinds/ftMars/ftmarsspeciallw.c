@@ -146,7 +146,7 @@ void ftMs_SpecialLw_Coll(HSD_GObj* gobj)
 /// 80138CFC 001358DC
 void ftMs_SpecialAirLw_Coll(HSD_GObj* gobj)
 {
-    if (ft_80081D0C(gobj) != 0) {
+    if (ft_80081D0C(gobj) != GA_Ground) {
         ftMs_SpecialLw_80138DD0(gobj);
     }
 }
@@ -252,7 +252,7 @@ void ftMs_SpecialAirLwHit_Phys(HSD_GObj* gobj)
 /// 80139008 00135BE8
 void ftMs_SpecialLwHit_Coll(HSD_GObj* gobj)
 {
-    if (ft_80082708(gobj) == 0) {
+    if (ft_80082708(gobj) == GA_Ground) {
         ftMs_SpecialLw_80139080(gobj);
     }
 }
@@ -260,7 +260,7 @@ void ftMs_SpecialLwHit_Coll(HSD_GObj* gobj)
 /// 80139044 00135C24
 void ftMs_SpecialAirLwHit_Coll(HSD_GObj* gobj)
 {
-    if (ft_80081D0C(gobj) != 0) {
+    if (ft_80081D0C(gobj) != GA_Ground) {
         ftMs_SpecialLw_801390E0(gobj);
     }
 }

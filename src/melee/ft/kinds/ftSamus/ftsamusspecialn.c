@@ -394,7 +394,7 @@ void ftSs_SpecialN_Coll(HSD_GObj* gobj)
 void ftSs_SpecialAirNStart_Coll(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if (ft_80081D0C(gobj) == 1) {
+    if (ft_80081D0C(gobj) == GA_Air) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftSs_MS_SpecialNStart,
                                         ftCommon_GroundAirColl_MF);
         ftSamus_updateDamageDeathCBs(gobj);
@@ -404,7 +404,7 @@ void ftSs_SpecialAirNStart_Coll(HSD_GObj* gobj)
 void ftSs_SpecialAirN_Coll(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if (ft_80081D0C(gobj) == 1) {
+    if (ft_80081D0C(gobj) == GA_Air) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftSs_MS_SpecialN,
                                         ftCommon_GroundAirColl_MF);
         ftSamus_updateDamageDeathCBs(gobj);

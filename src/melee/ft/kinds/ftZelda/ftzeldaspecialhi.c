@@ -268,7 +268,7 @@ void ftZd_SpecialHiStart_1_Coll(HSD_GObj* gobj)
     CollData* collData = &fp->coll_data;
     u32 env_flags;
 
-    if (ft_80082708(gobj) == 0) {
+    if (ft_80082708(gobj) == GA_Ground) {
         env_flags = collData->env_flags;
         if ((env_flags & Collide_LeftWallMask) != 0 ||
             (env_flags & Collide_RightWallMask) != 0)

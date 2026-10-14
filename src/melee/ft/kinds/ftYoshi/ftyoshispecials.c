@@ -1096,7 +1096,7 @@ void ftYs_SpecialAirSStart_0_Coll(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
 
-    if (ft_80082708(gobj) == 0) {
+    if (ft_80082708(gobj) == GA_Ground) {
         ftCommon_GroundToAirStateChange(gobj, fp, ftYs_MS_SpecialAirSStart_1,
                                         ftYs_MF_SpecialS_Coll);
         ftYoshi_SpecialS_SetCall(gobj);

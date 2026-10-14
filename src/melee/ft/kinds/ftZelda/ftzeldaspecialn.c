@@ -191,7 +191,7 @@ void ftZd_SpecialN_Coll(HSD_GObj* gobj)
 /// 8013AC4C - 8013AC88 (60 bytes)
 void ftZd_SpecialAirN_Coll(HSD_GObj* gobj)
 {
-    if (ft_80081D0C(gobj) != 0) {
+    if (ft_80081D0C(gobj) != GA_Ground) {
         ftZd_SpecialN_8013AD1C(gobj);
     }
 }
