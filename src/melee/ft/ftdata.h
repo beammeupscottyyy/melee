@@ -11,10 +11,10 @@
 /* 08521C */ void ft_8008521C(Fighter_GObj* gobj);
 /* 0852B0 */ void ft_800852B0(void);
 /* 08549C */ void ft_8008549C(void);
-/* 085560 */ void ftData_80085560(int idx, int increment);
+/* 085560 */ void ftData_80085560(FighterKind kind, int increment);
 /* 0855C8 */ void ftData_800855C8(FighterKind kind, u8 color);
 /* 08572C */ void ftData_8008572C(FighterKind);
-/* 08578C */ void ftData_8008578C(int, u8 color);
+/* 08578C */ void ftData_8008578C(FighterKind, u8 color);
 /* 0857E0 */ void ftData_800857E0(FighterKind);
 /* 085820 */ void ftData_80085820(FighterKind, int costume_id);
 /* 0858E4 */ void ftData_800858E4(FighterKind, int costume_id);
@@ -22,13 +22,13 @@
 /* 085A14 */ void ftData_80085A14(FighterKind);
 /* 085B10 */ void ftData_80085B10(Fighter*);
 /* 085B98 */ void ftData_80085B98(Fighter*, int, int);
-/* 085CD8 */ void ftData_80085CD8(Fighter*, Fighter*, enum_t msid);
+/* 085CD8 */ void ftData_80085CD8(Fighter*, Fighter*, enum_t anim_id);
 
 /// Animation_GetAddress
-/* 085E50 */ FigaTree* ftData_80085E50(Fighter*, enum_t msid);
+/* 085E50 */ FigaTree* ftData_80085E50(Fighter*, enum_t anim_id);
 
 /* 085FD4 */ struct ftData_80085FD4_ret* ftData_80085FD4(Fighter* fp,
-                                                         FtMotionId msid);
+                                                         enum_t anim_id);
 /* 086060 */ Fighter* ftData_80086060(Fighter* arg0);
 /* 3C0EC0 */ extern struct UnkCostumeList
     CostumeListsForeachCharacter[Ft_Kind_Max];

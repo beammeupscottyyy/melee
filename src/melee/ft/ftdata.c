@@ -1517,10 +1517,10 @@ u8 ftData_UnkBytePerCharacter[Ft_Kind_Max] = {
     18, 16, 17, 6, 1, 3,  7, -1, 19, 49, -1, -1, -1, -1, 12, -1,
 };
 
-void ftData_80085560(int idx, int increment)
+void ftData_80085560(FighterKind kind, int increment)
 {
-    ft_8045996C[idx] += increment;
-    if (ft_8045996C[idx] < 0) {
+    ft_8045996C[kind] += increment;
+    if (ft_8045996C[kind] < 0) {
         OSReport("fighter reference counter error!\n");
         HSD_ASSERT(1944, 0);
     }
@@ -1572,7 +1572,7 @@ void ftData_8008572C(FighterKind kind)
     }
 }
 
-void ftData_8008578C(int arg0, u8 color)
+void ftData_8008578C(FighterKind kind, u8 color)
 {
     if (color != 0xFF &&
         color >= CostumeListsForeachCharacter[Ft_Kind_Kirby].numCostumes)
@@ -1580,7 +1580,7 @@ void ftData_8008578C(int arg0, u8 color)
         color = 0;
     }
     ftKb_SpecialN_800EEC34(
-        arg0, color, CostumeListsForeachCharacter[Ft_Kind_Kirby].numCostumes);
+        kind, color, CostumeListsForeachCharacter[Ft_Kind_Kirby].numCostumes);
 }
 
 void ftData_800857E0(FighterKind kind)
@@ -1731,7 +1731,7 @@ void ftData_80085B98(Fighter* fp, int arg1, int arg2)
     }
 }
 
-void ftData_80085CD8(Fighter* fp, Fighter* arg1, int msid)
+void ftData_80085CD8(Fighter* fp, Fighter* arg1, int anim_id)
 {
     HSD_Archive sp14;
     Fighter* temp_r3_3;
@@ -1742,8 +1742,9 @@ void ftData_80085CD8(Fighter* fp, Fighter* arg1, int msid)
     uintptr_t temp_r3_2;
     uintptr_t temp_r4_2;
 
-    if (msid < arg1->x58C) {
-        temp_r3 = (struct Fighter_WaitAnimData*) ftData_80085FD4(arg1, msid);
+    if (anim_id < arg1->x58C) {
+        temp_r3 =
+            (struct Fighter_WaitAnimData*) ftData_80085FD4(arg1, anim_id);
         temp_r3_2 = temp_r3->x14;
         if (temp_r3_2 != fp->x5A4) {
             if (temp_r3_2 != 0) {
@@ -1756,7 +1757,7 @@ void ftData_80085CD8(Fighter* fp, Fighter* arg1, int msid)
                         (intptr_t) temp_r4 - (intptr_t) temp_r3_3->x59C);
                     if (temp_ret == -1) {
                         HSD_ASSERTREPORT(
-                            0x9FA, 0, "lbArchiveRelocate error! %x\n", msid);
+                            0x9FA, 0, "lbArchiveRelocate error! %x\n", anim_id);
                     }
                 } else {
                     temp_r4_2 = temp_r3->x14;
@@ -1769,8 +1770,8 @@ void ftData_80085CD8(Fighter* fp, Fighter* arg1, int msid)
                     temp_ret_2 =
                         HSD_ArchiveParse(&sp14, fp->x59C->x0, temp_r3->x8);
                     if (temp_ret_2 == -1) {
-                        HSD_ASSERTREPORT(0xA0F, 0,
-                                         "HSD_ArchiveParse error! %x\n", msid);
+                        HSD_ASSERTREPORT(
+                            0xA0F, 0, "HSD_ArchiveParse error! %x\n", anim_id);
                     }
                 }
                 fp->x590 =
@@ -1783,7 +1784,7 @@ void ftData_80085CD8(Fighter* fp, Fighter* arg1, int msid)
     }
 }
 
-FigaTree* ftData_80085E50(Fighter* arg0, int msid)
+FigaTree* ftData_80085E50(Fighter* arg0, int anim_id)
 {
     HSD_Archive sp10;
     Fighter* temp_r3_3;
@@ -1794,8 +1795,8 @@ FigaTree* ftData_80085E50(Fighter* arg0, int msid)
     uintptr_t temp_r3_2;
     uintptr_t temp_r4_2;
 
-    if (msid < arg0->x58C) {
-        temp_r3 = ftData_80085FD4(arg0, msid);
+    if (anim_id < arg0->x58C) {
+        temp_r3 = ftData_80085FD4(arg0, anim_id);
         temp_r3_2 = temp_r3->x14;
         if (temp_r3_2 != arg0->x5A8) {
             if (temp_r3_2 != 0) {
@@ -1808,7 +1809,7 @@ FigaTree* ftData_80085E50(Fighter* arg0, int msid)
                         (intptr_t) temp_r4 - (intptr_t) temp_r3_3->x59C);
                     if (temp_ret == -1) {
                         HSD_ASSERTREPORT(
-                            0xA30, 0, "lbArchiveRelocate error! %x\n", msid);
+                            0xA30, 0, "lbArchiveRelocate error! %x\n", anim_id);
                     }
                 } else {
                     temp_r4_2 = temp_r3->x14;
@@ -1821,8 +1822,8 @@ FigaTree* ftData_80085E50(Fighter* arg0, int msid)
                     temp_ret_2 =
                         HSD_ArchiveParse(&sp10, arg0->x5A0->x0, temp_r3->x8);
                     if (temp_ret_2 == -1) {
-                        HSD_ASSERTREPORT(0xA45, 0,
-                                         "HSD_ArchiveParse error! %x\n", msid);
+                        HSD_ASSERTREPORT(
+                            0xA45, 0, "HSD_ArchiveParse error! %x\n", anim_id);
                     }
                 }
                 arg0->x598 =
@@ -1837,16 +1838,16 @@ FigaTree* ftData_80085E50(Fighter* arg0, int msid)
     return NULL;
 }
 
-struct ftData_80085FD4_ret* ftData_80085FD4(Fighter* fp, int msid)
+struct ftData_80085FD4_ret* ftData_80085FD4(Fighter* fp, int anim_id)
 {
     if (fp->kind == Ft_Kind_Nana &&
         Player_GetPlayerSlotType(fp->player_idx) != Gm_PKind_Demo &&
-        fp->x24[msid].x14 == 0)
+        fp->x24[anim_id].x14 == 0)
     {
         return (struct ftData_80085FD4_ret*) &gFtDataList[Ft_Kind_Popo]
-            ->xC[msid];
+            ->xC[anim_id];
     }
-    return (struct ftData_80085FD4_ret*) &fp->x24[msid];
+    return (struct ftData_80085FD4_ret*) &fp->x24[anim_id];
 }
 
 Fighter* ftData_80086060(Fighter* fp)

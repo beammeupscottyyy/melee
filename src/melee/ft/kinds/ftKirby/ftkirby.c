@@ -2741,16 +2741,16 @@ char* ftKb_Init_GetMotionFileString(enum_t arg0)
 
 float const ftKb_Init_803B7548[10] = { 0 };
 
-void ftKb_SpecialN_800EEC34(int arg0, int arg1, int arg2)
+void ftKb_SpecialN_800EEC34(FighterKind kind, int arg1, int arg2)
 {
     int i;
     int lo;
 
-    if (ftKb_Init_803CA9D0[arg0].filename != NULL) {
-        lbDvd_800178E8(2, ftKb_Init_803CA9D0[arg0].filename, 4, 4, 0, 1, 3, 1,
+    if (ftKb_Init_803CA9D0[kind].filename != NULL) {
+        lbDvd_800178E8(2, ftKb_Init_803CA9D0[kind].filename, 4, 4, 0, 1, 3, 1,
                        0);
     }
-    if (ftKb_Init_803CB3E8[arg0] != NULL) {
+    if (ftKb_Init_803CB3E8[kind] != NULL) {
         if (arg1 == 0xFF) {
             lo = 0;
         } else {
@@ -2758,37 +2758,37 @@ void ftKb_SpecialN_800EEC34(int arg0, int arg1, int arg2)
             arg2 = arg1 + 1;
         }
         for (i = lo; i < arg2; i++) {
-            if (ftKb_Init_803CB3E8[arg0][i].dat_filename != NULL) {
-                lbDvd_800178E8(2, ftKb_Init_803CB3E8[arg0][i].dat_filename, 4,
+            if (ftKb_Init_803CB3E8[kind][i].dat_filename != NULL) {
+                lbDvd_800178E8(2, ftKb_Init_803CB3E8[kind][i].dat_filename, 4,
                                4, 0, 1, 3, 1, 0);
             }
         }
     }
-    if (ftKb_Init_803CB46C[arg0] != (char) -1) {
-        efAsync_LoadAsync(ftKb_Init_803CB46C[arg0]);
+    if (ftKb_Init_803CB46C[kind] != (char) -1) {
+        efAsync_LoadAsync(ftKb_Init_803CB46C[kind]);
     }
 }
 
-void ftKb_SpecialN_800EED50(s32 arg0, s32 arg1)
+void ftKb_SpecialN_800EED50(FighterKind kind, s32 arg1)
 {
     ftKirby_CostumeArchive* item;
     Fighter_CostumeStrings* costumes;
     Fighter_CostumeStrings* cs;
 
-    if (arg0 != -1 && arg0 != 4) {
-        if (ftKb_Init_803CA9D0[arg0].filename != NULL) {
+    if (kind != -1 && kind != Ft_Kind_Kirby) {
+        if (ftKb_Init_803CA9D0[kind].filename != NULL) {
             // The layout depends on the fighter: an ftKbCopy* struct
-            if (((void**) ft_80459B88.copies)[arg0] == NULL) {
-                lbArchive_80017040(NULL, ftKb_Init_803CA9D0[arg0].filename,
-                                   &((void**) ft_80459B88.copies)[arg0],
-                                   ftKb_Init_803CA9D0[arg0].name, 0);
+            if (((void**) ft_80459B88.copies)[kind] == NULL) {
+                lbArchive_80017040(NULL, ftKb_Init_803CA9D0[kind].filename,
+                                   &((void**) ft_80459B88.copies)[kind],
+                                   ftKb_Init_803CA9D0[kind].name, 0);
             }
         }
-        if (ftKb_Init_803CB3E8[arg0] != NULL) {
-            item = &ftKb_Init_803C9FC8[arg0][arg1];
+        if (ftKb_Init_803CB3E8[kind] != NULL) {
+            item = &ftKb_Init_803C9FC8[kind][arg1];
             if (item->joint == NULL) {
-                costumes = ftKb_Init_803CB3E8[arg0];
-                cs = &ftKb_Init_803CB3E8[arg0][arg1];
+                costumes = ftKb_Init_803CB3E8[kind];
+                cs = &ftKb_Init_803CB3E8[kind][arg1];
                 if (cs->matanim_joint_name != NULL) {
                     lbArchive_80017040(NULL, costumes[arg1].dat_filename,
                                        &item->joint, cs->joint_name,
@@ -2801,7 +2801,7 @@ void ftKb_SpecialN_800EED50(s32 arg0, s32 arg1)
                 }
             }
         }
-        efAsync_LoadSync(ftKb_Init_803CB46C[arg0]);
+        efAsync_LoadSync(ftKb_Init_803CB46C[kind]);
     }
 }
 

@@ -60,7 +60,7 @@
 /* 086BEC */ void ftLib_GetPosDelta(HSD_GObj*, Vec3*);
 
 /// @returns A fighter action state ID.
-/* 086C0C */ enum_t ftLib_GetMotionId(HSD_GObj*);
+/* 086C0C */ FtMotionId ftLib_GetMotionId(HSD_GObj*);
 
 /* 086C18 */ void ftLib_StartRumble(HSD_GObj*, s32, s32);
 /* 086C9C */ void ftLib_StartRumbleAll(s32, s32);
@@ -75,8 +75,8 @@
 /* 086FA8 */ bool ftLib_IsSwordSwing(HSD_GObj*);
 /* 086FD4 */ bool ftLib_IsSamePlayer(HSD_GObj*, HSD_GObj*);
 /* 08701C */ bool ftLib_IsSleeping(HSD_GObj*);
-/* 08702C */ void ftLib_IncFighterRefCount(s32);
-/* 087050 */ void ftLib_DecFighterRefCount(s32);
+/* 08702C */ void ftLib_IncFighterRefCount(FighterKind);
+/* 087050 */ void ftLib_DecFighterRefCount(FighterKind);
 /* 087074 */ bool ftLib_GetShakeOffset(HSD_GObj*, Vec3*);
 /* 0870BC */ bool ftLib_GetSubColor(HSD_GObj*, GXColor*);
 /* 0870F0 */ void ftLib_SetPercent(HSD_GObj*, s32);

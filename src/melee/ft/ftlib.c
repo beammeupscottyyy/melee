@@ -594,7 +594,7 @@ void ftLib_GetPosDelta(HSD_GObj* gobj, Vec3* v)
     *v = fp->pos_delta;
 }
 
-enum_t ftLib_GetMotionId(HSD_GObj* gobj)
+FtMotionId ftLib_GetMotionId(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     return fp->motion_id;
@@ -739,14 +739,14 @@ bool ftLib_IsSleeping(HSD_GObj* gobj)
     return fp->is_sleeping;
 }
 
-void ftLib_IncFighterRefCount(s32 arg0)
+void ftLib_IncFighterRefCount(FighterKind kind)
 {
-    ftData_80085560(arg0, 1);
+    ftData_80085560(kind, 1);
 }
 
-void ftLib_DecFighterRefCount(s32 arg0)
+void ftLib_DecFighterRefCount(FighterKind kind)
 {
-    ftData_80085560(arg0, -1);
+    ftData_80085560(kind, -1);
 }
 
 bool ftLib_GetShakeOffset(HSD_GObj* gobj, Vec3* v)
