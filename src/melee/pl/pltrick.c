@@ -1,5 +1,7 @@
 #include "pltrick.h"
 
+#include <melee/ft/kinds/ftCommon/forward.h>
+
 #include "pl_040D.h"
 #include "player.h"
 #include "plbonus.h"
@@ -183,7 +185,7 @@ static void fn_80037F00(HSD_GObj** gp, Fighter* fp, ft_800898B4_t* ev,
         fp->dmg.x18d8.x11_b1 = 1;
     }
 
-    if (fp->motion_id == 0xFD) {
+    if (fp->motion_id == ftCo_MS_CliffWait) {
         fp->dmg.x18d8.x11_b2 = 1;
     }
 

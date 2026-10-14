@@ -26,8 +26,8 @@ void fn_800D9CE8(Fighter_GObj* gobj)
     fp->gr_vel = 0.0f;
     frame = fp->cur_anim_frame;
     startFrame = frame;
-    if (fp->motion_id == 0xD4) {
-        nextMotion = 0xD5;
+    if (fp->motion_id == ftCo_MS_Catch) {
+        nextMotion = ftCo_MS_CatchPull;
         if (fp->kind == Ft_Kind_Yoshi) {
             yattrs = fp->dat_attrs;
             if (frame >= yattrs->x124 && frame < yattrs->x128) {
@@ -38,7 +38,7 @@ void fn_800D9CE8(Fighter_GObj* gobj)
             }
         }
     } else {
-        nextMotion = 0xD7;
+        nextMotion = ftCo_MS_CatchDashPull;
     }
 
     switch (fp->kind) {

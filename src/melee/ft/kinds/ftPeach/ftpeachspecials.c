@@ -3,6 +3,7 @@
 #include <Runtime/platform.h>
 
 #include <melee/ft/forward.h>
+#include <melee/ft/kinds/ftMars/forward.h>
 
 #include "types.h"
 #include <dolphin/mtx.h>
@@ -85,14 +86,15 @@ static void doAirEnd0(HSD_GObj* gobj)
             case Ft_Kind_Mars:
             case Ft_Kind_Emblem: {
                 FtMotionId msid = other_fp->motion_id;
-                if (msid != 369 && msid != 371) {
+                if (msid != ftMs_MS_SpecialLw && msid != ftMs_MS_SpecialAirLw)
+                {
                     return;
                 }
                 break;
             }
             case Ft_Kind_Peach: {
                 FtMotionId msid = other_fp->motion_id;
-                if (msid != 365 && msid != 367) {
+                if (msid != ftPe_MS_SpecialN && msid != ftPe_MS_SpecialAirN) {
                     return;
                 }
                 break;

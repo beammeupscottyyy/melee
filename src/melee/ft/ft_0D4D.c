@@ -127,7 +127,8 @@ void ftCo_800D4FF4(Fighter_GObj* gobj)
 
     ftCommon_8007D5D4(fp);
     fp->mv.co.unk_deadup.x40 = p_ftCommonData->rebirth_countdown;
-    Fighter_ChangeMotionState(gobj, 0xC, 0x1002, 0.0f, 1.0f, -1.0f, NULL);
+    Fighter_ChangeMotionState(gobj, ftCo_MS_Rebirth, 0x1002, 0.0f, 1.0f, -1.0f,
+                              NULL);
 
     fp->x221E_b2 = 1;
     fp->x2219_b1 = 1;
