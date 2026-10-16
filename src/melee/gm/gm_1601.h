@@ -3,6 +3,7 @@
 
 #include <melee/ft/forward.h>
 #include <melee/gm/forward.h>
+#include <melee/gr/forward.h>
 #include <melee/mn/forward.h>
 #include <melee/sc/forward.h>
 
@@ -161,7 +162,7 @@
 /* 1640B0 */ void fn_801640B0(u64* item_mask);
 /* 16419C */ float fn_8016419C(u8);
 /* 1641B4 */ float fn_801641B4(u8);
-/* 1641CC */ u16 gm_801641CC(u8);
+/* 1641CC */ StKind gm_801641CC(u8);
 /* 1641E4 */ void gm_801641E4(u8 stage, u8 enable);
 /* 164250 */ bool gm_IsStageUnlocked(u16 stkind);
 /* 1642A0 */ bool fn_801642A0(void);

@@ -83,10 +83,14 @@ static const float lbl_803B7784[] = {
 };
 
 /* 3B7808 */ static const s16 lbl_803B7808[0x3C / 2] = {
-    0x0004, 0x0005, 0x000D, 0x0006, 0x0008, 0x0002, 0x0007, 0x0003,
-    0x000A, 0x0009, 0x0019, 0x0013, 0x000B, 0x000C, 0x000E, 0x000F,
-    0x0010, 0x0011, 0x0016, 0x0017, 0x0018, 0x0012, 0x0014, 0x001B,
-    0x001F, 0x0020, 0x001C, 0x001D, 0x001E, 0x0000,
+    St_Kind_Castle,   St_Kind_Kongo,    St_Kind_GreatBay,  St_Kind_Zebes,
+    St_Kind_Story,    St_Kind_Izumi,    St_Kind_Corneria,  St_Kind_PStadium,
+    St_Kind_MuteCity, St_Kind_Onett,    St_Kind_Icemt,     St_Kind_Inishie1,
+    St_Kind_RCruise,  St_Kind_Garden,   St_Kind_Shrine,    St_Kind_Kraid,
+    St_Kind_Yoster,   St_Kind_Greens,   St_Kind_Venom,     St_Kind_Pura,
+    St_Kind_BigBlue,  St_Kind_Fourside, St_Kind_Inishie2,  St_Kind_Flatzone,
+    St_Kind_Battle,   St_Kind_Last,     St_Kind_OldPupupu, St_Kind_OldYoshi,
+    St_Kind_OldKongo, St_Kind_Dummy,
 };
 
 static const u8 lbl_803B7844[] = {
@@ -2348,7 +2352,7 @@ float fn_801641B4(u8 arg0)
     return lbl_803B7930[arg0 - 1].y;
 }
 
-u16 gm_801641CC(u8 arg0)
+StKind gm_801641CC(u8 arg0)
 {
     return lbl_803B7808[arg0];
 }
@@ -3535,9 +3539,9 @@ void gm_801674C4(s8 arg0, u8 arg1, s8 arg2, s8 arg3, GmRouteCallback arg4)
     struct lbl_8046B488_t* temp_ptr;
     temp_ptr = gm_1601_GetUnkData();
     temp_ptr->x0 = arg0;
-    temp_ptr->x1 = 0x21;
+    temp_ptr->x1 = ChKind_None;
     new_var3 = arg1;
-    temp_ptr->x2 = 0x21;
+    temp_ptr->x2 = ChKind_None;
     temp_ptr->x7 = new_var3;
     temp_ptr->x8 = new_var3;
     temp_ptr->x9 = arg2;
