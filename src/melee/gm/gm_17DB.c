@@ -120,7 +120,7 @@ s32 fn_8017DD7C(PlayerInitData* arg0, Unk1PData_x24* arg1, u8 arg2)
         if (arg1[i].ckind != ChKind_None) {
             gm_SetupPlayerDefaults(&arg0[index]);
             arg0[index].ckind = arg1[i].ckind;
-            arg0[index].slot_type = 1;
+            arg0[index].slot_type = Gm_PKind_Cpu;
             arg0[index].stocks = 1;
             arg0[index].team = arg0->team;
             arg0[index].color = arg1[i].color;

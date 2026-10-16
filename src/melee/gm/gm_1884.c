@@ -172,7 +172,7 @@ void fn_80188550(int arg0)
                 if (i != 0) {
                     if (skip == 0) {
                         if (i != 0) {
-                            lbl_80473700.players[i].slot_type = 1;
+                            lbl_80473700.players[i].slot_type = Gm_PKind_Cpu;
                         } else {
                             lbl_80473700.players[i].slot_type = j;
                         }
@@ -226,9 +226,9 @@ void fn_80188644(void)
             fn_8016EF98(i);
             if (i == 1) {
                 if (i != 0) {
-                    lbl_80473700.players[i].slot_type = 1;
+                    lbl_80473700.players[i].slot_type = Gm_PKind_Cpu;
                 } else {
-                    lbl_80473700.players[i].slot_type = 0;
+                    lbl_80473700.players[i].slot_type = Gm_PKind_Human;
                 }
                 gm_8016EDDC(i, &lbl_80473700.players[i]);
             }

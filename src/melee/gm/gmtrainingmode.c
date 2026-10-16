@@ -133,7 +133,7 @@ void gm_801B1C24(GameModeState* arg0)
                 (vs->start.players[i].color + 1) %
                 gm_GetNumCostumesForCKind(vs->start.players[j].ckind);
         }
-        vs->start.players[i].slot_type = 3;
+        vs->start.players[i].slot_type = Gm_PKind_NA;
     }
     if (gm_804D68C0 == 0) {
         for (i = 1; i < 4; i++) {

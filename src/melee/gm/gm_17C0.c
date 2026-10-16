@@ -735,7 +735,7 @@ void gm_8017CE34(StartMeleeData* arg0, Unk1PData* arg1, s8* arg2, u8 arg3,
                 }
             }
             gm_SetupPlayerDefaults(&arg0->players[player_idx]);
-            arg0->players[player_idx].slot_type = 1;
+            arg0->players[player_idx].slot_type = Gm_PKind_Cpu;
             arg0->players[player_idx].ckind = (s8) (u8) enemy_kind[0];
             arg0->players[player_idx].stocks = 1;
             arg0->players[player_idx].cpu_level = enemy_level;
@@ -768,7 +768,7 @@ void gm_8017CE34(StartMeleeData* arg0, Unk1PData* arg1, s8* arg2, u8 arg3,
                 arg0->players[player_idx].xD_b2 = 1;
                 arg0->players[player_idx].spawn_dir = -1;
                 if ((s32) arg0->players[player_idx].ckind == CKind_CrezyH) {
-                    arg0->players[player_idx].slot_type = 3;
+                    arg0->players[player_idx].slot_type = Gm_PKind_NA;
                 }
                 boss_count += 1;
             }
@@ -781,7 +781,7 @@ void gm_8017CE34(StartMeleeData* arg0, Unk1PData* arg1, s8* arg2, u8 arg3,
             }
         } else {
             if ((enemy_idx == 0) && ((s32) enemy_kind[1] == 0x1A)) {
-                arg0->players[player_idx].slot_type = 3;
+                arg0->players[player_idx].slot_type = Gm_PKind_NA;
                 player_idx += 1;
             }
         }
@@ -795,7 +795,7 @@ void gm_8017CE34(StartMeleeData* arg0, Unk1PData* arg1, s8* arg2, u8 arg3,
     {
         s32 i;
         for (i = player_idx; i < 6; i++) {
-            arg0->players[i].slot_type = 3;
+            arg0->players[i].slot_type = Gm_PKind_NA;
         }
     }
 
