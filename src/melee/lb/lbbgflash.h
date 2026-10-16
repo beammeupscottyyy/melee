@@ -1,6 +1,6 @@
 /**
  * @file lbbgflash.h
- * @brief Background flash effects for dramatic game events.
+ * Background flash effects for dramatic game events.
  */
 
 #ifndef GALE01_01FC08

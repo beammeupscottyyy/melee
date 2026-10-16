@@ -1,6 +1,6 @@
 /**
  * @file lb_020A.h
- * @brief Skeletal transform and two-joint IK utilities.
+ * Skeletal transform and two-joint IK utilities.
  */
 
 #ifndef GALE01_020AEC

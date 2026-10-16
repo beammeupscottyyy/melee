@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Utilities for reading files from the DVD drive
+ * Utilities for reading files from the DVD drive.
  *
  * Reads files into the heap synchronously, with optional preload caching.
  *
@@ -33,7 +33,7 @@ void lbFile_80016580(const char* basename, void* dst, size_t* size,
 void lbFile_8001668C(const char* basename, void* dst, size_t* size);
 
 /**
- * @brief Same as lbFile_800168A0, but with an implicit heap_id=0 and no
+ * Same as lbFile_800168A0, but with an implicit heap_id=0 and no
  * preload cache.
  */
 void lbFile_80016760(const char* basename, void** dst, size_t* size);
@@ -46,6 +46,7 @@ void lbFile_80016760(const char* basename, void** dst, size_t* size);
  * @returns True iff the file was already preloaded, rather than read from
  * disc.
  */
-bool lbFile_800168A0(int arg0, const char* basename, void** dst, size_t* size);
+bool lbFile_800168A0(int heap_id, const char* basename, void** dst,
+                     size_t* size);
 
 #endif // MELEE_LB_FILE_H
