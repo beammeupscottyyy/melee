@@ -139,19 +139,19 @@ void vi0401_Scene_OnEnter(void* data)
                           NULL);
     un_804D6F54 = lbArchive_LoadSymbols(viGetCharAnimByIndex(char_index), 0);
 
-    fog_gobj = GObj_Create(0xB, 3, 0);
+    fog_gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, HSD_GOBJ_PLINK_LIGHT, 0);
     fog = HSD_FogLoadDesc(un_804D6F48->fogs->desc);
     HSD_GObjObject_80390A70(fog_gobj, HSD_GObj_FogKind, fog);
     GObj_SetupGXLink(fog_gobj, HSD_GObj_FogCallback, 0, 0);
     color = fog->color;
     erase_colors_vi0401 = color;
 
-    light_gobj = GObj_Create(0xB, 3, 0);
+    light_gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, HSD_GOBJ_PLINK_LIGHT, 0);
     lobj = lb_80011AC4(un_804D6F48->lights);
     HSD_GObjObject_80390A70(light_gobj, HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(light_gobj, HSD_GObj_LObjCallback, 0, 0);
 
-    cam_gobj = GObj_Create(0x13, 0x14, 0);
+    cam_gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj = lb_80013B14(&un_804D6F48->cameras->desc->perspective);
     HSD_GObjObject_80390A70(cam_gobj, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMax(cam_gobj, vi0401_8031D1B0, 0x5);
@@ -163,7 +163,7 @@ void vi0401_Scene_OnEnter(void* data)
     HSD_GObj_SetupProc(cam_gobj, vi0401_8031D23C, 0);
 
     for (; un_804D6F48->models[idx.i] != NULL; idx.i++) {
-        gobj = GObj_Create(0xE, 0xF, 0);
+        gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
         jobj = HSD_JObjLoadJoint(un_804D6F48->models[idx.i]->joint);
         HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
         GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, 9, 0);
@@ -177,14 +177,14 @@ void vi0401_Scene_OnEnter(void* data)
         }
     }
 
-    cam_gobj2 = GObj_Create(0x13, 0x14, 0);
+    cam_gobj2 = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj = lb_80013B14(&un_804D6F50->cameras->desc->perspective);
     HSD_GObjObject_80390A70(cam_gobj2, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMax(cam_gobj2, HSD_GObj_803910D8, 0x8);
     cam_gobj2->gxlink_prios = 0x801;
 
     for (idx.i = 0; un_804D6F4C->models[idx.i] != NULL; idx.i++) {
-        gobj2 = GObj_Create(0xE, 0xF, 0);
+        gobj2 = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
         jobj2 = HSD_JObjLoadJoint(un_804D6F4C->models[idx.i]->joint);
         HSD_GObjObject_80390A70(gobj2, HSD_GObj_JObjKind, jobj2);
         GObj_SetupGXLink(gobj2, HSD_GObj_JObjCallback, 0xB, 0);

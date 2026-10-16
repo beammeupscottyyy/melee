@@ -170,18 +170,18 @@ void vi0502_Scene_OnEnter(void* arg)
         lbArchive_LoadSymbols(viGetCharAnimByIndex(char_index), NULL);
     un_804D6F98 = lbArchive_LoadSymbols(data->irals_dat, NULL);
 
-    fog_gobj = GObj_Create(0xB, 3, 0);
+    fog_gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, HSD_GOBJ_PLINK_LIGHT, 0);
     fog = HSD_FogLoadDesc(un_804D6F90->fogs->desc);
     HSD_GObjObject_80390A70(fog_gobj, HSD_GObj_FogKind, fog);
     GObj_SetupGXLink(fog_gobj, HSD_GObj_FogCallback, 0, 0);
     erase_colors_vi0502 = fog->color;
 
-    light_gobj = GObj_Create(0xB, 3, 0);
+    light_gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, HSD_GOBJ_PLINK_LIGHT, 0);
     lobj = lb_80011AC4(un_804D6F90->lights);
     HSD_GObjObject_80390A70(light_gobj, HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(light_gobj, HSD_GObj_LObjCallback, 0, 0);
 
-    camera_gobj = GObj_Create(0x13, 0x14, 0);
+    camera_gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj = lb_80013B14(&un_804D6F90->cameras->desc->perspective);
     HSD_GObjObject_80390A70(camera_gobj, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMax(camera_gobj, vi0502_GObj_OnRender, 5);
@@ -191,7 +191,7 @@ void vi0502_Scene_OnEnter(void* arg)
     HSD_GObj_SetupProc(camera_gobj, vi0502_GObj_OnProc, 0);
 
     for (i = 0; un_804D6F90->models[i] != NULL; i++) {
-        model_gobj = GObj_Create(0xE, 0xF, 0);
+        model_gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
         jobj = HSD_JObjLoadJoint(un_804D6F90->models[i]->joint);
         new_var = jobj;
         HSD_GObjObject_80390A70(model_gobj, HSD_GObj_JObjKind, new_var);

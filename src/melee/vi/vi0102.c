@@ -90,7 +90,7 @@ static void setupCamera(void)
     HSD_GObj* cam_gobj;
     HSD_CObj* cobj;
 
-    cam_gobj = GObj_Create(0x13, 0x14, 0);
+    cam_gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj = lb_80013B14(&un_804D6F30->cameras[0].desc->perspective);
     HSD_GObjObject_80390A70(cam_gobj, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMax(cam_gobj, vi0102_CameraCallback, 0x8);
@@ -142,7 +142,7 @@ void vi0102_Scene_OnEnter(void* arg)
     setupCamera();
 
     for (i = 0; un_804D6F30->models[i] != NULL; i++) {
-        joint_gobj = GObj_Create(0xE, 0xF, 0);
+        joint_gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
         jobj = HSD_JObjLoadJoint(un_804D6F30->models[i]->joint);
         tmp = jobj;
         HSD_GObjObject_80390A70(joint_gobj, HSD_GObj_JObjKind, tmp);
@@ -156,13 +156,13 @@ void vi0102_Scene_OnEnter(void* arg)
 
     vi0102_8031CB00(desc->p1_costume_index, desc->p2_costume_index);
 
-    fog_gobj = GObj_Create(0xA, 0x3, 0);
+    fog_gobj = GObj_Create(HSD_GOBJ_CLASS_FOG, HSD_GOBJ_PLINK_LIGHT, 0);
     fog = HSD_FogLoadDesc(un_804D6F30->fogs[0].desc);
     HSD_GObjObject_80390A70(fog_gobj, HSD_GObj_FogKind, fog);
     GObj_SetupGXLink(fog_gobj, HSD_GObj_FogCallback, 0, 0);
     erase_colors_vi0102 = fog->color;
 
-    light_gobj = GObj_Create(0xB, 0x3, 0);
+    light_gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, HSD_GOBJ_PLINK_LIGHT, 0);
     lobj = lb_80011AC4(un_804D6F30->lights);
     HSD_GObjObject_80390A70(light_gobj, HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(light_gobj, HSD_GObj_LObjCallback, 0, 0);
