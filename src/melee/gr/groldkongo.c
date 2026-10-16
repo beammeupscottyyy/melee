@@ -2,6 +2,7 @@
 
 #include <Runtime/platform.h>
 
+#include <melee/ft/forward.h>
 #include <melee/lb/forward.h>
 
 #include "forward.h"
@@ -387,7 +388,7 @@ void stageGObj1_GObjProc(Ground_GObj* gobj)
             {
                 Fighter_GObj* fighter_gobj = gp->u.taru.keep;
 
-                if (fighter_gobj->p_link == 8) {
+                if (fighter_gobj->p_link == HSD_GOBJ_PLINK_FIGHTER) {
                     ftCo_8009EC70(fighter_gobj, &sp3C, &hit, hit_angle);
                 }
             }

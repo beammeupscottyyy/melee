@@ -3,6 +3,7 @@
 #include <Runtime/platform.h>
 
 #include <melee/ft/kinds/ftCommon/forward.h>
+#include <melee/it/forward.h>
 
 #include <math.h>
 #include <placeholder.h>
@@ -95,7 +96,7 @@ void mpCollPrev(CollData* cd)
                 OSReport("%s:%d: Error: mpCollPrev() pos(%f,%f) gobj_id=%d\n",
                          "mpcoll.c", 212, cd->x0_gobj->classifier,
                          cd->cur_pos.x, cd->cur_pos.y);
-                if (cd->x0_gobj->p_link == 9) {
+                if (cd->x0_gobj->p_link == HSD_GOBJ_PLINK_ITEM) {
                     OSReport("itkind=%d\n", itGetKind(cd->x0_gobj));
                 }
             }
@@ -795,7 +796,7 @@ void mpCollEnd(CollData* coll, bool result, bool flag)
                          "gobjid=%d\n",
                          __FILE__, 1358, coll->last_pos.x, coll->last_pos.y,
                          coll->cur_pos.x, coll->cur_pos.y, gobjid);
-                if (coll->x0_gobj->p_link == 9) {
+                if (coll->x0_gobj->p_link == HSD_GOBJ_PLINK_ITEM) {
                     OSReport("itkind=%d\n", itGetKind(coll->x0_gobj));
                 }
             }

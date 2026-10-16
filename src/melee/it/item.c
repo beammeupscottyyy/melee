@@ -936,7 +936,7 @@ static HSD_GObj* Item_8026862C(SpawnItem* spawnItem)
     if (Item_8026784C(spawnItem->hold_kind, spawnItem->kind) != false) {
         return NULL;
     }
-    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 9, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, HSD_GOBJ_PLINK_ITEM, 0);
     if (gobj == NULL) {
         return NULL;
     }
@@ -963,7 +963,8 @@ static HSD_GObj* Item_8026862C(SpawnItem* spawnItem)
         HSD_GObjFree(gobj);
         return NULL;
     }
-    GObj_InitUserData(gobj, 6, Item_OnUserDataRemove, user_data);
+    GObj_InitUserData(gobj, HSD_GOBJ_CLASS_ITEM, Item_OnUserDataRemove,
+                      user_data);
     Item_80267AA8(gobj, spawnItem);
     Item_802680CC(gobj);
     if (Item_802682F0(gobj) != false) {

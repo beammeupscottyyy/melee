@@ -851,7 +851,7 @@ Fighter_GObj* Fighter_Create(struct plAllocInfo* input)
     Fighter* fp;
     HSD_JObj* jobj;
 
-    gobj = GObj_Create(HSD_GOBJ_CLASS_FIGHTER, 8, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_FIGHTER, HSD_GOBJ_PLINK_FIGHTER, 0);
     GObj_SetupGXLink(gobj, &ftDrawCommon_80080E18, 5U, 0U);
     /**
      * @bug #HSD_ObjAlloc returns the block uncleared and nothing below zeroes
@@ -860,7 +860,8 @@ Fighter_GObj* Fighter_Create(struct plAllocInfo* input)
      */
     fp = HSD_ObjAlloc(&fighter_alloc_data);
     fp->dat_attrs_backup = HSD_ObjAlloc(&fighter_dat_attrs_alloc_data);
-    GObj_InitUserData(gobj, 4U, &Fighter_Unload_8006DABC, fp);
+    GObj_InitUserData(gobj, HSD_GOBJ_CLASS_FIGHTER, &Fighter_Unload_8006DABC,
+                      fp);
     ftData_8008572C(input->internal_id);
     Fighter_UnkInitLoad_80068914(gobj, input);
     efAsync_LoadSync(ftData_UnkBytePerCharacter[fp->kind]);
