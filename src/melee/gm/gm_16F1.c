@@ -456,7 +456,7 @@ void fn_8016F344(MatchEnd* match_end)
     struct MatchPlayerData* curr = match_end->player_standings;
     int i;
     for (i = 0; i < 4; i++) {
-        if (curr->pkind != 3) {
+        if (curr->pkind != Gm_PKind_NA) {
             pl_80039450(i);
         }
         curr++;
@@ -689,7 +689,7 @@ int fn_8016FAD4(MatchEnd* rules, int kind, int flags, u8 player)
     }
 
     for (i = 0; i < 6; i++) {
-        if (x58[i].pkind != 3) {
+        if (x58[i].pkind != Gm_PKind_NA) {
             u16 sd = x58[i].self_destructs;
             scores[i] =
                 x58[i].x20 - (x58[i].x24 - sd) + rules->sd_penalty * sd;
@@ -697,10 +697,12 @@ int fn_8016FAD4(MatchEnd* rules, int kind, int flags, u8 player)
     }
 
     for (i = 0; i < 6; i++) {
-        if (x58[i].pkind != 3) {
+        if (x58[i].pkind != Gm_PKind_NA) {
             int j;
             for (j = 0; j < 6; j++) {
-                if (x58[j].pkind != 3 && i != j && scores[i] < scores[j]) {
+                if (x58[j].pkind != Gm_PKind_NA && i != j &&
+                    scores[i] < scores[j])
+                {
                     rankings[i]++;
                 }
             }
@@ -718,7 +720,7 @@ int fn_8016FAD4(MatchEnd* rules, int kind, int flags, u8 player)
         {
             int active_count = 0;
             for (i = 0; i < 4; i++) {
-                if (x58[i].pkind != 3) {
+                if (x58[i].pkind != Gm_PKind_NA) {
                     active_count++;
                 }
             }
@@ -831,7 +833,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
         int k;
 
         for (k = 0; k < 6; k++) {
-            if (x58[k].pkind != 3) {
+            if (x58[k].pkind != Gm_PKind_NA) {
                 u16 xA = x58[k].self_destructs;
                 scores[k] =
                     (x58[k].x20 - (x58[k].x24 - xA)) + rules->sd_penalty * xA;
@@ -841,11 +843,11 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
         {
             int idx;
             for (idx = 0; idx < 6; idx++) {
-                if (x58[idx].pkind != 3) {
+                if (x58[idx].pkind != Gm_PKind_NA) {
                     int j;
 
                     for (j = 0; j < 6; j++) {
-                        if (x58[j].pkind != 3 && idx != j &&
+                        if (x58[j].pkind != Gm_PKind_NA && idx != j &&
                             scores[idx] < scores[j])
                         {
                             rankings[idx]++;
@@ -868,7 +870,9 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
         {
             int i;
             for (i = 0; i < 4; i++) {
-                if (x58[i].pkind != 3 && i != arg1 && rankings[i] == 0) {
+                if (x58[i].pkind != Gm_PKind_NA && i != arg1 &&
+                    rankings[i] == 0)
+                {
                     return 0;
                 }
             }
@@ -935,7 +939,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
                 *(copy_t*) vals = *(copy_t*) zeroes->x0;
             }
             for (i = 0; i < 4; i++) {
-                if (x58[i].pkind != 3) {
+                if (x58[i].pkind != Gm_PKind_NA) {
                     vals[i] = x58[i].x20;
                 }
             }
@@ -960,7 +964,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
             {
                 int i;
                 for (i = 0; i < 4; i++) {
-                    if (x58[i].pkind != 3 && i != arg1 &&
+                    if (x58[i].pkind != Gm_PKind_NA && i != arg1 &&
                         x58[i].x20 >= x58[arg1].x20)
                     {
                         return 0;
@@ -982,7 +986,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
                 *(copy_t*) vals = *(copy_t*) zeroes->x10;
             }
             for (i = 0; i < 4; i++) {
-                if (x58[i].pkind != 3) {
+                if (x58[i].pkind != Gm_PKind_NA) {
                     vals[i] = x58[i].x40;
                 }
             }
@@ -1007,7 +1011,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
             {
                 int i;
                 for (i = 0; i < 4; i++) {
-                    if (x58[i].pkind != 3 && i != arg1 &&
+                    if (x58[i].pkind != Gm_PKind_NA && i != arg1 &&
                         x58[i].x40 >= x58[arg1].x40)
                     {
                         return 0;
@@ -1030,7 +1034,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
                 *(copy_t*) vals = *(copy_t*) zeroes->x20;
             }
             for (i = 0; i < 4; i++) {
-                if (x58[i].pkind != 3) {
+                if (x58[i].pkind != Gm_PKind_NA) {
                     vals[i] = x58[i].x24 - x58[i].self_destructs;
                 }
             }
@@ -1058,7 +1062,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
             {
                 int i;
                 for (i = 0; i < 4; i++) {
-                    if (x58[i].pkind != 3 && i != arg1 &&
+                    if (x58[i].pkind != Gm_PKind_NA && i != arg1 &&
                         (u32) (x58[i].x24 - x58[i].self_destructs) >=
                             (u32) (x58[arg1].x24 - x58[arg1].self_destructs))
                     {
@@ -1081,7 +1085,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
                 *(copy_t*) vals = *(copy_t*) zeroes->x30;
             }
             for (i = 0; i < 4; i++) {
-                if (x58[i].pkind != 3) {
+                if (x58[i].pkind != Gm_PKind_NA) {
                     vals[i] = x58[i].self_destructs;
                 }
             }
@@ -1107,7 +1111,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
             {
                 int i;
                 for (i = 0; i < 4; i++) {
-                    if (x58[i].pkind != 3 && i != arg1 &&
+                    if (x58[i].pkind != Gm_PKind_NA && i != arg1 &&
                         x58[i].self_destructs >= x58[arg1].self_destructs)
                     {
                         return 0;
@@ -1265,7 +1269,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
             *(copy_t*) vals = *(copy_t*) zeroes->x40;
         }
         for (i = 0; i < 4; i++) {
-            if (x58[i].pkind != 3) {
+            if (x58[i].pkind != Gm_PKind_NA) {
                 vals[i] = pl_800407C8(i);
             }
         }
@@ -1296,7 +1300,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
         f32 min_dmg = 0.0f;
         int i;
         for (i = 0; i < 4; i++) {
-            if (x58[i].pkind != 3 && min_dmg > pl_80040870(i)) {
+            if (x58[i].pkind != Gm_PKind_NA && min_dmg > pl_80040870(i)) {
                 min_dmg = pl_80040870(i);
             }
         }
@@ -1394,7 +1398,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
                     *(copy_t*) vals = *(copy_t*) zeroes->x50;
                 }
                 for (i = 0; i < 4; i++) {
-                    if (x58[i].pkind != 3 && pl_800408B8(i) != 0) {
+                    if (x58[i].pkind != Gm_PKind_NA && pl_800408B8(i) != 0) {
                         vals[i] = pl_800408B8(i);
                     }
                 }
@@ -1435,7 +1439,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
                     *(copy_t*) vals = *(copy_t*) zeroes->x60;
                 }
                 for (i = 0; i < 4; i++) {
-                    if (x58[i].pkind != 3) {
+                    if (x58[i].pkind != Gm_PKind_NA) {
                         vals[i] = pl_80040894(i);
                     }
                 }
@@ -1592,7 +1596,7 @@ void fn_80171DC4(void)
         lbl_8046DBC8.x0 = 1;
         lbl_8046DBC8.x1 = 1;
         for (i = 0; i < 6; i++) {
-            if (rules->player_standings[i].pkind != 3) {
+            if (rules->player_standings[i].pkind != Gm_PKind_NA) {
                 if (lbl_804D65A8[i] == 0) {
                     lbl_8046DBC8.x2[i].x0 = 1;
                 } else if ((s32) lbl_804D65A8[i] == lbl_804D65B0) {
@@ -1602,7 +1606,7 @@ void fn_80171DC4(void)
         }
     } else {
         for (i = 0; i < 6; i++) {
-            if (rules->player_standings[i].pkind != 3) {
+            if (rules->player_standings[i].pkind != Gm_PKind_NA) {
                 if (lbl_8046DBC8.x2[i].x0 == 1 && lbl_804D65A8[i] != 0) {
                     lbl_8046DBC8.x2[i].x0 = 0;
                 }
