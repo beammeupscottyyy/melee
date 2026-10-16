@@ -1421,7 +1421,7 @@ HSD_GObj* mn_8022B3A0(u8 state)
     hovered_selection = mn_804A04F0.hovered_selection;
 
     unlocked_count = CountUnlockedSelections(cur_menu);
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     root_jobj = HSD_JObjLoadJoint(model->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, root_jobj);
     GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, 4, 0x80);

@@ -314,7 +314,7 @@ mnInfoBonus_80252F8C_inline0(struct mnInfoBonus_804A09B0_t* o)
     StaticModelDesc* model_desc;
 
     model_desc = &o->x50;
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     o->x4C = gobj;
     jobj = HSD_JObjLoadJoint(model_desc->joint);
 

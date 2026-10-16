@@ -1449,7 +1449,7 @@ HSD_GObj* mnNameNew_GlyphVariantSetup(NameNewEntry* arg0, u16 arg1, s32 arg2)
     StaticModelDesc* variant_desc;
 
     setup_desc = &mnNameNew_804A0710;
-    gobj = GObj_Create(6U, 7U, 0x80U);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7U, 0x80U);
     jobj = HSD_JObjLoadJoint(setup_desc->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
     GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, 6U, 0x80U);
@@ -1818,7 +1818,7 @@ void mnNameNew_8023E32C(s32 arg0)
     PAD_STACK(8);
 
     setup_desc = &mnNameNew_804A06F0;
-    gobj = GObj_Create(6U, 7U, 0x80U);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7U, 0x80U);
     mnNameNew_804D6C08 = gobj;
     root_jobj = HSD_JObjLoadJoint(setup_desc->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, root_jobj);

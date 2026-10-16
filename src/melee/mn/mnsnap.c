@@ -2428,7 +2428,7 @@ void mnSnap_80257F24(void)
 
     (void) ((const void*) page_name == (const void*) snap);
     /* Main GObj */
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     snap->main_gobj = gobj;
     jobj = HSD_JObjLoadJoint((*main_joint));
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
@@ -2457,7 +2457,7 @@ void mnSnap_80257F24(void)
     HSD_GObj_SetupProc(gobj, (HSD_GObjEvent) fn_802545C4, 0);
 
     /* Sub GObj (arrows/cursor) */
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     snap->sub_gobj = gobj;
     jobj = HSD_JObjLoadJoint((*arrows_joint));
     HSD_JObjSetTranslateX(jobj, 3.3F);
@@ -2470,7 +2470,7 @@ void mnSnap_80257F24(void)
     lb_80011E24(jobj, slot_jobj_ptr, 1, 2, 3, 4, -1);
 
     /* Cursor GObj */
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     snap->cursor_gobj = gobj;
     jobj = HSD_JObjLoadJoint((*csr_joint));
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
@@ -2566,7 +2566,7 @@ void mnSnap_80257F24(void)
     mnSnap_80253964();
 
     /* Warning cmn GObj */
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     snap->warn_gobj = gobj;
     jobj = HSD_JObjLoadJoint((*warn_joint));
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);

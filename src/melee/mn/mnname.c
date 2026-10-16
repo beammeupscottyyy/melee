@@ -1444,7 +1444,7 @@ void mnName_8023A290(void)
     HSD_JObj* jobj;
     StaticModelDesc* archive = &mnName_804A06D0;
 
-    gobj = GObj_Create(6U, 7U, 0x80U);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7U, 0x80U);
     jobj = HSD_JObjLoadJoint(archive->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
     GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, 6U, 0x80U);
@@ -1521,7 +1521,7 @@ HSD_GObj* mnName_8023A59C(u8 arg0)
     s32 i;
     PAD_STACK(8);
 
-    gobj = GObj_Create(6U, 7U, 0x80U);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7U, 0x80U);
     mnName_804D6BF8 = gobj;
     root_jobj[0] = HSD_JObjLoadJoint(archive->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, root_jobj[0]);

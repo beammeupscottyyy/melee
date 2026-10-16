@@ -174,7 +174,7 @@ static inline void mnEvent_CreateIconForSlot(s32 idx, HSD_GObj** slot,
     HSD_JObjGetTranslation(*jobj_0A, pos);
     pos->y = pos->y + (f32) idx * spacing;
 
-    icon_gobj = GObj_Create(6, 7, 0x80);
+    icon_gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     icon_jobj = HSD_JObjLoadJoint(assets->joint);
     HSD_GObjObject_80390A70(icon_gobj, HSD_GObj_JObjKind, icon_jobj);
     GObj_SetupGXLink(icon_gobj, HSD_GObj_JObjCallback, 4, 0x80);
@@ -666,7 +666,7 @@ void mnEvent_8024E524(s32 event_idx)
 
     assets = getMainConEv();
 
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     mnEvent_804D6C60 = gobj;
     tree = HSD_JObjLoadJoint(assets->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, tree);

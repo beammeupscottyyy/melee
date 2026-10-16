@@ -790,7 +790,7 @@ void mnSoundTest_8024BCA0(int arg0)
 
     PAD_STACK(0x14);
     model_desc = &mnSoundTest_804A08C8;
-    gobj = GObj_Create(6U, 7U, 0x80U);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7U, 0x80U);
     mnSoundTest_804D6C40 = gobj;
     jobj = HSD_JObjLoadJoint(model_desc->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);

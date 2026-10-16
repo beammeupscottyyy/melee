@@ -609,7 +609,7 @@ void mnDiagram3_Create(int arg0)
     Diagram3* user_data;
     int i;
 
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     mnDiagram3_804D6C20 = gobj;
     jobj = mnDiagram3_LoadJoint(archive);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
@@ -714,7 +714,7 @@ static inline HSD_JObj* mnDiagram3_CreatePopup(Diagram3* data,
     HSD_GObj* popup;
     HSD_JObj* popup_jobj;
 
-    popup = GObj_Create(6, 7, 0x80);
+    popup = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     data->popup_gobj = popup;
     popup_jobj = mnDiagram3_LoadJoint(archive);
     HSD_GObjObject_80390A70(popup, HSD_GObj_JObjKind, popup_jobj);

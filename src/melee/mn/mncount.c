@@ -811,7 +811,7 @@ void mnCount_Create(void)
         &model_desc.matanim_joint, "MenMainConCo_Top_matanim_joint",
         &model_desc.shapeanim_joint, "MenMainConCo_Top_shapeanim_joint", 0);
 
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     menu_gobj = gobj;
 
     userdata = mnCount_AllocUserData();

@@ -3709,15 +3709,17 @@ void fn_80262F44(HSD_GObj* gobj)
                 }
                 goto hide;
             }
-        teams_ok: {
-            CSSTag* tag = mnCharSel_803F0E8C;
-            for (i = 0; i < (s32) mnCharSel_804D6CF5; i++) {
-                if (mnCharSel_804A0BC0[i]->x5 == 1 || tag[i].data->state != 0)
-                {
-                    goto hide;
+        teams_ok:
+            {
+                CSSTag* tag = mnCharSel_803F0E8C;
+                for (i = 0; i < (s32) mnCharSel_804D6CF5; i++) {
+                    if (mnCharSel_804A0BC0[i]->x5 == 1 ||
+                        tag[i].data->state != 0)
+                    {
+                        goto hide;
+                    }
                 }
             }
-        }
 
             if (mnCharSel_804D6CF7 == 0) {
                 HSD_ForeachAnim(jobj, JOBJ_TYPE, ALL_TYPE_MASK,
@@ -4312,7 +4314,7 @@ s32 mnCharSel_802640A0(void)
     }
     GObj_SetupGXLink(gobj, HSD_GObj_LObjCallback, 0, 0x80);
 
-    gobj = GObj_Create(0xE, 2, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 2, 0);
     {
         HSD_Fog* fog = HSD_FogLoadDesc(css_data_table->fog);
         HSD_GObjObject_80390A70(gobj, HSD_GObj_FogKind, fog);

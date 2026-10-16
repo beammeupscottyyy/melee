@@ -556,7 +556,7 @@ void mnStageSel_Scene_OnEnter(void* arg0)
         }
 
         {
-            HSD_GObj* gobj = GObj_Create(0xE, 0xF, 0);
+            HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
             HSD_Fog* fog = HSD_FogLoadDesc(sss_data_table->fog);
             HSD_GObjObject_80390A70(gobj, HSD_GObj_FogKind, fog);
             GObj_SetupGXLink(gobj, fn_8025A974, 0, 0x80);

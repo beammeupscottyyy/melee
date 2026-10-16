@@ -827,7 +827,7 @@ HSD_GObj* mnItemSw_802351A0(s32 arg0)
     struct MnItemSwTable* tbl = mnItemSw_GetTable();
     f32 y_spacing;
     s32 i;
-    HSD_GObj* gobj = GObj_Create(6, 7, 0x80);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
 
     mnItemSw_804D6BE8 = gobj;
 

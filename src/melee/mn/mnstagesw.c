@@ -721,7 +721,7 @@ static HSD_GObj* mnStageSw_80236CBC(s8 arg0)
     f32 y_spacing;
     s32 i;
 
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     mnStageSw_804D6BF0 = gobj;
 
     jobj = HSD_JObjLoadJoint(mdl->joint);

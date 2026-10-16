@@ -536,7 +536,7 @@ s32 mnInfo_80252758(void)
 
     mnInfo_80251AFC();
 
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     mnInfo_804D6C78 = gobj;
 
     user_data = HSD_MemAlloc(sizeof(*user_data));

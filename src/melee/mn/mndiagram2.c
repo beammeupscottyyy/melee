@@ -964,7 +964,7 @@ void mnDiagram2_Create(int arg0)
     Diagram2* user_data2;
     HSD_JObj** cursor;
 
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     mnDiagram2_804D6C18 = gobj;
     jobj = HSD_JObjLoadJoint(archive->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);

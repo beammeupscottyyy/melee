@@ -949,7 +949,7 @@ void mnVibration_IntroProc(HSD_GObj* arg0)
             mnVibration_RefreshNameRows(arg0);
             assets = &mnVibration_804A0868;
             data2 = arg0->user_data;
-            cursor_gobj = GObj_Create(6U, 7U, 0x80U);
+            cursor_gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7U, 0x80U);
             data2->cursor_gobj = cursor_gobj;
             loaded_joint = HSD_JObjLoadJoint(assets->joint);
             HSD_GObjObject_80390A70(cursor_gobj, HSD_GObj_JObjKind,
@@ -1022,7 +1022,7 @@ void mnVibration_CreateScreen(s32 arg0)
     (void) arg0;
     PAD_STACK(20);
     assets = &mnVibration_804A0898;
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     mnVibration_804D6C28 = gobj;
     jobj = HSD_JObjLoadJoint(assets->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
@@ -1033,6 +1033,7 @@ void mnVibration_CreateScreen(s32 arg0)
     data = HSD_MemAlloc(sizeof(MnVibrationData));
     if (data == NULL) {
         OSReport("Can't get user_data.\n");
+        /// @todo Convert to @c HSD_ASSERT once a byte-matching form is found.
         __assert("mnvibration.c", 0x3A7, "user_data");
     }
     data->x0[0] = 0;

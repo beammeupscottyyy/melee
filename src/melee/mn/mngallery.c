@@ -134,7 +134,7 @@ static void mnGallery_80258BC4(struct mnGallery_804D6C88_userdata* data)
         return;
     }
     data->unk2 = mode;
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     data->gobj8 = gobj;
     GObj_SetupGXLink(gobj, lbMthp_8001F67C, 8, 0x80);
     if (data->unk2 == 0) {
@@ -419,7 +419,7 @@ void mnGallery_8025963C(void)
     HSD_JObj* jobj;
     struct mnGallery_804D6C88_userdata* user_data;
 
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     mnGallery_804D6C88 = gobj;
     jobj = HSD_JObjLoadJoint(model->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
@@ -438,7 +438,7 @@ void mnGallery_8025963C(void)
 
     model = &mnGallery_804A0BB0;
     for (i = 0; i < 2; i++) {
-        child_gobj = GObj_Create(6, 7, 0x80);
+        child_gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
         user_data->gobjs[i] = child_gobj;
         jobj = HSD_JObjLoadJoint(model->joint);
         HSD_GObjObject_80390A70(child_gobj, HSD_GObj_JObjKind, jobj);
@@ -502,7 +502,7 @@ void mnGallery_80259868(void)
     HSD_SisLib_803A6368(text, 0xC7);
     inner->text = text;
 
-    cam_gobj = GObj_Create(6, 3, 0x80);
+    cam_gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 3, 0x80);
     mnGallery_80258A08(cam_gobj, 0x280, 0x1E0, 1);
     cam_gobj->gxlink_prios = 0x100;
     inner->gobj4 = cam_gobj;

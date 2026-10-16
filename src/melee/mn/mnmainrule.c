@@ -1076,7 +1076,7 @@ HSD_GObj* mn_80230E38(int arg0)
     }
 
     desc = &MenMainConRl_Top;
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     mn_804D6BD0 = gobj;
     root_jobj = HSD_JObjLoadJoint(desc->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, root_jobj);

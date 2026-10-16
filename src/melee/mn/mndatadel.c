@@ -353,7 +353,7 @@ void mnDataDel_8024EEC0(void)
 
     assets = &mnDataDel_804A0938;
     data = mnDataDel_GetWarnData();
-    wrn_modal = GObj_Create(6U, 7U, 0x80U);
+    wrn_modal = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7U, 0x80U);
     root = HSD_JObjLoadJoint(assets->joint);
     HSD_GObjObject_80390A70(wrn_modal, HSD_GObj_JObjKind, root);
     GObj_SetupGXLink(wrn_modal, HSD_GObj_JObjCallback, 6U, 0x80U);
@@ -858,7 +858,7 @@ void mnDataDel_8024FE4C(u8 arg0)
     PAD_STACK(12);
 
     assets = &mnDataDel_804A0918;
-    gobj = GObj_Create(6U, 7U, 0x80U);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7U, 0x80U);
     mnDataDel_804D6C68 = gobj;
     root = HSD_JObjLoadJoint(assets->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, root);

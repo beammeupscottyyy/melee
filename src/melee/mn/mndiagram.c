@@ -1636,7 +1636,7 @@ void mnDiagram_CreatePopup(s32 arg0, s32 arg1, s32 use_nametag)
     model = &MenMainSubB1_Top;
     data = GET_DIAGRAM(mnDiagram_ScreenGObj);
 
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     data->popup_gobj = gobj;
     jobj = HSD_JObjLoadJoint(model->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
@@ -2392,7 +2392,7 @@ void mnDiagram_CreateCursor(void)
     PAD_STACK(40);
 
     model = &MenMainCursorB1_Top;
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     jobj = HSD_JObjLoadJoint(model->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
     GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, 4, 0x80);
@@ -2418,7 +2418,7 @@ void mnDiagram_CreateScreen(u8 arg0)
     u16 indices;
 
     model = &MenMainConB1_Top;
-    gobj = GObj_Create(6, 7, 0x80);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0x80);
     mnDiagram_ScreenGObj = gobj;
     jobj = HSD_JObjLoadJoint(model->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
