@@ -251,7 +251,7 @@ void fn_8018A970(int arg0)
     int i;
     for (i = 0; i < 0x40; i++) {
         if (lbl_80473AB8[i].x0 != 0) {
-            HSD_GObj* gobj = GObj_Create(0xE, 0x1B, 0);
+            HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0x1B, 0);
             gobj->user_data = &lbl_80473AB8[i];
             if (i == 0) {
                 HSD_GObj_SetupProc(gobj, fn_8018B090, 0);
@@ -1765,7 +1765,7 @@ void fn_8018E618(int arg0, f32 farg0, int arg1)
         }
     }
 
-    gobj = GObj_Create(9, 20, 1);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_SISLIB_UNK, 20, 1);
     {
         HSD_CObj* cobj = HSD_CObjLoadDesc((HSD_CObjDesc*) &cam);
         CObjData* cobj_data = (CObjData*) &lbl_803D9DAC;
@@ -1830,7 +1830,7 @@ void fn_8018E85C(DynamicModelDesc* model, s32 flag)
                 bracket_idx++;
             }
 
-            gobj = GObj_Create(0xE, 0x1B, 0);
+            gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0x1B, 0);
             *(HSD_GObj**) (sub + 0x2C) = gobj;
             gobj = *(HSD_GObj**) (sub + 0x2C);
             jobj = HSD_JObjLoadJoint(model->joint);
@@ -2394,7 +2394,7 @@ void fn_8018FF9C(HSD_JObj* jobj, float x, float y, float z)
 
 HSD_GObj* fn_80190174(HSD_CObjDesc* cobjdesc)
 {
-    HSD_GObj* gobj = GObj_Create(0x13, 0x12, 0);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x12, 0);
     HSD_CObj* cobj = HSD_CObjLoadDesc(cobjdesc);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMax(gobj, HSD_GObj_803910D8, 0);
@@ -2404,7 +2404,7 @@ HSD_GObj* fn_80190174(HSD_CObjDesc* cobjdesc)
 
 HSD_GObj* fn_801901F8(HSD_CObjDesc* cobjdesc)
 {
-    HSD_GObj* gobj = GObj_Create(0x13, 0x15, 2);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x15, 2);
     HSD_CObj* cobj = HSD_CObjLoadDesc(cobjdesc);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMax(gobj, HSD_GObj_803910D8, 2);
@@ -2414,7 +2414,7 @@ HSD_GObj* fn_801901F8(HSD_CObjDesc* cobjdesc)
 
 void fn_8019027C(UNK_T lights)
 {
-    HSD_GObj* gobj = GObj_Create(0xB, 0x1A, 0);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, 0x1A, 0);
     HSD_LObj* lobj = lb_80011AC4(lights);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(gobj, HSD_GObj_LObjCallback, 1, 0);
@@ -2432,13 +2432,14 @@ void fn_801902F0(int sis_param)
         value = 0;
     }
     lbl_804D663C =
-        HSD_SisLib_803A611C(0, (HSD_GObj*) value, 9, 0x12, 0, 3, 0, 0x13);
+        HSD_SisLib_803A611C(0, (HSD_GObj*) value, HSD_GOBJ_CLASS_SISLIB_UNK,
+                            0x12, 0, 3, 0, HSD_GOBJ_CLASS_CAMERA);
 }
 
 HSD_GObj* fn_8019035C(bool arg0, DynamicModelDesc* model, int arg2, int arg3,
                       int arg4, bool arg5, void (*arg6)(HSD_GObj*), f32 arg8)
 {
-    HSD_GObj* gobj = GObj_Create(0xE, arg3, 0);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_UI, arg3, 0);
     HSD_JObj* jobj = HSD_JObjLoadJoint(model->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
     GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, arg4, 0);

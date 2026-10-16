@@ -1,6 +1,7 @@
 #include "gmstaffroll.h"
 
 #include <melee/ft/forward.h>
+#include <melee/gm/forward.h>
 
 #include <math.h>
 
@@ -1214,7 +1215,8 @@ void gm_Scene_StaffRoll_OnEnter(void* unused)
     staffInfo = HSD_MemAlloc(sizeof(struct staffInfo_t));
     staffInfoSortBuf = HSD_MemAlloc(sizeof(struct staffInfoSortBuf_t));
     HSD_SisLib_803A62A0(0, "SdStRoll.dat", "SIS_StRollData");
-    HSD_SisLib_803A611C(0, (HSD_GObj*) -1, 9, 13, 0, 18, 0, 19);
+    HSD_SisLib_803A611C(0, (HSD_GObj*) -1, HSD_GOBJ_CLASS_SISLIB_UNK, 13, 0,
+                        18, 0, HSD_GOBJ_CLASS_CAMERA);
     lbAudioAx_80026F2C(28);
     lbAudioAx_8002702C(16, 0x4000000000000ULL);
     lbAudioAx_80027168();
@@ -1222,7 +1224,7 @@ void gm_Scene_StaffRoll_OnEnter(void* unused)
         "GmStRoll.dat", &gm_804D6840, "ScGamRegStaffroll_scene_data",
         &gm_804D6844, "ScGamRegStaffrollNames_scene_modelset", 0);
     {
-        gobj = GObj_Create(17, 19, 0);
+        gobj = GObj_Create(HSD_GOBJ_CLASS_TEXT, 19, 0);
         cobj = HSD_CObjLoadDesc(gm_804D6840->cameras[0].desc);
         gm_804D6830 = cobj;
         HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
@@ -1233,7 +1235,7 @@ void gm_Scene_StaffRoll_OnEnter(void* unused)
         HSD_GObj_SetupProc(gobj, fn_801AA7F8, 0);
     }
     {
-        HSD_GObj* gobj = GObj_Create(19, 20, 0);
+        HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 20, 0);
         HSD_CObj* cobj = HSD_CObjLoadDesc((HSD_CObjDesc*) &gm_803DD0F0);
         gm_804D6834 = cobj;
         HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
@@ -1242,7 +1244,8 @@ void gm_Scene_StaffRoll_OnEnter(void* unused)
     }
     {
         HSD_LObj* lobj;
-        HSD_GObj* gobj = GObj_Create(gx_link, 3, 0);
+        HSD_GObj* gobj =
+            GObj_Create(HSD_GOBJ_CLASS_LIGHT, HSD_GOBJ_PLINK_LIGHT, 0);
         lobj = lb_80011AC4(gm_804D6840->lights);
         HSD_GObjObject_80390A70(gobj, HSD_GObj_LightKind, lobj);
         GObj_SetupGXLink(gobj, HSD_GObj_LObjCallback, 0, 0);
@@ -1251,7 +1254,7 @@ void gm_Scene_StaffRoll_OnEnter(void* unused)
     }
     {
         HSD_Fog* fog;
-        HSD_GObj* gobj = GObj_Create(0xA, 3, 0);
+        HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_FOG, 3, 0);
         fog = HSD_FogLoadDesc(gm_804D6840->fogs[0].desc);
         gm_804D6838 = fog;
         HSD_GObjObject_80390A70(gobj, HSD_GObj_FogKind, fog);
@@ -1261,7 +1264,7 @@ void gm_Scene_StaffRoll_OnEnter(void* unused)
         HSD_GObj_SetupProc(gobj, fn_801AC67C, 0);
     }
     {
-        HSD_GObj* gobj = GObj_Create(3, 5, 0);
+        HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_STAGE, 5, 0);
         HSD_JObj* jobj = HSD_JObjLoadJoint(gm_804D6840->models[1]->joint);
         gm_804D682C = jobj;
         HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
@@ -1279,7 +1282,7 @@ void gm_Scene_StaffRoll_OnEnter(void* unused)
     }
     {
         HSD_JObj* temp_jobj;
-        HSD_GObj* gobj = GObj_Create(14, 15, 0);
+        HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 15, 0);
         HSD_JObj* jobj;
         jobj = HSD_JObjLoadJoint(gm_804D6844[0]->joint);
         HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
@@ -1300,7 +1303,7 @@ void gm_Scene_StaffRoll_OnEnter(void* unused)
         HSD_GObj_SetupProc(gobj, fn_801AAB74, 1);
     }
     {
-        final_gobj = GObj_Create(14, 15, 0);
+        final_gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 15, 0);
         jobj = HSD_JObjLoadJoint(gm_804D6840->models[0]->joint);
         HSD_GObjObject_80390A70(final_gobj, HSD_GObj_JObjKind, jobj);
         GObj_SetupGXLink(final_gobj, HSD_GObj_JObjCallback, gx_link, 0);

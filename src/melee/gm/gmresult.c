@@ -1582,7 +1582,7 @@ void fn_80176D3C(Vec3* positions)
         {
             HSD_GObj* gobj;
             HSD_JObj* jobj;
-            gobj = GObj_Create(14, 15, 0);
+            gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 15, 0);
             model = &models[winner] - 1;
             jobj = HSD_JObjLoadJoint((*model)->joint);
             HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
@@ -1615,7 +1615,7 @@ void fn_80176F60(void)
 
     temp_r30 = data->x94;
     temp_r27 = *data->flmsce->models;
-    temp_r29 = GObj_Create(0xE, 0xF, 0);
+    temp_r29 = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     jobj = HSD_JObjLoadJoint(temp_r27->joint);
     HSD_GObjObject_80390A70(temp_r29, HSD_GObj_JObjKind, jobj);
     GObj_SetupGXLink(temp_r29, fn_80175038, 0xB, 0);
@@ -1781,7 +1781,7 @@ void gm_Scene_Results_OnEnter(void* arg0_)
     un_802FF1B4();
     gmResultLoadArchive(data);
     fn_80176A6C();
-    light_gobj = GObj_Create(0xB, 3, 0);
+    light_gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, HSD_GOBJ_PLINK_LIGHT, 0);
     if (light_gobj == NULL) {
         gmResultReportLightGObj();
     }
@@ -1791,7 +1791,7 @@ void gm_Scene_Results_OnEnter(void* arg0_)
     }
     HSD_GObjObject_80390A70(light_gobj, (u8) HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(light_gobj, HSD_GObj_LObjCallback, 0xA, 0);
-    model_gobj = GObj_Create(0xE, 0xF, 0);
+    model_gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     data->x18 = model_gobj;
     if (model_gobj == NULL) {
         gmResultReportModelGObj();

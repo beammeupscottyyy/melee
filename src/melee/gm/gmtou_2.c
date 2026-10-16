@@ -725,7 +725,7 @@ void fn_8019DD60(void)
     text->font_size.y = 0.08f;
     tmd->x524[2]->default_alignment = 1;
     fn_8019D1BC();
-    gobj = GObj_Create(0xE, 0x1A, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0x1A, 0);
     {
         HSD_Fog* tmp = HSD_FogLoadDesc(lbl_804D6690->fogs->desc);
         HSD_GObjObject_80390A70(gobj, (u8) HSD_GObj_FogKind, tmp);

@@ -3,6 +3,11 @@
 
 #include <Runtime/platform.h>
 
+#include <melee/cm/forward.h>
+#include <melee/gr/forward.h>
+#include <melee/if/forward.h>
+#include <melee/lb/forward.h>
+
 #define HSD_GOBJ_PLINK_20 20
 #define HSD_GOBJ_PLINK_27 27
 

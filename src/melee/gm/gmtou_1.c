@@ -1208,7 +1208,7 @@ void fn_80198D18(void)
     fn_8019035C(0, lbl_804D666C->models[4], 0, 0x1A, 2, 1, fn_80196E30, 80.0f);
     fn_80198C60();
 
-    gobj = GObj_Create(0xE, 0x1A, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0x1A, 0);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_FogKind,
                             (0, HSD_FogLoadDesc(lbl_804D666C->fogs[0].desc)));
     GObj_SetupGXLink(gobj, HSD_GObj_FogCallback, 0, 0);
