@@ -13,6 +13,7 @@
 
 /// @todo Create an @c enum for SFX IDs.
 #define SFX_NONE -1
+#define SFX_TERMINATOR 0x83D60
 
 enum AUDIO_MODE {
     AUDIO_MODE_UNK0,
@@ -90,9 +91,9 @@ int lbAudioAx_80028B4C(void);
 void lbAudioAx_80028B6C(void);
 void lbAudioAx_80028B90(void);
 
-/// Sound IDs, up to 0x83D60. The archive ends each list with it twice; the
-/// game stops at the first.
-typedef int* lbAudioLoadList DAT_TERMINATED(0x83D60, 2);
+/// Sound IDs, up to SFX_TERMINATOR. The archive ends each list with it twice;
+/// the game stops at the first.
+typedef int* lbAudioLoadList DAT_TERMINATED(SFX_TERMINATOR, 2);
 
 /// 30 lists for each pairing of the console's and the saved language, as
 /// #lbAudioAx_80023968 picks them.

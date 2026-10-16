@@ -232,25 +232,62 @@ static s8 flags_arr_803BB800[] = {
 };
 
 static int s32_arr_803BB8D4[0x38][2] = {
-    { 0, 0x20F },         { 0x2710, 0x2750 },   { 0x4E20, 0x4E25 },
-    { 0x7530, 0x7546 },   { 0x9C40, 0x9C4A },   { 0xC350, 0xC356 },
-    { 0xEA60, 0xEAB4 },   { 0x11170, 0x111DF }, { 0x13880, 0x138C2 },
-    { 0x15F90, 0x15FF5 }, { 0x186A0, 0x1871C }, { 0x1ADB0, 0x1AE30 },
-    { 0x1D4C0, 0x1D504 }, { 0x1FBD0, 0x1FCC8 }, { 0x222E0, 0x22379 },
-    { 0x249F0, 0x24A3F }, { 0x27100, 0x2716C }, { 0x29810, 0x29877 },
-    { 0x2BF20, 0x2BF7D }, { 0x2E630, 0x2E6B4 }, { 0x30D40, 0x30DD3 },
-    { 0x33450, 0x334B5 }, { 0x35B60, 0x35BBA }, { 0x38270, 0x382D0 },
-    { 0x3A980, 0x3A9E6 }, { 0x3D090, 0x3D0DE }, { 0x3F7A0, 0x3F7EA },
-    { 0x41EB0, 0x41F77 }, { 0x445C0, 0x44623 }, { 0x46CD0, 0x46D17 },
-    { 0x493E0, 0x4943A }, { 0x4BAF0, 0x4BB73 }, { 0x4E200, 0x4E21D },
-    { 0x50910, 0x509ED }, { 0x53020, 0x53027 }, { 0x55730, 0x55749 },
-    { 0x57E40, 0x57E4A }, { 0x5A550, 0x5A551 }, { 0x5CC60, 0x5CC6A },
-    { 0x5F370, 0x5F37D }, { 0x61A80, 0x61A8B }, { 0x64190, 0x64194 },
-    { 0x668A0, 0x668A8 }, { 0x68FB0, 0x68FB9 }, { 0x6B6C0, 0x6B6D8 },
-    { 0x6DDD0, 0x6DDD6 }, { 0x704E0, 0x704E4 }, { 0x72BF0, 0x72BF8 },
-    { 0x75300, 0x75301 }, { 0x77A10, 0x77A16 }, { 0x7A120, 0x7A12F },
-    { 0x7C830, 0x7C865 }, { 0x7EF40, 0x7EF41 }, { 0x81650, 0x81654 },
-    { 0x83D60, 0x83D60 }, { 0x83D60, 0x83D60 },
+    { 0, 0x20F },
+    { 0x2710, 0x2750 },
+    { 0x4E20, 0x4E25 },
+    { 0x7530, 0x7546 },
+    { 0x9C40, 0x9C4A },
+    { 0xC350, 0xC356 },
+    { 0xEA60, 0xEAB4 },
+    { 0x11170, 0x111DF },
+    { 0x13880, 0x138C2 },
+    { 0x15F90, 0x15FF5 },
+    { 0x186A0, 0x1871C },
+    { 0x1ADB0, 0x1AE30 },
+    { 0x1D4C0, 0x1D504 },
+    { 0x1FBD0, 0x1FCC8 },
+    { 0x222E0, 0x22379 },
+    { 0x249F0, 0x24A3F },
+    { 0x27100, 0x2716C },
+    { 0x29810, 0x29877 },
+    { 0x2BF20, 0x2BF7D },
+    { 0x2E630, 0x2E6B4 },
+    { 0x30D40, 0x30DD3 },
+    { 0x33450, 0x334B5 },
+    { 0x35B60, 0x35BBA },
+    { 0x38270, 0x382D0 },
+    { 0x3A980, 0x3A9E6 },
+    { 0x3D090, 0x3D0DE },
+    { 0x3F7A0, 0x3F7EA },
+    { 0x41EB0, 0x41F77 },
+    { 0x445C0, 0x44623 },
+    { 0x46CD0, 0x46D17 },
+    { 0x493E0, 0x4943A },
+    { 0x4BAF0, 0x4BB73 },
+    { 0x4E200, 0x4E21D },
+    { 0x50910, 0x509ED },
+    { 0x53020, 0x53027 },
+    { 0x55730, 0x55749 },
+    { 0x57E40, 0x57E4A },
+    { 0x5A550, 0x5A551 },
+    { 0x5CC60, 0x5CC6A },
+    { 0x5F370, 0x5F37D },
+    { 0x61A80, 0x61A8B },
+    { 0x64190, 0x64194 },
+    { 0x668A0, 0x668A8 },
+    { 0x68FB0, 0x68FB9 },
+    { 0x6B6C0, 0x6B6D8 },
+    { 0x6DDD0, 0x6DDD6 },
+    { 0x704E0, 0x704E4 },
+    { 0x72BF0, 0x72BF8 },
+    { 0x75300, 0x75301 },
+    { 0x77A10, 0x77A16 },
+    { 0x7A120, 0x7A12F },
+    { 0x7C830, 0x7C865 },
+    { 0x7EF40, 0x7EF41 },
+    { 0x81650, 0x81654 },
+    { SFX_TERMINATOR, SFX_TERMINATOR },
+    { SFX_TERMINATOR, SFX_TERMINATOR },
 };
 
 static const char* ssm_files[] = {
@@ -398,7 +435,7 @@ int lbAudioAx_800230C8(int i, int* lo, int* hi)
 int lbAudioAx_80023130(int arg0)
 {
     int i;
-    if (arg0 >= 0 && arg0 < 0x83D60) {
+    if (arg0 >= 0 && arg0 < SFX_TERMINATOR) {
         for (i = 0; i < 55; i++) {
             if (s32_arr_803BB8D4[i][0] <= arg0 &&
                 arg0 <= s32_arr_803BB8D4[i][1])
@@ -565,8 +602,8 @@ static int fn_80023750(int id, int vol, int pan, int track, int channel)
 
 int lbAudioAx_800237A8(int id, int vol, int pan)
 {
-    if (id >= 0x83D61) {
-        return fn_80023750(0x83D60, 0, PAN_MID, 0, 7);
+    if (id >= SFX_TERMINATOR + 1) {
+        return fn_80023750(SFX_TERMINATOR, 0, PAN_MID, 0, 7);
     } else {
         return fn_80023750(id, vol, pan, 0, 7);
     }
@@ -577,7 +614,7 @@ int lbAudioAx_80023870(int id, int vol, int pan, int track)
     if (track == 0) {
         return lbAudioAx_800237A8(id, vol, pan);
     }
-    if (id == 0x83D61) {
+    if (id == SFX_TERMINATOR + 1) {
         HSD_AudioSFXKeyOffTrack(track);
         return -1;
     }
@@ -620,7 +657,7 @@ int lbAudioAx_80023968(int arg0)
 #endif
 
     var_r4 = getAudioLoadData(arg0);
-    while (*var_r4 != 0x83D60) {
+    while (*var_r4 != SFX_TERMINATOR) {
         var_r4++;
         i++;
     }
@@ -633,10 +670,10 @@ int lbAudioAx_80023A44(int arg0, int arg1)
 
 #ifdef MUST_MATCH
     if (arg0 < 0 && arg0 >= 0x1E) {
-        return 0x83D60;
+        return SFX_TERMINATOR;
     }
-    if (arg1 < 0 && 0x83D60 <= arg1) {
-        return 0x83D60;
+    if (arg1 < 0 && SFX_TERMINATOR <= arg1) {
+        return SFX_TERMINATOR;
     }
 #endif
 
@@ -1239,7 +1276,7 @@ void lbAudioAx_80024DC4(int arg0)
         }
     }
     for (i = 0; i < 0x10; i++) {
-        if (q[i] == 0x83D60) {
+        if (q[i] == SFX_TERMINATOR) {
             lbl_8043373C[i] = arg0;
             lbl_80433780[i] = 0xa;
             return;
@@ -1726,7 +1763,7 @@ static void fn_800262A0(HSD_GObj* gobj)
     }
 }
 
-/// @brief Free an object from the audio allocator pool.
+/// Free an object from the audio allocator pool.
 static void lbAudioAx_ObjFree(void* obj)
 {
     if (obj != NULL) {
@@ -1743,7 +1780,7 @@ HSD_GObj* lbAudioAx_800263E8(float f1, HSD_GObj* owner, int arg2, int sfx_id,
     HSD_GObj* gobj;
     SoundParams params;
 
-    if (sfx_id < 0x83D60) {
+    if (sfx_id < SFX_TERMINATOR) {
         params.owner = owner;
         params.x4 = arg2;
         params.sfx_id = sfx_id;
@@ -2243,7 +2280,7 @@ void lbAudioAx_80027AB0(int id)
         strcpy(&cur_ssm_file[ssm_stem_pos], "smash2.sem");
         AXDriver_8038DA70(cur_ssm_file, lb_800195D0);
 
-        if (id != 0x83D61) {
+        if (id != SFX_TERMINATOR + 1) {
             lbAudioAx_800237A8(id, VOL_MAX, PAN_MID);
         }
 
@@ -2306,7 +2343,7 @@ static inline void lbAudioAx_80027DF8_inline(void)
                 (*t)--;
             }
             if (*t <= 0) {
-                *sl = 0x83D60;
+                *sl = SFX_TERMINATOR;
                 *t = 0;
             }
         }
@@ -2344,7 +2381,7 @@ void lbAudioAx_80027DF8(void)
             lbl_804D642C = 0;
         }
     } else if (lbl_804D38F0 != -1) {
-        fn_80023750(0x83D60, lbl_804D6428, PAN_MID, 5, 4);
+        fn_80023750(SFX_TERMINATOR, lbl_804D6428, PAN_MID, 5, 4);
         {
             carry = 0;
             lbl_804D6428 = carry;
@@ -2367,7 +2404,7 @@ void lbAudioAx_80027DF8(void)
             lbl_804D6428 = 0;
         }
     } else if (lbl_804D38F4 != -1) {
-        fn_80023750(0x83D60, lbl_804D642C, PAN_MID, 6, 4);
+        fn_80023750(SFX_TERMINATOR, lbl_804D642C, PAN_MID, 6, 4);
         {
             carry = 0;
             lbl_804D642C = carry;
@@ -2389,9 +2426,9 @@ void lbAudioAx_80027DF8(void)
         int i;
         PAD_STACK(8);
         for (i = 0; i < 0x10; i++) {
-            if (lbl_8043373C[i] != 0x83D60) {
+            if (lbl_8043373C[i] != SFX_TERMINATOR) {
                 lbAudioAx_800237A8(lbl_8043373C[i], VOL_MAX, PAN_MID);
-                lbl_8043373C[i] = 0x83D60;
+                lbl_8043373C[i] = SFX_TERMINATOR;
                 lbl_80433780[i] = 0;
             }
         }
@@ -2550,7 +2587,7 @@ void lbAudioAx_80028690(void)
     {
         int i;
         for (i = 0; i <= 16; i++) {
-            lbl_8043373C[i] = 0x83D60;
+            lbl_8043373C[i] = SFX_TERMINATOR;
             lbl_80433780[i] = 0;
         }
     }

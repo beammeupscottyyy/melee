@@ -1101,7 +1101,7 @@ bool lbColl_800067F8(Vec3* a, Vec3* b, Vec3* c, Vec3* d, Vec3* e, Vec3* f,
     }
 }
 
-/// @brief Tests a hit capsule segment against a hurt or shield capsule
+/// Tests a hit capsule segment against a hurt or shield capsule
 /// segment.
 /// @param[in] hit_start First endpoint of the hit capsule axis.
 /// @param[in] hit_end Second endpoint of the hit capsule axis.
