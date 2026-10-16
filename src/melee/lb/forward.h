@@ -15,6 +15,9 @@
 #define HSD_GOBJ_PLINK_MEMCARD (HSD_GOBJ_PLINK_MAX - 2)
 #define HSD_GOBJ_PLINK_AUDIO_AX (HSD_GOBJ_PLINK_MAX - 1)
 
+#define SFX_VOLUME_MAX 127
+#define SFX_PAN_MID 64
+
 union ColorOverlay_x8_t;
 struct lb_80011A50_t;
 

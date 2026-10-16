@@ -1,6 +1,8 @@
 #ifndef MELEE_IF_FORWARD_H
 #define MELEE_IF_FORWARD_H
 
+#include <melee/lb/forward.h>
+
 #define HSD_GOBJ_CLASS_UI 14
 #define HSD_GOBJ_CLASS_TEXT 17
 

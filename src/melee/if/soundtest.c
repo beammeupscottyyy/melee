@@ -21,9 +21,9 @@
 /* 2FFCC8 */ static bool fn_802FFCC8(enum soundtest_callback_arg0);
 
 /// .sdata
-/* 804D5850 */ static int un_804D5850 = 127;
-/* 804D5854 */ static int un_804D5854 = 127;
-/* 804D5858 */ static int un_804D5858 = 127;
+/* 804D5850 */ static int un_804D5850 = SFX_VOLUME_MAX;
+/* 804D5854 */ static int un_804D5854 = SFX_VOLUME_MAX;
+/* 804D5858 */ static int un_804D5858 = SFX_VOLUME_MAX;
 /* 804D585C */ static int un_804D585C = -1;
 
 /// .sbss
@@ -97,9 +97,9 @@ bool un_802FF88C(enum soundtest_callback_arg0 arg0)
     un_804D585C = -1;
     un_804D6DBC = lbAudioAx_80024BD0();
     lbAudioAx_800236DC();
-    lbAudioAx_800245D4(0x7F);
-    lbAudioAx_800245F4(0x7F);
-    lbAudioAx_80024614(0x7F);
+    lbAudioAx_800245D4(SFX_VOLUME_MAX);
+    lbAudioAx_800245F4(SFX_VOLUME_MAX);
+    lbAudioAx_80024614(SFX_VOLUME_MAX);
     if (un_80302DF0()) {
         un_80302DF8(un_80302DF0(), fn_802FFCC8);
     }
@@ -183,9 +183,9 @@ bool un_802FFBAC(enum soundtest_callback_arg0 arg0)
 bool un_802FFC30(enum soundtest_callback_arg0 arg0)
 {
     lbAudioAx_800236DC();
-    lbAudioAx_800245D4(0x7F);
-    lbAudioAx_800245F4(0x7F);
-    lbAudioAx_80024614(0x7F);
+    lbAudioAx_800245D4(SFX_VOLUME_MAX);
+    lbAudioAx_800245F4(SFX_VOLUME_MAX);
+    lbAudioAx_80024614(SFX_VOLUME_MAX);
     return true;
 }
 
@@ -195,9 +195,9 @@ bool un_802FFC6C(enum soundtest_callback_arg0 update_scene)
         lbAudioAx_80023694();
         sfxBack();
         lbAudioAx_800236DC();
-        lbAudioAx_800245D4(0x7F);
-        lbAudioAx_800245F4(0x7F);
-        lbAudioAx_80024614(0x7F);
+        lbAudioAx_800245D4(SFX_VOLUME_MAX);
+        lbAudioAx_800245F4(SFX_VOLUME_MAX);
+        lbAudioAx_80024614(SFX_VOLUME_MAX);
         gm_ChangeGameModeAfterCurrentScene(GM_TITLE);
         gm_801A4B60();
     }

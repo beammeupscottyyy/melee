@@ -42,10 +42,10 @@ void ifStatus_802F6EA4(int arg0, int arg1, int arg2, int arg3, IfStatusCb arg4,
             arg5(-1);
         }
         if (arg1 >= 0) {
-            lbAudioAx_800237A8(arg1, 0x7F, 0x40);
+            lbAudioAx_800237A8(arg1, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
         if (arg1 >= 0) {
-            lbAudioAx_800237A8(arg2, 0x7F, 0x40);
+            lbAudioAx_800237A8(arg2, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     } else {
         Element_803F9628* e;

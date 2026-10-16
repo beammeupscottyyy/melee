@@ -53,9 +53,9 @@ void fn_802FED14(HSD_GObj* gobj)
                 un_803F9E08.x0_b567 = un_803F9E08.x0_b234;
                 un_803F9E08.x1++;
                 if (un_803F9E08.x1 && un_803F9E08.x1 % 10 == 0) {
-                    lbAudioAx_800237A8(0xB4, 0x7F, 0x40);
+                    lbAudioAx_800237A8(0xB4, SFX_VOLUME_MAX, SFX_PAN_MID);
                 } else {
-                    lbAudioAx_800237A8(0xB3, 0x7F, 0x40);
+                    lbAudioAx_800237A8(0xB3, SFX_VOLUME_MAX, SFX_PAN_MID);
                 }
             }
         }
