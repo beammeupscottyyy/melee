@@ -313,7 +313,7 @@ void it_2725_Logic11_PickedUp(Item_GObj* gobj)
     it_80275474(gobj);
     ip->xDD4_itemVar.zgshell.xE0C = 0;
     ip->xDD4_itemVar.zgshell.xE1C_b0 = 0;
-    Item_80268E5C(gobj, 2, 2);
+    Item_80268E5C(gobj, 2, ITEM_ANIM_UPDATE);
 }
 
 bool itZrshell_UnkMotion2_Anim(Item_GObj* arg0)
@@ -338,7 +338,7 @@ void itZGShell_Logic11_Thrown(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
 
-    Item_80268E5C((HSD_GObj*) gobj, 3, 6);
+    Item_80268E5C((HSD_GObj*) gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
     Item_8026AE84(ip, 0xF2, 0x7FU, 0x40U);
 }
 
@@ -363,7 +363,7 @@ bool itZrshell_UnkMotion3_Coll(Item_GObj* gobj)
 
 void itZGShell_Logic11_Dropped(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 4, 6);
+    Item_80268E5C(gobj, 4, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 bool itZrshell_UnkMotion4_Anim(Item_GObj* gobj)

@@ -306,7 +306,7 @@ void itGShell_Logic14_Thrown(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     ip->xDD4_itemVar.gshell.xDE8 = 1;
-    Item_80268E5C(gobj, 3, 6);
+    Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
     Item_8026AE84(ip, 242, 127, 64);
 }
 
@@ -331,7 +331,7 @@ bool itGshell_UnkMotion3_Coll(Item_GObj* gobj)
 
 void itGShell_Logic14_Dropped(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 4, 6);
+    Item_80268E5C(gobj, 4, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 bool itGshell_UnkMotion4_Anim(Item_GObj* gobj)
