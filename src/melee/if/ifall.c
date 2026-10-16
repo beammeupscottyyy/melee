@@ -163,7 +163,7 @@ static void ifAll_802F370C(SceneDesc* scene)
     HSD_JObj* jobj;
     int i;
 
-    gobj = GObj_Create(0xE, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     jobj = HSD_JObjLoadJoint(scene->models[0]->joint);
     ifAll_804A0FD8.x8 = jobj;
     lb_80011E24(jobj, &child, 0xD, -1);
@@ -195,7 +195,7 @@ static void ifAll_802F370C(SceneDesc* scene)
 
 static inline HSD_GObj* createCamera(HSD_CObjDesc* desc)
 {
-    HSD_GObj* gobj = GObj_Create(0x13, 0x14, 0);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     HSD_CObj* cobj = lb_80013B14(&desc->perspective);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMax(gobj, fn_802F36B8, 8);
@@ -206,7 +206,7 @@ static inline HSD_GObj* createCamera(HSD_CObjDesc* desc)
 static inline void createLight(SceneDesc* scene)
 {
     HSD_LightDesc* desc = scene->lights[0]->desc;
-    HSD_GObj* gobj = GObj_Create(0xE, 3, 0);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_UI, HSD_GOBJ_PLINK_LIGHT, 0);
     HSD_LObj* lobj = HSD_LObjLoadDesc(desc);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(gobj, HSD_GObj_LObjCallback, 0xA, 0);

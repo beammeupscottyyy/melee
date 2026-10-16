@@ -1251,7 +1251,7 @@ bool un_80301634(enum soundtest_callback_arg0 arg0)
     r3 = HSD_MemAlloc(lbSnap_8001E204());
     lbSnap_8001E218(r3, r31);
     un_804D6E04 = HSD_MemAlloc(0x96000);
-    gobj = GObj_Create(0x13, 0x14, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     HSD_SObjLib_803A55DC(gobj, 0x280, 0x1E0, 0xC);
     gobj->gxlink_prios = 0x40000;
     un_804D6E08 = 0;
@@ -1378,7 +1378,7 @@ bool un_80301964(enum soundtest_callback_arg0 arg0)
                 HSD_GObjFree(un_804D6E08);
             }
 
-            gobj = GObj_Create(0xE, 0xF, 0);
+            gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
             GObj_SetupGXLink(gobj, HSD_SObjLib_803A49E0, 0x12, 0);
             un_803FD274.image_ptr = un_804D6E04;
             sobj = HSD_SObjLib_803A477C(gobj, &un_804D5990, 0, 0, 0x80, 0);

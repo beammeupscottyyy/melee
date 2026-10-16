@@ -203,7 +203,8 @@ static inline HSD_GObj* createCamera(void)
 
 static inline HSD_GObj* createLight(void)
 {
-    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, 3, 0);
+    HSD_GObj* gobj =
+        GObj_Create(HSD_GOBJ_CLASS_LIGHT, HSD_GOBJ_PLINK_LIGHT, 0);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_LightKind & 0xFF,
                             lb_80011AC4(un_804D6D9C->lights));
     GObj_SetupGXLink(gobj, HSD_GObj_LObjCallback, 10, 0);
@@ -229,7 +230,7 @@ void un_802FE6A8(void)
     {
         GXColor color = { 0x5A, 0x5A, 0x5A, 0xFF };
 
-        HSD_SisLib_803A611C(2, 0, 9, 20, 0, 14, 0, 18);
+        HSD_SisLib_803A611C(2, 0, HSD_GOBJ_CLASS_SISLIB_UNK, 20, 0, 14, 0, 18);
         un_803F9D48.x20 =
             HSD_SisLib_803A5ACC(2, 0, 105.0, 202.0, 0.0, 435.0, 75.0);
         un_803F9D48.x20->default_fitting = 1;

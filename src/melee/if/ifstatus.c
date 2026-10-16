@@ -611,7 +611,7 @@ HSD_GObj* ifStatus_802F5EC0(IfDamageState* state, s32 player_idx)
     HudIndex* hud = ifStatus_GetHUDInfo();
 
     if (state->HUD_parent_entity == NULL) {
-        gobj = GObj_Create(0xE, 0xF, 0);
+        gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
         jobj = ifStatus_LoadDamageJObj(hud);
         HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
         GObj_SetupGXLink(gobj, ifStatus_802F5DE0, 0xB, 0);
@@ -677,7 +677,7 @@ HSD_GObj* ifStatus_802F61FC(IfDamageState* state, s32 player_idx)
         HSD_GObj* gobj;
 
         ifAll_GetArchive();
-        gobj = GObj_Create(0xE, 0xF, 0);
+        gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
         if (gobj == NULL) {
             HSD_ASSERTREPORT(0x30A, 0,
                              "Error : gobj dont't get (ifAddMark)\n");
