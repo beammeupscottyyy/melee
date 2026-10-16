@@ -355,7 +355,7 @@ typedef enum CSSIconJointId {
 } CSSIconJointId;
 
 /**
- * @brief Identifier for a single selectable character as seen in high-scores
+ * Identifier for a single selectable character as seen in high-scores
  * or on the CSS.
  *
  * #SelectableCharacterKind mirrors the first @c 0x19 entries of

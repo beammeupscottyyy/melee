@@ -128,7 +128,7 @@ typedef enum MenuState {
     MENU_STATE_5 = 5,
 } MenuState;
 
-/// @brief selection refers to the invidual options inside menus/submenus
+/// Selection refers to the individual options inside menus/submenus.
 /// @todo should these be moved into their respective TU's?
 typedef enum MainMenuSelection {
     SEL_MAIN_1P = 0,
