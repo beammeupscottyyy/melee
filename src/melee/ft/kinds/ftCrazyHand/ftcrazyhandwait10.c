@@ -167,14 +167,14 @@ void ftCh_Wait1_0_Anim(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     struct ftCh_Init_803D4878_t* data = &ftCh_Init_803D4878;
-    s32 slot_type = Player_GetPlayerSlotType(fp->player_idx);
+    Gm_PKind slot_type = Player_GetPlayerSlotType(fp->player_idx);
     PAD_STACK(4);
 
     if (fp->cmd_vars[1] != 0) {
         ftBossLib_8015C5F8(gobj);
         fp->cmd_vars[1] = 0;
     }
-    if (slot_type == 0) {
+    if (slot_type == Gm_PKind_Human) {
         ftCh_Init_80156AD8(gobj);
         if (!ftAnim_IsFramesRemaining(gobj)) {
             if (fp->motion_id == ftMh_MS_Wait1_0) {

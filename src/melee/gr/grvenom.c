@@ -1570,7 +1570,7 @@ void grVenom_80205F30(Ground_GObj* gobj)
                 retries = 0;
                 do {
                     slot = (slot + retries) & 3;
-                    if (Player_GetPlayerSlotType(slot) != 3) {
+                    if (Player_GetPlayerSlotType(slot) != Gm_PKind_NA) {
                         break;
                     }
                     retries++;

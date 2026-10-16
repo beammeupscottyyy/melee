@@ -436,7 +436,7 @@ Gm_PKind Player_8003248C(s32 slot, bool arg1)
             if (player->pkind == Gm_PKind_Human ||
                 player->pkind == Gm_PKind_Cpu)
             {
-                return 1;
+                return Gm_PKind_Cpu;
             }
         }
     }
