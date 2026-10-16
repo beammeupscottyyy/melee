@@ -1,6 +1,6 @@
 /**
  * @file lb_0219.c
- * @brief Data-driven animated screen flashes.
+ * Data-driven animated screen flashes.
  *
  * Plays the colour animations stored in LbBf.dat over the background flash
  * overlay owned by lbbgflash.c.

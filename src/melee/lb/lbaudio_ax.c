@@ -1726,7 +1726,7 @@ static void fn_800262A0(HSD_GObj* gobj)
     }
 }
 
-/// @brief Free an object from the audio allocator pool.
+/// Free an object from the audio allocator pool.
 static void lbAudioAx_ObjFree(void* obj)
 {
     if (obj != NULL) {

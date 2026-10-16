@@ -127,9 +127,10 @@ static void sisEndKerning(u8* data, s32* out_idx, s32* has_kerning)
     *out_idx = idx;
 }
 
-/// @brief Converts ASCII to "SIS" format
-/// @details - Maps ASCII characters to SIS characters by using byte pair
-/// lookup tables
+/// Converts ASCII to "SIS" format.
+///
+/// Maps ASCII characters to SIS characters by using byte pair lookup tables.
+///
 /// @param data output buffer for the converted string
 /// @param string ASCII string to be converted
 /// @return length of encoded string

@@ -98,7 +98,7 @@ static void lbRefract_80021CE8(lbRefract_CallbackData* cb, s32 arg1)
     DCFlushRange(cb->buffer, cb->buffer_size);
 }
 
-/// @brief Write IA4 texture coordinate to refraction buffer.
+/// Write IA4 texture coordinate to refraction buffer.
 static void lbRefract_WriteTexCoordIA4(lbRefract_CallbackData* data, u32 row,
                                        u32 col, u32 arg3, u8 arg4,
                                        u8 intensity, u8 alpha)
@@ -216,7 +216,7 @@ static void fn_8002206C(lbRefract_CallbackData* data, s32 row, u32 col,
     }
 }
 
-/// @brief Read RGBA8 texture coordinate addresses from refraction buffer.
+/// Read RGBA8 texture coordinate addresses from refraction buffer.
 static void lbRefract_ReadTexCoordRGBA8(lbRefract_CallbackData* data, u32 row,
                                         u32 col, u32* out_r, u32* out_g,
                                         u32* out_b, u32* out_a)
@@ -248,8 +248,7 @@ static void lbRefract_ReadTexCoordRGBA8(lbRefract_CallbackData* data, u32 row,
     }
 }
 
-/// @brief Initialize refraction callback data for a texture buffer.
-/// @brief Initialize refraction callback data for a texture buffer.
+/// Initialize refraction callback data for a texture buffer.
 /// @param data Callback data to initialize.
 /// @param buffer Base address of texture buffer.
 /// @param format Texture format (3=IA4, 4=IA8, 6=RGBA8).
@@ -401,7 +400,7 @@ void lbRefract_800222A4(void)
     }
 }
 
-/// @brief Copy framebuffer to refraction source texture.
+/// Copy framebuffer to refraction source texture.
 void lbRefract_8002247C(HSD_CObj* cobj)
 {
     if (lbl_804336D0.refractionUserCount == 0) {
@@ -445,7 +444,7 @@ void lbRefract_80022560(void)
     }
 }
 
-/// @brief Reset TEV and indirect texture stages.
+/// Reset TEV and indirect texture stages.
 void lbRefract_800225D4(void)
 {
     GXSetTevDirect(0);
@@ -453,7 +452,7 @@ void lbRefract_800225D4(void)
     HSD_StateInvalidate(-1);
 }
 
-/// @brief Display DObj then reset TEV/indirect stages for refraction cleanup.
+/// Display DObj then reset TEV/indirect stages for refraction cleanup.
 static void lbRefract_DObjDispReset(HSD_DObj* dobj, Mtx vmtx, Mtx pmtx,
                                     u32 rendermode)
 {
@@ -663,13 +662,13 @@ void lbRefract_80022998(HSD_MObj* mobj, u32 rendermode, s32 arg2)
     GXSetDither(GX_FALSE);
 }
 
-/// @brief Increment refraction effect user count.
+/// Increment refraction effect user count.
 void lbRefract_80022BB8(void)
 {
     lbl_804336D0.refractionUserCount += 1;
 }
 
-/// @brief Decrement refraction effect user count.
+/// Decrement refraction effect user count.
 void lbRefSetUnuse(void)
 {
     lbl_804336D0.refractionUserCount -= 1;

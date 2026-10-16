@@ -1,6 +1,6 @@
 /**
  * @file lbbgflash.c
- * @brief Background flash effects for dramatic game events.
+ * Background flash effects for dramatic game events.
  *
  * Provides full-screen color overlay flashes triggered by various game events.
  * Called from game mode code (gmallstar.c, gmregclear.c, gm_1A7A.c, etc).
@@ -367,7 +367,7 @@ void fn_800204C8(void)
     }
 }
 
-/// @brief Trigger background flash.
+/// Trigger background flash.
 /// @param duration Flash duration in frames (minimum 1).
 void lbBgFlash_800205F0(s32 duration)
 {
@@ -378,7 +378,7 @@ void lbBgFlash_800205F0(s32 duration)
     lbl_80433658.state.mode = 0;
 }
 
-/// @brief Trigger background flash.
+/// Trigger background flash.
 /// @param count Flash duration in frames (minimum 1).
 void lbBgFlash_8002063C(int count)
 {
