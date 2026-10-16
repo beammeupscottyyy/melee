@@ -112,7 +112,7 @@ void it_8027CFE8(Item_GObj* item_gobj)
     it_8027518C(item_gobj);
     sp14 = it->pos;
     lb_800119DC(&sp14, 0x78, 1.0F, 0.02F, 60 * M_PI / 180);
-    Item_80268E5C(item_gobj, 5, 2);
+    Item_80268E5C(item_gobj, 5, ITEM_ANIM_UPDATE);
 }
 
 void it_8027D0B8(Item_GObj* gobj)
@@ -121,7 +121,7 @@ void it_8027D0B8(Item_GObj* gobj)
     u8 _[4] = { 0 };
     it_8026B390(gobj);
     it->x40_vel.x = it->x40_vel.y = it->x40_vel.z = 0.0F;
-    Item_80268E5C(gobj, 0, 2);
+    Item_80268E5C(gobj, 0, ITEM_ANIM_UPDATE);
 }
 
 bool itCapsule_UnkMotion0_Anim(Item_GObj* gobj)
@@ -139,7 +139,7 @@ bool itCapsule_UnkMotion0_Coll(Item_GObj* gobj)
 
 void it_8027D148(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 1, 2);
+    Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
 }
 
 bool itCapsule_UnkMotion4_Anim(Item_GObj* gobj)
@@ -162,7 +162,7 @@ bool itCapsule_UnkMotion4_Coll(Item_GObj* gobj)
 
 void itCapsule_Logic0_PickedUp(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 2, 2);
+    Item_80268E5C(gobj, 2, ITEM_ANIM_UPDATE);
 }
 
 bool itCapsule_UnkMotion2_Anim(Item_GObj* gobj)
@@ -174,12 +174,12 @@ void itCapsule_UnkMotion2_Phys(Item_GObj* gobj) {}
 
 void itCapsule_Logic0_Dropped(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 4, 6);
+    Item_80268E5C(gobj, 4, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itCapsule_Logic0_Thrown(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 3, 6);
+    Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itCapsule_UnkMotion3_Phys(Item_GObj* item_gobj)

@@ -170,7 +170,7 @@ void itRabbitC_Logic31_Dropped(Item_GObj* item_gobj)
 {
     PAD_STACK(8);
 
-    Item_80268E5C(item_gobj, 1, 6);
+    Item_80268E5C(item_gobj, 1, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
     it_80272A18(it_80272CC0(item_gobj, 3));
 }
 
