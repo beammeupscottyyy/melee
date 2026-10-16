@@ -77,8 +77,8 @@
     0,
     0,
     1,
-    { 0, 0x280, 0, 0x1E0 },
-    { 0, 0x280, 0, 0x1E0 },
+    { 0, 640, 0, 480 },
+    { 0, 640, 0, 480 },
     &cm_803BCB3C,
     &cm_803BCB50,
     0.0f,
@@ -3807,7 +3807,7 @@ void Camera_8002FEEC(s32 arg0)
     if (Player_GetEntity(arg0) != NULL) {
         box = ftLib_GetCameraSubject(Player_GetEntity(arg0));
         if ((box != NULL) && ((game_camera.mode) != CAMERA_DEBUG_FOLLOW)) {
-            if (game_camera.mode <= (u32) CAMERA_PAUSE) {
+            if (game_camera.mode <= CAMERA_PAUSE) {
                 cm_80453004.last_mode = game_camera.mode;
             }
 
@@ -3847,7 +3847,7 @@ void Camera_8003006C(void)
     HSD_CObj* cobj;
 
     if (game_camera.mode != CAMERA_DEBUG_FREE) {
-        if (game_camera.mode <= (u32) CAMERA_PAUSE) {
+        if (game_camera.mode <= CAMERA_PAUSE) {
             cm_80453004.last_mode = game_camera.mode;
         }
         game_camera.mode = CAMERA_DEBUG_FREE;
@@ -3865,7 +3865,7 @@ void Camera_800300F0(void)
 
 bool Camera_8003010C(void)
 {
-    if ((int) game_camera.mode == CAMERA_FREE) {
+    if (game_camera.mode == CAMERA_FREE) {
         return true;
     }
     return false;
@@ -3873,7 +3873,7 @@ bool Camera_8003010C(void)
 
 bool Camera_80030130(void)
 {
-    if ((int) game_camera.mode == CAMERA_BOSS_INTRO) {
+    if (game_camera.mode == CAMERA_BOSS_INTRO) {
         return true;
     }
     return false;
@@ -3881,7 +3881,7 @@ bool Camera_80030130(void)
 
 bool Camera_80030154(void)
 {
-    if ((int) game_camera.mode == CAMERA_DEBUG_FOLLOW) {
+    if (game_camera.mode == CAMERA_DEBUG_FOLLOW) {
         return true;
     }
     return false;
@@ -3889,7 +3889,7 @@ bool Camera_80030154(void)
 
 bool Camera_80030178(void)
 {
-    if ((int) game_camera.mode == CAMERA_DEBUG_FREE) {
+    if (game_camera.mode == CAMERA_DEBUG_FREE) {
         return true;
     }
     return false;

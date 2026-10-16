@@ -54,5 +54,5 @@ void cmSnap_800316B4(void)
     _p(status) = CmSnapStatus_Sleep;
     _p(unk1).image_ptr = NULL;
     GObj_SetupGXLinkMax(GObj_Create(0x12, 0x12, 0), cmSnap_80031640, 4);
-    lb_800121FC(&_p(unk1), 0x280, 0x1E0, 4, 0x7D6);
+    lb_800121FC(&_p(unk1), 640, 480, GX_TF_RGB565, 0x7D6);
 }
