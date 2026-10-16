@@ -166,7 +166,7 @@ void ftPp_SpecialN_8011F500(Fighter_GObj* gobj)
         pos.y += da->x10 + fp->u.pp.x2250;
         fp->u.pp.x222C =
             it_802C1590(gobj, &pos, It_Kind_IceClimber_Ice, fp->facing_dir);
-        ft_PlaySFX(fp, 130021, 127, 64);
+        ft_PlaySFX(fp, 130021, SFX_VOLUME_MAX, SFX_PAN_MID);
         if (fp->u.pp.x222C != NULL) {
             fp->death2_cb = ftPp_Init_8011F060;
             fp->take_dmg_cb = ftPp_Init_8011F060;
@@ -177,11 +177,11 @@ void ftPp_SpecialN_8011F500(Fighter_GObj* gobj)
             it_802C16F8(fp->u.pp.x222C);
             fp->cmd_vars[0] = 0;
             if (fp->kind == Ft_Kind_Popo) {
-                ft_800881D8(fp, 130141, 127, 64);
+                ft_800881D8(fp, 130141, SFX_VOLUME_MAX, SFX_PAN_MID);
             } else {
-                ft_800881D8(fp, 130090, 127, 64);
+                ft_800881D8(fp, 130090, SFX_VOLUME_MAX, SFX_PAN_MID);
             }
-            ft_PlaySFX(fp, 130024, 127, 64);
+            ft_PlaySFX(fp, 130024, SFX_VOLUME_MAX, SFX_PAN_MID);
             inlineA0(gobj, fp);
         }
     }

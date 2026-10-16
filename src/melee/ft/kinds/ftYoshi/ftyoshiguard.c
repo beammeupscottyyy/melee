@@ -86,7 +86,7 @@ static void ftYs_Init_8012BECC_sub(HSD_GObj* gobj)
     HSD_JObjSetTranslate(fp->parts[fp->ft_data->x8->x11].joint, &s.v);
     ftYs_Init_8012B8A4_no_inline(gobj);
     ftCo_80091D58(fp);
-    ft_PlaySFX(fp, 0x6E, 0x7F, 0x40);
+    ft_PlaySFX(fp, 0x6E, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void ftYs_Init_8012BECC(Fighter_GObj* gobj)
@@ -349,7 +349,7 @@ static inline void ftYs_Shield_8012C914_inline(Fighter_GObj* gobj)
     HSD_JObjSetTranslate(fp->parts[fp->ft_data->x8->x11].joint, &translate);
     ftYs_Init_8012B8A4(gobj);
     ftCo_80091D58(fp);
-    ft_PlaySFX(fp, 0x6E, 0x7F, 0x40);
+    ft_PlaySFX(fp, 0x6E, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void ftYs_Shield_8012C914(Fighter_GObj* gobj)

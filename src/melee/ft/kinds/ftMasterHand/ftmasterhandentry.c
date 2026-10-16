@@ -31,7 +31,8 @@ void ftMh_MS_343_801510B0(HSD_GObj* gobj)
 
     /// @todo Probably same file if #ftMh_MS_343_801511FC is getting
     /// implicitly passed.
-    ft_800881D8(fp, 320001, 127, 64 /*, ftMh_MS_343_801511FC */);
+    ft_800881D8(fp, 320001, SFX_VOLUME_MAX,
+                SFX_PAN_MID /*, ftMh_MS_343_801511FC */);
 
     ftBossLib_8015C09C(gobj, -1);
 }

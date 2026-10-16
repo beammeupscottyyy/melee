@@ -227,7 +227,7 @@ void fn_8012EDE8(Fighter_GObj* gobj)
         lb_8000B1CC(fp->parts[4].joint, NULL, &v);
         (void) (fp != NULL);
         efSync_Spawn(0x4CF, gobj, &v, &fp->co_attrs.xBC);
-        ft_PlaySFX(fp, 0x44618, 0x7FU, 0x40U);
+        ft_PlaySFX(fp, 0x44618, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     fn_8012EC7C_inline(gobj);
 }
@@ -981,7 +981,8 @@ void ftYs_SpecialAirSLoop_1_Phys(Fighter_GObj* gobj)
                 Fighter_ChangeMotionState(gobj, ftYs_MS_SpecialAirSLoop_0,
                                           0x02440812, fp->cur_anim_frame, 0.0F,
                                           0.0F, NULL);
-                ft_PlaySFX(GET_FIGHTER(gobj), 0x44621, 0x7F, 0x40);
+                ft_PlaySFX(GET_FIGHTER(gobj), 0x44621, SFX_VOLUME_MAX,
+                           SFX_PAN_MID);
                 ftYoshi_SpecialS_SetCall(gobj);
 
                 if (fp->mv.ys.specials.x24 != 0.0F) {
@@ -1001,7 +1002,8 @@ void ftYs_SpecialAirSLoop_1_Phys(Fighter_GObj* gobj)
                 Fighter_ChangeMotionState(gobj, ftYs_MS_SpecialAirSLoop_0,
                                           0x02440812, fp->cur_anim_frame, 0.0F,
                                           0.0F, NULL);
-                ft_PlaySFX(GET_FIGHTER(gobj), 0x44621, 0x7F, 0x40);
+                ft_PlaySFX(GET_FIGHTER(gobj), 0x44621, SFX_VOLUME_MAX,
+                           SFX_PAN_MID);
                 ftYoshi_SpecialS_SetCall(gobj);
 
                 if (fp->mv.ys.specials.x24 != 0.0F) {
@@ -1269,7 +1271,8 @@ void ftYs_SpecialAirSLoop_2_Coll(Fighter_GObj* gobj)
             Fighter_ChangeMotionState(gobj, ftYs_MS_SpecialAirSLoop_0,
                                       0x440012, fp->cur_anim_frame, 0.0F, 0.0F,
                                       NULL);
-            ft_PlaySFX(GET_FIGHTER(gobj), 0x44621, 0x7F, 0x40);
+            ft_PlaySFX(GET_FIGHTER(gobj), 0x44621, SFX_VOLUME_MAX,
+                       SFX_PAN_MID);
             ftYoshi_SpecialS_SetCall(gobj);
 
             fp->self_vel.z = 0.0F;
@@ -1340,7 +1343,8 @@ void ftYs_SpecialAirSLoop_3_Coll(Fighter_GObj* gobj)
             Fighter_ChangeMotionState(gobj, ftYs_MS_SpecialAirSLoop_0,
                                       0x0C4C509AU, fp->cur_anim_frame, 0.0F,
                                       0.0F, NULL);
-            ft_PlaySFX(GET_FIGHTER(gobj), 0x44621, 0x7F, 0x40);
+            ft_PlaySFX(GET_FIGHTER(gobj), 0x44621, SFX_VOLUME_MAX,
+                       SFX_PAN_MID);
             ftYoshi_SpecialS_SetCall(gobj);
 
             if (ABS(fp->mv.ys.specials.x1C) < 0.01F) {

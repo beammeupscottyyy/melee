@@ -216,7 +216,8 @@ void ftSs_SpecialNHold_Anim(HSD_GObj* gobj)
             var_f1 = 0.f;
         }
         index = 5 * var_f1;
-        ft_80088510(fighter2, ftSs_Unk3_803CE6B8[index], 127, 64);
+        ft_80088510(fighter2, ftSs_Unk3_803CE6B8[index], SFX_VOLUME_MAX,
+                    SFX_PAN_MID);
     }
 
     fp->mv.ss.unk3.x4 += 1;
@@ -366,7 +367,7 @@ void ftSs_SpecialNHold_Coll(HSD_GObj* gobj)
         ftCommon_GroundToAirStateChange(gobj, fp, ftSs_MS_SpecialAirN,
                                         ftCommon_GroundAirColl_MF);
         ftSamus_updateDamageDeathCBs(gobj);
-        ft_PlaySFX(fp, 260021, 127, 64);
+        ft_PlaySFX(fp, 260021, SFX_VOLUME_MAX, SFX_PAN_MID);
         fp->cmd_vars[1] = 1;
     }
 }

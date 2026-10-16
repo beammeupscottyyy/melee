@@ -196,11 +196,11 @@ void fn_80122D2C(Fighter_GObj* gobj)
         ftPp_set_cbs(gobj);
         fp->cmd_vars[0] = 0;
         if (fp->kind == Ft_Kind_Popo) {
-            ft_800881D8(fp, 0x1FC42, 0x7F, 0x40);
-            ft_80088510(fp, 0x1FBEB, 0x7F, 0x40);
+            ft_800881D8(fp, 0x1FC42, SFX_VOLUME_MAX, SFX_PAN_MID);
+            ft_80088510(fp, 0x1FBEB, SFX_VOLUME_MAX, SFX_PAN_MID);
         } else {
-            ft_800881D8(fp, 0x1FC0F, 0x7F, 0x40);
-            ft_80088510(fp, 0x1FBEE, 0x7F, 0x40);
+            ft_800881D8(fp, 0x1FC0F, SFX_VOLUME_MAX, SFX_PAN_MID);
+            ft_80088510(fp, 0x1FBEE, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
         break;
     case 2:

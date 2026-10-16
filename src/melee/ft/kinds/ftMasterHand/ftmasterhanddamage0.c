@@ -60,8 +60,8 @@ void ftMh_MS_343_80151484(HSD_GObj* gobj)
     func_80151484_inline1(gobj);
     Fighter_ChangeMotionState(gobj, ftMh_MS_Damage, Ft_MF_None, 0, 1, 0, 0);
     ftAnim_8006EBA4(gobj);
-    ft_800881D8(fp, 320023, 127, 64);
-    ft_PlaySFX(fp, 320024, 127, 64);
+    ft_800881D8(fp, 320023, SFX_VOLUME_MAX, SFX_PAN_MID);
+    ft_PlaySFX(fp, 320024, SFX_VOLUME_MAX, SFX_PAN_MID);
     fp->mv.mh.unk0.x74 = 0;
     fp->mv.mh.unk0.x78 = 0;
 }
