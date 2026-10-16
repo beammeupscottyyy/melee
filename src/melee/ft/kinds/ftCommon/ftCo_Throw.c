@@ -3,6 +3,7 @@
 #include <Runtime/platform.h>
 
 #include <melee/ft/forward.h>
+#include <melee/ft/kinds/ftCommon/forward.h>
 
 #include <placeholder.h>
 #include <stdbool.h>
@@ -107,20 +108,20 @@ bool ftCo_800DD1E4(Fighter_GObj* gobj)
     FtMotionId msid = fp->motion_id;
     if (ftCo_800DD1E4_inline1(fp)) {
         if (fp->input.lstick[0].x * fp->facing_dir > 0.0f) {
-            msid = 219;
+            msid = ftCo_MS_ThrowF;
         } else {
-            msid = 220;
+            msid = ftCo_MS_ThrowB;
         }
     } else if (ftCo_800DF7F4(fp)) {
         if (fp->input.cstick[0].x * fp->facing_dir > 0.0f) {
-            msid = 219;
+            msid = ftCo_MS_ThrowF;
         } else {
-            msid = 220;
+            msid = ftCo_MS_ThrowB;
         }
     } else if (ftCo_800DD1E4_inline2(fp) || ftCo_800DF844(fp)) {
-        msid = 221;
+        msid = ftCo_MS_ThrowHi;
     } else if (ftCo_800DD1E4_inline3(fp) || ftCo_800DF878(fp)) {
-        msid = 222;
+        msid = ftCo_MS_ThrowLw;
     }
     if (msid != fp->motion_id) {
         ftCo_800DD4B0(gobj, msid);
@@ -145,7 +146,7 @@ void ftCo_800DD398(Fighter_GObj* gobj, FtMotionId msid, FtMotionId victim_msid,
     ftCo_800DE3FC(fp->victim_gobj, victim_msid, anim_speed);
     switch (fp->kind) {
     case Ft_Kind_Kirby:
-        if (msid == 221) {
+        if (msid == ftCo_MS_ThrowHi) {
             Fighter* victim = GET_FIGHTER(fp->victim_gobj);
             fp->x2219_b2 = victim->x2219_b2 = 1;
         }
@@ -163,8 +164,8 @@ void ftCo_800DD4B0(Fighter_GObj* gobj, FtMotionId msid)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     Fighter* victim = GET_FIGHTER(fp->victim_gobj);
-    int throw_index = msid - 219;
-    FtMotionId victim_msid = throw_index + 239;
+    int throw_index = msid - ftCo_MS_ThrowF;
+    FtMotionId victim_msid = throw_index + ftCo_MS_ThrownF;
     float anim_speed;
     if (fp->ft_data->x0->weight_independent_throws_mask & (1 << throw_index)) {
         anim_speed = 1.0f;
@@ -173,7 +174,7 @@ void ftCo_800DD4B0(Fighter_GObj* gobj, FtMotionId msid)
             1.0f / (victim->ft_data->x0->weight * p_ftCommonData->x37C);
     }
     switch (msid) {
-    case 222:
+    case ftCo_MS_ThrowLw:
         switch (fp->kind) {
         case Ft_Kind_GKoops:
         case Ft_Kind_Koopa:
@@ -275,7 +276,7 @@ void ftCo_800DD724(Fighter_GObj* gobj)
             pl_80040614(fp->player_idx, fp->is_sub_fighter,
                         GET_FIGHTER(victim)->grab_timer);
             ftCo_800DE2A8(gobj, victim);
-            ftCo_800DE7C0(victim, gobj, fp->motion_id == 222);
+            ftCo_800DE7C0(victim, gobj, fp->motion_id == ftCo_MS_ThrowLw);
         }
     }
     if (fp->cmd_vars[0] != 0 && fp->mv.co.fighterthrow.x4 == 0) {
@@ -286,7 +287,7 @@ void ftCo_800DD724(Fighter_GObj* gobj)
         if (fp->victim_gobj != NULL) {
             ftCo_800DE920(fp->victim_gobj, fp->cur_anim_frame);
         }
-        if (fp->kind == Ft_Kind_Kirby && fp->motion_id == 221) {
+        if (fp->kind == Ft_Kind_Kirby && fp->motion_id == ftCo_MS_ThrowHi) {
             fp->x2219_b2 = 0;
             if (fp->victim_gobj != NULL) {
                 GET_FIGHTER(fp->victim_gobj)->x2219_b2 = 0;
@@ -440,7 +441,7 @@ void ftCo_ThrowHi_Coll(Fighter_GObj* gobj)
 void ftCo_ThrowHi_Cam(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if (fp->kind == Ft_Kind_Kirby && fp->motion_id == 221) {
+    if (fp->kind == Ft_Kind_Kirby && fp->motion_id == ftCo_MS_ThrowHi) {
         ftCamera_800762F4(gobj);
     } else {
         ftCamera_UpdateCameraBox(gobj);

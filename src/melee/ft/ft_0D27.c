@@ -20,6 +20,7 @@
 #include "kinds/ftCommon/ftCo_FallAerial.h"
 #include "kinds/ftCommon/ftCo_FallSpecial.h"
 #include "kinds/ftCommon/ftCo_Lift.h"
+#include "kinds/ftPeach/forward.h"
 #include "types.h"
 #include <melee/it/kinds/itkinoko.h>
 #include <sysdolphin/baselib/jobj.h>
@@ -70,7 +71,7 @@ bool fn_800D2818(Fighter* fp)
 void fn_800D2890(Fighter_GObj* gobj, int ms_id)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if (fp->kind == Ft_Kind_Peach && ms_id == 0x172) {
+    if (fp->kind == Ft_Kind_Peach && ms_id == ftPe_MS_ItemParasolFall) {
         fp->mv.co.unk_800D2890.x0 = ftCo_800968C8;
         return;
     }
