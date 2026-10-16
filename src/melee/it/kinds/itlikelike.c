@@ -303,7 +303,7 @@ void it_802DA104(Item_GObj* gobj)
     ip->xDD4_itemVar.likelike.x4C = attr->x18;
     ip->xDD4_itemVar.likelike.x44 = 0x3C;
     ip->xDD4_itemVar.likelike.x48 = 0;
-    Item_80268E5C(gobj, 1, 1);
+    Item_80268E5C(gobj, 1, ITEM_UNK_0x1);
 }
 
 bool itLikelike_UnkMotion1_Anim(Item_GObj* gobj)
@@ -1337,7 +1337,7 @@ void it_802DC3DC(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     Item_UpdateZakoVelocity(gobj, ip);
-    Item_80268E5C(gobj, 0x15, 3);
+    Item_80268E5C(gobj, 0x15, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
 }
 
 bool itLikelike_UnkMotion21_Anim(Item_GObj* gobj)
