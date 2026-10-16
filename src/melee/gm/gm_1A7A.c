@@ -1,5 +1,7 @@
 #include "gm_1A7A.h"
 
+#include <melee/gm/forward.h>
+
 #include "gm_unsplit.h"
 #include "gmevent.h"
 #include "gmregtyfall.h"
@@ -50,7 +52,7 @@ static inline void setupLight(void)
     HSD_GObj* gobj;
     HSD_LObj* lobj;
 
-    gobj = GObj_Create(0xB, 3, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, HSD_GOBJ_PLINK_LIGHT, 0);
     lobj = lb_80011AC4(gm_804D67A8->lights);
     HSD_GObjObject_80390A70(gobj, (u8) HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(gobj, HSD_GObj_LObjCallback, 0, 0);
@@ -61,7 +63,7 @@ static inline void setupCamera(void)
     HSD_CObj* cobj;
     HSD_GObj* gobj;
 
-    gobj = GObj_Create(0x13, 0x14, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj =
         lb_80013B14((HSD_CameraDescPerspective*) gm_804D67A8->cameras[0].desc);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
@@ -78,7 +80,7 @@ static inline void setupMain(void)
     HSD_JObj* jobj;
     HSD_GObj* gobj;
 
-    gobj = GObj_Create(0xE, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     gm_804D67B0 = gobj;
     jobj = HSD_JObjLoadJoint(gm_804D6798);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
@@ -99,7 +101,7 @@ static inline void setupCharacter(void)
     f32 val;
     f32 scale;
 
-    gobj = GObj_Create(0xE, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     gm_804D67B4 = gobj;
     jobj = HSD_JObjLoadJoint(gm_804D67AC->models[0]->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
