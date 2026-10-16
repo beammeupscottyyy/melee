@@ -496,9 +496,9 @@ void gmCamera_801A2FBC(void)
 
 void gmCamera_801A2FFC(void)
 {
-    s32 i = lbCardNew_CompleteNextTask();
-    if (i != 0xB) {
-        if (i == 0) {
+    lbCardResult result = lbCardNew_CompleteNextTask();
+    if (result != LbCardResult_Busy) {
+        if (result == LbCardResult_Ready) {
             gmCamera_801A3048(0);
         } else {
             lbAudioAx_80024030(3);

@@ -205,14 +205,14 @@ void gm_801A4014(GameMode* mode)
         }
     }
     lb_8001CDB4();
-    lbCardNew_CompleteAllTasks(11);
+    lbCardNew_CompleteAllTasks(LbCardResult_Busy);
     lbMthp_8001F800();
     if (gmMainLib_8046B0F0.resetting) {
         lbAudioAx_80027DBC();
         HSD_PadReset();
-        while (lbCardNew_CompleteNextTask() == 11);
-        if (DVDCheckDisk() == 0) {
-            OSResetSystem(1, 0, 0);
+        while (lbCardNew_CompleteNextTask() == LbCardResult_Busy);
+        if (!DVDCheckDisk()) {
+            OSResetSystem(OS_RESET_HOTRESET, 0, false);
         }
         lbMthp_8001F800();
         while (HSD_DevComIsBusy(1));
@@ -222,7 +222,7 @@ void gm_801A4014(GameMode* mode)
         gm_801A3EF4();
         gmMainLib_8046B0F0.skip_intro = true;
         gm_ChangeGameModeAfterCurrentScene(GM_BOOT);
-        HSD_VISetBlack(0);
+        HSD_VISetBlack(false);
     }
 }
 

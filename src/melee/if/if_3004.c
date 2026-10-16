@@ -1351,13 +1351,13 @@ bool un_8030191C(enum soundtest_callback_arg0 arg0)
     return 0;
 }
 
-static inline s32 waitCardTasks(void)
+static inline lbCardResult waitCardTasks(void)
 {
-    s32 result;
+    lbCardResult result;
 
     do {
         result = lbCardNew_CompleteNextTask();
-    } while (result == 0xB);
+    } while (result == LbCardResult_Busy);
     return result;
 }
 
@@ -1369,8 +1369,10 @@ bool un_80301964(enum soundtest_callback_arg0 arg0)
 
     OSReport(un_803FD28C);
 
-    if (lbSnap_8001E058(0, un_804D6E0C) == 0xB) {
-        if (waitCardTasks() == 0 && lbSnap_8001DE8C(un_804D6E04) != 0) {
+    if (lbSnap_8001E058(0, un_804D6E0C) == LbCardResult_Busy) {
+        if (waitCardTasks() == LbCardResult_Ready &&
+            lbSnap_8001DE8C(un_804D6E04) != 0)
+        {
             HSD_GObj* gobj;
             HSD_SObj* sobj;
 

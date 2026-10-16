@@ -30,14 +30,14 @@ void lb_8001955C(void)
 {
     if (HSD_PadGetResetSwitch()) {
         lbAudioAx_80027DBC();
-        while (lbCardNew_CompleteNextTask() == 11);
-        VISetPostRetraceCallback(0);
-        VISetPreRetraceCallback(0);
-        VISetBlack(1);
+        while (lbCardNew_CompleteNextTask() == LbCardResult_Busy);
+        VISetPostRetraceCallback(NULL);
+        VISetPreRetraceCallback(NULL);
+        VISetBlack(true);
         VIFlush();
         VIWaitForRetrace();
         VIWaitForRetrace();
-        OSResetSystem(0, 0, 0);
+        OSResetSystem(OS_RESET_RESTART, 0, false);
     }
     lbCardNew_CompleteNextTask();
     lb_8001CC84();
@@ -51,7 +51,7 @@ void lb_800195D0(void)
 
 void fn_800195FC(void)
 {
-    HSD_PadRenewRawStatus(0);
+    HSD_PadRenewRawStatus(false);
     lb_8001C600();
     lbSnap_8001D2BC();
 }

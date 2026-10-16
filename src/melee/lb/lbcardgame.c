@@ -226,16 +226,17 @@ void lb_8001CC84(void)
             if (dont_inline_helper() != LbCardResult_Busy) {
                 _p(failed) = true;
             } else {
-                _p(x10) = true;
+                _p(x10) = statex10_1;
             }
             break;
         case statex10_1: {
-            int result = lbCardNew_CompleteNextTask();
+            lbCardResult result = lbCardNew_CompleteNextTask();
             if (result != LbCardResult_Busy) {
-                if (result != 0) {
+                if (result != LbCardResult_Ready) {
                     _p(failed) = true;
                 }
-                _p(x10) = result = 0;
+                result = LbCardResult_Ready;
+                _p(x10) = statex10_0;
             }
             break;
         }

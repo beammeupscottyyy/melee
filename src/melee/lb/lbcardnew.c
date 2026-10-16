@@ -820,7 +820,7 @@ s32 lb_8001B6E0(s32 file_idx)
     return _p(unk_38)[file_idx].lb_error;
 }
 
-int lbCardNew_CompleteNextTask(void)
+lbCardResult lbCardNew_CompleteNextTask(void)
 {
     int enabled;
     int result;
@@ -839,7 +839,7 @@ int lbCardNew_CompleteNextTask(void)
     return result;
 }
 
-int lbCardNew_CompleteAllTasks(int result)
+lbCardResult lbCardNew_CompleteAllTasks(lbCardResult result)
 {
     if (result == LbCardResult_Busy) {
         while ((result = lbCardNew_CompleteNextTask()) == LbCardResult_Busy);
@@ -943,7 +943,7 @@ int lb_8001BA44(int chan, const char* filename, UNK_T status_out)
             CARD_FILENAME_MAX);
     result = executeNextTask(0x10);
     if (result == LbCardResult_Busy) {
-        while ((result = lbCardNew_CompleteNextTask()) == 11) {
+        while ((result = lbCardNew_CompleteNextTask()) == LbCardResult_Busy) {
         }
     }
     return result;
@@ -999,7 +999,7 @@ int lb_8001BC18(int chan, char* filename, void** file_entries, void* save_data,
     result = executeNextTask(0x10);
 
     if (result == LbCardResult_Busy) {
-        while ((result = lbCardNew_CompleteNextTask()) == 11) {
+        while ((result = lbCardNew_CompleteNextTask()) == LbCardResult_Busy) {
         }
     }
     return result;
@@ -1166,7 +1166,7 @@ int lb_8001C2D8(int chan, const char* company, const char* game_name,
     strncpy(task->filename, filename, CARD_FILENAME_MAX);
     result = executeNextTask(0x10);
     if (result == LbCardResult_Busy) {
-        while ((result = lbCardNew_CompleteNextTask()) == 11) {
+        while ((result = lbCardNew_CompleteNextTask()) == LbCardResult_Busy) {
         }
     }
     return result;

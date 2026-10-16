@@ -1027,7 +1027,8 @@ void fn_802545C4(void)
                     (mnSnap_804A0A10.state == 16))
                 {
                     do {
-                    } while (lbCardNew_CompleteNextTask() == 0xB);
+                    } while (lbCardNew_CompleteNextTask() ==
+                             LbCardResult_Busy);
                 }
                 resetToSlotSelect();
                 return;
@@ -1637,7 +1638,8 @@ void fn_802545C4(void)
                 }
                 if (result != 8) {
                     do {
-                    } while (lbCardNew_CompleteNextTask() == 0xB);
+                    } while (lbCardNew_CompleteNextTask() ==
+                             LbCardResult_Busy);
                     mnSnap_80253E90(mnSnap_804A0A10.active_slot);
                 }
                 mnSnap_804A0A10.cur_page = -1;
@@ -1836,12 +1838,12 @@ void fn_802545C4(void)
 
     case 15:
         result = lbCardNew_CompleteNextTask();
-        if (result != 0xB) {
-            if (lbCardNew_CompleteNextTask() != 0) {
+        if (result != LbCardResult_Busy) {
+            if (lbCardNew_CompleteNextTask() != LbCardResult_Ready) {
                 resetToSlotSelect();
             } else {
                 result = lbSnap_8001DF6C(mnSnap_804A0A10.active_slot ^ 1);
-                if (result != 0xB) {
+                if (result != LbCardResult_Busy) {
                     resetToSlotSelect();
                 } else {
                     mnSnap_804A0A10.state = 0x10;
@@ -1866,8 +1868,8 @@ void fn_802545C4(void)
             }
         }
         result = lbCardNew_CompleteNextTask();
-        if (result != 0xB) {
-            if (lbCardNew_CompleteNextTask() != 0) {
+        if (result != LbCardResult_Busy) {
+            if (lbCardNew_CompleteNextTask() != LbCardResult_Ready) {
                 resetToSlotSelect();
             } else {
                 mnSnap_80253E90(mnSnap_804A0A10.active_slot ^ 1);
