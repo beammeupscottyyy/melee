@@ -735,7 +735,7 @@ void ftKb_SpecialN_Anim(Fighter_GObj* gobj)
         fp->cmd_vars[0] = 0;
     }
     if (!ftAnim_IsFramesRemaining(gobj)) {
-        ftKb_SpecialN_SetHitlagCb(gobj, 0x162, 0x212);
+        ftKb_SpecialN_SetHitlagCb(gobj, ftKb_MS_SpecialNLoop, 0x212);
         ftKb_SpecialN_SetThrowCb(gobj, 0x10, fn_800F6210, fn_800F6178,
                                  ftCo_800BD1DC);
     }
@@ -754,7 +754,7 @@ void ftKb_SpecialAirN_Anim(Fighter_GObj* gobj)
         fp->cmd_vars[0] = 0;
     }
     if (!ftAnim_IsFramesRemaining(gobj)) {
-        ftKb_SpecialN_SetHitlagCb(gobj, 0x174, 0x212);
+        ftKb_SpecialN_SetHitlagCb(gobj, ftKb_MS_SpecialAirNLoop, 0x212);
         ftKb_SpecialN_SetThrowCb(gobj, 0x10, fn_800F6318, fn_800F6280,
                                  ftCo_800BD1DC);
     }

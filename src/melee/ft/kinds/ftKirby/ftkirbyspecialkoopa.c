@@ -93,7 +93,9 @@ void ftKb_SpecialNKp_800FA7D4(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     ftKb_DatAttrs* da = fp->dat_attrs;
-    if (fp->motion_id >= 449 || fp->motion_id < 443) {
+    if (fp->motion_id < ftKb_MS_KpSpecialNStart ||
+        fp->motion_id > ftKb_MS_KpSpecialAirNEnd)
+    {
         fp->u.kb.x84 = fp->u.kb.x84 + da->specialn_kp_fuel_recharge_rate;
         if (fp->u.kb.x84 > da->specialn_kp_max_fuel) {
             fp->u.kb.x84 = da->specialn_kp_max_fuel;

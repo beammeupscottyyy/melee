@@ -36,7 +36,7 @@ void ftKb_SpecialN_800F9110(Fighter_GObj* gobj)
     {
         Fighter* fp = GET_FIGHTER(gobj);
         if (fp->u.kb.hat.kind != Ft_Kind_Mario) {
-            msid = (new_var = 0x200);
+            msid = (new_var = ftKb_MS_DrSpecialN);
         }
     }
     Fighter_ChangeMotionState(gobj, msid, Ft_MF_None, 0.0f, 1.0f, 0.0f, NULL);
@@ -181,11 +181,11 @@ void ftKb_SpecialNLg_800F951C(Fighter_GObj* gobj)
     ftCommon_8007D5D4(fp);
 
     fp2 = gobj->user_data;
-    motion_id = 0x190;
+    motion_id = ftKb_MS_MrSpecialAirN;
     anim_frame = fp->cur_anim_frame;
 
-    if (fp2->u.kb.hat.kind != 0) {
-        motion_id = 0x201;
+    if (fp2->u.kb.hat.kind != Ft_Kind_Mario) {
+        motion_id = ftKb_MS_DrSpecialAirN;
     }
 
     Fighter_ChangeMotionState(gobj, motion_id, 0x5000, anim_frame, 1.0F, 0.0F,
@@ -203,11 +203,11 @@ void ftKb_SpecialNLg_800F9598(Fighter_GObj* gobj)
     ftCommon_8007D7FC(fp);
 
     fp2 = gobj->user_data;
-    motion_id = 0x18F;
+    motion_id = ftKb_MS_MrSpecialN;
     anim_frame = fp->cur_anim_frame;
 
-    if (fp2->u.kb.hat.kind != 0) {
-        motion_id = 0x200;
+    if (fp2->u.kb.hat.kind != Ft_Kind_Mario) {
+        motion_id = ftKb_MS_DrSpecialN;
     }
 
     Fighter_ChangeMotionState(gobj, motion_id, 0x5000, anim_frame, 1.0f, 0.0f,
