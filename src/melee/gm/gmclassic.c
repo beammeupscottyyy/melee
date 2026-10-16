@@ -586,12 +586,15 @@ static gmClassicMatchup* gmClassic_801B2BA4(gmClassicMatchup* arg0,
     return NULL;
 }
 
-static gmClassicMatchupData gm_804D4318 = { { 0x148, { 0x21, 0x21, 0x21 }, 0 },
-                                            { 0, 0 } };
-static gmClassicMatchupData gm_804D4320 = { { 0x052, { 0x21, 0x21, 0x21 }, 0 },
-                                            { 0, 0 } };
-static gmClassicMatchupData gm_804D4328 = { { 0x053, { 0x21, 0x21, 0x21 }, 0 },
-                                            { 0, 0 } };
+static gmClassicMatchupData gm_804D4318 = {
+    { 0x148, { ChKind_None, ChKind_None, ChKind_None }, 0 }, { 0, 0 }
+};
+static gmClassicMatchupData gm_804D4320 = {
+    { 0x052, { ChKind_None, ChKind_None, ChKind_None }, 0 }, { 0, 0 }
+};
+static gmClassicMatchupData gm_804D4328 = {
+    { 0x053, { ChKind_None, ChKind_None, ChKind_None }, 0 }, { 0, 0 }
+};
 
 static gm_803DDEC8Struct* gmClassic_801B2D54(gm_803DDEC8Struct* arg0)
 {
@@ -822,7 +825,7 @@ void gmClassic_801B3500(GameModeState* arg0)
         } else {
             sd->x1C[i] = 0;
         }
-        if (sd->x10[i] != 0x21) {
+        if (sd->x10[i] != ChKind_None) {
             enemy_count++;
         }
     }
@@ -848,7 +851,7 @@ void gmClassic_801B3500(GameModeState* arg0)
     for (i = 1; i < 3; i++) {
         sd->x0D[i] = gm_8017DB6C((gm_8017DB6C_arg0_t*) ad->x0.xC.x24, i - 1);
         sd->x13[i] = gm_8017DB78((gm_8017DB6C_arg0_t*) ad->x0.xC.x24, i - 1);
-        if (sd->x0D[i] != 0x21) {
+        if (sd->x0D[i] != ChKind_None) {
             ally_count++;
         }
     }
@@ -867,7 +870,7 @@ void gmClassic_801B3500(GameModeState* arg0)
 
     for (i = 0; i < 3; i++) {
         s8 echar = entry->xC->x2.x02[i];
-        if (echar != 0x21) {
+        if (echar != ChKind_None) {
             gc->entries[count].char_id = echar;
             if (entry->x1 & 8) {
                 gc->entries[count].color = 0xFF;
@@ -880,7 +883,7 @@ void gmClassic_801B3500(GameModeState* arg0)
 
     for (i = 0; i < 3; i++) {
         s8 achar = ad->x0.xC.x24[i].ckind;
-        if (achar != 0x21) {
+        if (achar != ChKind_None) {
             gc->entries[count].char_id = achar;
             gc->entries[count].color = ad->x0.xC.x24[i].color;
             count++;
@@ -903,15 +906,15 @@ void gmClassic_801B3500(GameModeState* arg0)
 
     for (i = 0; i < 3; i++) {
         s8 achar = ad->x0.xC.x24[i].ckind;
-        if (achar != 0x21) {
+        if (achar != ChKind_None) {
             audio |= lbAudioAx_80026E84(achar);
         }
     }
 
     for (i = 0; i < 3; i++) {
-        if (entry->xC->x2.x02[i] != 0x21) {
+        if (entry->xC->x2.x02[i] != ChKind_None) {
             audio |= lbAudioAx_80026E84(new_var->xC->x2.x02[i]);
-            if (entry->xC->x2.x02[i] == 4) {
+            if (entry->xC->x2.x02[i] == CKind_Kirby) {
                 audio |= ((u64) 2 << 32) | 0x4000;
             }
         }

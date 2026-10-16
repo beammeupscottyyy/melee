@@ -474,7 +474,7 @@ static inline s32 gm_8017CE34_CountEnemies(const s8* arg0)
     s32 i;
 
     for (i = 0; i < 3; i++) {
-        if ((s32) arg0[i] != 0x21) {
+        if ((s32) arg0[i] != ChKind_None) {
             count++;
         }
     }
@@ -713,7 +713,7 @@ void gm_8017CE34(StartMeleeData* arg0, Unk1PData* arg1, s8* arg2, u8 arg3,
     enemy_idx = 0;
     for (;;) {
         enemy_kind = &arg2[enemy_idx];
-        if ((s32) (u8) enemy_kind[0] != 0x21) {
+        if ((s32) (u8) enemy_kind[0] != ChKind_None) {
             if (arg1->x8 & 8) {
                 if (arg1->x4C != NULL) {
                     enemy_level =
