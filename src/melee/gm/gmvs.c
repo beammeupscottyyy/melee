@@ -529,7 +529,7 @@ static inline int fn_8016B918_inline(int var_r31)
     int team = Player_GetTeam(var_r31);
     int i;
     for (i = 0; i < 6; i++) {
-        if (Player_GetPlayerSlotType(i) != 3 && var_r31 != i &&
+        if (Player_GetPlayerSlotType(i) != Gm_PKind_NA && var_r31 != i &&
             team == Player_GetTeam(i) && Player_GetStocks(i) > 1)
         {
             return i;
@@ -950,7 +950,7 @@ void fn_8016C4F4(MatchEnd* arg0)
     int j;
 
     for (i = 0; i < 6; i++) {
-        if (arg0->player_standings[i].pkind != 3) {
+        if (arg0->player_standings[i].pkind != Gm_PKind_NA) {
             pl_80039450(i);
             for (j = 0; j < 0x101; j++) {
                 x44C[i].x0[j] = fn_80170110(arg0, j, 2, i);
@@ -1799,7 +1799,7 @@ void fn_8016DEEC(void)
         }
     }
     for (i = 0; i < 6; i++) {
-        if (Player_GetPlayerSlotType(i) != 3 &&
+        if (Player_GetPlayerSlotType(i) != Gm_PKind_NA &&
             Player_GetFacingDirection(i) == 0.0F)
         {
             var_r23 = -1;
@@ -1852,7 +1852,7 @@ void fn_8016E124(void)
     }
 
     for (i = 0; i < 6; i++) {
-        if (Player_GetPlayerSlotType(i) != 3 &&
+        if (Player_GetPlayerSlotType(i) != Gm_PKind_NA &&
             Player_GetPlayerCharacter(i) == CKind_Kirby)
         {
             s8 temp_r3 = Player_GetCostumeId(i);

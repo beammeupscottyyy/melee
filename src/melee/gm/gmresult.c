@@ -1005,7 +1005,7 @@ void fn_80175A94(s32 slot, Vec3* position)
         PAD_STACK(4);
         me = fn_80175A94_get_match_end();
         sp14 = fn_8017507C(player);
-        if (me->player_standings[player].pkind != 3) {
+        if (me->player_standings[player].pkind != Gm_PKind_NA) {
             slot = HSD_SisLib_803A6B98(new_var->player_data[player].ko_time,
                                        0.0F, -30.0F, "%d",
                                        fn_8017AD78(fn_8017ADA8(player)));

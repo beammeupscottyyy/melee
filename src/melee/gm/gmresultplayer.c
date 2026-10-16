@@ -718,7 +718,7 @@ void fn_80178050(HSD_GObj* arg0)
         {
             s32 j;
             for (j = 0; j < 4; j++) {
-                if (match_end->player_standings[j].pkind == 0) {
+                if (match_end->player_standings[j].pkind == Gm_PKind_Human) {
                     lbl_804D3FC8 = 0;
                     break;
                 }
@@ -741,16 +741,16 @@ void fn_80178050(HSD_GObj* arg0)
                 {
                     s32 k;
                     for (k = 0; k < 4; k++) {
-                        switch ((s32) match_end->player_standings[k].pkind) {
-                        case 2:
+                        switch (match_end->player_standings[k].pkind) {
+                        case Gm_PKind_Demo:
                             break;
-                        case 3:
+                        case Gm_PKind_NA:
                             data->player_data[k].x0_0 = 1;
                             break;
-                        case 0:
+                        case Gm_PKind_Human:
                             fn_80174B4C(data, k);
                             break;
-                        case 1:
+                        case Gm_PKind_Cpu:
                             fn_80174B4C(data, k);
                             data->player_data[k].x0_0 = 1;
                             break;
@@ -762,7 +762,7 @@ void fn_80178050(HSD_GObj* arg0)
             {
                 for (k2 = 0; k2 < 4; k2++) {
                     u8 slot = match_end->player_standings[k2].pkind;
-                    if (slot == 0) {
+                    if (slot == Gm_PKind_Human) {
                         if (!data->player_data[k2].x0_0) {
                             if (fn_80177B7C(k2) != 0) {
                                 fn_80174B4C(data, k2);
@@ -859,7 +859,7 @@ void fn_80178050(HSD_GObj* arg0)
             {
                 s32 k3;
                 for (k3 = 0; k3 < 4; k3++) {
-                    if (match_end->player_standings[k3].pkind != 3) {
+                    if (match_end->player_standings[k3].pkind != Gm_PKind_NA) {
                         if (!data->player_data[k3].x0_1) {
                             HSD_JObjSetFlagsAll(data->player_data[k3].jobjs[8],
                                                 JOBJ_HIDDEN);
@@ -1044,11 +1044,11 @@ static inline void fn_80178BB4_init_players(ResultsData* data,
         {
             u8 slot_type = match_end->player_standings[(*i)].pkind;
 
-            if (slot_type == 0) {
+            if (slot_type == Gm_PKind_Human) {
                 (*ko_count) += match_end->player_standings[(*i)].xE;
             }
 
-            if (slot_type != 3) {
+            if (slot_type != Gm_PKind_NA) {
                 int cid;
                 int ckind;
                 u8 is_big_loser;
@@ -1322,7 +1322,8 @@ int fn_801795D4(void)
             lookup = match_end->team_standings[idx].is_big_loser;
         }
 
-        if (match_end->player_standings[i].pkind != 3 && lookup == 0) {
+        if (match_end->player_standings[i].pkind != Gm_PKind_NA && lookup == 0)
+        {
             count++;
         }
     }
@@ -1349,7 +1350,8 @@ int fn_801796F0(int arg0)
             lookup = match_end->team_standings[idx].is_big_loser;
         }
 
-        if (match_end->player_standings[i].pkind != 3 && lookup == 0) {
+        if (match_end->player_standings[i].pkind != Gm_PKind_NA && lookup == 0)
+        {
             if (arg0 == i) {
                 return count;
             }

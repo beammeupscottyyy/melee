@@ -86,7 +86,8 @@ void fn_80179854(void)
                     .is_big_loser;
         }
 
-        if (match_end->player_standings[i].pkind != 3 && lookup != 0) {
+        if (match_end->player_standings[i].pkind != Gm_PKind_NA && lookup != 0)
+        {
             HSD_JObjSetTranslateX(GET_JOBJ(gobjs[i]), -300.0f);
             disp->state.x0_6 = 1;
         }
