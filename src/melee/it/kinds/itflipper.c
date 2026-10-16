@@ -389,7 +389,8 @@ void itFlipper_Settle(Item_GObj* gobj)
 
 void itFlipper_EnterActive(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, FLIPPER_MS_ACTIVE, 0x12);
+    Item_80268E5C(gobj, FLIPPER_MS_ACTIVE,
+                  ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
 }
 
 static inline void itFlipper_RefreshHitboxes(Item_GObj* gobj)
@@ -446,7 +447,8 @@ bool itFlipper_Active_Anim(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     if (ip->xDD4_itemVar.flipper.xDE4_spinVel != 0.0f) {
-        Item_80268E5C(gobj, FLIPPER_MS_SPINNING, 0x12);
+        Item_80268E5C(gobj, FLIPPER_MS_SPINNING,
+                      ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
     }
     return itFlipper_UpdateActive(gobj);
 }
@@ -455,7 +457,8 @@ bool itFlipper_Spinning_Anim(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     if (ip->xDD4_itemVar.flipper.xDE4_spinVel == 0.0F) {
-        Item_80268E5C(gobj, FLIPPER_MS_ACTIVE, 0x12);
+        Item_80268E5C(gobj, FLIPPER_MS_ACTIVE,
+                      ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
     }
     return itFlipper_UpdateActive(gobj);
 }
