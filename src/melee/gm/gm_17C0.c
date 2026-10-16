@@ -89,7 +89,7 @@ void fn_8017C1A4(HSD_GObj* unused)
             temp_r3_2 = gmVs_GetSceneController();
             temp_r3_2->start.disable_pausing = false;
             temp_r3_2->state.hud_enabled = 0;
-            lbAudioAx_800237A8(0x81650, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x81650, SFX_VOLUME_MAX, SFX_PAN_MID);
             ftLib_DisableAllInput();
             tmp->x8 = 1;
         } else if (ftBossLib_IsMasterHandEntry() == 0) {
@@ -109,7 +109,7 @@ void fn_8017C1A4(HSD_GObj* unused)
             ft_80087C64(Player_GetEntity(2), 2);
             tmp->x8 = 1;
         } else if (tmp->x8 == 1) {
-            lbAudioAx_800237A8(0x81651, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x81651, SFX_VOLUME_MAX, SFX_PAN_MID);
             fn_8017C0C8();
             tmp->x8 = 2;
         } else if (ftBossLib_8015C2A8() == 0) {

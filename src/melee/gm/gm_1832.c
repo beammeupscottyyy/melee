@@ -370,7 +370,7 @@ void fn_80184AB8(HSD_GObj* arg0)
 
         switch ((s32) lbl_804735A8.x38) {
         case 0xA:
-            lbAudioAx_800237A8(0x9C4A, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x9C4A, SFX_VOLUME_MAX, SFX_PAN_MID);
             return;
         case 0x2D:
             break;
@@ -378,15 +378,18 @@ void fn_80184AB8(HSD_GObj* arg0)
             if (lbl_8047368C.model_scale_kind == 4 ||
                 lbl_8047368C.model_scale_kind == 1)
             {
-                lbl_804D6608 = lbAudioAx_800237A8(0x7C863, 0x7F, 0x40);
+                lbl_804D6608 =
+                    lbAudioAx_800237A8(0x7C863, SFX_VOLUME_MAX, SFX_PAN_MID);
                 return;
             }
             if (lbl_8047368C.model_scale_kind == 2) {
-                lbl_804D6608 = lbAudioAx_800237A8(0x7C837, 0x7F, 0x40);
+                lbl_804D6608 =
+                    lbAudioAx_800237A8(0x7C837, SFX_VOLUME_MAX, SFX_PAN_MID);
                 return;
             }
             if (lbl_8047368C.x100[0] != 0) {
-                lbl_804D6608 = lbAudioAx_800237A8(0x7C847, 0x7F, 0x40);
+                lbl_804D6608 =
+                    lbAudioAx_800237A8(0x7C847, SFX_VOLUME_MAX, SFX_PAN_MID);
                 return;
             }
             break;
@@ -482,13 +485,13 @@ void fn_8018504C(void)
     if ((lbl_804735A8.x38 == 0x2D) && (lbl_8047368C.model_scale_kind == 3)) {
         switch (lbl_8047368C.game_type) {
         case 1:
-            lbAudioAx_800237A8(0x7C864, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x7C864, SFX_VOLUME_MAX, SFX_PAN_MID);
             return;
         case 2:
-            lbAudioAx_800237A8(0x9C49, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x9C49, SFX_VOLUME_MAX, SFX_PAN_MID);
             return;
         case 3:
-            lbAudioAx_800237A8(0x9C47, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x9C47, SFX_VOLUME_MAX, SFX_PAN_MID);
             break;
         }
     }

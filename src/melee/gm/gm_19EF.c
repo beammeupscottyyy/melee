@@ -246,7 +246,7 @@ static void fn_8019F2D4(u32 arg0)
             lbl_80479A98.x0 = 8;
             sfxForward();
             lbAudioAx_80023F28(0x20);
-            lbAudioAx_800237A8(0x9C43, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x9C43, SFX_VOLUME_MAX, SFX_PAN_MID);
             lbl_804D66C8.x4 = 0x6E;
             lbl_804D66C0.x4 = 0x78;
             return;
@@ -288,7 +288,7 @@ static void fn_8019F6EC(HSD_GObj* gobj)
         if (lbl_804D66E0.x4 < 0x32) {
             lbl_804D66E0.x4 += 1;
         } else if (lbl_80479A98.x4_u.x0.x20 != 0) {
-            lbAudioAx_800237A8(0x9C43, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x9C43, SFX_VOLUME_MAX, SFX_PAN_MID);
             lbAudioAx_80023F28(0x20);
             lbl_80479A98.x0 = 0xAU;
         }
@@ -652,7 +652,7 @@ void fn_8019F9C4(u32 arg0)
     lbl_80479A98.x4_u.x0.x24->default_alignment = 2;
     HSD_SisLib_803A6B98(lbl_80479A98.x4_u.x0.x24, 240.0f, 176.0f, " ");
     if (lbl_80479A98.x4_u.x0.x20 == 0) {
-        lbAudioAx_800237A8(0x9C42, 0x7F, 0x40);
+        lbAudioAx_800237A8(0x9C42, SFX_VOLUME_MAX, SFX_PAN_MID);
         lbAudioAx_80023F28(5);
     }
 }

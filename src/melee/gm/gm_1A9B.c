@@ -134,9 +134,9 @@ void gm_Scene_Congrats_OnEnter(UNK_T unused)
         break;
     }
     if (level == 4) {
-        lbAudioAx_800237A8(0x9C45, 0x7F, 0x40);
+        lbAudioAx_800237A8(0x9C45, SFX_VOLUME_MAX, SFX_PAN_MID);
     } else {
-        lbAudioAx_800237A8(0x9C41, 0x7F, 0x40);
+        lbAudioAx_800237A8(0x9C41, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
