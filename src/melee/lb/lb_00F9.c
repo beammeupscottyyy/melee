@@ -884,7 +884,7 @@ void lb_8001044C(DynamicsDesc* desc, void* colliders_raw, int num_colliders,
                 PSMTXQuat(bone_mtx, &result_quat);
                 HSD_QuatLib_8037EB28(bone_mtx, (Vec3*) &rotation);
                 HSD_JObjSetRotation(jobj, &rotation);
-                HSD_JObjClearFlagsAll(jobj, 0x20000U);
+                HSD_JObjClearFlagsAll(jobj, JOBJ_USE_QUATERNION);
             }
         }
 

@@ -6,6 +6,7 @@
 #include <melee/sc/forward.h>
 #include <sysdolphin/baselib/forward.h>
 
+#include <dolphin/gx/GXEnum.h>
 #include <dolphin/mtx.h>
 #include <sysdolphin/baselib/jobj.h>
 
@@ -43,11 +44,11 @@
 /* 00C7BC */ void lbCopyJObjSRT(HSD_JObj* src, HSD_JObj* dst);
 /* 00C868 */ void lb_8000C868(HSD_Joint*, HSD_JObj*, HSD_JObj*, float, float);
 /* 00CC5C */ s32 lbGetFreeColorRegister(s32 i0, HSD_MObj*, HSD_TExp*);
-/* 00CC8C */ s32 lb_8000CC8C(s32 i); // return type GXTevColorArg?
-/* 00CCA4 */ s32 lb_8000CCA4(s32 i);
+/* 00CC8C */ GXTevColorArg lb_8000CC8C(s32 i);
+/* 00CCA4 */ GXTevKColorSel lb_8000CCA4(s32 i);
 /* 00CD60 */ s32 lbGetFreeAlphaRegister(s32 i0, HSD_MObj*, HSD_TExp*);
-/* 00CD90 */ s32 lb_8000CD90(s32 i);
-/* 00CDA8 */ s32 lb_8000CDA8(s32 i);
+/* 00CD90 */ GXTevAlphaArg lb_8000CD90(s32 i);
+/* 00CDA8 */ GXTevKAlphaSel lb_8000CDA8(s32 i);
 /* 00CDC0 */ HSD_LObj* lb_8000CDC0(HSD_LObj*);
 /* 00CE30 */ void lb_8000CE30(HSD_DObj*, HSD_DObj*);
 /* 00CE40 */ void lb_8000CE40(HSD_JObj*, HSD_DObj*);

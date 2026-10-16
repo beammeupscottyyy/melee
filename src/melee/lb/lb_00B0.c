@@ -18,11 +18,27 @@
 /* 00CCBC */ static s32 lbGetFreeAlphaRegImpl(s32 i0, HSD_TevDesc* cur,
                                               HSD_TExp*, HSD_TExp*);
 
-static s32 lb_803B9FC0[] = { 14, 14, 14, 14, 2, 4, 6, 0 };
-static s32 lb_803B9FE0[] = { 12, 13, 14, 15 };
+static s32 lb_803B9FC0[] = {
+    GX_CC_KONST, GX_CC_KONST, GX_CC_KONST, GX_CC_KONST,
+    GX_CC_C0,    GX_CC_C1,    GX_CC_C2,    GX_CC_CPREV,
+};
+static s32 lb_803B9FE0[] = {
+    GX_TEV_KCSEL_K0,
+    GX_TEV_KCSEL_K1,
+    GX_TEV_KCSEL_K2,
+    GX_TEV_KCSEL_K3,
+};
 static s32 lb_803B9FF0[] = { 7, 4, 5, 6 };
-static s32 lb_803BA000[] = { 6, 6, 6, 6, 1, 2, 3, 0 };
-static s32 lb_803BA020[] = { 28, 29, 30, 31 };
+static s32 lb_803BA000[] = {
+    GX_CA_KONST, GX_CA_KONST, GX_CA_KONST, GX_CA_KONST,
+    GX_CA_A0,    GX_CA_A1,    GX_CA_A2,    GX_CA_APREV,
+};
+static s32 lb_803BA020[] = {
+    GX_TEV_KASEL_K0_A,
+    GX_TEV_KASEL_K1_A,
+    GX_TEV_KASEL_K2_A,
+    GX_TEV_KASEL_K3_A,
+};
 static s32 lb_803BA030[] = { 7, 4, 5, 6 };
 
 bool lb_8000B074(HSD_JObj* jobj)
@@ -490,16 +506,16 @@ void lb_8000C490(HSD_JObj* jobj1, HSD_JObj* jobj2, HSD_JObj* arg2, float arg8,
     arg2->scale.x = (jobj1->scale.x * arg8) + (jobj2->scale.x * arg9);
     arg2->scale.y = (jobj1->scale.y * arg8) + (jobj2->scale.y * arg9);
     arg2->scale.z = (jobj1->scale.z * arg8) + (jobj2->scale.z * arg9);
-    is_quat_1 = HSD_JObjGetFlags(jobj1) & 0x20000;
-    is_quat_2 = HSD_JObjGetFlags(jobj2) & 0x20000;
+    is_quat_1 = HSD_JObjGetFlags(jobj1) & JOBJ_USE_QUATERNION;
+    is_quat_2 = HSD_JObjGetFlags(jobj2) & JOBJ_USE_QUATERNION;
     if (!is_quat_1 && !is_quat_2) {
         dx = jobj1->rotate.x - jobj2->rotate.x;
         dy = jobj1->rotate.y - jobj2->rotate.y;
         dz = jobj1->rotate.z - jobj2->rotate.z;
         if (ABS(dx) <= 0.0001f && ABS(dy) <= 0.0001f && ABS(dz) <= 0.0001f) {
             arg2->rotate = jobj1->rotate;
-            HSD_JObjClearFlags(arg2, 0x20000);
-            HSD_JObjSetFlags(arg2, 0x40);
+            HSD_JObjClearFlags(arg2, JOBJ_USE_QUATERNION);
+            HSD_JObjSetFlags(arg2, JOBJ_MTX_DIRTY);
             return;
         }
     }
@@ -540,8 +556,8 @@ void lb_8000C490(HSD_JObj* jobj1, HSD_JObj* jobj2, HSD_JObj* arg2, float arg8,
         quat2.w = -quat2.w;
     }
     HSD_QuatLib_8037EF28(&quat1, &quat2, &arg2->rotate, arg9);
-    HSD_JObjSetFlags(arg2, 0x20000U);
-    HSD_JObjSetFlags(arg2, 0x40U);
+    HSD_JObjSetFlags(arg2, JOBJ_USE_QUATERNION);
+    HSD_JObjSetFlags(arg2, JOBJ_MTX_DIRTY);
 }
 
 void lbCopyJObjSRT(HSD_JObj* src, HSD_JObj* dst)
@@ -591,7 +607,7 @@ void lb_8000C868(HSD_Joint* arg0, HSD_JObj* arg1, HSD_JObj* arg2, float arg8,
     arg2->scale.x = (arg0->scale.x * arg8) + (arg1->scale.x * arg9);
     arg2->scale.y = (arg0->scale.y * arg8) + (arg1->scale.y * arg9);
     arg2->scale.z = (arg0->scale.z * arg8) + (arg1->scale.z * arg9);
-    temp_r31 = HSD_JObjGetFlags(arg1) & 0x20000;
+    temp_r31 = HSD_JObjGetFlags(arg1) & JOBJ_USE_QUATERNION;
     if (temp_r31 == 0) {
         temp_f5 = arg0->rotation.x - arg1->rotate.x;
         temp_f3 = arg0->rotation.y - arg1->rotate.y;
@@ -605,8 +621,8 @@ void lb_8000C868(HSD_Joint* arg0, HSD_JObj* arg1, HSD_JObj* arg2, float arg8,
                     arg2->rotate.x = arg0->rotation.x;
                     arg2->rotate.y = arg0->rotation.y;
                     arg2->rotate.z = arg0->rotation.z;
-                    HSD_JObjClearFlags(arg2, 0x20000U);
-                    HSD_JObjSetFlags(arg2, 0x40U);
+                    HSD_JObjClearFlags(arg2, JOBJ_USE_QUATERNION);
+                    HSD_JObjSetFlags(arg2, JOBJ_MTX_DIRTY);
                     return;
                 }
             }
@@ -642,8 +658,8 @@ void lb_8000C868(HSD_Joint* arg0, HSD_JObj* arg1, HSD_JObj* arg2, float arg8,
         sp94.w = -sp94.w;
     }
     HSD_QuatLib_8037EF28(&spA4, &sp94, &arg2->rotate, arg9);
-    HSD_JObjSetFlags(arg2, 0x20000U);
-    HSD_JObjSetFlags(arg2, 0x40U);
+    HSD_JObjSetFlags(arg2, JOBJ_USE_QUATERNION);
+    HSD_JObjSetFlags(arg2, JOBJ_MTX_DIRTY);
 }
 
 static s32 lbGetFreeColorRegImpl(s32 i0, HSD_TevDesc* tevdesc, HSD_TExp* texp1,
@@ -685,12 +701,12 @@ s32 lbGetFreeColorRegister(s32 i0, HSD_MObj* mobj, HSD_TExp* texp)
     return lbGetFreeColorRegImpl(i0, &mobj->tevdesc->desc, mobj->texp, texp);
 }
 
-s32 lb_8000CC8C(s32 i)
+GXTevColorArg lb_8000CC8C(s32 i)
 {
     return lb_803B9FC0[i];
 }
 
-s32 lb_8000CCA4(s32 i)
+GXTevKColorSel lb_8000CCA4(s32 i)
 {
     return lb_803B9FE0[i];
 }
@@ -722,12 +738,12 @@ s32 lbGetFreeAlphaRegister(s32 i0, HSD_MObj* mobj, HSD_TExp* texp)
     return lbGetFreeAlphaRegImpl(i0, &mobj->tevdesc->desc, mobj->texp, texp);
 }
 
-s32 lb_8000CD90(s32 i)
+GXTevAlphaArg lb_8000CD90(s32 i)
 {
     return lb_803BA000[i];
 }
 
-s32 lb_8000CDA8(s32 i)
+GXTevKAlphaSel lb_8000CDA8(s32 i)
 {
     return lb_803BA020[i];
 }
@@ -735,8 +751,8 @@ s32 lb_8000CDA8(s32 i)
 HSD_LObj* lb_8000CDC0(HSD_LObj* cur)
 {
     while (cur != NULL) {
-        if (!(cur->flags & ((1 << 0) | (1 << 1))) &&
-            !(HSD_LObjGetFlags(cur) & (1 << 5)))
+        if (!(cur->flags & LOBJ_TYPE_MASK) &&
+            !(HSD_LObjGetFlags(cur) & LOBJ_HIDDEN))
         {
             return cur;
         }
