@@ -383,9 +383,9 @@ void fn_80169C54(s8 arg0, s8 arg1)
         costumes[i] = -1;
     }
     for (i = 0; i < 3; i++) {
-        if ((s32) *scan == 4) {
+        if ((s32) *scan == CKind_Kirby) {
             if (st->xB == 0) {
-                count = gm_GetNumCostumesForCKind(4U);
+                count = gm_GetNumCostumesForCKind(CKind_Kirby);
                 for (costume_idx = 0; costume_idx < count; costume_idx++) {
                     costumes[costume_idx] = costume_idx;
                     ncostumes++;
@@ -399,16 +399,16 @@ void fn_80169C54(s8 arg0, s8 arg1)
         scan++;
     }
 
-    if (arg0 == 4) {
+    if (arg0 == CKind_Kirby) {
         costumes[ncostumes] = arg1;
         ncostumes++;
     }
     if (ncostumes > 0) {
         for (slot = 0, character = &st->x0; slot < 3; slot++, character++) {
             ckind = *character;
-            if (0x21 != ckind && ckind != 4) {
+            if (ChKind_None != ckind && ckind != CKind_Kirby) {
                 fighter0 = Player_800325C8((CharacterKind) ckind, 0);
-                if ((fighter0 != -1) && (fighter0 != 4)) {
+                if ((fighter0 != -1) && (fighter0 != Ft_Kind_Kirby)) {
                     for (costume_it0 = &costumes[costume_idx0 = 0];
                          costume_idx0 < ncostumes;
                          costume_it0++, costume_idx0++)
@@ -417,7 +417,7 @@ void fn_80169C54(s8 arg0, s8 arg1)
                     }
                 }
                 fighter1 = Player_800325C8((CharacterKind) ckind, 1);
-                if ((fighter1 != -1) && (fighter1 != 4)) {
+                if ((fighter1 != -1) && (fighter1 != Ft_Kind_Kirby)) {
                     for (costume_it1 = &costumes[costume_idx1 = 0];
                          costume_idx1 < ncostumes;
                          costume_it1++, costume_idx1++)
@@ -427,15 +427,15 @@ void fn_80169C54(s8 arg0, s8 arg1)
                 }
             }
         }
-        if (arg0 != 4) {
+        if (arg0 != CKind_Kirby) {
             extra_fighter0 = Player_800325C8((CharacterKind) arg0, 0);
-            if ((extra_fighter0 != -1) && (extra_fighter0 != 4)) {
+            if ((extra_fighter0 != -1) && (extra_fighter0 != Ft_Kind_Kirby)) {
                 for (costume_idx = 0; costume_idx < ncostumes; costume_idx++) {
                     Player_80031DA8(extra_fighter0, costumes[costume_idx]);
                 }
             }
             extra_fighter1 = Player_800325C8((CharacterKind) arg0, 1);
-            if ((extra_fighter1 != -1) && (extra_fighter1 != 4)) {
+            if ((extra_fighter1 != -1) && (extra_fighter1 != Ft_Kind_Kirby)) {
                 for (costume_idx = 0; costume_idx < ncostumes; costume_idx++) {
                     Player_80031DA8(extra_fighter1, costumes[costume_idx]);
                 }
@@ -449,7 +449,7 @@ static inline void fn_80169F50_inline(s8 costume, struct lbl_8046B488_t* gp,
 {
     s32 i;
     s32 costume_id;
-    if (character == 4 && gp->xE != 0) {
+    if (character == CKind_Kirby && gp->xE != 0) {
         i = 0;
         costume_id = costume;
         for (; gp->x20[i] != -2; i++) {
@@ -477,7 +477,7 @@ void fn_80169F50(s8 arg0, s8 arg1)
     flag = 0;
     p = &gp->x0;
     for (i = 0; i < 3; i++) {
-        if (p[i] == 4) {
+        if (p[i] == CKind_Kirby) {
             flag = 1;
             break;
         }
@@ -489,7 +489,7 @@ void fn_80169F50(s8 arg0, s8 arg1)
             if (v == -1) {
                 continue;
             }
-            if (gp->xA2[i] != 4) {
+            if (gp->xA2[i] != CKind_Kirby) {
                 continue;
             }
             if (gp->x124[i] == -1) {
