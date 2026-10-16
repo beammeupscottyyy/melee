@@ -1,6 +1,8 @@
 #ifndef MELEE_MN_FORWARD_H
 #define MELEE_MN_FORWARD_H
 
+#include <melee/lb/forward.h>
+
 #ifdef M2C
 typedef struct mnInfo_GObj mnInfo_GObj;
 typedef struct mnSoundTest_GObj mnSoundTest_GObj;

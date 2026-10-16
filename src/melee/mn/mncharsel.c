@@ -1254,7 +1254,7 @@ void mnCharSel_8025DB34(u8 arg0)
                 pickUniqueCostume((int) arg0);
                 mnCharSel_803F0DFC.doors[arg0].dooranim_timer = 0x1E;
                 if (mnCharSel_804D6CF6 != 3 && mnCharSel_804D6CF6 != 4) {
-                    lbAudioAx_800237A8(0xB9, 0x7F, 0x40);
+                    lbAudioAx_800237A8(0xB9, SFX_VOLUME_MAX, SFX_PAN_MID);
                 }
             }
         } else {
@@ -1268,7 +1268,7 @@ void mnCharSel_8025DB34(u8 arg0)
                 mnCharSel_8025D1C4((int) arg0, 0);
                 mnCharSel_803F0DFC.doors[arg0].dooranim_timer = 0x1E;
                 if (mnCharSel_804D6CF6 != 3 && mnCharSel_804D6CF6 != 4) {
-                    lbAudioAx_800237A8(0xBA, 0x7F, 0x40);
+                    lbAudioAx_800237A8(0xBA, SFX_VOLUME_MAX, SFX_PAN_MID);
                 }
             } else {
                 HSD_ForeachAnim(sp90, JOBJ_TYPE, ALL_TYPE_MASK,
@@ -2051,7 +2051,8 @@ void mnCharSel_8025FB50(u8 door, s32 arg1)
     {
         u8 sel = mnCharSel_803F0DFC.doors[door].sel_icon;
         u8* char_kinds = &icons[0].char_kind;
-        lbAudioAx_80023870(icons[sel].sfx, 0x7F, 0x40, sel + 0x8A);
+        lbAudioAx_80023870(icons[sel].sfx, SFX_VOLUME_MAX, SFX_PAN_MID,
+                           sel + 0x8A);
         gm_80168C5C((u32) char_kinds[sel * sizeof(CSSIcon)]);
     }
 }
@@ -2122,7 +2123,8 @@ s32 mnCharSel_8025FDEC(u8 door)
 
         if (mnCharSel_804D6CF6 != 3 && mnCharSel_804D6CF6 != 4) {
             int sel = mnCharSel_803F0DFC.doors[door].sel_icon;
-            lbAudioAx_80023870(icons[sel].sfx, 0x7F, 0x40, sel + 0x8A);
+            lbAudioAx_80023870(icons[sel].sfx, SFX_VOLUME_MAX, SFX_PAN_MID,
+                               sel + 0x8A);
             gm_80168C5C(icons[sel].char_kind);
         }
         return 0;
@@ -2342,7 +2344,7 @@ static inline void updateGrabbedSlider(struct CSSCursorData* cursor,
         } else {
             door->is_hold_cpu_slider = 0;
         }
-        lbAudioAx_800237A8(0xB7, 0x7F, 0x40);
+        lbAudioAx_800237A8(0xB7, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -2529,7 +2531,8 @@ void mnCharSel_CursorThink(HSD_GObj* gobj)
                                  mnCharSel_803F0DFC.doors[door].p_kind == 3))
                             {
                                 mnCharSel_8025FDEC(door);
-                                lbAudioAx_800237A8(0xB8, 0x7F, 0x40);
+                                lbAudioAx_800237A8(0xB8, SFX_VOLUME_MAX,
+                                                   SFX_PAN_MID);
                             } else {
                                 mnCharSel_804A0BD0[door]->x5 = 0;
                                 mnCharSel_803F0DFC.doors[door].sel_icon = 0x19;
@@ -2586,7 +2589,8 @@ void mnCharSel_CursorThink(HSD_GObj* gobj)
                                         }
                                         mnCharSel_8025DB34(door);
                                         cursor->x5 = 2;
-                                        lbAudioAx_800237A8(0xB8, 0x7F, 0x40);
+                                        lbAudioAx_800237A8(
+                                            0xB8, SFX_VOLUME_MAX, SFX_PAN_MID);
                                         break;
                                     }
                                 }
@@ -2654,13 +2658,15 @@ void mnCharSel_CursorThink(HSD_GObj* gobj)
                                                               .doors[(u8) door]
                                                               .sel_icon;
                                                 lbAudioAx_80023870(
-                                                    icons[sel].sfx, 0x7F, 0x40,
-                                                    sel + 0x8A);
+                                                    icons[sel].sfx,
+                                                    SFX_VOLUME_MAX,
+                                                    SFX_PAN_MID, sel + 0x8A);
                                                 gm_80168C5C(
                                                     icons[sel].char_kind);
                                             }
-                                            lbAudioAx_800237A8(0xB8, 0x7F,
-                                                               0x40);
+                                            lbAudioAx_800237A8(0xB8,
+                                                               SFX_VOLUME_MAX,
+                                                               SFX_PAN_MID);
                                             goto update_display;
                                         }
                                         goto cancel_or_costume;
@@ -3086,7 +3092,9 @@ void mnCharSel_CursorThink(HSD_GObj* gobj)
                                                             .is_hold_cpu_slider =
                                                             1;
                                                         lbAudioAx_800237A8(
-                                                            0xB7, 0x7F, 0x40);
+                                                            0xB7,
+                                                            SFX_VOLUME_MAX,
+                                                            SFX_PAN_MID);
                                                     }
                                                 }
                                             }
@@ -3144,8 +3152,9 @@ void mnCharSel_CursorThink(HSD_GObj* gobj)
                                                                     .is_hold_handicap_slider =
                                                                     1;
                                                                 lbAudioAx_800237A8(
-                                                                    0xB7, 0x7F,
-                                                                    0x40);
+                                                                    0xB7,
+                                                                    SFX_VOLUME_MAX,
+                                                                    SFX_PAN_MID);
                                                             }
                                                         }
                                                     }
@@ -3270,7 +3279,8 @@ void mnCharSel_CursorThink(HSD_GObj* gobj)
                                             mnCharSel_804A0BD0[(u8) closest]
                                                 ->gobj,
                                             mnCharSel_804A0BC0[cport4]->gobj);
-                                        lbAudioAx_800237A8(0xB7, 0x7F, 0x40);
+                                        lbAudioAx_800237A8(
+                                            0xB7, SFX_VOLUME_MAX, SFX_PAN_MID);
                                         cursor->xC =
                                             (f32) (mnCharSel_804A0BD0[closest]
                                                        ->x8 -
@@ -3307,8 +3317,9 @@ void mnCharSel_CursorThink(HSD_GObj* gobj)
                                                     ->gobj,
                                                 mnCharSel_804A0BC0[cport5]
                                                     ->gobj);
-                                            lbAudioAx_800237A8(0xB7, 0x7F,
-                                                               0x40);
+                                            lbAudioAx_800237A8(0xB7,
+                                                               SFX_VOLUME_MAX,
+                                                               SFX_PAN_MID);
                                         }
                                     }
                                 }
@@ -3355,8 +3366,9 @@ void mnCharSel_CursorThink(HSD_GObj* gobj)
                                                         ->gobj,
                                                     mnCharSel_804A0BC0[cport7]
                                                         ->gobj);
-                                                lbAudioAx_800237A8(0xB7, 0x7F,
-                                                                   0x40);
+                                                lbAudioAx_800237A8(
+                                                    0xB7, SFX_VOLUME_MAX,
+                                                    SFX_PAN_MID);
                                                 {
                                                     f32 val_x =
                                                         2.7f + cursor->xC;
@@ -3709,15 +3721,17 @@ void fn_80262F44(HSD_GObj* gobj)
                 }
                 goto hide;
             }
-        teams_ok: {
-            CSSTag* tag = mnCharSel_803F0E8C;
-            for (i = 0; i < (s32) mnCharSel_804D6CF5; i++) {
-                if (mnCharSel_804A0BC0[i]->x5 == 1 || tag[i].data->state != 0)
-                {
-                    goto hide;
+        teams_ok:
+            {
+                CSSTag* tag = mnCharSel_803F0E8C;
+                for (i = 0; i < (s32) mnCharSel_804D6CF5; i++) {
+                    if (mnCharSel_804A0BC0[i]->x5 == 1 ||
+                        tag[i].data->state != 0)
+                    {
+                        goto hide;
+                    }
                 }
             }
-        }
 
             if (mnCharSel_804D6CF7 == 0) {
                 HSD_ForeachAnim(jobj, JOBJ_TYPE, ALL_TYPE_MASK,
@@ -4237,20 +4251,20 @@ s32 mnCharSel_802640A0(void)
 
     if (match_type != 0) {
         lbAudioAx_800237A8(mnCharSel_803F0A48.mode_info[match_type].enter_sfx,
-                           0x7F, 0x40);
+                           SFX_VOLUME_MAX, SFX_PAN_MID);
     } else {
         switch (gmMainLib_GetGameRules()->mode) {
         case 0:
-            lbAudioAx_800237A8(0x7535, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x7535, SFX_VOLUME_MAX, SFX_PAN_MID);
             break;
         case 1:
-            lbAudioAx_800237A8(0x7538, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x7538, SFX_VOLUME_MAX, SFX_PAN_MID);
             break;
         case 2:
-            lbAudioAx_800237A8(0x7537, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x7537, SFX_VOLUME_MAX, SFX_PAN_MID);
             break;
         case 3:
-            lbAudioAx_800237A8(0x7536, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x7536, SFX_VOLUME_MAX, SFX_PAN_MID);
             break;
         }
     }

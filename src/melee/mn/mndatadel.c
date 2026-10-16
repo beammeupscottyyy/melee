@@ -206,7 +206,7 @@ void mnDataDel_8024EA6C(void)
     gmMainLib_8015FBA4();
     gm_801A3EF4();
     if (lang == lbLang_GetSavedLanguage()) {
-        lbAudioAx_800237A8(0xBF, 0x7F, 0x40);
+        lbAudioAx_800237A8(0xBF, SFX_VOLUME_MAX, SFX_PAN_MID);
     } else {
         lbLang_SetSavedLanguage(lang);
         lbAudioAx_80027AB0(0xBF);
@@ -494,7 +494,7 @@ void fn_8024F318(HSD_GObj* gobj)
                 text->default_alignment = 1;
                 HSD_SisLib_803A6368(text, sis_id);
                 mn_804D6BC8.cooldown = 0xA;
-                lbAudioAx_800237A8(0xBD, 0x7F, 0x40);
+                lbAudioAx_800237A8(0xBD, SFX_VOLUME_MAX, SFX_PAN_MID);
                 return;
             }
             sfxBack();
@@ -591,7 +591,7 @@ void fn_8024F318(HSD_GObj* gobj)
                 break;
             }
             }
-            lbAudioAx_800237A8(0xBE, 0x7F, 0x40);
+            lbAudioAx_800237A8(0xBE, SFX_VOLUME_MAX, SFX_PAN_MID);
         } else {
             sfxBack();
         }
@@ -712,7 +712,7 @@ void fn_8024F840(HSD_GObj* gobj)
         proc->flags_3 = HSD_GObj_804D783C;
         mnDataDel_8024EEC0();
         mn_804D6BC8.cooldown = 0xA;
-        lbAudioAx_800237A8(0xBC, 0x7F, 0x40);
+        lbAudioAx_800237A8(0xBC, SFX_VOLUME_MAX, SFX_PAN_MID);
         return;
     }
     if (buttons & 1) {

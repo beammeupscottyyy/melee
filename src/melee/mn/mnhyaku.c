@@ -225,5 +225,5 @@ void mnHyaku_8024CD64(u8 arg0)
     proc =
         HSD_GObj_SetupProc(GObj_Create(0U, 1U, 0x80U), mnHyaku_8024C68C, 0U);
     proc->flags_3 = HSD_GObj_804D783C;
-    lbAudioAx_800237A8(0x7530, 0x7FU, 0x40U);
+    lbAudioAx_800237A8(0x7530, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
