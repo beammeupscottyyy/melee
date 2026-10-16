@@ -67,10 +67,10 @@ void ftPk_SpecialN_Anim(Fighter_GObj* gobj)
                                        pika_attr->specialn_itkind);
             switch (ftLib_GetKind(gobj)) {
             case Ft_Kind_Pikachu:
-                ft_PlaySFX(fp, 240076, 127, 64);
+                ft_PlaySFX(fp, 240076, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             case Ft_Kind_Pichu:
-                ft_PlaySFX(fp, 230067, 127, 64);
+                ft_PlaySFX(fp, 230067, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             default:
                 break;
@@ -108,10 +108,10 @@ void ftPk_SpecialAirN_Anim(HSD_GObj* gobj)
                                        pika_attr->specialn_itkind);
             switch (ftLib_GetKind(gobj)) {
             case Ft_Kind_Pikachu:
-                ft_PlaySFX(fp, 240076, 127, 64);
+                ft_PlaySFX(fp, 240076, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             case Ft_Kind_Pichu:
-                ft_PlaySFX(fp, 230067, 127, 64);
+                ft_PlaySFX(fp, 230067, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             default:
                 break;

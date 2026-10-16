@@ -370,7 +370,7 @@ void ftNs_AttackHi4_YoyoApplySmash(HSD_GObj* gobj)
     }
 
     ftCommon_8007EBAC(fp, 36, 0U);
-    ft_80088510(fp, 210087, 127, 64);
+    ft_80088510(fp, 210087, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 static Vec3 const YoyoChargePos = { 0 };

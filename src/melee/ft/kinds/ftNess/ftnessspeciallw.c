@@ -254,7 +254,7 @@ void ftNs_SpecialLwHold_Anim(
     temp_r31->mv.ns.speciallw.x10--;
 
     if (temp_r31->mv.ns.speciallw.x10 <= 0) {
-        ft_80088478(temp_r31, 210081, 127, 64);
+        ft_80088478(temp_r31, 210081, SFX_VOLUME_MAX, SFX_PAN_MID);
         temp_r31->mv.ns.speciallw.x10 = 40;
     }
 }
@@ -291,7 +291,7 @@ void ftNs_SpecialAirLwHold_Anim(
     temp_r31->mv.ns.speciallw.x10 = (s32) (temp_r31->mv.ns.speciallw.x10 - 1);
 
     if (temp_r31->mv.ns.speciallw.x10 <= 0) {
-        ft_80088478(temp_r31, 210081, 127, 64);
+        ft_80088478(temp_r31, 210081, SFX_VOLUME_MAX, SFX_PAN_MID);
         temp_r31->mv.ns.speciallw.x10 = 40;
     }
 }
@@ -645,7 +645,7 @@ static inline void MagnetStateVarCalc(HSD_GObj* gobj)
     Fighter* fp = GET_FIGHTER(gobj);
     fp->mv.ns.speciallw.x10 = fp->mv.ns.speciallw.x10 - 1;
     if (fp->mv.ns.speciallw.x10 <= 0) {
-        ft_80088478(fp, 210081, 127, 64);
+        ft_80088478(fp, 210081, SFX_VOLUME_MAX, SFX_PAN_MID);
         fp->mv.ns.speciallw.x10 = 40;
     }
 }
@@ -755,7 +755,7 @@ void ftNs_SpecialAirLwHit_Anim(
         Fighter* fp = GET_FIGHTER(arg0);
         fp->mv.ns.speciallw.x10 = fp->mv.ns.speciallw.x10 - 1;
         if ((signed) fp->mv.ns.speciallw.x10 <= 0) {
-            ft_80088478(fp, 210081, 127, 64);
+            ft_80088478(fp, 210081, SFX_VOLUME_MAX, SFX_PAN_MID);
             fp->mv.ns.speciallw.x10 = 40;
         }
     }

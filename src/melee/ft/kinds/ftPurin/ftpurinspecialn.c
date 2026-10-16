@@ -116,7 +116,7 @@ void ftPr_SpecialS_8013D764(HSD_GObj* gobj)
         fp->mv.pr.specialn.facing_dir = 0;
 
         ftPartSetRotY(fp, FtPart_TopN, M_PI_2);
-        ft_PlaySFX(fp, 250070, 127, 64);
+        ft_PlaySFX(fp, 250070, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -250,7 +250,7 @@ static inline void playRollSFX(HSD_GObj* gobj)
     } else {
         sfx_id = 250064;
     }
-    ft_80088510(fp, sfx_id, 127, 64);
+    ft_80088510(fp, sfx_id, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 static inline void scaleAnimStep(HSD_GObj* gobj, Vec3* scale)
@@ -700,7 +700,7 @@ void ftPr_SpecialNLoop_IASA(HSD_GObj* gobj)
                      (da->xC0 * (fp->mv.pr.specialn.x2C - da->xA0));
         ftPartSetRotY(fp, FtPart_TopN, M_PI_2);
         ftPr_NormalizeAndSetRollAngle(gobj);
-        ft_PlaySFX(fp, 250073, 127, 64);
+        ft_PlaySFX(fp, 250073, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -720,7 +720,7 @@ void ftPr_SpecialNFull_IASA(HSD_GObj* gobj)
                      (da->xC0 * (fp->mv.pr.specialn.x2C - da->xA0));
         ftPartSetRotY(fp, FtPart_TopN, M_PI_2);
         ftPr_NormalizeAndSetRollAngle(gobj);
-        ft_PlaySFX(fp, 250073, 127, 64);
+        ft_PlaySFX(fp, 250073, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -746,7 +746,7 @@ void ftPr_SpecialNRelease_IASA(HSD_GObj* gobj)
             fp->mv.pr.specialn.x1C = -0.05f * fp->gr_vel;
             fp->mv.pr.specialn.x24 = 0;
             ftPr_NormalizeAndSetRollAngle(gobj);
-            ft_PlaySFX(fp, 250073, 127, 64);
+            ft_PlaySFX(fp, 250073, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     }
 }
@@ -773,7 +773,7 @@ void ftPr_SpecialAirNChargeLoop_IASA(HSD_GObj* gobj)
                          (da->xC0 * (fp->mv.pr.specialn.x2C - da->xA0));
         ftPartSetRotY(fp, FtPart_TopN, M_PI_2);
         ftPr_NormalizeAndSetRollAngle(gobj);
-        ft_PlaySFX(fp, 250073, 127, 64);
+        ft_PlaySFX(fp, 250073, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -793,7 +793,7 @@ void ftPr_SpecialAirNChargeFull_IASA(HSD_GObj* gobj)
                          (da->xC0 * (fp->mv.pr.specialn.x2C - da->xA0));
         ftPartSetRotY(fp, FtPart_TopN, M_PI_2);
         ftPr_NormalizeAndSetRollAngle(gobj);
-        ft_PlaySFX(fp, 250073, 127, 64);
+        ft_PlaySFX(fp, 250073, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -1115,7 +1115,7 @@ static inline void wallBounceEffect(HSD_GObj* gobj, Fighter* fp, f32 dir,
     efSync_Spawn(0x406, gobj, pos, angle);
     Camera_RequestQuake(QuakeKind_Medium, pos);
     ftCommon_8007EBAC(fp2, 0xC, 0xA);
-    ft_PlaySFX(fp2, 250070, 127, 64);
+    ft_PlaySFX(fp2, 250070, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void ftPr_SpecialNRelease_Coll(HSD_GObj* gobj)
