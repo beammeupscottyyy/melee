@@ -789,7 +789,7 @@ s32 fn_801803FC(void* arg0)
     f32 frame;
     s32 i;
 
-    gobj = GObj_Create(0xEU, 0xEU, 0U);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xEU, 0U);
     p->x0 = gobj;
     if (gobj == NULL) {
         HSD_JObjAnimAll(GET_JOBJ(gobj));
@@ -852,7 +852,7 @@ static inline void setScoreBonuses(struct lbl_80472D28_t* state,
 
 static inline HSD_GObj* fn_80180630_CreateCameraGObj(void)
 {
-    return GObj_Create(0xEU, 0xEU, 0U);
+    return GObj_Create(HSD_GOBJ_CLASS_UI, 0xEU, 0U);
 }
 
 static inline void* fn_80180630_LoadLightList(struct lbl_80472D28_t* state)
@@ -873,7 +873,8 @@ fn_80180630_GetModelDesc(struct lbl_80472D28_t* state)
 
 static inline void fn_80180630_SetupSisLib(HSD_GObj* cam_gobj)
 {
-    HSD_SisLib_803A611C(0, cam_gobj, 9U, 0xDU, 0U, 0xEU, 0U, 0x13U);
+    HSD_SisLib_803A611C(0, cam_gobj, HSD_GOBJ_CLASS_SISLIB_UNK, 0xDU, 0U,
+                        HSD_GOBJ_CLASS_UI, 0U, HSD_GOBJ_CLASS_CAMERA);
     if (lbLang_IsSavedLanguageUS() != 0) {
         HSD_SisLib_803A62A0(0, "SdClr.usd", "SIS_ClearData");
     } else {
@@ -887,7 +888,7 @@ fn_80180630_CreateLightAndCamera(struct lbl_80472D28_t* state,
 {
     HSD_GObj* light_gobj;
 
-    light_gobj = GObj_Create(0xBU, 3U, 0U);
+    light_gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, HSD_GOBJ_PLINK_LIGHT, 0U);
     HSD_GObjObject_80390A70(light_gobj, (u8) HSD_GObj_LightKind,
                             fn_80180630_LoadLightList(state));
     GObj_SetupGXLink(light_gobj, HSD_GObj_LObjCallback, 0xAU, 0U);

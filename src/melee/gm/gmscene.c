@@ -1,5 +1,7 @@
 #include "gmscene.h"
 
+#include <melee/gm/forward.h>
+
 #include "gm_1A36.h"
 #include "gm_unsplit.h"
 #include "gmmain_lib.h"
@@ -236,7 +238,7 @@ void gm_801A4BD4(void)
     HSD_GObjInit(&gobj_init_data);
     hsd_80392474();
     un_802FF78C();
-    gm_804D672C = GObj_Create(14, 0, 0);
+    gm_804D672C = GObj_Create(HSD_GOBJ_CLASS_UI, 0, 0);
     if (gm_804D672C != NULL) {
         HSD_GObj_SetupProc(gm_804D672C, fn_801A4BD0, 0);
     }

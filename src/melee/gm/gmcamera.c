@@ -555,7 +555,7 @@ static inline void gmCamera_801A31FC_inline(DynamicModelDesc* mdl)
 {
     HSD_JObj* jobj;
     HSD_GObj* gobj;
-    gobj = GObj_Create(0xE, 0x10, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0x10, 0);
     jobj = gmCamera_VsCamUiState.x8 = HSD_JObjLoadJoint(mdl->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
     GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, 0xB, 0);
@@ -582,7 +582,7 @@ void gmCamera_801A31FC(void)
         HSD_Joint** joint_a =
             HSD_ArchiveGetPublicAs(HSD_Joint*, gmCamera_VsCamUiState.ifvscam,
                                    "IfCameraInfo_Top_model_set");
-        HSD_GObj* gobj_a = GObj_Create(0xE, 0x10, 0);
+        HSD_GObj* gobj_a = GObj_Create(HSD_GOBJ_CLASS_UI, 0x10, 0);
         HSD_JObj* jobj_a = gmCamera_VsCamUiState.x4 =
             HSD_JObjLoadJoint(*joint_a);
         HSD_GObjObject_80390A70(gobj_a, HSD_GObj_JObjKind, jobj_a);

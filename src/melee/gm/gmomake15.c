@@ -1,5 +1,7 @@
 #include "gmomake15.h"
 
+#include <melee/gm/forward.h>
+
 #include "gm_unsplit.h"
 #include "gmmain_lib.h"
 #include "gmopening.h"
@@ -18,11 +20,11 @@ void gm_Scene_Omake15_OnEnter(void* unused)
     HSD_GObj* gobj;
     HSD_SObj* temp_r3_2;
 
-    gobj = GObj_Create(0x13, 0x14, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     gm_801A9DD0(gobj, 0x280, 0x1E0, 8, 0);
     gobj->gxlink_prios = 0x800;
 
-    gobj = GObj_Create(0xE, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     gm_804D6858 = gobj;
     HSD_GObjObject_80390A70(gobj, HSD_SObjLib_804D7960, NULL);
     GObj_SetupGXLink(gobj, lbMthp_8001F67C, 0xB, 0);
