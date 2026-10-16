@@ -44,7 +44,7 @@ ASSERT_SIZE(struct stateMachine, 0x14);
 /* 1A3F48 */ static void preloadState(GameModeState*);
 
 /**
- * @brief Runs one game-mode scene transition and invokes the run loop for a
+ * Runs one game-mode scene transition and invokes the run loop for a
  * given scene
  *
  * Finds the current #GameModeState in @p mode, runs its @c Prep handler, loads
@@ -54,7 +54,7 @@ ASSERT_SIZE(struct stateMachine, 0x14);
 /* 1A4014 */ static void gm_801A4014(GameMode*);
 
 /**
- * @brief Loads a game mode, runs it to completion, then unloads it.
+ * Loads a game mode, runs it to completion, then unloads it.
  *
  * Loads the data associated with the given #GameModeKind (asset preload and
  * #GameMode::Load), then executes its scene graph via #gm_801A4014 until
@@ -72,7 +72,7 @@ ASSERT_SIZE(struct stateMachine, 0x14);
  *
  * @returns The next pending #GameModeKind (#GameRouting::pending_mode).
  */
-/* 1A43A0 */ static u8 runGameMode(u8 mode);
+/* 1A43A0 */ static u8 runGameMode(GameModeKind mode);
 
 /* 479D30 */ static struct stateMachine state_machine;
 
@@ -263,23 +263,23 @@ void gm_SetNewGameModePending(void)
     state_machine.pending_mode_change = true;
 }
 
-void gm_SetPendingGameMode(u8 pending_mode)
+void gm_SetPendingGameMode(GameModeKind pending_mode)
 {
     state_machine.routing.pending_mode = pending_mode;
 }
 
-void gm_ChangeGameModeAfterCurrentScene(int pending_mode)
+void gm_ChangeGameModeAfterCurrentScene(GameModeKind pending_mode)
 {
     state_machine.routing.pending_mode = pending_mode;
     state_machine.pending_mode_change = true;
 }
 
-u8 gm_GetCurrentGameMode(void)
+GameModeKind gm_GetCurrentGameMode(void)
 {
     return state_machine.routing.curr_mode;
 }
 
-u8 gm_GetPreviousGameMode(void)
+GameModeKind gm_GetPreviousGameMode(void)
 {
     return state_machine.routing.prev_mode;
 }
@@ -289,7 +289,7 @@ void gm_SetGameModeOverride(u8 (*mode)(void))
     state_machine.get_override = mode;
 }
 
-bool gm_Is1PMode(u8 mode)
+bool gm_Is1PMode(GameModeKind mode)
 {
     switch (mode) {
     case GM_CLASSIC:
@@ -310,7 +310,7 @@ bool gm_Is1PMode(u8 mode)
     return false;
 }
 
-static inline GameMode* findMode(u8 kind)
+static inline GameMode* findMode(GameModeKind kind)
 {
     GameMode* cur;
     for (cur = gm_GetAllGameModes(); cur->kind != GM_COUNT; cur++) {
@@ -321,7 +321,7 @@ static inline GameMode* findMode(u8 kind)
     return NULL;
 }
 
-u8 runGameMode(u8 mode_kind)
+u8 runGameMode(GameModeKind mode_kind)
 {
     u8 override;
     GameMode* mode;
