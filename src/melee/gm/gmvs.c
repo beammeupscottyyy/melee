@@ -1762,7 +1762,7 @@ static float direction(float x)
 static inline void getSpawnPoint(int i, Vec3* v)
 {
     VsSceneController* tmp = &controller;
-    if (tmp->state.fighters[i].spawn_point == -1) {
+    if (tmp->state.fighters[i].spawn_point == St_Player_InitPos_None) {
         Stage_80224E64(i, v);
     } else {
         Stage_80224E64(tmp->state.fighters[i].spawn_point, v);

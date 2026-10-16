@@ -3664,7 +3664,7 @@ void gm_SetupPlayerDefaults(struct PlayerInitData* player)
     player->stocks = 0;
     player->color = 0;
     player->slot = 0;
-    player->spawn_pos = -1;
+    player->spawn_pos = St_Player_InitPos_None;
     player->spawn_dir = 0;
     player->xB = 0;
     player->sub_color = 0;

@@ -185,6 +185,15 @@ typedef enum StKind {
     /* 0x148 */ St_Kind_Unk328 = 328,
 } StKind;
 
+typedef enum St_Player_InitPos {
+    St_Player_InitPos_None = -1,
+    St_Player_InitPos_0,
+    St_Player_InitPos_1,
+    St_Player_InitPos_2,
+    St_Player_InitPos_3,
+    St_Player_InitPos_Center,
+} St_Player_InitPos;
+
 typedef enum StadiumGrType {
     PsType_Display = 1,
 } StadiumGrType;

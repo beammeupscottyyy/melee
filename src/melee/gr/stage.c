@@ -216,19 +216,19 @@ void Stage_80224E38(Vec3* arg0, s32 arg1)
     Ground_801C2D24(arg1 + 4, arg0);
 }
 
-void Stage_80224E64(enum_t arg0, Vec3* arg_vec)
+void Stage_80224E64(St_Player_InitPos pos_idx, Vec3* arg_vec)
 {
     bool bool1;
 
     f32 counter_f;
     Vec3 internal_vec;
 
-    if (arg0 == -1) {
+    if (pos_idx == St_Player_InitPos_None) {
         /// @todo Needs to be #HSD_ASSERT. Also remove fake zero-byte padding.
         __assert("stage.c", 360, "no!=St_Player_InitPos_None\0\0\0\0");
     }
 
-    if (arg0 == 4) {
+    if (pos_idx == St_Player_InitPos_Center) {
         bool1 = 0;
         for (counter_f = -10.0F; counter_f < 100.0f; counter_f += 10.0f) {
             s32 temp_ret =
@@ -262,7 +262,7 @@ void Stage_80224E64(enum_t arg0, Vec3* arg_vec)
         arg_vec->x = 0.0F;
         return;
     }
-    Ground_801C2D24(arg0, arg_vec);
+    Ground_801C2D24((enum_t) pos_idx, arg_vec);
 }
 
 bool Stage_80224FDC(Vec3* arg0)
