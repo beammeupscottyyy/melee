@@ -618,8 +618,8 @@ void lbRefract_80022998(HSD_MObj* mobj, u32 rendermode, s32 arg2)
     GXSetNumTexGens(2);
     GXSetTexCoordGen2(GX_TEXCOORD0, GX_TG_MTX3x4, GX_TG_NRM, GX_TEXMTX0,
                       GX_TRUE, GX_PTTEXMTX0);
-    GXSetTexCoordGen2(GX_TEXCOORD1, GX_TG_MTX3x4, GX_TG_POS, 0, GX_FALSE,
-                      GX_PTTEXMTX1);
+    GXSetTexCoordGen2(GX_TEXCOORD1, GX_TG_MTX3x4, GX_TG_POS, GX_PNMTX0,
+                      GX_FALSE, GX_PTTEXMTX1);
 
     GXLoadTexMtxImm(texture_mtx, GX_PTTEXMTX0, GX_MTX3x4);
     GXLoadTexMtxImm(lbl_804336D0.texture_mtx, GX_PTTEXMTX1, GX_MTX3x4);

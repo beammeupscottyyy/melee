@@ -573,11 +573,11 @@ void fn_80013614(HSD_GObj* gobj)
 
         HSD_CObjSetCurrent(cobj);
         HSD_StateSetZMode(0, 7, 0);
-        GXSetCurrentMtx(0);
+        GXSetCurrentMtx(GX_PNMTX0);
         HSD_CObjGetViewingMtx(HSD_CObjGetCurrent(), view_mtx);
-        GXLoadPosMtxImm(view_mtx, 0);
-        GXSetTexCoordGen2(GX_TEXCOORD0, GX_TG_MTX2x4, GX_TG_TEX0, 0x3C, 0,
-                          0x7D);
+        GXLoadPosMtxImm(view_mtx, GX_PNMTX0);
+        GXSetTexCoordGen2(GX_TEXCOORD0, GX_TG_MTX2x4, GX_TG_TEX0, GX_IDENTITY,
+                          GX_FALSE, GX_PTIDENTITY);
         HSD_SetupChannel(&chan0);
         HSD_SetupChannel(&chan1);
         HSD_StateSetNumChans(1);
@@ -608,11 +608,11 @@ void fn_80013614(HSD_GObj* gobj)
 
         HSD_CObjSetCurrent(cobj);
         HSD_StateSetZMode(0, 7, 0);
-        GXSetCurrentMtx(0);
+        GXSetCurrentMtx(GX_PNMTX0);
         HSD_CObjGetViewingMtx(HSD_CObjGetCurrent(), view_mtx2);
-        GXLoadPosMtxImm(view_mtx2, 0);
-        GXSetTexCoordGen2(GX_TEXCOORD0, GX_TG_MTX2x4, GX_TG_TEX0, 0x3C, 0,
-                          0x7D);
+        GXLoadPosMtxImm(view_mtx2, GX_PNMTX0);
+        GXSetTexCoordGen2(GX_TEXCOORD0, GX_TG_MTX2x4, GX_TG_TEX0, GX_IDENTITY,
+                          GX_FALSE, GX_PTIDENTITY);
         HSD_SetupChannel(&chan0);
         HSD_SetupChannel(&chan1);
         HSD_StateSetNumChans(1);

@@ -2006,10 +2006,10 @@ void lbColl_80008DA4(GXColor* arg0, GXColor* arg1)
     } else {
         var_r5 = 1;
     }
-    GXSetZMode(1, GX_LEQUAL, var_r5);
-    GXSetZCompLoc(0);
+    GXSetZMode(GX_TRUE, GX_LEQUAL, var_r5);
+    GXSetZCompLoc(GX_FALSE);
     GXSetNumTexGens(0);
-    GXSetTevClampMode(0, 0);
+    GXSetTevClampMode(GX_TEVSTAGE0, 0);
     GXSetNumTevStages(1);
     GXSetTevOrder(GX_TEVSTAGE0, GX_TEXCOORD_NULL, GX_TEXMAP_NULL, GX_COLOR0A0);
     GXSetTevColor(GX_TEVREG0, *arg0);
@@ -2017,10 +2017,10 @@ void lbColl_80008DA4(GXColor* arg0, GXColor* arg1)
                     GX_CC_ZERO);
     GXSetTevAlphaIn(GX_TEVSTAGE0, GX_CA_ZERO, GX_CA_KONST, GX_CA_A0,
                     GX_CA_ZERO);
-    GXSetTevColorOp(GX_TEVSTAGE0, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_1, 1,
-                    GX_TEVPREV);
-    GXSetTevAlphaOp(GX_TEVSTAGE0, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_1, 1,
-                    GX_TEVPREV);
+    GXSetTevColorOp(GX_TEVSTAGE0, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_1,
+                    GX_TRUE, GX_TEVPREV);
+    GXSetTevAlphaOp(GX_TEVSTAGE0, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_1,
+                    GX_TRUE, GX_TEVPREV);
     GXSetNumChans(1);
     sp10 = *arg1;
     GXSetChanAmbColor(GX_COLOR0A0, sp10);
@@ -2030,11 +2030,11 @@ void lbColl_80008DA4(GXColor* arg0, GXColor* arg1)
     sp10.a = 0xFF;
     GXSetChanMatColor(GX_COLOR0A0, sp10);
     if (arg0->a < 0xFF) {
-        GXSetChanCtrl(GX_COLOR0A0, 0, GX_SRC_REG, GX_SRC_REG, 1, GX_DF_NONE,
-                      GX_AF_NONE);
+        GXSetChanCtrl(GX_COLOR0A0, GX_FALSE, GX_SRC_REG, GX_SRC_REG, 1,
+                      GX_DF_NONE, GX_AF_NONE);
     } else {
-        GXSetChanCtrl(GX_COLOR0A0, 1, GX_SRC_REG, GX_SRC_REG, 1, GX_DF_CLAMP,
-                      GX_AF_NONE);
+        GXSetChanCtrl(GX_COLOR0A0, GX_TRUE, GX_SRC_REG, GX_SRC_REG, 1,
+                      GX_DF_CLAMP, GX_AF_NONE);
     }
 }
 
@@ -2139,10 +2139,10 @@ void lbColl_80008FC8(Vec3 arg0, Vec3 arg1, GXColor* arg2, GXColor* arg3,
     GXSetVtxDesc(GX_VA_NRM, GX_INDEX8);
     GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_NRM, GX_TEX_S, GX_RGBA4, 0xE);
     PSMTXConcat(sp104, spD4, spD4);
-    GXLoadPosMtxImm(spD4, 0);
+    GXLoadPosMtxImm(spD4, GX_PNMTX0);
     HSD_MtxInverse(spD4, spD4);
     PSMTXTranspose(spD4, spD4);
-    GXLoadNrmMtxImm(spD4, 0);
+    GXLoadNrmMtxImm(spD4, GX_PNMTX0);
     GXCallDisplayList(lbColl_SphereDisplayList, 0x120);
     GXClearVtxDesc();
     GXSETARRAY(GX_VA_POS, lbColl_SpherePositions,
@@ -2154,10 +2154,10 @@ void lbColl_80008FC8(Vec3 arg0, Vec3 arg1, GXColor* arg2, GXColor* arg3,
     GXSetVtxDesc(GX_VA_NRM, GX_INDEX8);
     GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_NRM, GX_TEX_S, GX_RGBA4, 0xE);
     PSMTXConcat(sp104, spA4, spA4);
-    GXLoadPosMtxImm(spA4, 0);
+    GXLoadPosMtxImm(spA4, GX_PNMTX0);
     HSD_MtxInverse(spA4, spA4);
     PSMTXTranspose(spA4, spA4);
-    GXLoadNrmMtxImm(spA4, 0);
+    GXLoadNrmMtxImm(spA4, GX_PNMTX0);
     GXCallDisplayList(lbColl_SphereDisplayList, 0x120);
     if (!isSmall(var_f31)) {
         GXClearVtxDesc();
@@ -2170,10 +2170,10 @@ void lbColl_80008FC8(Vec3 arg0, Vec3 arg1, GXColor* arg2, GXColor* arg3,
         GXSetVtxDesc(GX_VA_NRM, GX_INDEX8);
         GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_NRM, GX_TEX_S, GX_RGBA4, 6);
         PSMTXConcat(sp104, sp74, sp74);
-        GXLoadPosMtxImm(sp74, 0);
+        GXLoadPosMtxImm(sp74, GX_PNMTX0);
         HSD_MtxInverse(sp74, sp74);
         PSMTXTranspose(sp74, sp74);
-        GXLoadNrmMtxImm(sp74, 0);
+        GXLoadNrmMtxImm(sp74, GX_PNMTX0);
         GXCallDisplayList(lbColl_CylinderDisplayList, 0xA0);
     }
     HSD_StateInvalidate(-1);
@@ -2274,10 +2274,10 @@ void lbColl_800096B4(MtxPtr arg0, Vec3 arg1, Vec3 arg2, GXColor* arg3,
     GXSetVtxDesc(GX_VA_NRM, GX_INDEX8);
     GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_NRM, GX_TEX_S, GX_RGBA4, 0xE);
     PSMTXConcat(sp108, spD8, spD8);
-    GXLoadPosMtxImm(spD8, 0);
+    GXLoadPosMtxImm(spD8, GX_PNMTX0);
     HSD_MtxInverse(spD8, spD8);
     PSMTXTranspose(spD8, spD8);
-    GXLoadNrmMtxImm(spD8, 0);
+    GXLoadNrmMtxImm(spD8, GX_PNMTX0);
     GXCallDisplayList(lbColl_SphereDisplayList, 0x120);
     GXClearVtxDesc();
     GXSETARRAY(GX_VA_POS, lbColl_SpherePositions,
@@ -2289,10 +2289,10 @@ void lbColl_800096B4(MtxPtr arg0, Vec3 arg1, Vec3 arg2, GXColor* arg3,
     GXSetVtxDesc(GX_VA_NRM, GX_INDEX8);
     GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_NRM, GX_TEX_S, GX_RGBA4, 0xE);
     PSMTXConcat(sp108, spA8, spA8);
-    GXLoadPosMtxImm(spA8, 0);
+    GXLoadPosMtxImm(spA8, GX_PNMTX0);
     HSD_MtxInverse(spA8, spA8);
     PSMTXTranspose(spA8, spA8);
-    GXLoadNrmMtxImm(spA8, 0);
+    GXLoadNrmMtxImm(spA8, GX_PNMTX0);
     GXCallDisplayList(lbColl_SphereDisplayList, 0x120);
     if (!isSmall(var_f31)) {
         GXClearVtxDesc();
@@ -2305,10 +2305,10 @@ void lbColl_800096B4(MtxPtr arg0, Vec3 arg1, Vec3 arg2, GXColor* arg3,
         GXSetVtxDesc(GX_VA_NRM, GX_INDEX8);
         GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_NRM, GX_TEX_S, GX_RGBA4, 6);
         PSMTXConcat(sp108, sp78, sp78);
-        GXLoadPosMtxImm(sp78, 0);
+        GXLoadPosMtxImm(sp78, GX_PNMTX0);
         HSD_MtxInverse(sp78, sp78);
         PSMTXTranspose(sp78, sp78);
-        GXLoadNrmMtxImm(sp78, 0);
+        GXLoadNrmMtxImm(sp78, GX_PNMTX0);
         GXCallDisplayList(lbColl_CylinderDisplayList, 0xA0);
     }
     HSD_StateInvalidate(-1);
@@ -2330,10 +2330,10 @@ void lbColl_80009DD4(Vec3* v0, Vec3* v1, GXColor* clr)
     GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_CLR0, GX_CLR_RGBA, GX_RGBA8, 0);
     GXSetVtxDesc(GX_VA_POS, GX_DIRECT);
     GXSetVtxDesc(GX_VA_CLR0, GX_DIRECT);
-    GXSetCurrentMtx(0);
+    GXSetCurrentMtx(GX_PNMTX0);
     GXSetCullMode(GX_CULL_NONE);
     HSD_CObjGetViewingMtx(HSD_CObjGetCurrent(), viewMtx);
-    GXLoadPosMtxImm(viewMtx, 0);
+    GXLoadPosMtxImm(viewMtx, GX_PNMTX0);
     GXBegin(GX_QUADS, GX_VTXFMT0, 4);
 
     z0 = v0->z;

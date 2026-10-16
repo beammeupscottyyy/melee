@@ -79,8 +79,8 @@ bool lb_80014770(Vec3* arg0, int arg1)
                       GX_COLOR0A0);
         GXSetTevOp(GX_TEVSTAGE0, GX_PASSCLR);
         GXSetNumChans(1);
-        GXSetChanCtrl(GX_COLOR0A0, GX_FALSE, GX_SRC_REG, GX_SRC_VTX, 0,
-                      GX_DF_NONE, GX_AF_NONE);
+        GXSetChanCtrl(GX_COLOR0A0, GX_FALSE, GX_SRC_REG, GX_SRC_VTX,
+                      GX_LIGHT_NULL, GX_DF_NONE, GX_AF_NONE);
         GXSetCullMode(GX_CULL_NONE);
         GXClearVtxDesc();
         GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_POS, GX_POS_XYZ, GX_F32, 0);
@@ -89,9 +89,9 @@ bool lb_80014770(Vec3* arg0, int arg1)
         GXSetVtxDesc(GX_VA_CLR0, GX_DIRECT);
         {
             MtxPtr mtx = HSD_CObjGetCurrent()->view_mtx;
-            GXLoadPosMtxImm(mtx, 0);
+            GXLoadPosMtxImm(mtx, GX_PNMTX0);
         }
-        GXSetCurrentMtx(0);
+        GXSetCurrentMtx(GX_PNMTX0);
         GXBegin(GX_TRIANGLESTRIP, GX_VTXFMT0, 5);
 
         if (arg0[1].z > arg0[0].z) {
@@ -135,7 +135,7 @@ bool lb_800149E0(Mtx arg0, u32 arg1)
         HSD_StateInitDirect(0, 2);
         {
             MtxPtr mtx = HSD_CObjGetCurrent()->view_mtx;
-            GXLoadPosMtxImm(mtx, 0);
+            GXLoadPosMtxImm(mtx, GX_PNMTX0);
             GXSetLineWidth(12, GX_TO_ONE);
             GXBegin(GX_LINESTRIP, GX_VTXFMT0, 2);
             {

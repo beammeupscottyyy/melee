@@ -9,29 +9,32 @@
 bool lbGx_8001E2F8(Vec4* arg0, Vec3* arg1, U8Vec4* arg2, u32 arg3, float argf1)
 {
     if (arg3 == 2) {
-        GXSetColorUpdate(1);
-        GXSetAlphaUpdate(0);
-        GXSetBlendMode(1, 4, 5, 5);
-        GXSetAlphaCompare(4, 0, 0, 4, 0);
-        GXSetZMode(1, 3, 0);
-        GXSetZCompLoc(0);
+        GXSetColorUpdate(GX_TRUE);
+        GXSetAlphaUpdate(GX_FALSE);
+        GXSetBlendMode(GX_BM_BLEND, GX_BL_SRCALPHA, GX_BL_INVSRCALPHA,
+                       GX_LO_NOOP);
+        GXSetAlphaCompare(GX_GREATER, 0, GX_AOP_AND, GX_GREATER, 0);
+        GXSetZMode(GX_TRUE, GX_LEQUAL, GX_FALSE);
+        GXSetZCompLoc(GX_FALSE);
         GXSetNumTexGens(0);
-        GXSetTevClampMode(0, 0);
+        GXSetTevClampMode(GX_TEVSTAGE0, 0);
         GXSetNumTevStages(1);
-        GXSetTevOrder(0, 255, 255, 4);
-        GXSetTevOp(0, 4);
+        GXSetTevOrder(GX_TEVSTAGE0, GX_TEXCOORD_NULL, GX_TEXMAP_NULL,
+                      GX_COLOR0A0);
+        GXSetTevOp(GX_TEVSTAGE0, GX_PASSCLR);
         GXSetNumChans(1);
-        GXSetChanCtrl(4, 0, 0, 1, 0, 0, 2);
-        GXSetCullMode(0);
+        GXSetChanCtrl(GX_COLOR0A0, GX_FALSE, GX_SRC_REG, GX_SRC_VTX,
+                      GX_LIGHT_NULL, GX_DF_NONE, GX_AF_NONE);
+        GXSetCullMode(GX_CULL_NONE);
         GXClearVtxDesc();
-        GXSetVtxAttrFmt(0, 9, 1, 4, 0);
-        GXSetVtxAttrFmt(0, 11, 1, 5, 0);
-        GXSetVtxDesc(9, 1);
-        GXSetVtxDesc(11, 1);
+        GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_POS, GX_POS_XYZ, GX_F32, 0);
+        GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_CLR0, GX_CLR_RGBA, GX_RGBA8, 0);
+        GXSetVtxDesc(GX_VA_POS, GX_DIRECT);
+        GXSetVtxDesc(GX_VA_CLR0, GX_DIRECT);
         {
             HSD_CObj* cobj = HSD_CObjGetCurrent();
-            GXLoadPosMtxImm(HSD_CObjGetViewingMtxPtrDirect(cobj), 0);
-            GXSetCurrentMtx(0);
+            GXLoadPosMtxImm(HSD_CObjGetViewingMtxPtrDirect(cobj), GX_PNMTX0);
+            GXSetCurrentMtx(GX_PNMTX0);
             GXBegin(GX_DRAW_TRIANGLE_STRIP, GX_VTXFMT0, 5);
             {
                 float temp_f1;

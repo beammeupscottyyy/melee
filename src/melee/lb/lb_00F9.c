@@ -1034,7 +1034,7 @@ bool lb_800117F4(DynamicsDesc* arg0, GXColor* arg1, GXColor* arg2, int arg3,
     }
     HSD_StateInitDirect(0, 2);
     HSD_CObjGetViewingMtx(HSD_CObjGetCurrent(), &view_mtx[0]);
-    GXLoadPosMtxImm(&view_mtx[0], 0);
+    GXLoadPosMtxImm(&view_mtx[0], GX_PNMTX0);
     GXSetLineWidth(12, GX_TO_ONE);
     GXBegin(GX_LINESTRIP, GX_VTXFMT0, arg0->count);
     for (cur = arg0->data, i = 0; cur != NULL; cur = cur->next, i++) {
