@@ -110,7 +110,7 @@ void it_802D5050(Item_GObj* gobj)
     ip->xDD4_itemVar.lucky.x64 = attr->x10 + HSD_Randi(attr->x14);
     it_80279CDC(gobj, attr->x0);
     ip->xDD4_itemVar.lucky.x68 = it_8026D3CC();
-    Item_8026AE84(ip, 0x273B, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x273B, SFX_VOLUME_MAX, SFX_PAN_MID);
     ip->xDAC_itcmd_var0 = 0;
     it_802D5560(gobj);
 }
@@ -182,7 +182,7 @@ void it_802D52E4(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
     if (ip->xDAC_itcmd_var0 != 0) {
         it_802D51C8(gobj);
-        Item_8026AE84(ip, 0x273C, 0x7F, 0x40);
+        Item_8026AE84(ip, 0x273C, SFX_VOLUME_MAX, SFX_PAN_MID);
         ip->xDAC_itcmd_var0 = 0;
     }
 }

@@ -39,7 +39,7 @@ void it_802C9588(Item_GObj* item_gobj)
     it_80279CDC(item_gobj, attr->scale);
     item->xDD4_itemVar.chicorita.x64 = 0.0f;
     it_802C9A74(item_gobj);
-    Item_8026AE84(item, 0x2711, 0x7F, 0x40);
+    Item_8026AE84(item, 0x2711, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void it_802C9618(HSD_GObj* item_gobj) {}
@@ -242,7 +242,7 @@ void it_802C9B20(Item_GObj* chicorita_gobj)
     spawn.x4_parent_gobj2 = (HSD_GObj*) chicorita_gobj;
     spawn.x44_flag.x0.b0 = 1;
     if (Item_80268B18(&spawn)) {
-        Item_8026AE84(chicorita, 0x2710, 0x7F, 0x40);
+        Item_8026AE84(chicorita, 0x2710, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 

@@ -37,7 +37,7 @@ void itPippi_Logic20_Spawned(Item_GObj* gobj)
     it->xDAC_itcmd_var0 = 0;
     it_80279CDC(gobj, sa->x0);
     it_802D3590(gobj);
-    Item_8026AE84(it, 0x272A, 0x7F, 0x40);
+    Item_8026AE84(it, 0x272A, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void it_802D32D8(Item_GObj* gobj)

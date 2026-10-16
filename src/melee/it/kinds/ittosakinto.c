@@ -39,7 +39,7 @@ void it_802C8F4C(Item_GObj* gobj)
     it->xD44_lifeTimer = attrs->x4_life_timer;
     it->xDD4_itemVar.tosakinto.x68_sfx_id = SFX_NONE;
     it_80279CDC(gobj, attrs->x0_scale);
-    Item_8026AE84(it, 0x272E, 0x7FU, 0x40U);
+    Item_8026AE84(it, 0x272E, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_802C93BC(gobj);
 }
 

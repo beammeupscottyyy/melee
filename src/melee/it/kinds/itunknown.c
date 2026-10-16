@@ -153,9 +153,9 @@ void it_802CE8D0(Item_GObj* gobj)
     it_80272980(gobj);
     Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
     if (HSD_Randi(2) != 0) {
-        Item_8026AE84(ip, 0x271A, 127, 64);
+        Item_8026AE84(ip, 0x271A, SFX_VOLUME_MAX, SFX_PAN_MID);
     } else {
-        Item_8026AE84(ip, 0x271B, 127, 64);
+        Item_8026AE84(ip, 0x271B, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     Item_SetEffectHitlagCallbacks(ip);
 }

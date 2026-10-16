@@ -142,7 +142,7 @@ bool itSonans_UnkMotion0_Anim(Item_GObj* gobj)
     Item* item = GET_ITEM(gobj);
     if (it_80272C6C(gobj) == 0) {
         it_802CD9C0(gobj);
-        Item_8026AE84(item, 0x272B, 0x7F, 0x40);
+        Item_8026AE84(item, 0x272B, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     item->xD44_lifeTimer -= 1.0f;
     return false;

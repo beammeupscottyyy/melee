@@ -34,7 +34,7 @@ void it_802CAFD4(Item_GObj* gobj)
     it_80279CDC(gobj, attrs->x0);
     it_802CB350(gobj);
     HSD_JObjSetRotationY(jobj, 0.0f);
-    Item_8026AE84(item, 0x2715, 0x7f, 0x40);
+    Item_8026AE84(item, 0x2715, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void it_802CB0F4(Item_GObj* gobj) {}
@@ -171,13 +171,13 @@ void it_802CB4F0(Item_GObj* gobj, s32 kind, f32 radius)
         if (ip->xDD4_itemVar.matadogas.x64 != 0) {
             switch (HSD_Randi(3)) {
             case 0:
-                Item_8026AE84(ip, 0x2712, 0x7F, 0x40);
+                Item_8026AE84(ip, 0x2712, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             case 1:
-                Item_8026AE84(ip, 0x2713, 0x7F, 0x40);
+                Item_8026AE84(ip, 0x2713, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             case 2:
-                Item_8026AE84(ip, 0x2714, 0x7F, 0x40);
+                Item_8026AE84(ip, 0x2714, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             }
         }

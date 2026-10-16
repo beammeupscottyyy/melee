@@ -26,7 +26,7 @@ void itPorygon2_Logic26_Spawned(Item_GObj* item_gobj)
 {
     Item* item = GET_ITEM(item_gobj);
     it_80279CDC(item_gobj, item->scl);
-    Item_8026AE84(item, 0x273E, 0x7F, 0x40);
+    Item_8026AE84(item, 0x273E, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_802D5B14(item_gobj);
 }
 
@@ -63,7 +63,7 @@ void it_802D5C00(Item_GObj* item_gobj)
     Item* item = GET_ITEM(item_gobj);
     Item_80268E5C(item_gobj, 1, ITEM_ANIM_UPDATE);
     Item_SetEffectHitlagCallbacks(item);
-    Item_8026AE84(item, 0x273F, 0x7F, 0x40);
+    Item_8026AE84(item, 0x273F, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 bool itPorygon2_UnkMotion1_Anim(Item_GObj* item_gobj)

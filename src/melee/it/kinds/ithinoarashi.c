@@ -54,7 +54,7 @@ void it_802D5CF8(Item_GObj* gobj)
     ip->xDD4_itemVar.hinoarashi.x60.x0.b1 = false;
     ip->xDD4_itemVar.hinoarashi.x64 = 0.0f;
     it_80279CDC(gobj, ip->scl);
-    Item_8026AE84(ip, 0x2734, 0x7FU, 0x40U);
+    Item_8026AE84(ip, 0x2734, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_802D5E4C(gobj);
 }
 

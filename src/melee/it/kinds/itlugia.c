@@ -344,13 +344,13 @@ void it_802D1BBC(Item_GObj* gobj)
             it_802D1E8C(gobj, It_Kind_Lugia_Aeroblast, attrs->x1C);
             switch (HSD_Randi(3)) {
             case 0:
-                Item_8026AE84(ip, 0x274D, 0x7F, 0x40);
+                Item_8026AE84(ip, 0x274D, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             case 1:
-                Item_8026AE84(ip, 0x274E, 0x7F, 0x40);
+                Item_8026AE84(ip, 0x274E, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             case 2:
-                Item_8026AE84(ip, 0x274F, 0x7F, 0x40);
+                Item_8026AE84(ip, 0x274F, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             }
         }

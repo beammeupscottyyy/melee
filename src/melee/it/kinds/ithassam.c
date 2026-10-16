@@ -66,7 +66,7 @@ void itHassam_802CDBE0(Item_GObj* gobj)
     ip->xDB0_itcmd_var1 = 0;
     it_80279CDC(gobj, attr->x0);
     it_802CE640(gobj);
-    Item_8026AE84(ip, 0x2721, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x2721, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void itHassam_802CDC5C(Item_GObj* gobj) {}

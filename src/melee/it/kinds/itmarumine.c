@@ -328,7 +328,7 @@ void it_802D1140(Item_GObj* gobj)
         it_8026B390(gobj);
         if (ip->xDAC_itcmd_var0 != 0) {
             ip->xDAC_itcmd_var0 = 0;
-            Item_8026AE84(ip, 0x271F, 0x7F, 0x40);
+            Item_8026AE84(ip, 0x271F, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     }
 }
@@ -340,7 +340,7 @@ void it_802D1204(Item_GObj* gobj)
 
     PAD_STACK(8);
 
-    Item_8026AE84(ip, 0x2720, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x2720, SFX_VOLUME_MAX, SFX_PAN_MID);
     if (ip->xDC8_word.flags.x13 != false) {
         Vec3 vec = it_803B86C8;
         it_80274250(gobj, &vec);

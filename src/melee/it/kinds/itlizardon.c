@@ -64,7 +64,7 @@ void it_802CB8AC(Item_GObj* gobj)
     ip->xDD4_itemVar.lizardon.x6C = 0;
     it_802CC0EC(gobj);
     it_80279CDC(gobj, attrs->x0);
-    Item_8026AE84(ip, 0x2719, 0x7FU, 0x40U);
+    Item_8026AE84(ip, 0x2719, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void it_802CB93C(Item_GObj* gobj) {}
@@ -351,13 +351,13 @@ void it_802CC1CC(Item_GObj* gobj, ItemKind kind)
         if (ip->xDD4_itemVar.lizardon.x6C != 0) {
             switch (HSD_Randi(3)) {
             case 0:
-                Item_8026AE84(ip, 0x2716, 0x7F, 0x40);
+                Item_8026AE84(ip, 0x2716, SFX_VOLUME_MAX, SFX_PAN_MID);
                 return;
             case 1:
-                Item_8026AE84(ip, 0x2717, 0x7F, 0x40);
+                Item_8026AE84(ip, 0x2717, SFX_VOLUME_MAX, SFX_PAN_MID);
                 return;
             case 2:
-                Item_8026AE84(ip, 0x2718, 0x7F, 0x40);
+                Item_8026AE84(ip, 0x2718, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             }
         }

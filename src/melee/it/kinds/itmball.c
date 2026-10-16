@@ -186,7 +186,7 @@ void itMball_80297CC4(Item_GObj* arg0)
         item->xD44_lifeTimer = spec_attrs->x0;
         item->xDD4_itemVar.mball.b0 = true;
         efAsync_Spawn(arg0, &GET_ITEM(arg0)->xBC0, 0U, 0x449U, hsd_obj);
-        Item_8026AE84(item, 0x10C, 0x7F, 0x40);
+        Item_8026AE84(item, 0x10C, SFX_VOLUME_MAX, SFX_PAN_MID);
         Item_80268E5C((HSD_GObj*) arg0, 5, ITEM_ANIM_UPDATE);
     } else {
         Item_80268E5C((HSD_GObj*) arg0, 5, ITEM_UNK_0x1);
@@ -235,7 +235,7 @@ void itMball_80297E8C(Item_GObj* gobj)
         item->xD44_lifeTimer = spec_attrs->x0;
         item->xDD4_itemVar.mball.b0 = 1;
         efAsync_Spawn(gobj, &(GET_ITEM(gobj)->xBC0), 0, 1097, jobj);
-        Item_8026AE84(item, 0x10C, 0x7F, 0x40);
+        Item_8026AE84(item, 0x10C, SFX_VOLUME_MAX, SFX_PAN_MID);
         Item_80268E5C(gobj, 6, ITEM_ANIM_UPDATE);
     } else {
         Item_80268E5C(gobj, 6, ITEM_UNK_0x1);

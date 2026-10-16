@@ -48,7 +48,7 @@ void itFushigibana_Logic29_Spawned(Item_GObj* gobj)
     itFushigibanaAttributes* attrs =
         &item->xC4_article_data->x4_specialAttributes->fushigibana;
     it_80279CDC(gobj, attrs->x0);
-    Item_8026AE84(item, 0x272f, 0x7f, 0x40);
+    Item_8026AE84(item, 0x272f, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_80275158(gobj, attrs->x4);
     item->xDD4_itemVar.fushigibana.x60.x0.b0 = false;
     item->xDD4_itemVar.fushigibana.x64 = attrs->x8;

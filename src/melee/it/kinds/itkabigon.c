@@ -38,7 +38,7 @@ void it_802C9D40(Item_GObj* gobj)
     ip->xDB0_itcmd_var1 = 0;
     ip->xDB4_itcmd_var2 = 1;
     it_80279CDC(gobj, attrs->x0);
-    Item_8026AE84(ip, 0x2723, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x2723, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_802CA324(gobj);
 }
 
@@ -146,7 +146,7 @@ void it_802CA074(Item_GObj* gobj)
     scale.y = ip->xDD4_itemVar.kabigon.x68;
     scale.x = ip->xDD4_itemVar.kabigon.x68;
     HSD_JObjSetScale(jobj, &scale);
-    Item_8026AE84(ip, 0x2724, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x2724, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 static inline void itKabigon_UnkMotion1_Anim_inline(Item_GObj* gobj, Item* ip)

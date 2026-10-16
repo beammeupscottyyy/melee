@@ -36,7 +36,7 @@ void itKireihana_Logic15_Spawned(Item_GObj* gobj)
     item->xDD4_itemVar.kireihana.timer_unk0 = attrs->x4;
     it_802D08F0(gobj);
     it_80279CDC(gobj, attrs->x0);
-    Item_8026AE84(item, 0x2725, 0x7f, 0x40);
+    Item_8026AE84(item, 0x2725, SFX_VOLUME_MAX, SFX_PAN_MID);
     item->xDD4_itemVar.kireihana.timer_unk1 = attrs->x8;
     item->xDD4_itemVar.kireihana.timer_unk2 = attrs->xC;
     item->xDD4_itemVar.kireihana.fall_speed = 0.0f;
@@ -100,9 +100,9 @@ void itKireihana_UnkMotion1_Phys(Item_GObj* gobj)
         it_8027ADEC(0x470, gobj, item->xBBC_dynamicBoneTable->bones[2], 2.6f);
         if (--item->xDD4_itemVar.kireihana.timer_unk2 == 0) {
             if (HSD_Randi(2)) {
-                Item_8026AE84(item, 0x2726, 0x7FU, 0x40U);
+                Item_8026AE84(item, 0x2726, SFX_VOLUME_MAX, SFX_PAN_MID);
             } else {
-                Item_8026AE84(item, 0x2727, 0x7FU, 0x40U);
+                Item_8026AE84(item, 0x2727, SFX_VOLUME_MAX, SFX_PAN_MID);
             }
             item->xDD4_itemVar.kireihana.timer_unk2 = attrs->xC;
         }

@@ -50,7 +50,7 @@ void it_802CFCD8(Item_GObj* gobj)
     PAD_STACK(8);
 
     Camera_RequestQuake(QuakeKind_Large, NULL);
-    Item_8026AE84(it, 0x9, 0x7F, 0x40);
+    Item_8026AE84(it, 0x9, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_80273454(gobj);
     it_802CFD3C(gobj);
 }
@@ -97,7 +97,7 @@ bool itSuikun_UnkMotion0_Anim(Item_GObj* gobj)
                 sfx = 0x274C;
                 break;
             }
-            Item_8026AE84(it, sfx, 0x7F, 0x40);
+            Item_8026AE84(it, sfx, SFX_VOLUME_MAX, SFX_PAN_MID);
             it->xDD4_itemVar.pokemon.timer = sa->timer;
         }
     }
@@ -136,7 +136,7 @@ void it_802CFF30(Item_GObj* gobj)
         it->xDAC_itcmd_var0 = 0;
         it->xDB4_itcmd_var2 = 1;
         efSync_Spawn(0x469, gobj, jp, &v);
-        Item_8026AE84(it, 0x2749, 0x7f, 0x40);
+        Item_8026AE84(it, 0x2749, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 

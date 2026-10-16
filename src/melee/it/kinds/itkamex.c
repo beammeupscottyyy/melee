@@ -41,7 +41,7 @@ void it_802CA49C(Item_GObj* gobj)
     ip->xDD4_itemVar.pokemon.x6C = 0.0f;
     it_80279CDC(gobj, sa->x0);
     it_802CAA40(gobj);
-    Item_8026AE84(ip, 0x271E, 127, 64);
+    Item_8026AE84(ip, 0x271E, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void it_802CA534(Item_GObj* gobj) {}

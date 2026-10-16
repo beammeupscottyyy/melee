@@ -77,7 +77,7 @@ void it_2725_Logic24_Spawned(Item_GObj* gobj)
     ip->xDB0_itcmd_var1 = 0;
 
     it_802D4B54(gobj);
-    Item_8026AE84(ip, 0x2738, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x2738, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void it_802D43AC(Item_GObj* gobj) {}
@@ -177,7 +177,7 @@ bool it_802D4564(Item_GObj* gobj)
         ip->x40_vel.x = 0.0f;
         ip->x40_vel.y = 0.0f;
         ip->x40_vel.z = 0.0f;
-        Item_8026AE84(ip, 0x2738, 127, 64);
+        Item_8026AE84(ip, 0x2738, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     return false;
 }

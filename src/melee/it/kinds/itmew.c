@@ -51,7 +51,7 @@ void it_802D3B8C(Item_GObj* gobj)
 
     it_80273454(gobj);
     it_802D3BE0(gobj);
-    Item_8026AE84(ip, 0x2729, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x2729, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void it_802D3BE0(Item_GObj* gobj)
@@ -139,7 +139,7 @@ void itMew_UnkMotion0_Phys(Item_GObj* gobj)
         it_8027ADEC(0x46B, gobj, HSD_GObjGetHSDObj(gobj), 2.8F);
         Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
         Item_SetEffectHitlagCallbacks(ip);
-        Item_8026AE84(ip_arg, 0x2729, 0x7F, 0x40);
+        Item_8026AE84(ip_arg, 0x2729, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
