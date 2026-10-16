@@ -683,7 +683,7 @@ HSD_CameraDescPerspective ReflectCObjDesc = {
 
 HSD_GObj* grIzumi_801CCD98(void)
 {
-    HSD_GObj* gobj = GObj_Create(0x11, 0x12, 0);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_TEXT, 0x12, 0);
     HSD_CObj* cobj = lb_80013B14(&ReflectCObjDesc);
     IzumiReflection* refl;
     UnkArchiveStruct* dat;
