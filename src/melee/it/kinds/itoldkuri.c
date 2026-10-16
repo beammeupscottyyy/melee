@@ -300,7 +300,7 @@ bool itOldkuri_UnkMotion5_Anim(Item_GObj* gobj)
     if (!it_80272C6C(gobj)) {
         it_80275474(gobj);
         it_80274740(gobj);
-        Item_80268E5C(gobj, 5, 2);
+        Item_80268E5C(gobj, 5, ITEM_ANIM_UPDATE);
     }
     return false;
 }
@@ -449,7 +449,7 @@ void it_802D813C(Item_GObj* gobj)
     Item* ip = gobj->user_data;
     itResetVelocity(ip);
     it_8027C0A8(gobj, 0.0F, 0.0F);
-    Item_80268E5C(gobj, 7, 2);
+    Item_80268E5C(gobj, 7, ITEM_ANIM_UPDATE);
 }
 
 bool itOldkuri_UnkMotion7_Anim(Item_GObj* gobj)

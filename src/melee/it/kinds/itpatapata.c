@@ -568,12 +568,12 @@ Item_GObj* it_802E16F8(s32 arg0, Vec3* pos, s32 facing)
         mpCollSetFacingDir(&ip->x378_itemColl, coll_facing);
         ip->xDD4_itemVar.patapata.x40 = arg0;
         if (ip->xDD4_itemVar.patapata.x40 < 2) {
-            Item_80268E5C(gobj, 0, 2);
+            Item_80268E5C(gobj, 0, ITEM_ANIM_UPDATE);
             HSD_JObjAnimAll(gobj->hsd_obj);
         }
         it_8027CAD8(gobj);
         ip = GET_ITEM(gobj);
-        Item_80268E5C(gobj, 1, 2);
+        Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
         it_80274CAC(gobj);
         ip->jumped_on = it_802E0F1C;
     }
