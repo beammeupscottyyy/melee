@@ -1896,9 +1896,9 @@ void Toy_80306D14(void)
     TyModeState* state = (TyModeState*) Toy_804A284C;
 
     if (state->x0 == 1) {
-        lbAudioAx_800237A8(0xAA, 0x7F, 0x40);
+        lbAudioAx_800237A8(0xAA, SFX_VOLUME_MAX, SFX_PAN_MID);
     } else if (state->x0 == 2) {
-        lbAudioAx_800237A8(0xAB, 0x7F, 0x40);
+        lbAudioAx_800237A8(0xAB, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 

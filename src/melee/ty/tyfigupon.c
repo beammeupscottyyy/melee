@@ -227,7 +227,7 @@ void _tyFigupon_80314C5C(HSD_GObj* gobj)
             }
             HSD_JObjAddTranslationY(jobj, tp1->translate.y);
         } else {
-            lbAudioAx_800237A8(146, 127, 64);
+            lbAudioAx_800237A8(146, SFX_VOLUME_MAX, SFX_PAN_MID);
             tp1->x8 = 0;
             HSD_GObjFree(gobj);
         }
@@ -261,7 +261,7 @@ void _tyFigupon_80314C5C(HSD_GObj* gobj)
             HSD_JObjSetTranslateZ(jobj, temp_f31);
         }
         HSD_JObjClearFlagsAll(jobj, JOBJ_HIDDEN);
-        lbAudioAx_80023870(147, 127, 64, 26);
+        lbAudioAx_80023870(147, SFX_VOLUME_MAX, SFX_PAN_MID, 26);
     }
 }
 
@@ -477,7 +477,7 @@ void _tyFigupon_803155C8(void)
         HSD_JObjAnimAll(jobj);
         ef4->x58 -= 1;
         if (ef4->x58 == 0) {
-            lbAudioAx_800237A8(0xA8, 0x7F, 0x40);
+            lbAudioAx_800237A8(0xA8, SFX_VOLUME_MAX, SFX_PAN_MID);
             ef4->x58 = 0xA;
             ef4->x58 += 0xA;
             ef4->x5C = 4;
@@ -510,7 +510,7 @@ void _tyFigupon_803155C8(void)
                 ef4->x58 += 0xE;
                 HSD_JObjReqAnimAll(jobj, 50.0f);
                 HSD_JObjReqAnimAll(ef4->jobjs[0xE], 0.0f);
-                lbAudioAx_80023870(0xA9, 0x7F, 0x40, 0x8A);
+                lbAudioAx_80023870(0xA9, SFX_VOLUME_MAX, SFX_PAN_MID, 0x8A);
             } else {
                 ef4->x58 = 1;
             }
@@ -528,7 +528,7 @@ void _tyFigupon_803155C8(void)
             HSD_JObjAnimAll(jobj);
             if ((ef4->x58 % 40) == 0) {
                 HSD_JObjReqAnimAll(jobj, 50.0f);
-                lbAudioAx_80023870(0xA9, 0x7F, 0x40, 0x8A);
+                lbAudioAx_80023870(0xA9, SFX_VOLUME_MAX, SFX_PAN_MID, 0x8A);
             }
             if (ef4->x58 < 0xE) {
                 HSD_JObjReqAnimAll(jobj, 50.0f);
@@ -769,7 +769,7 @@ void _tyFigupon_80316170(HSD_GObj* arg0)
                 Toy_80306D14();
             }
             ((TyModeState*) Toy_804A284C)->x0 = 1;
-            lbAudioAx_800237A8(0xA7, 0x7F, 0x40);
+            lbAudioAx_800237A8(0xA7, SFX_VOLUME_MAX, SFX_PAN_MID);
             HSD_JObjSetTranslateY(HSD_GObjGetHSDObj(arg0), -7.2f);
             gm_801678F8((s32) gm_801677F0(), 0xC, 0);
             GObj_RemoveUserData(arg0);
