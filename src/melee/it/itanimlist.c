@@ -327,7 +327,7 @@ void it_802799E4(Item_GObj* item_gobj)
         }
 
         opcode = cmd->x8.u->unk0.opcode;
-        if (Command_Execute(cmd, opcode) == 0) {
+        if (!Command_Execute(cmd, opcode)) {
             opcode -= 10;
             it_803F22A8[opcode](item_gobj, cmd);
         }

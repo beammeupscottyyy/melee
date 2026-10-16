@@ -52,21 +52,26 @@ void lbMthp8001F928(HSD_GObj* gobj, intptr_t arg1)
 
     /* First texture - full size */
     GXInitTexObj(&lbl_804335B8.tex0, lbl_804335B8.x20, lbl_804335B8.x6C,
-                 lbl_804335B8.x6E, 1, 0, 0, 0);
-    GXInitTexObjLOD(&lbl_804335B8.tex0, 0, 0, 0.0F, 0.0F, 0.0F, 0, 0, 0);
-    GXLoadTexObj(&lbl_804335B8.tex0, 0);
+                 lbl_804335B8.x6E, GX_TF_I8, GX_CLAMP, GX_CLAMP, GX_FALSE);
+    GXInitTexObjLOD(&lbl_804335B8.tex0, GX_NEAR, GX_NEAR, 0.0F, 0.0F, 0.0F,
+                    GX_FALSE, GX_FALSE, GX_ANISO_1);
+    GXLoadTexObj(&lbl_804335B8.tex0, GX_TEXMAP0);
 
     /* Second texture - half size */
     GXInitTexObj(&lbl_804335B8.tex1, lbl_804335B8.x44, (u16) (*pWidth >> 1),
-                 (u16) (*pHeight >> 1), 1, 0, 0, 0);
-    GXInitTexObjLOD(&lbl_804335B8.tex1, 0, 0, 0.0F, 0.0F, 0.0F, 0, 0, 0);
-    GXLoadTexObj(&lbl_804335B8.tex1, 1);
+                 (u16) (*pHeight >> 1), GX_TF_I8, GX_CLAMP, GX_CLAMP,
+                 GX_FALSE);
+    GXInitTexObjLOD(&lbl_804335B8.tex1, GX_NEAR, GX_NEAR, 0.0F, 0.0F, 0.0F,
+                    GX_FALSE, GX_FALSE, GX_ANISO_1);
+    GXLoadTexObj(&lbl_804335B8.tex1, GX_TEXMAP1);
 
     /* Third texture - half size */
     GXInitTexObj(&lbl_804335B8.tex2, lbl_804335B8.x68, (u16) (*pWidth >> 1),
-                 (u16) (*pHeight >> 1), 1, 0, 0, 0);
-    GXInitTexObjLOD(&lbl_804335B8.tex2, 0, 0, 0.0F, 0.0F, 0.0F, 0, 0, 0);
-    GXLoadTexObj(&lbl_804335B8.tex2, 2);
+                 (u16) (*pHeight >> 1), GX_TF_I8, GX_CLAMP, GX_CLAMP,
+                 GX_FALSE);
+    GXInitTexObjLOD(&lbl_804335B8.tex2, GX_NEAR, GX_NEAR, 0.0F, 0.0F, 0.0F,
+                    GX_FALSE, GX_FALSE, GX_ANISO_1);
+    GXLoadTexObj(&lbl_804335B8.tex2, GX_TEXMAP2);
 
     HSD_SObjLib_803A49E0(gobj, arg1);
 }

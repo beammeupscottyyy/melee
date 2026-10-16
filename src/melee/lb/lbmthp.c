@@ -588,7 +588,7 @@ void lbMthp_8001F614(int arg0)
 }
 
 /* 3BAFE8 */ static HSD_ImageDesc lbl_803BAFE8 = {
-    0, 0x280, 0x1E0, 6, 0, 0, 0,
+    0, 0x280, 0x1E0, GX_TF_RGBA8, 0, 0, 0,
 };
 /* 4D3834 */ HSD_SObjDesc lbl_804D3834 = { &lbl_803BAFE8 };
 
@@ -612,23 +612,23 @@ void lbMthp_8001F67C(HSD_GObj* gobj, intptr_t arg1)
     if (streamPlayer->unk_148 != 0) {
         GXInitTexObj(&streamPlayer->unk_178, streamPlayer->unk_50,
                      streamPlayer->width, streamPlayer->height, GX_TF_I8,
-                     GX_CLAMP, GX_CLAMP, 0U);
+                     GX_CLAMP, GX_CLAMP, GX_FALSE);
         GXInitTexObjLOD(&streamPlayer->unk_178, GX_NEAR, GX_NEAR, 0.0f, 0.0f,
-                        0.0f, 0U, 0U, GX_ANISO_1);
+                        0.0f, GX_FALSE, GX_FALSE, GX_ANISO_1);
         GXLoadTexObj(&streamPlayer->unk_178, GX_TEXMAP0);
 
         GXInitTexObj(&streamPlayer->unk_198, streamPlayer->unk_54,
                      streamPlayer->width / 2, streamPlayer->height / 2,
-                     GX_TF_I8, GX_CLAMP, GX_CLAMP, 0U);
+                     GX_TF_I8, GX_CLAMP, GX_CLAMP, GX_FALSE);
         GXInitTexObjLOD(&streamPlayer->unk_198, GX_NEAR, GX_NEAR, 0.0f, 0.0f,
-                        0.0f, 0U, 0U, GX_ANISO_1);
+                        0.0f, GX_FALSE, GX_FALSE, GX_ANISO_1);
         GXLoadTexObj(&streamPlayer->unk_198, GX_TEXMAP1);
 
         GXInitTexObj(&streamPlayer->unk_1B8, streamPlayer->unk_58,
                      streamPlayer->width / 2, streamPlayer->height / 2,
-                     GX_TF_I8, GX_CLAMP, GX_CLAMP, 0U);
+                     GX_TF_I8, GX_CLAMP, GX_CLAMP, GX_FALSE);
         GXInitTexObjLOD(&streamPlayer->unk_1B8, GX_NEAR, GX_NEAR, 0.0f, 0.0f,
-                        0.0f, 0U, 0U, GX_ANISO_1);
+                        0.0f, GX_FALSE, GX_FALSE, GX_ANISO_1);
         GXLoadTexObj(&streamPlayer->unk_1B8, GX_TEXMAP2);
 
         HSD_SObjLib_803A49E0(gobj, arg1);

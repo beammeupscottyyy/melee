@@ -2006,10 +2006,10 @@ void lbColl_80008DA4(GXColor* arg0, GXColor* arg1)
     } else {
         var_r5 = 1;
     }
-    GXSetZMode(1, GX_LEQUAL, var_r5);
-    GXSetZCompLoc(0);
+    GXSetZMode(GX_TRUE, GX_LEQUAL, var_r5);
+    GXSetZCompLoc(GX_FALSE);
     GXSetNumTexGens(0);
-    GXSetTevClampMode(0, 0);
+    GXSetTevClampMode(GX_TEVSTAGE0, GX_TC_OFF);
     GXSetNumTevStages(1);
     GXSetTevOrder(GX_TEVSTAGE0, GX_TEXCOORD_NULL, GX_TEXMAP_NULL, GX_COLOR0A0);
     GXSetTevColor(GX_TEVREG0, *arg0);
@@ -2017,10 +2017,10 @@ void lbColl_80008DA4(GXColor* arg0, GXColor* arg1)
                     GX_CC_ZERO);
     GXSetTevAlphaIn(GX_TEVSTAGE0, GX_CA_ZERO, GX_CA_KONST, GX_CA_A0,
                     GX_CA_ZERO);
-    GXSetTevColorOp(GX_TEVSTAGE0, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_1, 1,
-                    GX_TEVPREV);
-    GXSetTevAlphaOp(GX_TEVSTAGE0, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_1, 1,
-                    GX_TEVPREV);
+    GXSetTevColorOp(GX_TEVSTAGE0, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_1,
+                    GX_TRUE, GX_TEVPREV);
+    GXSetTevAlphaOp(GX_TEVSTAGE0, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_1,
+                    GX_TRUE, GX_TEVPREV);
     GXSetNumChans(1);
     sp10 = *arg1;
     GXSetChanAmbColor(GX_COLOR0A0, sp10);
@@ -2030,11 +2030,11 @@ void lbColl_80008DA4(GXColor* arg0, GXColor* arg1)
     sp10.a = 0xFF;
     GXSetChanMatColor(GX_COLOR0A0, sp10);
     if (arg0->a < 0xFF) {
-        GXSetChanCtrl(GX_COLOR0A0, 0, GX_SRC_REG, GX_SRC_REG, 1, GX_DF_NONE,
-                      GX_AF_NONE);
+        GXSetChanCtrl(GX_COLOR0A0, GX_FALSE, GX_SRC_REG, GX_SRC_REG, GX_LIGHT0,
+                      GX_DF_NONE, GX_AF_NONE);
     } else {
-        GXSetChanCtrl(GX_COLOR0A0, 1, GX_SRC_REG, GX_SRC_REG, 1, GX_DF_CLAMP,
-                      GX_AF_NONE);
+        GXSetChanCtrl(GX_COLOR0A0, GX_TRUE, GX_SRC_REG, GX_SRC_REG, GX_LIGHT0,
+                      GX_DF_CLAMP, GX_AF_NONE);
     }
 }
 
