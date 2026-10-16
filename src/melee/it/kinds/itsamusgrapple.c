@@ -489,7 +489,7 @@ Item_GObj* it_802B7C18(Fighter_GObj* owner, Vec3* pos, f32 facing_dir)
             fp->u.ss.x2240 = 0;
         }
 
-        if (fp->motion_id == 0x165) {
+        if (fp->motion_id == ftSs_MS_AirCatch) {
             type = 1;
         } else {
             type = 0;
@@ -616,7 +616,7 @@ void fn_802B805C(Item_GObj* gobj)
 
     switch (it_802B9328(link, &pos, attrs, ip->owner->user_data)) {
     case 1:
-        if (fp->motion_id == 0x165) {
+        if (fp->motion_id == ftSs_MS_AirCatch) {
             ftCo_800C3CC0(ip->owner);
             it_802BAB40(gobj);
             {
@@ -1086,15 +1086,15 @@ s32 it_802B9328(ItemLink* link, Vec3* pos, itSamusGrappleAttributes* attrs,
     s32 result;
     f32 d;
 
-    if (fp->motion_id == 0xD4) {
+    if (fp->motion_id == ftCo_MS_Furafura) {
         if (fp->mv.ss.unk7.x0 == da->xA0) {
             it_802B9328_attach(link, &attach_pos_1, m1);
         }
-    } else if (fp->motion_id == 0xD6) {
+    } else if (fp->motion_id == ftCo_MS_CatchPull) {
         if (fp->mv.ss.unk7.x0 == da->xB0) {
             it_802B9328_attach(link, &attach_pos_2, m2);
         }
-    } else if (fp->motion_id == 0x165) {
+    } else if (fp->motion_id == ftSs_MS_AirCatch) {
         if (fp->mv.ss.unk7.x0 == da->xC0) {
             it_802B9328_attach(link, &attach_pos_3, m3);
         }
@@ -1570,15 +1570,15 @@ bool it_802BA760(ItemLink* link, Vec3* pos, itSamusGrappleAttributes* attrs,
     ItemLink* cur;
     ItemLink* next;
 
-    if (fp->motion_id == 0xD4) {
+    if (fp->motion_id == ftCo_MS_Furafura) {
         if (fp->mv.ss.unk7.x0 < da->xA0) {
             return true;
         }
-    } else if (fp->motion_id == 0xD6) {
+    } else if (fp->motion_id == ftCo_MS_CatchPull) {
         if (fp->mv.ss.unk7.x0 < da->xB0) {
             return true;
         }
-    } else if (fp->motion_id == 0x165) {
+    } else if (fp->motion_id == ftSs_MS_AirCatch) {
         if (fp->mv.ss.unk7.x0 < da->xC0) {
             return true;
         }

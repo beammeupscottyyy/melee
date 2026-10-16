@@ -1,5 +1,7 @@
 #include "itlinkhookshot.h"
 
+#include <melee/ft/kinds/ftLink/forward.h>
+
 #include <math.h>
 #include <placeholder.h>
 
@@ -121,8 +123,10 @@ void it_802A24D0(ItemLink* arg0, f32 arg8)
 
 static bool inline link_fighter_compare(Fighter* fp)
 {
-    if ((fp->motion_id == 0x168) || (fp->motion_id == 0x169) ||
-        (fp->motion_id == 0xD4) || (fp->motion_id == 0xD6))
+    if ((fp->motion_id == ftLk_MS_AirCatch) ||
+        (fp->motion_id == ftLk_MS_AirCatchHit) ||
+        (fp->motion_id == ftCo_MS_Furafura) ||
+        (fp->motion_id == ftCo_MS_CatchPull))
     {
         return true;
     } else {
@@ -333,7 +337,7 @@ Item_GObj* it_802A2BA4(Fighter_GObj* arg0, Vec3* arg1, f32 arg2, s32 arg3)
     if (gobj != NULL) {
         item = gobj->user_data;
         item->xDD4_itemVar.linkhookshot.x14 = 0;
-        if (fp->motion_id == 0x168) {
+        if (fp->motion_id == ftLk_MS_AirCatch) {
             var_r27 = 1;
         } else {
             var_r27 = 0;
@@ -490,7 +494,7 @@ void it_802A2EE4(Item_GObj* arg0)
     it_802A2EE4_inline_alt(item_link, &pos);
     switch (it_802A4BFC(item_link, &pos, attr, fp)) {
     case 1:
-        if ((s32) fp->motion_id == 0x168) {
+        if ((s32) fp->motion_id == ftLk_MS_AirCatch) {
             ftCo_800C3CC0(item->owner);
             it_802A793C(arg0);
             temp_r6 = item->xDD4_itemVar.linkhookshot.x0;
@@ -1274,7 +1278,7 @@ s32 it_802A4BFC(ItemLink* link_0, Vec3* arg1, itLinkHookshotAttributes* attr,
     Vec3 pos2;
     ftLk_DatAttrs* lk_attr = &fp->ft_data->ext_attr->link;
     PAD_STACK(7 * 4);
-    if (fp->motion_id == 0xD4) {
+    if (fp->motion_id == ftCo_MS_Furafura) {
         if (fp->mv.ca.specials.grav == lk_attr->x88) {
             it_802A2EE4_inline_alt(link_0, &pos0);
             link_0->pos = pos0;
@@ -1282,7 +1286,7 @@ s32 it_802A4BFC(ItemLink* link_0, Vec3* arg1, itLinkHookshotAttributes* attr,
             link_0->coll_data.last_pos = link_0->coll_data.cur_pos;
             link_0->x2C_b0 = 1;
         }
-    } else if (fp->motion_id == 0xD6) {
+    } else if (fp->motion_id == ftCo_MS_CatchPull) {
         if (fp->mv.ca.specials.grav == lk_attr->x98) {
             it_802A2EE4_inline_alt(link_0, &pos1);
             link_0->pos = pos1;
@@ -1290,7 +1294,7 @@ s32 it_802A4BFC(ItemLink* link_0, Vec3* arg1, itLinkHookshotAttributes* attr,
             link_0->coll_data.last_pos = link_0->coll_data.cur_pos;
             link_0->x2C_b0 = 1;
         }
-    } else if (fp->motion_id == 0x168) {
+    } else if (fp->motion_id == ftLk_MS_AirCatch) {
         if (fp->mv.ca.specials.grav == lk_attr->xA8) {
             it_802A2EE4_inline_alt_pad(link_0, &pos2);
             link_0->pos = pos2;
@@ -1833,15 +1837,15 @@ bool it_802A6A78(ItemLink* link_0, Vec3* arg1, itLinkHookshotAttributes* arg2,
     f32 inv;
 
     lk_attr = &arg3->ft_data->ext_attr->link;
-    if (arg3->motion_id == 0xD4) {
+    if (arg3->motion_id == ftCo_MS_Furafura) {
         if (arg3->mv.ca.specials.grav < lk_attr->x88) {
             return true;
         }
-    } else if (arg3->motion_id == 0xD6) {
+    } else if (arg3->motion_id == ftCo_MS_CatchPull) {
         if (arg3->mv.ca.specials.grav < lk_attr->x98) {
             return true;
         }
-    } else if (arg3->motion_id == 0x168) {
+    } else if (arg3->motion_id == ftLk_MS_AirCatch) {
         if (arg3->mv.ca.specials.grav < lk_attr->xA8) {
             return true;
         }
