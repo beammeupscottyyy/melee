@@ -204,16 +204,16 @@ void gm_Scene_Opening_OnFrame(void)
     }
     if (lbLang_IsSettingUS() != 0) {
         if (gm_804D67E0 == 0 && gm_804D67EC >= 5034) {
-            lbAudioAx_800237A8(0x4E21, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x4E21, SFX_VOLUME_MAX, SFX_PAN_MID);
             gm_804D67E0 = 1;
         }
     } else {
         if (gm_804D67E0 == 0 && gm_804D67EC >= 4980) {
-            lbAudioAx_800237A8(0x4E22, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x4E22, SFX_VOLUME_MAX, SFX_PAN_MID);
             gm_804D67E0 = 1;
         }
         if (gm_804D67E1 == 0 && gm_804D67EC >= 5100) {
-            lbAudioAx_800237A8(0x4E23, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x4E23, SFX_VOLUME_MAX, SFX_PAN_MID);
             gm_804D67E1 = 1;
         }
     }

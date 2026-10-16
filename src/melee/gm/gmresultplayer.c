@@ -1229,18 +1229,18 @@ static inline void fn_80179350_update(ResultsData* data, MatchEnd* match_end,
 
     if ((u32) data->x8 == 0xA2) {
         if (gm_WasMatchCanceled(match_end->outcome) == 0) {
-            lbAudioAx_800237A8(0xB5, 0x7F, 0x40);
+            lbAudioAx_800237A8(0xB5, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     } else if ((u32) data->x8 == 0x2) {
         if (gm_WasMatchCanceled(match_end->outcome) == 0) {
-            lbAudioAx_800237A8(0xC355, 0x7F, 0x40);
-            lbAudioAx_800237A8(0x144, 0x7F, 0x40);
+            lbAudioAx_800237A8(0xC355, SFX_VOLUME_MAX, SFX_PAN_MID);
+            lbAudioAx_800237A8(0x144, SFX_VOLUME_MAX, SFX_PAN_MID);
         } else {
-            lbAudioAx_800237A8(0x148, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x148, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     } else if ((u32) data->x8 == 0x9A) {
         if (gm_WasMatchCanceled(match_end->outcome) != 0) {
-            lbAudioAx_800237A8(0xC350, 0x7F, 0x40);
+            lbAudioAx_800237A8(0xC350, SFX_VOLUME_MAX, SFX_PAN_MID);
         } else {
             fn_80168E54(match_end->player_standings[data->x6].ckind,
                         match_end->player_standings[data->x6].ftkind,

@@ -143,7 +143,7 @@ void fn_801A851C(HSD_GObj* gobj)
     HSD_JObjAnimAll(GET_JOBJ(gobj));
     HSD_JObjSetTranslateZ(GET_JOBJ(gobj), 2.0F);
     if (gm_801A4BA8() == 0x174) {
-        lbAudioAx_800237A8(0x7EF41, 0x7F, 0x40);
+        lbAudioAx_800237A8(0x7EF41, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 

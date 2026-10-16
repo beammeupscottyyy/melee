@@ -923,7 +923,7 @@ void fn_801AB200(HSD_GObj* gobj)
         if (gm_804D6818 == 0 && button == HSD_PAD_A && gm_804D6820 == 0) {
             lb_80011E24(root, &temp_jobj, 5, -1);
             HSD_JObjReqAnim(temp_jobj, 0.0f);
-            lbAudioAx_800237A8(0x7A12D, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x7A12D, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
 
         if (selected != -1 &&
@@ -931,7 +931,7 @@ void fn_801AB200(HSD_GObj* gobj)
         {
             lb_80011E24(root, &temp_jobj, 8, -1);
             HSD_JObjReqAnimAll(temp_jobj, 0.0f);
-            lbAudioAx_800237A8(0x7A12A, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x7A12A, SFX_VOLUME_MAX, SFX_PAN_MID);
 
             check_failed = gm_803DBFD8[selected].check != NULL &&
                            gm_803DBFD8[selected].check(
@@ -1181,8 +1181,8 @@ void fn_801AB200(HSD_GObj* gobj)
     }
 
     if (gm_804D6814 >= gm_803DBFD8_extra.sfx_cues[gm_804D684C].frame) {
-        lbAudioAx_800237A8(gm_803DBFD8_extra.sfx_cues[gm_804D684C].sfx, 0x7F,
-                           0x40);
+        lbAudioAx_800237A8(gm_803DBFD8_extra.sfx_cues[gm_804D684C].sfx,
+                           SFX_VOLUME_MAX, SFX_PAN_MID);
         gm_804D684C += 1;
     }
 }

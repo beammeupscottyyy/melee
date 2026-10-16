@@ -554,7 +554,7 @@ void gm_Scene_ToyFall_OnEnter(void* unused)
     gm_801A7070_SetupMain(0);
     gm_GetCurrentSceneEnterData();
     gm_801A7070_SetupTrophy(0);
-    lbAudioAx_800237A8(0x7EF40, 0x7FU, 0x40U);
+    lbAudioAx_800237A8(0x7EF40, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void gm_Scene_ToyFall_OnFrame(void)
