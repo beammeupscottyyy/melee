@@ -409,9 +409,9 @@ void it_3F14_Logic5_Thrown(Item_GObj* gobj)
     lb_8000B804(jobj, ip->xC4_article_data->x10_modelDesc->x0_joint);
     it_8026B3A8(gobj);
     if (ip->xDD4_itemVar.tarucann.x20 != 0) {
-        Item_80268E5C(gobj, 6, 6);
+        Item_80268E5C(gobj, 6, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
     } else {
-        Item_80268E5C(gobj, 3, 6);
+        Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
     }
     if (ip->xDD4_itemVar.tarucann.x20 == 0) {
         it_80274F28(ip, 1, it_80295ED4, ftCo_Barrel_Enter);
@@ -423,9 +423,11 @@ void it_802969D8(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
     PAD_STACK(16);
     if (ip->xDD4_itemVar.tarucann.x20 != 0) {
-        Item_80268E5C(gobj, 6, 0x15);
+        Item_80268E5C(gobj, 6,
+                      ITEM_UNK_0x1 | ITEM_DROP_UPDATE | ITEM_HIT_PRESERVE);
     } else {
-        Item_80268E5C(gobj, 3, 0x15);
+        Item_80268E5C(gobj, 3,
+                      ITEM_UNK_0x1 | ITEM_DROP_UPDATE | ITEM_HIT_PRESERVE);
     }
     it_8026B3A8(gobj);
     if (ip->xDD4_itemVar.tarucann.x20 == 0) {

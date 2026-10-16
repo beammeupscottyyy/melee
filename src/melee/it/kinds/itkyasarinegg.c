@@ -58,7 +58,7 @@ void it_802EFB0C(Item_GObj* egg_gobj)
     egg->x40_vel.x = ap->x4 * egg->facing_dir;
     egg->x40_vel.z = 0.0f;
     egg->x40_vel.y = 0.0f;
-    Item_80268E5C(egg_gobj, 0, 2);
+    Item_80268E5C(egg_gobj, 0, ITEM_ANIM_UPDATE);
 }
 
 bool itKyasarinegg_UnkMotion0_Coll(Item_GObj* gobj)
@@ -81,7 +81,7 @@ void itKyasarinEgg_Logic28_Dropped(Item_GObj* gobj)
 
 void itKyasarinEgg_Logic28_Thrown(Item_GObj* gobj)
 {
-    Item_80268E5C((HSD_GObj*) gobj, 3, 6);
+    Item_80268E5C((HSD_GObj*) gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itKyasarinegg_UnkMotion3_Phys(Item_GObj* gobj)
@@ -102,7 +102,7 @@ void it_802EFCC0(Item_GObj* gobj)
     Item* egg = GET_ITEM(gobj);
     itKyasarinEggAttributes* ap =
         &egg->xC4_article_data->x4_specialAttributes->kyasarin_egg;
-    Item_80268E5C(gobj, 1, 2);
+    Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
     egg->x40_vel.x = -egg->x40_vel.x;
     egg->x40_vel.y = ap->x8;
 }
@@ -129,7 +129,7 @@ void it_802EFD84(Item_GObj* gobj)
     egg->x40_vel.x = 0.0f;
     egg->x40_vel.y = 0.0f;
     egg->xDD4_itemVar.kyasarinEgg.x20 = 1;
-    Item_80268E5C(gobj, 4, 2);
+    Item_80268E5C(gobj, 4, ITEM_ANIM_UPDATE);
 }
 
 bool itKyasarinegg_UnkMotion4_Anim(Item_GObj* gobj)
@@ -146,7 +146,7 @@ static inline bool it_damage_inline(Item_GObj* gobj)
     }
     if (egg->msid != 3) {
         ap = &egg->xC4_article_data->x4_specialAttributes->kyasarin_egg;
-        Item_80268E5C(gobj, 1, 2);
+        Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
         egg->x40_vel.x = -egg->x40_vel.x;
         egg->x40_vel.y = ap->x8;
         return false;
