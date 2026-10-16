@@ -169,7 +169,7 @@ void itHeart_Logic8_Dropped(Item_GObj* gobj)
     it_8026B390(gobj);
     HSD_JObjClearFlagsAll(child, JOBJ_HIDDEN);
     HSD_JObjSetRotationY(child, 0.0F);
-    Item_80268E5C(gobj, 3, 6);
+    Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itHeart_Logic8_EnteredAir(Item_GObj* gobj)

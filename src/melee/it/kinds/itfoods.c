@@ -161,7 +161,7 @@ void itFoods_UnkMotion2_Phys(Item_GObj* gobj) {}
 
 void itFoods_Logic18_Dropped(Item_GObj* gobj)
 {
-    Item_80268E5C((HSD_GObj*) gobj, 3, 6);
+    Item_80268E5C((HSD_GObj*) gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 bool itFoods_UnkMotion3_Anim(Item_GObj* gobj)
