@@ -590,7 +590,8 @@ void gm_801B59AC(GameModeState* arg0)
     data->x74 = exit->match_end.player_standings[0].percent;
     data->x9C += exit->match_end.frame_count;
     if (gm_8017D7AC(exit, &data->x0, 0x69) != 0 && arg0->id == 0x60) {
-        gm_8017CBAC((UnkAdventureData*) data, gmMainLib_8015CDE0(), 0x17);
+        gm_8017CBAC((UnkAdventureData*) data, gmMainLib_8015CDE0(),
+                    GM_ALLSTAR_GOVER);
     }
 }
 

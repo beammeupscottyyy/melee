@@ -390,7 +390,7 @@ void gm_8017CA38(DebugGameOverData* arg0, Unk1PData* arg1, gmm_x0_528_t* arg2,
     }
 }
 
-void gm_8017CBAC(UnkAdventureData* arg0, gmm_x0_528_t* arg1, u8 arg2)
+void gm_8017CBAC(UnkAdventureData* arg0, gmm_x0_528_t* arg1, GameModeKind arg2)
 {
     s32 temp_r3_2;
     u8 temp_r31;
@@ -399,7 +399,7 @@ void gm_8017CBAC(UnkAdventureData* arg0, gmm_x0_528_t* arg1, u8 arg2)
     temp_r31 = gm_CKindToSelKind(arg0->x0.x0.ckind);
     Ground_801C5A60();
     switch (arg2) {
-    case 21:
+    case GM_CLASSIC_GOVER:
         gmMainLib_8015D134(temp_r31);
         fn_80162BFC(arg0->x0.x0.ckind, arg0->x0.xC.x18);
         temp_r3 = gmMainLib_8015D194(temp_r31);
@@ -413,7 +413,7 @@ void gm_8017CBAC(UnkAdventureData* arg0, gmm_x0_528_t* arg1, u8 arg2)
             gmMainLib_8015D1C8(temp_r31, arg1->stocks);
         }
         break;
-    case 22:
+    case GM_ADVENTURE_GOVER:
         gmMainLib_8015D25C(temp_r31);
         fn_80162DF8(arg0->x0.x0.ckind, arg0->x0.xC.x18);
         temp_r3 = gmMainLib_8015D2BC(temp_r31);
@@ -427,7 +427,7 @@ void gm_8017CBAC(UnkAdventureData* arg0, gmm_x0_528_t* arg1, u8 arg2)
             gmMainLib_8015D2F0(temp_r31, arg1->stocks);
         }
         break;
-    case 23:
+    case GM_ALLSTAR_GOVER:
         gmMainLib_8015D384(temp_r31);
         fn_80162FF4(arg0->x0.x0.ckind, arg0->x0.xC.x18);
         if (!gm_80164430(0x1F)) {

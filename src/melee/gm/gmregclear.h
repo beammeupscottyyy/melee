@@ -23,7 +23,8 @@
 /* 17C9A8 */ void gm_8017C9A8(DebugGameOverData*, Unk1PData*, u8);
 /* 17CA38 */ void gm_8017CA38(DebugGameOverData*, Unk1PData*,
                               struct gmm_x0_528_t*, u8);
-/* 17CBAC */ void gm_8017CBAC(UnkAdventureData*, struct gmm_x0_528_t*, u8);
+/* 17CBAC */ void gm_8017CBAC(UnkAdventureData*, struct gmm_x0_528_t*,
+                              GameModeKind);
 /* 17CD94 */ u8 gm_8017CD94(UnkAdventureData*, int, int, int);
 /* 17CE34 */ void gm_8017CE34(StartMeleeData*, Unk1PData*, s8*, u8, u8, u8,
                               s32, StKind, s32 count, s32);

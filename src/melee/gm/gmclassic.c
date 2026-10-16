@@ -993,7 +993,8 @@ void gmClassic_801B3B40(GameModeState* arg0)
     }
 
     if (gm_8017D7AC(mei, &asd->x0, 0x69) != 0 && entry[1].x0 == 0xD) {
-        gm_8017CBAC((UnkAdventureData*) asd, gmMainLib_8015CDC8(), 0x15);
+        gm_8017CBAC((UnkAdventureData*) asd, gmMainLib_8015CDC8(),
+                    GM_CLASSIC_GOVER);
     }
 
     if (entry->x1 == 0x80 && entry->x2 == 1) {

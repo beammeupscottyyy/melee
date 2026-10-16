@@ -1342,7 +1342,7 @@ void gm_801B4170(GameModeState* arg0)
     if (gm_8017D7AC(temp_r28, &temp_r31->x0, ADVENTURE_GAME_OVER) &&
         gm_8017E4C4(arg0->id)[1].x0 == 0xFF)
     {
-        gm_8017CBAC(temp_r31, gmMainLib_8015CDD4(), 0x16);
+        gm_8017CBAC(temp_r31, gmMainLib_8015CDD4(), GM_ADVENTURE_GOVER);
     }
 }
 
@@ -1521,7 +1521,7 @@ static inline void gm_801B4860_inline1(GameModeState* scene)
     if (gm_8017D7AC(exit_info, &adv_data->x0, ADVENTURE_GAME_OVER) &&
         gm_8017E4C4(scene->id)[1].x0 == 0xFF)
     {
-        gm_8017CBAC(adv_data, gmMainLib_8015CDD4(), 0x16);
+        gm_8017CBAC(adv_data, gmMainLib_8015CDD4(), GM_ADVENTURE_GOVER);
     }
 }
 
@@ -1697,7 +1697,7 @@ void gm_801B5078(GameModeState* scene)
 {
     UnkAdventureData* temp_r3 = gm_GetAdventureData();
     if (temp_r3->x77 == 0) {
-        gm_8017CBAC(temp_r3, gmMainLib_8015CDD4(), 0x16);
+        gm_8017CBAC(temp_r3, gmMainLib_8015CDD4(), GM_ADVENTURE_GOVER);
     }
 }
 
@@ -1721,7 +1721,7 @@ void gm_801B50C4(GameModeState* scene)
 void gm_801B518C(GameModeState* scene)
 {
     UnkAdventureData* data = gm_GetAdventureData();
-    gm_8017CBAC(data, gmMainLib_8015CDD4(), 0x16);
+    gm_8017CBAC(data, gmMainLib_8015CDD4(), GM_ADVENTURE_GOVER);
 }
 
 void gm_Mode_Adventure_OnInit(void)
