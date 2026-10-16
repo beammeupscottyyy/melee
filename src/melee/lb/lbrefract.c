@@ -22,6 +22,7 @@
 #include <sysdolphin/baselib/memory.h>
 #include <sysdolphin/baselib/pobj.h>
 #include <sysdolphin/baselib/state.h>
+#include <sysdolphin/baselib/tobj.h>
 
 /* 022650 */ static void fn_80022650(void);
 /* 022940 */ static void fn_80022940(void);
@@ -98,7 +99,7 @@ static void lbRefract_80021CE8(lbRefract_CallbackData* cb, s32 arg1)
     DCFlushRange(cb->buffer, cb->buffer_size);
 }
 
-/// @brief Write IA4 texture coordinate to refraction buffer.
+/// Write IA4 texture coordinate to refraction buffer.
 static void lbRefract_WriteTexCoordIA4(lbRefract_CallbackData* data, u32 row,
                                        u32 col, u32 arg3, u8 arg4,
                                        u8 intensity, u8 alpha)
@@ -216,7 +217,7 @@ static void fn_8002206C(lbRefract_CallbackData* data, s32 row, u32 col,
     }
 }
 
-/// @brief Read RGBA8 texture coordinate addresses from refraction buffer.
+/// Read RGBA8 texture coordinate addresses from refraction buffer.
 static void lbRefract_ReadTexCoordRGBA8(lbRefract_CallbackData* data, u32 row,
                                         u32 col, u32* out_r, u32* out_g,
                                         u32* out_b, u32* out_a)
@@ -248,16 +249,15 @@ static void lbRefract_ReadTexCoordRGBA8(lbRefract_CallbackData* data, u32 row,
     }
 }
 
-/// @brief Initialize refraction callback data for a texture buffer.
-/// @brief Initialize refraction callback data for a texture buffer.
+/// Initialize refraction callback data for a texture buffer.
 /// @param data Callback data to initialize.
 /// @param buffer Base address of texture buffer.
-/// @param format Texture format (3=IA4, 4=IA8, 6=RGBA8).
+/// @param format Texture format.
 /// @param width Texture width in pixels.
 /// @param height Texture height in pixels.
 /// @return 0 on success, -1 if format is unsupported.
 static int lbRefract_8002219C(lbRefract_CallbackData* data, void* buffer,
-                              s32 format, u32 width, u32 height)
+                              GXTexFmt format, u32 width, u32 height)
 {
     data->buffer = buffer;
 
@@ -299,48 +299,48 @@ float texture_offset[2][3] = {
     { +0.0F, -0.5F, +0.0F },
 };
 
-HSD_ImageDesc imagedesc0 = { NULL, 0, 0, 4, 0, 0.0F, 0.0F };
-HSD_TexLODDesc loddesc0 = { 1, 0.0F, 1, 1, 0 };
+HSD_ImageDesc imagedesc0 = { NULL, 0, 0, GX_TF_RGB565, 0, 0.0F, 0.0F };
+HSD_TexLODDesc loddesc0 = { GX_LINEAR, 0.0F, GX_TRUE, GX_TRUE, GX_ANISO_1 };
 
 HSD_TObjDesc tobjdesc0 = {
     NULL,
     NULL,
-    0,
-    0,
+    GX_TEXMAP0,
+    GX_TG_POS,
     { 0.0F, 0.0F, 0.0F },
     { 1.0F, 1.0F, 1.0F },
     { 0.0F, 0.0F, 0.0F },
-    0,
-    0,
+    GX_CLAMP,
+    GX_CLAMP,
     1,
     1,
-    0x83,
+    TEX_LIGHTMAP_EXT | TEX_COORD_SHADOW,
     1.0F,
-    1,
+    GX_LINEAR,
     &imagedesc0,
     NULL,
     &loddesc0,
     NULL,
 };
 
-HSD_ImageDesc imagedesc1 = { NULL, 0, 0, 3, 0, 0.0F, 0.0F };
-HSD_TexLODDesc loddesc1 = { 1, 0.0F, 1, 1, 0 };
+HSD_ImageDesc imagedesc1 = { NULL, 0, 0, GX_TF_IA8, 0, 0.0F, 0.0F };
+HSD_TexLODDesc loddesc1 = { GX_LINEAR, 0.0F, GX_TRUE, GX_TRUE, GX_ANISO_1 };
 
 HSD_TObjDesc tobjdesc1 = {
     NULL,
     &tobjdesc0,
-    1,
-    1,
+    GX_TEXMAP1,
+    GX_TG_NRM,
     { 0.0F, 0.0F, 0.0F },
     { 1.0F, 1.0F, 1.0F },
     { 0.0F, 0.0F, 0.0F },
-    0,
-    0,
+    GX_CLAMP,
+    GX_CLAMP,
     1,
     1,
-    0x81,
+    TEX_LIGHTMAP_EXT | TEX_COORD_REFLECTION,
     1.0F,
-    1,
+    GX_LINEAR,
     &imagedesc1,
     NULL,
     &loddesc1,
@@ -401,7 +401,7 @@ void lbRefract_800222A4(void)
     }
 }
 
-/// @brief Copy framebuffer to refraction source texture.
+/// Copy framebuffer to refraction source texture.
 void lbRefract_8002247C(HSD_CObj* cobj)
 {
     if (lbl_804336D0.refractionUserCount == 0) {
@@ -437,29 +437,29 @@ void lbRefract_8002247C(HSD_CObj* cobj)
 void lbRefract_80022560(void)
 {
     if (lbl_804336D0.refractionUserCount != 0) {
-        GXSetTexCopySrc(0, 0, 0x280, 0x1E0);
-        GXSetTexCopyDst(0x140, 0xF0, 4, 1);
-        GXCopyTex(lbl_804336D0.image_ptr, 0);
+        GXSetTexCopySrc(0, 0, 640, 480);
+        GXSetTexCopyDst(320, 240, GX_TF_RGB565, GX_TRUE);
+        GXCopyTex(lbl_804336D0.image_ptr, GX_FALSE);
         GXPixModeSync();
         GXInvalidateTexAll();
     }
 }
 
-/// @brief Reset TEV and indirect texture stages.
+/// Reset TEV and indirect texture stages.
 void lbRefract_800225D4(void)
 {
-    GXSetTevDirect(0);
+    GXSetTevDirect(GX_TEVSTAGE0);
     GXSetNumIndStages(0);
-    HSD_StateInvalidate(-1);
+    HSD_StateInvalidate(HSD_STATE_ALL);
 }
 
-/// @brief Display DObj then reset TEV/indirect stages for refraction cleanup.
+/// Display DObj then reset TEV/indirect stages for refraction cleanup.
 static void lbRefract_DObjDispReset(HSD_DObj* dobj, Mtx vmtx, Mtx pmtx,
                                     u32 rendermode)
 {
     hsdDObj.disp(dobj, vmtx, pmtx, rendermode);
 
-    GXSetTevDirect(0);
+    GXSetTevDirect(GX_TEVSTAGE0);
     GXSetNumIndStages(0);
     HSD_StateInvalidate(HSD_STATE_ALL);
 }
@@ -642,13 +642,13 @@ void lbRefract_80022998(HSD_MObj* mobj, u32 rendermode, s32 arg2)
     GXSetIndTexMtx(GX_ITM_0, texture_offset, 1);
 
     GXSetTevIndirect(GX_TEVSTAGE0, GX_INDTEXSTAGE0, write_z, GX_ITB_ST,
-                     GX_ITM_0, GX_ITW_OFF, GX_ITW_OFF, (GXBool) 0, (GXBool) 0,
+                     GX_ITM_0, GX_ITW_OFF, GX_ITW_OFF, GX_FALSE, GX_FALSE,
                      GX_ITBA_OFF);
 
     GXSetColorUpdate(GX_TRUE);
     GXSetAlphaUpdate(GX_FALSE);
 
-    write_z = (rendermode & RENDER_NO_ZUPDATE) ? 0 : 1;
+    write_z = (rendermode & RENDER_NO_ZUPDATE) ? GX_FALSE : GX_TRUE;
 
     if (rendermode & RENDER_ZMODE_ALWAYS) {
         compare = GX_ALWAYS;
@@ -663,13 +663,13 @@ void lbRefract_80022998(HSD_MObj* mobj, u32 rendermode, s32 arg2)
     GXSetDither(GX_FALSE);
 }
 
-/// @brief Increment refraction effect user count.
+/// Increment refraction effect user count.
 void lbRefract_80022BB8(void)
 {
     lbl_804336D0.refractionUserCount += 1;
 }
 
-/// @brief Decrement refraction effect user count.
+/// Decrement refraction effect user count.
 void lbRefSetUnuse(void)
 {
     lbl_804336D0.refractionUserCount -= 1;
