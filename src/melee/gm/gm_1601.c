@@ -3535,9 +3535,9 @@ void gm_801674C4(s8 arg0, u8 arg1, s8 arg2, s8 arg3, GmRouteCallback arg4)
     struct lbl_8046B488_t* temp_ptr;
     temp_ptr = gm_1601_GetUnkData();
     temp_ptr->x0 = arg0;
-    temp_ptr->x1 = 0x21;
+    temp_ptr->x1 = ChKind_None;
     new_var3 = arg1;
-    temp_ptr->x2 = 0x21;
+    temp_ptr->x2 = ChKind_None;
     temp_ptr->x7 = new_var3;
     temp_ptr->x8 = new_var3;
     temp_ptr->x9 = arg2;
