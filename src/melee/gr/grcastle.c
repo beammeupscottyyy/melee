@@ -741,7 +741,7 @@ void grCastle_801CE260(Ground_GObj* gobj)
     gp->u.flatzone.xCA = yakumono_param->entries[gp->u.icemt.x2].x0;
 
     gp2 = GET_GROUND(gobj);
-    *(u32*) &gp2->u.arwing.xD8 = (u32) Camera_80029044(2);
+    *(u32*) &gp2->u.arwing.xD8 = (u32) Camera_80029044(CmSubjectState_Auto);
     subject = (CmSubject*) *(u32*) &gp2->u.arwing.xD8;
     if (subject != NULL) {
         subject->target_ext.h.x = yakumono_param->x118;
@@ -946,7 +946,7 @@ void grCastle_801CE8E8(Ground_GObj* gobj)
     grAnime_801C8138((HSD_GObj*) gobj, gp->map_id, 0);
 
     gp2 = GET_GROUND(gobj);
-    gp2->u.arwing.xC8 = (u32) Camera_80029044(2);
+    gp2->u.arwing.xC8 = (u32) Camera_80029044(CmSubjectState_Auto);
     subject = (CmSubject*) gp2->u.arwing.xC8;
     if (subject != NULL) {
         subject->target_ext.h.x = yakumono_param->x134;

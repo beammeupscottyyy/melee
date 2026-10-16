@@ -258,15 +258,15 @@ void Camera_80028F5C(CmSubject* subject, CmSubjectState state)
 
 CmSubject* Camera_80029020(void)
 {
-    return Camera_80029044(0);
+    return Camera_80029044(CmSubjectState_Active);
 }
 
-CmSubject* Camera_80029044(int arg0)
+CmSubject* Camera_80029044(CmSubjectState state)
 {
     CmSubject* subject = cm_804D6458;
 
     if (cm_804D6458 == NULL) {
-        OSReport("couldn't get CmSubject struct.\n", arg0);
+        OSReport("couldn't get CmSubject struct.\n", state);
         while (true) {
         }
     }
@@ -280,7 +280,7 @@ CmSubject* Camera_80029044(int arg0)
     }
     subject->prev = cm_804D6468;
     cm_804D6468 = subject;
-    Camera_80028F5C(subject, arg0);
+    Camera_80028F5C(subject, state);
     return subject;
 }
 

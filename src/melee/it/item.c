@@ -912,9 +912,9 @@ static void foobar3(HSD_GObj* gobj)
     CmSubject* cam_box;
     if (it->xDCD_flag.x0.b01 != 0) {
         if (it->xDCD_flag.x0.b01 == 1) {
-            it->x520_cameraBox = Camera_80029044(0);
+            it->x520_cameraBox = Camera_80029044(CmSubjectState_Active);
         } else {
-            it->x520_cameraBox = Camera_80029044(2);
+            it->x520_cameraBox = Camera_80029044(CmSubjectState_Auto);
         }
         cam_box = it->x520_cameraBox;
         if (cam_box != NULL) {

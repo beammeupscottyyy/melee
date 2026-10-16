@@ -13,7 +13,7 @@
 /* 028B9C */ void Camera_Init(int);
 /* 028F5C */ void Camera_80028F5C(CmSubject*, CmSubjectState);
 /* 029020 */ CmSubject* Camera_80029020(void);
-/* 029044 */ CmSubject* Camera_80029044(int);
+/* 029044 */ CmSubject* Camera_80029044(CmSubjectState);
 /* 0290D4 */ void Camera_800290D4(CmSubject*);
 /* 029124 */ u32 Camera_80029124(Vec3*, s32);
 /* 02928C */ bool Camera_8002928C(CmSubject*);
