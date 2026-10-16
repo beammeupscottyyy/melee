@@ -117,7 +117,7 @@ struct ItemAttr {
     f32 x5c;       // 0x5c
     f32 x60_scale; // 0x60, does not affect hitboxes
 
-    /// @brief GFX to play on destroy.
+    /// GFX to play on destroy.
     enum_t destroy_gfx;
 
     s32 x68; // 0x68
@@ -125,7 +125,7 @@ struct ItemAttr {
     s32 x70; // 0x70
     s32 x74; // 0x74
 
-    /// @brief SFX that plays when this item is destroyed
+    /// SFX that plays when this item is destroyed.
     enum_t destroy_sfx;
 
     s32 x7C; // 0x7c
@@ -292,7 +292,7 @@ struct Item {
     /*  ip+378 */ CollData x378_itemColl;
     s32 ecb_lock;
 
-    /// @brief Item's current owner
+    /// Item's current owner.
     HSD_GObj* owner;
 
     HSD_GObj* x51C;            // Related to the owner gobj
@@ -391,15 +391,15 @@ struct Item {
 
     HSD_GObj* xCF4_fighterGObjUnk;
 
-    /// @brief The entity that was detected by this item's inert hitbox.
+    /// The entity that was detected by this item's inert hitbox.
     HSD_GObj* toucher;
 
     HSD_GObj* xCFC;
 
-    /// @brief The entity that got grabbed by this item.
+    /// The entity that got grabbed by this item.
     HSD_GObj* grab_victim;
 
-    /// @brief The entity that collided with this item's hitbox?
+    /// The entity that collided with this item's hitbox?
     HSD_GObj* atk_victim;
 
     u8 xD08;
@@ -420,25 +420,25 @@ struct Item {
     /// @todo What does this mean?
     HSD_GObjEvent on_accessory;
 
-    /// @brief Runs when an entity is detected by this item's inert hibox.
+    /// Runs when an entity is detected by this item's inert hibox.
     HSD_GObjPredicate touched;
 
-    /// @brief Runs after applying hitlag in damage.
+    /// Runs after applying hitlag in damage.
     /// @todo What function is @c 8026a62c?
     HSD_GObjEvent entered_hitlag;
 
     // 0xd2c, runs after exiting hitlag in hitlag, update proc 8026a200
     HSD_GObjEvent exited_hitlag;
 
-    /// @brief Runs when the item is jumped on.
+    /// Runs when the item is jumped on.
     /// @todo What function is @c 80269bac?
     HSD_GObjPredicate jumped_on;
 
-    /// @brief When grabbing a fighter, run this function on self.
+    /// When grabbing a fighter, run this function on self.
     HSD_GObjEvent grab_dealt;
 
     /**
-     * @brief When grabbing a fighter, run this function on them.
+     * When grabbing a fighter, run this function on them.
      *
      * @p gobj0 - The victim of the grab. \n
      * @p gobj1 - This item's entity.
@@ -468,7 +468,7 @@ struct Item {
     s32 xD74;
     s32 xD78;
 
-    /// @brief SFX that plays when this item is destroyed
+    /// SFX that plays when this item is destroyed.
     enum_t destroy_sfx;
 
     s32 xD80;
@@ -659,7 +659,7 @@ struct SpawnItem {
     /*  +4 */ HSD_GObj* x4_parent_gobj2;
     /*  +8 */ ItemKind kind;
 
-    /// @brief Defines the behavior of the item, such as thrown and pickup.
+    /// Defines the behavior of the item, such as thrown and pickup.
     /// @todo 0 = capsule.
     /*  +C */ Item_HoldKinds hold_kind;
 
