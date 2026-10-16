@@ -31,7 +31,7 @@ void ftMh_RockCrushUp_Anim(HSD_GObj* gobj)
 void ftMh_RockCrushUp_IASA(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if (Player_GetPlayerSlotType(fp->player_idx) == 0) {
+    if (Player_GetPlayerSlotType(fp->player_idx) == Gm_PKind_Human) {
         ftBossLib_8015BD20(gobj);
     }
 }
@@ -66,7 +66,7 @@ void ftMh_RockCrushWait_Anim(HSD_GObj* gobj)
 void ftMh_RockCrushWait_IASA(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if (Player_GetPlayerSlotType(fp->player_idx) == 0) {
+    if (Player_GetPlayerSlotType(fp->player_idx) == Gm_PKind_Human) {
         ftBossLib_8015BD20(gobj);
     }
 }
