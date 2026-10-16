@@ -1,6 +1,6 @@
 /**
  * @file lb_020A.c
- * @brief Skeletal transform and two-joint IK utilities.
+ * Skeletal transform and two-joint IK utilities.
  *
  * Accumulates a joint's world transform by walking its parents, applies
  * rotations about an arbitrary axis, and solves the two-bone IK chain used to

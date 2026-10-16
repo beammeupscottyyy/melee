@@ -1,12 +1,14 @@
 /**
  * @file lb_0219.c
- * @brief Data-driven animated screen flashes.
+ * Data-driven animated screen flashes.
  *
  * Plays the colour animations stored in LbBf.dat over the background flash
  * overlay owned by lbbgflash.c.
  */
 
 #include "lb_0219.h"
+
+#include <melee/if/forward.h>
 
 #include <placeholder.h>
 
@@ -50,11 +52,12 @@ void lbBgFlash_Init(int arg0)
     BgFlashUserData* user_data;
 
     HSD_ObjAllocInit(&bgflash_alloc_data, sizeof(BgFlashUserData), 4);
-    gobj = GObj_Create(0xE, 0xE, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xE, 0);
     if (gobj != NULL) {
         user_data = HSD_ObjAlloc(&bgflash_alloc_data);
         if (user_data != NULL) {
-            GObj_InitUserData(gobj, 0xE, lbBgFlash_Free, user_data);
+            GObj_InitUserData(gobj, HSD_GOBJ_CLASS_UI, lbBgFlash_Free,
+                              user_data);
             flash_gobj = gobj;
             flash_scale = 1.0f;
             user_data->x0 = (u8) arg0;

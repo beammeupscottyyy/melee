@@ -1,6 +1,6 @@
 /**
  * @file lb_0219.h
- * @brief Data-driven animated screen flashes.
+ * Data-driven animated screen flashes.
  */
 
 #ifndef GALE01_0219E4

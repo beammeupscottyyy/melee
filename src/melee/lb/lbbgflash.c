@@ -1,6 +1,6 @@
 /**
  * @file lbbgflash.c
- * @brief Background flash effects for dramatic game events.
+ * Background flash effects for dramatic game events.
  *
  * Provides full-screen color overlay flashes triggered by various game events.
  * Called from game mode code (gmallstar.c, gmregclear.c, gm_1A7A.c, etc).
@@ -269,7 +269,7 @@ void fn_8001FEC4(HSD_GObj* gobj, intptr_t code)
             s32* pY;
             s32 y2;
 
-            for (y2 = *(pY = &data->x38); y2 <= 0x1E0; y2 += data->x32) {
+            for (y2 = *(pY = &data->x38); y2 <= 480; y2 += data->x32) {
                 s32 right;
                 u8 strip_h;
                 s32 x34;
@@ -281,7 +281,7 @@ void fn_8001FEC4(HSD_GObj* gobj, intptr_t code)
 
                     x34 = data->x34;
                     strip_h = data->x32;
-                    right = 0x280;
+                    right = 640;
                     right -= x34;
                     GXBegin(GX_QUADS, GX_VTXFMT0, 4);
                     neg_y = -y2;
@@ -347,9 +347,9 @@ void fn_800204C8(void)
             pX = &data->x34;
 
             for (i = 0; i < data->x3C; i++) {
-                if (*pX < 0x280) {
+                if (*pX < 640) {
                     *pX = *pX + data->x31;
-                } else if (*pY < 0x1E0) {
+                } else if (*pY < 480) {
                     *pY = *pY + data->x32;
                     *pX = 0;
                 } else {
@@ -367,7 +367,7 @@ void fn_800204C8(void)
     }
 }
 
-/// @brief Trigger background flash.
+/// Trigger background flash.
 /// @param duration Flash duration in frames (minimum 1).
 void lbBgFlash_800205F0(s32 duration)
 {
@@ -378,7 +378,7 @@ void lbBgFlash_800205F0(s32 duration)
     lbl_80433658.state.mode = 0;
 }
 
-/// @brief Trigger background flash.
+/// Trigger background flash.
 /// @param count Flash duration in frames (minimum 1).
 void lbBgFlash_8002063C(int count)
 {
@@ -407,7 +407,7 @@ void lbBgFlash_800206D4(GXColor* col1, GXColor* col2, int arg2)
         count = 1;
     }
 
-    data->state.active = 0;
+    data->state.active = false;
     data->state.mode = 2;
     data->x4 = *col1;
     data->xC = data->x4;
@@ -424,14 +424,14 @@ void lbBgFlash_800206D4(GXColor* col1, GXColor* col2, int arg2)
 
 void lbBgFlash_InitState(GXColor* color)
 {
-    lbl_80433658.state.active = 0;
+    lbl_80433658.state.active = false;
     lbl_80433658.state.mode = 5;
     lbl_80433658.xC = *color;
 }
 void fn_800208B0(u8 arg0)
 {
     BgFlashData* data = &lbl_80433658;
-    lbl_80433658.state.active = 0;
+    lbl_80433658.state.active = false;
     if ((data && data) && data) {
     }
     lbl_80433658.state.mode = 5;
@@ -468,7 +468,7 @@ void lbBgFlash_800208EC(int arg0)
     GObj_SetupGXLink(*gobj2_slot, fn_8001FEC4, 0x10, (u8) arg0);
     HSD_GObj_SetupProc(*gobj2_slot, (HSD_GObjEvent) fn_800204C8, 0);
 
-    lbl_80433658.state.active = 1;
+    lbl_80433658.state.active = true;
     lbl_80433658.state.mode = 0;
 }
 
@@ -498,6 +498,6 @@ void lbBgFlash_800209F4(void)
     GObj_SetupGXLink(*gobj2_slot, fn_8001FEC4, 0x10, 0xa);
     temp = *gobj2_slot;
     HSD_GObj_SetupProc(temp, (HSD_GObjEvent) fn_800204C8, 0);
-    lbl_80433658.state.active = 1;
+    lbl_80433658.state.active = true;
     lbl_80433658.state.mode = 0;
 }
