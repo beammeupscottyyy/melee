@@ -144,7 +144,7 @@ void gm_801B9DD8(GameModeState* arg0)
     s32* temp_r3_2;
     u8 selkind;
     MatchExitInfo* temp_r3;
-    u16 tmp;
+    StKind tmp;
 
     temp_r3 = gm_GetGameModeStateExitData(arg0);
     gm_80162968(temp_r3->match_end.frame_count / 60);
@@ -156,7 +156,7 @@ void gm_801B9DD8(GameModeState* arg0)
     }
     selkind = gm_CKindToSelKind(temp_r3->match_end.player_standings[0].ckind);
     temp_r31 = gm_80180AE4();
-    if ((tmp = gm_801734D0(temp_r31)) != 0x148) {
+    if ((tmp = gm_801734D0(temp_r31)) != St_Kind_Unk328) {
         gm_80164504(tmp);
     }
     temp_r3_2 = gmMainLib_8015D084(selkind);

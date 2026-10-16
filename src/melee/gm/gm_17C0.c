@@ -430,8 +430,8 @@ void gm_8017CBAC(UnkAdventureData* arg0, gmm_x0_528_t* arg1, u8 arg2)
     case 23:
         gmMainLib_8015D384(temp_r31);
         fn_80162FF4(arg0->x0.x0.ckind, arg0->x0.xC.x18);
-        if (!gm_80164430(0x1F)) {
-            gm_80164504(0x1F);
+        if (!gm_80164430(St_Kind_Battle)) {
+            gm_80164504(St_Kind_Battle);
         }
         temp_r3 = gmMainLib_8015D3E4(temp_r31);
         if (*temp_r3 < arg0->x0.x0.cpu_level) {

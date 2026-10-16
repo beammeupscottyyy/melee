@@ -329,7 +329,7 @@ void gm_801B65D4(GameModeState* arg0)
     struct gmm_retval_EDB0* temp_r3_6;
     struct gmm_retval_EDBC* temp_r3_3;
     struct gmm_x0_584_t* temp_r28;
-    u16 temp_r3_8;
+    StKind temp_r3_8;
     u32 temp_r0;
     u8 temp_r3_2;
     MatchExitInfo* temp_r3;
@@ -386,7 +386,7 @@ void gm_801B65D4(GameModeState* arg0)
     if (var_r29 != 0) {
         temp_r25_2 = gm_801733D8();
         temp_r3_8 = gm_8017341C();
-        if (temp_r3_8 != 0x148) {
+        if (temp_r3_8 != St_Kind_Unk328) {
             gm_80164504(temp_r3_8);
         }
         gm_80173AA4();
@@ -438,7 +438,7 @@ bool gm_801B688C(bool arg0)
     int temp_r30;
     VsModeData* temp_r29;
     u8 temp_r3;
-    u16 tmp;
+    StKind tmp;
 
     PAD_STACK(8);
 
@@ -447,7 +447,7 @@ bool gm_801B688C(bool arg0)
     lbCardGame_LoadArchive(0);
     lbCardGame_SaveChanges();
     if ((gm_80181A14() != 0) && (gm_GetCurrentGameMode() == GM_15MIN_VS) &&
-        ((tmp = gm_80173498()) != 0x148))
+        ((tmp = gm_80173498()) != St_Kind_Unk328))
     {
         gm_80164504(tmp);
     }

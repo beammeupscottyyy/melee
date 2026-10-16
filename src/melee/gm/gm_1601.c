@@ -2362,7 +2362,7 @@ void gm_801641E4(u8 stage, u8 enable)
     }
 }
 
-bool gm_IsStageUnlocked(u16 stkind)
+bool gm_IsStageUnlocked(StKind stkind)
 {
     if ((1 << stkind) & gmMainLib_GetGamePrefs()->stage_mask) {
         return true;
@@ -2449,14 +2449,14 @@ static inline u8 getStageUnlockNotifyId(u8 unlock_idx)
     return 0x42;
 }
 
-bool gm_80164430(u16 arg0)
+bool gm_80164430(StKind stkind)
 {
     u16* stage_unlock_mask;
     u8 stage_idx;
     u8 unlock_bit;
 
     stage_unlock_mask = gmMainLib_8015EDA4();
-    stage_idx = Stage_8022519C(arg0);
+    stage_idx = Stage_8022519C(stkind);
     unlock_bit = getStageUnlockIndex(stage_idx);
 
     if (unlock_bit == NUM_UNLOCKABLE_STAGES ||
@@ -2467,7 +2467,7 @@ bool gm_80164430(u16 arg0)
     return false;
 }
 
-void gm_80164504(u16 stkind)
+void gm_80164504(StKind stkind)
 {
     u16* stage_unlock_mask;
     u8 grkind;

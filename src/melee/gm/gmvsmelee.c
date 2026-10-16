@@ -281,7 +281,7 @@ void gmVsMelee_ExitResults(GameModeState* state, VsModeData* vs, u8 state_id)
     bool unk_bool;
     int idx;
     u8 unk;
-    u16 foo;
+    StKind foo;
 
     match_end = &gmVsMelee_VsExitInfo.match_end;
     if (!gm_WasMatchCanceled(match_end->outcome)) {
@@ -321,7 +321,7 @@ void gmVsMelee_ExitResults(GameModeState* state, VsModeData* vs, u8 state_id)
                 unk_bool = true;
             }
             foo = gm_80172F00(gmMainLib_8015EDB0()->x0);
-            if (foo != 328) {
+            if (foo != St_Kind_Unk328) {
                 gm_80164504(foo);
             }
             gm_80173DE4(&gmVsMelee_VsExitInfo.match_end);

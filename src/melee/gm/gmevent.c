@@ -626,8 +626,8 @@ void onExitVs(GameModeState* arg0)
         gmMainLib_8015CF84();
     }
     if (ev->xB_1) {
-        u16 sid = gm_8017335C();
-        if (sid != 0x148) {
+        StKind sid = gm_8017335C();
+        if (sid != St_Kind_Unk328) {
             gm_80164504(sid);
         }
     }

@@ -2205,21 +2205,21 @@ u8 gm_80172E74(void)
     return ChKind_None;
 }
 
-u16 gm_80172F00(u32 arg0)
+StKind gm_80172F00(u32 arg0)
 {
-    if (arg0 >= 0x32 && !gm_80164430(0xF)) {
-        return 0xF;
+    if (arg0 >= 0x32 && !gm_80164430(St_Kind_Kraid)) {
+        return St_Kind_Kraid;
     }
-    if (arg0 >= 0x64 && !gm_80164430(0x12)) {
-        return 0x12;
+    if (arg0 >= 0x64 && !gm_80164430(St_Kind_Fourside)) {
+        return St_Kind_Fourside;
     }
-    if (arg0 >= 0x96 && !gm_80164430(0x18)) {
-        return 0x18;
+    if (arg0 >= 0x96 && !gm_80164430(St_Kind_BigBlue)) {
+        return St_Kind_BigBlue;
     }
-    if (arg0 >= 0xC8 && !gm_80164430(0x17)) {
-        return 0x17;
+    if (arg0 >= 0xC8 && !gm_80164430(St_Kind_Pura)) {
+        return St_Kind_Pura;
     }
-    return 0x148;
+    return St_Kind_Unk328;
 }
 
 bool fn_80172FAC(void)
@@ -2342,7 +2342,7 @@ u8 gm_801732D8(u8 arg0)
     return ChKind_None;
 }
 
-u16 gm_8017335C(void)
+StKind gm_8017335C(void)
 {
     int var_r31 = 1;
     int i;
@@ -2352,10 +2352,10 @@ u16 gm_8017335C(void)
             break;
         }
     }
-    if (var_r31 == 1 && !gm_80164430(0x20)) {
-        return 0x20;
+    if (var_r31 == 1 && !gm_80164430(St_Kind_Last)) {
+        return St_Kind_Last;
     }
-    return 0x148;
+    return St_Kind_Unk328;
 }
 
 u8 gm_801733D8(void)
@@ -2366,12 +2366,12 @@ u8 gm_801733D8(void)
     return ChKind_None;
 }
 
-u16 gm_8017341C(void)
+StKind gm_8017341C(void)
 {
-    if (gmMainLib_8015D5DC() && !gm_80164430(0x1C)) {
-        return 0x1C;
+    if (gmMainLib_8015D5DC() && !gm_80164430(St_Kind_OldPupupu)) {
+        return St_Kind_OldPupupu;
     }
-    return 0x148;
+    return St_Kind_Unk328;
 }
 
 u8 gm_80173460(s8 arg0)
@@ -2382,20 +2382,20 @@ u8 gm_80173460(s8 arg0)
     return ChKind_None;
 }
 
-u16 gm_80173498(void)
+StKind gm_80173498(void)
 {
-    if (!gm_80164430(0x1E)) {
-        return 0x1E;
+    if (!gm_80164430(St_Kind_OldKongo)) {
+        return St_Kind_OldKongo;
     }
-    return 0x148;
+    return St_Kind_Unk328;
 }
 
-u16 gm_801734D0(u32 arg0)
+StKind gm_801734D0(u32 arg0)
 {
-    if (arg0 >= 0x9C40 && !gm_80164430(0x1D)) {
-        return 0x1D;
+    if (arg0 >= 0x9C40 && !gm_80164430(St_Kind_OldYoshi)) {
+        return St_Kind_OldYoshi;
     }
-    return 0x148;
+    return St_Kind_Unk328;
 }
 
 bool fn_80173510(void)

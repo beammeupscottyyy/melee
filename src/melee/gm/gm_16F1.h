@@ -2,6 +2,7 @@
 #define MELEE_GM_16F1_H
 
 #include <melee/gm/forward.h>
+#include <melee/gr/forward.h>
 #include <sysdolphin/baselib/forward.h>
 
 typedef enum Gm_DecType {
@@ -77,17 +78,17 @@ struct lbl_804D65A8_t;
 /* 172D78 */ u8 gm_80172D78(void);
 /* 172DD4 */ u8 gm_80172DD4(u32);
 /* 172E74 */ u8 gm_80172E74(void);
-/* 172F00 */ u16 gm_80172F00(u32);
+/* 172F00 */ StKind gm_80172F00(u32);
 /* 172FAC */ bool fn_80172FAC(void);
 /* 173098 */ u8 fn_80173098(int);
 /* 173224 */ u8 gm_80173224(int, int);
 /* 1732D8 */ u8 gm_801732D8(u8);
-/* 17335C */ u16 gm_8017335C(void);
+/* 17335C */ StKind gm_8017335C(void);
 /* 1733D8 */ u8 gm_801733D8(void);
-/* 17341C */ u16 gm_8017341C(void);
+/* 17341C */ StKind gm_8017341C(void);
 /* 173460 */ u8 gm_80173460(s8);
-/* 173498 */ u16 gm_80173498(void);
-/* 1734D0 */ u16 gm_801734D0(u32);
+/* 173498 */ StKind gm_80173498(void);
+/* 1734D0 */ StKind gm_801734D0(u32);
 /* 173510 */ bool fn_80173510(void);
 /* 1735F0 */ bool fn_801735F0(void);
 /* 173644 */ bool fn_80173644(void);
