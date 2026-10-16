@@ -250,8 +250,8 @@
 /* 168A6C */ void fn_80168A6C(void*, void*, s32);
 /* 168B34 */ float gm_80168B34(CharacterKind, int, int);
 /* 168BF8 */ float gm_80168BF8(int);
-/* 168C5C */ void gm_80168C5C(u32);
-/* 168E54 */ void fn_80168E54(s8, s8, u8, u8);
+/* 168C5C */ void gm_80168C5C(CharacterKind);
+/* 168E54 */ void fn_80168E54(CharacterKind, FighterKind, u8, u8);
 /* 168F2C */ void fn_80168F2C(s8);
 /* 168F7C */ void fn_80168F7C(void);
 /* 168F88 */ void gm_80168F88(void);

@@ -4104,97 +4104,97 @@ float gm_80168BF8(int arg0)
     return gm_80168B34(ckind, Player_80036394(arg0), costume);
 }
 
-void gm_80168C5C(u32 arg0)
+void gm_80168C5C(CharacterKind arg0)
 {
     switch (arg0) {
-    case 0:
+    case CKind_Captain:
         lbAudioAx_800243F4(0x7C830);
         break;
-    case 1:
+    case CKind_Donkey:
         lbAudioAx_800243F4(0x7C831);
         break;
-    case 2:
+    case CKind_Fox:
         lbAudioAx_800243F4(0x7C835);
         break;
-    case 3:
+    case CKind_GameWatch:
         lbAudioAx_800243F4(0x7C83A);
         break;
-    case 4:
+    case CKind_Kirby:
         lbAudioAx_800243F4(0x7C83F);
         break;
-    case 5:
+    case CKind_Koopa:
         lbAudioAx_800243F4(0x7C840);
         break;
-    case 6:
+    case CKind_Link:
         lbAudioAx_800243F4(0x7C842);
         break;
-    case 7:
+    case CKind_Luigi:
         lbAudioAx_800243F4(0x7C844);
         break;
-    case 8:
+    case CKind_Mario:
         lbAudioAx_800243F4(0x7C845);
         break;
-    case 9:
+    case CKind_Mars:
         lbAudioAx_800243F4(0x7C846);
         break;
-    case 10:
+    case CKind_Mewtwo:
         lbAudioAx_800243F4(0x7C848);
         break;
-    case 11:
+    case CKind_Ness:
         lbAudioAx_800243F4(0x7C84A);
         break;
-    case 12:
+    case CKind_Peach:
         lbAudioAx_800243F4(0x7C84B);
         break;
-    case 13:
+    case CKind_Pikachu:
         lbAudioAx_800243F4(0x7C84D);
         break;
-    case 14:
+    case CKind_PopoNana:
         lbAudioAx_800243F4(0x7C83B);
         break;
-    case 15:
+    case CKind_Purin:
         lbAudioAx_800243F4(0x7C83D);
         break;
-    case 16:
+    case CKind_Samus:
         lbAudioAx_800243F4(0x7C84E);
         break;
-    case 17:
+    case CKind_Yoshi:
         lbAudioAx_800243F4(0x7C84F);
         break;
-    case 19:
+    case CKind_Seak:
         lbAudioAx_800243F4(0x7C850);
         break;
-    case 18:
+    case CKind_Zelda:
         lbAudioAx_800243F4(0x7C851);
         break;
-    case 20:
+    case CKind_Falco:
         lbAudioAx_800243F4(0x7C834);
         break;
-    case 21:
+    case CKind_CLink:
         lbAudioAx_800243F4(0x7C843);
         break;
-    case 22:
+    case CKind_DrMario:
         lbAudioAx_800243F4(0x7C832);
         break;
-    case 23:
+    case CKind_Emblem:
         lbAudioAx_800243F4(0x7C83C);
         break;
-    case 24:
+    case CKind_Pichu:
         lbAudioAx_800243F4(0x7C84C);
         break;
-    case 25:
+    case CKind_Ganon:
         lbAudioAx_800243F4(0x7C836);
         break;
-    case 26:
+    case CKind_MasterH:
         lbAudioAx_800243F4(0x7C849);
         break;
-    case 29:
+    case CKind_GKoops:
         lbAudioAx_800243F4(0x7C838);
         break;
     }
 }
 
-void fn_80168E54(s8 arg0, s8 arg1, u8 arg2, u8 arg3)
+void fn_80168E54(CharacterKind arg0, FighterKind arg1, u8 arg2, u8 arg3)
 {
     if (arg3 != 0) {
         switch (arg2) {
@@ -4209,10 +4209,10 @@ void fn_80168E54(s8 arg0, s8 arg1, u8 arg2, u8 arg3)
             break;
         }
     } else {
-        if (arg0 == 0x12 && arg1 == 7) {
-            arg0 = 0x13;
-        } else if (arg0 == 0x13 && arg1 == 0x13) {
-            arg0 = 0x12;
+        if (arg0 == CKind_Zelda && arg1 == Ft_Kind_Seak) {
+            arg0 = CKind_Seak;
+        } else if (arg0 == CKind_Seak && arg1 == Ft_Kind_Zelda) {
+            arg0 = CKind_Zelda;
         }
         gm_80168C5C(arg0);
     }
