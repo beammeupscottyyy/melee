@@ -275,7 +275,7 @@ static inline HSD_Joint* gm_801A9094_get_bg(void)
 
 static inline HSD_GObj* gm_801A9094_create_gobj(void)
 {
-    return GObj_Create(0xE, 0xF, 0);
+    return GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
 }
 
 void gm_801A9094(void)
@@ -403,7 +403,7 @@ static inline void gm_801A9630_fog(void)
     HSD_GObj* gobj;
     HSD_Fog* fog;
 
-    gobj = GObj_Create(0xE, 3, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 3, 0);
     fog = HSD_FogLoadDesc(gm_804D67A4->fogs->desc);
     HSD_GObjObject_80390A70(gobj, (u8) HSD_GObj_FogKind, fog);
     GObj_SetupGXLink(gobj, HSD_GObj_FogCallback, 0, 0);
@@ -418,7 +418,7 @@ static inline void gm_801A9630_light(void)
     HSD_GObj* gobj;
     HSD_LObj* lobj;
 
-    gobj = GObj_Create(0xB, 3, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, 3, 0);
     lobj = lb_80011AC4(gm_804D67A4->lights);
     HSD_GObjObject_80390A70(gobj, (u8) HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(gobj, HSD_GObj_LObjCallback, 0, 0);
@@ -433,7 +433,7 @@ static inline void gm_801A9630_camera(void)
     HSD_GObj* gobj;
     HSD_CObj* cobj;
 
-    gobj = GObj_Create(0x13, 0x14, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj =
         lb_80013B14((HSD_CameraDescPerspective*) gm_804D67A4->cameras[0].desc);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
@@ -467,7 +467,7 @@ void gm_801A9630(void)
     gm_801A9630_camera();
 
     // Background JObj GObj 1
-    gobj = GObj_Create(0xE, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     gm_804D67C0 = gobj;
     jobj = HSD_JObjLoadJoint(gm_804D67A0->models[0]->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
@@ -478,7 +478,7 @@ void gm_801A9630(void)
     HSD_GObj_SetupProc(gobj, fn_801A9498, 0x17);
 
     // Background JObj GObj 2
-    gobj = GObj_Create(0xE, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     gm_804D67BC = gobj;
     {
         HSD_JObj* tmp = HSD_JObjLoadJoint(gm_804D67AC->models[0]->joint);
@@ -496,7 +496,7 @@ void gm_801A9630(void)
     gm_GetCurrentSceneEnterData();
 
     // Character JObj GObj 3
-    gobj = GObj_Create(0xE, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     gm_804D67B8 = gobj;
     jobj = HSD_JObjLoadJoint(gm_804D6798);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);

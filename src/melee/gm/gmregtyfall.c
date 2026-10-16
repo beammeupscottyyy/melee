@@ -294,7 +294,7 @@ void gm_801A6C54(void)
     HSD_CObj* cobj;
     int i;
 
-    gobj = GObj_Create(0x13, 0x14, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj =
         lb_80013B14((HSD_CameraDescPerspective*) gm_804D6748->cameras[0].desc);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
@@ -328,7 +328,7 @@ void gm_801A6DC0(void)
     HSD_CObj* cobj;
     int i;
 
-    gobj = GObj_Create(0x13, 0x14, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj =
         lb_80013B14((HSD_CameraDescPerspective*) gm_804D6748->cameras[0].desc);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
@@ -409,7 +409,7 @@ static inline void gm_801A7070_SetupMain(u8 priority)
     HSD_JObj* player_jobj;
     f32 scale;
 
-    gobj = GObj_Create(0xE, 0xF, priority);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, priority);
     gm_804D6768 = gobj;
     jobj = HSD_JObjLoadJoint(gm_804D6798);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
@@ -444,7 +444,7 @@ static inline void gm_801A7070_SetupTrophy(u8 priority)
     f32 val;
     f32 scale;
 
-    gobj = GObj_Create(0xE, 0xF, priority);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, priority);
     gm_804D6778 = gobj;
     jobj = HSD_JObjLoadJoint(gm_804D67AC->models[0]->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
@@ -507,7 +507,7 @@ void gm_Scene_ToyFall_OnEnter(void* unused)
     /// archive loads
     gm_801A6EE4();
     /// create lights
-    gobj = GObj_Create(0xB, 3, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, 3, 0);
     lobj = lb_80011AC4(gm_804D6748->lights);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(gobj, HSD_GObj_LObjCallback, 0, 0);
@@ -518,7 +518,7 @@ void gm_Scene_ToyFall_OnEnter(void* unused)
     {
         HSD_GObj* gobj;
 
-        gobj = GObj_Create(0x13, 0x14, 0);
+        gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
         HSD_SObjLib_803A55DC(gobj, 0x280, 0x1E0, 0xC);
         HSD_GObjGXLink_8039084C(gobj);
         GObj_SetupGXLinkMax(gobj, fn_801A6A48, 0xC);
@@ -527,7 +527,7 @@ void gm_Scene_ToyFall_OnEnter(void* unused)
     {
         HSD_GObj* gobj;
 
-        gobj = GObj_Create(0x13, 0x14, 0);
+        gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
         HSD_SObjLib_803A55DC(gobj, 0x280, 0x1E0, 9);
         HSD_GObjGXLink_8039084C(gobj);
         GObj_SetupGXLinkMax(gobj, HSD_SObjLib_803A54EC, 9);
@@ -536,15 +536,15 @@ void gm_Scene_ToyFall_OnEnter(void* unused)
 
     initImages();
 
-    gobj = GObj_Create(0xE, 0xD, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xD, 0);
     gm_804D677C = gobj;
     HSD_GObjObject_80390A70(gobj, HSD_SObjLib_804D7960, NULL);
     GObj_SetupGXLink(gobj, HSD_SObjLib_803A49E0, 9, 0);
-    gobj = GObj_Create(0xE, 0x18, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0x18, 0);
     gm_804D676C = gobj;
     HSD_GObjObject_80390A70(gobj, HSD_SObjLib_804D7960, NULL);
     GObj_SetupGXLink(gobj, HSD_SObjLib_803A49E0, 0x12, 0);
-    gobj = GObj_Create(0xE, 0x18, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0x18, 0);
     gm_804D6754 = gobj;
     HSD_GObjObject_80390A70(gobj, HSD_SObjLib_804D7960, NULL);
     GObj_SetupGXLink(gobj, HSD_SObjLib_803A49E0, 0x12, 0);
