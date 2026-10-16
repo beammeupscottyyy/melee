@@ -1,6 +1,10 @@
 #ifndef MELEE_TY_FORWARD_H
 #define MELEE_TY_FORWARD_H
 
+#include <melee/ft/forward.h>
+#include <melee/it/forward.h>
+#include <melee/lb/forward.h>
+
 #define TY_TROPHY_COUNT 293
 
 struct un_804D6EE0_t;

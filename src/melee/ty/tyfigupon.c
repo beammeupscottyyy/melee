@@ -616,7 +616,7 @@ static inline s32 tyFigupon_GetCoinCount(void)
 
 static inline void tyFigupon_CreateCoin(struct un_804D6EF4_t* ef4)
 {
-    HSD_GObj* gobj = GObj_Create(9, 9, 0);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_SISLIB_UNK, 9, 0);
     HSD_JObj* jobj = HSD_JObjLoadJoint(HSD_ArchiveGetPublicAs(
         HSD_Joint, ef4->archive, "ToyFigurePonCoin_Top_joint"));
 
@@ -1181,7 +1181,7 @@ void _tyFigupon_8031753C(void)
     if (panel.joint != NULL) {
         TyFiguponDigitInit digits_s;
         s32 total;
-        ef4->x00 = (u32) GObj_Create(9, 9, 0);
+        ef4->x00 = (u32) GObj_Create(HSD_GOBJ_CLASS_SISLIB_UNK, 9, 0);
         jobj = HSD_JObjLoadJoint(panel.joint);
         HSD_GObjObject_80390A70((HSD_GObj*) ef4->x00, temp = HSD_GObj_JObjKind,
                                 jobj);
@@ -1193,7 +1193,7 @@ void _tyFigupon_8031753C(void)
         Toy_803083D8(ef4->jobjs[0xC], 0x3E7);
         joint = HSD_ArchiveGetPublicAs(HSD_Joint, ef4->archive,
                                        "ToyFigurePonBg_Top_joint");
-        ef4->unk4 = GObj_Create(9, 9, 0);
+        ef4->unk4 = GObj_Create(HSD_GOBJ_CLASS_SISLIB_UNK, 9, 0);
         jobj = HSD_JObjLoadJoint(joint);
         HSD_GObjObject_80390A70(ef4->unk4, temp = HSD_GObj_JObjKind, jobj);
         GObj_SetupGXLink(ef4->unk4, panel.render_cb, 0x3C, 0);
@@ -1252,7 +1252,7 @@ void _tyFigupon_8031753C(void)
 
         joint = HSD_ArchiveGetPublicAs(HSD_Joint, ef4->archive,
                                        "ToyFigurePonLever_Top_joint");
-        ef4->x08 = (u32) GObj_Create(9, 9, 0);
+        ef4->x08 = (u32) GObj_Create(HSD_GOBJ_CLASS_SISLIB_UNK, 9, 0);
         jobj = HSD_JObjLoadJoint(joint);
         HSD_GObjObject_80390A70((HSD_GObj*) ef4->x08, temp = HSD_GObj_JObjKind,
                                 jobj);
@@ -1270,7 +1270,7 @@ void _tyFigupon_8031753C(void)
         }
         HSD_JObjAnimAll(ef4->jobjs[0xE]);
 
-        ef4->x0C = (u32) GObj_Create(9, 9, 0);
+        ef4->x0C = (u32) GObj_Create(HSD_GOBJ_CLASS_SISLIB_UNK, 9, 0);
         par_joint = HSD_ArchiveGetPublicAs(HSD_Joint, ef4->archive,
                                            "ToyFigurePonPar_Top_joint");
         for (count = 0; count < 3; count++) {
@@ -1489,7 +1489,7 @@ void tyFigupon_Scene_OnEnter(void* arg0)
     _tyFigupon_8031753C();
     joint = HSD_ArchiveGetPublicAs(HSD_Joint, ef4->archive,
                                    "ToyFigurePonNget_Top_joint");
-    data->x8 = GObj_Create(0xA, 0xA, 0);
+    data->x8 = GObj_Create(HSD_GOBJ_CLASS_FOG, 0xA, 0);
     jobj = HSD_JObjLoadJoint(joint);
     HSD_GObjObject_80390A70(data->x8, kind = HSD_GObj_JObjKind, jobj);
     _tyFigupon_80314AA8(jobj, "ToyFigurePonNget_Top_animjoint",

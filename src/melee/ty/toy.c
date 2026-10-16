@@ -2194,7 +2194,7 @@ void Toy_80307470(s32 arg0)
     joint[0] = HSD_ArchiveGetPublicAs(HSD_Joint, tg->x50, *label);
 
     if (joint[0] != NULL) {
-        tg->x0 = GObj_Create(9, 9, 0);
+        tg->x0 = GObj_Create(HSD_GOBJ_CLASS_SISLIB_UNK, 9, 0);
 
         loaded_jobj = HSD_JObjLoadJoint(joint[0]);
         anim[0] = HSD_ArchiveGetPublicAs(HSD_AnimJoint, tg->x50,
@@ -2809,7 +2809,7 @@ HSD_GObj* Toy_803087F4(void* arg0)
             anim->jobj[0] = NULL;
         }
 
-        anim->gobj = GObj_Create(6, 7, 0);
+        anim->gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0);
         anim->xC = entry->x10;
 
         parent_jobj = HSD_JObjAlloc();
@@ -5412,7 +5412,7 @@ static inline void toy_make_gobj(void)
     TyViewData* tg3;
 
     tg3 = _Toy_sbss_804D6E6C;
-    tg3->gobj = GObj_Create(6, 7, 0);
+    tg3->gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0);
     GObj_SetupGXLink(tg3->gobj, _Toy_80312050, 0x39, 0);
     tg3->x4 = 1;
 }
@@ -5471,7 +5471,7 @@ void Toy_80310324(void)
             "TyMnBg.dat", &syms[0], _Toy_803FE038[0], &syms[1],
             _Toy_803FE038[1], &syms[2], _Toy_803FE038[2], 0);
 
-        tg2->x8 = GObj_Create(4, 5, 0);
+        tg2->x8 = GObj_Create(HSD_GOBJ_CLASS_FIGHTER, 5, 0);
         GObj_SetupGXLink(tg2->x8, HSD_SObjLib_803A49E0, 0x32, 0);
 
         toy_sobj_loop(tg2, syms);

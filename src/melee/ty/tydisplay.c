@@ -1678,7 +1678,7 @@ void _tyDisplay_8031B1FC(void)
     joint =
         HSD_ArchiveGetPublicAs(HSD_Joint, ptr->archive, "ToyDspBg_Top_joint");
     if (joint != NULL) {
-        ptr->gobj4 = GObj_Create(9, 9, zero);
+        ptr->gobj4 = GObj_Create(HSD_GOBJ_CLASS_SISLIB_UNK, 9, zero);
         jobj = HSD_JObjLoadJoint(joint);
         HSD_GObjObject_80390A70(ptr->gobj4, temp = HSD_GObj_JObjKind, jobj);
         GObj_SetupGXLink(ptr->gobj4, HSD_GObj_JObjCallback, 0x3C, zero);
@@ -2213,7 +2213,7 @@ HSD_GObj* _tyDisplay_8031BC54(s32 arg0)
     u32 c2;
 
     entry = tyDisplay_8031B9DC(id);
-    gobj = GObj_Create(6, 7, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0);
     root = HSD_JObjAlloc();
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, root);
     GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, 0x3C, 0);

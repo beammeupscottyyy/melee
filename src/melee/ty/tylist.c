@@ -453,7 +453,7 @@ void* _tyList_80313508(HSD_GObj* parent, char* symbol_name, float x, float y,
             return child;
         } else {
             HSD_GObj* gobj;
-            gobj = GObj_Create(6, 7, 0);
+            gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 7, 0);
             HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
             GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, 0x39, 0);
             return gobj;
