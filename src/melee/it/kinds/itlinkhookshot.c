@@ -968,9 +968,9 @@ s32 it_802A3E50(ItemLink* item_link, enum FighterKind arg1, f32 arg8)
     }
     if (item_link->x2C_b1 && !flag && !item_link->x2C_b2) {
         if (arg1 == Ft_Kind_CLink) {
-            lbAudioAx_800237A8(0x111BF, 0x7FU, 0x40U);
+            lbAudioAx_800237A8(0x111BF, SFX_VOLUME_MAX, SFX_PAN_MID);
         } else {
-            lbAudioAx_800237A8(0x2714F, 0x7FU, 0x40U);
+            lbAudioAx_800237A8(0x2714F, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
         item_link->x2C_b2 = 1;
     }

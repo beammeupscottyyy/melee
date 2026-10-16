@@ -472,7 +472,8 @@ void it_802703E8(Item_GObj* arg_item_gobj)
                         (arg_item->xDD4_itemVar.pokemon.x0 == 7) &&
                         ((hit->sfx_kind == 1U) || (hit->sfx_kind == 2U)))
                     {
-                        lbAudioAx_800237A8(0x61A87, 0x7FU, 0x40U);
+                        lbAudioAx_800237A8(0x61A87, SFX_VOLUME_MAX,
+                                           SFX_PAN_MID);
                     } else if ((kind != It_PKind_Random) ||
                                (arg_item->xDD4_itemVar.pokemon.x0 != 8) ||
                                ((hit->sfx_kind != 1U) &&
@@ -524,7 +525,7 @@ static inline void it_802706D0_sub3(Item* item, Item* arg_item,
         (arg_item->xDD4_itemVar.pokemon.x0 == 7) &&
         ((hit->sfx_kind == 1U) || (hit->sfx_kind == 2U)))
     {
-        lbAudioAx_800237A8(0x61A87, 0x7FU, 0x40U);
+        lbAudioAx_800237A8(0x61A87, SFX_VOLUME_MAX, SFX_PAN_MID);
     } else if ((kind != It_PKind_Random) ||
                (arg_item->xDD4_itemVar.pokemon.x0 != 8) ||
                ((hit->sfx_kind != 1U) && (hit->sfx_kind != 2U)))

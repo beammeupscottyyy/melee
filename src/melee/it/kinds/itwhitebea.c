@@ -415,9 +415,9 @@ bool itWhitebea_UnkMotion1_Anim(Item_GObj* gobj)
     if (ip->xDD4_itemVar.whitebea.x44 <= 0) {
         sfx = mpLib_80056A1C(mpLineGetFlags(ip->xC30), &local);
         ip->xDD4_itemVar.whitebea.x44 = 14;
-        Item_8026AE84(ip, 0x13C, 0x7F, 0x40);
+        Item_8026AE84(ip, 0x13C, SFX_VOLUME_MAX, SFX_PAN_MID);
         if (*sfx != -1) {
-            Item_8026AE84(ip, *sfx, 0x7F, 0x40);
+            Item_8026AE84(ip, *sfx, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     } else {
         ip->xDD4_itemVar.whitebea.x44--;
@@ -686,7 +686,7 @@ void it_802E4464(Item_GObj* gobj)
     it_802762BC(ip);
     ip->x40_vel.y = attrs->x10;
     it_80275258(gobj);
-    Item_8026AE84(ip, 0x4A, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x4A, SFX_VOLUME_MAX, SFX_PAN_MID);
     Item_80268E5C(gobj, 6, ITEM_ANIM_UPDATE);
 }
 
@@ -713,8 +713,8 @@ void it_802E4558(Item_GObj* gobj)
 {
     Item* ip = gobj->user_data;
     it_802762B0(ip);
-    Item_8026AE84(ip, 0x46, 0x7F, 0x40);
-    Item_8026AE84(ip, 0x13C, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x46, SFX_VOLUME_MAX, SFX_PAN_MID);
+    Item_8026AE84(ip, 0x13C, SFX_VOLUME_MAX, SFX_PAN_MID);
     Item_80268E5C(gobj, 7, ITEM_ANIM_UPDATE);
     grIceMt_801FA6D8();
 }

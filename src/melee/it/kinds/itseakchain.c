@@ -420,7 +420,7 @@ int it_802BB938(ItemLink* link, int arg1, float arg2)
     coll->cur_pos = link->pos;
     if (mpColl_80048844(coll)) {
         if (!link->x2C_b1 && arg1 != 0 && !link->x2C_b2) {
-            lbAudioAx_800237A8(0x41F45, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x41F45, SFX_VOLUME_MAX, SFX_PAN_MID);
             link->x2C_b2 = 0xF; // weird; gets truncated to 0x1
         }
         link->x2C_b1 = true;

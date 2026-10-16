@@ -365,7 +365,7 @@ void it_802F202C(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
 
-    lbAudioAx_800237A8(0xAA, 0x7F, 0x40);
+    lbAudioAx_800237A8(0xAA, SFX_VOLUME_MAX, SFX_PAN_MID);
     ip->x40_vel.x = 0.0F;
     if (ip->x40_vel.y < -1.5F) {
         ip->x40_vel.y = -1.5F;

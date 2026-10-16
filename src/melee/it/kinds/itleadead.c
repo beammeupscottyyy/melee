@@ -1075,7 +1075,7 @@ void it_802EAAEC(Item_GObj* gobj, Fighter_GObj* fobj, int part, f32 ignored)
     jobj = it_80272CC0(gobj, 1);
     HSD_JObjSetTranslateZ(jobj, it_802EAAEC_inline(ip2));
     it_80274ECC(gobj, 1);
-    Item_8026AE84(ip, 0x135, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x135, SFX_VOLUME_MAX, SFX_PAN_MID);
     ftLib_GetPos(fobj, &sp24);
     if (ip->pos.x < sp24.x) {
         ip->facing_dir = 1.0f;

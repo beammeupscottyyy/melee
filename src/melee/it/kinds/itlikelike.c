@@ -874,7 +874,7 @@ void it_802DB398(Item_GObj* gobj)
 
     ip->facing_dir = ip->xDD4_itemVar.likelike.x3C;
     ip->xDD4_itemVar.likelike.x50 = NULL;
-    Item_8026AE84(ip, 0x139, 0x7FU, 0x40U);
+    Item_8026AE84(ip, 0x139, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_80275258(gobj);
     if (ip->facing_dir == 1.0f) {
         Item_80268E5C(gobj, 0xB, ITEM_ANIM_UPDATE);
@@ -939,7 +939,7 @@ void it_802DB5F0(Item_GObj* gobj)
 
     it_80273454(gobj);
     Item_80268E5C((HSD_GObj*) gobj, 9, ITEM_ANIM_UPDATE);
-    Item_8026AE84(ip, 0x139, 0x7FU, 0x40U);
+    Item_8026AE84(ip, 0x139, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_80274F28(ip, 1, it_802DB358,
                 (void (*)(HSD_GObj*, HSD_GObj*)) ftCo_800C78B0);
     ip->xDD4_itemVar.likelike.x50 = NULL;
@@ -977,7 +977,7 @@ void it_802DB74C(Item_GObj* gobj)
 
     it_80273454(gobj);
     Item_80268E5C((HSD_GObj*) gobj, 0xA, ITEM_ANIM_UPDATE);
-    Item_8026AE84(ip, 0x139, 0x7FU, 0x40U);
+    Item_8026AE84(ip, 0x139, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_80274F28(ip, 1, it_802DB358,
                 (void (*)(HSD_GObj*, HSD_GObj*)) ftCo_800C78B0);
     ip->xDD4_itemVar.likelike.x50 = NULL;
@@ -1014,7 +1014,7 @@ void it_802DB8A8(Item_GObj* gobj)
     PAD_STACK(16);
     it_80273454(gobj);
     ip->xDD4_itemVar.likelike.x4C = 0.0f;
-    Item_8026AE84(ip, 0x13B, 0x7FU, 0x40U);
+    Item_8026AE84(ip, 0x13B, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_80275258(gobj);
     Item_80268E5C(gobj, 0xD, ITEM_ANIM_UPDATE);
 }
@@ -1110,7 +1110,7 @@ void it_802DBAF0(Item_GObj* arg0, s32 arg1, s32 arg2)
             ip->xDD4_itemVar.likelike.x50 = NULL;
             ip->atk_victim = NULL;
             ip->grab_victim = NULL;
-            Item_8026AE84(ip, 0x13A, 0x7FU, 0x40U);
+            Item_8026AE84(ip, 0x13A, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     }
 }

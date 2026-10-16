@@ -258,7 +258,7 @@ bool itOctarock_UnkMotion4_Anim(Item_GObj* gobj)
         lb_8000B1CC(ip->xBBC_dynamicBoneTable->bones[0xE], NULL, &v);
         it_802E8ADC(gobj, &v, (s32) ip->facing_dir, attr->x10, attr->x14,
                     attr->x18);
-        Item_8026AE84(ip, 0x137, 0x7F, 0x40);
+        Item_8026AE84(ip, 0x137, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     if (!it_80272C6C(gobj)) {
         it_8026DA08(gobj);

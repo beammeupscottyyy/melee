@@ -183,7 +183,8 @@ static inline void itWhispyapple_UnkMotion0_Coll_inline(Item_GObj* gobj)
     Item* ip = gobj->user_data;
     s32 coll = it_8026DAA8(gobj);
     if (coll & 0xF) {
-        Item_8026AE84(ip, it_803F9250[HSD_Randi(3)], 0x7F, 0x40);
+        Item_8026AE84(ip, it_803F9250[HSD_Randi(3)], SFX_VOLUME_MAX,
+                      SFX_PAN_MID);
         it_80276FC4(gobj, coll);
         if ((coll & 1) && it_8026DBC8(gobj)) {
             it_802EE6A0(gobj);
@@ -262,7 +263,8 @@ bool itWhispyapple_UnkMotion5_Coll(Item_GObj* gobj)
 
     coll = it_8026DAA8(gobj);
     if (coll & 0xF) {
-        Item_8026AE84(ip, it_803F9250[HSD_Randi(3)], 0x7F, 0x40);
+        Item_8026AE84(ip, it_803F9250[HSD_Randi(3)], SFX_VOLUME_MAX,
+                      SFX_PAN_MID);
         it_80276FC4(gobj, coll);
         if ((coll & 1) && it_8026DBC8(gobj)) {
             it_802EE6A0(gobj);

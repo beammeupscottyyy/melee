@@ -95,7 +95,7 @@ void itOctarockstone_802E890C(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
     it_802762BC(ip);
     Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
-    Item_8026AE84(ip, 0x138, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x138, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 bool itOctarockstone_UnkMotion1_Anim(Item_GObj* gobj)

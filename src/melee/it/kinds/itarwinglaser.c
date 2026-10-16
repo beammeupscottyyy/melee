@@ -471,7 +471,7 @@ static bool itArwinglaser_UnkMotion2_Coll(Item_GObj* gobj)
     }
     if (hit == 1) {
         efSync_Spawn(0x40E, gobj, &sp40);
-        Item_8026AE84(ip, 0x74, 0x7FU, 0x40U);
+        Item_8026AE84(ip, 0x74, SFX_VOLUME_MAX, SFX_PAN_MID);
         return true;
     }
     return false;
@@ -490,15 +490,15 @@ static bool itArwinglaser_UnkMotion3_Coll(Item_GObj* gobj)
         ip->xDD4_itemVar.arwinglaser.xE4C++;
         if (ip->xDD4_itemVar.arwinglaser.xE4C == 1) {
             if (ip->xDD4_itemVar.arwinglaser.xE48 == 3) {
-                Item_8026AE84(ip, 0x5573B, 0x7FU, 0x40U);
+                Item_8026AE84(ip, 0x5573B, SFX_VOLUME_MAX, SFX_PAN_MID);
             } else {
-                Item_8026AE84(ip, 0x6B6CA, 0x7FU, 0x40U);
+                Item_8026AE84(ip, 0x6B6CA, SFX_VOLUME_MAX, SFX_PAN_MID);
             }
             ip->xDD4_itemVar.arwinglaser.xE4C++;
         }
         if (it_802E70BC(gobj) == true) {
             efSync_Spawn(0x40E, gobj, &sp10);
-            Item_8026AE84(ip, 0x74, 0x7FU, 0x40U);
+            Item_8026AE84(ip, 0x74, SFX_VOLUME_MAX, SFX_PAN_MID);
             return true;
         }
     }
@@ -548,7 +548,7 @@ bool it_802E838C(Item_GObj* gobj)
     lb_8000B1CC(ip->xBBC_dynamicBoneTable->bones[4], NULL, &sp10);
     ip->xDD4_itemVar.arwinglaser.xE18 = sp10;
     efSync_Spawn(0x40E, gobj, &sp10);
-    Item_8026AE84(ip, 0x74, 0x7FU, 0x40U);
+    Item_8026AE84(ip, 0x74, SFX_VOLUME_MAX, SFX_PAN_MID);
     return true;
 }
 
