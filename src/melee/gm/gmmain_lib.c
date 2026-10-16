@@ -1173,7 +1173,7 @@ static s8 gmMainLib_804D3EE4[] = { 0 };
 
 void gmMainLib_8015F600(int arg0, int arg1)
 {
-    s32 lang;
+    LbLanguage lang;
     PAD_STACK(80);
 
     if (arg0 == 1) {
@@ -1194,11 +1194,11 @@ void gmMainLib_8015F600(int arg0, int arg1)
 
         {
             switch (lbLang_GetLanguageSetting()) {
-            case 0:
-                lang = 0;
+            case LANG_JP:
+                lang = LANG_JP;
                 break;
-            case 1:
-                lang = 1;
+            case LANG_US:
+                lang = LANG_US;
                 break;
             }
             lbLang_SetSavedLanguage(lang);
@@ -1302,11 +1302,11 @@ void gmMainLib_8015FBA4(void)
 {
     memzero(gmMainLib_804D3EE0, sizeof(*gmMainLib_804D3EE0));
     if (DVDConvertPathToEntrynum("/usa.ini") != -1) {
-        lbLang_SetLanguageSetting(1);
-        lbLang_SetSavedLanguage(1);
+        lbLang_SetLanguageSetting(LANG_US);
+        lbLang_SetSavedLanguage(LANG_US);
     } else {
-        lbLang_SetLanguageSetting(0);
-        lbLang_SetSavedLanguage(0);
+        lbLang_SetLanguageSetting(LANG_JP);
+        lbLang_SetSavedLanguage(LANG_JP);
     }
 
     gmMainLib_8045A6C0.x1850 = gmMainLib_DefaultGameRules;

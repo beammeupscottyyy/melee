@@ -9,12 +9,12 @@ typedef enum {
     LANG_COUNT,
 } LbLanguage;
 
-enum_t lbLang_GetLanguageSetting(void);
-enum_t lbLang_SetLanguageSetting(enum_t language);
+LbLanguage lbLang_GetLanguageSetting(void);
+LbLanguage lbLang_SetLanguageSetting(LbLanguage language);
 bool lbLang_IsSettingJP(void);
 bool lbLang_IsSettingUS(void);
-enum_t lbLang_GetSavedLanguage(void);
-void lbLang_SetSavedLanguage(enum_t language);
+LbLanguage lbLang_GetSavedLanguage(void);
+void lbLang_SetSavedLanguage(LbLanguage language);
 bool lbLang_IsSavedLanguageJP(void);
 bool lbLang_IsSavedLanguageUS(void);
 

@@ -3,12 +3,12 @@
 #include <melee/gm/gmmain_lib.h>
 #include <melee/gm/types.h>
 
-enum_t lbLang_GetLanguageSetting(void)
+LbLanguage lbLang_GetLanguageSetting(void)
 {
     return gmMainLib_804D3EE0->language;
 }
 
-enum_t lbLang_SetLanguageSetting(enum_t language)
+LbLanguage lbLang_SetLanguageSetting(LbLanguage language)
 {
     if (language >= 0 && language < LANG_COUNT) {
         gmMainLib_804D3EE0->language = language;
@@ -27,12 +27,12 @@ bool lbLang_IsSettingUS(void)
     return gmMainLib_804D3EE0->language == LANG_US ? true : false;
 }
 
-enum_t lbLang_GetSavedLanguage(void)
+LbLanguage lbLang_GetSavedLanguage(void)
 {
     return gmMainLib_GetGamePrefs()->saved_language;
 }
 
-void lbLang_SetSavedLanguage(enum_t language)
+void lbLang_SetSavedLanguage(LbLanguage language)
 {
     if (language >= 0 && language < LANG_COUNT) {
         gmMainLib_GetGamePrefs()->saved_language = language;
