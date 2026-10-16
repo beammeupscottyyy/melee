@@ -3807,7 +3807,7 @@ void Camera_8002FEEC(s32 arg0)
     if (Player_GetEntity(arg0) != NULL) {
         box = ftLib_GetCameraSubject(Player_GetEntity(arg0));
         if ((box != NULL) && ((game_camera.mode) != CAMERA_DEBUG_FOLLOW)) {
-            if (game_camera.mode <= (u32) CAMERA_PAUSE) {
+            if (game_camera.mode <= CAMERA_PAUSE) {
                 cm_80453004.last_mode = game_camera.mode;
             }
 
@@ -3847,7 +3847,7 @@ void Camera_8003006C(void)
     HSD_CObj* cobj;
 
     if (game_camera.mode != CAMERA_DEBUG_FREE) {
-        if (game_camera.mode <= (u32) CAMERA_PAUSE) {
+        if (game_camera.mode <= CAMERA_PAUSE) {
             cm_80453004.last_mode = game_camera.mode;
         }
         game_camera.mode = CAMERA_DEBUG_FREE;
@@ -4410,7 +4410,7 @@ void Camera_StopQuake(CmQuakeKind kind)
     game_camera.quake_frames_left[kind] = 0;
 }
 
-enum_t Camera_80031060(void)
+u8 Camera_80031060(void)
 {
     return game_camera.x398_b6_b7;
 }
@@ -4420,7 +4420,7 @@ void Camera_80031074(u8 arg0)
     game_camera.x398_b6_b7 = arg0;
 }
 
-enum_t Camera_8003108C(void)
+u8 Camera_8003108C(void)
 {
     return game_camera.x399_b0_b1;
 }

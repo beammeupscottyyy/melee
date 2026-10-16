@@ -67,7 +67,7 @@
 /* 02F488 */ s32 Camera_SetBounds(Vec4*);
 
 /**
- * @brief Switches the camera to pause-camera mode.
+ * Switches the camera to pause-camera mode.
  *
  * Configures pause-camera bounds, eye offset, and zoom from stage data for the
  * given pauser. Called when a match is paused (e.g. via
@@ -78,19 +78,21 @@
  * are also accepted (@c 0xB is used when no valid slot is available).
  * Out-of-range values default to @c 0.
  *
- * @param[in] pauserId   Controller port / player id of the pauser. Valid ids
+ * @param[in] pauserId Controller port / player id of the pauser. Valid ids
  * are 0-3; ids 4-5 are also accepted. Out-of-range values default to @c 4.
- * @param[in] arg2       Initial zoom preset: @c 0 uses the stage's default
+ * @param[in] arg2 Initial zoom preset: @c 0 uses the stage's default
  * pause distance; @c 1 uses the current minimum zoom.
  */
-/* 02F4D4 */ void Camera_SetUpPauseCamera(s8, s8, s32);
+/* 02F4D4 */ void Camera_SetUpPauseCamera(s8 pauserSlot, s8 pauserId,
+                                          s32 arg2);
 
 /**
- * @brief Switches the camera to pause-camera mode with default stage zoom.
+ * Switches the camera to pause-camera mode with default stage zoom.
  *
  * Wrapper around #Camera_SetUpPauseCamera with @p arg2 set to @c 0.
  */
-/* 02F73C */ void Camera_SetUpPauseCameraWithDefaultZoom(s8, s8);
+/* 02F73C */ void Camera_SetUpPauseCameraWithDefaultZoom(s8 pauserSlot,
+                                                         s8 pauserId);
 
 /* 02F760 */ void Camera_8002F760(s8, s8);
 /* 02F784 */ void Camera_8002F784(s8, s8);
@@ -147,9 +149,9 @@
 /* 030E34 */ void Camera_SetQuakeScale(f32);
 /* 030E44 */ void Camera_RequestQuake(CmQuakeKind, Vec*);
 /* 031044 */ void Camera_StopQuake(CmQuakeKind);
-/* 031060 */ enum_t Camera_80031060(void);
+/* 031060 */ u8 Camera_80031060(void);
 /* 031074 */ void Camera_80031074(u8);
-/* 03108C */ enum_t Camera_8003108C(void);
+/* 03108C */ u8 Camera_8003108C(void);
 /* 0310A0 */ void Camera_800310A0(u8);
 /* 0310B8 */ HSD_CObj* Camera_800310B8(void);
 /* 0310E8 */ void Camera_800310E8(void);
