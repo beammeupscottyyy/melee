@@ -87,12 +87,12 @@ static inline void createHeap(LbHeapKind kind)
     }
 }
 
-void lbHeap_800158D0(int arg0, int arg1)
+void lbHeap_800158D0(LbHeapKind arg0, int arg1)
 {
     lbHeap_80431FA0.heap_array[arg0].transient = arg1;
 }
 
-int lbHeap_800158E8(int arg0)
+int lbHeap_800158E8(LbHeapKind arg0)
 {
     return lbHeap_80431FA0.heap_array[arg0].transient;
 }
@@ -173,12 +173,12 @@ void lbHeap_80015900(void)
     }
 }
 
-LbHeapStatus lbHeap_80015BB8(int arg0)
+LbHeapStatus lbHeap_80015BB8(LbHeapKind arg0)
 {
     return lbHeap_80431FA0.heap_array[arg0].status;
 }
 
-void* lbHeap_80015BD0(int heap_id, size_t size)
+void* lbHeap_80015BD0(LbHeapKind heap_id, size_t size)
 {
     void* result;
     int enabled = OSDisableInterrupts();
@@ -203,7 +203,7 @@ void* lbHeap_80015BD0(int heap_id, size_t size)
     return result;
 }
 
-void lbHeap_80015CA8(int arg0, void* addr)
+void lbHeap_80015CA8(LbHeapKind arg0, void* addr)
 {
     int enabled = OSDisableInterrupts();
     struct Heap* p = &lbHeap_80431FA0.heap_array[arg0];
@@ -220,13 +220,13 @@ void lbHeap_80015CA8(int arg0, void* addr)
     OSRestoreInterrupts(enabled);
 }
 
-int lbHeap_80015D6C(u32 heap0, void (*cb)(u32), u32 heap1)
+int lbHeap_80015D6C(LbHeapKind heap0, void (*cb)(u32), LbHeapKind heap1)
 {
     int enabled = OSDisableInterrupts();
     struct Heap* p = &lbHeap_80431FA0.heap_array[heap0];
     int var_r30;
 
-    if (heap0 <= 1) {
+    if (heap0 <= LbHeapKind_ARAM) {
         var_r30 = 0;
     } else {
         var_r30 = lbMemory_8001529C(p->handle, cb, heap1);

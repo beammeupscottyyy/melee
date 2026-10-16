@@ -147,7 +147,7 @@ void lbFile_8001668C(const char* basename, void* dst, size_t* size)
     waitForDisc();
 }
 
-static void loadFile(int heap_id, const char* basename, void** dst,
+static void loadFile(LbHeapKind heap_id, const char* basename, void** dst,
                      size_t* size)
 {
     *size = lbFileGetSize(basename);
@@ -159,10 +159,10 @@ static void loadFile(int heap_id, const char* basename, void** dst,
 void lbFile_80016760(const char* basename, void** dst, size_t* size)
 {
     cancel = false;
-    loadFile(0, basename, dst, size);
+    loadFile(LbHeapKind_Hsd, basename, dst, size);
 }
 
-bool lbFile_800168A0(int heap_id, const char* basename, void** dst,
+bool lbFile_800168A0(LbHeapKind heap_id, const char* basename, void** dst,
                      size_t* size)
 {
     if ((*dst = lbDvd_8001819C(basename))) {

@@ -49,7 +49,7 @@ void lbDvd_SetupVsPreloadCache(void)
 {
     lbDvd_80018C6C();
     lbDvd_80018254();
-    lbDvd_80017700(4);
+    lbDvd_80017700(LbHeapKind_AllM);
 }
 
 static inline void releaseEntry(PreloadEntry* entry)
@@ -751,9 +751,9 @@ void lbDvd_80018C6C(void)
     }
 }
 
-static s32 lbDvd_804D37F4[2] = { 4, 5 };
+static s32 lbDvd_804D37F4[2] = { LbHeapKind_AllM, LbHeapKind_AllA };
 
-static inline void releaseHeap(int heap)
+static inline void releaseHeap(LbHeapKind heap)
 {
     if (lbHeap_800158E8(heap) == 1) {
         while (lbDvd_80017598(heap) != 0) {
@@ -785,8 +785,8 @@ void lbDvd_80018CF4(int arg0)
             preloadCache.new_scene.mode_scene_changes + 1;
     }
     preloadCache.persistent_heaps = arg0;
-    lbHeap_800158D0(2, 1);
-    lbHeap_800158D0(3, 1);
+    lbHeap_800158D0(LbHeapKind_Seq, 1);
+    lbHeap_800158D0(LbHeapKind_Stay, 1);
 
     for (i = 0; i < 2; i++) {
         lbHeap_800158D0(lbDvd_804D37F4[i], 1);
@@ -801,28 +801,28 @@ void lbDvd_80018CF4(int arg0)
             preload_cache_scene.game_cache;
         break;
     case lbDvdPreload_1:
-        lbHeap_800158D0(2, 0);
+        lbHeap_800158D0(LbHeapKind_Seq, 0);
         lbDvd_GetPreloadCacheScene()->is_heap_persistent[1] =
             preload_cache_scene.is_heap_persistent[1];
         lbDvd_GetPreloadCacheScene()->game_cache =
             preload_cache_scene.game_cache;
         break;
     case lbDvdPreload_2:
-        lbHeap_800158D0(2, 0);
-        lbHeap_800158D0(3, 0);
+        lbHeap_800158D0(LbHeapKind_Seq, 0);
+        lbHeap_800158D0(LbHeapKind_Stay, 0);
         lbDvd_GetPreloadCacheScene()->game_cache =
             preload_cache_scene.game_cache;
         break;
     case lbDvdPreload_3:
-        lbHeap_800158D0(2, 0);
-        lbHeap_800158D0(3, 0);
+        lbHeap_800158D0(LbHeapKind_Seq, 0);
+        lbHeap_800158D0(LbHeapKind_Stay, 0);
         for (i = 0; i < ARRAY_SIZE(lbDvd_804D37F4); i++) {
             lbHeap_800158D0(lbDvd_804D37F4[i], 0);
         }
         break;
     }
-    releaseHeap(2);
-    releaseHeap(3);
+    releaseHeap(LbHeapKind_Seq);
+    releaseHeap(LbHeapKind_Stay);
     releaseListedHeaps();
     lbHeap_80015900();
 }

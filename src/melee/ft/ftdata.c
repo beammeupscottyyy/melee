@@ -1669,7 +1669,7 @@ void ftData_80085A14(FighterKind kind)
     PAD_STACK(4);
 
     if (ftData_Table_Unk0[kind].data == NULL) {
-        lbFile_800168A0(1, ftData_803C23E4[kind], &sp18, &sp10);
+        lbFile_800168A0(LbHeapKind_ARAM, ftData_803C23E4[kind], &sp18, &sp10);
         a_head = sp18;
         HSD_ASSERT(0x974, a_head);
         for (i = 0; i < (u32) ftData_Table_Unk0[kind].count; i++) {

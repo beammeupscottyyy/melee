@@ -15,6 +15,8 @@
 
 #include <sysdolphin/baselib/forward.h>
 
+#include <melee/lb/lbheap.h>
+
 void lbFile_800161C4(int file, uintptr_t src, uintptr_t dest, size_t size,
                      int type, int pri);
 
@@ -46,6 +48,7 @@ void lbFile_80016760(const char* basename, void** dst, size_t* size);
  * @returns True iff the file was already preloaded, rather than read from
  * disc.
  */
-bool lbFile_800168A0(int arg0, const char* basename, void** dst, size_t* size);
+bool lbFile_800168A0(LbHeapKind heap_id, const char* basename, void** dst,
+                     size_t* size);
 
 #endif // MELEE_LB_FILE_H
