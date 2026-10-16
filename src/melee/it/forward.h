@@ -7,9 +7,9 @@
 #define HSD_GOBJ_CLASS_ITEM 6
 #define HSD_GOBJ_PLINK_ITEM 9
 
-/// @def HSD_GOBJ_CLASS_ITEMLINK
 /// Used by chain-type items in-game to link multiple parts together
 #define HSD_GOBJ_CLASS_ITEMLINK 7
+#define HSD_GOBJ_PLINK_ITEMLINK 10
 
 typedef struct Article Article;
 typedef struct BobOmbRain BobOmbRain;
@@ -412,55 +412,55 @@ typedef enum ItemKind {
     /// Minor Sections
     /* 000 */ It_Kind_Common_Start =
         It_Kind_Capsule, //   0 - Start of Common Items
-    /* 023 */ It_Kind_Common_End =
-        It_Kind_M_Ball + 1, //  35 - End of Common Items
+    /* 023 */ It_Kind_Common_End = It_Kind_M_Ball +
+        1, //  35 - End of Common Items
     /* 023 */ It_Kind_Item_Related_Start =
         It_Kind_L_Gun_Ray, //  35 - Start of Item-Related Items (projectiles,
                            //  effects, and misc)
-    /* 02B */ It_Kind_Item_Related_End =
-        It_Kind_EvYoshiEgg + 1, //  43 - End of Item-Related Items
+    /* 02B */ It_Kind_Item_Related_End = It_Kind_EvYoshiEgg +
+        1, //  43 - End of Item-Related Items
     /* 02B */ It_Kind_Monster_Start =
         It_Kind_Kuriboh, //  43 - Start of Monster Items
-    /* 02F */ It_Kind_Monster_End =
-        It_Kind_Ottosea + 1, //  47 - End of Monster Items
+    /* 02F */ It_Kind_Monster_End = It_Kind_Ottosea +
+        1, //  47 - End of Monster Items
     /* 02F */ It_Kind_Monster_Related_Start =
         It_Kind_Octarock_Stone, //  47 - Start of Monster-Related Items
-    /* 02F */ It_Kind_Monster_Related_End =
-        It_Kind_Octarock_Stone + 1, //  48 - End of Monster-Related Items
+    /* 02F */ It_Kind_Monster_Related_End = It_Kind_Octarock_Stone +
+        1, //  48 - End of Monster-Related Items
     /* 030 */ It_Kind_Character_Start =
         It_Kind_Mario_Fire, //  48 - Start of Character Items
-    /* 09E */ It_Kind_Character_End =
-        It_Kind_Kirby_YoshiEggLay + 1, // 158 - End of Character Items
+    /* 09E */ It_Kind_Character_End = It_Kind_Kirby_YoshiEggLay +
+        1, // 158 - End of Character Items
     /* 09E */ It_Kind_Misc_Start =
         It_Kind_Unk4, // 158 - Start of Miscellaneous Items
-    /* 0A0 */ It_Kind_Misc_End =
-        It_Kind_Coin + 1, // 160 - End of Miscellaneous Items
+    /* 0A0 */ It_Kind_Misc_End = It_Kind_Coin +
+        1, // 160 - End of Miscellaneous Items
     /* 0A0 */ It_PKind_Misc_Start =
         It_PKind_Random, // 160 - Start of Pokemon Miscellaneous Items
-    /* 0A0 */ It_PKind_Misc_End =
-        It_PKind_Random + 1, // 161 - End of Pokemon Miscellaneous Items
-    /* 0A1 */ It_PKind_Start =
-        It_PKind_Random + 1, // 161 - Start of Poke Ball Pokemon Item, named by
-                             // an assert in #pl_8003E70C
-    /* 0BF */ It_PKind_Terminate =
-        It_PKind_Fushigibana + 1, // 191 - End of Poke Ball Pokemon Items
+    /* 0A0 */ It_PKind_Misc_End = It_PKind_Random +
+        1, // 161 - End of Pokemon Miscellaneous Items
+    /* 0A1 */ It_PKind_Start = It_PKind_Random +
+        1, // 161 - Start of Poke Ball Pokemon Item, named by
+           // an assert in #pl_8003E70C
+    /* 0BF */ It_PKind_Terminate = It_PKind_Fushigibana +
+        1, // 191 - End of Poke Ball Pokemon Items
     /* 0BF */ It_PKind_Related_Start =
         It_Kind_Chicorita_Leaf, // 191 - Start of Pokemon-Related Items
-    /* 0D0 */ It_PKind_Related_End =
-        It_Kind_Pokemon_Unk + 1, // 208 - End of Pokemon-Related Items
+    /* 0D0 */ It_PKind_Related_End = It_Kind_Pokemon_Unk +
+        1, // 208 - End of Pokemon-Related Items
     /* 0D0 */ It_Kind_Monster2_Start =
         It_Kind_Old_Kuri, // 208 - Start of Monster 2 Items
-    /* 0DD */ It_Kind_Monster2_End =
-        It_Kind_ZRShell + 1, // 221 - End of Monster 2 Items
+    /* 0DD */ It_Kind_Monster2_End = It_Kind_ZRShell +
+        1, // 221 - End of Monster 2 Items
     /* 0DD */ It_Kind_Stage_Start =
         It_Kind_Tincle, // 221 - Start of Stage-Specific Items
-    /* 0EA */ It_Kind_Stage_End =
-        It_Kind_Kyasarin + 1, // 234 - End of Stage-Specific Items
+    /* 0EA */ It_Kind_Stage_End = It_Kind_Kyasarin +
+        1, // 234 - End of Stage-Specific Items
     /* 0EA */ It_Kind_Stage_Related_Start =
         It_Kind_Arwing_Laser, // 234 - Start of Stage-Specific-Related Items
-    /* 0EE */ It_Kind_Stage_Related_End =
-        It_Kind_Kyasarin_Egg + 2, // 238 - End of Stage-Specific-Related Items
-                                  // (not sure why it skips 2 instead of 1)
+    /* 0EE */ It_Kind_Stage_Related_End = It_Kind_Kyasarin_Egg +
+        2, // 238 - End of Stage-Specific-Related Items
+           // (not sure why it skips 2 instead of 1)
 
     /// Major Sections - separated according to where values are stored in DAT
     /// files
@@ -498,42 +498,41 @@ typedef enum ItemKind {
                                             // valid item range
 
     /// Section Range Sizes
-    It_Kind_Common_Items_Size =
-        It_Kind_Common_End - It_Kind_Common_Start, // 35
-    It_Kind_Item_Related_Size =
-        It_Kind_Item_Related_End - It_Kind_Item_Related_Start, // 8
-    It_Kind_Monster_Items_Size =
-        It_Kind_Monster_End - It_Kind_Monster_Start, // 4
-    It_Kind_Monster_Related_Size =
-        It_Kind_Monster_Related_End - It_Kind_Monster_Related_Start, // 1
-    It_Kind_Character_Items_Size =
-        It_Kind_Character_End - It_Kind_Character_Start,                // 110
+    It_Kind_Common_Items_Size = It_Kind_Common_End -
+        It_Kind_Common_Start, // 35
+    It_Kind_Item_Related_Size = It_Kind_Item_Related_End -
+        It_Kind_Item_Related_Start, // 8
+    It_Kind_Monster_Items_Size = It_Kind_Monster_End -
+        It_Kind_Monster_Start, // 4
+    It_Kind_Monster_Related_Size = It_Kind_Monster_Related_End -
+        It_Kind_Monster_Related_Start, // 1
+    It_Kind_Character_Items_Size = It_Kind_Character_End -
+        It_Kind_Character_Start,                                        // 110
     It_Kind_Misc_Items_Size = It_Kind_Misc_End - It_Kind_Misc_Start,    // 2
     It_PKind_Misc_Items_Size = It_PKind_Misc_End - It_PKind_Misc_Start, // 1
     It_PKind_Items_Size = It_PKind_Terminate - It_PKind_Start,          // 30
-    It_PKind_Items_Total =
-        It_PKind_Misc_Items_Size + It_PKind_Items_Size, // 31
-    It_PKind_Items_Related_Size =
-        It_PKind_Related_End - It_PKind_Related_Start, // 17
-    It_Kind_Monster2_Items_Size =
-        It_Kind_Monster2_End - It_Kind_Monster2_Start,                  // 13
+    It_PKind_Items_Total = It_PKind_Misc_Items_Size +
+        It_PKind_Items_Size, // 31
+    It_PKind_Items_Related_Size = It_PKind_Related_End -
+        It_PKind_Related_Start, // 17
+    It_Kind_Monster2_Items_Size = It_Kind_Monster2_End -
+        It_Kind_Monster2_Start,                                         // 13
     It_Kind_Stage_Items_Size = It_Kind_Stage_End - It_Kind_Stage_Start, // 13
-    It_Kind_Monsters2_Stage_Items_Size =
-        It_Kind_Stage_End - It_Kind_Monster2_Start, // 26
-    It_Kind_Stage_Related_Items_Size =
-        It_Kind_Stage_Related_End - It_Kind_Stage_Related_Start, // 4
+    It_Kind_Monsters2_Stage_Items_Size = It_Kind_Stage_End -
+        It_Kind_Monster2_Start, // 26
+    It_Kind_Stage_Related_Items_Size = It_Kind_Stage_Related_End -
+        It_Kind_Stage_Related_Start, // 4
 
     It_Kind_Section_Common_Extended_Size =
-        It_Kind_Section_Common_Extended_End -
+            It_Kind_Section_Common_Extended_End -
         It_Kind_Section_Common_Extended_Start, // 43
     It_Kind_Section_Monster_Character_Misc_Size =
-        It_Kind_Section_Monster_Character_Misc_End -
+            It_Kind_Section_Monster_Character_Misc_End -
         It_Kind_Section_Monster_Character_Misc_Start, // 118
     It_Kind_Section_Pokemon_Extended_Size =
-        It_Kind_Section_Pokemon_Extended_End -
+            It_Kind_Section_Pokemon_Extended_End -
         It_Kind_Section_Pokemon_Extended_Start, // 47
-    It_Kind_Section_Stage_Extended_Size =
-        It_Kind_Section_Stage_Extended_End -
+    It_Kind_Section_Stage_Extended_Size = It_Kind_Section_Stage_Extended_End -
         It_Kind_Section_Stage_Extended_Start, // 30
 
     /// @}

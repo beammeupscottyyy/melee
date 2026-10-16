@@ -440,7 +440,7 @@ typedef struct itHeiho_ItemVars {
 } itHeiho_ItemVars;
 
 /**
- * @brief Per-instance runtime state of a flipper item (overlaid on
+ * Per-instance runtime state of a flipper item (overlaid on
  * @c Item::xDD4_itemVar).
  * @note These field names were determined by Claude (an AI), not recovered
  * from an original author; treat them as tentative. Each @c \@alias records
@@ -505,7 +505,7 @@ typedef struct itFlipper_ItemVars {
 } itFlipper_ItemVars;
 
 /**
- * @brief Flipper tuning constants, read from
+ * Flipper tuning constants, read from
  * @c Item::xC4_article_data->x4_specialAttributes.
  * @note These field names were determined by Claude (an AI), not recovered
  * from an original author; treat them as tentative. Each @c \@alias records

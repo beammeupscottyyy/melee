@@ -369,7 +369,8 @@ HSD_JObj* it_802B75FC(Item* ip, HSD_JObj* jobj_arg, s32 arg2, f32 scale)
 
     prev_link = NULL;
     for (i = 0; i < attrs->x34; i++) {
-        gobj_tmp = GObj_Create(7, 0xA, 0);
+        gobj_tmp =
+            GObj_Create(HSD_GOBJ_CLASS_ITEMLINK, HSD_GOBJ_PLINK_ITEMLINK, 0);
         link_gobj = gobj_tmp;
         if (link_gobj == NULL) {
             while (prev_link != NULL) {
@@ -379,7 +380,7 @@ HSD_JObj* it_802B75FC(Item* ip, HSD_JObj* jobj_arg, s32 arg2, f32 scale)
             return NULL;
         }
         link = link_tmp = HSD_ObjAlloc(&item_link_alloc_data);
-        GObj_InitUserData(link_gobj, 6, it_802A2474, link);
+        GObj_InitUserData(link_gobj, HSD_GOBJ_CLASS_ITEM, it_802A2474, link);
 
         if (i == 0) {
             link->next = NULL;

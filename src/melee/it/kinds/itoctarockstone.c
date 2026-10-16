@@ -162,7 +162,7 @@ void it_802E89D0(Item_GObj* gobj, f32 horiz_speed, f32 min_vy, f32 max_vy)
     ip->x40_vel.y = 0.0f;
 }
 
-/// @brief Spawn an Octarock stone projectile.
+/// Spawn an Octarock stone projectile.
 /// @param gobj The parent Octarock gobj.
 /// @param pos The spawn position.
 /// @param dir The facing direction (-1 or 1).

@@ -78,7 +78,8 @@ HSD_GObj* it_802BE65C(Item* ip, HSD_JObj* bone_jobj)
     int i;
 
     for (i = 0; i < attrs->x0_CHARGE_SPAWN_POS; i++) {
-        link_gobj = GObj_Create(7, 0xA, 0);
+        link_gobj =
+            GObj_Create(HSD_GOBJ_CLASS_ITEMLINK, HSD_GOBJ_PLINK_ITEMLINK, 0);
         if (link_gobj == NULL) {
             while (prev_link != NULL) {
                 HSD_GObjFree(prev_link->gobj);
@@ -89,7 +90,7 @@ HSD_GObj* it_802BE65C(Item* ip, HSD_JObj* bone_jobj)
 
         link = HSD_ObjAlloc(&item_link_alloc_data);
         it_80275328(link_gobj, link);
-        GObj_InitUserData(link_gobj, 6, it_802A2474, link);
+        GObj_InitUserData(link_gobj, HSD_GOBJ_CLASS_ITEM, it_802A2474, link);
 
         if (i == 0) {
             link->next = NULL;

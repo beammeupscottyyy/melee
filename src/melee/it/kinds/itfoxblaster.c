@@ -81,7 +81,7 @@ static inline void itFoxBlaster_PlaySFX(Item* item, u32 fox_sfx, u32 falco_sfx)
     }
 }
 
-/// @brief Sets sfx and jobj flags based on if the blaster model is visible
+/// Sets sfx and jobj flags based on if the blaster model is visible
 /// (and fox vs falco)
 /// @param item_gobj
 /// @param visibility always 1 except when called during SpecialN end
@@ -122,7 +122,7 @@ void it_802ADDD0(Item_GObj* item_gobj, s32 visibility)
     }
 }
 
-/// @brief Redirects to another function (it_802ADF10)
+/// Redirects to another function (it_802ADF10)
 /// @param item_gobj
 void it_802ADEF0(HSD_GObj* item_gobj)
 {
@@ -150,7 +150,7 @@ static inline void itFoxBlaster_SetShotAngle(Item* item,
     item->xDD4_itemVar.foxblaster.xDFC[0] = 0;
 }
 
-/// @brief Sets item position relative to owner position and resets some
+/// Sets item position relative to owner position and resets some
 /// blaster vars, then shifts blaster var values up their groups and resets the
 /// lowest var in each
 /// @param item_gobj
@@ -224,7 +224,7 @@ void it_802ADF10(HSD_GObj* item_gobj)
     }
 }
 
-/// @brief If item exists, set some blaster vars and accessory callback
+/// If item exists, set some blaster vars and accessory callback
 /// function. Gets called from SpecialN funcs when a blaster shot should be
 /// created
 /// @param item_gobj
@@ -238,7 +238,7 @@ void it_802AE1D0(Item_GObj* item_gobj)
     }
 }
 
-/// @brief Gets root jobj of model and does some transformations to it
+/// Gets root jobj of model and does some transformations to it
 /// @param item_gobj
 void it_802AE200(Item_GObj* item_gobj)
 {
@@ -322,7 +322,7 @@ void it_802AE200(Item_GObj* item_gobj)
     }
 }
 
-/// @brief If item exists and some blaster vars at specific values (possibly
+/// If item exists and some blaster vars at specific values (possibly
 /// frame numbers?), then set sfx. Called from SpecialN funcs when cmd_var3 = 1
 /// (when gun shooting starts)
 /// @param item_gobj
@@ -343,7 +343,7 @@ void it_802AE538(Item_GObj* item_gobj)
     }
 }
 
-/// @brief If item exists and a blaster var at a specific values (possibly
+/// If item exists and a blaster var at a specific values (possibly
 /// frame numbers?), then set other blaster vars. Called from SpecialN funcs
 /// when cmd_var3 = 2 (when gun is getting put away, but not yet invisible)
 /// @param item_gobj
@@ -363,7 +363,7 @@ void it_802AE608(Item_GObj* item_gobj)
 /// Used in jobj->translate.y calc for xDD8
 static f32 it_803F6E28[5] = { -0.425F, -0.595F, -0.765F, -0.935F, -0.85F };
 
-/// @brief Gets root jobj of model and does some transformations to it; then
+/// Gets root jobj of model and does some transformations to it; then
 /// checks blaster var values and changes them
 /// @param item_gobj
 void it_802AE63C(Item_GObj* item_gobj)
@@ -420,7 +420,7 @@ void it_802AE63C(Item_GObj* item_gobj)
     }
 }
 
-/// @brief Resets all blaster and cmd vars
+/// Resets all blaster and cmd vars
 /// @param item_gobj
 static inline void itFoxBlaster_SetCommandVars(Item* item, int value)
 {
@@ -465,7 +465,7 @@ void it_802AE7B8(Item_GObj* item_gobj)
     itFoxBlaster_ClearShot(item_gobj, 5);
 }
 
-/// @brief Spawns blaster item at location arg2 and gives to fighter at
+/// Spawns blaster item at location arg2 and gives to fighter at
 /// specified fighter part
 /// @param facing_dir
 /// @param fighter_gobj
@@ -503,7 +503,7 @@ Item_GObj* it_802AE8A8(f32 facing_dir, Fighter_GObj* fighter_gobj, Vec3* arg2,
     return item_gobj;
 }
 
-/// @brief Spawns blaster item at fighter's location and gives to them at
+/// Spawns blaster item at fighter's location and gives to them at
 /// specified part, as well as initializes cmd vars at 1 (different than other
 /// spawn function)
 /// @param owner_gobj
@@ -542,7 +542,7 @@ Item_GObj* it_802AE994(Fighter_GObj* owner_gobj, Fighter_Part ft_part,
     return item_gobj;
 }
 
-/// @brief If item exists, then clear item and blaster vars and destroy item
+/// If item exists, then clear item and blaster vars and destroy item
 /// @param item_gobj
 void it_802AEAB4(Item_GObj* item_gobj)
 {
@@ -564,7 +564,7 @@ static int it_803F6E3C[11] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 /// for value to set item state to
 static int it_803F6E68[11] = { 0, 9, 9, 3, 9, 9, 6, 7, 8, 9, 10 };
 
-/// @brief If any cmd var is non-zero, change the item state to 10. Otherwise
+/// If any cmd var is non-zero, change the item state to 10. Otherwise
 /// get the item state for the current fighter move, and set that. Then call
 /// Item_802694CC to do advance animation + script
 /// @param item_gobj
@@ -602,7 +602,7 @@ void itFoxBlaster_Logic96_PickedUp(Item_GObj* item_gobj)
     Item_802694CC(item_gobj);
 }
 
-/// @brief Clear the references from the blaster item and fighter to each
+/// Clear the references from the blaster item and fighter to each
 /// other.
 static inline void clear_blaster_references(HSD_GObj* item_gobj)
 {
@@ -631,7 +631,7 @@ static inline void clear_blaster_references(HSD_GObj* item_gobj)
     }
 }
 
-/// @brief Clear the references from the blaster item and fighter to each other
+/// Clear the references from the blaster item and fighter to each other
 /// and destroy the item
 /// @param item_gobj
 static inline void clear_blaster(HSD_GObj* item_gobj)
@@ -670,7 +670,7 @@ static inline void clear_blaster(HSD_GObj* item_gobj)
     return;
 }
 
-/// @brief Changes item state to match the fighter's current action
+/// Changes item state to match the fighter's current action
 /// (ftFx_SpecialNIndex), updates subactions, and runs animation. Then clear
 /// blaster item if no longer needed
 /// @param item_gobj
@@ -785,7 +785,7 @@ bool itFoxblaster_UnkMotion8_Anim(HSD_GObj* item_gobj)
     return false;
 }
 
-/// @brief Calls model transformation functions
+/// Calls model transformation functions
 /// @param item_gobj
 void itFoxblaster_UnkMotion8_Phys(HSD_GObj* item_gobj)
 {
@@ -793,7 +793,7 @@ void itFoxblaster_UnkMotion8_Phys(HSD_GObj* item_gobj)
     it_802AE200(item_gobj);
 }
 
-/// @brief Does nothing
+/// Does nothing
 /// @param item_gobj
 /// @return false
 bool itFoxblaster_UnkMotion8_Coll(HSD_GObj* item_gobj)
@@ -801,7 +801,7 @@ bool itFoxblaster_UnkMotion8_Coll(HSD_GObj* item_gobj)
     return false;
 }
 
-/// @brief If blaster item exists, clear references from it
+/// If blaster item exists, clear references from it
 /// @param item_gobj
 /// @return true
 bool itFoxblaster_UnkMotion9_Anim(HSD_GObj* item_gobj)
@@ -811,11 +811,11 @@ bool itFoxblaster_UnkMotion9_Anim(HSD_GObj* item_gobj)
     return true;
 }
 
-/// @brief Does nothing
+/// Does nothing
 /// @param item_gobj
 void itFoxblaster_UnkMotion9_Phys(HSD_GObj* item_gobj) {}
 
-/// @brief If blaster item exists, clear references from it (identical to
+/// If blaster item exists, clear references from it (identical to
 /// itFoxblaster_UnkMotion9_Anim)
 /// @param item_gobj
 /// @return true
@@ -826,7 +826,7 @@ bool itFoxblaster_UnkMotion9_Coll(HSD_GObj* item_gobj)
     return true;
 }
 
-/// @brief If blaster item exists and ? (ftCo_800BF228), set the item scale to
+/// If blaster item exists and ? (ftCo_800BF228), set the item scale to
 /// match the owner's
 /// @param item_gobj
 /// @return false
@@ -846,11 +846,11 @@ bool itFoxblaster_UnkMotion10_Anim(HSD_GObj* item_gobj)
     return false;
 }
 
-/// @brief Does nothing
+/// Does nothing
 /// @param item_gobj
 void itFoxblaster_UnkMotion10_Phys(HSD_GObj* item_gobj) {}
 
-/// @brief Does nothing
+/// Does nothing
 /// @param item_gobj
 /// @return false
 bool itFoxblaster_UnkMotion10_Coll(HSD_GObj* item_gobj)
@@ -858,7 +858,7 @@ bool itFoxblaster_UnkMotion10_Coll(HSD_GObj* item_gobj)
     return false;
 }
 
-/// @brief Calls function it_8026B894
+/// Calls function it_8026B894
 /// @param item_gobj
 /// @param ref_gobj
 void itFoxBlaster_Logic96_EvtUnk(Item_GObj* item_gobj, HSD_GObj* ref_gobj)

@@ -218,7 +218,8 @@ HSD_JObj* it_802A2568(Item* arg0, HSD_JObj* arg1, s32 arg2, f32 arg8)
 
     prev_link = NULL;
     for (link_idx = 0; link_idx < attr->x2C; link_idx++) {
-        link_gobj = GObj_Create(HSD_GOBJ_CLASS_ITEMLINK, 0xAU, 0U);
+        link_gobj =
+            GObj_Create(HSD_GOBJ_CLASS_ITEMLINK, HSD_GOBJ_PLINK_ITEMLINK, 0);
         if (link_gobj == NULL) {
             while (prev_link != NULL) {
                 HSD_GObjFree(prev_link->gobj);
@@ -227,7 +228,7 @@ HSD_JObj* it_802A2568(Item* arg0, HSD_JObj* arg1, s32 arg2, f32 arg8)
             return NULL;
         }
         link = HSD_ObjAlloc(&item_link_alloc_data);
-        GObj_InitUserData(link_gobj, 6U, it_802A2474, link);
+        GObj_InitUserData(link_gobj, HSD_GOBJ_CLASS_ITEM, it_802A2474, link);
         if (link_idx == 0) {
             link->next = NULL;
             first_coll = &link->coll_data;
