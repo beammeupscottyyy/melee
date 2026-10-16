@@ -107,7 +107,7 @@ static inline u8 mnRulePlus_GetDescIdx(u8 sel, u8 confirmed)
     return mn_803ED2E8.desc[sel][confirmed];
 }
 
-/// @brief Copy rule values from menu data to the global game rules.
+/// Copy rule values from menu data to the global game rules.
 static inline void mnRulePlus_SaveRules(void)
 {
     MenuRulesPlusData* data = mn_804D6BE0->user_data;
@@ -120,7 +120,7 @@ static inline void mnRulePlus_SaveRules(void)
     gmMainLib_GetGameRules()->unk_xc = data->rule_values.x0.sd_penalty;
 }
 
-/// @brief Check if a given option is visible (not hidden by game mode).
+/// Check if a given option is visible (not hidden by game mode).
 static inline s32 mnRulePlus_IsOptionVisible(u8 sel)
 {
     if (gm_GetCurrentGameMode() == GM_TOURNAMENT && sel == 1) {

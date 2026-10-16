@@ -261,7 +261,7 @@ union mnDataDel_AnimateWarning_cursor {
     HSD_JObj* slots[5];
 };
 
-/// @brief animates the warning modal
+/// animates the warning modal
 static inline void mnDataDel_AnimateWarning(HSD_JObj* root, HSD_GObj* gobj,
                                             struct WarnCmnData* data,
                                             HSD_JObj** panel,
@@ -338,7 +338,7 @@ void fn_8024ECCC(HSD_GObj* arg0)
     mnDataDel_AnimateWarning(root, arg0, data, &panel, &exclaim);
 }
 
-/// @brief creates the warning modal
+/// creates the warning modal
 void mnDataDel_8024EEC0(void)
 {
     HSD_JObj* child;
