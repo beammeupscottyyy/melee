@@ -18,8 +18,8 @@
 /* 067624 */ void efAsync_QueueFlush(HSD_GObj* gobj, EF_QueuedEffect** head);
 /* 067688 */ void efAsync_QueueClear(EF_QueuedEffect** head);
 /* 0676F0 */ void efAsync_Spawn(HSD_GObj* gobj, EF_QueuedEffect** queue_head,
-                                u32 spawn_kind, u32 gfx_id, HSD_JObj* jobj,
-                                ...);
+                                EF_SpawnKind spawn_kind, u32 gfx_id,
+                                HSD_JObj* jobj, ...);
 /* 0676F0 */ void efAsync_QueueInit(void);
 
 extern EF_DAT_Entry efAsync_DatEntries[51];

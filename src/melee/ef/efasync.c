@@ -653,19 +653,20 @@ void* efAsync_Dispatch(s32 gfx_id, HSD_GObj* gobj, va_list vlist)
         goto set_generator_rotation;
     case 0x437:
         id = 0x156;
-    set_generator_rotation: {
-        HSD_Generator* result;
+    set_generator_rotation:
+        {
+            HSD_Generator* result;
 
-        result = efLib_CreateGenerator_AddAppSRT(id);
-        if (result != NULL) {
-            Effect_SetGeneratorPos(result, va_arg(vlist, Vec3*));
-            result->appsrt->rot.y = M_PI_2;
-            f32_1 = *va_arg(vlist, f32*);
-            ret_obj = result;
-            result->appsrt->rot.z = f32_1;
+            result = efLib_CreateGenerator_AddAppSRT(id);
+            if (result != NULL) {
+                Effect_SetGeneratorPos(result, va_arg(vlist, Vec3*));
+                result->appsrt->rot.y = M_PI_2;
+                f32_1 = *va_arg(vlist, f32*);
+                ret_obj = result;
+                result->appsrt->rot.z = f32_1;
+            }
+            break;
         }
-        break;
-    }
     case 0x438:
         ret_obj = efLib_Create_Attach(0x22, gobj, va_arg(vlist, HSD_JObj*));
         if (ret_obj != NULL) {
@@ -806,16 +807,17 @@ void* efAsync_Dispatch(s32 gfx_id, HSD_GObj* gobj, va_list vlist)
         goto set_generator_scale;
     case 0x44C:
         f32_2 = 2.0f;
-    set_generator_scale: {
-        HSD_Generator* result;
+    set_generator_scale:
+        {
+            HSD_Generator* result;
 
-        result = efLib_CreateGenerator_AddAppSRT(0x237);
-        if (result != NULL) {
-            Effect_SetGeneratorPos(result, va_arg(vlist, Vec3*));
-            Effect_SetGeneratorScale(result, f32_2);
+            result = efLib_CreateGenerator_AddAppSRT(0x237);
+            if (result != NULL) {
+                Effect_SetGeneratorPos(result, va_arg(vlist, Vec3*));
+                Effect_SetGeneratorScale(result, f32_2);
+            }
+            break;
         }
-        break;
-    }
     case 0x44D:
         ret_obj = efLib_CreateGenerator_AppSRT_SetScale(0x48, vlist);
         break;
@@ -1346,7 +1348,7 @@ void efAsync_QueueClear(EF_QueuedEffect** head)
 }
 
 void efAsync_Spawn(HSD_GObj* gobj, EF_QueuedEffect** queue_head,
-                   u32 spawn_kind, u32 gfx_id, HSD_JObj* jobj, ...)
+                   EF_SpawnKind spawn_kind, u32 gfx_id, HSD_JObj* jobj, ...)
 {
     va_list vlist;
     Vec3* va_vec3;

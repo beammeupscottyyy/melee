@@ -105,11 +105,11 @@ void efLib_Init(void)
     hsd_80398A08(0);
     hsd_804D7900 = efLib_Cb_PtclAppSRTHook;
 
-    gobj = GObj_Create(8U, 0xBU, 1U);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_EFFECT, HSD_GOBJ_PLINK_EFFECT_UNK0, 1U);
     GObj_SetupGXLink(gobj, efLib_render_callback, 7U, 2U);
     HSD_GObj_SetupProc(gobj, efLib_particles_proc_main, 0xFU);
 
-    gobj = GObj_Create(8U, 0xCU, 1U);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_EFFECT, HSD_GOBJ_PLINK_EFFECT_UNK1, 1U);
     GObj_SetupGXLink(gobj, efLib_render_callback, 8U, 2U);
     HSD_GObj_SetupProc(gobj, efLib_particles_proc_aux, 0xFU);
 
@@ -420,9 +420,9 @@ EF_Effect* efLib_Create(int gfx_id, HSD_GObj* parent_gobj)
     }
 
     if (gfx_id >= 27 || gfx_id < 25) {
-        p_link = 11;
+        p_link = HSD_GOBJ_PLINK_EFFECT_UNK0;
     } else {
-        p_link = 12;
+        p_link = HSD_GOBJ_PLINK_EFFECT_UNK1;
     }
     effect->parent_gobj = parent_gobj;
     {
@@ -441,7 +441,8 @@ EF_Effect* efLib_Create(int gfx_id, HSD_GObj* parent_gobj)
         }
     }
     GObj_SetupGXLink(effect->gobj, HSD_GObj_JObjCallback, 7, 1);
-    GObj_InitUserData(effect->gobj, 8, efLib_remove_user_data, effect);
+    GObj_InitUserData(effect->gobj, HSD_GOBJ_CLASS_EFFECT,
+                      efLib_remove_user_data, effect);
     {
         HSD_JObj* jobj = HSD_JObjLoadJoint(desc->model_desc.joint);
         if (jobj == NULL) {
