@@ -151,7 +151,7 @@ typedef struct GrIm825C {
 } GrIm825C;
 const GrIm825C grIm_803B825C = { { 1, 2, 3, 4 }, 5 };
 
-/// @brief Ice Mountain row data - 12 bytes each.
+/// Ice Mountain row data - 12 bytes each.
 typedef struct IceMtRowData {
     int gobj_id;
     f32 x4;
@@ -1231,7 +1231,7 @@ void fn_801F8C64(Item_GObj* gobj, Ground* u1, Vec3* u2, HSD_GObj* u3, f32 u4)
     Camera_RequestQuake(QuakeKind_Small, &pos);
 }
 
-/// @brief Creates material items and attaches them to Entity05 platform JObjs.
+/// Creates material items and attaches them to Entity05 platform JObjs.
 /// @param gobj The Entity05 Ground_GObj
 /// @param joint_indices Array of joint indices to get parent JObjs from
 /// @param count Number of items to create (max 20)

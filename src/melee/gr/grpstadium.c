@@ -1160,9 +1160,9 @@ HSD_GObj* grStadium_801D2BEC(void)
     GObj_SetupGXLinkMax(gobj, fn_801D2ED0, 1);
     gobj->gxlink_prios = 2;
     text = HSD_MemAlloc(sizeof(*text));
-    GObj_InitUserData(gobj, 3, HSD_Free, text);
+    GObj_InitUserData(gobj, HSD_GOBJ_CLASS_STAGE, HSD_Free, text);
     memzero(text, 0x18);
-    lb_800121FC(&text->desc, 0xFA, 0xA0, 4, 0x7D2);
+    lb_800121FC(&text->desc, 0xFA, 0xA0, GX_TF_RGB565, 0x7D2);
     archive = grDatFiles_GetArchive();
     HSD_SisLib_803A611C(1, gobj, 9, 0xD, 0, 1, 0, 1);
     HSD_SisLib_804D1124[1] =
@@ -1185,9 +1185,9 @@ HSD_GObj* grStadium_801D2D78(void)
     temp_r3 = GObj_Create(0x11, 0x12, 0);
     GObj_SetupGXLinkMax(temp_r3, grStadium_801D2FD0, 3);
     wrapper = HSD_MemAlloc(0x1C);
-    GObj_InitUserData(temp_r3, 3, HSD_Free, wrapper);
+    GObj_InitUserData(temp_r3, HSD_GOBJ_CLASS_STAGE, HSD_Free, wrapper);
     memzero(&wrapper->desc, sizeof(wrapper->desc));
-    lb_800121FC(&wrapper->desc, 0x280, 0x196, 4, 0x7D3);
+    lb_800121FC(&wrapper->desc, 640, 0x196, GX_TF_RGB565, 0x7D3);
     wrapper->flag = true;
     return temp_r3;
 }
@@ -1198,9 +1198,9 @@ HSD_GObj* grStadium_801D2E24(void)
     ImageDescWrapper* wrapper;
     GObj_SetupGXLinkMax(gobj, grStadium_801D3084, 3);
     wrapper = HSD_MemAlloc(sizeof(ImageDescWrapper));
-    GObj_InitUserData(gobj, 3, HSD_Free, wrapper);
+    GObj_InitUserData(gobj, HSD_GOBJ_CLASS_STAGE, HSD_Free, wrapper);
     memzero(&wrapper->desc, sizeof(HSD_ImageDesc));
-    lb_800121FC(&wrapper->desc, 0x7C, 0x50, 4, 0x7D4);
+    lb_800121FC(&wrapper->desc, 0x7C, 0x50, GX_TF_RGB565, 0x7D4);
     wrapper->flag = false;
     return gobj;
 }

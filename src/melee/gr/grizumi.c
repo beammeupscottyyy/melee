@@ -690,14 +690,14 @@ HSD_GObj* grIzumi_801CCD98(void)
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMaxSorted(gobj, grIzumi_801CCEA0, 2);
     refl = HSD_MemAlloc(sizeof(IzumiReflection));
-    GObj_InitUserData(gobj, 3, HSD_Free, refl);
+    GObj_InitUserData(gobj, HSD_GOBJ_CLASS_STAGE, HSD_Free, refl);
     dat = grDatFiles_801C6330(3);
     refl->image =
         HSD_ArchiveGetPublicAs(HSD_ImageDesc, dat->unk0,
                                "GrdIzumi_cd_wt_GrdIzumiDummy1_1_image_desc");
     if (refl->image != NULL) {
         memzero(refl->image, sizeof(HSD_ImageDesc));
-        lb_800121FC(refl->image, 80, 60, 4, 2001);
+        lb_800121FC(refl->image, 80, 60, GX_TF_RGB565, 2001);
     } else {
         OSReport("not found mirror image desc! "
                  "(GrdIzumi_cd_wt_GrdIzumiDummy1_1_image_desc)\n");

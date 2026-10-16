@@ -712,8 +712,9 @@ void Ground_801C0FB8(StageIdPair* pair)
         HSD_Free(cur);
     }
     stage_info.x6A4 = NULL;
-    HSD_GObj_SetupProc(GObj_Create(HSD_GOBJ_CLASS_STAGE, 5, 0),
-                       Ground_801C0C2C, 10);
+    HSD_GObj_SetupProc(
+        GObj_Create(HSD_GOBJ_CLASS_STAGE, HSD_GOBJ_PLINK_GROUND, 0),
+        Ground_801C0C2C, 10);
 }
 
 void Ground_DemoInit(StageIdPair* pair, s32 arg1)
@@ -841,7 +842,7 @@ Ground_GObj* Ground_GetStageGObj(int map_id)
     int phi_r24;
     int i;
 
-    gobj = GObj_Create(HSD_GOBJ_CLASS_STAGE, 5, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_STAGE, HSD_GOBJ_PLINK_GROUND, 0);
     if (gobj == NULL) {
         OSReport("%s:%d: couldn t get gobj!\n", __FILE__, 0x522);
         return NULL;
@@ -856,7 +857,7 @@ Ground_GObj* Ground_GetStageGObj(int map_id)
         HSD_GObjFree(gobj);
         return NULL;
     }
-    GObj_InitUserData(gobj, 3, mem_free, gp);
+    GObj_InitUserData(gobj, HSD_GOBJ_CLASS_STAGE, mem_free, gp);
     gp->map_id = map_id;
     gp->gobj = gobj;
     gp->x10_flags.b0 = 0;
@@ -956,7 +957,7 @@ HSD_GObj* Ground_801C1A20(HSD_Joint* arg0, s32 arg1)
     Ground* gp;
     int i;
 
-    temp_r30 = GObj_Create(HSD_GOBJ_CLASS_STAGE, 5, 0);
+    temp_r30 = GObj_Create(HSD_GOBJ_CLASS_STAGE, HSD_GOBJ_PLINK_GROUND, 0);
     if (temp_r30 == NULL) {
         OSReport("%s:%d: couldn t get gobj!\n", __FILE__, 0x5B8);
         return NULL;
@@ -966,7 +967,7 @@ HSD_GObj* Ground_801C1A20(HSD_Joint* arg0, s32 arg1)
         HSD_GObjFree(temp_r30);
         return NULL;
     }
-    GObj_InitUserData(temp_r30, 3, mem_free, gp);
+    GObj_InitUserData(temp_r30, HSD_GOBJ_CLASS_STAGE, mem_free, gp);
     gp->map_id = arg1;
     gp->gobj = temp_r30;
     gp->x10_flags.b0 = 0;
@@ -2670,7 +2671,7 @@ light_selected:
     if ((r28_carrier.lights = selected) == NULL) {
         r28_carrier.lights = Ground_803E06C8;
     }
-    temp_r3 = GObj_Create(0xD, 3, 0);
+    temp_r3 = GObj_Create(HSD_GOBJ_CLASS_GROUND, HSD_GOBJ_PLINK_LIGHT, 0);
     if (temp_r3 == NULL) {
         OSReport("%s:%d: couldn t get gobj\n", __FILE__, 0xEAF);
         while (true) {
