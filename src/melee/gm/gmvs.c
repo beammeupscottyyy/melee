@@ -1263,7 +1263,8 @@ void fn_8016CD98(VsSceneController* scene)
                                 controller.state
                                     .unk_1C[scene->state.timer_seconds];
                             if (temp_r3_4 >= 0) {
-                                lbAudioAx_800237A8(temp_r3_4, 0x7FU, 0x40U);
+                                lbAudioAx_800237A8(temp_r3_4, SFX_VOLUME_MAX,
+                                                   SFX_PAN_MID);
                             }
                         }
                         scene->state.timer_seconds -= 1;
@@ -1281,9 +1282,11 @@ void fn_8016CD98(VsSceneController* scene)
                     } else {
                         var_r3 = 0x7C865;
                     }
-                    lbAudioAx_80023870(var_r3, 0x7F, 0x40, 0x19);
+                    lbAudioAx_80023870(var_r3, SFX_VOLUME_MAX, SFX_PAN_MID,
+                                       0x19);
                 } else if (temp_r0_2 == 0) {
-                    lbAudioAx_80023870(0x7C852, 0x7F, 0x40, 0x19);
+                    lbAudioAx_80023870(0x7C852, SFX_VOLUME_MAX, SFX_PAN_MID,
+                                       0x19);
                 }
             }
         }
@@ -1925,7 +1928,7 @@ void fn_8016E2BC(void)
                                single_is_teams, Player_GetPlayerSlotType(0))));
         Player_80031AD0(0);
         if (controller.state.fighters[0].x4.x0.x4_b4) {
-            lbAudioAx_800237A8(0x41F4E, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x41F4E, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
         fn_80169C54(Player_GetPlayerCharacter(0), Player_GetCostumeId(0));
         fn_80169F50(Player_GetPlayerCharacter(0), Player_GetCostumeId(0));
@@ -1955,7 +1958,7 @@ void fn_8016E2BC(void)
                                                Player_GetPlayerSlotType(i))));
                 Player_80031AD0(i);
                 if (tmp->state.fighters[i].x4.x0.x4_b4) {
-                    lbAudioAx_800237A8(0x41F4E, 0x7F, 0x40);
+                    lbAudioAx_800237A8(0x41F4E, SFX_VOLUME_MAX, SFX_PAN_MID);
                 }
             }
         }
@@ -2220,7 +2223,7 @@ bool gm_8016EDDC(int arg0, PlayerInitData* arg1)
         setPlayerUnk45(arg0);
         Player_80031AD0(arg0);
         if (controller.state.fighters[arg0].x4.x0.x4_b4) {
-            lbAudioAx_800237A8(0x41F4E, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x41F4E, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
         fn_8016E124();
         Player_80031848(arg0);

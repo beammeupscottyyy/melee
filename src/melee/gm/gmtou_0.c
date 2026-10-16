@@ -2897,7 +2897,7 @@ void gm_Scene_TouSetup_OnEnter(void* arg0)
         "tournament_box4_array", 0);
     HSD_SisLib_803A62A0(0, fn_8018F5F0(), "SIS_TournamentData");
     fn_801935B8();
-    lbAudioAx_800237A8(0x7539, 0x7F, 0x40);
+    lbAudioAx_800237A8(0x7539, SFX_VOLUME_MAX, SFX_PAN_MID);
     lbAudioAx_80023F28(gmMainLib_8015ECB0());
 }
 

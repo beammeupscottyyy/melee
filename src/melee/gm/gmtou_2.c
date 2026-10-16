@@ -706,9 +706,9 @@ void fn_8019DD60(void)
     tmd = gm_GetTournamentData();
     if (tmd->x2C == 0) {
         if ((s32) gm_804771C4.match_type == 1) {
-            lbAudioAx_800237A8(0x7545, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x7545, SFX_VOLUME_MAX, SFX_PAN_MID);
         } else {
-            lbAudioAx_800237A8(0x7546, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x7546, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     }
     tmd->x2C = 0;

@@ -4199,13 +4199,13 @@ void fn_80168E54(s8 arg0, s8 arg1, u8 arg2, u8 arg3)
     if (arg3 != 0) {
         switch (arg2) {
         case 0:
-            lbAudioAx_800237A8(0xC354, 0x7F, 0x40);
+            lbAudioAx_800237A8(0xC354, SFX_VOLUME_MAX, SFX_PAN_MID);
             break;
         case 1:
-            lbAudioAx_800237A8(0xC352, 0x7F, 0x40);
+            lbAudioAx_800237A8(0xC352, SFX_VOLUME_MAX, SFX_PAN_MID);
             break;
         case 2:
-            lbAudioAx_800237A8(0xC353, 0x7F, 0x40);
+            lbAudioAx_800237A8(0xC353, SFX_VOLUME_MAX, SFX_PAN_MID);
             break;
         }
     } else {
@@ -4222,7 +4222,7 @@ void fn_80168F2C(s8 ignored)
 {
     if (lbl_804D659A == 0) {
         lbl_804D659A = 3;
-        lbAudioAx_80023870(0x7E, 0x7F, 0x40, 1);
+        lbAudioAx_80023870(0x7E, SFX_VOLUME_MAX, SFX_PAN_MID, 1);
     } else {
         lbl_804D659A--;
     }
