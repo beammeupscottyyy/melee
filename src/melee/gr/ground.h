@@ -168,7 +168,7 @@
 /* 1C57F0 */ f32 Ground_801C57F0(int);
 
 /**
- * @brief Restores the in-match camera mode after unpause.
+ * Restores the in-match camera mode after unpause.
  *
  * Selects standard or fixed camera according to the stage's
  * #GroundParam::x4C_fixed_cam parameter. Both underlying calls only set the

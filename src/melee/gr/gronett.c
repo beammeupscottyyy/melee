@@ -848,7 +848,7 @@ void grOnett_801E5214(Ground_GObj* gobj)
     }
 }
 
-/// @brief Updates awning collision tracking data
+/// Updates awning collision tracking data.
 /// @copydetails mpLib_JointCollisionCallback
 void grOnett_801E54B4(void* user_data, int joint_id, CollData* coll,
                       int coll_x50, mpLib_GroundEnum ground_kind,
