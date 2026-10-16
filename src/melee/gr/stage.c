@@ -205,10 +205,11 @@ f32 Stage_GetCamFixedFov(void)
     return stage_info.cam_info.fixed_cam_fov;
 }
 
-bool Stage_80224DC8(s32 arg)
+bool Stage_80224DC8(StKind stkind)
 {
-    return (arg == 0x3b || arg == 0x3f || arg == 0x42 || arg == 0x49 ||
-            arg == 0x4c) != 0;
+    return (stkind == St_Kind_KinokoRoute || stkind == St_Kind_ShrineRoute ||
+            stkind == St_Kind_ZebesRoute || stkind == St_Kind_BigBlueRoute ||
+            stkind == St_Kind_IcemtRoute) != 0;
 }
 
 void Stage_80224E38(Vec3* arg0, s32 arg1)

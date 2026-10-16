@@ -72,7 +72,7 @@ static inline bool Stage_IsOutsideBlastZoneWithMargin(Vec3* pos, f32 margin)
 /* 224CAC */ void Stage_80224CAC(Vec3*);
 /* 224D94 */ void Stage_SetVecToFixedCamPos(Vec3*);
 /* 224DB8 */ float Stage_GetCamFixedFov(void);
-/* 224DC8 */ bool Stage_80224DC8(s32);
+/* 224DC8 */ bool Stage_80224DC8(StKind stkind);
 /* 224E38 */ void Stage_80224E38(Vec3*, s32);
 /* 224E64 */ void Stage_80224E64(enum_t, Vec3*);
 /* 224FDC */ bool Stage_80224FDC(Vec3*);
