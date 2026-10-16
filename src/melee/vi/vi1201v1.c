@@ -121,7 +121,7 @@ void fn_8031FAA8(HSD_GObj* gobj)
 
     efSync_Spawn(0x42B, gobj, &pos, &scale_x, &scale_y, 0x00FFFFFF,
                  0x00808080);
-    lbAudioAx_800237A8(0x61, 0x7F, 0x40);
+    lbAudioAx_800237A8(0x61, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 void fn_8031FB90(HSD_GObj* gobj, UNUSED intptr_t code)
 {

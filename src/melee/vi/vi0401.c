@@ -197,9 +197,9 @@ void vi0401_Scene_OnEnter(void* data)
     un_8031D030(desc->p1_char_index, desc->p1_costume_index);
     vi_8031C9B4(1, 0);
 
-    lbAudioAx_800237A8(0x61a88, 0x7F, 0x40);
-    lbAudioAx_800237A8(0x61a89, 0x7F, 0x40);
-    lbAudioAx_800237A8(0x61a8a, 0x7F, 0x40);
+    lbAudioAx_800237A8(0x61a88, SFX_VOLUME_MAX, SFX_PAN_MID);
+    lbAudioAx_800237A8(0x61a89, SFX_VOLUME_MAX, SFX_PAN_MID);
+    lbAudioAx_800237A8(0x61a8a, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void vi0401_Scene_OnFrame(void)

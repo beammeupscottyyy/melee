@@ -135,23 +135,23 @@ void fn_8031F600(HSD_GObj* gobj)
     if (170.0f == cobj->aobj->curr_frame) {
         if (gm_IsCKindUnlocked(CKind_Luigi) != 0) {
             vi_8031C9B4(0xD, 0);
-            lbAudioAx_800237A8(0x209, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x209, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     }
 
     if (190.0f == cobj->aobj->curr_frame) {
         vi_8031C9B4(0xD, 0);
-        lbAudioAx_800237A8(0x209, 0x7F, 0x40);
+        lbAudioAx_800237A8(0x209, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 
     if (241.0f == cobj->aobj->curr_frame) {
         if (gm_IsCKindUnlocked(CKind_Luigi) != 0) {
-            lbAudioAx_800237A8(0x20A, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x20A, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     }
 
     if (271.0f == cobj->aobj->curr_frame) {
-        lbAudioAx_800237A8(0x20A, 0x7F, 0x40);
+        lbAudioAx_800237A8(0x20A, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 
     if (cobj->aobj->curr_frame == cobj->aobj->end_frame) {

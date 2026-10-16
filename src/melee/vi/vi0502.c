@@ -130,7 +130,7 @@ void vi0502_GObj_OnProc(HSD_GObj* gobj)
 
     if (30.0f == cobj->eyepos->aobj->curr_frame) {
         vi_8031C9B4(14, 0);
-        lbAudioAx_800237A8(430009, 0x7F, 0x40);
+        lbAudioAx_800237A8(430009, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     if (cobj->eyepos->aobj->curr_frame == cobj->eyepos->aobj->end_frame) {
         lb_800145F4();

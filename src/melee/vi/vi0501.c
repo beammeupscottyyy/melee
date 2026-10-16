@@ -142,22 +142,22 @@ void fn_8031DD14(HSD_GObj* gobj)
 
     if (60.0f == frame || 70.0f == frame || 85.0f == frame) {
         vi_8031C9B4(0xC, 0);
-        lbAudioAx_800237A8(0x222F9, 0x7F, 0x40);
+        lbAudioAx_800237A8(0x222F9, SFX_VOLUME_MAX, SFX_PAN_MID);
 
         if (60.0f == cobj->aobj->curr_frame) {
-            lbAudioAx_800237A8(0x73, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x73, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
         if (70.0f == cobj->aobj->curr_frame) {
-            lbAudioAx_800237A8(0x74, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x74, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
         if (85.0f == cobj->aobj->curr_frame) {
-            lbAudioAx_800237A8(0x73, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x73, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     }
 
     frame = cobj->aobj->curr_frame;
     if (98.0f == frame || 108.0f == frame || 123.0f == frame) {
-        lbAudioAx_800237A8(0x22308, 0x7F, 0x40);
+        lbAudioAx_800237A8(0x22308, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 
     if (cobj->aobj->curr_frame == cobj->aobj->end_frame) {
@@ -222,8 +222,8 @@ void vi0501_Scene_OnEnter(void* arg)
 
     un_8031D9F8(desc->p1_char_index, desc->p1_costume_index,
                 desc->p2_costume_index, (int) (&desc->spawn_count));
-    lbAudioAx_800237A8(0x20B, 0x7F, 0x40);
-    lbAudioAx_800237A8(0x20C, 0x7F, 0x40);
+    lbAudioAx_800237A8(0x20B, SFX_VOLUME_MAX, SFX_PAN_MID);
+    lbAudioAx_800237A8(0x20C, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void vi0501_Scene_OnFrame(void)

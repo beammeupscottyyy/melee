@@ -3,9 +3,6 @@
 
 #include <melee/ft/forward.h>
 
-#define SFX_VOLUME_MAX 127
-#define SFX_PAN_MID 64
-
 /* 0C8C84 */ bool ftCo_800C8C84(Fighter_GObj* gobj);
 /* 0C8D00 */ void ftCo_800C8D00(Fighter_GObj* gobj);
 /* 0C8E40 */ void fn_800C8E40(Fighter* fp, FtSFX* sfx);
