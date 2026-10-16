@@ -690,7 +690,7 @@ void grOldPupupu_802113E0(Ground_GObj* gobj)
                 if (gp->u.oldpupupu.xD0 == 0x2D) {
                     lbAudioAx_800237A8(gp->u.oldpupupu.xD8 == 0 ? 0x72BF0
                                                                 : 0x72BF1,
-                                       0x7F, 0x40);
+                                       SFX_VOLUME_MAX, SFX_PAN_MID);
                 }
                 if (gp->u.oldpupupu.xD0 > 0x2D && gp->u.oldpupupu.xD0 < 0x140)
                 {

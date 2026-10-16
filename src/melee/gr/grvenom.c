@@ -1122,7 +1122,7 @@ static inline void updateFlybySfx(Ground_GObj* gobj, Vec3* pos)
     switch (gp->u.venom.xD8) {
     case 0:
         if (!grVenom_80205DF8(pos)) {
-            lbAudioAx_800237A8(0x6B6C0, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x6B6C0, SFX_VOLUME_MAX, SFX_PAN_MID);
             gp->u.venom.xD8 = 1;
         }
         break;
@@ -1133,7 +1133,7 @@ static inline void updateFlybySfx(Ground_GObj* gobj, Vec3* pos)
         break;
     case 2:
         if (grVenom_80205E84(pos) == 1) {
-            lbAudioAx_800237A8(0x6B6C2, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x6B6C2, SFX_VOLUME_MAX, SFX_PAN_MID);
             gp->u.venom.xD8 = 3;
         }
         break;
@@ -1581,7 +1581,7 @@ void grVenom_80205F30(Ground_GObj* gobj)
                     (sp88.x < 0.0F && sp94.x < 0.0F))
                 {
                     sp88.y += 5.0F;
-                    lbAudioAx_800237A8(0x6B6C9, 0x7F, 0x40);
+                    lbAudioAx_800237A8(0x6B6C9, SFX_VOLUME_MAX, SFX_PAN_MID);
                     fire_kind = getFireKind(gobj, base);
                     if (fire_kind == 1) {
                         it_802E7654(gobj, Ground_801C3FA4(gobj, 7), &sp88, 3,

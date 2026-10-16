@@ -3063,12 +3063,12 @@ void Ground_801C4FAC(HSD_CObj* cobj)
 
 void Ground_801C53EC(u32 arg0)
 {
-    lbAudioAx_800237A8(arg0, 0x7F, 0x40);
+    lbAudioAx_800237A8(arg0, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void Ground_801C5414(int arg0, int arg1)
 {
-    lbAudioAx_80023870(arg0, 0x7F, 0x40, arg1);
+    lbAudioAx_80023870(arg0, SFX_VOLUME_MAX, SFX_PAN_MID, arg1);
 }
 
 /// @file
@@ -3089,7 +3089,7 @@ void Ground_801C5440(Ground* gp, s32 i, u32 arg2)
             Ground* tmp_gp = gp;
             lbAudioAx_800236B8(tmp_gp->x20[i]);
         }
-        gp->x20[i] = lbAudioAx_800237A8(arg2, 0x7F, 0x40);
+        gp->x20[i] = lbAudioAx_800237A8(arg2, SFX_VOLUME_MAX, SFX_PAN_MID);
     } else {
         Ground_801C5544(gp, i);
     }
@@ -3137,7 +3137,7 @@ void Ground_801C5630(Ground* gp, s32 i, f32 val)
         return;
     }
     if (gp != NULL && gp->x20[i] != -1) {
-        lbAudioAx_80024B58(gp->x20[i], 127 * val);
+        lbAudioAx_80024B58(gp->x20[i], SFX_VOLUME_MAX * val);
     }
 }
 

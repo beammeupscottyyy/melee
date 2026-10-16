@@ -503,7 +503,7 @@ void grGreens_80213C10(Ground_GObj* gobj)
                 grAnime_801C8138(
                     bg_gobj, bg_gp->map_id,
                     grGr_803E77D4[gp->u.greens2.x8][gp->u.greens2.x14]);
-                lbAudioAx_800237A8(0x68FB8, 0x7F, 0x40);
+                lbAudioAx_800237A8(0x68FB8, SFX_VOLUME_MAX, SFX_PAN_MID);
                 return;
             }
             break;
@@ -522,7 +522,7 @@ void grGreens_80213C10(Ground_GObj* gobj)
                         grGr_803E77D4[gp->u.greens2.x8][gp->u.greens2.x14]);
                     lbAudioAx_800237A8(gp->u.greens2.x14 == 0 ? 0x68FB0
                                                               : 0x68FB1,
-                                       0x7F, 0x40);
+                                       SFX_VOLUME_MAX, SFX_PAN_MID);
                     return;
                 }
             }
@@ -614,7 +614,7 @@ void grGreens_80213C10(Ground_GObj* gobj)
             gp->u.greens2.xC = 0;
             grAnime_801C8138(gobj, gp->map_id, 7);
             grAnime_801C8138(bg_gobj, bg_gp->map_id, 7);
-            lbAudioAx_800237A8(0x68FB2, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x68FB2, SFX_VOLUME_MAX, SFX_PAN_MID);
             gp->u.greens2.x20 =
                 randrange(yakumono_param->x60, yakumono_param->x5C - 1);
             gp->u.greens2.x24 = HSD_Randi(2);
@@ -646,7 +646,7 @@ void grGreens_80213C10(Ground_GObj* gobj)
                 diff = yakumono_param->x70 - yakumono_param->x6C;
                 apple_pos.y = (diff * rand) + yakumono_param->x6C;
                 apple_pos.z = -40.0f;
-                lbAudioAx_800237A8(0x68FB3, 0x7F, 0x40);
+                lbAudioAx_800237A8(0x68FB3, SFX_VOLUME_MAX, SFX_PAN_MID);
                 it_802EE200(gobj, &apple_pos, yakumono_param->x74,
                             yakumono_param->x78);
                 gp->u.greens2.x20--;

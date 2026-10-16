@@ -820,7 +820,7 @@ void grCorneria_801DDE88(HSD_GObj* gobj)
     switch (gp->u.arwing.xD8) {
     case 0:
         if (!grCorneria_801DEC08(&sp2C)) {
-            lbAudioAx_800237A8(0x55730, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x55730, SFX_VOLUME_MAX, SFX_PAN_MID);
             gp->u.arwing.xD8 = 1;
         }
         break;
@@ -832,7 +832,7 @@ void grCorneria_801DDE88(HSD_GObj* gobj)
         break;
     case 2:
         if (grCorneria_801DEC94(&sp2C) == 1) {
-            lbAudioAx_800237A8(0x55732, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x55732, SFX_VOLUME_MAX, SFX_PAN_MID);
             gp->u.arwing.xD8 = 3;
         }
         break;
@@ -855,7 +855,7 @@ static inline void grCorneria_801DE024_inline(Ground_GObj* gobj)
         if (*(volatile const f32*) &grCn_ArwingMinX < pos.x &&
             pos.x < *(volatile const f32*) &grCn_ArwingMaxX)
         {
-            lbAudioAx_800237A8(0x55731, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x55731, SFX_VOLUME_MAX, SFX_PAN_MID);
             gp->u.arwing.xD8 = 1;
         }
         break;
@@ -863,7 +863,7 @@ static inline void grCorneria_801DE024_inline(Ground_GObj* gobj)
         if (pos.x < *(volatile const f32*) &grCn_ArwingMinX ||
             *(volatile const f32*) &grCn_ArwingMaxX < pos.x)
         {
-            lbAudioAx_800237A8(0x55732, 0x7F, 0x40);
+            lbAudioAx_800237A8(0x55732, SFX_VOLUME_MAX, SFX_PAN_MID);
             gp->u.arwing.xD8 = 2;
         }
         break;
@@ -1290,7 +1290,8 @@ void grCorneria_801DED50(Ground_GObj* gobj)
                             f32 abs_a = ABS(angle);
                             if (abs_a < 0.05235988f || ABS(angle) > 3.0892327f)
                             {
-                                lbAudioAx_800237A8(0x55733, 0x7F, 0x40);
+                                lbAudioAx_800237A8(0x55733, SFX_VOLUME_MAX,
+                                                   SFX_PAN_MID);
                                 if (get_grp_off(gobj) == 1) {
                                     it_802E72E0(gobj, Ground_801C3FA4(gobj, 7),
                                                 2, -1.0f, yakumono_param->x70);
@@ -1367,7 +1368,7 @@ void grCorneria_801DED50(Ground_GObj* gobj)
                     Player_LoadPlayerCoords(player, &pos);
                 }
                 pos.y += 5.0f;
-                lbAudioAx_800237A8(0x55734, 0x7F, 0x40);
+                lbAudioAx_800237A8(0x55734, SFX_VOLUME_MAX, SFX_PAN_MID);
                 {
                     if (get_grp_off(gobj) == 1) {
                         it_802E7654(gobj, Ground_801C3FA4(gobj, 7), &pos, 3, 3,
