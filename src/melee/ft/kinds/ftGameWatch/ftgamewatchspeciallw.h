@@ -1,5 +1,5 @@
 /// @file
-/// @brief Game & Watch's Down Special - Oil Panic (SpecialLw)
+/// Game & Watch's Down Special - Oil Panic (SpecialLw).
 #ifndef GALE01_14CBF4
 #define GALE01_14CBF4
 

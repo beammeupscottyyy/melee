@@ -158,7 +158,7 @@ void ftCo_800D0FA0(Fighter_GObj* gobj)
 
 extern HSD_GObjEvent ftKindCalcIndiviParamTable[];
 
-/// @brief Initializes a fighters attributes from the DAT, then applies
+/// Initializes a fighters attributes from the DAT, then applies
 /// specific modifiers such as metal, bunny hood, etc.
 /// @param fighter_gobj
 void ftCo_800D105C(Fighter_GObj* fgp)

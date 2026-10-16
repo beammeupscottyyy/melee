@@ -227,7 +227,7 @@ Range Y
 Range X
 */
 
-/// @brief Spawns GFX
+/// Spawns GFX
 void ftAction_80071028(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     Fighter* fp = GET_FIGHTER(gobj);
@@ -277,13 +277,13 @@ void ftAction_80071028(Fighter_GObj* gobj, CommandInfo* cmd)
     }
 }
 
-/// @brief Skips GFX Spawn
+/// Skips GFX Spawn
 void ftAction_800711DC(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     SKIP_CMD(cmd, 5);
 }
 
-/// @brief Spawns Hitboxes
+/// Spawns Hitboxes
 void ftAction_8007121C(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     Fighter* fp;
@@ -362,7 +362,7 @@ void ftAction_8007121C(Fighter_GObj* gobj, CommandInfo* cmd)
     ftCommon_80080484(fp);
 }
 
-/// @brief Skips Hitbox Spawn
+/// Skips Hitbox Spawn
 void ftAction_800715EC(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     SKIP_CMD(cmd, 5);
@@ -377,7 +377,7 @@ void ftAction_800715EC(Fighter_GObj* gobj, CommandInfo* cmd)
   - name: Damage
     bitCount: 23
 */
-/// @brief Adjust Hitbox Damage
+/// Adjust Hitbox Damage
 void ftAction_8007162C(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     HitCapsule* hit =
@@ -394,7 +394,7 @@ void ftAction_8007168C(Fighter_GObj* gobj, CommandInfo* cmd)
     SKIP_CMD(cmd, 1);
 }
 
-/// @brief Adjusts Hitbox Scale
+/// Adjusts Hitbox Scale
 void ftAction_8007169C(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     Fighter* fp = GET_FIGHTER(gobj);
@@ -408,7 +408,7 @@ void ftAction_800716F8(Fighter_GObj* gobj, CommandInfo* cmd)
     SKIP_CMD(cmd, 1);
 }
 
-/// @brief Sets Hitbox flags
+/// Sets Hitbox flags
 void ftAction_80071708(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     Fighter* fp = GET_FIGHTER(gobj);
@@ -547,7 +547,7 @@ void ftAction_80071A58(Fighter_GObj* gobj, CommandInfo* cmd)
     NEXT_CMD(cmd);
 }
 
-/// @brief Sets Hurt Capsule State
+/// Sets Hurt Capsule State
 void ftAction_80071A9C(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     ftColl_8007B128(gobj, cmd->x8.u->set_hurt_state.bone_idx,
@@ -555,7 +555,7 @@ void ftAction_80071A9C(Fighter_GObj* gobj, CommandInfo* cmd)
     NEXT_CMD(cmd);
 }
 
-/// @brief Sets Jab Combo
+/// Sets Jab Combo
 void ftAction_80071AE8(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     Fighter* fp = GET_FIGHTER(gobj);

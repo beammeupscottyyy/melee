@@ -68,7 +68,7 @@ typedef struct FallCommon {
     /* +564 */ float x564;
 
     /**
-     * @brief Points to data in `PlCo.dat`.
+     * Points to data in `PlCo.dat`.
      * @details When the game reads the stick, it reads it using an integer
      * value with a max value of 80, this means the sticks only have 161 values
      * (80 per side + zero) possible analog values The same thing happens to
@@ -125,7 +125,7 @@ struct ftCommonData {
     /*  +2C */ float walk_fast_stick_threshold;
 
     /**
-     * @brief Ease out for the walk.
+     * Ease out for the walk.
      * Also affects the maximum possible acceleration, i.e. if this is 0.5
      * then the maximum possible acceleration when walking will be 0.5 *
      * `walk_acceleration`.
@@ -137,7 +137,7 @@ struct ftCommonData {
     /*  +3C */ float dash_smash_stick_threshold;
 
     /**
-     * @brief Frames since the stick left the deadzone where a dash or a smash
+     * Frames since the stick left the deadzone where a dash or a smash
      * can be input.
      */
     /*  +40 */ int dash_smash_window;
@@ -148,12 +148,12 @@ struct ftCommonData {
     /*  +50 */ float x50;
     /*  +54 */ float x54;
     /*  +58 */ float x58_someLStickXThreshold;
-    /*  +5C */ float run_accel_taper_gain; ///< @brief Ease out for the run.
+    /*  +5C */ float run_accel_taper_gain; ///< Ease out for the run.
 
     /// @datvalue{GALE01, PlCo.dat, 1.0}
 
     /**
-     * @brief Extra frictino multiplier applied to run/dash/turn, since
+     * Extra frictino multiplier applied to run/dash/turn, since
      * it's 1.0 it                                        has no effect.
      */
     /*  +60 */ float run_dash_turn_friction_multiplier;
@@ -162,7 +162,7 @@ struct ftCommonData {
     /*  +68 */ float x68;
 
     /**
-     * @brief The game adds extra friction when the player's speed is above
+     * The game adds extra friction when the player's speed is above
      * walk speed only in wait and turn state.
      * @datvalue{GALE01, PlCo.dat, 2.0}
      */
@@ -172,7 +172,7 @@ struct ftCommonData {
     /*  +70 */ float tap_jump_threshold;
 
     /**
-     * @brief Frames since the stick left the deadzone where a tap jump can be
+     * Frames since the stick left the deadzone where a tap jump can be
      * input.
      * @datvalue{GALE01, PlCo.dat, 4}
      */
@@ -182,7 +182,7 @@ struct ftCommonData {
     /*  +7C */ float tap_jump_release_threshold;
 
     /**
-     * @brief For some strange reason, some ground states have a smaller
+     * For some strange reason, some ground states have a smaller
      * threshold.
      * @datvalue{GALE01, PlCo.dat, 0.5625}
      */
@@ -326,7 +326,7 @@ struct ftCommonData {
     /* +29C */ float x29C;
 
     /**
-     * @brief Frames after trigger becomes non 0 where a full press results in
+     * Frames after trigger becomes non 0 where a full press results in
      * a powershield.
      */
     /* +2A0 */ int powershield_input_window;
@@ -596,10 +596,10 @@ struct ftCommonData {
     /* +72C */ float x72C;
     /* +730 */ float x730;
 
-    /// @brief Leadead capture timer decrement.
+    /// Leadead capture timer decrement.
     /* +734 */ float leadead_grab_timer_step;
 
-    /// @brief Leadead grab break threshold.
+    /// Leadead grab break threshold.
     /* +738 */ float leadead_grab_break_threshold;
 
     /* +73C */ int x73C;
@@ -875,12 +875,12 @@ struct ftCo_DatAttrs_xBC_t {
 
 typedef struct ftCo_DatAttrs {
     /**
-     * @brief Multiplciative walk acceleration, based on how much the control
+     * Multiplicative walk acceleration, based on how much the control
      * stick is pushed.
      */
     /* +000 fp+110 */ float walk_accel_mul;
 
-    /// @brief Base walk acceleration, always applied when walking.
+    /// Base walk acceleration, always applied when walking.
     /* +004 fp+114 */ float walk_accel_base;
 
     /* +008 fp+118 */ float walk_max_vel;
@@ -922,10 +922,10 @@ typedef struct ftCo_DatAttrs {
     /* +098 fp+1A8 */ int rapid_jab_window;
     /* +09C fp+1AC */ float clank_animation_length;
 
-    /// @brief `0` = normal spark, `1` = none.
+    /// `0` = normal spark, `1` = none.
     /* +0A0 fp+1B0 */ int hit_spark_variant;
 
-    /// @brief Not used anywhere in the codebase.
+    /// Not used anywhere in the codebase.
     /* +0A4 fp+1B4 */ int unused_0;
 
     /* +0A8 fp+1B8 */ float ledge_jump_horizontal_velocity;
@@ -934,7 +934,7 @@ typedef struct ftCo_DatAttrs {
     /* +0B4 fp+1C4 */ float heavy_throw_velocity_multiplier;
 
     /**
-     * @brief What percentage of the existing velocity is kept when performing
+     * What percentage of the existing velocity is kept when performing
      * a side special. `1.0` = keep all momentum, `0.0` = stop dead in its
      * tracks.
      */
@@ -962,7 +962,7 @@ typedef struct ftCo_DatAttrs {
     /* +13C fp+24C */ float x13C;
 
     /**
-     * @brief When hit by a screw attack item, the speed is hard set to
+     * When hit by a screw attack item, the speed is hard set to
      * (0, this, 0).
      */
     /* +140 fp+250 */ float screw_attack_launch_velocity;

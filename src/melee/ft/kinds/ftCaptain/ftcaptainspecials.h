@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Captain Falcon & Ganondorf's Side Special - Raptor Boost / Gerudo
+ * Captain Falcon & Ganondorf's Side Special - Raptor Boost / Gerudo
  * Dragon (SpecialS)
  */
 
