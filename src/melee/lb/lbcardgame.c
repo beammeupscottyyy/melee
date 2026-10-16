@@ -230,12 +230,12 @@ void lb_8001CC84(void)
             }
             break;
         case statex10_1: {
-            int result = lbCardNew_CompleteNextTask();
+            lbCardResult result = lbCardNew_CompleteNextTask();
             if (result != LbCardResult_Busy) {
-                if (result != 0) {
+                if (result != LbCardResult_Ready) {
                     _p(failed) = true;
                 }
-                _p(x10) = result = 0;
+                _p(x10) = statex10_0;
             }
             break;
         }

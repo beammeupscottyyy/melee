@@ -151,8 +151,8 @@ f32 lb_8000D008(f32 point_y_in, f32 point_x)
     return point_y;
 }
 
-s32 lb_8000D148(f32 point0_x, f32 point0_y, f32 point1_x, f32 point1_y,
-                f32 point2_x, f32 point2_y, f32 threshold)
+bool lb_8000D148(f32 point0_x, f32 point0_y, f32 point1_x, f32 point1_y,
+                 f32 point2_x, f32 point2_y, f32 threshold)
 {
     f32 dist_01;
     f32 var_f0;
@@ -164,7 +164,7 @@ s32 lb_8000D148(f32 point0_x, f32 point0_y, f32 point1_x, f32 point1_y,
         dist_01 = (diff_01_x * diff_01_x) + (diff_01_y * diff_01_y);
         cross = (point0_x * point1_y) - cross;
         if (dist_01 < 0.00001f) {
-            return 0;
+            return false;
         }
         dist_01 = sqrtf(dist_01);
 
@@ -186,12 +186,12 @@ s32 lb_8000D148(f32 point0_x, f32 point0_y, f32 point1_x, f32 point1_y,
                           (point1_y - point2_y) * (point1_y - point2_y);
         if (dist_squared_02 < threshold_squared) {
             if (dist_squared_12 > threshold_squared) {
-                return 1;
+                return true;
             }
             if (dist_squared_12 < threshold_squared) {
-                return 0;
+                return false;
             }
-            return 1;
+            return true;
         }
         if (dist_squared_02 > threshold_squared) {
             if (dist_squared_12 > threshold_squared) {
@@ -202,16 +202,16 @@ s32 lb_8000D148(f32 point0_x, f32 point0_y, f32 point1_x, f32 point1_y,
                     ((point0_y > point2_y) && (point1_y < point2_y)) ||
                     ((point0_y < point2_y) && (point1_y > point2_y)))
                 {
-                    return 1;
+                    return true;
                 }
-                return 0;
+                return false;
             }
             if (dist_squared_12 < threshold_squared) {
-                return 1;
+                return true;
             }
-            return 1;
+            return true;
         }
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }

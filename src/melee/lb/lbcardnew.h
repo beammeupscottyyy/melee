@@ -31,7 +31,7 @@ typedef struct {
 typedef void (*LbCardOnFinishedCallback)(int);
 
 /* 01B6E0 */ s32 lb_8001B6E0(s32 file_idx);
-/* 01B6F8 */ enum_t lbCardNew_CompleteNextTask(void);
+/* 01B6F8 */ lbCardResult lbCardNew_CompleteNextTask(void);
 /* 01B760 */ int lbCardNew_CompleteAllTasks(int result);
 /* 01B7E0 */ u32 lb_8001B7E0(int chan, char* filename, void* file_entries,
                              void* save_data, int* status_out);
