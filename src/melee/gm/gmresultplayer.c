@@ -1095,7 +1095,7 @@ static inline void fn_80178BB4_init_players(ResultsData* data,
                     HSD_AObjSetRate(rank_aobj, 0.0f);
                 }
 
-                if (match_end->match_kind != 3) {
+                if (match_end->match_kind != MatchKind_Bonus) {
                     f32 taunt_frame = gm_80168B34(
                         (CharacterKind) match_end->player_standings[(*i)]
                             .ckind,

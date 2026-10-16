@@ -1361,7 +1361,7 @@ void fn_80161C90(MatchEnd* arg0, int arg1, struct GmStats* s)
     s->run_distance = SAT_ADD(s->run_distance, p->x54, U32_MAX);
     s->fall_distance = SAT_ADD(s->fall_distance, p->x58, U32_MAX);
     s->peak_height = SAT_ADD(s->peak_height, p->x5C, U32_MAX);
-    if (arg0->match_kind == 2) {
+    if (arg0->match_kind == MatchKind_Coin) {
         s->coins_collected = SAT_ADD(s->coins_collected, p->x60, U32_MAX);
         s->coins_swiped = SAT_ADD(s->coins_swiped, p->x64, U32_MAX);
         s->coins_lost = SAT_ADD(s->coins_lost, p->x68, U32_MAX);
@@ -2918,16 +2918,16 @@ s32 fn_8016588C(MatchEnd* match_end, s32 player_slot)
             v = match_end->player_standings[player_slot].x9;
         }
         return fn_8016588C_clamp(v);
-    } else if (match_end->match_kind == 2) {
+    } else if (match_end->match_kind == MatchKind_Coin) {
         return fn_8016588C_clamp(match_end->player_standings[player_slot].x1C);
-    } else if (match_end->match_kind == 1) {
+    } else if (match_end->match_kind == MatchKind_Stock) {
         if (match_end->player_standings[player_slot].stocks != 0) {
             v = match_end->player_standings[player_slot].stocks;
         } else {
             v = match_end->player_standings[player_slot].x28 / 60 + 0xFF000001;
         }
         return fn_8016588C_clamp(v);
-    } else if (match_end->match_kind == 3) {
+    } else if (match_end->match_kind == MatchKind_Bonus) {
         pl_80039450(player_slot);
         return fn_8016588C_clamp(fn_8016FFD4(match_end, 2, (u8) player_slot));
     } else {
@@ -3015,7 +3015,7 @@ void fn_80165E7C(MatchEnd* arg0)
             u8 team = arg0->player_standings[i].team;
 
             if (gm_GetCurrentGameMode() == GM_STAMINA_VS ||
-                arg0->match_kind == 1)
+                arg0->match_kind == MatchKind_Stock)
             {
                 int player_score = new_var = arg0->player_standings[i].score;
 
@@ -3268,7 +3268,7 @@ s32 gm_80166A98(MatchEnd* arg0, u8 arg1, s8 arg2, u8 arg3, s8 arg4, u8 arg5,
     memzero(arg0, sizeof(*arg0));
 
     arg0->outcome = OUTCOME_TIMEOUT;
-    arg0->match_kind = 0;
+    arg0->match_kind = MatchKind_Time;
     arg0->is_teams = 0;
 
     score0 = 0xA - arg3;
@@ -3743,30 +3743,30 @@ void gm_80167BC8(VsModeData* vs_data)
     vs_data->start.rules.timer_enabled = 0;
 
     switch (rules->mode) {
-    case 0:
-        vs_data->start.rules.match_kind = 0;
+    case MatchKind_Time:
+        vs_data->start.rules.match_kind = MatchKind_Time;
         if (rules->time_limit != 0) {
             vs_data->start.rules.timer_enabled = 1;
             vs_data->start.rules.time_limit = rules->time_limit * 60;
         }
         break;
-    case 1:
-        vs_data->start.rules.match_kind = 1;
+    case MatchKind_Stock:
+        vs_data->start.rules.match_kind = MatchKind_Stock;
         if (rules->stock_time_limit != 0) {
             vs_data->start.rules.timer_enabled = 1;
             vs_data->start.rules.time_limit = rules->stock_time_limit * 60;
             break;
         }
         break;
-    case 2:
-        vs_data->start.rules.match_kind = 2;
+    case MatchKind_Coin:
+        vs_data->start.rules.match_kind = MatchKind_Coin;
         if (rules->time_limit != 0) {
             vs_data->start.rules.timer_enabled = 1;
             vs_data->start.rules.time_limit = rules->time_limit * 60;
         }
         break;
-    case 3:
-        vs_data->start.rules.match_kind = 3;
+    case MatchKind_Bonus:
+        vs_data->start.rules.match_kind = MatchKind_Bonus;
         if (rules->time_limit != 0) {
             vs_data->start.rules.timer_enabled = 1;
             vs_data->start.rules.time_limit = rules->time_limit * 60;

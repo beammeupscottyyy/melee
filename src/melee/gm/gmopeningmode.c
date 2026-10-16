@@ -491,7 +491,7 @@ void onEnterVs(GameModeState* arg0)
         md->players[i].cpu_level = 9;
         md->players[i].cpu_kind = 4;
         md->players[i].xC_b1 = false;
-        if (md->rules.match_kind == 1) {
+        if (md->rules.match_kind == MatchKind_Stock) {
             md->players[i].stocks = 99;
         }
     }

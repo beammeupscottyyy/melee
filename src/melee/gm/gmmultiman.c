@@ -278,7 +278,7 @@ void gm_801B6428(GameModeState* arg0)
 
     temp_r3->rules = gm_80490960.vs.start.rules;
 
-    temp_r3->rules.match_kind = 1;
+    temp_r3->rules.match_kind = MatchKind_Stock;
     temp_r3->rules.is_teams = false;
     temp_r3->rules.timer_enabled = true;
     temp_r3->rules.time_limit = 0;
@@ -502,7 +502,7 @@ static void gm_801B6AD8_inline(GameModeState* scene, int x)
 void gm_801B69C0(StartMeleeData* arg0)
 {
     gmMainLib_GetGameRules();
-    arg0->rules.match_kind = 0;
+    arg0->rules.match_kind = MatchKind_Time;
     arg0->rules.timer_enabled = true;
     arg0->rules.timer_counts_up = true;
     arg0->rules.time_limit = 0;

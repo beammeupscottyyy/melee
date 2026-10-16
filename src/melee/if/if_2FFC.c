@@ -226,7 +226,7 @@ void un_802FFF2C(StartMeleeData* arg0)
     r->is_teams = un_803FA258.xC;
     switch (un_803FA258.xC8) {
     case 0:
-        r->match_kind = 0;
+        r->match_kind = MatchKind_Time;
         timer = un_803FA258.xCC[1] + un_803FA258.xCC[0] * 0x3C;
         if (timer != 0) {
             r->time_limit = timer;
@@ -236,11 +236,11 @@ void un_802FFF2C(StartMeleeData* arg0)
         }
         break;
     case 1:
-        r->match_kind = 1;
+        r->match_kind = MatchKind_Stock;
         r->timer_enabled = 0;
         break;
     case 2:
-        r->match_kind = 2;
+        r->match_kind = MatchKind_Coin;
         timer = un_803FA258.xCC[1] + un_803FA258.xCC[0] * 0x3C;
         if (timer != 0) {
             r->time_limit = timer;
@@ -250,7 +250,7 @@ void un_802FFF2C(StartMeleeData* arg0)
         }
         break;
     default:
-        r->match_kind = 0;
+        r->match_kind = MatchKind_Time;
         r->timer_enabled = 0;
         break;
     }

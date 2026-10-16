@@ -104,7 +104,7 @@ void gm_801B9A3C(GameModeState* arg0)
     start->rules = vs->start.rules;
 
     start->rules.stkind = St_Kind_Unk84;
-    start->rules.match_kind = 1;
+    start->rules.match_kind = MatchKind_Stock;
     start->rules.timer_enabled = true;
     start->rules.x1_0 = true;
     start->rules.x4_2 = false;

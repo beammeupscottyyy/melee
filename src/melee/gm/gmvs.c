@@ -170,12 +170,12 @@ bool gm_8016B014(void)
 
 bool gm_8016B094(void)
 {
-    return gm_GetStartMeleeRules()->match_kind == 1;
+    return gm_GetStartMeleeRules()->match_kind == MatchKind_Stock;
 }
 
 bool gm_8016B0B4(void)
 {
-    return gm_GetStartMeleeRules()->match_kind == 2;
+    return gm_GetStartMeleeRules()->match_kind == MatchKind_Coin;
 }
 
 bool gm_8016B0D4(void)
@@ -757,7 +757,7 @@ MatchOutcome gm_GetFFAOutcome(void)
         notSingleplayer = 0;
     }
     if (notSingleplayer != 0 && !controller.start.x5_1 &&
-        (controller.start.match_kind == 1 || tmp->start.x4_2))
+        (controller.start.match_kind == MatchKind_Stock || tmp->start.x4_2))
     {
         int i;
         int eliminatedPlayers = 0;
@@ -841,7 +841,7 @@ MatchOutcome gm_GetTeamBattleOutcome(void)
     } else {
         notSinglePlayer_2 = false;
     }
-    if (notSinglePlayer_2 && controller.start.match_kind == 1) {
+    if (notSinglePlayer_2 && controller.start.match_kind == MatchKind_Stock) {
         teamCount = 0;
         eliminatedTeamCount = 0;
         memset(teamStocks, -1, sizeof(teamStocks));

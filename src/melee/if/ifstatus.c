@@ -893,8 +893,8 @@ static inline void ifStatus_TriggerStockLoss(s32 player_idx,
         gm_8016B8D4(player_idx, Player_GetPlayerSlotType(player_idx));
     }
 
-    if (big_thing->start.match_kind != 1 && big_thing->start.x2_5 != 0 &&
-        callback != NULL)
+    if (big_thing->start.match_kind != MatchKind_Stock &&
+        big_thing->start.x2_5 != 0 && callback != NULL)
     {
         callback(player_idx);
     }
@@ -905,7 +905,9 @@ void ifStatus_802F69C0(s32 player_idx, s32 arg1)
     VsSceneController* big_thing;
 
     big_thing = gmVs_GetSceneController();
-    if (big_thing->start.match_kind != 1 && big_thing->start.x2_5 != 0) {
+    if (big_thing->start.match_kind != MatchKind_Stock &&
+        big_thing->start.x2_5 != 0)
+    {
         if_802F7C30(arg1);
     }
 

@@ -711,7 +711,7 @@ void fn_80175240(s32 slot)
     PAD_STACK(8);
 
     me = lbl_8046DBE8.x94;
-    if (me->match_kind != 3) {
+    if (me->match_kind != MatchKind_Bonus) {
         /// maybe x4C is an array of Vec2's
         first_row_offset =
             1.14f * (lbl_8046DBE8.x4C[4].y - lbl_8046DBE8.x4C[0].y);
@@ -981,7 +981,7 @@ void fn_80175A94(s32 slot, Vec3* position)
     PAD_STACK(8);
 
     me = lbl_8046DBE8.x94;
-    if (me->match_kind == 3) {
+    if (me->match_kind == MatchKind_Bonus) {
         lb_8000B1CC(lbl_8046DBE8.player_data[player].jobjs[12], NULL, &sp24);
         x_pos = 5.5F + sp24.x;
     } else {
@@ -999,7 +999,7 @@ void fn_80175A94(s32 slot, Vec3* position)
     new_var->player_data[player].ko_time->default_alignment = 1;
     new_var->player_data[player].ko_time->default_kerning = 1;
 
-    if (me->match_kind == 2) {
+    if (me->match_kind == MatchKind_Coin) {
         GXColor sp18;
         GXColor sp14;
         PAD_STACK(4);
@@ -1022,9 +1022,9 @@ void fn_80175A94(s32 slot, Vec3* position)
         color_ptr = &sp18;
         HSD_SisLib_803A74F0(new_var->player_data[player].ko_time, slot,
                             color_ptr);
-    } else if (me->match_kind == 1) {
+    } else if (me->match_kind == MatchKind_Stock) {
         fn_80175880(player);
-    } else if (me->match_kind == 3) {
+    } else if (me->match_kind == MatchKind_Bonus) {
         fn_801756E0(player);
     } else {
         fn_8017556C(player);
@@ -1403,7 +1403,7 @@ void fn_80175DC8(HSD_GObj* gobj)
     }
 
     fn_801785B0(gobj);
-    if (me->match_kind == 0) {
+    if (me->match_kind == MatchKind_Time) {
         title_text = data->x2C;
         title_jobj = data->x28;
         sp78 = lbl_803B7B18.translate;
@@ -1414,7 +1414,7 @@ void fn_80175DC8(HSD_GObj* gobj)
         HSD_SisLib_803A6368(
             HSD_SisLib_803A5ACC(0, 0, sp6C.x, -sp6C.y, sp6C.z, 12.0F, 300.0F),
             2);
-    } else if (me->match_kind == 1) {
+    } else if (me->match_kind == MatchKind_Stock) {
         title_text = data->x2C;
         title_jobj = data->x28;
         sp60 = lbl_803B7B18.translate;
@@ -1425,7 +1425,7 @@ void fn_80175DC8(HSD_GObj* gobj)
         HSD_SisLib_803A6368(
             HSD_SisLib_803A5ACC(0, 0, sp54.x, -sp54.y, sp54.z, 12.0F, 300.0F),
             3);
-    } else if (me->match_kind == 2) {
+    } else if (me->match_kind == MatchKind_Coin) {
         title_text = data->x2C;
         title_jobj = data->x28;
         sp48 = lbl_803B7B18.translate;
@@ -1436,7 +1436,7 @@ void fn_80175DC8(HSD_GObj* gobj)
         HSD_SisLib_803A6368(
             HSD_SisLib_803A5ACC(0, 0, sp3C.x, -sp3C.y, sp3C.z, 12.0F, 300.0F),
             4);
-    } else if (me->match_kind == 3) {
+    } else if (me->match_kind == MatchKind_Bonus) {
         title_text = data->x2C;
         title_jobj = data->x28;
         sp30 = lbl_803B7B18.translate;
@@ -1751,7 +1751,7 @@ void gm_Scene_Results_OnEnter(void* arg0_)
         lbl_8046DBE8.num_pages = 2;
     } else {
         lbl_8046DBE8.num_pages = 3;
-        if (match_end->match_kind == 3) {
+        if (match_end->match_kind == MatchKind_Bonus) {
             for (i = 0; i < 4; i++) {
                 lbl_8046DBE8.player_data[i].page = 2;
             }

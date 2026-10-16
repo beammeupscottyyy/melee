@@ -825,7 +825,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
         return 0;
     }
 
-    if (rules->match_kind == 3) {
+    if (rules->match_kind == MatchKind_Bonus) {
         fn_80171B64((struct lbl_804D65A8_t*) rankings);
     } else {
         int k;
@@ -1317,7 +1317,7 @@ int fn_801701C0(MatchEnd* rules, int arg1, int arg2)
                 }
             }
         }
-        if (rules->match_kind == 3) {
+        if (rules->match_kind == MatchKind_Bonus) {
             {
                 int i;
                 for (i = 0; i < 4; i++) {
@@ -1630,7 +1630,7 @@ bool gm_801720F8(void)
     if (gm_8016B3D8()) {
         return true;
     }
-    return gm_GetStartMeleeRules()->match_kind == 1;
+    return gm_GetStartMeleeRules()->match_kind == MatchKind_Stock;
 }
 
 int gm_80172140(void)
