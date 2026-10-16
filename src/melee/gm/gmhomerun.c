@@ -166,7 +166,7 @@ void gm_801B9DD8(GameModeState* arg0)
     gm_80173B30(temp_r31);
     gm_80173EEC();
     gm_80172898(8);
-    if (gm_80173754(0x20, gm_804D68F8) == 0) {
+    if (gm_80173754(GM_HOME_RUN_CONTEST, gm_804D68F8) == 0) {
         gm_SetNextGameModeStateId(0);
     }
 }

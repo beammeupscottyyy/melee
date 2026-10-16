@@ -642,7 +642,7 @@ void onExitVs(GameModeState* arg0)
         gm_ChangeGameModeAfterCurrentScene(GM_CHALLENGER_APPROACH);
         return;
     }
-    if (gm_80173754(1, ev->x6) == 0) {
+    if (gm_80173754(GM_MENU, ev->x6) == 0) {
         gm_ChangeGameModeAfterCurrentScene(GM_MENU);
     }
 }

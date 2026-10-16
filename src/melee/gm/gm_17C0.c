@@ -373,13 +373,13 @@ void gm_8017CA38(DebugGameOverData* arg0, Unk1PData* arg1, gmm_x0_528_t* arg2,
         gm_80173EEC();
         gm_80172898(0x40);
         if (temp_r31 == ChKind_None) {
-            if (gm_80173754(1, arg1->x0.slot) == 0) {
+            if (gm_80173754(GM_MENU, arg1->x0.slot) == 0) {
                 gm_ChangeGameModeAfterCurrentScene(GM_MENU);
             }
         } else {
             gm_InitChallengerData(arg1->x0.ckind, arg1->x0.color,
                                   arg1->x0.slot, arg1->x0.nametag, temp_r31,
-                                  1U);
+                                  GM_MENU);
             gm_ChangeGameModeAfterCurrentScene(GM_CHALLENGER_APPROACH);
         }
     } else {

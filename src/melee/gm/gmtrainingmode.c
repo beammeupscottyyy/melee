@@ -252,7 +252,7 @@ void gm_801B2204(GameModeState* arg0)
         (u16) gm_80188454(temp_r3->match_end.player_standings[0].ckind));
     gm_80173BC4(temp_r3->match_end.player_standings[0].ckind);
     gm_80173EEC();
-    if (!gm_80173754(28, gm_804D68C0)) {
+    if (!gm_80173754(GM_TRAINING, gm_804D68C0)) {
         gm_SetNextGameModeStateId(0);
     }
     sfxForward();

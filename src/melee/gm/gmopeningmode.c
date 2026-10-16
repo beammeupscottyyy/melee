@@ -298,7 +298,7 @@ void onExitTitle(GameModeState* arg0)
     } else if (*temp_r3 & 0x1000) {
         gm_80173EEC();
         gm_80172898(0x100);
-        if (!gm_80173754(1, 0)) {
+        if (!gm_80173754(GM_MENU, 0)) {
             gm_SetPendingGameMode(GM_MENU);
         }
         gm_SetNewGameModePending();

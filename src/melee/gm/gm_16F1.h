@@ -1,6 +1,7 @@
 #ifndef MELEE_GM_16F1_H
 #define MELEE_GM_16F1_H
 
+#include <melee/ft/forward.h>
 #include <melee/gm/forward.h>
 #include <sysdolphin/baselib/forward.h>
 
@@ -93,13 +94,15 @@ struct lbl_804D65A8_t;
 /* 173644 */ bool fn_80173644(void);
 /* 17367C */ bool fn_8017367C(void);
 /* 1736DC */ ChallengerData* gm_GetChallengerData(void);
-/* 1736E8 */ void gm_InitChallengerData(u8 human_ckind, u8 human_color,
-                                        u8 human_slot, u8 human_nametag,
-                                        u8 cpu_ckind, u8 curr_mode);
-/* 173754 */ bool gm_80173754(u8, u8);
+/* 1736E8 */ void gm_InitChallengerData(CharacterKind human_ckind,
+                                        u8 human_color, u8 human_slot,
+                                        u8 human_nametag,
+                                        CharacterKind cpu_ckind,
+                                        GameModeKind curr_mode);
+/* 173754 */ bool gm_80173754(GameModeKind, u8);
 /* 1737D8 */ u8 gm_801737D8(void);
 /* 1737E8 */ void gm_Mode_ChallengerApproach_OnLoad(void);
-/* 173834 */ void fn_80173834(u8 ckind, u8 major, bool);
+/* 173834 */ void fn_80173834(CharacterKind ckind, GameModeKind major, bool);
 /* 17390C */ void gm_8017390C(int, int);
 /* 173AA4 */ void gm_80173AA4(void);
 /* 173B30 */ void gm_80173B30(u32);

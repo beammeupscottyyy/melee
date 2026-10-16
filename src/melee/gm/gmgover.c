@@ -108,7 +108,7 @@ void gm_801BEE9C(GameModeState* arg0)
     gm_80173EEC();
     gm_80172898(0x40);
     if (ckind == ChKind_None) {
-        if (!gm_80173754(1, gm_801BEFD0())) {
+        if (!gm_80173754(GM_MENU, gm_801BEFD0())) {
             gm_SetPendingGameMode(*game_mode);
         }
     } else {

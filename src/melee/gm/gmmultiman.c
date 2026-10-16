@@ -395,13 +395,13 @@ void gm_801B65D4(GameModeState* arg0)
         if (temp_r25_2 != ChKind_None) {
             gm_InitChallengerData(temp_r28->unk_584, temp_r28->unk_585,
                                   gm_804D68E8, temp_r28->unk_586, temp_r25_2,
-                                  0xF);
+                                  GM_TARGET_TEST);
             gm_SetPendingGameMode(GM_CHALLENGER_APPROACH);
             gm_SetNewGameModePending();
             return;
         }
     }
-    if (gm_80173754(0xF, gm_804D68E8) == 0) {
+    if (gm_80173754(GM_TARGET_TEST, gm_804D68E8) == 0) {
         gm_SetNextGameModeStateId(0U);
     }
 }

@@ -34,7 +34,7 @@ void onEnter(UNUSED GameModeState* state)
 void onExit(UNUSED GameModeState* state)
 {
     gm_80172898(4);
-    if (!gm_80173754(1, 0)) {
+    if (!gm_80173754(GM_MENU, 0)) {
         gm_SetPendingGameMode(GM_MENU);
         gm_SetNewGameModePending();
     }

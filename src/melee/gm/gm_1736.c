@@ -20,8 +20,9 @@ ChallengerData* gm_GetChallengerData(void)
     return &challenger_data;
 }
 
-void gm_InitChallengerData(u8 human_ckind, u8 human_color, u8 human_slot,
-                           u8 human_nametag, u8 cpu_ckind, u8 curr_mode)
+void gm_InitChallengerData(CharacterKind human_ckind, u8 human_color,
+                           u8 human_slot, u8 human_nametag,
+                           CharacterKind cpu_ckind, GameModeKind curr_mode)
 {
     ChallengerData* tmp = &challenger_data;
     memzero(tmp, sizeof(challenger_data));
@@ -33,7 +34,7 @@ void gm_InitChallengerData(u8 human_ckind, u8 human_color, u8 human_slot,
     tmp->curr_mode = curr_mode;
 }
 
-bool gm_80173754(u8 gameMode, u8 arg1)
+bool gm_80173754(GameModeKind gameMode, u8 arg1)
 {
     if (gm_801721EC()) {
         memzero(&challenger_data, sizeof(challenger_data));
@@ -62,7 +63,7 @@ void gm_Mode_ChallengerApproach_OnLoad(void)
     }
 }
 
-void fn_80173834(u8 ckind, u8 major, bool arg2)
+void fn_80173834(CharacterKind ckind, GameModeKind major, bool arg2)
 {
     bool temp_r31;
     bool temp_r30 = gm_80160474(ckind, major);
@@ -89,7 +90,7 @@ void fn_80173834(u8 ckind, u8 major, bool arg2)
 
 static inline void unlockAdventureTrophies(UnkAdventureData* data)
 {
-    fn_80173834(data->x0.x0.ckind, 4, true);
+    fn_80173834(data->x0.x0.ckind, GM_ADVENTURE, true);
     if (data->x0.xC.xD == 0 && data->x77 != 0) {
         fn_80172C78(0x51);
     }
@@ -103,7 +104,7 @@ static inline void unlockAdventureTrophies(UnkAdventureData* data)
 
 static inline void unlockClassicTrophies(Unk1PData* data)
 {
-    fn_80173834(data->x0.ckind, 3, true);
+    fn_80173834(data->x0.ckind, GM_CLASSIC, true);
     if (data->xC.xD == 0 && data->x0.cpu_level >= 3) {
         fn_80172C78(0x52);
     }
@@ -114,7 +115,7 @@ static inline void unlockClassicTrophies(Unk1PData* data)
 
 static inline void unlockAllStarTrophies(Unk1PData* data)
 {
-    fn_80173834(data->x0.ckind, 5, true);
+    fn_80173834(data->x0.ckind, GM_ALLSTAR, true);
     fn_80172C78(0xBE);
     if (data->xC.xD == 0) {
         fn_80172C78(0xCC);
@@ -304,7 +305,7 @@ void gm_80173DE4(MatchEnd* arg0)
     }
 }
 
-static inline bool gm_80173EEC_inline(u8 arg0, int arg1)
+static inline bool gm_80173EEC_inline(CharacterKind arg0, GameModeKind arg1)
 {
     return gm_80160474(arg0, arg1);
 }
@@ -312,7 +313,7 @@ static inline bool gm_80173EEC_inline(u8 arg0, int arg1)
 void gm_80173EEC(void)
 {
     int selkind;
-    u8 ckind;
+    CharacterKind ckind;
     u16* temp_r29;
 
     for (selkind = 0; selkind < SELKIND_COUNT; selkind++) {

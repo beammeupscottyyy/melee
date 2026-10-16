@@ -45,7 +45,7 @@ void onExit(GameModeState* scene)
         } else if (*buttons & HSD_PAD_START) {
             gm_80173EEC();
             gm_80172898(0x100);
-            if (!gm_80173754(1, 0)) {
+            if (!gm_80173754(GM_MENU, 0)) {
                 gm_SetPendingGameMode(GM_MENU);
             }
         } else if (*buttons & HSD_PAD_X) {
@@ -59,7 +59,7 @@ void onExit(GameModeState* scene)
     } else if (*buttons & HSD_PAD_START) {
         gm_80173EEC();
         gm_80172898(0x100);
-        if (!gm_80173754(1, 0)) {
+        if (!gm_80173754(GM_MENU, 0)) {
             gm_SetPendingGameMode(GM_MENU);
         }
     } else {
