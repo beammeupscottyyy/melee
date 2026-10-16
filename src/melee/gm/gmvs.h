@@ -85,7 +85,7 @@
 /* 16C7F0 */ void fn_8016C7F0(void);
 
 /**
- * @brief Checks for pause input and runs the pause routine when unpaused.
+ * Checks for pause input and runs the pause routine when unpaused.
  *
  * Runs when the match is not paused. Skipped while
  * #VsSceneController::unpause_timer is non-zero, the HUD is disabled, or
@@ -99,7 +99,7 @@
 /* 16CA68 */ void gm_DoPauseChecksAndRoutine(VsSceneController*, int);
 
 /**
- * @brief Checks for unpause input and runs the unpause routine when paused.
+ * Checks for unpause input and runs the unpause routine when paused.
  *
  * Runs when the match is paused. Skipped while #VsSceneController::pause_timer
  * is non-zero, the HUD is disabled, or #StartMeleeRules::disable_pausing is

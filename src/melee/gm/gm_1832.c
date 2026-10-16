@@ -44,7 +44,7 @@ static struct lbl_804735A8_t {
     u16 x3C;
     u16 x3E;
 } lbl_804735A8;
-/// @brief related to 1p splash screen
+/// Related to 1p splash screen.
 static struct lbl_804735E8_t {
     HSD_ImageDesc x40[3];
     HSD_ImageDesc x88[3];
@@ -666,7 +666,7 @@ void fn_8018575C(HSD_GObj* gobj)
     }
 }
 
-/// @brief Creates splash screen sprite objects from pre-rendered character
+/// Creates splash screen sprite objects from pre-rendered character
 /// images. Distributes 10 image tiles across a grid with random offsets.
 void fn_801857C4(HSD_GObj* arg0)
 {

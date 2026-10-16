@@ -7,7 +7,7 @@
 /* 1A4284 */ void* gm_GetGameModeStateExitData(GameModeState*);
 
 /**
- * @brief Sets the scene index for both the current and previous scene.
+ * Sets the scene index for both the current and previous scene.
  *
  * Sets #GameRouting::curr_scene_idx and #GameRouting::prev_scene_idx on
  * #state_machine.
@@ -20,7 +20,7 @@
 /* 1A428C */ void gm_SetGameModeStateId(u8 idx);
 
 /**
- * @brief Sets the scene index for the pending scene
+ * Sets the scene index for the pending scene
  *
  * Sets #GameRouting::pending_scene_idx on #state_machine to @c arg0 + 1
  *
@@ -36,7 +36,7 @@
 /* 1A42C4 */ u8 gm_GetCurrentSceneIndex(void);
 
 /**
- * @brief Sets #state_machine's #GameState::pending value to @c true (1).
+ * Sets #state_machine's #GameState::pending value to @c true (1).
  * Signaling that the game mode should change after the current scene exits.
  *
  * See also: ::gm_ChangeGameModeAfterCurrentScene, ::gm_SetPendingGameMode,
@@ -45,7 +45,7 @@
 /* 1A42D4 */ void gm_SetNewGameModePending(void);
 
 /**
- * @brief Sets #GameRouting::pending_mode on #state_machine to @c pending_mode
+ * Sets #GameRouting::pending_mode on #state_machine to @c pending_mode
  * for use after the current mode exits.
  *
  * Sets the #state_machine #GameRouting::pending_mode to the provided value.
@@ -66,7 +66,7 @@
 /* 1A42E8 */ void gm_SetPendingGameMode(u8 pending_mode);
 
 /**
- * @brief Sets #GameRouting::pending_mode and #GameState::pending on
+ * Sets #GameRouting::pending_mode and #GameState::pending on
  * #state_machine to @c pending_mode and @c true (1) for use after the current
  * scene exits,
  *

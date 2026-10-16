@@ -945,7 +945,7 @@ struct VsApproachData {
     u8 human_slot;
 };
 
-/// @brief data passed to OnLoad callback for GM_MENU
+/// Data passed to OnLoad callback for GM_MENU.
 struct MenuEnterData {
     /* +00 */ u8 menu_kind;         ///< will set the next menu kind
     /* +01 */ u8 hovered_selection; ///< will set the next hovered selection
@@ -955,7 +955,7 @@ struct MenuEnterData {
 };
 ASSERT_SIZE(struct MenuEnterData, 0x4);
 
-/// @brief data passed to OnLeave callback for GM_MENU
+/// Data passed to OnLeave callback for GM_MENU.
 struct MenuExitData {
     /* +00 */ s8 pending_mode; ///< will set the next game mode
     /* +01 */ u8 _1[0x3];
