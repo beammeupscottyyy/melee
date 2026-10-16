@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Map library.
+ * Map library.
  */
 
 #ifndef GALE01_04D164
@@ -139,7 +139,7 @@
 /* 0549B0 */ void mpRightWallGetBottom(int line_id, Vec3*);
 /* 054B14 */ void mpLineGetV1Pos(int line_id, Vec3* pos_out);
 /* 054BC0 */ void mpLineGetV0Pos(int line_id, Vec3* pos_out);
-/* 054C6C */ enum_t mpLineGetKind(int line_id);
+/* 054C6C */ CollLineKind mpLineGetKind(int line_id);
 /* 054CEC */ u32 mpLineGetFlags(int line_id);
 /* 054D68 */ void mpLib_80054D68(int line_id, u32 flags);
 /* 054DFC */ Vec3* mpLineGetNormal(int line_id, Vec3* normal_out);

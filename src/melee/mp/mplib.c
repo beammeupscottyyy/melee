@@ -4336,7 +4336,7 @@ void mpLineGetV0Pos(int line_id, Vec3* pos_out)
     pos_out->z = 0.0F;
 }
 
-enum_t mpLineGetKind(int line_id)
+CollLineKind mpLineGetKind(int line_id)
 {
     LINEID_CHECK(4573, line_id);
     return groundCollLine[line_id].flags & LINE_FLAG_KIND;
