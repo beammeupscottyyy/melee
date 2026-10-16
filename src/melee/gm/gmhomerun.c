@@ -65,7 +65,7 @@ void gm_801B98E8(GameModeState* scene)
     lbDvd_SetupVsPreloadCache();
     game_cache->entries[1].char_id = ChKind_Sandbag;
     game_cache->entries[1].color = 0;
-    game_cache->stkind = 0x54;
+    game_cache->stkind = St_Kind_Unk84;
     lbDvd_80018254();
     gm_804D68F9 = lbTime_8000AF74(gm_804D68F9, 1);
 }
