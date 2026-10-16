@@ -528,7 +528,7 @@ void fn_802F9680(HSD_GObj* gobj, intptr_t renderpass)
 HSD_GObj* ifStock_802F96D0(int a, int b, float x, float y)
 {
     struct ifStock_804A1378* q = &ifStock_804A1378;
-    HSD_GObj* gobj = GObj_Create(14, 15, 0);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 15, 0);
     HSD_Joint* joint = (*q->x0)->joint;
     HSD_JObj* jobj = HSD_JObjLoadJoint(joint);
     HSD_JObj* jobj2;
@@ -575,7 +575,7 @@ void ifStock_802F98E8(u8 player, u8 b)
         if (stock->player[player].x0 != NULL) {
             HSD_GObjFree(stock->player[player].x0);
         }
-        gobj = GObj_Create(14, 15, 0);
+        gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 15, 0);
         gobj->user_data = &ifStock_804A157C[player];
         if (gobj != NULL) {
             jobj = HSD_JObjLoadJoint((*stock->x0)->joint);
@@ -719,7 +719,7 @@ void ifStock_802F98E8(u8 player, u8 b)
 HSD_GObj* ifStock_802F9F48(int arg)
 {
     struct ifStock_804A1378* q = &ifStock_804A1378;
-    HSD_GObj* gobj = GObj_Create(14, 15, 0);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 15, 0);
     HSD_Joint* joint = (*q->x0)->joint;
     HSD_JObj* jobj = HSD_JObjLoadJoint(joint);
     HSD_JObj* jobj2;
@@ -745,7 +745,7 @@ HSD_GObj* ifStock_802F9F48(int arg)
 HSD_GObj* ifStock_802FA118(int arg)
 {
     struct ifStock_804A1378* q = &ifStock_804A1378;
-    HSD_GObj* gobj = GObj_Create(14, 15, 0);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 15, 0);
     HSD_Joint* joint = (*q->x0)->joint;
     HSD_JObj* jobj = HSD_JObjLoadJoint(joint);
     HSD_JObj* jobj2;
@@ -796,7 +796,7 @@ void ifStock_802FA2D0(int arg)
 void ifStock_802FA5BC(int arg)
 {
     struct ifStock_804A1378* q = &ifStock_804A1378;
-    HSD_GObj* gobj = GObj_Create(14, 15, 0);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 15, 0);
     HSD_JObj* jobj = HSD_JObjLoadJoint(q->x4->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
     GObj_SetupGXLink(gobj, fn_802F9598, 11, 0);
@@ -971,7 +971,7 @@ static inline void ifStock_CreateStockGObjs(HSD_GObj** slots)
         }
     }
     if (gm_IsMultimanSmashMode()) {
-        gobj = GObj_Create(14, 15, 0);
+        gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 15, 0);
         jobj = HSD_JObjLoadJoint(stock->x4->joint);
         HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
         GObj_SetupGXLink(gobj, fn_802F9598, 11, 0);
@@ -998,14 +998,14 @@ void ifStock_802FAEC4(void)
     stock->x4 = scene_models[1];
     ifStock_804A1ACC.x108 = NULL;
     ifStock_804A1ACC.x0 = 0;
-    gobj = GObj_Create(14, 15, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 15, 0);
     HSD_GObj_SetupProc(gobj, fn_802FAC34, 17);
     ifStock_804A1ACC.x108 = gobj;
     ifStock_ClearGObjSlots(&ifStock_804A1ACC.x10C[0], 130);
     if (gm_80169394() == 0) {
         ifStock_804A1774.x10C[0] = NULL;
         ifStock_804A1774.x0 = 0;
-        gobj = GObj_Create(14, 15, 0);
+        gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 15, 0);
         HSD_GObj_SetupProc(gobj, fn_802FA6C4, 17);
         ifStock_804A1774.x10C[0] = gobj;
         ifStock_ClearGObjSlots(&ifStock_804A1774.x10C[1], 130);

@@ -56,7 +56,7 @@ void ifStatus_802F6EA4(int arg0, int arg1, int arg2, int arg3, IfStatusCb arg4,
         if (e->x0 != NULL) {
             HSD_GObjFree(e->x0);
         }
-        gobj = GObj_Create(0xE, 0xE, 0);
+        gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xE, 0);
         jobj = HSD_JObjLoadJoint(e->x14->joint);
         lb_80011C18(jobj, 0x08000000);
         HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);

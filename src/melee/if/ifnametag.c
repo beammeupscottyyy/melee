@@ -338,12 +338,13 @@ void un_802FD468(void)
 
 static inline HSD_GObj* un_802FD4C8_inline(int arg0)
 {
-    return GObj_Create(0xE, arg0, 0);
+    return GObj_Create(HSD_GOBJ_CLASS_UI, arg0, 0);
 }
 
 static inline void initSis(HSD_GObj* gobj)
 {
-    un_804D6D7C = HSD_SisLib_803A611C(2, gobj, 14, 15, 0, 9, 6, 0);
+    un_804D6D7C =
+        HSD_SisLib_803A611C(2, gobj, HSD_GOBJ_CLASS_UI, 15, 0, 9, 6, 0);
     // "Break the targets!" "Race to the finish!" etc strings
     HSD_SisLib_803A62A0(2, "SdIntro.dat", "SIS_IntroData");
     un_804D6D78 = HSD_SisLib_803A6754(2, un_804D6D7C);
