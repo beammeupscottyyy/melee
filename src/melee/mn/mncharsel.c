@@ -2438,7 +2438,7 @@ void mnCharSel_CursorThink(HSD_GObj* gobj)
                     if (mnCharSel_803F0DFC.doors[cursor->x4].p_kind == 0) {
                         mnCharSel_803F0DFC.doors[cursor->x4].p_kind = 1;
                         mnCharSel_804D6CB0->vs.start.players[cursor->x4]
-                            .slot_type = 1;
+                            .slot_type = Gm_PKind_Cpu;
                         mnCharSel_804D6CB0->vs.start.players[cursor->x4]
                             .nametag = 0x78;
                         mnCharSel_803F0E8C[cursor->x4].data->use_tag = 0;
@@ -3328,7 +3328,7 @@ void mnCharSel_CursorThink(HSD_GObj* gobj)
                                                 .p_kind = 0;
                                             mnCharSel_804D6CB0->vs.start
                                                 .players[cursor->x4]
-                                                .slot_type = 0;
+                                                .slot_type = Gm_PKind_Human;
                                             mnCharSel_8025DB34(cursor->x4);
                                             sfxMove();
                                         }
@@ -3709,15 +3709,17 @@ void fn_80262F44(HSD_GObj* gobj)
                 }
                 goto hide;
             }
-        teams_ok: {
-            CSSTag* tag = mnCharSel_803F0E8C;
-            for (i = 0; i < (s32) mnCharSel_804D6CF5; i++) {
-                if (mnCharSel_804A0BC0[i]->x5 == 1 || tag[i].data->state != 0)
-                {
-                    goto hide;
+        teams_ok:
+            {
+                CSSTag* tag = mnCharSel_803F0E8C;
+                for (i = 0; i < (s32) mnCharSel_804D6CF5; i++) {
+                    if (mnCharSel_804A0BC0[i]->x5 == 1 ||
+                        tag[i].data->state != 0)
+                    {
+                        goto hide;
+                    }
                 }
             }
-        }
 
             if (mnCharSel_804D6CF7 == 0) {
                 HSD_ForeachAnim(jobj, JOBJ_TYPE, ALL_TYPE_MASK,
@@ -4564,8 +4566,8 @@ s32 mnCharSel_802640A0(void)
                         CKind_Playable_Count;
                     slot_type = &mnCharSel_804D6CB0->vs.start.players[player]
                                      .slot_type;
-                    if (*slot_type == 1) {
-                        *slot_type = 3;
+                    if (*slot_type == Gm_PKind_Cpu) {
+                        *slot_type = Gm_PKind_NA;
                     }
                 }
                 mnCharSel_803F0DFC.doors[slot].sel_icon = found;
@@ -5201,11 +5203,12 @@ s32 mnCharSel_802640A0(void)
 
     mnCharSel_804D6CF7 = 0;
     if (mnCharSel_804D6CF5 == 1) {
-        mnCharSel_804D6CB0->vs.start.players[3].slot_type = 3;
-        mnCharSel_804D6CB0->vs.start.players[2].slot_type = 3;
-        mnCharSel_804D6CB0->vs.start.players[1].slot_type = 3;
-        mnCharSel_804D6CB0->vs.start.players[0].slot_type = 3;
-        mnCharSel_804D6CB0->vs.start.players[mnCharSel_804D6CF0].slot_type = 0;
+        mnCharSel_804D6CB0->vs.start.players[3].slot_type = Gm_PKind_NA;
+        mnCharSel_804D6CB0->vs.start.players[2].slot_type = Gm_PKind_NA;
+        mnCharSel_804D6CB0->vs.start.players[1].slot_type = Gm_PKind_NA;
+        mnCharSel_804D6CB0->vs.start.players[0].slot_type = Gm_PKind_NA;
+        mnCharSel_804D6CB0->vs.start.players[mnCharSel_804D6CF0].slot_type =
+            Gm_PKind_Human;
         mnCharSel_803F0DFC.doors[0].p_kind = 0;
         {
             CSSData* css = mnCharSel_804D6CB0;
@@ -5214,7 +5217,8 @@ s32 mnCharSel_802640A0(void)
             mnCharSel_803F0DFC.doors[0].sel_icon_prev =
                 mnCharSel_803F0DFC.doors[0].sel_icon;
             if (css->match_type == 0x17) {
-                css->vs.start.players[mnCharSel_804D6CF1].slot_type = 1;
+                css->vs.start.players[mnCharSel_804D6CF1].slot_type =
+                    Gm_PKind_Cpu;
                 mnCharSel_803F0DFC.doors[1].p_kind = 1;
                 mnCharSel_803F0DFC.doors[1].costume =
                     mnCharSel_804D6CB0->vs.start.players[mnCharSel_804D6CF1]
@@ -5350,7 +5354,7 @@ void mnCharSel_Scene_OnFrame(void)
             slot_type =
                 mnCharSel_804D6CB0->vs.start.players[mnCharSel_804D6CF0]
                     .slot_type;
-            if (!(slot_type != 0 && slot_type != 1) &&
+            if (!(slot_type != Gm_PKind_Human && slot_type != Gm_PKind_Cpu) &&
                 mnCharSel_804A0BD0[0]->x5 == 0)
             {
                 cache->entries[0].char_id =
@@ -5365,7 +5369,7 @@ void mnCharSel_Scene_OnFrame(void)
             slot_type =
                 mnCharSel_804D6CB0->vs.start.players[mnCharSel_804D6CF1]
                     .slot_type;
-            if (!(slot_type != 0 && slot_type != 1)) {
+            if (!(slot_type != Gm_PKind_Human && slot_type != Gm_PKind_Cpu)) {
                 if (mnCharSel_804A0BD0[1]->x5 == 0) {
                     cache->entries[1].char_id =
                         mnCharSel_804D6CB0->vs.start
@@ -5387,7 +5391,8 @@ void mnCharSel_Scene_OnFrame(void)
 
             for (i = 0; i < num_slots; i++) {
                 slot_type = mnCharSel_804D6CB0->vs.start.players[i].slot_type;
-                if (!(slot_type != 0 && slot_type != 1) &&
+                if (!(slot_type != Gm_PKind_Human &&
+                      slot_type != Gm_PKind_Cpu) &&
                     mnCharSel_804A0BD0[i]->x5 == 0)
                 {
                     cache->entries[i].char_id =
