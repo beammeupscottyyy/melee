@@ -1153,7 +1153,7 @@ HSD_GObj* grStadium_801D2BEC(void)
     UnkArchiveStruct* archive;
     PAD_STACK(4);
 
-    gobj = GObj_Create(0x11, 0x13, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_TEXT, 0x13, 0);
     cobj = lb_80013B14(&grPs_803E14FC);
     HSD_CObjSetOrtho(cobj, 0.0F, -160.0F, 0.0F, 250.0F);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
@@ -1164,7 +1164,7 @@ HSD_GObj* grStadium_801D2BEC(void)
     memzero(text, 0x18);
     lb_800121FC(&text->desc, 0xFA, 0xA0, 4, 0x7D2);
     archive = grDatFiles_GetArchive();
-    HSD_SisLib_803A611C(1, gobj, 9, 0xD, 0, 1, 0, 1);
+    HSD_SisLib_803A611C(1, gobj, HSD_GOBJ_CLASS_SISLIB_UNK, 0xD, 0, 1, 0, 1);
     HSD_SisLib_804D1124[1] =
         HSD_ArchiveGetPublicAs(u8*, archive->unk0, "SIS_GrPStadiumData");
     text->win_static_p =
@@ -1182,7 +1182,7 @@ HSD_GObj* grStadium_801D2D78(void)
     HSD_GObj* temp_r3;
     ImageDescWrapper* wrapper;
 
-    temp_r3 = GObj_Create(0x11, 0x12, 0);
+    temp_r3 = GObj_Create(HSD_GOBJ_CLASS_TEXT, 0x12, 0);
     GObj_SetupGXLinkMax(temp_r3, grStadium_801D2FD0, 3);
     wrapper = HSD_MemAlloc(0x1C);
     GObj_InitUserData(temp_r3, 3, HSD_Free, wrapper);
@@ -1194,7 +1194,7 @@ HSD_GObj* grStadium_801D2D78(void)
 
 HSD_GObj* grStadium_801D2E24(void)
 {
-    HSD_GObj* gobj = GObj_Create(0x11, 0x12, 0);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_TEXT, 0x12, 0);
     ImageDescWrapper* wrapper;
     GObj_SetupGXLinkMax(gobj, grStadium_801D3084, 3);
     wrapper = HSD_MemAlloc(sizeof(ImageDescWrapper));

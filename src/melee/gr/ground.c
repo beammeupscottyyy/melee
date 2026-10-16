@@ -904,7 +904,7 @@ Ground_GObj* Ground_GetStageGObj(int map_id)
                     .x10.x0.flags_b2 == 1 &&
             archive->unk4->unk8[map_id].x10 != NULL)
         {
-            HSD_GObj* temp_r23_2 = GObj_Create(17, 19, 0);
+            HSD_GObj* temp_r23_2 = GObj_Create(HSD_GOBJ_CLASS_TEXT, 19, 0);
             temp_r27 = lb_80013B14(archive->unk4->unk8[map_id].x10);
             new_var2 = temp_r23_2;
             HSD_GObjObject_80390A70(temp_r23_2, HSD_GObj_CameraKind, temp_r27);
@@ -1128,7 +1128,7 @@ void Ground_801C1E94(void)
 
     phi_r0 = foo();
     if (phi_r0 != NULL) {
-        temp_r30_2 = GObj_Create(0xA, 0xB, 0);
+        temp_r30_2 = GObj_Create(HSD_GOBJ_CLASS_FOG, 0xB, 0);
         temp_r29_2 = HSD_FogLoadDesc(phi_r0);
         HSD_GObjObject_80390A70(temp_r30_2, HSD_GObj_FogKind, temp_r29_2);
         GObj_SetupGXLink(temp_r30_2, Ground_801C1E2C, 0, 0);
@@ -2670,7 +2670,7 @@ light_selected:
     if ((r28_carrier.lights = selected) == NULL) {
         r28_carrier.lights = Ground_803E06C8;
     }
-    temp_r3 = GObj_Create(0xD, 3, 0);
+    temp_r3 = GObj_Create(HSD_GOBJ_CLASS_GROUND, HSD_GOBJ_PLINK_LIGHT, 0);
     if (temp_r3 == NULL) {
         OSReport("%s:%d: couldn t get gobj\n", __FILE__, 0xEAF);
         while (true) {

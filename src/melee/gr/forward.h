@@ -1,6 +1,7 @@
 #ifndef MELEE_GR_FORWARD_H
 #define MELEE_GR_FORWARD_H
 
+#include <melee/if/forward.h>
 #include <melee/lb/forward.h>
 #include <sysdolphin/baselib/forward.h>
 
