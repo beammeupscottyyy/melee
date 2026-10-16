@@ -23,8 +23,7 @@ ColorOverlay* ftCo_800C0674(Fighter_GObj* gobj)
     return ftCo_800C0658(GET_FIGHTER(gobj));
 }
 
-/// @todo Wrong return type. Union?
-enum_t ftCo_800C0694(Fighter* fp)
+FtColAnim ftCo_800C0694(Fighter* fp)
 {
     return ftCo_800C0658(fp)->x28_colanim.i;
 }

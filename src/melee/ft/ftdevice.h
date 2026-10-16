@@ -7,7 +7,7 @@
 
 /* 0C0658 */ ColorOverlay* ftCo_800C0658(Fighter* fp);
 /* 0C0674 */ ColorOverlay* ftCo_800C0674(Fighter_GObj* gobj);
-/* 0C0694 */ enum_t ftCo_800C0694(Fighter* fp);
+/* 0C0694 */ FtColAnim ftCo_800C0694(Fighter* fp);
 /* 0C06B4 */ int ftCo_800C06B4(Fighter* fp);
 /* 0C06C0 */ void ftCo_800C06C0(void);
 /* 0C06E8 */ void ftCo_800C06E8(Ground_GObj*, int, void*);

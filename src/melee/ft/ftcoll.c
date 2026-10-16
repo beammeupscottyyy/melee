@@ -2791,7 +2791,7 @@ void ftColl_8007B6A0(Fighter_GObj* gobj)
     ftCo_800BFFD0(fp, 9, false);
 }
 
-static inline enum_t inlineC0(Fighter* fp)
+static inline FtColAnim inlineC0(Fighter* fp)
 {
     return ftCo_800C0694(fp);
 }

@@ -169,7 +169,7 @@ static inline void resetColAnimX408(Fighter* fp)
     }
 }
 
-void ftCo_800C0200(Fighter* fp, int arg1)
+void ftCo_800C0200(Fighter* fp, FtColAnim arg1)
 {
     if (arg1 >= FtColAnim_SpycloakStart) {
         OSReport("don't reset spycloak colanim!\n");
@@ -183,7 +183,7 @@ void ftCo_800C0200(Fighter* fp, int arg1)
     }
 }
 
-void ftCo_800C0358(Fighter* fp, Fighter* arg1, s32 arg2)
+void ftCo_800C0358(Fighter* fp, Fighter* arg1, FtColAnim arg2)
 {
     if (arg2 >= FtColAnim_SpycloakStart) {
         OSReport("don't reset spycloak colanim!\n");
