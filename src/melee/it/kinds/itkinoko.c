@@ -49,7 +49,7 @@ void it_802936E4(Item_GObj* gobj)
     it->x40_vel.y = it->x40_vel.z = 0.0f;
 
     it_8026B390(gobj);
-    Item_8026AE84(it, 0x107, 0x7F, 0x40);
+    Item_8026AE84(it, 0x107, SFX_VOLUME_MAX, SFX_PAN_MID);
     Item_80268E5C(gobj, 0, ITEM_UNK_0x1 | ITEM_HIT_PRESERVE);
 }
 

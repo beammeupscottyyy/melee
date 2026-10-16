@@ -417,7 +417,7 @@ void it_80286BA0(Item_GObj* gobj)
     HSD_JObj* jobj = gobj->hsd_obj;
     PAD_STACK(8);
 
-    Item_8026AE84(ip, 0xF6, 0x7F, 0x40);
+    Item_8026AE84(ip, 0xF6, SFX_VOLUME_MAX, SFX_PAN_MID);
     Camera_RequestQuake(QuakeKind_Small, &ip->pos);
     it_80286248(gobj, attr->spawn_weight_0, attr->spawn_weight_1,
                 attr->spawn_weight_2, attr->special_spawn_weight);

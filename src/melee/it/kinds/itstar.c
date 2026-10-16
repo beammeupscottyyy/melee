@@ -76,7 +76,7 @@ bool itStar_UnkMotion0_Coll(Item_GObj* item_gobj)
         val = true;
     }
     if (val) {
-        Item_8026AE84(item, 0xFA, 0x7F, 0x40);
+        Item_8026AE84(item, 0xFA, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     return false;
 }

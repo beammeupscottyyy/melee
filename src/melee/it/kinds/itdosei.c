@@ -705,7 +705,7 @@ bool itDosei_UnkMotion11_Coll(Item_GObj* gobj)
 bool itDosei_Logic7_DmgDealt(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
-    Item_8026AF0C(ip, it_803F56B8[HSD_Randi(3)], 127, 64);
+    Item_8026AF0C(ip, it_803F56B8[HSD_Randi(3)], SFX_VOLUME_MAX, SFX_PAN_MID);
     if (ip->msid == 5) {
         itColl_BounceOffVictim(gobj);
         it_802725D4(gobj);

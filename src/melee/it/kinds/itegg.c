@@ -271,7 +271,7 @@ bool itEgg_Logic3_DmgDealt(Item_GObj* gobj)
         return false;
     }
     efSync_Spawn(1232, gobj, &ip->pos);
-    Item_8026AE84(ip, 244, 127, 64);
+    Item_8026AE84(ip, 244, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_80289158(gobj);
     return false;
 }

@@ -362,7 +362,7 @@ void it_3F14_Logic15_Thrown(Item_GObj* gobj)
     ip->xDD4_itemVar.rshell.xDE8 = 1;
     ip->xDD4_itemVar.rshell.xDD8 = attrs->x3C;
     Item_80268E5C(gobj, 3, 6);
-    Item_8026AE84(ip, 0xF2, 0x7F, 0x40);
+    Item_8026AE84(ip, 0xF2, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 bool itRshell_UnkMotion3_Anim(Item_GObj* gobj)
@@ -697,7 +697,7 @@ bool it_8028E6C0(Item_GObj* gobj)
     Item* ip = gobj->user_data;
     it_80272940(gobj);
     it_8028D26C(gobj);
-    Item_8026AE84(ip, 0xF1, 0x7F, 0x40);
+    Item_8026AE84(ip, 0xF1, SFX_VOLUME_MAX, SFX_PAN_MID);
     return ip->xDD4_itemVar.rshell.xDF0;
 }
 

@@ -136,7 +136,7 @@ void itParasol_Logic13_Dropped(Item_GObj* item_gobj)
 void itParasol_Logic13_Thrown(Item_GObj* item_gobj)
 {
     Item* item = GET_ITEM(item_gobj);
-    Item_8026AE84(item, 0xF7, 0x7F, 0x40);
+    Item_8026AE84(item, 0xF7, SFX_VOLUME_MAX, SFX_PAN_MID);
     Item_80268E5C(item_gobj, 2, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
@@ -212,7 +212,7 @@ static inline void animSpeed(Item_GObj* item_gobj, f32 speed, int statenum)
 {
     Item* item = GET_ITEM(item_gobj);
     if (statenum > 4) {
-        Item_8026AE84(item, 0xF7, 0x7F, 0x40);
+        Item_8026AE84(item, 0xF7, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     item->x5D0_animFrameSpeed = speed;
     Item_80268E5C(item_gobj, statenum, ITEM_ANIM_UPDATE);

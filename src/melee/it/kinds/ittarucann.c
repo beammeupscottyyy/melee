@@ -363,7 +363,7 @@ bool itTarucann_UnkMotion1_Coll(Item_GObj* gobj)
             it_802762BC(ip);
             ip->x40_vel.y *= -attrs->x58;
         }
-        Item_8026AE84(ip, 0x104, 0x7F, 0x40);
+        Item_8026AE84(ip, 0x104, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     return false;
 }
@@ -480,7 +480,7 @@ bool itTarucann_UnkMotion6_Coll(Item_GObj* gobj)
             it_802762BC(ip);
             ip->x40_vel.y *= -attrs->x58;
         }
-        Item_8026AE84(ip, 0x104, 0x7F, 0x40);
+        Item_8026AE84(ip, 0x104, SFX_VOLUME_MAX, SFX_PAN_MID);
     } else {
         flags = coll->env_flags;
         if ((flags & 0x3F) || (flags & 0xFC0)) {
@@ -633,7 +633,7 @@ void it_802975F4(Item_GObj* gobj)
     ip->xDAC_itcmd_var0 = 0;
     ip->xDD4_itemVar.tarucann.x20 = 0;
     itResetVelocity(ip);
-    Item_8026AE84(ip, 0x12A, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x12A, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 static inline void itTarucann_UnkMotion9_Anim_inline(HSD_GObj* gobj)
@@ -654,7 +654,7 @@ bool itTarucann_UnkMotion9_Anim(Item_GObj* gobj)
     switch (ip->xDAC_itcmd_var0) {
     case 1:
         efSync_Spawn(0x427, gobj, &ip->pos);
-        Item_8026AE84(ip, 0xFB, 0x7F, 0x40);
+        Item_8026AE84(ip, 0xFB, SFX_VOLUME_MAX, SFX_PAN_MID);
         Camera_RequestQuake(QuakeKind_Small, &ip->pos);
         HSD_JObjSetFlagsAll(jobj, JOBJ_HIDDEN);
         it_8026B3A8(gobj);
@@ -691,7 +691,7 @@ bool it_80297790(Item_GObj* gobj)
     case 5:
         it_802969D8(gobj);
         it_802762BC(ip);
-        Item_8026AE84(ip, 0x129, 0x7F, 0x40);
+        Item_8026AE84(ip, 0x129, SFX_VOLUME_MAX, SFX_PAN_MID);
         ip->xDD4_itemVar.tarucann.x24 = da->x2C;
         ip->x40_vel.y = da->x4C;
         ip->xDD4_itemVar.tarucann.x28 = da->x48;

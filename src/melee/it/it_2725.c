@@ -234,7 +234,7 @@ void it_80272A60(Item_GObj* item_gobj)
 
     item = item_gobj->user_data;
     efSync_Spawn(0x40E, item_gobj, &item->pos);
-    Item_8026AE84(item, 0x74, 0x7F, 0x40);
+    Item_8026AE84(item, 0x74, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_80274C60(item_gobj);
 }
 
@@ -243,7 +243,7 @@ void it_80272AC4(Item_GObj* item_gobj, Vec3* arg1)
     Item* item = GET_ITEM(item_gobj);
     lbVector_Add(arg1, &item->pos);
     efSync_Spawn(0x40C, item_gobj, arg1);
-    Item_8026AE84(item, 0x74, 0x7F, 0x40);
+    Item_8026AE84(item, 0x74, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_80274C60(item_gobj);
 }
 
@@ -253,7 +253,7 @@ void it_80272B40(Item_GObj* item_gobj)
 
     item = item_gobj->user_data;
     efSync_Spawn(0x40C, item_gobj, &item->pos);
-    Item_8026AE84(item, 0x74, 0x7F, 0x40);
+    Item_8026AE84(item, 0x74, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_80274C60(item_gobj);
 }
 
@@ -263,7 +263,7 @@ void it_80272BA4(Item_GObj* item_gobj)
 
     item = item_gobj->user_data;
     efSync_Spawn(0x411, item_gobj, &item->pos);
-    Item_8026AE84(item, 0x73, 0x7F, 0x40);
+    Item_8026AE84(item, 0x73, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_80274C60(item_gobj);
 }
 
@@ -273,7 +273,7 @@ void it_80272C08(Item_GObj* item_gobj)
 
     item = item_gobj->user_data;
     efSync_Spawn(0x410, item_gobj, &item->pos);
-    Item_8026AE84(item, 0x74, 0x7F, 0x40);
+    Item_8026AE84(item, 0x74, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_80274C60(item_gobj);
 }
 
@@ -414,7 +414,7 @@ void it_80273168(Item_GObj* item_gobj)
 
     item = item_gobj->user_data;
     if (!(item->xDCD_flag.x0.b2)) {
-        Item_8026AE84(item, item->xD70, 0x7F, 0x40);
+        Item_8026AE84(item, item->xD70, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -424,7 +424,7 @@ void it_802731A4(Item_GObj* item_gobj)
 
     item = item_gobj->user_data;
     if (!(item->xDCD_flag.x0.b2)) {
-        Item_8026AE84(item, item->xD78, 0x7F, 0x40);
+        Item_8026AE84(item, item->xD78, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -434,7 +434,7 @@ void it_802731E0(Item_GObj* item_gobj)
 
     item = item_gobj->user_data;
     if (!(item->xDCD_flag.x0.b2)) {
-        Item_8026AE84(item, item->xD74, 0x7F, 0x40);
+        Item_8026AE84(item, item->xD74, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -445,10 +445,10 @@ void it_8027321C(Item_GObj* item_gobj)
     item = item_gobj->user_data;
     if (!item->xDCD_flag.x0.b2) {
         if (item->kind == It_Kind_Unk4) {
-            lbAudioAx_80023870(item->xD84, 0x7F, 0x40, 0x9A);
+            lbAudioAx_80023870(item->xD84, SFX_VOLUME_MAX, SFX_PAN_MID, 0x9A);
             return;
         }
-        Item_8026AE84(item, item->xD84, 0x7F, 0x40);
+        Item_8026AE84(item, item->xD84, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -471,7 +471,7 @@ void it_8027327C(Item_GObj* item_gobj, enum_t ID1, enum_t ID2)
 void it_802732E4(Item* item, s32 arg1)
 {
     if (!item->xDCD_flag.x0.b2) {
-        Item_8026AE84(item, arg1, 0x7F, 0x40);
+        Item_8026AE84(item, arg1, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -1434,14 +1434,14 @@ void it_80275288(Item_GObj* item_gobj, s32 arg1, s32 arg2)
 {
     Item* item = GET_ITEM(item_gobj);
     int val = arg2 + HSD_Randi(arg1);
-    Item_8026AE84(item, val, 127, 64);
+    Item_8026AE84(item, val, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void it_802752D8(Item_GObj* item_gobj, s32 arg1, s32 arg2)
 {
     Item* item = GET_ITEM(item_gobj);
     int val = arg2 + HSD_Randi(arg1);
-    Item_8026AFA0(item, val, 127, 64);
+    Item_8026AFA0(item, val, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void it_80275328(HSD_GObj* gobj, ItemLink* arg1)

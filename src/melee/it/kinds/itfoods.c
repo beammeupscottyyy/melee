@@ -127,7 +127,7 @@ void it_8028FCE8(HSD_GObj* gobj)
     Item* item = GET_ITEM(gobj);
     PAD_STACK(12);
     itResetVelocity(item);
-    Item_8026AE84(item, 0x107, 0x7F, 0x40);
+    Item_8026AE84(item, 0x107, SFX_VOLUME_MAX, SFX_PAN_MID);
     Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
 }
 

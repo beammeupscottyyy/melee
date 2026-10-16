@@ -390,7 +390,7 @@ bool itBombhei_UnkMotion3_Anim(Item_GObj* gobj)
         ip->xDC8_word.flags.x19 = 1;
         ip->xDD4_itemVar.bombhei.xDD4 = attr->x14;
         it_8027EE04(gobj);
-        Item_8026AE84(ip, 0xF0, 0x7FU, 0x40U);
+        Item_8026AE84(ip, 0xF0, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     inline2_UnkMotion0_Anim(gobj);
 

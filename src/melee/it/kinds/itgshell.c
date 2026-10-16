@@ -307,7 +307,7 @@ void itGShell_Logic14_Thrown(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
     ip->xDD4_itemVar.gshell.xDE8 = 1;
     Item_80268E5C(gobj, 3, 6);
-    Item_8026AE84(ip, 242, 127, 64);
+    Item_8026AE84(ip, 242, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 bool itGshell_UnkMotion3_Anim(Item_GObj* gobj)
@@ -607,7 +607,7 @@ bool it_8028CF68(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
     it_80272940(gobj);
     it_8028BC2C(gobj);
-    Item_8026AE84(ip, 241, 127, 64);
+    Item_8026AE84(ip, 241, SFX_VOLUME_MAX, SFX_PAN_MID);
     return false;
 }
 

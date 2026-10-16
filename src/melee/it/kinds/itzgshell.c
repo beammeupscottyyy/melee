@@ -339,7 +339,7 @@ void itZGShell_Logic11_Thrown(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
 
     Item_80268E5C((HSD_GObj*) gobj, 3, 6);
-    Item_8026AE84(ip, 0xF2, 0x7FU, 0x40U);
+    Item_8026AE84(ip, 0xF2, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 bool itZrshell_UnkMotion3_Anim(Item_GObj* gobj)
@@ -859,7 +859,7 @@ bool fn_802DFE7C(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
     it_80272940(gobj);
     it_802DDEB4(gobj);
-    Item_8026AE84(ip, 0xF1, 0x7FU, 0x40U);
+    Item_8026AE84(ip, 0xF1, SFX_VOLUME_MAX, SFX_PAN_MID);
     return false;
 }
 

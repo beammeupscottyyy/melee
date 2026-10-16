@@ -152,7 +152,7 @@ static inline bool it_damage_inline(Item_GObj* gobj)
         return false;
     } else {
         efSync_Spawn(0x4d0, gobj, &egg->pos);
-        Item_8026AE84(egg, 0xf4, 0x7f, 0x40); // why is this being inlined?
+        Item_8026AE84(egg, 0xf4, SFX_VOLUME_MAX, SFX_PAN_MID);
         ap = &GET_ITEM(gobj)
                   ->xC4_article_data->x4_specialAttributes->kyasarin_egg;
         if (HSD_Randi(ap->x10) == 0) {

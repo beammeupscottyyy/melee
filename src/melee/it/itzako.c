@@ -552,7 +552,8 @@ void it_8027C9D8(Item* item)
         var_r3 = spC[HSD_Randi(4)];
     }
     item->xDD4_itemVar.zako.x14.z = var_r3;
-    Item_8026AE84(item, item->xDD4_itemVar.zako.x14.z, 127, 64);
+    Item_8026AE84(item, item->xDD4_itemVar.zako.x14.z, SFX_VOLUME_MAX,
+                  SFX_PAN_MID);
 }
 
 bool it_8027CA7C(HSD_GObj* gobj)

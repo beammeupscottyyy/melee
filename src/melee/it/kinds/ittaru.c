@@ -259,7 +259,7 @@ bool itTaru_UnkMotion1_Coll(Item_GObj* gobj)
 
     if (it_8026DA08(gobj) != 0) {
         it_802762B0(ip);
-        Item_8026AE84(ip, 0x104, 0x7F, 0x40);
+        Item_8026AE84(ip, 0x104, SFX_VOLUME_MAX, SFX_PAN_MID);
         var_f1 = ip->x40_vel.y;
         if (var_f1 < 0.0f) {
             var_f1 = -var_f1;
@@ -343,7 +343,7 @@ bool itTaru_UnkMotion3_Coll(Item_GObj* gobj)
 
     if (it_8026DA08(gobj) != 0) {
         it_802762B0(ip);
-        Item_8026AE84(ip, 0x104, 0x7F, 0x40);
+        Item_8026AE84(ip, 0x104, SFX_VOLUME_MAX, SFX_PAN_MID);
         var_f1 = (ip->x40_vel.y < 0.0f) ? -ip->x40_vel.y : ip->x40_vel.y;
         if (var_f1 > attr->x34) {
             return it_3F14_Logic2_DmgDealt(gobj);
@@ -561,7 +561,7 @@ void it_802886C4(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
     HSD_JObj* jobj = (0, GET_JOBJ(gobj));
 
-    Item_8026AE84(ip, 0xFB, 0x7F, 0x40);
+    Item_8026AE84(ip, 0xFB, SFX_VOLUME_MAX, SFX_PAN_MID);
     Camera_RequestQuake(QuakeKind_Small, &ip->pos);
     it_802886C4_inline(gobj, &zero);
     HSD_JObjSetFlagsAll(jobj, JOBJ_HIDDEN);

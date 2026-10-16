@@ -158,7 +158,7 @@ void it_80289B50(Item_GObj* gobj, s32 arg1)
         &ip->xC4_article_data->x4_specialAttributes->kusudama;
     if (it_8028A114(gobj, attr->x4, attr->x0, attr->x8, attr->xC)) {
         if (arg1 != 0) {
-            Item_8026AE84(ip, 0x126, 0x7F, 0x40);
+            Item_8026AE84(ip, 0x126, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
         it_8028A544(gobj);
     } else {
@@ -370,9 +370,9 @@ bool itKusudama_UnkMotion1_Anim(Item_GObj* gobj)
     if (ip->xDB4_itcmd_var2 == 1) {
         ip->xDB4_itcmd_var2 = 2;
         if (HSD_Randi(2) != 0) {
-            Item_8026AE84(ip, 0x127, 0x7F, 0x40);
+            Item_8026AE84(ip, 0x127, SFX_VOLUME_MAX, SFX_PAN_MID);
         } else {
-            Item_8026AE84(ip, 0x128, 0x7F, 0x40);
+            Item_8026AE84(ip, 0x128, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     }
     if (ip->xDB0_itcmd_var1 != 0) {
@@ -518,7 +518,7 @@ static inline void itKusudama_UnkMotion5_Coll_inline(Item_GObj* gobj)
     itKusudamaAttributes* attr =
         &ip->xC4_article_data->x4_specialAttributes->kusudama;
     if (it_8028A114(gobj, attr->x4, attr->x0, attr->x8, attr->xC)) {
-        Item_8026AE84(ip, 0x126, 0x7F, 0x40);
+        Item_8026AE84(ip, 0x126, SFX_VOLUME_MAX, SFX_PAN_MID);
         it_8028A544(gobj);
     } else {
         it_8028AC74(gobj);
@@ -615,7 +615,7 @@ void it_8028AD44(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     PAD_STACK(4);
-    Item_8026AE84(ip, 0xF8, 0x7F, 0x40);
+    Item_8026AE84(ip, 0xF8, SFX_VOLUME_MAX, SFX_PAN_MID);
     it_802756D0(gobj);
     ip->x40_vel.x = 0.0f;
     ip->x40_vel.y = 0.0f;

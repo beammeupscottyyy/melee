@@ -137,7 +137,7 @@ void it_80290238(Item_GObj* gobj)
             }
         }
     }
-    Item_8026AE84(ip, 243, 127, 64);
+    Item_8026AE84(ip, 243, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 static inline void it_80290314_inline(Item_GObj* gobj)
