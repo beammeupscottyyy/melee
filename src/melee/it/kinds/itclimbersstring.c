@@ -554,7 +554,7 @@ void it_802C3810(Item_GObj* gobj)
     int unused[2];
 
     item = gobj->user_data;
-    Item_80268E5C(gobj, 2, 2);
+    Item_80268E5C(gobj, 2, ITEM_ANIM_UPDATE);
     it_8026BB20(gobj);
     item->on_accessory = fn_802C29E8;
 }

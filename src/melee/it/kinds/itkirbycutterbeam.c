@@ -56,7 +56,7 @@ void it_8029BB90(Item_GObj* gobj, HSD_GObj* owner)
                     sinf(ip->xDD4_itemVar.kirbycutterbeam.angle);
     ip->x40_vel.z = 0.0F;
     it_80275158(gobj, attr->x8_lifetime);
-    Item_80268E5C(gobj, 0, 2);
+    Item_80268E5C(gobj, 0, ITEM_ANIM_UPDATE);
     it_802762B0(ip);
     ip->xDD4_itemVar.kirbycutterbeam.dir.x =
         ip->facing_dir * sinf(ip->xDD4_itemVar.kirbycutterbeam.angle);

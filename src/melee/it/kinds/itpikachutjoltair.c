@@ -65,7 +65,7 @@ void it_802B3F88(Item_GObj* gobj, Vec3* pos, CollData* coll, Vec3* vel)
         angle = atan2f(ip->xDD4_itemVar.pikachujoltair.xDE8.x,
                        ip->xDD4_itemVar.pikachujoltair.xDE8.y);
         HSD_JObjSetRotationX(jobj, (ip->facing_dir == 1.0f) ? angle : -angle);
-        Item_80268E5C(gobj, 0, 0x12);
+        Item_80268E5C(gobj, 0, ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
         Item_802694CC(gobj);
         switch (ip->kind) {
         case It_Kind_Kirby_PikachuTJolt_Air:
@@ -122,7 +122,7 @@ void it_802B43D0(Item_GObj* gobj, HSD_GObj* owner)
     it_8026B3A8(gobj);
     ip->xDC8_word.flags.x13 = 0;
     it_80272940(gobj);
-    Item_80268E5C(gobj, 0, 2);
+    Item_80268E5C(gobj, 0, ITEM_ANIM_UPDATE);
     Item_802694CC(gobj);
     db_80225DD8(gobj, owner);
 }

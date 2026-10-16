@@ -443,7 +443,7 @@ void it_802A0F84(Item_GObj* gobj) {}
 
 void it_802A0F88(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 1, 2);
+    Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
 }
 
 bool itLinkboomerang_UnkMotion1_Anim(Item_GObj* gobj)
@@ -709,9 +709,9 @@ void it_802A19E0(Item_GObj* gobj)
     ip->xDD4_itemVar.linkboomerang.xF88 = -(2.0f * quat.z) / (f32) attrs->x8;
     ip->xDD4_itemVar.linkboomerang.xDE4 = attrs->x8;
     if (ip->msid == 1) {
-        Item_80268E5C(gobj, 3, 0x12);
+        Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
     } else {
-        Item_80268E5C(gobj, 3, 0x110);
+        Item_80268E5C(gobj, 3, ITEM_HIT_PRESERVE | ITEM_CMD_UPDATE);
     }
     HSD_JObjSetRotationZ(hobj, ip->xDD4_itemVar.linkboomerang.xF78);
     HSD_JObjSetRotation(child, &quat);

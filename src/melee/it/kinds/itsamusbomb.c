@@ -59,7 +59,7 @@ void it_802B4BA0(Item_GObj* gobj)
 
 void it_802B4C10(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 0, 0x11);
+    Item_80268E5C(gobj, 0, ITEM_UNK_0x1 | ITEM_HIT_PRESERVE);
 }
 
 static inline void itSamusBomb_UnkMotion_Process(Item_GObj* gobj)
@@ -110,7 +110,7 @@ bool itSamusbomb_UnkMotion0_Coll(Item_GObj* gobj)
 
 void it_802B4CF4(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 1, 0x11);
+    Item_80268E5C(gobj, 1, ITEM_UNK_0x1 | ITEM_HIT_PRESERVE);
 }
 
 bool itSamusbomb_UnkMotion1_Anim(Item_GObj* gobj)
@@ -136,7 +136,7 @@ bool itSamusbomb_UnkMotion1_Coll(Item_GObj* gobj)
 
 void itSamusBomb_Logic50_EnteredAir(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 2, 0x11);
+    Item_80268E5C(gobj, 2, ITEM_UNK_0x1 | ITEM_HIT_PRESERVE);
 }
 
 bool itSamusbomb_UnkMotion2_Anim(Item_GObj* gobj)

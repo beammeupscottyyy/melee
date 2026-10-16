@@ -148,7 +148,7 @@ void it_802B2C38(HSD_GObj* gobj)
     itYoshiEggThrowAttributes* attrs =
         &ip->xC4_article_data->x4_specialAttributes->yoshi_egg_throw;
     HSD_JObj* jobj = gobj->hsd_obj;
-    Item_80268E5C(gobj, 2, 0x12);
+    Item_80268E5C(gobj, 2, ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
     it_8026BB44(gobj);
     it_80273598(gobj, 0xC, 0xA);
     it_8026BD24(gobj);
