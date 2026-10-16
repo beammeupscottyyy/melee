@@ -195,7 +195,8 @@ void itHassam_802CDF28(Item_GObj* gobj)
     ip->xDD4_itemVar.hassam.x5C.x = attr->x4;
     ip->xDD4_itemVar.hassam.x5C.y = 0.0F;
     ip->xDD4_itemVar.hassam.x5C.z = 0.0F;
-    lbVector_Rotate(&ip->xDD4_itemVar.hassam.x5C, 4, atan2f(sp10.y, sp10.x));
+    lbVector_Rotate(&ip->xDD4_itemVar.hassam.x5C, lbVector_Axis_Z,
+                    atan2f(sp10.y, sp10.x));
     ip->xDD4_itemVar.hassam.x5C.y += attr->xC;
     ip->x40_vel.x = ip->xDD4_itemVar.hassam.x5C.x;
     ip->x40_vel.y = ip->xDD4_itemVar.hassam.x5C.y;

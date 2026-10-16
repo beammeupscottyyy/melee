@@ -173,7 +173,8 @@ void ftNs_AttackHi4_YoyoSetUnkPos(HSD_GObj* gobj, Vec3* pos)
     *pos = sp20;
     lbVector_Sub(pos, &sp14);
     lbVector_Rotate(
-        pos, 4, -atan2f(collData->floor.normal.x, collData->floor.normal.y));
+        pos, lbVector_Axis_Z,
+        -atan2f(collData->floor.normal.x, collData->floor.normal.y));
     lbVector_Add(pos, &sp14);
 }
 
@@ -222,7 +223,7 @@ void ftNs_AttackHi4_YoyoSetHitPos(HSD_GObj* gobj)
         sp2C = sp14;
         lbVector_Sub(&sp2C, &sp20);
         lbVector_Rotate(
-            &sp2C, 4,
+            &sp2C, lbVector_Axis_Z,
             -atan2f(collData->floor.normal.x, collData->floor.normal.y));
         lbVector_Add(&sp2C, &sp20);
     }
@@ -255,7 +256,7 @@ void ftNs_AttackHi4_YoyoSetHitPosUnk(HSD_GObj* gobj, float pos_unk)
         sp3C = sp18;
         lbVector_Sub(&sp3C, &sp24);
         lbVector_Rotate(
-            &sp3C, 4,
+            &sp3C, lbVector_Axis_Z,
             -atan2f(collData->floor.normal.x, collData->floor.normal.y));
         lbVector_Add(&sp3C, &sp24);
     }

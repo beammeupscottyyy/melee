@@ -148,7 +148,7 @@ void it_802CE8D0(Item_GObj* gobj)
     ip->xDD4_itemVar.unknown.x78.vec.x = attr->x14;
     ip->xDD4_itemVar.unknown.x78.vec.y = 0.0f;
     ip->xDD4_itemVar.unknown.x78.vec.z = 0.0f;
-    lbVector_Rotate(&ip->xDD4_itemVar.unknown.x78.vec, 4,
+    lbVector_Rotate(&ip->xDD4_itemVar.unknown.x78.vec, lbVector_Axis_Z,
                     atan2f(dir.y, dir.x));
     it_80272980(gobj);
     Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);

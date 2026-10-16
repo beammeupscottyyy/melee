@@ -215,7 +215,7 @@ void lbVector_RotateAboutUnitAxis(Vec3* v, Vec3* axis, float angle)
     }
 }
 
-void lbVector_Rotate(Vec3* v, int axis, float angle)
+void lbVector_Rotate(Vec3* v, lbVector_Axis axis, float angle)
 {
     float s = lbvector_sin(angle);
     float c = lbvector_cos(angle);
@@ -224,17 +224,17 @@ void lbVector_Rotate(Vec3* v, int axis, float angle)
     float z;
 
     switch (axis) {
-    case 1: // rotate about x axis
+    case lbVector_Axis_X:
         x = v->x;
         y = v->y * c - v->z * s;
         z = v->y * s + v->z * c;
         break;
-    case 2: // rotate about y axis
+    case lbVector_Axis_Y:
         x = v->x * c + v->z * s;
         y = v->y;
         z = v->z * c - v->x * s;
         break;
-    case 4: // rotate about z axis
+    case lbVector_Axis_Z:
         x = v->x * c - v->y * s;
         y = v->x * s + v->y * c;
         z = v->z;
@@ -350,9 +350,9 @@ Vec3* lbVector_EulerAnglesFromPartialONB(Vec3* result_angles, Vec3* a, Vec3* c)
 /// 8000E138
 Vec3* lbVector_ApplyEulerRotation(Vec3* v, Vec3* angles)
 {
-    lbVector_Rotate(v, 1, angles->x); // rotate about x-axis
-    lbVector_Rotate(v, 2, angles->y); // rotate about y-axis
-    lbVector_Rotate(v, 4, angles->z); // rotate about z-axis
+    lbVector_Rotate(v, lbVector_Axis_X, angles->x);
+    lbVector_Rotate(v, lbVector_Axis_Y, angles->y);
+    lbVector_Rotate(v, lbVector_Axis_Z, angles->z);
     return v;
 }
 

@@ -2924,10 +2924,10 @@ void grBigBlue_801EBAF8(Ground_GObj* gobj)
 
     HSD_JObjSetRotationZ(jobj, gp->u.bigblue.x0_u.road.rotation);
 
-    lbVector_Rotate(&vel, 4, -gp->u.bigblue.x0_u.road.rotation);
+    lbVector_Rotate(&vel, lbVector_Axis_Z, -gp->u.bigblue.x0_u.road.rotation);
     vel.z = 0.0F;
     vel.x = 0.0F;
-    lbVector_Rotate(&vel, 4, gp->u.bigblue.x0_u.road.rotation);
+    lbVector_Rotate(&vel, lbVector_Axis_Z, gp->u.bigblue.x0_u.road.rotation);
 
     {
         HSD_GObj* car = Ground_GetMapGObj(2);

@@ -1109,12 +1109,12 @@ void Camera_8002A768(CameraTransformState* transform, s32 arg1)
     pitch_angle = atan2f(dist.y, -dist.z);
     temp_f0 = atan2f(-dist.x, -dist.z);
     top_left = top_right = bottom_right = bottom_left = forward;
-    lbVector_Rotate(&top_left, 1, half_fov);
-    lbVector_Rotate(&top_left, 2, half_fov);
+    lbVector_Rotate(&top_left, lbVector_Axis_X, half_fov);
+    lbVector_Rotate(&top_left, lbVector_Axis_Y, half_fov);
     top_left.x *= cm_803BCB64.aspect;
     lbVector_Normalize(&top_left);
-    lbVector_Rotate(&top_left, 1, pitch_angle);
-    lbVector_Rotate(&top_left, 2, temp_f0);
+    lbVector_Rotate(&top_left, lbVector_Axis_X, pitch_angle);
+    lbVector_Rotate(&top_left, lbVector_Axis_Y, temp_f0);
     if (top_left.z < -0.001f) {
         temp_f1 = -transform->target_position.z / top_left.z;
         top_left.x *= temp_f1;
@@ -1124,12 +1124,12 @@ void Camera_8002A768(CameraTransformState* transform, s32 arg1)
     } else {
         var_r30 |= 1;
     }
-    lbVector_Rotate(&top_right, 1, half_fov);
-    lbVector_Rotate(&top_right, 2, -half_fov);
+    lbVector_Rotate(&top_right, lbVector_Axis_X, half_fov);
+    lbVector_Rotate(&top_right, lbVector_Axis_Y, -half_fov);
     top_right.x *= cm_803BCB64.aspect;
     lbVector_Normalize(&top_right);
-    lbVector_Rotate(&top_right, 1, pitch_angle);
-    lbVector_Rotate(&top_right, 2, temp_f0);
+    lbVector_Rotate(&top_right, lbVector_Axis_X, pitch_angle);
+    lbVector_Rotate(&top_right, lbVector_Axis_Y, temp_f0);
     if (top_right.z < -0.001f) {
         temp_f1 = -transform->target_position.z / top_right.z;
         top_right.x *= temp_f1;
@@ -1139,12 +1139,12 @@ void Camera_8002A768(CameraTransformState* transform, s32 arg1)
     } else {
         var_r30 |= 2;
     }
-    lbVector_Rotate(&bottom_right, 1, -half_fov);
-    lbVector_Rotate(&bottom_right, 2, half_fov);
+    lbVector_Rotate(&bottom_right, lbVector_Axis_X, -half_fov);
+    lbVector_Rotate(&bottom_right, lbVector_Axis_Y, half_fov);
     bottom_right.x *= cm_803BCB64.aspect;
     lbVector_Normalize(&bottom_right);
-    lbVector_Rotate(&bottom_right, 1, pitch_angle);
-    lbVector_Rotate(&bottom_right, 2, temp_f0);
+    lbVector_Rotate(&bottom_right, lbVector_Axis_X, pitch_angle);
+    lbVector_Rotate(&bottom_right, lbVector_Axis_Y, temp_f0);
     if (bottom_right.z < -0.001f) {
         temp_f1 = -transform->target_position.z / bottom_right.z;
         bottom_right.x *= temp_f1;
@@ -1154,12 +1154,12 @@ void Camera_8002A768(CameraTransformState* transform, s32 arg1)
     } else {
         var_r30 |= 4;
     }
-    lbVector_Rotate(&bottom_left, 1, -half_fov);
-    lbVector_Rotate(&bottom_left, 2, -half_fov);
+    lbVector_Rotate(&bottom_left, lbVector_Axis_X, -half_fov);
+    lbVector_Rotate(&bottom_left, lbVector_Axis_Y, -half_fov);
     bottom_left.x *= cm_803BCB64.aspect;
     lbVector_Normalize(&bottom_left);
-    lbVector_Rotate(&bottom_left, 1, pitch_angle);
-    lbVector_Rotate(&bottom_left, 2, temp_f0);
+    lbVector_Rotate(&bottom_left, lbVector_Axis_X, pitch_angle);
+    lbVector_Rotate(&bottom_left, lbVector_Axis_Y, temp_f0);
     if (bottom_left.z < -0.001f) {
         temp_f1 = -transform->target_position.z / bottom_left.z;
         bottom_left.x *= temp_f1;
@@ -2912,8 +2912,8 @@ bool Camera_8002E234(void)
         sp14.y = 0.0f;
         sp14.x = 0.0f;
         sp14.z = 1.0f;
-        lbVector_Rotate(&sp14, 1, -game_camera.x35C.orbit.pitch);
-        lbVector_Rotate(&sp14, 2, game_camera.x35C.orbit.yaw);
+        lbVector_Rotate(&sp14, lbVector_Axis_X, -game_camera.x35C.orbit.pitch);
+        lbVector_Rotate(&sp14, lbVector_Axis_Y, game_camera.x35C.orbit.yaw);
         temp_f31 = game_camera.x35C.orbit.distance;
         lbVector_Normalize(&sp14);
         sp14.x *= temp_f31;
@@ -2924,8 +2924,8 @@ bool Camera_8002E234(void)
         sp14.y = 0.0f;
         sp14.x = 0.0f;
         sp14.z = 1.0f;
-        lbVector_Rotate(&sp14, 1, -sp10);
-        lbVector_Rotate(&sp14, 2, spC);
+        lbVector_Rotate(&sp14, lbVector_Axis_X, -sp10);
+        lbVector_Rotate(&sp14, lbVector_Axis_Y, spC);
         temp_f31 = sp8;
         lbVector_Normalize(&sp14);
         sp14.x *= temp_f31;

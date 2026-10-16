@@ -28,8 +28,14 @@ Vec3* lbVector_CrossprodNormalized(Vec3* a, Vec3* b, Vec3* result);
 float lbVector_Angle(Vec3* a, Vec3* b);
 float lbVector_AngleXY(Vec3* a, Vec3* b);
 
+typedef enum lbVector_Axis {
+    lbVector_Axis_X = 1,
+    lbVector_Axis_Y = 2,
+    lbVector_Axis_Z = 4,
+} lbVector_Axis;
+
 void lbVector_RotateAboutUnitAxis(Vec3* v, Vec3* axis, float angle);
-void lbVector_Rotate(Vec3* v, int axis, float angle);
+void lbVector_Rotate(Vec3* v, lbVector_Axis axis, float angle);
 
 void lbVector_Mirror(Vec3* a, Vec3* b);
 float lbVector_CosAngle(Vec3* a, Vec3* b);

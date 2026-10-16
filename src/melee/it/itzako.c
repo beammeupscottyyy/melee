@@ -326,8 +326,8 @@ void it_8027BBF4(Item_GObj* item_gobj, bool arg_chk, f64 arg8, f32 arg9)
 
     sp44 = vecs[0];
     sp50 = vecs[1];
-    lbVector_Rotate(&sp50, 2, M_PI_2 * arg8);
-    lbVector_Rotate(&sp44, 2, M_PI_2 * arg8);
+    lbVector_Rotate(&sp50, lbVector_Axis_Y, M_PI_2 * arg8);
+    lbVector_Rotate(&sp44, lbVector_Axis_Y, M_PI_2 * arg8);
 
     sp38.x = var_f29;
     sp38.y = var_f28;
@@ -406,8 +406,8 @@ void it_8027C0F0(Item_GObj* item_gobj, Vec3* arg1, f64 arg8, f32 arg9)
 
         sp44 = vecs[0];
         sp50 = vecs[1];
-        lbVector_Rotate(&sp50, 2, M_PI_2 * arg8);
-        lbVector_Rotate(&sp44, 2, M_PI_2 * arg8);
+        lbVector_Rotate(&sp50, lbVector_Axis_Y, M_PI_2 * arg8);
+        lbVector_Rotate(&sp44, lbVector_Axis_Y, M_PI_2 * arg8);
         sp3C.x = var_f29;
         sp3C.y = var_f28;
         sp3C.z = 0.0f;

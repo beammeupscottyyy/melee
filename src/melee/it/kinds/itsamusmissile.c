@@ -218,7 +218,7 @@ static inline void inlineA0(Item_GObj* gobj, Vec3* vec)
     vec->x = sa1->xC * ip->facing_dir;
     vec->y = 0.0f;
     vec->z = 0.0f;
-    lbVector_Rotate(vec, 4,
+    lbVector_Rotate(vec, lbVector_Axis_Z,
                     ip->xDD4_itemVar.samusmissile.x8 * -ip->facing_dir);
     ip->x40_vel.x = vec->x;
     ip->x40_vel.y = vec->y;
