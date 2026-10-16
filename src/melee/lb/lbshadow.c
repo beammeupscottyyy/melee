@@ -91,7 +91,7 @@ void lbShadow_8000E9F0(Vec3* p, HSD_Spline* spline, f32 u)
     u = u - (f32) idx;
 
     switch (spline->type) {
-    case 0:
+    case HSD_SPLINE_LINEAR:
         if (orig_u == 1.0F) {
             idx -= 1;
         }
@@ -100,15 +100,15 @@ void lbShadow_8000E9F0(Vec3* p, HSD_Spline* spline, f32 u)
         p->y = cp[1].y - cp[0].y;
         p->z = cp[1].z - cp[0].z;
         return;
-    case 1:
+    case HSD_SPLINE_BEZIER:
         cp = &spline->cv[idx * 3];
         splGetBezierTangent(p, cp, u);
         return;
-    case 2:
+    case HSD_SPLINE_BSPLINE:
         cp = &spline->cv[idx];
         splGetBSplineTangent(p, cp, u);
         return;
-    case 3:
+    case HSD_SPLINE_CARDINAL:
         cp = &spline->cv[idx];
         splGetCardinalTangent(p, cp, spline->tension, u);
         break;
@@ -163,9 +163,9 @@ void lbShadow_8000EEE0(HSD_GObj* gobj)
                           lbshadow->x0_b2 || lbshadow->x0_b3 ||
                           lbshadow->x0_b4 || lbshadow->x0_b5;
             if (!var_r4 && ftLib_CastsShadow(gobj)) {
-                HSD_ShadowSetActive(lbshadow->shadow, 1);
+                HSD_ShadowSetActive(lbshadow->shadow, true);
             } else {
-                HSD_ShadowSetActive(lbshadow->shadow, 0);
+                HSD_ShadowSetActive(lbshadow->shadow, false);
             }
         }
     }
@@ -361,7 +361,7 @@ void lbShadow_8000F38C(s32 arg0)
                 nextGx = lgobj->next_gx;
                 lobj = lgobj->hsd_obj;
                 while (lobj != NULL) {
-                    if (lobj->flags & 3) {
+                    if (lobj->flags & LOBJ_TYPE_MASK) {
                         fallback = lobj;
                     }
                     if (HSD_LObjGetFlags(lobj) & 0x400) {

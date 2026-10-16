@@ -5,6 +5,13 @@
 
 #include <dolphin/mtx.h>
 
+typedef enum HSD_SplineType {
+    HSD_SPLINE_LINEAR,
+    HSD_SPLINE_BEZIER,
+    HSD_SPLINE_BSPLINE,
+    HSD_SPLINE_CARDINAL,
+} HSD_SplineType;
+
 typedef struct HSD_Spline {
     /*  +0 */ u8 type;
     /*  +2 */ s16 numcv;

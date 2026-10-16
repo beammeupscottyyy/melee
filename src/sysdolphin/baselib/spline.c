@@ -92,22 +92,22 @@ void splGetSplinePoint(Vec3* p, HSD_Spline* spline, f32 u)
         idx = t;
         t = t - (f32) idx;
         switch (spline->type) {
-        case 0:
+        case HSD_SPLINE_LINEAR:
             // lerp
             cp = &spline->cv[idx];
             p->x = (t * (cp[1].x - cp[0].x)) + cp[0].x;
             p->y = (t * (cp[1].y - cp[0].y)) + cp[0].y;
             p->z = (t * (cp[1].z - cp[0].z)) + cp[0].z;
             return;
-        case 1:
+        case HSD_SPLINE_BEZIER:
             cp = &spline->cv[idx * 3];
             splGetBezierPoint(p, cp, t);
             return;
-        case 2:
+        case HSD_SPLINE_BSPLINE:
             cp = &spline->cv[idx];
             splGetBSplinePoint(p, cp, t);
             return;
-        case 3: {
+        case HSD_SPLINE_CARDINAL: {
             cp = &spline->cv[idx];
             splGetCardinalPoint(p, cp, spline->tension, t);
             return;
@@ -116,17 +116,17 @@ void splGetSplinePoint(Vec3* p, HSD_Spline* spline, f32 u)
     } else {
         idx = spline->numcv - 1;
         switch (spline->type) {
-        case 0:
+        case HSD_SPLINE_LINEAR:
             *p = spline->cv[idx];
             return;
-        case 1:
+        case HSD_SPLINE_BEZIER:
             *p = spline->cv[idx * 3];
             return;
-        case 2:
+        case HSD_SPLINE_BSPLINE:
             cp = &spline->cv[idx] - 1;
             splGetBSplinePoint(p, cp, 1.0f);
             return;
-        case 3:
+        case HSD_SPLINE_CARDINAL:
             cp = &spline->cv[idx];
             *p = cp[1];
             return;

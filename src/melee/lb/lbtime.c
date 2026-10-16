@@ -1,7 +1,5 @@
 #include "lbtime.h"
 
-#define UINT_MAX 0xFFFFFFFF
-
 u32 lbTime_8000AEC8(u32 a, u32 b)
 {
     return -1 - a > b ? a + b : -1;
@@ -20,15 +18,15 @@ u32 lbTime_8000AF24(u32 a, int b)
 {
     int c;
     if (b > 0) {
-        unsigned int ab = a & 0x0000ffff;
-        c = 0x0000ffff;
+        unsigned int ab = a & U16_MAX;
+        c = U16_MAX;
         if (c - ab > (unsigned) b) {
             return a + b;
         } else {
             return c;
         }
     } else {
-        c = a & 0xffff;
+        c = a & U16_MAX;
 
         if (c > -b) {
             return a + b;
@@ -54,8 +52,8 @@ u32 lbTime_8000AF74(u32 a, int b)
 u32 lbTime_GetTimeInSeconds(void)
 {
     u64 secs = OSTicksToSeconds(OSGetTime());
-    if (secs > UINT_MAX) {
-        secs = UINT_MAX;
+    if (secs > U32_MAX) {
+        secs = U32_MAX;
     }
     return secs;
 }

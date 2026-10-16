@@ -80,33 +80,43 @@ static struct strings us_msg[6] = {
     },
 };
 
+typedef enum LbErrorMsgIndex {
+    LbErrorMsg_CoverOpen,
+    LbErrorMsg_NoDisk,
+    LbErrorMsg_WrongDisk,
+    LbErrorMsg_Retry,
+    LbErrorMsg_FatalError,
+    LbErrorMsg_ReadingDisc,
+    LbErrorMsg_None = -1,
+} LbErrorMsgIndex;
+
 /* 4D63D0 */ static HSD_Text* lb_804D63D0;
 
-static enum_t lb_80019230(void)
+static LbErrorMsgIndex lb_80019230(void)
 {
-    enum_t result;
+    LbErrorMsgIndex result;
 
     switch (DVDGetDriveStatus()) {
-    case 5:
-        result = 0;
+    case DVD_STATE_COVER_OPEN:
+        result = LbErrorMsg_CoverOpen;
         break;
-    case 4:
-        result = 1;
+    case DVD_STATE_NO_DISK:
+        result = LbErrorMsg_NoDisk;
         break;
-    case 6:
-        result = 2;
+    case DVD_STATE_WRONG_DISK:
+        result = LbErrorMsg_WrongDisk;
         break;
-    case 11:
-        result = 3;
+    case DVD_STATE_RETRY:
+        result = LbErrorMsg_Retry;
         break;
-    case -1:
-        result = 4;
+    case DVD_STATE_FATAL_ERROR:
+        result = LbErrorMsg_FatalError;
         break;
-    case 1:
-        result = 5;
+    case DVD_STATE_BUSY:
+        result = LbErrorMsg_ReadingDisc;
         break;
     default:
-        result = -1;
+        result = LbErrorMsg_None;
         break;
     }
     return result;
@@ -114,12 +124,12 @@ static enum_t lb_80019230(void)
 
 void lb_800192A8(void (*cb)(void))
 {
-    int prev_i = -1;
-    int i = lb_80019230();
+    LbErrorMsgIndex prev_i = LbErrorMsg_None;
+    LbErrorMsgIndex i = lb_80019230();
 
     PAD_STACK(8);
 
-    if (i != -1 && i != 5) {
+    if (i != LbErrorMsg_None && i != LbErrorMsg_ReadingDisc) {
         lbAudioAx_80024F08();
         HSD_Rumble_80378524(1);
         lb_804D63D0 = HSD_SisLib_803A6754(0, -1);
@@ -149,7 +159,7 @@ void lb_800192A8(void (*cb)(void))
         while (true) {
             if (i != prev_i) {
                 prev_i = i;
-                if (i != -1) {
+                if (i != LbErrorMsg_None) {
                     if (lbLang_IsSavedLanguageJP()) {
                         HSD_SisLib_803A70A0(lb_804D63D0, 0, "%s",
                                             jp_msg[i].x0);
@@ -176,7 +186,7 @@ void lb_800192A8(void (*cb)(void))
             if (cb != NULL) {
                 cb();
             }
-            if (i == -1) {
+            if (i == LbErrorMsg_None) {
                 break;
             }
             i = lb_80019230();
