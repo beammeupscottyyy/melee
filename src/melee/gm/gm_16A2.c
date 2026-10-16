@@ -145,7 +145,7 @@ void fn_801695BC(u8 arg0, u8 arg1, u8 arg2, const u8* arg3, s8* arg4)
     s8 colors[6];
 
     ncolors = gm_GetNumCostumesForCKind(arg0);
-    if ((s8) arg0 != 0x21) {
+    if ((s8) arg0 != ChKind_None) {
         ncolors_s32 = ncolors;
         for (i = 0; i < ncolors; i++) {
             colors[i] = (s8) i;
@@ -187,7 +187,7 @@ void fn_801697FC(s8 character, s8 costume, s8 new_character, s8 new_costume,
     u8 ncolors = gm_GetNumCostumesForCKind(character);
     int i;
 
-    if (character == 0x21) {
+    if (character == ChKind_None) {
         return;
     }
     if (new_character == character && costume == new_costume) {
@@ -383,9 +383,9 @@ void fn_80169C54(s8 arg0, s8 arg1)
         costumes[i] = -1;
     }
     for (i = 0; i < 3; i++) {
-        if ((s32) *scan == 4) {
+        if ((s32) *scan == CKind_Kirby) {
             if (st->xB == 0) {
-                count = gm_GetNumCostumesForCKind(4U);
+                count = gm_GetNumCostumesForCKind(CKind_Kirby);
                 for (costume_idx = 0; costume_idx < count; costume_idx++) {
                     costumes[costume_idx] = costume_idx;
                     ncostumes++;
@@ -399,16 +399,16 @@ void fn_80169C54(s8 arg0, s8 arg1)
         scan++;
     }
 
-    if (arg0 == 4) {
+    if (arg0 == CKind_Kirby) {
         costumes[ncostumes] = arg1;
         ncostumes++;
     }
     if (ncostumes > 0) {
         for (slot = 0, character = &st->x0; slot < 3; slot++, character++) {
             ckind = *character;
-            if (0x21 != ckind && ckind != 4) {
+            if (ChKind_None != ckind && ckind != CKind_Kirby) {
                 fighter0 = Player_800325C8((CharacterKind) ckind, 0);
-                if ((fighter0 != -1) && (fighter0 != 4)) {
+                if ((fighter0 != -1) && (fighter0 != Ft_Kind_Kirby)) {
                     for (costume_it0 = &costumes[costume_idx0 = 0];
                          costume_idx0 < ncostumes;
                          costume_it0++, costume_idx0++)
@@ -417,7 +417,7 @@ void fn_80169C54(s8 arg0, s8 arg1)
                     }
                 }
                 fighter1 = Player_800325C8((CharacterKind) ckind, 1);
-                if ((fighter1 != -1) && (fighter1 != 4)) {
+                if ((fighter1 != -1) && (fighter1 != Ft_Kind_Kirby)) {
                     for (costume_it1 = &costumes[costume_idx1 = 0];
                          costume_idx1 < ncostumes;
                          costume_it1++, costume_idx1++)
@@ -427,15 +427,15 @@ void fn_80169C54(s8 arg0, s8 arg1)
                 }
             }
         }
-        if (arg0 != 4) {
+        if (arg0 != CKind_Kirby) {
             extra_fighter0 = Player_800325C8((CharacterKind) arg0, 0);
-            if ((extra_fighter0 != -1) && (extra_fighter0 != 4)) {
+            if ((extra_fighter0 != -1) && (extra_fighter0 != Ft_Kind_Kirby)) {
                 for (costume_idx = 0; costume_idx < ncostumes; costume_idx++) {
                     Player_80031DA8(extra_fighter0, costumes[costume_idx]);
                 }
             }
             extra_fighter1 = Player_800325C8((CharacterKind) arg0, 1);
-            if ((extra_fighter1 != -1) && (extra_fighter1 != 4)) {
+            if ((extra_fighter1 != -1) && (extra_fighter1 != Ft_Kind_Kirby)) {
                 for (costume_idx = 0; costume_idx < ncostumes; costume_idx++) {
                     Player_80031DA8(extra_fighter1, costumes[costume_idx]);
                 }
@@ -618,7 +618,7 @@ void gm_8016A22C(s8 k0, s8 k1, s8 k2, u8 a3, u8 a4, u8 a5, int mode, int a7,
     lbl_8046B488.x5 = a5;
 
     lbl_8046B488.x1AC = p87;
-    lbl_8046B488.x1AD = 0x21;
+    lbl_8046B488.x1AD = ChKind_None;
     lbl_8046B488.x1B2 = p8b;
 
     lbl_8046B488.x6 = x6;

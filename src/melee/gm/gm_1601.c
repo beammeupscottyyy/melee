@@ -4315,7 +4315,7 @@ void fn_80169000(MatchEnd* arg0, u8* arg1)
 }
 
 /// @param ckind ::CharacterKind
-u8 gm_GetNumCostumesForCKind(u8 ckind)
+u8 gm_GetNumCostumesForCKind(CharacterKind ckind)
 {
     /// @todo Matching tactic: pad the pre-inline statement count so MWCC
     /// keeps direct calls to this accessor instead of auto-inlining them.
@@ -4341,7 +4341,7 @@ u8 gm_GetNumCostumesForCKind(u8 ckind)
     return lbl_803D51A0[ckind].ncolors;
 }
 
-u8 gm_80169264(u8 ckind)
+u8 gm_80169264(CharacterKind ckind)
 {
     if (ckind >= ARRAY_SIZE(lbl_803D51A0)) {
         return 0;
@@ -4349,7 +4349,7 @@ u8 gm_80169264(u8 ckind)
     return lbl_803D51A0[ckind].x1;
 }
 
-u8 gm_80169290(u8 ckind)
+u8 gm_80169290(CharacterKind ckind)
 {
     if (ckind >= ARRAY_SIZE(lbl_803D51A0)) {
         return 0;
@@ -4357,7 +4357,7 @@ u8 gm_80169290(u8 ckind)
     return lbl_803D51A0[ckind].x3;
 }
 
-u8 gm_801692BC(u8 ckind)
+u8 gm_801692BC(CharacterKind ckind)
 {
     if (ckind >= ARRAY_SIZE(lbl_803D51A0)) {
         return 0;
