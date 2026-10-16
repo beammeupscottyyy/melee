@@ -409,7 +409,7 @@ void gm_801B65D4(GameModeState* arg0)
 void gm_Mode_TargetTest_OnInit(void)
 {
     struct gmm_x0_584_t* temp_r4 = &gmMainLib_804D3EE0->vs.unk_530.unk_584;
-    gmMainLib_804D3EE0->vs.unk_530.unk_584.unk_584 = 0x21;
+    gmMainLib_804D3EE0->vs.unk_530.unk_584.unk_584 = ChKind_None;
     temp_r4->unk_585 = 0;
     temp_r4->unk_586 = 0x78;
 }
@@ -459,7 +459,7 @@ bool gm_801B688C(bool arg0)
     gm_80172898(0x20);
     if ((gm_80181A14() != 0) && (gm_GetCurrentGameMode() == GM_100MAN_VS)) {
         temp_r3 = gm_80173460(temp_r29->start.players[0].ckind);
-        if (temp_r3 != 0x21) {
+        if (temp_r3 != ChKind_None) {
             gm_InitChallengerData(temp_r29->start.players[0].ckind,
                                   temp_r29->start.players[0].color,
                                   gm_804D68F0,
