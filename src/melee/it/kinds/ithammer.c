@@ -187,7 +187,7 @@ void it_802941A4(HSD_GObj* gobj)
 
 void itHammer_Logic28_Dropped(HSD_GObj* gobj)
 {
-    Item_80268E5C(gobj, 1, 6);
+    Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
     thing(gobj);
 }
 

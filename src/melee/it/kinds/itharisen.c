@@ -153,7 +153,7 @@ void itHarisen_Logic24_Dropped(Item_GObj* gobj)
     ip = gobj->user_data;
     ip->scl = ip->xCC_item_attr->x60_scale;
     Item_8026849C(gobj);
-    Item_80268E5C(gobj, 8, 6);
+    Item_80268E5C(gobj, 8, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 bool itHarisen_UnkMotion8_Coll(Item_GObj* gobj)
@@ -169,7 +169,7 @@ bool itHarisen_UnkMotion8_Coll(Item_GObj* gobj)
 
 void itHarisen_Logic24_Thrown(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 7, 6);
+    Item_80268E5C(gobj, 7, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itHarisen_UnkMotion8_Phys(Item_GObj* gobj)

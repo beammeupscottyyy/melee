@@ -148,12 +148,12 @@ void itLgun_UnkMotion3_Phys(Item_GObj* gobj) {}
 
 void itLGun_Logic16_Dropped(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 4, 6);
+    Item_80268E5C(gobj, 4, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itLGun_Logic16_Thrown(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 4, 6);
+    Item_80268E5C(gobj, 4, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itLgun_UnkMotion4_Phys(Item_GObj* gobj)

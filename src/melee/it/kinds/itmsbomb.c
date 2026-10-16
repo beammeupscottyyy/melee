@@ -100,7 +100,7 @@ void itMSBomb_Logic19_Thrown(Item_GObj* gobj)
     itMsBomb_Attrs* attrs =
         &ip->xC4_article_data->x4_specialAttributes->ms_bomb;
     itECB ecb;
-    Item_80268E5C(gobj, 3, 6);
+    Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
     ip->xBFC = ecb = attrs->x8;
     it_80275D5C(gobj, &ecb);
     ip->xDCE_flag.x0.b7 = 0;
@@ -162,7 +162,7 @@ void it_80290314(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     if (ip->xDD4_itemVar.msbomb.xDD4_b0) {
-        Item_80268E5C(gobj, 4, 0x11);
+        Item_80268E5C(gobj, 4, ITEM_UNK_0x1 | ITEM_HIT_PRESERVE);
     } else {
         Item_80268E5C(gobj, 4, ITEM_ANIM_UPDATE);
     }
@@ -185,7 +185,7 @@ bool itMsbomb_UnkMotion4_Coll(Item_GObj* gobj)
 void it_8029047C(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
-    Item_80268E5C(gobj, 5, 0x11);
+    Item_80268E5C(gobj, 5, ITEM_UNK_0x1 | ITEM_HIT_PRESERVE);
     it_802762BC(ip);
     it_80290314_inline(gobj);
     ip->xDCE_flag.x0.b3 = 0;
