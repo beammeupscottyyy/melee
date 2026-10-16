@@ -86,7 +86,8 @@ void ftCo_800C08A0(Fighter_GObj* gobj, Fighter_GObj* arg1,
         break;
     }
     if (ftColl_80076640(fp, &f) != 0) {
-        ftColl_80076764(3, arg3, arg1, arg2, fp, &fp->hurt_capsules[hurt_idx]);
+        ftColl_80076764(EntityKind_UNKNOWN, arg3, arg1, arg2, fp,
+                        &fp->hurt_capsules[hurt_idx]);
         lbColl_80008D30((HitCapsule*) &hit, arg2);
         ftColl_80078384(fp, &fp->hurt_capsules[hurt_idx], (HitCapsule*) &hit);
     }
@@ -192,7 +193,7 @@ void ftCo_800C0B20(Fighter_GObj* gobj)
             hurt_idx = 0;
             fp->bury_timer_1 = p_ftCommonData->bury_timer_unk1;
             if (ftColl_80076640(fp, &f)) {
-                ftColl_80076764(3, 1, 0, unk_anim, fp,
+                ftColl_80076764(EntityKind_UNKNOWN, 1, 0, unk_anim, fp,
                                 &fp->hurt_capsules[hurt_idx]);
 
                 lbColl_80008D30(&hit, unk_anim);

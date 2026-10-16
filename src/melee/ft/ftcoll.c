@@ -133,9 +133,9 @@ bool ftColl_80076640(Fighter* fp, float* dmg)
     return false;
 }
 
-void ftColl_80076764(int arg0, enum_t arg1, Fighter_GObj* arg2,
-                     lbColl_80008D30_arg1* arg3, Fighter* fp,
-                     FighterHurtCapsule* hurt)
+void ftColl_80076764(enum EntityKind arg0, FighterKind arg1,
+                     Fighter_GObj* arg2, lbColl_80008D30_arg1* arg3,
+                     Fighter* fp, FighterHurtCapsule* hurt)
 {
     if (dmg_log0_idx < ARRAY_SIZE(dmg_log0)) {
         DmgLogEntry* entry = &dmg_log0[dmg_log0_idx];
@@ -158,7 +158,7 @@ static void tiplog(int kind, HSD_GObj* gobj, HitCapsule* hit0,
 {
     if (dmg_log1_idx < ARRAY_SIZE(dmg_log1)) {
         DmgLogEntry* entry = &dmg_log1[dmg_log1_idx];
-        entry->x0 = 1;
+        entry->x0 = EntityKind_Fighter;
         entry->kind = kind;
         entry->gobj = gobj;
         entry->xC.hit0 = hit0;
@@ -513,7 +513,7 @@ bool ftColl_80076ED8(Fighter* fp0, HitCapsule* hit0, Fighter* fp1,
                         kind = fp->kind;
                         if (dmg_log0_idx < 20U) {
                             entry = &dmg_log0[dmg_log0_idx];
-                            entry->x0 = 1;
+                            entry->x0 = EntityKind_Fighter;
                             entry->kind = kind;
                             entry->gobj = gobj;
                             entry->xC.hit0 = hit0;
@@ -964,7 +964,7 @@ bool ftColl_80077C60(Item* item, HitCapsule* hit, Fighter* fp,
                             kind = (FighterKind) item->kind;
                             if (dmg_log1_idx < ARRAY_SIZE(dmg_log1)) {
                                 DmgLogEntry* entry = &dmg_log1[dmg_log1_idx];
-                                entry->x0 = 2;
+                                entry->x0 = EntityKind_Item;
                                 entry->kind = kind;
                                 entry->gobj = entity;
                                 entry->xC.hit0 = hit;
@@ -1073,7 +1073,7 @@ bool ftColl_80077C60(Item* item, HitCapsule* hit, Fighter* fp,
                     kind = (FighterKind) item->kind;
                     if (dmg_log0_idx < 20U) {
                         entry = &dmg_log0[dmg_log0_idx];
-                        entry->x0 = 2;
+                        entry->x0 = EntityKind_Item;
                         entry->kind = kind;
                         entry->gobj = entity;
                         entry->xC.hit0 = hit;
@@ -2245,7 +2245,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
         float kb;
 
         switch (entry->x0) {
-        case 1: {
+        case EntityKind_Fighter: {
             Fighter* attacker_fp;
             unk_count = entry->size_of_xC;
             attacker_fp = (Fighter*) entry->gobj->user_data;
@@ -2261,7 +2261,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
             break;
         }
 
-        case 2: {
+        case EntityKind_Item: {
             Item* item = (Item*) entry->gobj->user_data;
             HSD_GObj* owner = item->owner;
             float attack;
@@ -2285,7 +2285,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
             break;
         }
 
-        case 3:
+        case EntityKind_UNKNOWN:
             lbColl_80008D30(&stack_hit, entry->xC.unk_anim0);
             kb = ftColl_80079AB0(
                 fp, &stack_hit, stack_hit.unk_count, gm_8016B248(), 1.0F,
@@ -2296,7 +2296,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
         }
 
         if (kb > best_kb.v) {
-            if (entry->x0 == 1 && fp->victim_gobj != NULL &&
+            if (entry->x0 == EntityKind_Fighter && fp->victim_gobj != NULL &&
                 !fp->x221B.x221B_b5 && fp->victim_gobj == entry->gobj)
             {
                 fp->x221C_b0 = 1;
@@ -2312,7 +2312,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
     best_entry = &entries[best_idx];
 
     switch (best_entry->x0) {
-    case 1: {
+    case EntityKind_Fighter: {
         Fighter* attacker_fp = (Fighter*) best_entry->gobj->user_data;
 
         dir = (fp->cur_pos.x > attacker_fp->cur_pos.x) ? -1.0F : 1.0F;
@@ -2325,7 +2325,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
         break;
     }
 
-    case 2: {
+    case EntityKind_Item: {
         Item* item = (Item*) best_entry->gobj->user_data;
         float vel_x;
 
@@ -2345,7 +2345,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
         break;
     }
 
-    case 3: {
+    case EntityKind_UNKNOWN: {
         lbColl_80008D30_arg1* env = best_entry->xC.unk_anim0;
 
         dir = fp->facing_dir;
@@ -2394,7 +2394,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
     out->sfx_severity = sfx_severity;
 
     switch (best_entry->x0) {
-    case 1: {
+    case EntityKind_Fighter: {
         Fighter* attacker_fp = (Fighter*) best_entry->gobj->user_data;
         Fighter_GObj* attacker_gobj = attacker_fp->gobj;
         attacker_fp = (Fighter*) attacker_gobj->user_data;
@@ -2405,7 +2405,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
         break;
     }
 
-    case 2: {
+    case EntityKind_Item: {
         Item* item_sub = (Item*) best_entry->gobj->user_data;
         Fighter* victim_fp = (Fighter*) gobj->user_data;
         HSD_GObj* entity = item_sub->entity;
@@ -2432,7 +2432,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
         break;
     }
 
-    case 3: {
+    case EntityKind_UNKNOWN: {
         int kind = best_entry->kind;
         ftColl_8007861C(NULL, gobj, 3, kind, 0, 0, 0, dmg_ptr, 1);
         break;
