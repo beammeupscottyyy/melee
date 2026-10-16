@@ -350,7 +350,7 @@ void it_802EED00(Item_GObj* gobj)
     it_80275444(gobj);
     pos = ip->pos;
     lb_800119DC(&pos, 0x78, 1.0f, 0.02f, 1.0471976f);
-    Item_80268E5C(gobj, 7, 0x12);
+    Item_80268E5C(gobj, 7, ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
 }
 
 bool itWhispyapple_UnkMotion7_Anim(Item_GObj* gobj)

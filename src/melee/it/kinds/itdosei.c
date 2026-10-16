@@ -103,7 +103,7 @@ void itDosei_80281390(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     itResetVelocity(ip);
-    Item_80268E5C(gobj, 0, 3);
+    Item_80268E5C(gobj, 0, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
     itDosei_SetSpeed(gobj, ip, 1.0f);
     ip->owner = NULL;
 }
@@ -164,7 +164,8 @@ void itDosei_802817A0(Item_GObj* gobj)
     ip->xDC8_word.flags.x19 = 1;
     ip->owner = NULL;
     it_802762B0(ip);
-    Item_80268E5C(gobj, 1, 0xB);
+    Item_80268E5C(gobj, 1,
+                  ITEM_UNK_0x1 | ITEM_ANIM_UPDATE | ITEM_MODEL_UPDATE);
     ip->x5D0_animFrameSpeed = 1.0f;
     lb_8000BA0C(jobj, 1.0f);
     HSD_JObjSetRotationZero(gobj);
@@ -246,7 +247,7 @@ void itDosei_80281C6C(Item_GObj* gobj)
     ip->xDD4_itemVar.dosei.xDDC = 0.0F;
     ip->x40_vel.x = 0.0F;
     it_802762B0(ip);
-    Item_80268E5C(gobj, 2, 3);
+    Item_80268E5C(gobj, 2, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
     itDosei_SetSpeed(gobj, ip, 1.0f);
     ip->owner = NULL;
 }
@@ -279,7 +280,8 @@ static inline void itDosei_SetupWalk_FC(Item_GObj* gobj)
     ip->xDC8_word.flags.x19 = 1;
     ip->owner = NULL;
     it_802762B0(ip);
-    Item_80268E5C(gobj, 1, 0xB);
+    Item_80268E5C(gobj, 1,
+                  ITEM_UNK_0x1 | ITEM_ANIM_UPDATE | ITEM_MODEL_UPDATE);
     ip->x5D0_animFrameSpeed = 1.0f;
     lb_8000BA0C(jobj, 1.0f);
 
@@ -306,7 +308,7 @@ bool itDosei_UnkMotion2_Coll(Item_GObj* gobj)
 void itDosei_80282074(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
-    Item_80268E5C(gobj, 3, 3);
+    Item_80268E5C(gobj, 3, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
     itDosei_SetSpeed(gobj, ip, 1.0f);
     ip->owner = NULL;
 }
@@ -430,7 +432,7 @@ void itDosei_Logic7_Dropped(Item_GObj* gobj)
     HSD_JObjClearFlagsAll(HSD_JObjGetChild(jobj), JOBJ_HIDDEN);
     ip->xDC8_word.flags.x17 = 1;
     ip->xDC8_word.flags.x19 = 1;
-    Item_80268E5C(gobj, 5, 6);
+    Item_80268E5C(gobj, 5, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
     lb_8000BA0C(jobj, ip->x5D0_animFrameSpeed = attr->unk0);
     HSD_JObjSetRotationZero(gobj);
 
@@ -447,10 +449,10 @@ void itDosei_Logic7_Thrown(Item_GObj* gobj)
     if (ip->msid != 5) {
         it_8026B390(gobj);
         HSD_JObjClearFlagsAll(HSD_JObjGetChild(jobj), JOBJ_HIDDEN);
-        Item_80268E5C(gobj, 5, 6);
+        Item_80268E5C(gobj, 5, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
         lb_8000BA0C(jobj, ip->x5D0_animFrameSpeed = attr->unk0);
     } else {
-        Item_80268E5C(gobj, 5, 6);
+        Item_80268E5C(gobj, 5, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
     }
     it_80274484(gobj, jobj, ip->xDD4_itemVar.dosei.xDE0);
 }
@@ -473,7 +475,7 @@ void itDosei_Logic7_EnteredAir(Item_GObj* gobj)
     } else {
         motion_id = 6;
     }
-    Item_80268E5C(gobj, motion_id, 3);
+    Item_80268E5C(gobj, motion_id, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
     {
         HSD_JObj* jobj = gobj->hsd_obj;
         ip->x5D0_animFrameSpeed = 1.0f;
@@ -503,7 +505,7 @@ void itDosei_80282BFC(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     HSD_JObj* jobj;
-    Item_80268E5C(gobj, 8, 3);
+    Item_80268E5C(gobj, 8, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
     jobj = gobj->hsd_obj;
     ip->x5D0_animFrameSpeed = 1.0F;
     lb_8000BA0C(jobj, 1.0F);
@@ -535,7 +537,7 @@ void itDosei_80282CD4(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
     itResetVelocity(ip);
     it_802762B0(ip);
-    Item_80268E5C(gobj, 7, 3);
+    Item_80268E5C(gobj, 7, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
     {
         HSD_JObj* jobj = gobj->hsd_obj;
         ip->x5D0_animFrameSpeed = 1.0f;
@@ -580,7 +582,7 @@ static void itDosei_80282DE4(Item_GObj* gobj)
     ip->xDC8_word.flags.x17 = 1;
     ip->xDC8_word.flags.x19 = 1;
     ip->owner = NULL;
-    Item_80268E5C(gobj, 9, 3);
+    Item_80268E5C(gobj, 9, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
     ip->x5D0_animFrameSpeed = 1.0f;
     lb_8000BA0C(jobj, 1.0f);
 
@@ -659,7 +661,7 @@ bool itDosei_Logic7_DmgReceived(Item_GObj* gobj)
 
     {
         HSD_JObj* jobj = itDosei_GetJObj(gobj);
-        Item_80268E5C(gobj, 0xB, 3);
+        Item_80268E5C(gobj, 0xB, ITEM_UNK_0x1 | ITEM_ANIM_UPDATE);
         it_802762BC(ip);
         ip->x5D0_animFrameSpeed = 1.0f;
         lb_8000BA0C(jobj, 1.0f);
