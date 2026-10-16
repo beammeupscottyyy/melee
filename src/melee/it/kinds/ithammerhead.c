@@ -160,7 +160,7 @@ void it_80299FB4(Item_GObj* gobj)
     ip->x40_vel.y = 0.0F;
     ip->x40_vel.x = 0.0F;
     it_8026B390(gobj);
-    Item_80268E5C(gobj, 3, 1);
+    Item_80268E5C(gobj, 3, ITEM_UNK_0x1);
 }
 
 bool itHammerhead_UnkMotion3_Anim(Item_GObj* gobj)
