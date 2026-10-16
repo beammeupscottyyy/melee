@@ -94,10 +94,10 @@ void preloadState(GameModeState* state)
         break;
     }
     preloaded_state = lbDvd_GetPreloadCacheScene();
-    if (lbHeap_80015BB8(2) == 0) {
+    if (lbHeap_80015BB8(LbHeapKind_Seq) == LbHeapStatus_Create) {
         preloaded_state->is_heap_persistent[0] = true;
     }
-    if (lbHeap_80015BB8(3) == 0) {
+    if (lbHeap_80015BB8(LbHeapKind_Stay) == LbHeapStatus_Create) {
         preloaded_state->is_heap_persistent[1] = true;
     }
     lbDvd_80018254();
