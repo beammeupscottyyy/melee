@@ -325,7 +325,7 @@ bool itSeakneedlethrown_UnkMotion0_Coll(Item_GObj* gobj)
             it_80275158(gobj, attr->x4);
             ip->xDD4_itemVar.seakneedlethrown.xDF0 = rot;
             Item_80268E5C(gobj, 2, ITEM_ANIM_UPDATE);
-            Item_8026AE84(ip, 0x41F39, 127, 64);
+            Item_8026AE84(ip, 0x41F39, SFX_VOLUME_MAX, SFX_PAN_MID);
             break;
         case 3:
         case 4:
@@ -352,7 +352,7 @@ bool itSeakneedlethrown_UnkMotion1_Coll(Item_GObj* gobj)
         it_802762BC(ip);
         itSeakNeedleThrown_SetupBounce(gobj);
         Item_80268E5C(gobj, 4, ITEM_ANIM_UPDATE);
-        Item_8026AE84(ip, 0x41F39, 127, 64);
+        Item_8026AE84(ip, 0x41F39, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     return false;
 }

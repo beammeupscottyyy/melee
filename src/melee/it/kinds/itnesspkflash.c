@@ -343,7 +343,7 @@ bool itNesspkflash_UnkMotion0_Coll(Item_GObj* gobj)
         Item_80268E5C(gobj, 2, ITEM_ANIM_UPDATE);
         ip->xD44_lifeTimer = attr->x28_FLASH_EXPLOSION_DELAY;
         Item_8026B074(ip);
-        Item_8026AE84(ip, 0x86, 0x7F, 0x40);
+        Item_8026AE84(ip, 0x86, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 
     itNesspkflash_SetScale(jobj, ip, attr);

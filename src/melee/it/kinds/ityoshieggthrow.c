@@ -157,7 +157,7 @@ void it_802B2C38(HSD_GObj* gobj)
     ip->xD44_lifeTimer = attrs->x4;
     spawn1(gobj, jobj);
     spawn2(gobj, jobj);
-    Item_8026AE84(ip, 0x44618, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x44618, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 bool itYoshieggthrow_UnkMotion2_Anim(Item_GObj* gobj)

@@ -118,7 +118,7 @@ void it_802BDD3C(Item_GObj* item_gobj) {}
 void it_802BDD40(Item_GObj* item_gobj, f32 arg8)
 {
     Item* item = GET_ITEM(item_gobj);
-    Item_8026AE84(item, 0xF7, 0x7F, 0x40);
+    Item_8026AE84(item, 0xF7, SFX_VOLUME_MAX, SFX_PAN_MID);
     item->x5D0_animFrameSpeed = arg8;
     Item_80268E5C(item_gobj, 1, ITEM_ANIM_UPDATE);
     item->on_accessory = it_802BDD3C;

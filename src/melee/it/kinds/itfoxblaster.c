@@ -70,11 +70,11 @@ static inline void itFoxBlaster_PlaySFX(Item* item, u32 fox_sfx, u32 falco_sfx)
     switch (item->kind) {
     case It_Kind_Kirby_FoxBlaster:
     case It_Kind_Fox_Blaster:
-        Item_8026AE84(item, fox_sfx, 0x7F, 0x40);
+        Item_8026AE84(item, fox_sfx, SFX_VOLUME_MAX, SFX_PAN_MID);
         break;
     case It_Kind_Kirby_FalcoBlaster:
     case It_Kind_Falco_Blaster:
-        Item_8026AE84(item, falco_sfx, 0x7F, 0x40);
+        Item_8026AE84(item, falco_sfx, SFX_VOLUME_MAX, SFX_PAN_MID);
         break;
     default:
         break;

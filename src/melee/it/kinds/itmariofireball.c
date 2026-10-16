@@ -81,8 +81,7 @@ bool itMariofireball_UnkMotion0_Coll(Item_GObj* gobj)
             return true;
         }
         if (it->kind == It_Kind_Mario_Fire) {
-            Item_8026AE84(it, ~0xFFFD40C6, 0x7f,
-                          0x40); // What the fuck is this ID?
+            Item_8026AE84(it, ~0xFFFD40C6, SFX_VOLUME_MAX, SFX_PAN_MID);
             efAsync_Spawn(gobj, &(GET_ITEM(gobj)->xBC0), 1, 1147, jobj);
         } else {
             efAsync_Spawn(gobj, &(GET_ITEM(gobj)->xBC0), 1, 1184, jobj);

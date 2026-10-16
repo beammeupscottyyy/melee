@@ -73,7 +73,7 @@ bool it_27CF_UnkMotion1_Anim(HSD_GObj* gobj)
         ip = gobj->user_data;
         item_jobj = gobj->hsd_obj;
         sp1C = 1.0f;
-        Item_8026AE84(ip, 280088, 127, 64);
+        Item_8026AE84(ip, 280088, SFX_VOLUME_MAX, SFX_PAN_MID);
         item_gobj = (Item_GObj*) gobj;
         efAsync_Spawn(gobj, &((Item*) gobj->user_data)->xBC0, 4U, 1231,
                       item_jobj, &sp1C);
@@ -119,7 +119,7 @@ bool it_27CF_UnkMotion0_Anim(HSD_GObj* gobj)
         ip = gobj->user_data;
         item_jobj = gobj->hsd_obj;
         sp1C = 1.0f;
-        Item_8026AE84(ip, 280088, 127, 64);
+        Item_8026AE84(ip, 280088, SFX_VOLUME_MAX, SFX_PAN_MID);
         item_gobj = (Item_GObj*) gobj;
         efAsync_Spawn(gobj, &((Item*) gobj->user_data)->xBC0, 4U, 1231,
                       item_jobj, &sp1C);

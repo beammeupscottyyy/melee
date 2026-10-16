@@ -384,9 +384,9 @@ bool it_802A0C34(Item_GObj* gobj)
     PAD_STACK(12);
     if (ip->xDD4_itemVar.linkboomerang.xF8C <= 0.0f) {
         if (ip->xDD4_itemVar.linkboomerang.xDEC == 6) {
-            Item_8026AF0C(ip, 0x2715B, 0x7F, 0x40);
+            Item_8026AF0C(ip, 0x2715B, SFX_VOLUME_MAX, SFX_PAN_MID);
         } else {
-            Item_8026AF0C(ip, 0x111CB, 0x7F, 0x40);
+            Item_8026AF0C(ip, 0x111CB, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
         ip->xDD4_itemVar.linkboomerang.xF8C = attrs->x38;
     }

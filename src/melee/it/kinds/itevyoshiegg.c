@@ -228,7 +228,7 @@ bool itEvYoshiEgg_Logic42_DmgReceived(Item_GObj* gobj)
     val = 1.5f;
     efSync_Spawn(1231, gobj, &ip->pos, &val);
     efSync_Spawn(1231, gobj, &ip->pos, &val);
-    Item_8026AE84(ip, 244, 0x7F, 0x40);
+    Item_8026AE84(ip, 244, SFX_VOLUME_MAX, SFX_PAN_MID);
     dmgReceived(gobj);
     return false;
 }

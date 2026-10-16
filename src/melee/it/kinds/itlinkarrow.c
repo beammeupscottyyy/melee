@@ -626,11 +626,11 @@ void it_802A9458(HSD_GObj* gobj)
     switch (item->kind) { ///< @todo replace with enum names
     case It_Kind_Link_Arrow:
     case It_Kind_Kirby_LinkArrow:
-        Item_8026AE84(item, 0x27152, 0x7F, 0x40);
+        Item_8026AE84(item, 0x27152, SFX_VOLUME_MAX, SFX_PAN_MID);
         break;
     case It_Kind_CLink_Arrow:
     case It_Kind_Kirby_CLinkArrow:
-        Item_8026AE84(item, 0x111C2, 0x7F, 0x40);
+        Item_8026AE84(item, 0x111C2, SFX_VOLUME_MAX, SFX_PAN_MID);
         scale.y = 0.0f;
         scale.x = 0.0f;
         scale.z = 5.0f;

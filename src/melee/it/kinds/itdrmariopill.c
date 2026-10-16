@@ -235,7 +235,7 @@ static bool itDrmariopill_UnkMotion0_Coll(Item_GObj* gobj)
         if (my_sqrtf(VEC2_SQ_LEN(ip->x40_vel)) < attrs->x10) {
             return true;
         }
-        Item_8026AE84(ip, 0x15FAE, 0x7F, 0x40);
+        Item_8026AE84(ip, 0x15FAE, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     return false;
 }
@@ -400,7 +400,7 @@ bool itDrMarioPill_DmgDealt(Item_GObj* gobj)
     Item* ip;
     ip = gobj->user_data;
     it_8026B3A8(gobj);
-    Item_8026AE84(ip, 0x15FAE, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x15FAE, SFX_VOLUME_MAX, SFX_PAN_MID);
     return true;
 }
 
@@ -417,7 +417,7 @@ bool itDrMarioPill_Clanked(Item_GObj* gobj)
     it_8026B3A8(gobj);
     ip = gobj->user_data;
     it_8026B3A8(gobj);
-    Item_8026AE84(ip, 0x15FAE, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x15FAE, SFX_VOLUME_MAX, SFX_PAN_MID);
     return true;
 }
 
@@ -428,7 +428,7 @@ bool itDrMarioPill_HitShield(Item_GObj* gobj)
     it_8026B3A8(gobj);
     ip = gobj->user_data;
     it_8026B3A8(gobj);
-    Item_8026AE84(ip, 0x15FAE, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x15FAE, SFX_VOLUME_MAX, SFX_PAN_MID);
     return true;
 }
 
@@ -439,7 +439,7 @@ bool itDrMarioPill_Absorbed(Item_GObj* gobj)
     it_8026B3A8(gobj);
     ip = gobj->user_data;
     it_8026B3A8(gobj);
-    Item_8026AE84(ip, 0x15FAE, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x15FAE, SFX_VOLUME_MAX, SFX_PAN_MID);
     return true;
 }
 
@@ -450,7 +450,7 @@ bool itDrMarioPill_ShieldBounced(Item_GObj* gobj)
     it_8026B3A8(gobj);
     ip = gobj->user_data;
     it_8026B3A8(gobj);
-    Item_8026AE84(ip, 0x15FAE, 0x7F, 0x40);
+    Item_8026AE84(ip, 0x15FAE, SFX_VOLUME_MAX, SFX_PAN_MID);
     return true;
 }
 

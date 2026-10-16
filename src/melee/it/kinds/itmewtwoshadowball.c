@@ -89,7 +89,8 @@ u32 it_802C4D10(Item_GObj* gobj)
                 ((M_PI / 4) * (2.0f * (rand - 0.5f)));
             ip->xDD4_itemVar.mewtwoshadowball.x44 =
                 -ip->xDD4_itemVar.mewtwoshadowball.x40 / (0.5f * attr->x20);
-            Item_8026AF0C(ip, it_803F7880[HSD_Randi(3)], 127, 64);
+            Item_8026AF0C(ip, it_803F7880[HSD_Randi(3)], SFX_VOLUME_MAX,
+                          SFX_PAN_MID);
         }
         ip->xDD4_itemVar.mewtwoshadowball.x40 +=
             ip->xDD4_itemVar.mewtwoshadowball.x44;
@@ -576,7 +577,7 @@ void it_802C5E5C(Item_GObj* gobj)
         ip->x5D4_hitboxes[0].hit.scale * attr->x24;
     lb_8000B1CC(HSD_JObjGetChild(HSD_JObjGetChild(jobj)), NULL, &pos);
     efSync_Spawn(0x40E, gobj, &pos);
-    Item_8026AE84(ip, 0x74, 127, 64);
+    Item_8026AE84(ip, 0x74, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 bool itMewtwoshadowball_UnkMotion17_Anim(Item_GObj* gobj)
