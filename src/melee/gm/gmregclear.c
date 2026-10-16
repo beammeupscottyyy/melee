@@ -606,7 +606,7 @@ void fn_8017FE54(HSD_GObj* gobj)
     RegClearEv* ev = gobj->user_data;
     struct lbl_80472D28_t* state = &lbl_80472D28;
 
-    lb_800122C8(ev->x1C, 0, 0, 1);
+    lb_800122C8(ev->x1C, 0, 0, true);
     lb_800138D8(state->x2C, (int) (120.0F * state->x10C) + 1);
 
     ev->x20 = 0.0225F * (f32) state->x110 - 0.175F;

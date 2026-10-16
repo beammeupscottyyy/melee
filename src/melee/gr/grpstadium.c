@@ -10,7 +10,7 @@
 #include "inlines.h"
 #include "stage.h"
 #include "types.h"
-#include <dolphin/gx/GXStruct.h>
+#include <dolphin/gx.h>
 #include <melee/cm/camera.h>
 #include <melee/ft/ftlib.h>
 #include <melee/gm/gm_unsplit.h>
@@ -1162,7 +1162,7 @@ HSD_GObj* grStadium_801D2BEC(void)
     text = HSD_MemAlloc(sizeof(*text));
     GObj_InitUserData(gobj, 3, HSD_Free, text);
     memzero(text, 0x18);
-    lb_800121FC(&text->desc, 0xFA, 0xA0, 4, 0x7D2);
+    lb_800121FC(&text->desc, 0xFA, 0xA0, GX_TF_RGB565, 0x7D2);
     archive = grDatFiles_GetArchive();
     HSD_SisLib_803A611C(1, gobj, 9, 0xD, 0, 1, 0, 1);
     HSD_SisLib_804D1124[1] =
@@ -1187,7 +1187,7 @@ HSD_GObj* grStadium_801D2D78(void)
     wrapper = HSD_MemAlloc(0x1C);
     GObj_InitUserData(temp_r3, 3, HSD_Free, wrapper);
     memzero(&wrapper->desc, sizeof(wrapper->desc));
-    lb_800121FC(&wrapper->desc, 0x280, 0x196, 4, 0x7D3);
+    lb_800121FC(&wrapper->desc, 0x280, 0x196, GX_TF_RGB565, 0x7D3);
     wrapper->flag = true;
     return temp_r3;
 }
@@ -1200,7 +1200,7 @@ HSD_GObj* grStadium_801D2E24(void)
     wrapper = HSD_MemAlloc(sizeof(ImageDescWrapper));
     GObj_InitUserData(gobj, 3, HSD_Free, wrapper);
     memzero(&wrapper->desc, sizeof(HSD_ImageDesc));
-    lb_800121FC(&wrapper->desc, 0x7C, 0x50, 4, 0x7D4);
+    lb_800121FC(&wrapper->desc, 0x7C, 0x50, GX_TF_RGB565, 0x7D4);
     wrapper->flag = false;
     return gobj;
 }
@@ -1222,7 +1222,7 @@ void fn_801D2ED0(HSD_GObj* gobj, intptr_t unused)
         HSD_GObj_80390ED0(gobj, 7);
         HSD_CObjEndCurrent();
     }
-    lb_800122C8(&wrapper->desc, 0, 0, 1);
+    lb_800122C8(&wrapper->desc, 0, 0, true);
     vision_gobj = Ground_GetMapGObj(PsType_Display);
     HSD_ASSERT(0x6D2, vision_gobj);
     gp2 = GET_GROUND(vision_gobj);
@@ -1239,7 +1239,7 @@ void grStadium_801D2FD0(Ground_GObj* gobj, intptr_t unused)
 
     copy = wrapper;
     if (!wrapper->flag) {
-        lb_800122C8(&copy->desc, 0, 36, 0);
+        lb_800122C8(&copy->desc, 0, 36, false);
         wrapper->flag = true;
 
         vision_gobj = Ground_GetMapGObj(PsType_Display);
@@ -1260,7 +1260,7 @@ void grStadium_801D3084(HSD_GObj* gobj, intptr_t unused)
 
     new_var = wrapper;
     if (!new_var->flag) {
-        lb_800122C8(&new_var->desc, new_var->x1A, new_var->x1C, 0);
+        lb_800122C8(&new_var->desc, new_var->x1A, new_var->x1C, false);
         new_var->flag = true;
         vision_gobj = Ground_GetMapGObj(PsType_Display);
         HSD_ASSERT(0x703, vision_gobj);

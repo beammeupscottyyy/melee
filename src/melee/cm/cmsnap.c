@@ -1,6 +1,7 @@
 #include "cmsnap.h"
 
 #include "forward.h"
+#include <dolphin/gx.h>
 #include <melee/lb/lbspdisplay.h>
 #include <sysdolphin/baselib/debug.h>
 #include <sysdolphin/baselib/gobj.h>
@@ -36,7 +37,7 @@ void cmSnap_80031640(HSD_GObj* arg0, intptr_t code)
     case CmSnapStatus_Sleep:
         break;
     case CmSnapStatus_Unk1:
-        lb_800122C8(&_p(unk1), 0, 0, 0);
+        lb_800122C8(&_p(unk1), 0, 0, false);
         _p(status) = CmSnapStatus_Unk2;
         break;
     case CmSnapStatus_Unk2:
@@ -54,5 +55,5 @@ void cmSnap_800316B4(void)
     _p(status) = CmSnapStatus_Sleep;
     _p(unk1).image_ptr = NULL;
     GObj_SetupGXLinkMax(GObj_Create(0x12, 0x12, 0), cmSnap_80031640, 4);
-    lb_800121FC(&_p(unk1), 0x280, 0x1E0, 4, 0x7D6);
+    lb_800121FC(&_p(unk1), 0x280, 0x1E0, GX_TF_RGB565, 0x7D6);
 }

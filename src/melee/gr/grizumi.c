@@ -697,7 +697,7 @@ HSD_GObj* grIzumi_801CCD98(void)
                                "GrdIzumi_cd_wt_GrdIzumiDummy1_1_image_desc");
     if (refl->image != NULL) {
         memzero(refl->image, sizeof(HSD_ImageDesc));
-        lb_800121FC(refl->image, 80, 60, 4, 2001);
+        lb_800121FC(refl->image, 80, 60, GX_TF_RGB565, 2001);
     } else {
         OSReport("not found mirror image desc! "
                  "(GrdIzumi_cd_wt_GrdIzumiDummy1_1_image_desc)\n");
@@ -755,7 +755,7 @@ void grIzumi_801CCEA0(HSD_GObj* gobj, intptr_t renderpass)
             HSD_GObj_80390ED0(gobj, 7);
             HSD_CObjEndCurrent();
         }
-        lb_800122C8(refl->image, 0, 0, 1);
+        lb_800122C8(refl->image, 0, 0, true);
         MTXLightPerspective(mtx, cobj->projection_param.perspective.fov,
                             cobj->projection_param.perspective.aspect, 0.49f,
                             -0.49f, 0.5f, 0.5f);

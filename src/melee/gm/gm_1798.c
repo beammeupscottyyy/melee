@@ -570,7 +570,7 @@ static inline void inline1(HSD_ImageDesc* imgs, int slot, const u16* w,
                            const u16* h)
 {
     imgs[slot].image_ptr = NULL;
-    lb_800121FC(&imgs[slot], *w, *h, 5, 0);
+    lb_800121FC(&imgs[slot], *w, *h, GX_TF_RGB5A3, 0);
 }
 
 void fn_8017A9B4(int slot)

@@ -2,6 +2,7 @@
 
 #include "forward.h"
 #include "gm_unsplit.h"
+#include <dolphin/gx.h>
 #include <dolphin/pad.h>
 #include <melee/cm/camera.h>
 #include <melee/ef/efasync.h>
@@ -308,8 +309,8 @@ void gm_801A6C54(void)
     for (i = 0; i < 2; i++) {
         gm_804808F8.x0[i][0].image_ptr = NULL;
         gm_804808F8.x0[i][1].image_ptr = NULL;
-        lb_800121FC(&gm_804808F8.x0[i][0], 0x1EA, 0x1E0, 5, 0);
-        lb_800121FC(&gm_804808F8.x0[i][1], 0x1EA, 0x1E0, 0x16, 0);
+        lb_800121FC(&gm_804808F8.x0[i][0], 0x1EA, 0x1E0, GX_TF_RGB5A3, 0);
+        lb_800121FC(&gm_804808F8.x0[i][1], 0x1EA, 0x1E0, GX_TF_Z24X8, 0);
     }
 }
 
@@ -342,8 +343,8 @@ void gm_801A6DC0(void)
     for (i = 0; i < 2; i++) {
         gm_80480964.x0[i][0].image_ptr = NULL;
         gm_80480964.x0[i][1].image_ptr = NULL;
-        lb_800121FC(&gm_80480964.x0[i][0], 0x1EA, 0x1E0, 5, 0);
-        lb_800121FC(&gm_80480964.x0[i][1], 0x1EA, 0x1E0, 0x16, 0);
+        lb_800121FC(&gm_80480964.x0[i][0], 0x1EA, 0x1E0, GX_TF_RGB5A3, 0);
+        lb_800121FC(&gm_80480964.x0[i][1], 0x1EA, 0x1E0, GX_TF_Z24X8, 0);
     }
 }
 
@@ -398,7 +399,7 @@ static inline void initImages(void)
 
     for (i = 0; i < 2; i++) {
         gm_804809D0[i].image_ptr = NULL;
-        lb_800121FC(&gm_804809D0[i], 0x1EA, 0x1E0, 5, 0);
+        lb_800121FC(&gm_804809D0[i], 0x1EA, 0x1E0, GX_TF_RGB5A3, 0);
     }
 }
 
