@@ -209,7 +209,7 @@ void fn_8020B4D8(void* user_data, int joint_id, CollData* coll, int coll_x50,
     PAD_STACK(8);
     if ((s32) coll->x34_flags.b1234 == 1) {
         if (Ground_GetP1Fighter() == coll->x0_gobj) {
-            if (ground_kind == 1) {
+            if (ground_kind == mpLib_GroundEnum_Unk1) {
                 stage_info.flags |= 0x10;
             }
         }

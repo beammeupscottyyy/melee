@@ -148,7 +148,7 @@ void grStadium_OnInit(void)
     stage_info.unk8C.b4 = false;
     stage_info.unk8C.b5 = true;
 
-    grStadium_801D10F8(0);
+    grStadium_801D10F8(PsType_Main);
     grStadium_801D10F8(PsType_Display);
     grStadium_801D10F8(2);
 
@@ -290,7 +290,7 @@ void grStadium_801D13E0(Ground_GObj* gobj)
     gr->u.stadium.xD0 = NULL;
     gr->u.stadium.xD4 = 0.0F;
     gr->u.stadium.xDC = 0;
-    gr->u.stadium.xDE = 5;
+    gr->u.stadium.xDE = PsType_Default;
     gr->u.stadium.xE0 = -1;
     gr->u.stadium.xE2 = -1;
     gr->u.stadium.xE4 = grStadium_801D10F8(gr->u.stadium.xDE);
@@ -2010,29 +2010,30 @@ void grStadium_801D4548(Ground_GObj* gobj)
     switch (gp->u.stadium.xDC) {
     case 0:
         if (gp->u.stadium.xD8-- < 0) {
-            if (gp->u.stadium.xDE == 5) {
-                int kinds[] = { 3, 4, 6, 9 };
+            if (gp->u.stadium.xDE == PsType_Default) {
+                int kinds[] = { PsType_Fire, PsType_Grass, PsType_Rock,
+                                PsType_Water };
                 int r;
                 do {
                     r = HSD_Randi(ARRAY_SIZE(kinds));
                 } while (gp->u.stadium.xE2 == (kind = kinds[r]));
             } else {
-                kind = 5;
+                kind = PsType_Default;
             }
             gp->u.stadium.xE2 = gp->u.stadium.xE0;
             gp->u.stadium.xE0 = gp->u.stadium.xDE;
             gp->u.stadium.xDE = kind;
 
-            if (kind == 5) { // default
+            if (kind == PsType_Default) {
                 gp->u.stadium.xDC = 2;
                 return;
-            } else if (kind == 3) { // fire
+            } else if (kind == PsType_Fire) {
                 idx = 0;
-            } else if (kind == 4) { // grass
+            } else if (kind == PsType_Grass) {
                 idx = 1;
-            } else if (kind == 9) { // water
+            } else if (kind == PsType_Water) {
                 idx = 2;
-            } else if (kind == 6) { // rock
+            } else if (kind == PsType_Rock) {
                 idx = 3;
             } else {
                 HSD_ASSERT(0xA44, 0);
@@ -2053,15 +2054,15 @@ void grStadium_801D4548(Ground_GObj* gobj)
         if (display_gobj != NULL) {
             cur_kind = gp->u.stadium.xDE;
 
-            if (cur_kind == 3) {
+            if (cur_kind == PsType_Fire) {
                 idx = 3;
-            } else if (cur_kind == 4) {
+            } else if (cur_kind == PsType_Grass) {
                 idx = 4;
-            } else if (cur_kind == 9) {
+            } else if (cur_kind == PsType_Water) {
                 idx = 5;
-            } else if (cur_kind == 6) {
+            } else if (cur_kind == PsType_Rock) {
                 idx = 6;
-            } else if (cur_kind == 5) {
+            } else if (cur_kind == PsType_Default) {
                 idx = 2;
             } else {
                 HSD_ASSERT(0xA67, 0);
@@ -2154,7 +2155,7 @@ void grStadium_801D4548(Ground_GObj* gobj)
     case 6:
         grStadium_801D4354(gp->u.stadium.xE4)->u.stadium.xC4_b0 = true;
         mpLib_80058560();
-        if (gp->u.stadium.xDE == 5) {
+        if (gp->u.stadium.xDE == PsType_Default) {
             gp->u.stadium.xD8 =
                 randi_between_2(yakumono_param->x0, yakumono_param->x4);
             grAnime_801C65B0((void*) gp->u.stadium.xCC);

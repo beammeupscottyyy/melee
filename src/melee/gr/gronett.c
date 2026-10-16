@@ -374,7 +374,7 @@ void grOnett_801E40E4(void* user_data, int joint_id, CollData* coll,
 {
     Ground* gp = user_data;
 
-    if (ground_kind == 1) {
+    if (ground_kind == mpLib_GroundEnum_Unk1) {
         gp->u.onett_building.hit_count += 1;
         switch (gp->u.onett_building.state) {
         case 4:
@@ -863,7 +863,7 @@ void grOnett_801E54B4(void* user_data, int joint_id, CollData* coll,
     }
 
     idx = (joint_id == 0) ? 0 : 1;
-    if (ground_kind == 1) {
+    if (ground_kind == mpLib_GroundEnum_Unk1) {
         gp->u.onett.awnings[idx].flag = 1;
         gp->u.onett.awnings[idx].initial = yakumono_param->awning_initial;
     }

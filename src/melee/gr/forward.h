@@ -186,7 +186,13 @@ typedef enum StKind {
 } StKind;
 
 typedef enum StadiumGrType {
+    PsType_Main = 0,
     PsType_Display = 1,
+    PsType_Fire = 3,
+    PsType_Grass = 4,
+    PsType_Default = 5,
+    PsType_Rock = 6,
+    PsType_Water = 9,
 } StadiumGrType;
 
 /// Size of the Home-Run Contest parts array, named by an assert in

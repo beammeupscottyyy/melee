@@ -1416,7 +1416,9 @@ void onJointCollision(void* user_data, int joint_id, CollData* coll,
     u32 slot;
     PAD_STACK(8);
 
-    if ((int) coll->x34_flags.b1234 == 1 && ground_kind == 2) {
+    if ((int) coll->x34_flags.b1234 == 1 &&
+        ground_kind == mpLib_GroundEnum_Unk2)
+    {
         slot = ftLib_GetPlayerIndex(coll->x0_gobj);
         if (coll->x0_gobj == Player_GetEntity(slot)) {
             gp->u.shrineroute.xCA = 1;

@@ -808,7 +808,8 @@ void fn_8021E994(void* user_data, int joint_id, CollData* coll, int coll_x50,
         }
         if (collKind == 1) {
             gobj = gm_80180AF4();
-            if (coll->x0_gobj == gobj && ground_kind == 1) {
+            if (coll->x0_gobj == gobj && ground_kind == mpLib_GroundEnum_Unk1)
+            {
                 gp->u.homerun.xE8_flags.b0 = 1;
             }
         }

@@ -893,7 +893,7 @@ void grGreatBay_801F60C4(void* user_data, int joint_id, CollData* coll,
     temp_r0 = coll->x34_flags.b1234;
     if (temp_r0 == 1 || temp_r0 == 3) {
         HSD_JObj* jobj;
-        if (ground_kind == 1) {
+        if (ground_kind == mpLib_GroundEnum_Unk1) {
             coll_x50 = (s32) ((f32) coll_x50 *
                               grGb_804D69E0.x0->floatfloor_landing_rate);
         }
