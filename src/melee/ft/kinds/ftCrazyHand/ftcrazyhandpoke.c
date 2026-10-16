@@ -118,9 +118,12 @@ void fn_80158534(HSD_GObj* gobj)
         fp->mv.ch.grab.x34 =
             it_802F0340(gobj, &vec, &vec, FtPart_L3rdNa,
                         It_Kind_MasterHand_Laser, fp->facing_dir);
-        fp->mv.ch.unk0.x38 = lbAudioAx_800237A8(320004, 127, 64);
-        fp->mv.ch.unk0.x3C = lbAudioAx_800237A8(320005, 127, 64);
-        fp->mv.ch.unk0.x40 = lbAudioAx_800237A8(320006, 127, 64);
+        fp->mv.ch.unk0.x38 =
+            lbAudioAx_800237A8(320004, SFX_VOLUME_MAX, SFX_PAN_MID);
+        fp->mv.ch.unk0.x3C =
+            lbAudioAx_800237A8(320005, SFX_VOLUME_MAX, SFX_PAN_MID);
+        fp->mv.ch.unk0.x40 =
+            lbAudioAx_800237A8(320006, SFX_VOLUME_MAX, SFX_PAN_MID);
         fp->cmd_vars[0] = 0;
     }
 }
