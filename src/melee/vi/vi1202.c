@@ -68,7 +68,7 @@ void un_80321178(void)
 
     i = 0;
     while ((un_804D7040->models)[i] != NULL) {
-        gobj = GObj_Create(0xE, 0xF, 0);
+        gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
         jobj = HSD_JObjLoadJoint((un_804D7040->models)[i]->joint);
         HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
         GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, 0xB, 0);
@@ -103,7 +103,7 @@ static inline void setupKoopa(void)
     HSD_GObj* koopa_gobj;
     HSD_JObj* jobj;
 
-    koopa_gobj = GObj_Create(0xE, 0xF, 0);
+    koopa_gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     jobj = HSD_JObjLoadJoint(un_804D7048);
     HSD_GObjObject_80390A70(koopa_gobj, HSD_GObj_JObjKind, jobj);
     GObj_SetupGXLink(koopa_gobj, HSD_GObj_JObjCallback, 0xB, 0);
@@ -123,7 +123,7 @@ static inline void setupStand(void)
     HSD_JObj* jobj;
     HSD_JObj* child;
 
-    stand_gobj = GObj_Create(0xE, 0xF, 0);
+    stand_gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     jobj = HSD_JObjLoadJoint(un_804D7044->models[0]->joint);
     HSD_GObjObject_80390A70(stand_gobj, HSD_GObj_JObjKind, jobj);
     GObj_SetupGXLink(stand_gobj, HSD_GObj_JObjCallback, 0xB, 0);
@@ -157,12 +157,12 @@ void vi1202_Scene_OnEnter(void* arg)
     lbArchive_LoadSymbols("GmRgStnd.dat", &un_804D7044, "standScene", NULL);
     Toy_803124BC();
 
-    gobj = GObj_Create(0xB, 0x3, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, HSD_GOBJ_PLINK_LIGHT, 0);
     lobj = lb_80011AC4(un_804D7040->lights);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(gobj, HSD_GObj_LObjCallback, 0, 0);
 
-    cam_gobj = GObj_Create(0x13, 0x14, 0);
+    cam_gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj = lb_80013B14(&un_804D7040->cameras->desc->perspective);
     HSD_GObjObject_80390A70(cam_gobj, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMax(cam_gobj, HSD_GObj_803910D8, 0x8);
