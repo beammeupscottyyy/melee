@@ -4018,10 +4018,10 @@ void ftKb_SpecialN_800F1BAC(Fighter_GObj* gobj, s32 kind, bool arg2)
         }
         ftKb_SpecialN_800F16D0(gobj, fp->u.kb.hat.kind);
         if (arg2 == 1) {
-            ft_PlaySFX(fp, 0x222F3, 0x7F, 0x40);
+            ft_PlaySFX(fp, 0x222F3, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     } else if (arg2 == 1) {
-        ft_PlaySFX(fp, 0x222F6, 0x7F, 0x40);
+        ft_PlaySFX(fp, 0x222F6, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     fp->death3_cb = ftKb_Init_800EE74C;
     fp->death1_cb = ftKb_Init_800EE7B8;

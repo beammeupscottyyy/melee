@@ -75,7 +75,7 @@ void ftKb_PkSpecialN_Anim(Fighter_GObj* gobj)
                 it_pos.z = 0.0f;
                 itPikachuThunderJolt_Spawn(gobj, &it_pos, fp->facing_dir,
                                            da->specialn_pk_itkind);
-                ft_PlaySFX(fp, 240076, 127, 64);
+                ft_PlaySFX(fp, 240076, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             case Ft_Kind_Pichu:
                 it_pos.x = (fp->x34_scale.y * (da->specialn_pc_spawn_offset.x *
@@ -86,7 +86,7 @@ void ftKb_PkSpecialN_Anim(Fighter_GObj* gobj)
                 it_pos.z = 0.0f;
                 itPikachuThunderJolt_Spawn(gobj, &it_pos, fp->facing_dir,
                                            da->specialn_pc_itkind);
-                ft_PlaySFX(fp, 230067, 127, 64);
+                ft_PlaySFX(fp, 230067, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             default:
                 break;
@@ -123,7 +123,7 @@ void ftKb_PkSpecialAirN_Anim(Fighter_GObj* gobj)
                 it_pos.z = 0.0f;
                 itPikachuThunderJolt_Spawn(gobj, &it_pos, fp->facing_dir,
                                            da->specialn_pk_itkind);
-                ft_PlaySFX(fp, 240076, 127, 64);
+                ft_PlaySFX(fp, 240076, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             case Ft_Kind_Pichu:
                 it_pos.x =
@@ -136,7 +136,7 @@ void ftKb_PkSpecialAirN_Anim(Fighter_GObj* gobj)
                 it_pos.z = 0.0f;
                 itPikachuThunderJolt_Spawn(gobj, &it_pos, fp->facing_dir,
                                            da->specialn_pc_itkind);
-                ft_PlaySFX(fp, 230067, 127, 64);
+                ft_PlaySFX(fp, 230067, SFX_VOLUME_MAX, SFX_PAN_MID);
                 break;
             default:
                 break;

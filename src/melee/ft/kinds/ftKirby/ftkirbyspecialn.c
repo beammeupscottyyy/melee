@@ -285,7 +285,7 @@ void ftKb_SpecialN_800F5D04(Fighter_GObj* gobj, bool arg1)
         vel.y = da->specialn_ability_loss_star_z;
         vel.z = 0.0F;
         it_802ADA1C(&pos, &vel, fp2->facing_dir);
-        ft_PlaySFX(fp, 0x22305, 0x7F, 0x40);
+        ft_PlaySFX(fp, 0x22305, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     new_var->u.kb.hat.kind = Ft_Kind_Kirby;
 }
@@ -945,7 +945,7 @@ void ftKb_SpecialNDrink0_Anim(Fighter_GObj* gobj)
     PAD_STACK(16);
     if (fp->cmd_vars[0] != 0 && (item_gobj = fp->target_item_gobj) != NULL) {
         ftCommon_8007E2F4(fp, 0);
-        ft_PlaySFX(fp, 0x222F6, 0x7F, 0x40);
+        ft_PlaySFX(fp, 0x222F6, SFX_VOLUME_MAX, SFX_PAN_MID);
         it_802F28C8(item_gobj, 0, 0.0F);
         fp->x1A64 = NULL;
         fp->target_item_gobj = NULL;
@@ -991,7 +991,7 @@ void ftKb_SpecialNDrink1_Anim(Fighter_GObj* gobj)
     PAD_STACK(16);
     if (fp->cmd_vars[0] != 0 && (item_gobj = fp->target_item_gobj) != NULL) {
         ftCommon_8007E2F4(fp, 0);
-        ft_PlaySFX(fp, 0x222F6, 0x7F, 0x40);
+        ft_PlaySFX(fp, 0x222F6, SFX_VOLUME_MAX, SFX_PAN_MID);
         it_802F28C8(item_gobj, 0, 0.0F);
         fp->x1A64 = NULL;
         fp->target_item_gobj = NULL;

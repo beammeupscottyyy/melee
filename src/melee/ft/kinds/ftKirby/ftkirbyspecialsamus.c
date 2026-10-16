@@ -292,7 +292,7 @@ void ftKb_SsSpecialNHold_Anim(Fighter_GObj* gobj)
             ratio = 0.0F;
         }
         i = 5.0F * ratio;
-        ft_80088510(fp, ftKb_Init_803CB6C0[i], 0x7F, 0x40);
+        ft_80088510(fp, ftKb_Init_803CB6C0[i], SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     fp3->mv.kb.specialhi.x4 += 1;
     if (fp3->mv.kb.specialhi.x4 > da->specialn_ss_frames_per_charge_level) {
@@ -454,7 +454,7 @@ void ftKb_SsSpecialNHold_Coll(Fighter_GObj* gobj)
         ftCommon_GroundToAirStateChange(gobj, fp, ftKb_MS_SsSpecialAirN,
                                         ftCommon_GroundAirColl_MF);
         ftKb_SpecialN_set_cbs(gobj);
-        ft_PlaySFX(fp, 0x3F7B5, 0x7F, 0x40);
+        ft_PlaySFX(fp, 0x3F7B5, SFX_VOLUME_MAX, SFX_PAN_MID);
         fp->cmd_vars[1] = 1;
     }
 }

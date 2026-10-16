@@ -185,7 +185,7 @@ void fn_801090D4(Fighter_GObj* gobj)
         pos.y += da->specialn_pp_y_spawn + fp->u.kb.xC8;
         fp->u.kb.xC0 = it_802C1590(gobj, &pos, It_Kind_Kirby_IceClimberIce,
                                    fp->facing_dir);
-        ft_PlaySFX(fp, 0x1FBE5, 127, 64);
+        ft_PlaySFX(fp, 0x1FBE5, SFX_VOLUME_MAX, SFX_PAN_MID);
         if (fp->u.kb.xC0 != NULL) {
             fp->death2_cb = (HSD_GObjEvent) ftKb_Init_800EE74C;
             fp->take_dmg_cb = (HSD_GObjEvent) ftKb_Init_800EE7B8;
@@ -197,8 +197,8 @@ void fn_801090D4(Fighter_GObj* gobj)
         if (fp->u.kb.xC0 != NULL) {
             it_802C16F8(fp->u.kb.xC0);
             fp->cmd_vars[0] = 0;
-            ft_800881D8(fp, 0x2233B, 127, 64);
-            ft_PlaySFX(fp, 0x1FBE8, 127, 64);
+            ft_800881D8(fp, 0x2233B, SFX_VOLUME_MAX, SFX_PAN_MID);
+            ft_PlaySFX(fp, 0x1FBE8, SFX_VOLUME_MAX, SFX_PAN_MID);
             {
                 Fighter* fp2 = GET_FIGHTER(gobj);
                 if (fp->u.kb.xC0 == fp2->u.kb.xC0) {

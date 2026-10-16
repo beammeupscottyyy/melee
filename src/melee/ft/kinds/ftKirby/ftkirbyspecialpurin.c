@@ -113,7 +113,7 @@ void fn_80100E0C(Fighter_GObj* gobj)
         fp->gr_vel = 0;
         fp->mv.pr.specialn.facing_dir = 0;
         ftPartSetRotY(fp, FtPart_TopN, M_PI_2);
-        ft_PlaySFX(fp, 0x3D0D6, 127, 64);
+        ft_PlaySFX(fp, 0x3D0D6, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -207,7 +207,7 @@ static void ftKb_PrWallBounceEffect(Fighter_GObj* gobj, Fighter* fp, f32 dir,
     efSync_Spawn(0x406, gobj, pos, angle);
     Camera_RequestQuake(QuakeKind_Medium, pos);
     ftCommon_8007EBAC(fp2, 0xC, 0xA);
-    ft_PlaySFX(fp2, 0x3D0D6, 127, 64);
+    ft_PlaySFX(fp2, 0x3D0D6, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void ftKb_SpecialNPr_8010131C(Fighter_GObj* gobj)
@@ -241,7 +241,7 @@ static inline void ftKb_PrPlayRollSFX(Fighter_GObj* gobj)
     } else {
         sfx_id = 0x3D0D0;
     }
-    ft_80088510(fp, sfx_id, 127, 64);
+    ft_80088510(fp, sfx_id, SFX_VOLUME_MAX, SFX_PAN_MID);
 }
 
 void ftKb_SpecialNPr_8010140C(Fighter_GObj* gobj, bool arg1)
@@ -683,7 +683,7 @@ void ftKb_PrSpecialNLoop_IASA(Fighter_GObj* gobj)
                       da->specialn_pr_air_speed);
         ftPartSetRotY(fp, FtPart_TopN, M_PI_2);
         ftPr_NormalizeAndSetRollAngle(gobj);
-        ft_PlaySFX(fp, 0x3D0D9, 127, 64);
+        ft_PlaySFX(fp, 0x3D0D9, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -704,7 +704,7 @@ void ftKb_PrSpecialNFull_IASA(Fighter_GObj* gobj)
                       da->specialn_pr_air_speed);
         ftPartSetRotY(fp, FtPart_TopN, M_PI_2);
         ftPr_NormalizeAndSetRollAngle(gobj);
-        ft_PlaySFX(fp, 0x3D0D9, 127, 64);
+        ft_PlaySFX(fp, 0x3D0D9, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -726,7 +726,7 @@ void ftKb_PrSpecialN1_IASA(Fighter_GObj* gobj)
             fp->mv.pr.specialn.x1C = -0.05f * fp->gr_vel;
             fp->mv.pr.specialn.x24 = 0;
             ftPr_NormalizeAndSetRollAngle(gobj);
-            ft_PlaySFX(fp, 0x3D0D9, 127, 64);
+            ft_PlaySFX(fp, 0x3D0D9, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     }
 }
@@ -755,7 +755,7 @@ void ftKb_PrSpecialAirNLoop_IASA(Fighter_GObj* gobj)
              da->specialn_pr_air_speed);
         ftPartSetRotY(fp, FtPart_TopN, M_PI_2);
         ftPr_NormalizeAndSetRollAngle(gobj);
-        ft_PlaySFX(fp, 0x3D0D9, 127, 64);
+        ft_PlaySFX(fp, 0x3D0D9, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -777,7 +777,7 @@ void ftKb_PrSpecialAirNFull_IASA(Fighter_GObj* gobj)
              da->specialn_pr_air_speed);
         ftPartSetRotY(fp, FtPart_TopN, M_PI_2);
         ftPr_NormalizeAndSetRollAngle(gobj);
-        ft_PlaySFX(fp, 0x3D0D9, 127, 64);
+        ft_PlaySFX(fp, 0x3D0D9, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 

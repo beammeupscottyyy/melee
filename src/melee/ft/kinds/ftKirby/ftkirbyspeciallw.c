@@ -729,7 +729,7 @@ void ftKb_SpecialAirLwStart_Coll(Fighter_GObj* gobj)
         fp2 = GET_FIGHTER(gobj);
         Fighter_SetDamageCallbacks(fp2, ftKb_Init_800EE7B8,
                                    ftKb_Init_800EE74C);
-        ft_PlaySFX(fp, 0x222E7, 0x7F, 0x40);
+        ft_PlaySFX(fp, 0x222E7, SFX_VOLUME_MAX, SFX_PAN_MID);
         Camera_RequestQuake(QuakeKind_Large, &fp->cur_pos);
         ftCommon_8007EBAC(fp, 0xE, 0x14);
         ftKb_SpecialLw_SetStoneVecs(gobj, fp, da);
@@ -780,7 +780,7 @@ void ftKb_SpecialAirLw_Coll(Fighter_GObj* gobj)
         fp2 = GET_FIGHTER(gobj);
         Fighter_SetDamageCallbacks(fp2, ftKb_Init_800EE7B8,
                                    ftKb_Init_800EE74C);
-        ft_PlaySFX(fp, 0x222E7, 0x7F, 0x40);
+        ft_PlaySFX(fp, 0x222E7, SFX_VOLUME_MAX, SFX_PAN_MID);
         Camera_RequestQuake(QuakeKind_Large, &fp->cur_pos);
         ftCommon_8007EBAC(fp, 0xE, 0x14);
         ftKb_SpecialLw_SetStoneVecs(gobj, fp, da);

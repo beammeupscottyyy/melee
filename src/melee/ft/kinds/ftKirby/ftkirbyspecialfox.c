@@ -245,8 +245,8 @@ void ftKb_SpecialNFx_800FDF30(Fighter_GObj* gobj)
             it_8029C6A4(launchAngle, da->specialn_fx_launch_speed, gobj, &sp2C,
                         da->specialn_fx_blaster_projectile_id);
             it_802AE1D0(fp->u.kb.xB0);
-            ft_PlaySFX(fp, ftKb_Init_804D3DB8[-1 == fp->facing_dir], 0x7F,
-                       0x40);
+            ft_PlaySFX(fp, ftKb_Init_804D3DB8[-1 == fp->facing_dir],
+                       SFX_VOLUME_MAX, SFX_PAN_MID);
             return;
 
         case Ft_Kind_Falco:
@@ -258,8 +258,8 @@ void ftKb_SpecialNFx_800FDF30(Fighter_GObj* gobj)
             it_8029C6A4(launchAngle, da->specialn_fc_launch_speed, gobj, &sp2C,
                         da->specialn_fc_blaster_projectile_id);
             it_802AE1D0(fp->u.kb.xB0);
-            ft_PlaySFX(fp, ftKb_Init_804D3DC0[-1 == fp->facing_dir], 0x7F,
-                       0x40);
+            ft_PlaySFX(fp, ftKb_Init_804D3DC0[-1 == fp->facing_dir],
+                       SFX_VOLUME_MAX, SFX_PAN_MID);
             break;
         default:
             break;

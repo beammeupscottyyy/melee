@@ -153,7 +153,7 @@ void ftKb_SkSpecialNLoop_Anim(Fighter_GObj* gobj)
     switch (fp->mv.kb.specialhi.x8.i) {
     case 0: {
         Fighter* fp = GET_FIGHTER(gobj);
-        ft_PlaySFX(fp, 270134, 127, 64);
+        ft_PlaySFX(fp, 270134, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     }
     ++fp->mv.kb.specialhi.x8.i;
@@ -222,7 +222,7 @@ void ftKb_SkSpecialAirNLoop_Anim(Fighter_GObj* gobj)
     switch (fp->mv.kb.specialhi.x8.i) {
     case 0: {
         Fighter* fp = GET_FIGHTER(gobj);
-        ft_PlaySFX(fp, 270134, 127, 64);
+        ft_PlaySFX(fp, 270134, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
     }
     ++fp->mv.kb.specialhi.x8.i;
@@ -498,7 +498,7 @@ void fn_80106DB0(Fighter_GObj* gobj)
             }
             fp->u.kb.xB4 -= 1;
             efSync_Spawn(0x503, gobj, &pos);
-            ft_PlaySFX(fp, 0x41F3C, 127, 64);
+            ft_PlaySFX(fp, 0x41F3C, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     }
 }

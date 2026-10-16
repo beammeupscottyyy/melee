@@ -238,10 +238,10 @@ void ftKb_SpecialNMt_801071FC(Fighter_GObj* gobj)
         fp->item_gobj = saved_item;
 
         if (fp->u.kb.x9C == da->specialn_mt_charge_time) {
-            ft_PlaySFX(fp, 0x30DB6, 0x7F, 0x40);
+            ft_PlaySFX(fp, 0x30DB6, SFX_VOLUME_MAX, SFX_PAN_MID);
             return;
         }
-        ft_PlaySFX(fp, 0x30DB3, 0x7F, 0x40);
+        ft_PlaySFX(fp, 0x30DB3, SFX_VOLUME_MAX, SFX_PAN_MID);
     }
 }
 
@@ -271,33 +271,33 @@ void ftKb_SpecialNMt_80107410(Fighter_GObj* gobj)
             if (chargeRatio > 0.75f) {
                 if (prevRatio <= 0.75f) {
                     fp->mv.kb.specialhi.x10.f = chargeRatio;
-                    ft_80088510(fp, sfx_table[3], 0x7F, 0x40);
+                    ft_80088510(fp, sfx_table[3], SFX_VOLUME_MAX, SFX_PAN_MID);
                     return;
                 }
             }
             if (chargeRatio > 0.5f) {
                 if (prevRatio <= 0.5f) {
                     fp->mv.kb.specialhi.x10.f = chargeRatio;
-                    ft_80088510(fp, sfx_table[2], 0x7F, 0x40);
+                    ft_80088510(fp, sfx_table[2], SFX_VOLUME_MAX, SFX_PAN_MID);
                     return;
                 }
             }
             if (chargeRatio > 0.25f) {
                 if (prevRatio <= 0.25f) {
                     fp->mv.kb.specialhi.x10.f = chargeRatio;
-                    ft_80088510(fp, sfx_table[1], 0x7F, 0x40);
+                    ft_80088510(fp, sfx_table[1], SFX_VOLUME_MAX, SFX_PAN_MID);
                     return;
                 }
             }
             if (chargeRatio > 0.0f) {
                 if (prevRatio <= 0.0f) {
                     fp->mv.kb.specialhi.x10.f = chargeRatio;
-                    ft_80088510(fp, sfx_table[0], 0x7F, 0x40);
+                    ft_80088510(fp, sfx_table[0], SFX_VOLUME_MAX, SFX_PAN_MID);
                 }
             }
         } else {
             fp->mv.kb.specialhi.x10.f = 0.0001f;
-            ft_80088510(fp, sfx_table[0], 0x7F, 0x40);
+            ft_80088510(fp, sfx_table[0], SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     }
 }

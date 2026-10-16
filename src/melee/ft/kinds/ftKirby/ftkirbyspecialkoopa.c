@@ -77,11 +77,11 @@ void ftKb_SpecialNKp_800FA588(Fighter_GObj* gobj)
                 (da->specialn_kp_flame_scale -
                  da->specialn_kp_lowest_charge_graphic_size);
         if (f < 0.3333f) {
-            ft_PlaySFX(fp, 0x24A2B, 0x7F, 0x40);
+            ft_PlaySFX(fp, 0x24A2B, SFX_VOLUME_MAX, SFX_PAN_MID);
         } else if (f < 0.6666f) {
-            ft_PlaySFX(fp, 0x24A28, 0x7F, 0x40);
+            ft_PlaySFX(fp, 0x24A28, SFX_VOLUME_MAX, SFX_PAN_MID);
         } else {
-            ft_PlaySFX(fp, 0x24A25, 0x7F, 0x40);
+            ft_PlaySFX(fp, 0x24A25, SFX_VOLUME_MAX, SFX_PAN_MID);
         }
     }
 
