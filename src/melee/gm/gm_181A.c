@@ -134,22 +134,22 @@ void gm_80181A44(int c_kind, int arg1, bool arg2)
     RecordBlock* base = lbl_803D8D08;
 
     switch (arg1) {
-    case 0x21:
+    case GM_10MAN_VS:
         base[0].icons[c_kind] = arg2;
         break;
-    case 0x22:
+    case GM_100MAN_VS:
         base[1].icons[c_kind] = arg2;
         break;
-    case 0x23:
+    case GM_3MIN_VS:
         base[2].icons[c_kind] = arg2;
         break;
-    case 0x24:
+    case GM_15MIN_VS:
         base[3].icons[c_kind] = arg2;
         break;
-    case 0x25:
+    case GM_ENDLESS_VS:
         base[4].icons[c_kind] = arg2;
         break;
-    case 0x26:
+    case GM_CRUEL_VS:
         base[5].icons[c_kind] = arg2;
         break;
     }
@@ -160,22 +160,22 @@ void gm_80181AC8(int c_kind, int arg1, u16 arg2)
     RecordBlock* base = lbl_803D8D08;
 
     switch (arg1) {
-    case 0x21:
+    case GM_10MAN_VS:
         base[0].times[c_kind] = arg2;
         break;
-    case 0x22:
+    case GM_100MAN_VS:
         base[1].times[c_kind] = arg2;
         break;
-    case 0x23:
+    case GM_3MIN_VS:
         base[2].times[c_kind] = arg2;
         break;
-    case 0x24:
+    case GM_15MIN_VS:
         base[3].times[c_kind] = arg2;
         break;
-    case 0x25:
+    case GM_ENDLESS_VS:
         base[4].times[c_kind] = arg2;
         break;
-    case 0x26:
+    case GM_CRUEL_VS:
         base[5].times[c_kind] = arg2;
         break;
     }
@@ -186,22 +186,22 @@ void gm_80181B64(int c_kind, int arg1, s32 arg2)
     RecordBlock* base = lbl_803D8D08;
 
     switch (arg1) {
-    case 0x21:
+    case GM_10MAN_VS:
         base[0].scores[c_kind] = arg2;
         break;
-    case 0x22:
+    case GM_100MAN_VS:
         base[1].scores[c_kind] = arg2;
         break;
-    case 0x23:
+    case GM_3MIN_VS:
         base[2].scores[c_kind] = arg2;
         break;
-    case 0x24:
+    case GM_15MIN_VS:
         base[3].scores[c_kind] = arg2;
         break;
-    case 0x25:
+    case GM_ENDLESS_VS:
         base[4].scores[c_kind] = arg2;
         break;
-    case 0x26:
+    case GM_CRUEL_VS:
         base[5].scores[c_kind] = arg2;
         break;
     }
@@ -297,20 +297,20 @@ void fn_80181E18(void)
     }
 
     switch (mode) {
-    case 0x21:
-    case 0x22:
+    case GM_10MAN_VS:
+    case GM_100MAN_VS:
         Player_GetFalls(0);
         break;
-    case 0x23:
-    case 0x24:
+    case GM_3MIN_VS:
+    case GM_15MIN_VS:
         if (gm_8016AEEC() == 0 && gm_8016AEFC() == 0x3B) {
             data->record[0].x0 = 1;
             gm_8016B33C(7);
             gm_8016B328();
         }
         break;
-    case 0x25:
-    case 0x26:
+    case GM_ENDLESS_VS:
+    case GM_CRUEL_VS:
         if (Player_GetFalls(0) != 0) {
             gm_8016B33C(5);
             gm_8016B328();
@@ -325,8 +325,8 @@ void fn_80181E18(void)
         }
 
         switch (data->record[0].x8) {
-        case 0x21:
-        case 0x22:
+        case GM_10MAN_VS:
+        case GM_100MAN_VS:
             data->record[0].x4 = gm_GetFrameCount();
             break;
         }
@@ -341,14 +341,14 @@ void fn_80181E18(void)
         data->record[0].x2 = (s16) (temp + next);
 
         switch (mode) {
-        case 0x21:
+        case GM_10MAN_VS:
             temp = entry_idx - countActiveOpponents();
             if (temp < 0) {
                 temp = 0;
             }
             ifStock_802FA2D0(0xA - (temp + *x4));
             break;
-        case 0x22:
+        case GM_100MAN_VS:
             temp = entry_idx - countActiveOpponents();
             if (temp < 0) {
                 temp = 0;
@@ -431,7 +431,7 @@ void gm_80182174(void)
     ((volatile lbl_80472ED8_t*) &lbl_80472ED8)->xC.xD_b4 = 1;
 
     switch (mode) {
-    case 0x21:
+    case GM_10MAN_VS:
         src = ((volatile lbl_80472ED8_t*) &lbl_80472ED8)->x6A4;
         dst = lbl_80472ED8.x54;
         for (i = 0; i < 101; i++) {
@@ -449,7 +449,7 @@ void gm_80182174(void)
             dst++;
         }
         break;
-    case 0x22:
+    case GM_100MAN_VS:
         src = *spawn_table_22;
         dst = lbl_80472ED8.x54;
         for (i = 0; i < 101; i++) {
@@ -467,7 +467,7 @@ void gm_80182174(void)
             dst++;
         }
         break;
-    case 0x23:
+    case GM_3MIN_VS:
         src = *spawn_table_23;
         dst = lbl_80472ED8.x54;
         for (i = 0; i < 101; i++) {
@@ -485,7 +485,7 @@ void gm_80182174(void)
             dst++;
         }
         break;
-    case 0x24:
+    case GM_15MIN_VS:
         src = *spawn_table_24;
         dst = lbl_80472ED8.x54;
         for (i = 0; i < 101; i++) {
@@ -503,7 +503,7 @@ void gm_80182174(void)
             dst++;
         }
         break;
-    case 0x25:
+    case GM_ENDLESS_VS:
         src = *spawn_table_25;
         dst = lbl_80472ED8.x54;
         for (i = 0; i < 101; i++) {
@@ -521,7 +521,7 @@ void gm_80182174(void)
             dst++;
         }
         break;
-    case 0x26:
+    case GM_CRUEL_VS:
         src = *spawn_table_26;
         dst = lbl_80472ED8.x54;
         for (i = 0; i < 101; i++) {
@@ -597,17 +597,17 @@ static inline int gm_80182578_GetRecordTime(RecordBlock* blocks, int idx,
                                             int mode)
 {
     switch (mode) {
-    case 33:
+    case GM_10MAN_VS:
         return blocks[0].times[idx];
-    case 34:
+    case GM_100MAN_VS:
         return blocks[1].times[idx];
-    case 35:
+    case GM_3MIN_VS:
         return blocks[2].times[idx];
-    case 36:
+    case GM_15MIN_VS:
         return blocks[3].times[idx];
-    case 37:
+    case GM_ENDLESS_VS:
         return blocks[4].times[idx];
-    case 38:
+    case GM_CRUEL_VS:
         return blocks[5].times[idx];
     default:
         return 0;
@@ -618,17 +618,17 @@ static inline u32 gm_80182578_GetRecordScore(RecordBlock* blocks, int idx,
                                              int mode)
 {
     switch (mode) {
-    case 33:
+    case GM_10MAN_VS:
         return blocks[0].scores[idx];
-    case 34:
+    case GM_100MAN_VS:
         return blocks[1].scores[idx];
-    case 35:
+    case GM_3MIN_VS:
         return blocks[2].scores[idx];
-    case 36:
+    case GM_15MIN_VS:
         return blocks[3].scores[idx];
-    case 37:
+    case GM_ENDLESS_VS:
         return blocks[4].scores[idx];
-    case 38:
+    case GM_CRUEL_VS:
         return blocks[5].scores[idx];
     default:
         return 0;
@@ -644,22 +644,22 @@ static inline void gm_80182578_SetTime(RecordBlock* blocks, int idx, int mode,
                                        u16 value)
 {
     switch (mode) {
-    case 33:
+    case GM_10MAN_VS:
         blocks[0].times[idx] = value;
         break;
-    case 34:
+    case GM_100MAN_VS:
         blocks[1].times[idx] = value;
         break;
-    case 35:
+    case GM_3MIN_VS:
         blocks[2].times[idx] = value;
         break;
-    case 36:
+    case GM_15MIN_VS:
         blocks[3].times[idx] = value;
         break;
-    case 37:
+    case GM_ENDLESS_VS:
         blocks[4].times[idx] = value;
         break;
-    case 38:
+    case GM_CRUEL_VS:
         blocks[5].times[idx] = value;
         break;
     }
@@ -686,9 +686,9 @@ void gm_80182578(void)
     score_val = gm_80182578_GetRecordScore(blocks, idx, mode);
 
     switch (mode) {
-    case 0x21:
-    case 0x22:
-        if (mode == 0x21) {
+    case GM_10MAN_VS:
+    case GM_100MAN_VS:
+        if (mode == GM_10MAN_VS) {
             mode = gmMainLib_8015D6BC(gm_CKindToSelKind((u8) idx));
         } else {
             mode = gmMainLib_8015D710(gm_CKindToSelKind((u8) idx));
@@ -699,42 +699,42 @@ void gm_80182578(void)
                 int i = gm_80182578_GetIndexFromPointer(idx_ptr);
                 int m = *mode_ptr;
                 switch (m) {
-                case 33:
+                case GM_10MAN_VS:
                     blocks[0].icons[i] = data->record[0].x0;
                     break;
-                case 34:
+                case GM_100MAN_VS:
                     blocks[1].icons[i] = data->record[0].x0;
                     break;
-                case 35:
+                case GM_3MIN_VS:
                     blocks[2].icons[i] = data->record[0].x0;
                     break;
-                case 36:
+                case GM_15MIN_VS:
                     blocks[3].icons[i] = data->record[0].x0;
                     break;
-                case 37:
+                case GM_ENDLESS_VS:
                     blocks[4].icons[i] = data->record[0].x0;
                     break;
-                case 38:
+                case GM_CRUEL_VS:
                     blocks[5].icons[i] = data->record[0].x0;
                     break;
                 }
                 switch (m) {
-                case 33:
+                case GM_10MAN_VS:
                     blocks[0].scores[i] = score_store;
                     break;
-                case 34:
+                case GM_100MAN_VS:
                     blocks[1].scores[i] = score_store;
                     break;
-                case 35:
+                case GM_3MIN_VS:
                     blocks[2].scores[i] = score_store;
                     break;
-                case 36:
+                case GM_15MIN_VS:
                     blocks[3].scores[i] = score_store;
                     break;
-                case 37:
+                case GM_ENDLESS_VS:
                     blocks[4].scores[i] = score_store;
                     break;
-                case 38:
+                case GM_CRUEL_VS:
                     blocks[5].scores[i] = score_store;
                     break;
                 }
@@ -744,95 +744,95 @@ void gm_80182578(void)
             int i = *idx_ptr;
             int m = *mode_ptr;
             switch (m) {
-            case 33:
+            case GM_10MAN_VS:
                 blocks[0].times[i] = data->record[0].x2;
                 break;
-            case 34:
+            case GM_100MAN_VS:
                 blocks[1].times[i] = data->record[0].x2;
                 break;
-            case 35:
+            case GM_3MIN_VS:
                 blocks[2].times[i] = data->record[0].x2;
                 break;
-            case 36:
+            case GM_15MIN_VS:
                 blocks[3].times[i] = data->record[0].x2;
                 break;
-            case 37:
+            case GM_ENDLESS_VS:
                 blocks[4].times[i] = data->record[0].x2;
                 break;
-            case 38:
+            case GM_CRUEL_VS:
                 blocks[5].times[i] = data->record[0].x2;
                 break;
             }
         }
         break;
-    case 0x23:
-    case 0x24:
+    case GM_3MIN_VS:
+    case GM_15MIN_VS:
         if (data->record[0].x0 != 0) {
             u16 time_store = gm_80182578_GetTimeFromData(data);
             if ((s32) time_store > (s32) time_val) {
                 switch (mode) {
-                case 33:
+                case GM_10MAN_VS:
                     blocks[0].icons[idx] = data->record[0].x0;
                     break;
-                case 34:
+                case GM_100MAN_VS:
                     blocks[1].icons[idx] = data->record[0].x0;
                     break;
-                case 35:
+                case GM_3MIN_VS:
                     blocks[2].icons[idx] = data->record[0].x0;
                     break;
-                case 36:
+                case GM_15MIN_VS:
                     blocks[3].icons[idx] = data->record[0].x0;
                     break;
-                case 37:
+                case GM_ENDLESS_VS:
                     blocks[4].icons[idx] = data->record[0].x0;
                     break;
-                case 38:
+                case GM_CRUEL_VS:
                     blocks[5].icons[idx] = data->record[0].x0;
                     break;
                 }
                 switch (mode) {
-                case 33:
+                case GM_10MAN_VS:
                     blocks[0].times[idx] = time_store;
                     break;
-                case 34:
+                case GM_100MAN_VS:
                     blocks[1].times[idx] = time_store;
                     break;
-                case 35:
+                case GM_3MIN_VS:
                     blocks[2].times[idx] = time_store;
                     break;
-                case 36:
+                case GM_15MIN_VS:
                     blocks[3].times[idx] = time_store;
                     break;
-                case 37:
+                case GM_ENDLESS_VS:
                     blocks[4].times[idx] = time_store;
                     break;
-                case 38:
+                case GM_CRUEL_VS:
                     blocks[5].times[idx] = time_store;
                     break;
                 }
             }
         }
         break;
-    case 0x25:
-    case 0x26:
+    case GM_ENDLESS_VS:
+    case GM_CRUEL_VS:
         if ((s32) data->record[0].x2 > (s32) time_val) {
             switch (mode) {
-            case 33:
+            case GM_10MAN_VS:
                 blocks[0].times[idx] = data->record[0].x2;
                 break;
-            case 34:
+            case GM_100MAN_VS:
                 blocks[1].times[idx] = data->record[0].x2;
                 break;
-            case 35:
+            case GM_3MIN_VS:
                 blocks[2].times[idx] = data->record[0].x2;
                 break;
-            case 36:
+            case GM_15MIN_VS:
                 blocks[3].times[idx] = data->record[0].x2;
                 break;
-            case 37:
+            case GM_ENDLESS_VS:
                 blocks[4].times[idx] = data->record[0].x2;
                 break;
-            case 38:
+            case GM_CRUEL_VS:
                 blocks[5].times[idx] = data->record[0].x2;
                 break;
             }
@@ -855,17 +855,17 @@ static inline u32 fn_80182B5C_GetScore(RecordBlock* blocks,
     int mode = data->record[0].x8;
 
     switch (mode) {
-    case 33:
+    case GM_10MAN_VS:
         return blocks[0].scores[idx];
-    case 34:
+    case GM_100MAN_VS:
         return blocks[1].scores[idx];
-    case 35:
+    case GM_3MIN_VS:
         return blocks[2].scores[idx];
-    case 36:
+    case GM_15MIN_VS:
         return blocks[3].scores[idx];
-    case 37:
+    case GM_ENDLESS_VS:
         return blocks[4].scores[idx];
-    case 38:
+    case GM_CRUEL_VS:
         return blocks[5].scores[idx];
     default:
         return 0;
@@ -879,17 +879,17 @@ static inline int fn_80182B5C_GetTime(RecordBlock* blocks,
     int mode = data->record[0].x8;
 
     switch (mode) {
-    case 33:
+    case GM_10MAN_VS:
         return blocks[0].times[idx];
-    case 34:
+    case GM_100MAN_VS:
         return blocks[1].times[idx];
-    case 35:
+    case GM_3MIN_VS:
         return blocks[2].times[idx];
-    case 36:
+    case GM_15MIN_VS:
         return blocks[3].times[idx];
-    case 37:
+    case GM_ENDLESS_VS:
         return blocks[4].times[idx];
-    case 38:
+    case GM_CRUEL_VS:
         return blocks[5].times[idx];
     default:
         return 0;
@@ -909,9 +909,9 @@ void fn_80182B5C(void)
     score = fn_80182B5C_GetScore(blocks, data);
 
     switch (mode) {
-    case 0x21:
-    case 0x22:
-        if (mode == 0x21) {
+    case GM_10MAN_VS:
+    case GM_100MAN_VS:
+        if (mode == GM_10MAN_VS) {
             gmMainLib_8015D6BC(gm_CKindToSelKind((u8) idx));
         } else {
             gmMainLib_8015D710(gm_CKindToSelKind((u8) idx));
@@ -928,8 +928,8 @@ void fn_80182B5C(void)
             gm_8016B378(0x28);
         }
         break;
-    case 0x23:
-    case 0x24:
+    case GM_3MIN_VS:
+    case GM_15MIN_VS:
         if (data->record[0].x0 != 0 && (s32) data->record[0].x2 > time) {
             gm_8016B350(0x9C40);
             gm_8016B364(0x144);
@@ -937,8 +937,8 @@ void fn_80182B5C(void)
                         0xD, 0x5A);
         }
         break;
-    case 0x25:
-    case 0x26:
+    case GM_ENDLESS_VS:
+    case GM_CRUEL_VS:
         if ((s32) data->record[0].x2 > time) {
             gm_8016B350(0x9C40);
             gm_8016B364(0x144);
@@ -957,29 +957,29 @@ UnkMultimanData* gm_80182DF0(int c_kind, int arg1)
     RecordBlock* base = lbl_803D8D08;
 
     switch (arg1) {
-    case 33:
+    case GM_10MAN_VS:
         result->x0_0 = base[0].icons[c_kind];
         result->x2 = base[0].times[c_kind];
         result->x4 = base[0].scores[c_kind];
         break;
-    case 34:
+    case GM_100MAN_VS:
         result->x0_0 = base[1].icons[c_kind];
         result->x2 = base[1].times[c_kind];
         result->x4 = base[1].scores[c_kind];
         break;
-    case 35:
+    case GM_3MIN_VS:
         result->x0_0 = base[2].icons[c_kind];
         result->x2 = base[2].times[c_kind];
         break;
-    case 36:
+    case GM_15MIN_VS:
         result->x0_0 = base[3].icons[c_kind];
         result->x2 = base[3].times[c_kind];
         break;
-    case 37:
+    case GM_ENDLESS_VS:
         result->x0_0 = base[4].icons[c_kind];
         result->x2 = base[4].times[c_kind];
         break;
-    case 38:
+    case GM_CRUEL_VS:
         result->x0_0 = base[5].icons[c_kind];
         result->x2 = base[5].times[c_kind];
         break;
