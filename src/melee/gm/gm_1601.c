@@ -3,6 +3,7 @@
 #include <Runtime/platform.h>
 
 #include <melee/ft/forward.h>
+#include <melee/it/forward.h>
 #include <melee/pl/forward.h>
 
 #include <placeholder.h>
@@ -90,9 +91,38 @@ static const float lbl_803B7784[] = {
 };
 
 static const u8 lbl_803B7844[] = {
-    0x06, 0x0B, 0x07, 0x19, 0x14, 0x12, 0x11, 0x0E, 0x1C, 0x18, 0x08,
-    0x1A, 0x04, 0x10, 0x17, 0x22, 0x20, 0x13, 0x09, 0x21, 0x0D, 0x0F,
-    0x1F, 0x16, 0x15, 0x1E, 0x0A, 0x0C, 0x23, 0x05, 0x1D, 0x1B,
+    It_Kind_BombHei,
+    It_Kind_Bat,
+    It_Kind_Dosei,
+    It_Kind_F_Flower,
+    It_Kind_Flipper,
+    It_Kind_Foods,
+    It_Kind_Freeze,
+    It_Kind_G_Shell,
+    It_Kind_Hammer,
+    It_Kind_Harisen,
+    It_Kind_Heart,
+    It_Kind_Kinoko,
+    It_Kind_Kusudama,
+    It_Kind_L_Gun,
+    It_Kind_LipStick,
+    It_Kind_M_Ball,
+    It_Kind_MetalB,
+    It_Kind_MSBomb,
+    It_Kind_Tomato,
+    It_Kind_Spycloak,
+    It_Kind_Parasol,
+    It_Kind_R_Shell,
+    It_Kind_RabbitC,
+    It_Kind_StarRod,
+    It_Kind_S_Scope,
+    It_Kind_ScBall,
+    It_Kind_Star,
+    It_Kind_Sword,
+    0x23,
+    It_Kind_TaruCann,
+    It_Kind_WStar,
+    It_Kind_DKinoko,
 };
 
 /* 3B7864 */ static const GXColor lbl_803B7864[9] = {
@@ -2327,7 +2357,7 @@ void fn_801640B0(u64* item_mask)
     struct GamePrefs* temp_r30 = gmMainLib_GetGamePrefs();
 
     for (i = 0; i < 0x20; i++) {
-        int shift;
+        ItemKind shift;
         if ((shift = lbl_803B7844[(u8) i]) != 0x23) {
             if (temp_r30->item_mask & (1LL << i)) {
                 *item_mask |= 1LL << shift;
@@ -3811,7 +3841,7 @@ void gm_80167BC8(VsModeData* vs_data)
     vs_data->start.rules.item_freq = (s8) prefs->item_freq;
     prefs = gmMainLib_GetGamePrefs();
     for (i = 0; i < 0x20; i++) {
-        u8 item = lbl_803B7844[(u8) i];
+        ItemKind item = lbl_803B7844[(u8) i];
         if ((s32) item != 0x23) {
             if (prefs->item_mask & (1LL << i)) {
                 vs_data->start.rules.x20 |= 1LL << item;
