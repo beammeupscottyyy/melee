@@ -55,13 +55,14 @@
 /// gets the player hud color
 /* 160968 */ GXColor gm_80160968(u32);
 
-/* 160980 */ const char* gm_80160980(u8 ckind);
-/* 1609E0 */ const char* fn_801609E0(u8 ckind);
+/* 160980 */ const char* gm_80160980(CharacterKind ckind);
+/* 1609E0 */ const char* fn_801609E0(CharacterKind ckind);
 /* 160A60 */ const char* gm_80160A60(int);
-/* 160B40 */ void gm_80160B40(HSD_Text*, u8, u8);
-/* 160C90 */ void gm_80160C90(HSD_Text* text, u8 fighter_id, u8 arg2);
-/* 160DE8 */ void fn_80160DE8(HSD_JObj*, u8, s32, u8, f32, f32);
-/* 160F58 */ float fn_80160F58(u8 ckind);
+/* 160B40 */ void gm_80160B40(HSD_Text*, CharacterKind, u8);
+/* 160C90 */ void gm_80160C90(HSD_Text* text, CharacterKind fighter_id,
+                              u8 arg2);
+/* 160DE8 */ void fn_80160DE8(HSD_JObj*, CharacterKind, s32, u8, f32, f32);
+/* 160F58 */ float fn_80160F58(CharacterKind ckind);
 /* 161004 */ s32 fn_80161004(MatchEnd*);
 /* 161154 */ s32 fn_80161154(MatchEnd*);
 /* 161C90 */ void fn_80161C90(MatchEnd*, int, struct GmStats*);

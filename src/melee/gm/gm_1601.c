@@ -930,7 +930,7 @@ GXColor gm_80160968(u32 arg0)
 }
 
 /// Get SJIS character name for a given CharacterKind
-const char* gm_80160980(u8 ckind)
+const char* gm_80160980(CharacterKind ckind)
 {
     if (lbLang_IsSavedLanguageUS()) {
         return lbl_803D4FDC[ckind];
@@ -939,7 +939,7 @@ const char* gm_80160980(u8 ckind)
     }
 }
 
-const char* fn_801609E0(u8 ckind)
+const char* fn_801609E0(CharacterKind ckind)
 {
     if (lbLang_IsSavedLanguageUS()) {
         if (lbl_803D50E4[ckind] != NULL) {
@@ -956,7 +956,7 @@ const char* fn_801609E0(u8 ckind)
 
 const char* gm_80160A60(int arg0)
 {
-    u8 ckind;
+    CharacterKind ckind;
 
     if (Player_GetPlayerSlotType(arg0) != Gm_PKind_NA) {
         ckind = Player_GetPlayerCharacter(arg0);
@@ -992,9 +992,9 @@ static inline void gm_80160B40_init_text(HSD_Text* text, HSD_Text** tmp_text)
     }
 }
 
-void gm_80160B40(HSD_Text* text, u8 ckind, u8 arg2)
+void gm_80160B40(HSD_Text* text, CharacterKind ckind, u8 arg2)
 {
-    u8 tmp_ckind = ckind;
+    CharacterKind tmp_ckind = ckind;
     HSD_Text* tmp_text;
     f32 var_f31;
     const char* str;
@@ -1012,10 +1012,10 @@ void gm_80160B40(HSD_Text* text, u8 ckind, u8 arg2)
     tmp_text->font_size.x *= var_f31;
 }
 
-void gm_80160C90(HSD_Text* text, u8 fighter_id, u8 arg2)
+void gm_80160C90(HSD_Text* text, CharacterKind fighter_id, u8 arg2)
 {
     HSD_Text* tmp_text = text;
-    u8 tmp_ckind = fighter_id;
+    CharacterKind tmp_ckind = fighter_id;
     const char* str;
     f32 size;
     bool use_alt_name;
@@ -1055,11 +1055,11 @@ void gm_80160C90(HSD_Text* text, u8 fighter_id, u8 arg2)
         size, 1.0F);
 }
 
-void fn_80160DE8(HSD_JObj* arg0, u8 arg1, s32 arg2, u8 arg3, f32 farg0,
-                 f32 farg1)
+void fn_80160DE8(HSD_JObj* arg0, CharacterKind arg1, s32 arg2, u8 arg3,
+                 f32 farg0, f32 farg1)
 {
     HSD_Text* tmp_text = (HSD_Text*) arg0;
-    u8 tmp_ckind = arg1;
+    CharacterKind tmp_ckind = arg1;
     const char* str;
     f32 size;
     bool use_alt_name;
@@ -1098,7 +1098,7 @@ void fn_80160DE8(HSD_JObj* arg0, u8 arg1, s32 arg2, u8 arg3, f32 farg0,
     HSD_SisLib_803A7548(tmp_text, arg2, size * farg0, farg1);
 }
 
-f32 fn_80160F58(u8 ckind)
+f32 fn_80160F58(CharacterKind ckind)
 {
     f32 result;
     if (lbLang_IsSavedLanguageUS()) {
