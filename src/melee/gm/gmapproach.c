@@ -1,5 +1,7 @@
 #include "gmapproach.h"
 
+#include <melee/ft/forward.h>
+
 #include "gm_unsplit.h"
 #include "gmscene.h"
 #include <melee/lb/lbarchive.h>
@@ -17,7 +19,7 @@
 
 static struct gm_80480D98_t {
     HSD_Archive* x0;
-    int x4;
+    CharacterKind x4;
     u16 x8;
     u16 xA;
     u16 xC;
@@ -46,37 +48,37 @@ static void fn_801AD920(HSD_GObj* gobj)
     HSD_JObjReqAnimAll(var_r4, gm_80480D98.xA);
     HSD_JObjReqAnimAll(var_r0, gm_80480D98.xA);
     switch (gm_80480D98.x4) {
-    case 3:
+    case CKind_GameWatch:
         var_r0_2 = 1;
         break;
-    case 7:
+    case CKind_Luigi:
         var_r0_2 = 2;
         break;
-    case 9:
+    case CKind_Mars:
         var_r0_2 = 3;
         break;
-    case 10:
+    case CKind_Mewtwo:
         var_r0_2 = 4;
         break;
-    case 15:
+    case CKind_Purin:
         var_r0_2 = 5;
         break;
-    case 20:
+    case CKind_Falco:
         var_r0_2 = 6;
         break;
-    case 21:
+    case CKind_CLink:
         var_r0_2 = 7;
         break;
-    case 22:
+    case CKind_DrMario:
         var_r0_2 = 8;
         break;
-    case 23:
+    case CKind_Emblem:
         var_r0_2 = 9;
         break;
-    case 24:
+    case CKind_Pichu:
         var_r0_2 = 10;
         break;
-    case 25:
+    case CKind_Ganon:
         var_r0_2 = 11;
         break;
     default:
@@ -132,20 +134,23 @@ void gm_Scene_Approach_OnFrame(void)
 
 void gm_Scene_Approach_OnEnter(void* arg0_)
 {
-    s8* arg0 = arg0_;
-    int var_r0;
+    struct VsApproachData* arg0 = arg0_;
+    CharacterKind var_r0;
 
     gm_801ADB04();
-    var_r0 = arg0[0];
-    if (var_r0 != 3 && var_r0 != 7 && var_r0 != 9 && var_r0 != 10 &&
-        var_r0 != 15 && var_r0 != 20 && var_r0 != 21 && var_r0 != 22 &&
-        var_r0 != 23 && var_r0 != 24 && var_r0 != 25)
+    var_r0 = arg0->cpu_ckind;
+    if (var_r0 != CKind_GameWatch && var_r0 != CKind_Luigi &&
+        var_r0 != CKind_Mars && var_r0 != CKind_Mewtwo &&
+        var_r0 != CKind_Purin && var_r0 != CKind_Falco &&
+        var_r0 != CKind_CLink && var_r0 != CKind_DrMario &&
+        var_r0 != CKind_Emblem && var_r0 != CKind_Pichu &&
+        var_r0 != CKind_Ganon)
     {
-        var_r0 = 25;
+        var_r0 = CKind_Ganon;
     }
 
     gm_80480D98.x4 = var_r0;
-    gm_80480D98.xE = arg0[1];
+    gm_80480D98.xE = arg0->human_slot;
     gm_80480D98.x8 = 0;
     gm_80480D98.xA = 0;
     gm_80480D98.xC = 0;
