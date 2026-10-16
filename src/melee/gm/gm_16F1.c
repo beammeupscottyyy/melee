@@ -2029,7 +2029,7 @@ void gm_801729EC(void)
     bool var_r0;
     int i;
     int j;
-    u8 temp_r30;
+    GrKind temp_r30;
 
     for (i = 0; i < 0x42; i++) {
         if (inline3(i)) {

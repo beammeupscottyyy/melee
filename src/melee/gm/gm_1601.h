@@ -3,6 +3,7 @@
 
 #include <melee/ft/forward.h>
 #include <melee/gm/forward.h>
+#include <melee/gr/forward.h>
 #include <melee/mn/forward.h>
 #include <melee/sc/forward.h>
 
@@ -45,8 +46,8 @@
 /* 1606A8 */ u8 gm_GetCKindByUnlockIndex(int);
 /* 160710 */ u8 fn_80160710(int);
 /* 16075C */ StKind gm_GetChallengerStKind(SelectableCharacterKind);
-/* 1607A8 */ u8 fn_801607A8(int);
-/* 1607F4 */ u8 fn_801607F4(int);
+/* 1607A8 */ GrKind fn_801607A8(int);
+/* 1607F4 */ u8 fn_801607F4(GrKind);
 /* 160840 */ u8 fn_80160840(u8);
 
 /// gets the player hud color index
@@ -171,7 +172,7 @@
 /* 164600 */ bool gm_80164600(void);
 /* 16468C */ void gm_8016468C(void);
 /* 1647D0 */ void gm_801647D0(void);
-/* 1647F8 */ int gm_801647F8(u8);
+/* 1647F8 */ StKind gm_801647F8(CharacterKind);
 
 /// character unlocked check
 /* 164840 */ bool gm_IsCKindUnlocked(u8 ckind);

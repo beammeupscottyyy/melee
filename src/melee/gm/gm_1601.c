@@ -230,10 +230,12 @@ static const u8 lbl_803B7844[] = {
     };
 
 static const u8 lbl_803B790C[0xB][3] = {
-    { 0x00, 0x09, 0x0B }, { 0x01, 0x11, 0x0D }, { 0x02, 0x13, 0x0E },
-    { 0x03, 0x15, 0x0C }, { 0x04, 0x19, 0x0F }, { 0x05, 0x1B, 0x10 },
-    { 0x06, 0x24, 0x11 }, { 0x07, 0x25, 0x12 }, { 0x08, 0x1C, 0x13 },
-    { 0x09, 0x1D, 0x14 }, { 0x0A, 0x1E, 0x15 },
+    { 0x00, Gr_Kind_Kraid, 0x0B },     { 0x01, Gr_Kind_Pura, 0x0D },
+    { 0x02, Gr_Kind_BigBlue, 0x0E },   { 0x03, Gr_Kind_Fourside, 0x0C },
+    { 0x04, Gr_Kind_Inishie2, 0x0F },  { 0x05, Gr_Kind_Flatzone, 0x10 },
+    { 0x06, Gr_Kind_Battle, 0x11 },    { 0x07, Gr_Kind_Last, 0x12 },
+    { 0x08, Gr_Kind_OldPupupu, 0x13 }, { 0x09, Gr_Kind_OldYoshi, 0x14 },
+    { 0x0A, Gr_Kind_OldKongo, 0x15 },
 };
 
 /* 3B7930 */ static Vec2 const lbl_803B7930[] = {
@@ -839,7 +841,7 @@ StKind gm_GetChallengerStKind(SelectableCharacterKind selkind)
     return St_Kind_Unk328;
 }
 
-u8 fn_801607A8(int arg0)
+GrKind fn_801607A8(int arg0)
 {
     int i;
     for (i = 0; i < NUM_UNLOCKABLE_CHARACTERS; i++) {
@@ -850,7 +852,7 @@ u8 fn_801607A8(int arg0)
     return 0x6F;
 }
 
-u8 fn_801607F4(int arg0)
+u8 fn_801607F4(GrKind arg0)
 {
     int i;
     for (i = 0; i < NUM_UNLOCKABLE_CHARACTERS; i++) {
@@ -2427,7 +2429,7 @@ bool gm_80164330(s32 arg0)
                                                                       : false;
 }
 
-static inline u8 getStageUnlockIndex(u8 grkind)
+static inline u8 getStageUnlockIndex(GrKind grkind)
 {
     int i;
     for (i = 0; i < NUM_UNLOCKABLE_STAGES; i++) {
@@ -2515,19 +2517,19 @@ void gm_801647D0(void)
     *stage_unlock_mask = 0;
 }
 
-int gm_801647F8(u8 arg0)
+StKind gm_801647F8(CharacterKind ckind)
 {
     struct lbl_803D5168_t* var_r5 = lbl_803D5168;
-    if (arg0 == 0x20) {
-        arg0 = 0xE;
+    if (ckind == CKind_Nana) {
+        ckind = CKind_PopoNana;
     }
-    while (var_r5->x0 != 0x148) {
-        if (var_r5->x1 == arg0) {
+    while (var_r5->x0 != St_Kind_Unk328) {
+        if (var_r5->x1 == ckind) {
             return var_r5->x0;
         }
         var_r5++;
     }
-    return 0x148;
+    return St_Kind_Unk328;
 }
 
 /// Is a specific character unlocked?
@@ -3859,7 +3861,7 @@ static inline int pad_inline(SSSData* arg0, int base)
     return -1;
 }
 
-static inline int get_flag_unk(u16 temp_r30)
+static inline int get_flag_unk(StKind temp_r30)
 {
     int temp_r3_2 = (u8) Stage_8022519C(temp_r30);
     int i;
