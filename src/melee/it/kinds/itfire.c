@@ -67,7 +67,7 @@ void it_802CC7D8(Item_GObj* gobj)
 
     it_8027ADEC(0x463, gobj, gobj->hsd_obj, 1.1f);
     ip->x40_vel.y = attrs->x8;
-    Item_80268E5C(gobj, 2, 2);
+    Item_80268E5C(gobj, 2, ITEM_ANIM_UPDATE);
     Item_SetEffectHitlagCallbacks(ip);
 }
 
@@ -78,7 +78,7 @@ static void itFire_UnkMotion2_Anim_inline(Item_GObj* gobj)
         &ip->xC4_article_data->x4_specialAttributes->fire;
     it_8027ADEC(0x463, gobj, gobj->hsd_obj, 1.1f);
     ip->x40_vel.y = attrs->x8;
-    Item_80268E5C(gobj, 2, 2);
+    Item_80268E5C(gobj, 2, ITEM_ANIM_UPDATE);
     Item_SetEffectHitlagCallbacks(ip);
 }
 
@@ -123,7 +123,7 @@ bool itFire_UnkMotion0_Anim(Item_GObj* gobj)
 static void itFire_UnkMotion0_Phys_inline(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
-    Item_80268E5C(gobj, 1, 2);
+    Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
     Item_SetEffectHitlagCallbacks(ip);
 }
 

@@ -212,12 +212,12 @@ void itSscope_UnkMotion2_Phys(Item_GObj* gobj) {}
 
 void itSScope_Logic21_Dropped(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 3, 6);
+    Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itSScope_Logic21_Thrown(Item_GObj* gobj)
 {
-    Item_80268E5C(gobj, 3, 6);
+    Item_80268E5C(gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itSscope_UnkMotion3_Phys(Item_GObj* gobj)

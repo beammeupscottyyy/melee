@@ -100,12 +100,12 @@ bool itScball_UnkMotion2_Anim(HSD_GObj* gobj)
 
 void itScball_Logic30_Dropped(Item_GObj* gobj)
 {
-    Item_80268E5C((HSD_GObj*) gobj, 1, 6);
+    Item_80268E5C((HSD_GObj*) gobj, 1, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 void itScball_Logic30_Thrown(Item_GObj* gobj)
 {
-    Item_80268E5C((HSD_GObj*) gobj, 3, 6);
+    Item_80268E5C((HSD_GObj*) gobj, 3, ITEM_ANIM_UPDATE | ITEM_DROP_UPDATE);
 }
 
 bool itScball_UnkMotion3_Anim(HSD_GObj* gobj)
