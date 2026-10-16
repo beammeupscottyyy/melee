@@ -168,7 +168,7 @@ void fn_801874FC(void)
     HSD_GObj* gobj;
     HSD_JObj* jobj;
 
-    gobj = GObj_Create(0xE, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     jobj = HSD_JObjLoadJoint(lbl_804D6614->models[0]->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
     GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, 0xB, 0);
@@ -220,19 +220,19 @@ static inline void setupScene(void)
     lbl_804D6610 = lbArchive_80016DBC("IrAls", &lbl_804D6614,
                                       "ScItrAllstar_scene_data", 0);
 
-    gobj = GObj_Create(0x13, 0x14, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj = HSD_CObjLoadDesc(lbl_804D6614->cameras[0].desc);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMax(gobj, fn_80187494, 8);
     gobj->gxlink_prios = 0x801;
 
-    gobj = GObj_Create(0xB, 3, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, 3, 0);
     lobj = lb_80011AC4(lbl_804D6614->lights);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(gobj, HSD_GObj_LObjCallback, 0, 0);
     fn_801874FC();
 
-    gobj = GObj_Create(0xE, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     fog = HSD_FogLoadDesc(lbl_804D6614->fogs[0].desc);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_FogKind, fog);
     GObj_SetupGXLink(gobj, HSD_GObj_FogCallback, 0xB, 0);

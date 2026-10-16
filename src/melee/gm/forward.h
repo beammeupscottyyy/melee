@@ -3,6 +3,11 @@
 
 #include <Runtime/platform.h>
 
+#include <melee/cm/forward.h> // IWYU pragma: export
+#include <melee/gr/forward.h> // IWYU pragma: export
+#include <melee/if/forward.h> // IWYU pragma: export
+#include <melee/lb/forward.h> // IWYU pragma: export
+
 #define HSD_GOBJ_PLINK_20 20
 #define HSD_GOBJ_PLINK_27 27
 
