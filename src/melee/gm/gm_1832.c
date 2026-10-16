@@ -833,7 +833,7 @@ s32 fn_80185E34(void)
     local = lbl_803B7C28;
 
     for (i = 0; i < lbl_8047368C.xEF; i++) {
-        if (lbl_8047368C.xF1[i] != 0x21) {
+        if (lbl_8047368C.xF1[i] != ChKind_None) {
             Player_80036CF0(player_slot);
             Player_SetPlayerCharacter(player_slot,
                                       (CharacterKind) lbl_8047368C.xF1[i]);
@@ -859,7 +859,7 @@ void fn_80185F5C(s32 arg0)
     local = lbl_803B7C40;
 
     while (i < lbl_8047368C.xF0) {
-        if (lbl_8047368C.xF1[i] != 0x21) {
+        if (lbl_8047368C.xF1[i] != ChKind_None) {
             Player_80036CF0(arg0);
             Player_SetPlayerCharacter(arg0,
                                       (CharacterKind) lbl_8047368C.xF4[i]);

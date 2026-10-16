@@ -63,12 +63,12 @@ s32 gm_8017DB88(void* arg0, u8 arg1, s32 arg2, s32 arg3, u8* arg4, u8 arg5,
         s32 count;
 
         count = fn_8017DE54(arg1, arg4);
-        chars[1] = 0x21;
+        chars[1] = ChKind_None;
         out = arg0;
-        chars[2] = 0x21;
+        chars[2] = ChKind_None;
         p = chars;
         i = 0;
-        chars[3] = 0x21;
+        chars[3] = ChKind_None;
         chars[0] = arg5;
         for (; i < count; i++) {
             p[1] = fn_8017D9C0(chars, arg4);
@@ -107,7 +107,7 @@ s32 gm_8017DB88(void* arg0, u8 arg1, s32 arg2, s32 arg3, u8* arg4, u8 arg5,
             out++;
         }
         for (; i < 3; i++) {
-            ((RegClearCharEntry*) arg0)[i].x0 = 0x21;
+            ((RegClearCharEntry*) arg0)[i].x0 = ChKind_None;
         }
         return count;
     }
@@ -148,14 +148,14 @@ s32 fn_8017DE54(u8 arg0, u8* arg1)
     }
     if (arg0 & 0x10) {
         count = 0;
-        if ((s32) arg1[0] != 0x21) {
+        if ((s32) arg1[0] != ChKind_None) {
             count = 1;
         }
         p = &arg1[1];
-        if ((s32) *p != 0x21) {
+        if ((s32) *p != ChKind_None) {
             count += 1;
         }
-        if ((s32) p[1] != 0x21) {
+        if ((s32) p[1] != ChKind_None) {
             count += 1;
         }
         return 3 - count;
