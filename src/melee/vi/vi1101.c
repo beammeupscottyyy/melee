@@ -184,14 +184,14 @@ void vi1101_Scene_OnEnter(void* arg)
                                         data->visual1101_cam2_scene, NULL);
     un_804D6FC8 = lbArchive_LoadSymbols(viGetCharAnimByIndex(index), NULL);
 
-    light_gobj = GObj_Create(0xB, 3, 0);
+    light_gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, 3, 0);
     HSD_GObjObject_80390A70(light_gobj, HSD_GObj_LightKind & 0xFFFF,
                             lb_80011AC4(un_804D6FC0->lights));
     GObj_SetupGXLink(light_gobj, HSD_GObj_LObjCallback, 0, 0);
 
     scene = gm_IsCKindUnlocked(CKind_Luigi) ? un_804D6FC0 : un_804D6FC4;
 
-    camera_gobj = GObj_Create(0x13, 0x14, 0);
+    camera_gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj = lb_80013B14(&scene->cameras->desc->perspective);
     HSD_GObjObject_80390A70(camera_gobj, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMax(camera_gobj, fn_8031F56C, 5);
@@ -205,7 +205,7 @@ void vi1101_Scene_OnEnter(void* arg)
         u8 jobj_kind;
         HSD_JObj* jobj_copy;
 
-        model_gobj = GObj_Create(0xE, 0xF, 0);
+        model_gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
         jobj = HSD_JObjLoadJoint(joint = un_804D6FC0->models[i]->joint);
         jobj_kind = HSD_GObj_JObjKind;
         HSD_GObjObject_80390A70(model_gobj, jobj_kind, jobj);

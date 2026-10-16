@@ -3,6 +3,8 @@
 
 #include <Runtime/platform.h>
 
+#include <melee/vi/forward.h>
+
 #include <dolphin/gx/GXStruct.h>
 #include <sysdolphin/baselib/cobj.h>
 #include <sysdolphin/baselib/displayfunc.h>

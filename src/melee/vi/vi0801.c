@@ -71,7 +71,7 @@ void vi0801_8031EE84(void)
     s32 i, j;
 
     for (i = 0; un_804D6FB8->models[i] != NULL; i++) {
-        gobj = GObj_Create(0xE, 0xF, 0);
+        gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
         jobj = HSD_JObjLoadJoint(un_804D6FB8->models[i]->joint);
         temp = jobj;
         HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, temp);
@@ -127,7 +127,7 @@ void vi0801_Scene_OnEnter(void* unused)
 
     lbArchive_LoadSymbols("Vi0801.dat", &un_804D6FB8, "visual0801Scene", NULL);
 
-    gobj = GObj_Create(0x13, 0x14, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj = lb_80013B14(&un_804D6FB8->cameras->desc->perspective);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMax(gobj, vi0801_8031ED70, 8);
@@ -144,13 +144,13 @@ void vi0801_Scene_OnEnter(void* unused)
     Stage_8022524C();
     Stage_8022532C(St_Kind_BigBlueRoute, 0);
 
-    gobj = GObj_Create(0xB, 3, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, 3, 0);
     fog = HSD_FogLoadDesc(un_804D6FB8->fogs->desc);
     HSD_GObjObject_80390A70(gobj, (u8) HSD_GObj_FogKind, fog);
     GObj_SetupGXLink(gobj, HSD_GObj_FogCallback, 0, 0);
     un_804D6FBC = fog->color;
 
-    gobj2 = GObj_Create(0xB, 3, 0);
+    gobj2 = GObj_Create(HSD_GOBJ_CLASS_LIGHT, 3, 0);
     lobj = lb_80011AC4(un_804D6FB8->lights);
     HSD_GObjObject_80390A70(gobj2, (u8) HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(gobj2, HSD_GObj_LObjCallback, 0, 0);

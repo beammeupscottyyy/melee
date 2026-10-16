@@ -83,7 +83,7 @@ void un_8031E9B8(void)
     HSD_JObj* jobj;
     s32 i;
 
-    gobj = GObj_Create(0xE, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     jobj = HSD_JObjLoadJoint((*un_804D6FB0->models)->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
     GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, 0xB, 0);
@@ -149,7 +149,7 @@ void vi0601_Scene_OnEnter(UNUSED void* enter_data)
 
     lbArchive_LoadSymbols("Vi0601.dat", &un_804D6FB0, "visual0601Scene", NULL);
 
-    gobj = GObj_Create(0x13, 0x14, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj = lb_80013B14(&un_804D6FB0->cameras->desc->perspective);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMax(gobj, vi0601_GObj_OnRender, 2);
@@ -167,7 +167,7 @@ void vi0601_Scene_OnEnter(UNUSED void* enter_data)
     erase_colors_vi0601 = Camera_GetBackgroundColor();
     un_8031E9B8();
 
-    gobj2 = GObj_Create(0xB, 3, 0);
+    gobj2 = GObj_Create(HSD_GOBJ_CLASS_LIGHT, 3, 0);
     lobj = lb_80011AC4(un_804D6FB0->lights);
     HSD_GObjObject_80390A70(gobj2, HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(gobj2, HSD_GObj_LObjCallback, 0, 0);
