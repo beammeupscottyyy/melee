@@ -210,17 +210,17 @@ void fn_8016B138(void)
 
 bool gm_8016B14C(void)
 {
-    return gm_GetStartMeleeRules()->is_teams == false;
+    return !gm_GetStartMeleeRules()->is_teams;
 }
 
 bool gm_8016B168(void)
 {
-    return gm_GetStartMeleeRules()->is_teams == true;
+    return gm_GetStartMeleeRules()->is_teams;
 }
 
 bool gm_8016B184(void)
 {
-    if (gmVs_GetSceneController()->state.is_singleplayer == true) {
+    if (gmVs_GetSceneController()->state.is_singleplayer) {
         return true;
     }
     return false;
@@ -561,7 +561,7 @@ void fn_8016B918(void)
 
     for (i = 0; i < GM_MAX_PLAYERS; i++) {
         if (Player_GetPlayerSlotType(i) != Gm_PKind_NA &&
-            Player_GetEntity(i) != NULL && Player_8003219C(i) != 0 &&
+            Player_GetEntity(i) != NULL && Player_8003219C(i) &&
             Player_GetStocks(i) == 0)
         {
             var_r0 = true;
@@ -675,7 +675,7 @@ int gm_DefaultVSGetPauser(void)
                         if (Player_GetPlayerSlotType(mpPlayerSlot) !=
                                 Gm_PKind_NA &&
                             Player_GetEntity(mpPlayerSlot) != NULL &&
-                            Player_8003219C(mpPlayerSlot) == 0 &&
+                            !Player_8003219C(mpPlayerSlot) &&
                             mpPlayerId == Player_GetPadPort(mpPlayerSlot))
                         {
                             return mpPlayerId;
@@ -909,7 +909,7 @@ MatchOutcome gm_GetMatchOutcome(void)
             return ffa_outcome;
         }
     }
-    if (controller.start.is_teams == true) {
+    if (controller.start.is_teams) {
         team_battle_outcome = gm_GetTeamBattleOutcome();
         if (team_battle_outcome != 0) {
             return team_battle_outcome;
@@ -1065,7 +1065,7 @@ void fn_8016C7F0(void)
         temp_r30_2 = gmMainLib_8015D438(var_r29_2);
         gmMainLib_8015D450(var_r29_2);
         Ground_801C1DE4(&sp24, &sp20);
-        if (gmMainLib_8015D48C(var_r29_2) == 0) {
+        if (!gmMainLib_8015D48C(var_r29_2)) {
             if (sp24 == 0) {
                 var_r28 = 1;
             }
@@ -1257,7 +1257,7 @@ void fn_8016CD98(VsSceneController* scene)
                 } else {
                     if (scene->state.timer_seconds != 0) {
                         if (scene->state.timer_seconds < 6 &&
-                            ifTime_IsTimerHidden() == 0)
+                            !ifTime_IsTimerHidden())
                         {
                             temp_r3_4 =
                                 controller.state
@@ -1771,7 +1771,7 @@ static inline void getSpawnPoint(int i, Vec3* v)
 
 static inline void setPlayerUnk45(int i)
 {
-    bool is_teams = controller.start.is_teams == true;
+    bool is_teams = controller.start.is_teams;
     Player_SetUnk45(
         i, fn_80160840(gm_80160854(Player_GetPadPort(i), Player_GetTeam(i),
                                    is_teams, Player_GetPlayerSlotType(i))));
@@ -1912,14 +1912,14 @@ void fn_8016E2BC(void)
     if (var_r0) {
         getSpawnPoint(0, &sp24);
         if (Player_GetFacingDirection(0) == 0.0F) {
-            if (Stage_80224DC8(controller.start.stkind) != 0) {
+            if (Stage_80224DC8(controller.start.stkind)) {
                 Player_SetFacingDirection(0, 1.0F);
             } else {
                 Player_SetFacingDirection(0, direction(sp24.x));
             }
         }
         Player_80032768(0, &sp24);
-        single_is_teams = controller.start.is_teams == true;
+        single_is_teams = controller.start.is_teams;
         Player_SetUnk45(0, fn_80160840(gm_80160854(
                                Player_GetPadPort(0), Player_GetTeam(0),
                                single_is_teams, Player_GetPlayerSlotType(0))));
@@ -1936,7 +1936,7 @@ void fn_8016E2BC(void)
                 getSpawnPoint(i, &sp18);
                 tmp = &controller;
                 if (Player_GetFacingDirection(i) == 0.0F) {
-                    if (Stage_80224DC8(controller.start.stkind) != 0) {
+                    if (Stage_80224DC8(controller.start.stkind)) {
                         Player_SetFacingDirection(i, 1.0F);
                     } else {
                         if (sp18.x >= 0.0F) {
@@ -1948,7 +1948,7 @@ void fn_8016E2BC(void)
                     }
                 }
                 Player_80032768(i, &sp18);
-                is_teams = controller.start.is_teams == true;
+                is_teams = controller.start.is_teams;
                 Player_SetUnk45(
                     i, fn_80160840(gm_80160854(Player_GetPadPort(i),
                                                Player_GetTeam(i), is_teams,
@@ -2205,7 +2205,7 @@ bool gm_8016EDDC(int arg0, PlayerInitData* arg1)
         getSpawnPoint(arg0, &sp18);
 
         if (Player_GetFacingDirection(arg0) == 0.0F) {
-            if (Stage_80224DC8(controller.start.stkind) != 0) {
+            if (Stage_80224DC8(controller.start.stkind)) {
                 Player_SetFacingDirection(arg0, 1.0F);
             } else {
                 if (sp18.x >= 0.0F) {
