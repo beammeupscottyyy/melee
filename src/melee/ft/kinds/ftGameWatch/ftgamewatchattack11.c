@@ -155,15 +155,15 @@ void ftGw_Attack11_Enter(HSD_GObj* gobj)
 
     u8 _[4];
 
-    if (ftpickupitem_80094790(gobj) == false) {
-        fp->allow_interrupt = 0;
-        fp->x2218_b1 = 0;
+    if (!ftpickupitem_80094790(gobj)) {
+        fp->allow_interrupt = false;
+        fp->x2218_b1 = false;
         Fighter_ChangeMotionState(gobj, ftGw_MS_Attack11, Ft_MF_None, 0.0f,
                                   1.0f, 0.0f, NULL);
         ftAnim_8006EBA4(gobj);
         fp->hitlag_mul = fp->co_attrs.jab_2_input_window;
         fp->unk_msid = 44;
-        fp->x2218_b2 = 0;
+        fp->x2218_b2 = false;
         fp->mv.gw.Attack11.unk = 0;
         fp->x1A54 = 0;
         fp->accessory4_cb = ftGw_Attack11_ItemGreenhouseSetup;
