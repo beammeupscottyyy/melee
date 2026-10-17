@@ -35,7 +35,7 @@ static void setGfx(HSD_GObj* gobj)
     hsd_obj_ptr = gobj->hsd_obj;
 
     efSync_Spawn(0x47C, gobj, hsd_obj_ptr);
-    fp->x2219_b0 = 1;
+    fp->x2219_b0 = true;
     fp->pre_hitlag_cb = &efLib_PauseAll;
     fp->post_hitlag_cb = &efLib_ResumeAll;
 }
@@ -60,7 +60,7 @@ static void doStartMotion(HSD_GObj* gobj)
     fp->cmd_vars[1] = 0;
     fp->mv.mr.SpecialLw.groundVelX = (float) 0;
     fp->mv.mr.SpecialLw.unk = (s32) (sa->speciallw.unk0 + 1);
-    fp->mv.mr.SpecialLw.isUnkColl = 0;
+    fp->mv.mr.SpecialLw.isUnkColl = false;
     setCallbacks(gobj);
     setGfx(gobj);
 }
@@ -101,7 +101,7 @@ void ftMr_SpecialAirLw_Enter(HSD_GObj* gobj)
     Fighter_ChangeMotionState(gobj, ftMr_MS_SpecialAirLw, Ft_MF_None, 0, 1, 0,
                               NULL);
     ftAnim_8006EBA4(gobj);
-    if ((s32) fp->u.mr.x2234_tornadoCharge != 0) {
+    if (fp->u.mr.x2234_tornadoCharge) {
         sub_val = 0;
     } else {
         sub_val = sa->speciallw.tap_y_vel_max;
@@ -138,7 +138,7 @@ void ftMr_SpecialAirLw_Anim(HSD_GObj* gobj)
 
     if (fp->cmd_vars[1] != 0U) {
         fp->cmd_vars[1] = 0U;
-        fp->u.mr.x2234_tornadoCharge = 1;
+        fp->u.mr.x2234_tornadoCharge = true;
     }
     if (!ftAnim_IsFramesRemaining(gobj)) {
         unsetCallbacks(gobj);
@@ -216,8 +216,7 @@ void ftMr_SpecialAirLw_Phys(HSD_GObj* gobj)
     fp = getFighter(gobj);
     sa = fp->dat_attrs;
 
-    if (((s32) fp->u.mr.x2234_tornadoCharge == false) &&
-        (fp->cmd_vars[2] != 0U) &&
+    if (!fp->u.mr.x2234_tornadoCharge && (fp->cmd_vars[2] != 0U) &&
         ((fp->input.pressed_buttons & HSD_PAD_B) != 0))
     {
         ftCommon_Ascend(fp, sa->speciallw.tap_y_vel_max,
@@ -242,9 +241,7 @@ static void doColl(HSD_GObj* gobj)
 {
     Fighter* fp = getFighter(gobj);
 
-    if ((fp->cmd_vars[3] != 0U) &&
-        ((s32) (fp->mv.mr.SpecialLw.isUnkColl) != 0))
-    {
+    if ((fp->cmd_vars[3] != 0U) && fp->mv.mr.SpecialLw.isUnkColl) {
         ftPartSetRotX(fp, 0,
                       fp->facing_dir * atan2f(fp->coll_data.floor.normal.x,
                                               fp->coll_data.floor.normal.y));
@@ -262,14 +259,14 @@ void ftMr_SpecialLw_Coll(HSD_GObj* gobj)
     u8 _[24];
 
     if (fp->ground_or_air == GA_Ground) {
-        if (ft_80082888(gobj, &coll_box) == false) {
+        if (!ft_80082888(gobj, &coll_box)) {
             doPhys(gobj);
             fp->mv.mr.SpecialLw.isUnkColl = false;
         } else {
             fp->mv.mr.SpecialLw.isUnkColl = true;
         }
     } else {
-        if (ft_800824A0(gobj, &coll_box) == false) {
+        if (!ft_800824A0(gobj, &coll_box)) {
             doPhys(gobj);
             fp->mv.mr.SpecialLw.isUnkColl = false;
         } else {
@@ -290,7 +287,7 @@ static void doAirCollIfUnk(HSD_GObj* gobj)
     fp->cmd_vars[2] = 0;
     ftCommon_8007D7FC(fp);
     fp->self_vel.y = 0;
-    fp->u.mr.x2234_tornadoCharge = 0;
+    fp->u.mr.x2234_tornadoCharge = false;
     Fighter_ChangeMotionState(gobj, ftMr_MS_SpecialLw, transition_flags,
                               fp->cur_anim_frame, 1, 0, NULL);
     ftCommon_ClampGroundVel(ft_tmp = fp, sa->speciallw.momentum_x);
