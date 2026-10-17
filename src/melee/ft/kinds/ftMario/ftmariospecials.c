@@ -171,7 +171,7 @@ static void reflect(HSD_GObj* gobj)
     if (fp->cmd_vars[1] == 1 && !fp->mv.mr.SpecialS.reflecting) {
         fp->mv.mr.SpecialS.reflecting = true;
         ftColl_CreateReflectHit(gobj, &sa->cape_reflection, NULL);
-    } else if (fp->cmd_vars[1] == 0 && fp->mv.mr.SpecialS.reflecting == true) {
+    } else if (fp->cmd_vars[1] == 0 && fp->mv.mr.SpecialS.reflecting) {
         fp->mv.mr.SpecialS.reflecting = false;
         fp->reflecting = false;
     }
@@ -248,14 +248,14 @@ void ftMr_SpecialAirS_Phys(HSD_GObj* gobj)
 
 void ftMr_SpecialS_Coll(HSD_GObj* gobj)
 {
-    if (ft_800827A0(gobj) == false) {
+    if (!ft_800827A0(gobj)) {
         ftMr_SpecialS_GroundToAir(gobj);
     }
 }
 
 void ftMr_SpecialAirS_Coll(HSD_GObj* gobj)
 {
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         ftMr_SpecialAirS_AirToGround(gobj);
     }
 }
