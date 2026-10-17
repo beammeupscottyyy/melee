@@ -260,7 +260,7 @@ void ftLk_SpecialN_Enter(Fighter_GObj* gobj)
     Fighter_SetDamageCallback(gobj, ftLk_800EAF58);
     ftAnim_SetAnimRate(gobj, da->specialn_anim_rate);
     ftAnim_8006EBA4(gobj);
-    if (isDrawback(gobj) == true) {
+    if (isDrawback(gobj)) {
         ftLk_SpecialN_UnsetArrow(gobj);
         ftLk_SpecialN_UnsetFv14(gobj);
         ft_8008A2BC(gobj);
@@ -280,7 +280,7 @@ void ftLk_SpecialAirN_Enter(Fighter_GObj* gobj)
     Fighter_SetDamageCallback(gobj, ftLk_800EAF58);
     ftAnim_SetAnimRate(gobj, da->specialn_anim_rate);
     ftAnim_8006EBA4(gobj);
-    if (isDrawback(gobj) == true) {
+    if (isDrawback(gobj)) {
         ftLk_SpecialN_UnsetArrow(gobj);
         ftLk_SpecialN_UnsetFv14(gobj);
         if (da->x8 == 0) {
@@ -329,7 +329,7 @@ static inline void setupParts(Fighter_GObj* gobj, bool arg1)
 static inline void updateParts(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if (fp->x221E_b3 == true && fp->mv.lk.specialn.unk_timer == 0) {
+    if (fp->x221E_b3 && fp->mv.lk.specialn.unk_timer == 0) {
         ++fp->mv.lk.specialn.unk_timer;
         if (fp->item_gobj != NULL) {
             setupParts(gobj, true);
@@ -504,7 +504,7 @@ static inline void doEndColl(Fighter_GObj* gobj)
     FORCE_PAD_STACK_8;
     FORCE_PAD_STACK_4;
 
-    if (fp->cmd_vars[cmd_unk1_bool] == true && fp->u.lk.arrow_gobj != NULL) {
+    if (fp->cmd_vars[cmd_unk1_bool] && fp->u.lk.arrow_gobj != NULL) {
         Vec3 rpos, lpos;
 
         fp->cmd_vars[cmd_unk1_bool] = false;
