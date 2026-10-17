@@ -62,7 +62,7 @@ float it_802F295C(HSD_GObj* owner_gobj, itUnk2_DatAttrs* attr)
     spawn.vel = attr->vel;
     spawn.x0_parent_gobj = owner_gobj;
     spawn.x4_parent_gobj2 = owner_gobj;
-    spawn.x44_flag.x0.b0 = 1;
+    spawn.x44_flag.x0.b0 = true;
     spawn.x40 = 0;
     item_gobj = Item_80268B18(&spawn);
 
@@ -91,11 +91,8 @@ bool it_2F28_UnkMotion0_Anim(Item_GObj* item_gobj)
     Item* item;
 
     item = item_gobj->user_data;
-    item->xD44_lifeTimer = (item->xD44_lifeTimer - 1.0f);
-    if (item->xD44_lifeTimer <= 0.0f) {
-        return true;
-    }
-    return false;
+    item->xD44_lifeTimer -= 1.0f;
+    return item->xD44_lifeTimer <= 0.0f;
 }
 
 void it_2F28_UnkMotion0_Phys(HSD_GObj* item_gobj)
@@ -114,13 +111,8 @@ void it_2F28_UnkMotion0_Phys(HSD_GObj* item_gobj)
 }
 
 bool it_2F28_UnkMotion0_Coll(Item_GObj* item_gobj)
-/// bool it_2F28_UnkMotion0_Coll(HSD_GObj* item_gobj)
 {
-    if (it_8026DFB0(item_gobj) != 0) {
-        // if (it_8026DFB0((Item_GObj*) item_gobj) != 0) {
-        return true;
-    }
-    return false;
+    return it_8026DFB0(item_gobj);
 }
 
 void it_802F2BDC(Item_GObj* item_gobj, HSD_GObj* ref_gobj)
