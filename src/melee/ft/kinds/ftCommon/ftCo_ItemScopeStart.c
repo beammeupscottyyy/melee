@@ -36,7 +36,7 @@ void ft_800D76B8(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
 
-    if (it_8026B594(fp->item_gobj) == false) {
+    if (!it_8026B594(fp->item_gobj)) {
         Fighter_ChangeMotionState(gobj, ftCo_MS_ItemScopeStart, Ft_MF_None,
                                   0.0F, 1.0F, 0.0F, NULL);
     } else {
@@ -60,7 +60,7 @@ void ft_800D7770(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
 
-    if (it_8026B594(fp->item_gobj) == false) {
+    if (!it_8026B594(fp->item_gobj)) {
         Fighter_ChangeMotionState(gobj, ftCo_MS_ItemScopeAirStart, Ft_MF_None,
                                   0.0F, 1.0F, 0.0F, NULL);
     } else {
@@ -128,7 +128,7 @@ void fn_800D7938(Fighter_GObj* gobj)
         if (temp_r4 != -1) {
             it_80291F14(temp_r31->item_gobj, temp_r4);
         }
-        ftCommon_8007E7E4(temp_r30, 1);
+        ftCommon_8007E7E4(temp_r30, true);
     }
 }
 

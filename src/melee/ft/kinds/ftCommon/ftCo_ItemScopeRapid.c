@@ -88,7 +88,7 @@ void ftCo_ItemScopeRapid_Anim(Fighter_GObj* gobj)
 
         if (fp->mv.co.common.x0 == 0) {
             fn_800D86E0(gobj);
-        } else if (fp->item_gobj != NULL && it_8026B594(fp->item_gobj) != 0) {
+        } else if (fp->item_gobj != NULL && it_8026B594(fp->item_gobj)) {
             fp = gobj->user_data;
 
             if (fp->ground_or_air == GA_Ground) {
@@ -120,7 +120,7 @@ void ftCo_ItemScopeAirRapid_Anim(Fighter_GObj* gobj)
 
         if (fp->mv.co.common.x0 == 0) {
             fn_800D874C(gobj);
-        } else if (fp->item_gobj != NULL && it_8026B594(fp->item_gobj) != 0) {
+        } else if (fp->item_gobj != NULL && it_8026B594(fp->item_gobj)) {
             fp = gobj->user_data;
 
             if (fp->ground_or_air == GA_Ground) {
