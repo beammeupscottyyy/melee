@@ -660,9 +660,7 @@ void fn_80234C24(HSD_GObj* gobj)
                     data->jobjs[8] = (HSD_JObj*) text;
                     text->font_size.x = 0.0521f;
                     text->font_size.y = 0.0521f;
-                    if (lbLang_IsSettingJP() != 0 &&
-                        lbLang_IsSavedLanguageUS() != 0)
-                    {
+                    if (lbLang_IsSettingJP() && lbLang_IsSavedLanguageUS()) {
                         HSD_SisLib_803A6368(text, 5);
                     } else {
                         HSD_SisLib_803A6368(text, 3);
