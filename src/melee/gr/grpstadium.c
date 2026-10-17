@@ -1215,7 +1215,7 @@ void fn_801D2ED0(HSD_GObj* gobj, intptr_t unused)
 
     cobj = GET_COBJ(gobj);
     wrapper = GET_WRAPPER(gobj);
-    if (HSD_CObjSetCurrent(cobj) != 0) {
+    if (HSD_CObjSetCurrent(cobj)) {
         HSD_SetEraseColor(0, 0, 0, 1);
         HSD_CObjEraseScreen(cobj, 1, 0, 0);
         HSD_FogSet(NULL);
@@ -1431,7 +1431,7 @@ void grStadium_801D3460(Ground_GObj* gobj)
     HSD_SisLib_803A660C(1, 5, 7);
     HSD_SisLib_803A6368(gp2->win_static_p, 5);
     gp2->win_dynamic_p->default_kerning = 0;
-    if (lbLang_IsSavedLanguageJP() != 0) {
+    if (lbLang_IsSavedLanguageJP()) {
         temp_r3 = gp2->win_dynamic_p;
         temp_r3->x34.x = 0.3125f;
         temp_r3->x34.y = 0.625f;
@@ -1655,7 +1655,7 @@ void grStadium_801D3BBC(Ground_GObj* arg0)
     HSD_ASSERT(0x885, gp2->win_dynamic_p);
     for (player_index = 0; player_index < 6; player_index++) {
         if ((Player_GetPlayerSlotType(player_index) != Gm_PKind_NA) &&
-            (Player_8003219C(player_index) == 0))
+            !Player_8003219C(player_index))
         {
             player_gobj = Player_GetEntity(player_index);
             if (player_gobj != NULL && gm_8016C6C0(player_gobj) == 0) {
@@ -1681,7 +1681,7 @@ void grStadium_801D3BBC(Ground_GObj* arg0)
     gp2->win_dynamic_p->default_kerning = 0;
     gp2->win_dynamic_p->default_alignment = 1;
     gp2->win_dynamic_p->default_fitting = 1;
-    if (lbLang_IsSavedLanguageJP() != 0) {
+    if (lbLang_IsSavedLanguageJP()) {
         japanese_text = gp2->win_dynamic_p;
         japanese_text->x34.x = 1.0F;
         japanese_text->x34.y = 1.0F;
@@ -1696,7 +1696,7 @@ void grStadium_801D3BBC(Ground_GObj* arg0)
     text_offset = 0;
     for (player_num = 0; player_num < 6; player_num++) {
         if (Player_GetPlayerSlotType(player_num) != Gm_PKind_NA &&
-            Player_8003219C(player_num) == 0)
+            !Player_8003219C(player_num))
         {
             current_player_gobj = Player_GetEntity(player_num);
             if (current_player_gobj != NULL &&
