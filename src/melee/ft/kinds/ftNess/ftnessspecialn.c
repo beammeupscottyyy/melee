@@ -246,7 +246,7 @@ void ftNs_SpecialNRelease_Anim(HSD_GObj* gobj)
         return;
     }
 
-    if (it_802AA7F0(fp->u.ns.pkflash_gobj) == true &&
+    if (it_802AA7F0(fp->u.ns.pkflash_gobj) &&
         fp->motion_id != ftNs_MS_SpecialNRelease)
     {
         Fighter_ChangeMotionState(gobj, ftNs_MS_SpecialNRelease, Ft_MF_None,
@@ -338,7 +338,7 @@ void ftNs_SpecialAirNRelease_Anim(HSD_GObj* gobj)
             return;
         }
 
-        if (it_802AA7F0(fp->u.ns.pkflash_gobj) == true &&
+        if (it_802AA7F0(fp->u.ns.pkflash_gobj) &&
             fp->motion_id != ftNs_MS_SpecialAirNRelease)
         {
             Fighter_ChangeMotionState(gobj, ftNs_MS_SpecialAirNRelease,
@@ -395,7 +395,7 @@ void ftNs_SpecialNRelease_IASA(HSD_GObj* gobj)
                 result = false;
             }
 
-            if (result != true) {
+            if (!result) {
                 return;
             }
         }
@@ -450,7 +450,7 @@ void ftNs_SpecialAirNRelease_IASA(HSD_GObj* gobj)
             result = false;
         }
 
-        if (result != true) {
+        if (!result) {
             return;
         }
     }
