@@ -112,7 +112,7 @@ Item_GObj* it_802E6AEC(Ground* arg0, int arg1, int arg2, HSD_JObj* arg3,
     spawn.facing_dir = 0.0f;
     spawn.x3C_damage = 0;
     spawn.vel.x = spawn.vel.y = spawn.vel.z = 0.0f;
-    spawn.x0_parent_gobj = 0;
+    spawn.x0_parent_gobj = NULL;
     spawn.x4_parent_gobj2 = spawn.x0_parent_gobj;
     spawn.x44_flag.x0.b0 = arg5 ? 1 : 0;
     spawn.x40 = 0;
@@ -122,10 +122,10 @@ Item_GObj* it_802E6AEC(Ground* arg0, int arg1, int arg2, HSD_JObj* arg3,
     item_gobj = Item_80268B18(&spawn);
     if (item_gobj != NULL) {
         Item* item = GET_ITEM((HSD_GObj*) item_gobj);
-        if (arg3 != 0) {
+        if (arg3 != NULL) {
             item->xDD4_itemVar.yaku.x2 = 1;
             item->xDD4_itemVar.yaku.x4_u.x4 = arg3;
-        } else if (pos != 0) {
+        } else if (pos != NULL) {
             item->xDD4_itemVar.yaku.x2 = 2;
             item->xDD4_itemVar.yaku.x4_u.x4_vec = *pos;
         }
