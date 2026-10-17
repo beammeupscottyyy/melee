@@ -154,7 +154,7 @@ bool ft_80081DD4(Fighter_GObj* gobj)
         }
     }
     fp->cur_pos = coll->cur_pos;
-    if (ft_80081A00(gobj) != 0) {
+    if (ft_80081A00(gobj)) {
         return false;
     }
 
@@ -378,7 +378,7 @@ bool ft_80082638(Fighter_GObj* gobj, ftCollisionBox* arg1)
     box = ft_80082838(&sp18, arg1, fp->facing_dir);
     mpColl_80047A08(coll, box);
     fp->cur_pos = coll->cur_pos;
-    if (ft_80081A00(gobj) != 0) {
+    if (ft_80081A00(gobj)) {
         return false;
     }
     if (coll->env_flags & Collide_FloorMask) {
@@ -569,9 +569,9 @@ void ft_80082D40(Fighter_GObj* gobj, f32 arg1)
     coll->cur_pos = fp->cur_pos;
     temp_r31 = mpColl_80048768(coll);
     fp->cur_pos = coll->cur_pos;
-    if (ft_80081A00(gobj) != 0) {
+    if (ft_80081A00(gobj)) {
         var_r0 = false;
-    } else if (temp_r31 != 0) {
+    } else if (temp_r31) {
         var_r0 = true;
     } else {
         var_r0 = false;
