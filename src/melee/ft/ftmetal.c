@@ -168,7 +168,7 @@ void ft_800C85B8(Fighter_GObj* gobj)
     joint = fp->ft_data->x5C;
     sp20 = joint;
     joint_idx = (dobj_count = (sp1C = 0));
-    while (sp20 != 0) {
+    while (sp20 != NULL) {
         if (ftParts_8007506C(fp->kind, joint_idx) != 0) {
             joint_idx++;
         } else {
@@ -180,7 +180,7 @@ void ft_800C85B8(Fighter_GObj* gobj)
     }
     sp20 = joint;
     sp1C = (part_idx = 0);
-    while (sp20 != 0) {
+    while (sp20 != NULL) {
         if (ftParts_8007506C(fp->kind, part_idx) != 0) {
             part_idx += 1;
         } else {
