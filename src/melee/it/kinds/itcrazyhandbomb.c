@@ -55,7 +55,7 @@ void itCrazyHandBomb_Logic86_EvtUnk(Item_GObj* gobj, Item_GObj* ref_gobj)
 bool itCrazyHandBomb_Logic86_DmgDealt(Item_GObj* gobj)
 {
     it_802F1344(gobj);
-    return 1;
+    return true;
 }
 
 bool itCrazyHandBomb_Logic86_Reflected(Item_GObj* gobj)
