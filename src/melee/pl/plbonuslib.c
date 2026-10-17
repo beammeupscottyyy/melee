@@ -101,7 +101,7 @@ void plBonusLib_8003D514(int arg0)
     int var_r29;
     pl_StaleMoveTableExt_t* temp_r31_2;
 
-    RETURN_IF(ftLib_IsDeadUp(temp_r31) != 0);
+    RETURN_IF(ftLib_IsDeadUp(temp_r31));
     ftLib_GetPos(temp_r31, &sp18);
 
     for (var_r29 = 0; var_r29 < 6; var_r29++) {
@@ -172,13 +172,13 @@ void pl_8003D644(int arg0, int arg1, int arg2, int arg3)
         temp_r26->x0_staleMoveTable.xCC0 = *temp_r31;
         temp_r26->x0_staleMoveTable.xCD4 = temp_r24;
         pl_8003FED0(arg0, arg1);
-        if (ftLib_IsDeadUpFall(temp_r3) != 0) {
+        if (ftLib_IsDeadUpFall(temp_r3)) {
             pl_80038824(arg0, 0x81);
         }
-        if (ftLib_IsDeadUpStar(temp_r3) != 0) {
+        if (ftLib_IsDeadUpStar(temp_r3)) {
             temp_r26->x0_staleMoveTable.xC94++;
         }
-        if (ftLib_IsDeadUp(temp_r3) != 0) {
+        if (ftLib_IsDeadUp(temp_r3)) {
             temp_r26->xDD1.x0.bit2 = true;
         }
         if (temp_r27 == 0) {
@@ -190,10 +190,10 @@ void pl_8003D644(int arg0, int arg1, int arg2, int arg3)
         if (temp_r27 == 1) {
             temp_r26->xDD1.x0.bit1 = true;
         }
-        if (ft_80087858(temp_r3) != 0) {
+        if (ft_80087858(temp_r3)) {
             pl_80038788(arg0, 0x83, 1);
         }
-        if (ft_80087878(temp_r3, arg2) != 0) {
+        if (ft_80087878(temp_r3, arg2)) {
             pl_80038824(arg0, 0x84);
         }
         plBonusLib_8003D514(arg0);
@@ -260,7 +260,7 @@ void pl_8003D644(int arg0, int arg1, int arg2, int arg3)
         }
 
         if (!unk_cond(arg0, temp_r23)) {
-            if (ftLib_IsDeadUpStar(temp_r3) != 0) {
+            if (ftLib_IsDeadUpStar(temp_r3)) {
                 pl_80038824(temp_r23, 0x6D);
             }
             if (temp_r27 == 3) {
@@ -603,7 +603,7 @@ void pl_8003E854(int arg0, int arg1, Item_GObj* arg2)
         }
 
         if ((arg1 == 0) && ftLib_IsFighter(temp_r3) &&
-            (ftLib_IsSubFighter(temp_r3) == 0))
+            !ftLib_IsSubFighter(temp_r3))
         {
             temp_r31_2 = ftLib_GetPlayerIndex(temp_r3);
             Player_GetStaleMoveTableIndexPtr2(arg0)->xD6C = (s32) temp_r31_2;
@@ -949,18 +949,14 @@ void fn_8003F53C(int arg0, int arg1)
     Fighter_GObj* temp_r30 = Player_GetEntityAtIndex(arg0, arg1);
     unsigned int temp_r3;
 
-    if ((arg1 != 1) && (ftLib_IsInputDisabled(temp_r30) == false)) {
-        if ((ft_800877F8(temp_r30, 0x100) == 0) &&
-            (ft_800877F8(temp_r30, 0x200) == 0))
-        {
-            temp_r31->xDD0.x0.bit1 = 1;
+    if (arg1 != 1 && !ftLib_IsInputDisabled(temp_r30)) {
+        if (!ft_800877F8(temp_r30, 0x100) && !ft_800877F8(temp_r30, 0x200)) {
+            temp_r31->xDD0.x0.bit1 = true;
         }
-        if (ft_800877F8(temp_r30, 0x80000000) != 0) {
-            temp_r31->xDD0.x0.bit2 = 1;
+        if (ft_800877F8(temp_r30, 0x80000000)) {
+            temp_r31->xDD0.x0.bit2 = true;
         }
-        if ((ft_80087818(temp_r30, 0x100) != 0) ||
-            (ft_80087818(temp_r30, 0x200) != 0))
-        {
+        if (ft_80087818(temp_r30, 0x100) || ft_80087818(temp_r30, 0x200)) {
             temp_r31->xCF4 += 1;
             temp_r3 = temp_r31->xD58;
             if (temp_r3 < temp_r31->xD5C) {
@@ -1019,7 +1015,7 @@ void fn_8003F654(int slot, int index, Vec3* pos, Vec3* prevPos)
             }
         } else {
             if (b34 == 0) {
-                if (ftLib_GetGroundAir(entity) == 0) {
+                if (ftLib_GetGroundAir(entity) == GA_Ground) {
                     abs = pos->x - prevPos->x;
                     if (abs < 0.0f) {
                         abs = -abs;
@@ -1262,7 +1258,7 @@ void pl_80040048(int arg0, int arg1)
     if (temp_f31 >= pl_804D6470->x98) {
         temp_r3_3->x0_staleMoveTable.xCE8 += 1;
     }
-    if ((temp_f31 >= pl_804D6470->xA0) && (ft_80087AA4(temp_r3) == 0) &&
+    if ((temp_f31 >= pl_804D6470->xA0) && !ft_80087AA4(temp_r3) &&
         (ft_80087AB4(temp_r3) <= 1U))
     {
         pl_80038824(arg0, 0x48);
