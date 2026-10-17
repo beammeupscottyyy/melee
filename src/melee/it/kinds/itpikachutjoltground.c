@@ -171,10 +171,10 @@ bool itPikachutjoltground_UnkMotion1_Anim(Item_GObj* gobj)
     if (ip->xDD4_itemVar.pikachujoltground.xDDC == NULL) {
         return true;
     }
-    if (isLinkBroken(gobj, ip) == true) {
+    if (isLinkBroken(gobj, ip)) {
         return true;
     }
-    if (itPikachutjoltground_UnkMotion0_Anim(gobj) == true) {
+    if (itPikachutjoltground_UnkMotion0_Anim(gobj)) {
         return true;
     }
     it_802B3F20(ip->xDD4_itemVar.pikachujoltground.xDDC, &ip->pos);
@@ -281,7 +281,7 @@ bool itPikachutjoltground_UnkMotion1_Coll(Item_GObj* gobj)
                 }
             }
 
-            if (flag == true) {
+            if (flag) {
                 return true;
             }
 
