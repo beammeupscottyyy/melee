@@ -1020,12 +1020,12 @@ void gm_80160C90(HSD_Text* text, u8 fighter_id, u8 arg2)
     f32 size;
     bool use_alt_name;
 
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         text->default_kerning = 1;
     }
     str = arg2 ? fn_801609E0(tmp_ckind) : gm_80160980(tmp_ckind);
 
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         f32 temp;
         use_alt_name = false;
         if (arg2 && lbl_803D50E4[tmp_ckind] != NULL) {
@@ -1064,12 +1064,12 @@ void fn_80160DE8(HSD_JObj* arg0, u8 arg1, s32 arg2, u8 arg3, f32 farg0,
     f32 size;
     bool use_alt_name;
 
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         ((HSD_Text*) arg0)->default_kerning = 1;
     }
     str = arg3 ? fn_801609E0(tmp_ckind) : gm_80160980(tmp_ckind);
 
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         f32 temp;
         use_alt_name = false;
         if (arg3 && lbl_803D50E4[tmp_ckind] != NULL) {
@@ -2015,7 +2015,7 @@ void gm_80163374(u8 arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4)
     s32 temp_r0;
     u32 val;
 
-    if (gmMainLib_8015D48C(arg0) != 0) {
+    if (gmMainLib_8015D48C(arg0)) {
         val = *gmMainLib_8015D438(arg0);
         temp_r0 = val / 60;
         if (arg1 != NULL) {
@@ -2040,7 +2040,7 @@ bool gm_801634D4(u8* arg0, u8* arg1, u8* arg2, u8* arg3)
     s32 frames;
 
     for (i = 0; i < 0x19; i++) {
-        if (gmMainLib_8015D48C(i) != 0) {
+        if (gmMainLib_8015D48C(i)) {
             total_frames += *gmMainLib_8015D438((u8) i);
         } else {
             return false;
@@ -2086,7 +2086,7 @@ void gm_801636D8(u8 arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4)
     s32 temp_r0;
     u32 val;
 
-    if (gmMainLib_8015D6BC(arg0) != 0) {
+    if (gmMainLib_8015D6BC(arg0)) {
         val = *gmMainLib_8015D6A4(arg0);
         temp_r0 = val / 60;
         if (arg1 != NULL) {
@@ -2111,7 +2111,7 @@ bool gm_80163838(u8* arg0, u8* arg1, u8* arg2, u8* arg3)
     s32 frames;
 
     for (i = 0; i < 0x19; i++) {
-        if (gmMainLib_8015D6BC(i) != 0) {
+        if (gmMainLib_8015D6BC(i)) {
             total_frames += *gmMainLib_8015D6A4((u8) i);
         } else {
             return false;
@@ -2157,7 +2157,7 @@ void gm_80163A3C(u8 arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4)
     s32 temp_r0;
     u32 val;
 
-    if (gmMainLib_8015D710(arg0) != 0) {
+    if (gmMainLib_8015D710(arg0)) {
         val = *gmMainLib_8015D6F8(arg0);
         temp_r0 = val / 60;
         if (arg1 != NULL) {
@@ -2182,7 +2182,7 @@ bool gm_80163B9C(u8* arg0, u8* arg1, u8* arg2, u8* arg3)
     s32 i;
 
     for (i = 0; i < 0x19; i++) {
-        if (gmMainLib_8015D710(i) != 0) {
+        if (gmMainLib_8015D710(i)) {
             total_frames += *gmMainLib_8015D6F8((u8) i);
         } else {
             return false;
@@ -2401,7 +2401,7 @@ bool gm_80164330(s32 arg0)
     s32 i;
     u8 var_r0;
 
-    if (gm_80164430(lbl_803B7808[(u8) arg0]) == 0) {
+    if (!gm_80164430(lbl_803B7808[(u8) arg0])) {
         return false;
     }
     if (gmMainLib_8015EE44() == 0) {
@@ -3451,7 +3451,7 @@ void fn_8016719C(s32 slot, s32 subchar)
 
     scene_state = gmVs_GetSceneState();
     stkind = gm_GetStKind();
-    if (Stage_80224DC8(stkind) != 0) {
+    if (Stage_80224DC8(stkind)) {
         var_r30 = Ground_801C5774();
         Stage_80224E38(&respawn_pos, var_r30);
         offset.z = 0.0f;
