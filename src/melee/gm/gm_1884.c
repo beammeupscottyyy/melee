@@ -416,7 +416,7 @@ void fn_80188EE8(HSD_GObj* gobj)
 
     PAD_STACK(8);
 
-    if (gm_GetDbPauseFlag(2) != 0) {
+    if (gm_GetDbPauseFlag(2)) {
         HSD_SisLib_803A6368(sub->text, 0x1E);
         HSD_JObjSetFlagsAll(sub->jobjs[3], JOBJ_HIDDEN);
     } else {
@@ -469,7 +469,7 @@ void fn_80188EE8(HSD_GObj* gobj)
 
     val = gm_80473814.menu_values[1];
     text = gm_80473814.text;
-    if (lbLang_IsSettingUS() != 0 && val == 0x13) {
+    if (lbLang_IsSettingUS() && val == 0x13) {
         HSD_SisLib_803A6368(text, 0x17);
     } else {
         item_table = TrainingItemTable_Get();
@@ -535,7 +535,7 @@ void fn_801891F4(void)
     buttons = gm_801A36C0((u8) lbl_80473700.mode);
     sub = &gm_80473814;
 
-    if (gm_GetDbPauseFlag(2) != 0) {
+    if (gm_GetDbPauseFlag(2)) {
         if (sub->x01 == 0) {
             fn_801651FC(0, 0);
             gm_801891F4_SetCpuType(0);
