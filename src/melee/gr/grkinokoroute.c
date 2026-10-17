@@ -558,9 +558,9 @@ bool grKinokoRoute_80208480(int arg)
 {
     if (arg == 1) {
         Ground_801C5740(arg);
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
 
 struct grKinokoRoute_802084B4_gp {

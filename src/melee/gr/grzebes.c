@@ -1938,7 +1938,7 @@ bool grZebes_801DBB60(Item_GObj* yaku)
 
     if (count == 0) {
         grMaterial_801C8E28(yaku);
-        return 0;
+        return false;
     }
 
     if (count == 1) {
@@ -1948,7 +1948,7 @@ bool grZebes_801DBB60(Item_GObj* yaku)
         grMaterial_801C8DE0(yaku, entry->x08_x, entry->x0C_y, 0.0f,
                             entry->x08_x, entry->x0C_y, 0.0f,
                             (f32) (2.0 * (f64) entry->x18_size));
-        return 1;
+        return true;
     }
 
     grMaterial_801C8E08(yaku);
@@ -2000,7 +2000,7 @@ bool grZebes_801DBB60(Item_GObj* yaku)
             grMaterial_801C8DE0(yaku, entry->x08_x, entry->x0C_y, 0.0f,
                                 entry->x08_x, entry->x0C_y, 0.0f,
                                 (f32) (2.0 * (f64) entry->x18_size));
-            return 1;
+            return true;
         } else {
             f32 dx;
             f32 dy;
@@ -2100,7 +2100,7 @@ bool grZebes_801DBB60(Item_GObj* yaku)
             }
 
             grMaterial_801C8DE0(yaku, x1, y1, 0.0f, x2, y2, 0.0f, width);
-            return 1;
+            return true;
         }
     }
     HSD_ASSERT(2371, 0);

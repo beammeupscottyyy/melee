@@ -1842,13 +1842,13 @@ bool grCastle_801D0B0C(Vec3* v, int arg1, HSD_JObj* jobj)
     x *= Ground_801C0498();
     y *= Ground_801C0498();
     if ((v->x > x) && (v->y < y)) {
-        return 0;
+        return false;
     }
     lb_8000B1CC(jobj, NULL, &pos);
     if ((1.0f + v->y) > pos.y) {
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
 
 static f32 grCs_804D45E0 = 0.017453292f;
