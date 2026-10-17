@@ -516,7 +516,7 @@ void mnStageSel_Scene_OnEnter(void* arg0)
     sss_data = (SSSData*) arg0;
 
     if (sss_data->force_stage_id < 0) {
-        if (lbLang_IsSavedLanguageUS() != 0) {
+        if (lbLang_IsSavedLanguageUS()) {
             mnStageSel_804D6C94 = lbArchive_LoadArchive("MnSlMap.usd");
         } else {
             mnStageSel_804D6C94 = lbArchive_LoadArchive("MnSlMap.dat");
