@@ -82,8 +82,8 @@ void it_802790C0(Item_GObj* item_gobj, CommandInfo* cmd)
     if (hit->state == HitCapsule_Disabled || hit->x4 != x4) {
         hit->x4 = x4;
         hit->state = HitCapsule_Enabled;
-        item->xDC8_word.flags.x16 = 1;
-        item->xDAA.xDAA_flag.x0.b2 = 0;
+        item->xDC8_word.flags.x16 = true;
+        item->xDAA.xDAA_flag.x0.b2 = false;
         it_8026FCF8(item, hit);
     }
 
@@ -327,7 +327,7 @@ void it_802799E4(Item_GObj* item_gobj)
         }
 
         opcode = cmd->x8.u->unk0.opcode;
-        if (Command_Execute(cmd, opcode) == 0) {
+        if (!Command_Execute(cmd, opcode)) {
             opcode -= 10;
             it_803F22A8[opcode](item_gobj, cmd);
         }
