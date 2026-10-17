@@ -11,7 +11,7 @@ grZakoGenerator_801CA394(grZakoGenerator_Spawn*, int,
 /* 1CA43C */ s32 grZakoGenerator_801CA43C(grZakoGenerator_Config*, HSD_JObj*,
                                           f32);
 /* 1CA67C */ grZakoGenerator_Data* grZakoGenerator_801CA67C(void);
-/* 1CA8B4 */ void grZakoGenerator_801CA8B4(int);
+/* 1CA8B4 */ void grZakoGenerator_801CA8B4(bool);
 /* 1CAC14 */ void grZakoGenerator_801CAC14(HSD_GObj* gobj);
 /* 1CACB8 */ void grZakoGenerator_801CACB8(Item_GObj* gobj);
 /* 1CADBC */ void fn_801CADBC(HSD_GObj* gobj);

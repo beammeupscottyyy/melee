@@ -149,7 +149,7 @@ grZakoGenerator_Data* grZakoGenerator_801CA67C(void)
     for (; i < 81; i++) {
         pointp->entries[i].x0 = -1;
         pointp->entries[i].x2 = 0;
-        pointp->entries[i].x4 = 0;
+        pointp->entries[i].x4 = NULL;
     }
 
     lbl_8049F030.xA_b0 = true;
@@ -157,7 +157,7 @@ grZakoGenerator_Data* grZakoGenerator_801CA67C(void)
     return pointp;
 }
 
-void grZakoGenerator_801CA8B4(int arg0)
+void grZakoGenerator_801CA8B4(bool arg0)
 {
     if (lbl_8049F030.x4 != NULL && lbl_8049F030.xA_b0) {
         f32 right = Stage_GetBlastZoneRightOffset();
@@ -176,14 +176,14 @@ void grZakoGenerator_801CA8B4(int arg0)
         for (max_iter = 0xFF; max_iter > 0; max_iter--) {
             grZakoGenerator_Entry* entry = &lbl_8049F030.x4->entries[idx];
 
-            if (entry->x0 != -1 && entry->x4 == 0) {
+            if (entry->x0 != -1 && entry->x4 == NULL) {
                 if (lbl_8049F030.x4->entries[idx].x2 != -1) {
                     if (lbl_8049F030.x4->entries[idx].x2 > 0) {
                         lbl_8049F030.x4->entries[idx].x2--;
                     } else if (Ground_801C2D24(entry->x0, &pos)) {
                         if (left < pos.x && pos.x < right && bottom < pos.y &&
                             pos.y < top &&
-                            (arg0 != 0 || !(cam_left < pos.x) ||
+                            (arg0 || !(cam_left < pos.x) ||
                              !(pos.x < cam_right) || !(cam_bottom < pos.y) ||
                              !(pos.y < cam_top)))
                         {
@@ -315,12 +315,12 @@ void grZakoGenerator_801CACB8(Item_GObj* gobj)
 
 void fn_801CADBC(HSD_GObj* gobj)
 {
-    grZakoGenerator_801CA8B4(0);
+    grZakoGenerator_801CA8B4(false);
 }
 
 void grZakoGenerator_801CADE0(void)
 {
-    grZakoGenerator_801CA8B4(1);
+    grZakoGenerator_801CA8B4(true);
 }
 
 HSD_GObj* grZakoGenerator_801CAE04(grZakoGenerator_SpawnDesc* arg0)
