@@ -27,7 +27,7 @@ void fn_80156F6C(HSD_GObj* gobj)
 
 void ftCh_Entry_Anim(HSD_GObj* gobj)
 {
-    if (ftAnim_IsFramesRemaining(gobj) == 0) {
+    if (!ftAnim_IsFramesRemaining(gobj)) {
         ftCh_GrabUnk1_8015BC88(gobj);
     }
 }

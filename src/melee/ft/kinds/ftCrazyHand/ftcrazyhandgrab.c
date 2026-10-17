@@ -22,7 +22,7 @@ void ftCh_Init_80159F40(HSD_GObj* gobj)
 
 void ftCh_Grab_Anim(HSD_GObj* gobj)
 {
-    if (ftAnim_IsFramesRemaining(gobj) == 0) {
+    if (!ftAnim_IsFramesRemaining(gobj)) {
         ftCh_Init_8015A030(gobj);
     }
 }

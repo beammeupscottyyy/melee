@@ -26,7 +26,7 @@ void fn_80157C50(HSD_GObj* gobj)
 
 void ftCh_Drill_Anim(HSD_GObj* gobj)
 {
-    if (ftAnim_IsFramesRemaining(gobj) == 0) {
+    if (!ftAnim_IsFramesRemaining(gobj)) {
         ftCh_GrabUnk1_8015BC88(gobj);
     }
 }
