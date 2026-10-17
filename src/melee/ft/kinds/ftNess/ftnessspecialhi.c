@@ -682,7 +682,7 @@ void ftNs_SpecialAirHiStart_Anim(HSD_GObj* gobj)
             Fighter* fp2 = gobj->user_data;
             pkt_ptr = fp2->u.ns.pkthunder_gobj;
 
-            if (pkt_ptr == 0) {
+            if (pkt_ptr == NULL) {
                 lb_8000B1CC(fp2->parts[FtPart_L2ndNa].joint, NULL, &pkt_pos);
 
                 pkt_pos.z = 0.0f;
@@ -771,12 +771,12 @@ void ftNs_SpecialAirHiEnd_Anim(HSD_GObj* gobj)
         fp->x1968_jumpsUsed = fp->co_attrs.max_jumps;
         ftCommon_8007D60C(fp);
 
-        if (ness_attr->x70_PK_THUNDER_2_LANDING_LAG == 0) {
+        if (ness_attr->x70_PK_THUNDER_2_LANDING_LAG == 0.0f) {
             ftCo_Fall_Enter(gobj);
             return;
         }
 
-        ftCo_800969D8(gobj, 1, 0, 1, 1,
+        ftCo_800969D8(gobj, 1, 0, 1, 1.0f,
                       ness_attr->x70_PK_THUNDER_2_LANDING_LAG,
                       ness_attr->x6C_PK_THUNDER_2_FREEFALL_ANIM_BLEND);
     }
@@ -800,19 +800,19 @@ void ftNs_SpecialAirHi_Anim(HSD_GObj* gobj)
         float temp_f1 = fp1->mv.ns.specialhi.fallAccel;
         float phi_f1 = temp_f1;
 
-        if (temp_f1 < 0) {
+        if (temp_f1 < 0.0f) {
             phi_f1 = -temp_f1;
         }
 
         fp1->self_vel.y = (-phi_f1);
         ftCommon_8007D60C(fp1);
 
-        if (ness_attr->x70_PK_THUNDER_2_LANDING_LAG == 0) {
+        if (ness_attr->x70_PK_THUNDER_2_LANDING_LAG == 0.0f) {
             ftCo_Fall_Enter(gobj);
             return;
         }
 
-        ftCo_800969D8(gobj, 1, 0, 1, 1,
+        ftCo_800969D8(gobj, 1, 0, 1, 1.0f,
                       ness_attr->x70_PK_THUNDER_2_LANDING_LAG,
                       ness_attr->x6C_PK_THUNDER_2_FREEFALL_ANIM_BLEND);
     }
@@ -832,7 +832,7 @@ void ftNs_SpecialAirHiRebound_Anim(HSD_GObj* gobj)
         if (!ftAnim_IsFramesRemaining(gobj)) {
             ftCommon_8007D60C(fp1);
 
-            if (ness_attr->x70_PK_THUNDER_2_LANDING_LAG == 0) {
+            if (ness_attr->x70_PK_THUNDER_2_LANDING_LAG == 0.0f) {
                 ftCo_Fall_Enter(gobj);
                 return;
             }
