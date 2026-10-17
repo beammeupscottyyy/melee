@@ -1476,7 +1476,7 @@ void fn_80176A6C(void)
     }
 
     HSD_SisLib_803A611C(0, gobj, 9U, 0xDU, 0U, 0xEU, 0U, 0x13U);
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         HSD_SisLib_803A62A0(0, "SdRst.usd", "SIS_ResultData");
     } else {
         HSD_SisLib_803A62A0(0, "SdRst.dat", "SIS_ResultData");
