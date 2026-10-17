@@ -142,7 +142,7 @@ void DevText_Remove(DevText** ptext)
     if ((*ptext)->prev) {
         (*ptext)->prev->next = (*ptext)->next;
     } else {
-        if (cur->next != 0) {
+        if (cur->next != NULL) {
             *ptext = (*ptext)->next;
         } else {
             *ptext = NULL;
