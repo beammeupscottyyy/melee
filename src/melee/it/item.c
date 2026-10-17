@@ -189,7 +189,7 @@ static inline void HSD_JObjSetScaleItem(Item* it, HSD_JObj* jobj, Vec3* scl)
 
 static inline void HSD_JObjSetFacingDirItem(HSD_JObj* jobj, Item* it)
 {
-    if (it->xDC8_word.flags.x19 == true) {
+    if (it->xDC8_word.flags.x19) {
         HSD_JObjSetRotationY(jobj, M_PI / 2 * it->facing_dir);
     }
 }
@@ -933,7 +933,7 @@ static HSD_GObj* Item_8026862C(SpawnItem* spawnItem)
 
     void* user_data;
 
-    if (Item_8026784C(spawnItem->hold_kind, spawnItem->kind) != false) {
+    if (Item_8026784C(spawnItem->hold_kind, spawnItem->kind)) {
         return NULL;
     }
     gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 9, 0);
@@ -966,7 +966,7 @@ static HSD_GObj* Item_8026862C(SpawnItem* spawnItem)
     GObj_InitUserData(gobj, 6, Item_OnUserDataRemove, user_data);
     Item_80267AA8(gobj, spawnItem);
     Item_802680CC(gobj);
-    if (Item_802682F0(gobj) != false) {
+    if (Item_802682F0(gobj)) {
         Item_8026814C(gobj);
         Item_8026849C(gobj);
         it_8027163C(gobj);
@@ -1168,7 +1168,7 @@ void Item_80268E5C(HSD_GObj* gobj, enum_t msid, Item_StateChangeFlags flags)
     HSD_JObjSetTranslate(gobj->hsd_obj, &item_data->pos);
     efAsync_QueueFlush(gobj, &item_data->xBC0);
 
-    if (item_data->xDC8_word.flags.x2 == 1) {
+    if (item_data->xDC8_word.flags.x2) {
         it_8026BDCC(gobj);
         it_80274EF8(gobj);
     }
@@ -1390,28 +1390,30 @@ void Item_802697D4(HSD_GObj* gobj)
     if (item_data->xDC8_word.flags.x13 == 0) {
         if (item_data->xDC8_word.flags.x9 == 0) {
             PSVECAdd(&item_data->x40_vel, &item_data->x70_nudge, &sp1C);
-            if ((item_data->ground_or_air == 0) &&
+            if ((item_data->ground_or_air == GA_Ground) &&
                 (item_data->xDCD_flag.x0.b3 == 0))
             {
                 it_8027737C(gobj, &sp1C);
             }
             PSVECAdd(&item_data->pos, &sp1C, &item_data->pos);
         }
-        if (item_data->xDCC_flag.b3 == 1 &&
-            (item_data->xDCC_flag.b4567 & 0xF) && Item_802696CC(gobj))
+        if (item_data->xDCC_flag.b3 && (item_data->xDCC_flag.b4567 & 0xF) &&
+            Item_802696CC(gobj))
         {
             return;
         }
-        if (item_data->xD3C_spinSpeed && item_data->ground_or_air == 1) {
+        if (item_data->xD3C_spinSpeed && item_data->ground_or_air == GA_Air) {
             it_80274A64(gobj);
         }
     }
-    if ((item_data->xDD1_flag.x0.b1 != 0) && (item_data->ground_or_air == 1)) {
+    if ((item_data->xDD1_flag.x0.b1 != 0) &&
+        (item_data->ground_or_air == GA_Air))
+    {
         grLib_801C9E60(&item_data->x58_vec_unk);
     }
     PSVECAdd(&item_data->pos, &item_data->x58_vec_unk, &item_data->pos);
     it_80273484(gobj);
-    if (item_data->ground_or_air == 0) {
+    if (item_data->ground_or_air == GA_Ground) {
         if ((item_data->xDCE_flag.x0.b3 != 0) && (it_8026D604(gobj) != 0)) {
             mpGetSpeed(item_data->xC30, &item_data->pos,
                        &item_data->x64_vec_unk2);
@@ -2189,7 +2191,7 @@ static void Item_8026B0B4(HSD_GObj* gobj)
     }
 
     if (item_data->sfx_unk1 != SFX_NONE &&
-        lbAudioAx_800265C4(gobj, item_data->sfx_unk1) == 1)
+        lbAudioAx_800265C4(gobj, item_data->sfx_unk1))
     {
         if (item_data->sfx_unk1 != SFX_NONE) {
             lbAudioAx_800236B8(item_data->sfx_unk1);
@@ -2198,7 +2200,7 @@ static void Item_8026B0B4(HSD_GObj* gobj)
     }
 
     if (item_data->sfx_unk2 != SFX_NONE &&
-        lbAudioAx_800265C4(gobj, item_data->sfx_unk2) == 1)
+        lbAudioAx_800265C4(gobj, item_data->sfx_unk2))
     {
         if (item_data->sfx_unk2 != SFX_NONE) {
             lbAudioAx_800236B8(item_data->sfx_unk2);
