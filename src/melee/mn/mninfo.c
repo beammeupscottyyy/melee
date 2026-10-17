@@ -56,12 +56,12 @@ s32 mnInfo_80251A08(s32 arg0)
     case 0x3E:
         return 0;
     case 0x34:
-        if (lbLang_IsSettingUS() != 0) {
+        if (lbLang_IsSettingUS()) {
             return 0;
         }
         return gmMainLib_8015D94C(arg0);
     case 0x35:
-        if (lbLang_IsSettingJP() != 0) {
+        if (lbLang_IsSettingJP()) {
             return 0;
         }
         return gmMainLib_8015D94C(arg0);
@@ -207,7 +207,7 @@ s32 mnInfo_80251D58(mnInfo_GObj* arg0, s32 arg1, u32 arg2, u32 arg3)
     mn_8022EA78(sp34, 4, sp18.year);
     mn_8022EA78(sp24, 2, sp18.month);
     mn_8022EA78(sp20, 2, sp18.day);
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         HSD_SisLib_803A6B98(text, 0.0f, 0.0f, layout->date_format, sp24, sp20,
                             sp34);
     } else {
