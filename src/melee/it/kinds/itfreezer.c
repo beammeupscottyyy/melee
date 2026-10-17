@@ -41,7 +41,7 @@ void itFreezer_802CD000(Item_GObj* gobj, Item_GObj* ref_gobj)
 
 bool itFreezer_UnkMotion1_Anim(Item_GObj* gobj)
 {
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         itFreezer_802CD12C(gobj);
     }
     return false;
@@ -94,13 +94,13 @@ static void itFreezer_UnkMotion2_Anim_Inline(Item_GObj* gobj)
 bool itFreezer_UnkMotion2_Anim(Item_GObj* gobj)
 {
     Item* item_temp = GET_ITEM(gobj);
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         itFreezer_UnkMotion2_Anim_Inline(gobj);
     }
     if (item_temp->pos.y > Stage_GetBlastZoneTopOffset()) {
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
 
 void itFreezer_UnkMotion2_Phys(Item_GObj* gobj)
@@ -170,7 +170,7 @@ static void itFreezer_UnkMotion0_Phys_inline1(Item_GObj* gobj)
 
 void itFreezer_UnkMotion0_Phys(Item_GObj* gobj)
 {
-    if (it_8027A09C(gobj) != 0) {
+    if (it_8027A09C(gobj)) {
         itFreezer_UnkMotion0_Phys_inline1(gobj);
     }
 }
