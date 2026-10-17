@@ -272,7 +272,7 @@ void it_80289BE8(Item_GObj* gobj, s32 arg1, s32 food_weight, s32 arg3)
     if (i < arg1) {
         int kind = attr->x10;
         count = attr->x14;
-        if (kind == It_Kind_M_Ball && it_8026C704() == true) {
+        if (kind == It_Kind_M_Ball && it_8026C704()) {
             i = HSD_Randi(food_weight + arg3);
             goto food_or_random;
         } else if (!it_8026D324(kind)) {
@@ -280,7 +280,7 @@ void it_80289BE8(Item_GObj* gobj, s32 arg1, s32 food_weight, s32 arg3)
             goto food_or_random;
         }
         for (i = 0; i < count; i++) {
-            if (kind == It_Kind_M_Ball && it_8026C704() == true) {
+            if (kind == It_Kind_M_Ball && it_8026C704()) {
                 break;
             }
             it_80289BE8_spawn(gobj, kind, 1.4f, &pos, &vel, &spawned[i]);
