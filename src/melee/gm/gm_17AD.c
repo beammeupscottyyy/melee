@@ -198,7 +198,7 @@ s32 fn_8017B410(s32 arg0)
     PAD_STACK(24);
 
     me = fn_80174274();
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         var_r3 = (u32) (f32) (me->player_standings[arg0].x5C / 30.4788f);
     } else {
         var_r3 = me->player_standings[arg0].x5C / 100;
@@ -323,7 +323,7 @@ s32 fn_8017B91C(s32 arg0)
     PAD_STACK(24);
 
     me = fn_80174274();
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         var_r3 = (u32) (f32) ((f32) me->player_standings[arg0].x94 / 30.4788);
     } else {
         var_r3 = (u32) ((f32) me->player_standings[arg0].x94 / 100.0f);
@@ -338,7 +338,7 @@ s32 fn_8017B9F4(s32 arg0)
     PAD_STACK(24);
 
     me = fn_80174274();
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         var_r3 = (u32) (f32) ((f32) me->player_standings[arg0].x98 / 30.4788);
     } else {
         var_r3 = (u32) ((f32) me->player_standings[arg0].x98 / 100.0f);
