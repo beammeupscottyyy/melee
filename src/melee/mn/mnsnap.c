@@ -654,7 +654,7 @@ void mnSnap_8025409C(s32 dlg_type)
     if (dlg_type == 1) {
         left = *p38;
         right = *p39;
-    } else if (lbLang_IsSavedLanguageJP() != 0) {
+    } else if (lbLang_IsSavedLanguageJP()) {
         left = *p39;
         right = *p38;
     } else {
