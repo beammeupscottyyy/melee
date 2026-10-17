@@ -874,7 +874,7 @@ fn_80180630_GetModelDesc(struct lbl_80472D28_t* state)
 static inline void fn_80180630_SetupSisLib(HSD_GObj* cam_gobj)
 {
     HSD_SisLib_803A611C(0, cam_gobj, 9U, 0xDU, 0U, 0xEU, 0U, 0x13U);
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         HSD_SisLib_803A62A0(0, "SdClr.usd", "SIS_ClearData");
     } else {
         HSD_SisLib_803A62A0(0, "SdClr.dat", "SIS_ClearData");
