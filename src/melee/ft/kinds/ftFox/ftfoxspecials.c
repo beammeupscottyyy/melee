@@ -31,7 +31,7 @@ void ftFx_SpecialS_CreateGFX(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
 
-    if (fp->x2219_b0 == false) {
+    if (!fp->x2219_b0) {
         efSync_Spawn(0x48D, gobj, fp->parts[FtPart_TopN].joint,
                      &fp->facing_dir);
         fp->x2219_b0 = true;
@@ -198,7 +198,7 @@ void ftFx_SpecialAirSStart_Phys(HSD_GObj* gobj)
 /// Start Collision callback
 void ftFx_SpecialSStart_Coll(HSD_GObj* gobj)
 {
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftFx_SpecialSStart_GroundToAir(gobj);
     }
 }
@@ -260,7 +260,7 @@ static inline void ftFox_SpecialS_CreateGhostItem(HSD_GObj* gobj)
         }
         if (ghostGObj != NULL) {
             fp->mv.fx.SpecialS.ghostGObj = ghostGObj;
-            fp->x2222_b2 = 1;
+            fp->x2222_b2 = true;
         }
     }
 }
@@ -370,7 +370,7 @@ void ftFx_SpecialAirS_Phys(HSD_GObj* gobj)
 /// Dash Collision callback
 void ftFx_SpecialS_Coll(HSD_GObj* gobj)
 {
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftFx_SpecialS_GroundToAir(gobj);
     }
 }
@@ -542,7 +542,7 @@ void ftFx_SpecialSEnd_Coll(HSD_GObj* gobj)
 {
     u8 _[8];
 
-    if (ft_800827A0(gobj) == false) {
+    if (!ft_800827A0(gobj)) {
         ftCo_Fall_Enter(gobj);
     }
 }
@@ -572,7 +572,7 @@ static inline void ftFox_SpecialSEnd_SetVars(HSD_GObj* gobj)
     Fighter* fp = GET_FIGHTER(gobj);
     ftFox_DatAttrs* da = getFtSpecialAttrs(fp);
     fp->mv.fx.SpecialS.gravityDelay = da->x44_FOX_ILLUSION_FALL_ACCEL;
-    fp->x2222_b2 = 1;
+    fp->x2222_b2 = true;
 }
 
 /// 0x800EAC50
