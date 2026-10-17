@@ -24,12 +24,12 @@ bool ftCo_800D2FA4(Fighter_GObj* gobj)
         switch (x) {
         case 11:
         case 12:
-            return 0;
+            return false;
         }
         ftCo_800D3004(gobj);
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
 
 void ftCo_800D3004(Fighter_GObj* gobj)
