@@ -301,7 +301,7 @@ void grKongo_801D55D8(Ground_GObj* arg0)
 
 bool grKongo_801D5774(Ground_GObj* arg)
 {
-    return 0;
+    return false;
 }
 
 void grKongo_801D577C(Ground_GObj* arg0)
@@ -503,7 +503,7 @@ void grKongo_801D5FA8(Ground_GObj* arg0)
 
 bool grKongo_801D5FD4(Ground_GObj* arg)
 {
-    return 0;
+    return false;
 }
 
 void grKongo_801D5FDC(Ground_GObj* arg) {}
@@ -521,7 +521,7 @@ void grKongo_801D5FE4(Ground_GObj* arg0)
 
 bool grKongo_801D6028(Ground_GObj* arg)
 {
-    return 0;
+    return false;
 }
 
 void grKongo_801D6030(Ground_GObj* arg) {}
@@ -536,7 +536,7 @@ void grKongo_801D6038(Ground_GObj* arg0)
 
 bool grKongo_801D6064(Ground_GObj* arg)
 {
-    return 0;
+    return false;
 }
 
 void grKongo_801D606C(Ground_GObj* arg) {}
@@ -568,7 +568,7 @@ void grKongo_801D6074(Ground_GObj* arg0)
 
 bool grKongo_801D6190(Ground_GObj* arg)
 {
-    return 0;
+    return false;
 }
 
 void grKongo_801D6198(Ground_GObj* arg0)
@@ -686,7 +686,7 @@ void grKongo_801D637C(Ground_GObj* arg0)
 
 bool grKongo_801D64B4(Ground_GObj* arg)
 {
-    return 0;
+    return false;
 }
 
 void grKongo_801D64BC(Ground_GObj* arg0)
@@ -739,7 +739,7 @@ void grKongo_801D651C(Ground_GObj* gobj)
 
 bool grKongo_801D6660(Ground_GObj* arg)
 {
-    return 0;
+    return false;
 }
 
 void grKongo_801D6668(Ground_GObj* arg0)

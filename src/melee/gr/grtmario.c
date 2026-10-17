@@ -141,7 +141,7 @@ void grTMario_8021FA34(Ground_GObj* gobj)
 
 bool grTMario_8021FA94(Ground_GObj* gobj)
 {
-    return 0;
+    return false;
 }
 
 static void stageGObj2_GObjProc(Ground_GObj* gobj)

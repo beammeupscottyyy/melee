@@ -89,7 +89,7 @@ void grTlink_UnkStage0_OnStart(void)
 
 bool grTLink_802219C8(void)
 {
-    return 0;
+    return false;
 }
 
 HSD_GObj* grTLink_802219D0(int arg0)

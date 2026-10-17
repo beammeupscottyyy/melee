@@ -181,7 +181,7 @@ lbColl_80008D30_arg1* grTPurin_802234F8(enum_t arg0)
             }
         }
     }
-    return 0;
+    return NULL;
 }
 
 bool grTPurin_80223578(Vec3* vec, int arg1, HSD_JObj* jobj)

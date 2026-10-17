@@ -278,7 +278,7 @@ void grInishie2_801FCE04(Ground_GObj* gobj)
 
 bool grInishie2_801FCF24(Ground_GObj* gobj)
 {
-    return 0;
+    return false;
 }
 
 /// @todo this stage and mushroom kingdom 1 both change the music when there's
@@ -384,7 +384,7 @@ void grInishie2_801FD198(Ground_GObj* gobj)
 
 bool grInishie2_801FD21C(Ground_GObj* gobj)
 {
-    return 0;
+    return false;
 }
 
 void grInishie2_801FD224(Ground_GObj* gobj)
@@ -519,7 +519,7 @@ void grInishie2_801FD4F0(Ground_GObj* gobj)
 
 bool grInishie2_801FD64C(Ground_GObj* gobj)
 {
-    return 0;
+    return false;
 }
 
 void grInishie2_801FD654(Ground_GObj* gobj)
@@ -712,7 +712,7 @@ void grInishie2_801FDE8C(Ground_GObj* gobj)
 
 bool grInishie2_801FDED0(Ground_GObj* gobj)
 {
-    return 0;
+    return false;
 }
 
 static inline bool checkBlastZone(Vec3* pos)
@@ -769,5 +769,5 @@ lbColl_80008D30_arg1* grInishie2_801FDFE8(enum_t arg)
 
 bool grInishie2_801FDFF0(Vec3* arg, int arg0, HSD_JObj* jobj)
 {
-    return 1;
+    return true;
 }
