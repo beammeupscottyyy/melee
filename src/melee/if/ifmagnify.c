@@ -460,7 +460,7 @@ void ifMagnify_802FC3C0(s32 slot)
     }
 
     gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 15, 0);
-    GObj_InitUserData(gobj, 0xE, ifMagnify_802FC3BC, player);
+    GObj_InitUserData(gobj, HSD_GOBJ_CLASS_UI, ifMagnify_802FC3BC, player);
 
     jobj = HSD_JObjLoadJoint((*ifMagnify_804A1DE0.model_desc)->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);

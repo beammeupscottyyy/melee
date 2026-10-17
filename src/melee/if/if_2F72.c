@@ -215,7 +215,7 @@ HSD_GObj* fn_802F77F8(HSD_GObj* gobj, u8 slot, u16 arg2)
         HSD_GObjFree(gobj);
     }
 
-    gobj = GObj_Create(14, 15, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 15, 0);
     if (gobj != NULL) {
         jobj = HSD_JObjLoadJoint((*models->scene_models)->joint);
         if (jobj != NULL) {

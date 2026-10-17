@@ -179,8 +179,8 @@ void un_802FF498(void)
 {
     PAD_STACK(8);
     memzero(&un_804A1F58, sizeof(un_804A1F58));
-    un_804A1F58.x0 =
-        HSD_SisLib_803A611C(2, ifAll_GetHUDGObj(), 14, 15, 0, 11, 0, 19);
+    un_804A1F58.x0 = HSD_SisLib_803A611C(2, ifAll_GetHUDGObj(),
+                                         HSD_GOBJ_CLASS_UI, 15, 0, 11, 0, 19);
 }
 
 void un_802FF4FC(void)
@@ -232,7 +232,7 @@ void un_802FF6A0(void)
 void un_802FF710(void)
 {
     HSD_CObj* new_var;
-    HSD_GObj* gobj = GObj_Create(0x13, 20, 0);
+    HSD_GObj* gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 20, 0);
     if (gobj) {
         new_var = HSD_CObjLoadDesc((HSD_CObjDesc*) &un_803F9E60);
         HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, new_var);
