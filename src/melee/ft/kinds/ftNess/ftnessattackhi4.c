@@ -580,7 +580,7 @@ void ftNs_AttackHi4_Enter(HSD_GObj* gobj)
     Fighter* fp;
 
     fp = GET_FIGHTER(gobj);
-    fp->allow_interrupt = 0;
+    fp->allow_interrupt = false;
     fp->mv.ns.attackhi4.isChargeDisable = false;
 
     {
@@ -590,7 +590,7 @@ void ftNs_AttackHi4_Enter(HSD_GObj* gobj)
         fp->mv.ns.attackhi4.yoyoCurrentFrame = 1;
         fp->mv.ns.attackhi4.yoyoRehitTimer = 0;
 
-        fp->mv.ns.attackhi4.isPosUpdateMod = 1;
+        fp->mv.ns.attackhi4.isPosUpdateMod = true;
         fp->u.ns.yoyo_hitbox_pos.z = 0.0f;
         fp->u.ns.yoyo_hitbox_pos.y = 0.0f;
         fp->u.ns.yoyo_hitbox_pos.x = 0.0f;
@@ -601,7 +601,7 @@ void ftNs_AttackHi4_Enter(HSD_GObj* gobj)
                               0.0f, NULL);
 
     ftAnim_8006EBA4(gobj);
-    fp->x2222_b2 = 1;
+    fp->x2222_b2 = true;
     fp->deal_dmg_cb = ftNs_AttackHi4_YoyoStartTimedRehit;
     fp->accessory4_cb = ftNs_AttackHi4_YoyoUpdateHitPos;
 }
@@ -630,7 +630,7 @@ void ftNs_AttackHi4_Anim(HSD_GObj* gobj)
     fighter_data2 = gobj->user_data;
     yoyoSmashFrameCurr = fighter_data2->mv.ns.attackhi4.yoyoCurrentFrame;
     fp->mv.ns.attackhi4.yoyoCurrentFrame = (s32) (yoyoSmashFrameCurr + 1);
-    if (ftNs_AttackHi4_YoyoThink_IsRemove(gobj) == false) {
+    if (!ftNs_AttackHi4_YoyoThink_IsRemove(gobj)) {
         fp = gobj->user_data;
         if (fp->cmd_vars[0] == 0U) {
             yoyoRehitTimer = fp->mv.ns.attackhi4.yoyoRehitTimer;
@@ -644,7 +644,7 @@ void ftNs_AttackHi4_Anim(HSD_GObj* gobj)
             }
         }
         if ((fighter_data2->mv.ns.attackhi4.yoyoCurrentFrame == 13) &&
-            ((s32) fighter_data2->mv.ns.attackhi4.isChargeDisable == false))
+            !fighter_data2->mv.ns.attackhi4.isChargeDisable)
         {
             u8 _[8];
 
@@ -669,7 +669,7 @@ void ftNs_AttackHi4_Anim(HSD_GObj* gobj)
             } else {
                 phi_r0 = false;
             }
-            if (phi_r0 != false) {
+            if (phi_r0) {
                 ftNs_AttackHi4Charge_Enter(gobj);
             }
         }
@@ -684,13 +684,13 @@ void ftNs_AttackHi4_IASA(HSD_GObj* gobj) // Ness's Up Smash IASA callback
 {
     Fighter* fp = GET_FIGHTER(gobj);
 
-    if ((fp->input.held_buttons[0] & HSD_PAD_A) == false) {
+    if (!(fp->input.held_buttons[0] & HSD_PAD_A)) {
         fp->mv.ns.attackhi4.isChargeDisable =
             true; // Toggle flag to disallow Yo-Yo charge until next Up Smash
                   // instance
     }
 
-    if (fp->allow_interrupt != 0) {
+    if (fp->allow_interrupt) {
         ftCo_Wait_IASA(gobj);
     }
 }
@@ -790,7 +790,7 @@ void ftNs_AttackHi4Charge_IASA(
     HSD_GObj* gobj) // Ness's Up Smash Charge IASA callback
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if ((fp->input.held_buttons[0] & HSD_PAD_A) == false) {
+    if (!(fp->input.held_buttons[0] & HSD_PAD_A)) {
         ftNs_AttackHi4Release_Enter(gobj);
     }
 }
@@ -835,7 +835,7 @@ void ftNs_AttackHi4Charge_Enter(
     ftAnim_8006EBA4(gobj);
     ftAnim_SetAnimRate(gobj, 0.0f);
     ftNs_AttackHi4_YoyoApplySmash(gobj);
-    fp->x2222_b2 = 1;
+    fp->x2222_b2 = true;
     fp->deal_dmg_cb = ftNs_AttackHi4_YoyoStartTimedRehit;
     fp->accessory4_cb = ftNs_AttackHi4_YoyoUpdateHitPos;
 }
@@ -852,7 +852,7 @@ void ftNs_AttackHi4Release_Anim(
     temp_fp = GET_FIGHTER(gobj);
     yoyoSmashFrameCurr = temp_fp->mv.ns.attackhi4.yoyoCurrentFrame;
     temp_fp->mv.ns.attackhi4.yoyoCurrentFrame = (s32) (yoyoSmashFrameCurr + 1);
-    if (ftNs_AttackHi4_YoyoThink_IsRemove(gobj) == false) {
+    if (!ftNs_AttackHi4_YoyoThink_IsRemove(gobj)) {
         fp = GET_FIGHTER(gobj);
         if (fp->cmd_vars[0] == 0U) {
             yoyoRehitTimer = fp->mv.ns.attackhi4.yoyoRehitTimer;
@@ -875,7 +875,7 @@ void ftNs_AttackHi4Release_IASA(
     HSD_GObj* gobj) // Ness's Up Smash Post-Charge IASA
 {
     Fighter* fp = gobj->user_data;
-    if (fp->allow_interrupt != 0) {
+    if (fp->allow_interrupt) {
         ftCo_Wait_IASA(gobj);
     }
 }
@@ -933,7 +933,7 @@ void ftNs_AttackHi4Release_Enter(HSD_GObj* gobj)
                               Ft_MF_SkipItemVis, 13.0f, 1.0f, 0.0f, NULL);
     ftAnim_8006EBA4(gobj);
     ftNs_AttackHi4_YoyoSetChargeDamage(gobj);
-    fp->x2222_b2 = 1;
+    fp->x2222_b2 = true;
     fp->deal_dmg_cb = ftNs_AttackHi4_YoyoStartTimedRehit;
     fp->accessory4_cb = ftNs_AttackHi4_YoyoUpdateHitPos;
 }
