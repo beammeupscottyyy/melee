@@ -183,7 +183,7 @@ void grBigBlueRoute_8020B95C(void)
 {
     int val;
     grZakoGenerator_801CAE04(NULL);
-    if (gm_8016B3D8() == false) {
+    if (!gm_8016B3D8()) {
         return;
     }
 
