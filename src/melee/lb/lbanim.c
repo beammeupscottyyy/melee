@@ -18,7 +18,7 @@ static HSD_FObj* lbAnim_InitFrames(FigaTrack* track, s8 frames)
         if (i == 0) {
             result = fobj;
         }
-        if (next != 0) {
+        if (next != NULL) {
             next->next = fobj;
         }
         next = fobj;
