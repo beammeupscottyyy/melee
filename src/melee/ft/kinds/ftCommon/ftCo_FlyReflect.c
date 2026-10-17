@@ -121,7 +121,7 @@ bool ftCo_800C17CC(Fighter_GObj* gobj)
     Vec3 vec;
     u8 _[4];
     Fighter* fp;
-    s32 ret;
+    bool ret;
     PAD_STACK(0x10);
 
     if (ftCo_800C15F4(gobj)) {
@@ -147,10 +147,7 @@ bool ftCo_800C17CC(Fighter_GObj* gobj)
     } else {
         ret = false;
     }
-    if (ret != false) {
-        return 1;
-    }
-    return 0;
+    return ret;
 }
 
 void ftCo_800C18A8(Fighter_GObj* gobj, ftCommon_MotionState msid, Vec3* normal,
