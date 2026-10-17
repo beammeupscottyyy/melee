@@ -55,7 +55,7 @@ void mnDeflicker_8024A168(HSD_GObj* gobj)
             ((Menu*) mnDeflicker_804D6C38->user_data)->cursor); // inline
         lbCardGame_SaveChanges();
         mn_804A04F0.entering_menu = 0;
-        mn_80229894(4, 2, 3);
+        mn_80229894(MENU_KIND_SETTINGS, 2, 3);
     } else if (mnDeflicker_804D6C3C && (events & MenuInput_AButton)) {
         u32 x;
         PAD_STACK(4);
@@ -85,7 +85,7 @@ void mnDeflicker_8024A344(HSD_GObj* gobj)
 {
     Menu* menu = GET_MENU(gobj);
     HSD_JObj* jobj = GET_JOBJ(gobj);
-    if (mn_804A04F0.cur_menu != 0x15) {
+    if (mn_804A04F0.cur_menu != MENU_KIND_DISPLAY) {
         HSD_GObjProc* p;
         HSD_GObjProc_RemoveProc(HSD_GObj_CurrentInvokedProc);
         p = HSD_GObj_SetupProc(gobj, &mnDeflicker_8024A2E8, 0);
@@ -103,7 +103,7 @@ void mnDeflicker_8024A3E8(HSD_GObj* gobj)
     Menu* menu = GET_MENU(gobj);
     HSD_JObj* jobj = GET_JOBJ(gobj);
     HSD_GObjProc* p;
-    if (mn_804A04F0.cur_menu != 0x15) {
+    if (mn_804A04F0.cur_menu != MENU_KIND_DISPLAY) {
         HSD_GObjProc_RemoveProc(HSD_GObj_CurrentInvokedProc);
         p = HSD_GObj_SetupProc(gobj, &mnDeflicker_8024A2E8, 0);
         p->flags_3 = HSD_GObj_804D783C;
@@ -176,7 +176,7 @@ void mnDeflicker_8024A6C4(HSD_GObj* arg0)
 
     mn_804D6BC8.cooldown = 5;
     mn_804A04F0.prev_menu = mn_804A04F0.cur_menu;
-    mn_804A04F0.cur_menu = 0x15;
+    mn_804A04F0.cur_menu = MENU_KIND_DISPLAY;
     mn_804A04F0.hovered_selection = 0;
     mnDeflicker_804D6C3C = 0;
     archive = mn_804D6BB8;

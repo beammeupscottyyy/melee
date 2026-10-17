@@ -43,7 +43,7 @@ void mnLanguage_8024BFE0(HSD_GObj* unused)
         if (temp_r3 & MenuInput_Back) {
             sfxBack();
             mn_804A04F0.entering_menu = 0;
-            mn_80229894(4, 4, 3);
+            mn_80229894(MENU_KIND_SETTINGS, 4, 3);
             return;
         }
         if (temp_r3 & MenuInput_AButton) {
@@ -54,7 +54,7 @@ void mnLanguage_8024BFE0(HSD_GObj* unused)
                 lbAudioAx_80027AB0(0xAD);
                 mn_80229860(GM_MENU);
                 mn_8022F1A8(1, 9);
-                mn_804A04F0.cur_menu = 4;
+                mn_804A04F0.cur_menu = MENU_KIND_SETTINGS;
                 mn_804A04F0.hovered_selection = 4;
             }
         } else if (user_data->unk2 != 0) {
@@ -105,7 +105,7 @@ void fn_8024C270(HSD_GObj* gobj)
     Menu* menu = GET_MENU(gobj);
     PAD_STACK(3 * 4);
 
-    if (mn_804A04F0.cur_menu != 23) {
+    if (mn_804A04F0.cur_menu != MENU_KIND_SETTINGS_LANG) {
         HSD_GObjProc_RemoveProc(HSD_GObj_CurrentInvokedProc);
         gobjproc = HSD_GObj_SetupProc(gobj, fn_8024C210, 0);
         gobjproc->flags_3 = HSD_GObj_804D783C;
@@ -120,7 +120,7 @@ void fn_8024C2E8(HSD_GObj* gobj)
     HSD_JObj* jobj = GET_JOBJ(gobj);
     f32 tmp;
 
-    if (mn_804A04F0.cur_menu != 23) {
+    if (mn_804A04F0.cur_menu != MENU_KIND_SETTINGS_LANG) {
         HSD_GObjProc_RemoveProc(HSD_GObj_CurrentInvokedProc);
         gobjproc = HSD_GObj_SetupProc(gobj, fn_8024C210, 0);
         gobjproc->flags_3 = HSD_GObj_804D783C;
@@ -205,7 +205,7 @@ void mnLanguage_8024C5C0(HSD_GObj* gobj)
 
     mn_804D6BC8.cooldown = 5;
     mn_804A04F0.prev_menu = mn_804A04F0.cur_menu;
-    mn_804A04F0.cur_menu = 23;
+    mn_804A04F0.cur_menu = MENU_KIND_SETTINGS_LANG;
     mn_804A04F0.hovered_selection = 0;
     archive = mn_804D6BB8;
     lbArchive_LoadSections(
