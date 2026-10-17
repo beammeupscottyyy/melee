@@ -286,9 +286,9 @@ bool hsd_803931A4(s32 exi_channel)
     if (MCCInit(hsd_804D7890, 0, (MCC_CBSysEvent) fn_80392E2C) == 0) {
         OSReport("EXI_%d:not support USB (Error=%d)\n", channel,
                  MCCGetLastError());
-        return 0;
+        return false;
     }
 
     OSReport("EXI initialized (EXI_%d)\n", channel);
-    return 1;
+    return true;
 }
