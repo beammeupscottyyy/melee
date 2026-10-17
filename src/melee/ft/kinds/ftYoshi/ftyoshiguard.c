@@ -277,7 +277,7 @@ void ftYs_Shield_8012C600(Fighter_GObj* gobj, bool arg1)
     temp = (p_ftCommonData->x28C *
             (fp->x19A4 * (1.0F - fp->lightshield_amount))) +
            p_ftCommonData->x290;
-    if (arg1 == false) {
+    if (!arg1) {
         fp->gr_vel = temp * p_ftCommonData->x294;
         if (fp->specialn_facing_dir < 0.0F) {
             var_f0 = fp->gr_vel;
