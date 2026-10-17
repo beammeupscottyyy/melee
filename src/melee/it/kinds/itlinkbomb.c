@@ -249,7 +249,7 @@ bool itLinkbomb_UnkMotion0_Anim(HSD_GObj* gobj)
     } else {
         it_8029DB5C_Inline_Matching(gobj, item, article, sa);
     }
-    return 0;
+    return false;
 }
 
 void itLinkbomb_UnkMotion0_Phys(HSD_GObj* gobj)
@@ -297,7 +297,7 @@ void itLinkbomb_UnkMotion1_Phys(HSD_GObj* gobj)
 bool itLinkbomb_UnkMotion1_Coll(Item_GObj* gobj)
 {
     it_8026E15C(gobj, it_8029F18C);
-    return 0;
+    return false;
 }
 
 void it_8029E5D0(HSD_GObj* gobj)
@@ -333,7 +333,7 @@ bool itLinkbomb_UnkMotion2_Anim(HSD_GObj* gobj)
         it_8029DB5C_Inline_Matching(gobj, item, article, sa);
     }
 
-    return 0;
+    return false;
 }
 
 void itLinkbomb_UnkMotion2_Phys(Item_GObj* gobj)
@@ -341,7 +341,8 @@ void itLinkbomb_UnkMotion2_Phys(Item_GObj* gobj)
     Item_ApplyFallingPhysics(gobj);
 }
 
-static inline int it_LinkBomb_Inline_VelocityCompare(HSD_GObj* gobj, Vec3* vel)
+static inline bool it_LinkBomb_Inline_VelocityCompare(HSD_GObj* gobj,
+                                                      Vec3* vel)
 {
     Item* item;
     itLinkBombAttributes* sa;
@@ -349,9 +350,9 @@ static inline int it_LinkBomb_Inline_VelocityCompare(HSD_GObj* gobj, Vec3* vel)
     sa = &item->xC4_article_data->x4_specialAttributes->link_bomb;
     if ((ABS(vel->x) > sa->x24) || (ABS(vel->y) > sa->x28)) {
         it_8029F69C(gobj);
-        return 1;
+        return true;
     } else {
-        return 0;
+        return false;
     }
 }
 
@@ -371,7 +372,7 @@ bool itLinkbomb_UnkMotion2_Coll(HSD_GObj* gobj)
             it_8029F18C(gobj);
         }
     }
-    return 0;
+    return false;
 }
 
 void it_8029EC34(HSD_GObj* gobj)
@@ -528,7 +529,7 @@ void itLinkbomb_UnkMotion4_Phys(HSD_GObj* gobj)
 bool itLinkbomb_UnkMotion4_Coll(Item_GObj* gobj)
 {
     it_8026D62C(gobj, fn_8029E21C);
-    return 0;
+    return false;
 }
 
 void it_8029F69C(HSD_GObj* gobj)
@@ -580,7 +581,7 @@ void itLinkbomb_UnkMotion5_Phys(HSD_GObj* gobj)
 
 bool itLinkbomb_UnkMotion5_Coll(HSD_GObj* gobj)
 {
-    return 0;
+    return false;
 }
 
 bool it_8029F960(Item_GObj* gobj)
@@ -600,7 +601,7 @@ bool it_8029F960(Item_GObj* gobj)
             item_2->x40_vel.y = sa->x20;
         }
     }
-    return 0;
+    return false;
 }
 
 bool itLinkBomb_Logic16_DmgReceived(Item_GObj* gobj)
@@ -629,7 +630,7 @@ bool itLinkBomb_Logic16_DmgReceived(Item_GObj* gobj)
             item->xDD4_itemVar.linkbomb.x0.x0.b2 = true;
         }
     }
-    return 0;
+    return false;
 }
 
 void itLinkBomb_Logic16_EnteredAir(Item_GObj* gobj)
@@ -656,7 +657,7 @@ bool itLinkbomb_UnkMotion6_Anim(HSD_GObj* gobj)
         it_8029DB5C_Inline_Matching(gobj, item, article, sa);
     }
 
-    return 0;
+    return false;
 }
 
 void itLinkbomb_UnkMotion6_Phys(HSD_GObj* gobj)
@@ -667,7 +668,7 @@ void itLinkbomb_UnkMotion6_Phys(HSD_GObj* gobj)
 bool itLinkbomb_UnkMotion6_Coll(Item_GObj* gobj)
 {
     it_8026E8C4(gobj, it_8029F18C, fn_8029E21C);
-    return 0;
+    return false;
 }
 
 bool itLinkBomb_Logic16_Reflected(Item_GObj* gobj)
@@ -678,7 +679,7 @@ bool itLinkBomb_Logic16_Reflected(Item_GObj* gobj)
 bool itLinkBomb_Logic16_HitShield(Item_GObj* gobj)
 {
     itColl_BounceOffVictim(gobj);
-    return 0;
+    return false;
 }
 
 bool itLinkBomb_Logic16_ShieldBounced(Item_GObj* gobj)
