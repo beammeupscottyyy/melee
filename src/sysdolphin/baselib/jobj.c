@@ -745,7 +745,7 @@ HSD_JObj* HSD_JObjRemove(HSD_JObj* jobj)
     HSD_JObj* prev;
 
     if (jobj == NULL) {
-        return 0;
+        return NULL;
     }
     child = jobj->child;
     if (child != NULL) {
