@@ -24,6 +24,7 @@
 #include <sysdolphin/baselib/gobjproc.h>
 #include <sysdolphin/baselib/jobj.h>
 #include <sysdolphin/baselib/memory.h>
+#include <sysdolphin/baselib/mobj.h>
 #include <sysdolphin/baselib/random.h>
 
 /* 1FA908 */ static void grInishie1_801FA908(bool);
@@ -288,7 +289,7 @@ void grInishie1_801FAADC(Ground_GObj* gobj)
     grInishie1_801FAD84(gobj);
     grInishie1_801FC018(gobj);
     gp->u.map.xC4_b0 = false;
-    grMaterial_801C8858(Ground_801C3FA4(gobj, 0x2D), 0x20000000U);
+    grMaterial_801C8858(Ground_801C3FA4(gobj, 0x2D), RENDER_NO_ZUPDATE);
 }
 
 bool grInishie1_801FAB60(Ground_GObj* gobj)
@@ -431,7 +432,7 @@ void grInishie1_801FAD84(HSD_GObj* gobj)
             grMaterial_801C8DE0(new_gobj, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
                                 6.0f);
             grMaterial_801C8E08(new_gobj);
-            grMaterial_801C8E68(new_gobj, 0);
+            grMaterial_801C8E68(new_gobj, GA_Ground);
         }
 
         gp->u.inishie1.block[i].item_gobj = new_gobj;

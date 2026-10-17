@@ -12,6 +12,7 @@
 #include <melee/lb/lb_00B0.h>
 #include <melee/lb/lb_00F9.h>
 #include <sysdolphin/baselib/gobjproc.h>
+#include <sysdolphin/baselib/mobj.h>
 #include <sysdolphin/baselib/random.h>
 
 /* 1E302C */ static void grStory_801E302C(bool);
@@ -112,7 +113,7 @@ void grStory_801E31C0(Ground_GObj* gobj)
     Ground* gp = GET_GROUND(gobj);
     grAnime_801C8138(gobj, gp->map_id, 0);
     gp->x11_flags.b012 = 2;
-    grMaterial_801C8858(Ground_801C3FA4(gobj, 1), 0x20000000);
+    grMaterial_801C8858(Ground_801C3FA4(gobj, 1), RENDER_NO_ZUPDATE);
 }
 
 bool grStory_801E3224(Ground_GObj* gobj)

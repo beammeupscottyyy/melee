@@ -13,6 +13,7 @@
 #include <melee/mp/mplib.h>
 #include <sysdolphin/baselib/gobjproc.h>
 #include <sysdolphin/baselib/jobj.h>
+#include <sysdolphin/baselib/mobj.h>
 #include <sysdolphin/baselib/random.h>
 
 static void stageGObj0_OnInit(Ground_GObj* gobj);
@@ -267,7 +268,7 @@ void grFlatzone_802173D4(Ground_GObj* gobj)
     Ground* gp = GET_GROUND(gobj);
     HSD_JObj* jobj = GET_JOBJ(gobj);
     grAnime_801C8138(gobj, gp->map_id, 0);
-    grMaterial_801C8858(jobj, 0x28000000U);
+    grMaterial_801C8858(jobj, RENDER_NO_ZUPDATE | RENDER_ZMODE_ALWAYS);
     gp->x11_flags.b012 = 2;
 }
 

@@ -28,6 +28,7 @@
 #include <sysdolphin/baselib/gobjproc.h>
 #include <sysdolphin/baselib/jobj.h>
 #include <sysdolphin/baselib/memory.h>
+#include <sysdolphin/baselib/mobj.h>
 #include <sysdolphin/baselib/random.h>
 
 typedef struct grBb_LineIds {
@@ -436,8 +437,8 @@ void grBigBlue_801E6200(Ground_GObj* gobj)
     grAnime_801C8138(gobj, gp->map_id, 0);
     gp2 = GET_GROUND(gobj);
     gp2->x10_flags.b2 = 0;
-    grMaterial_801C8A04(jobj, 0x08000000U);
-    grMaterial_801C8858(jobj, 0x20000000U);
+    grMaterial_801C8A04(jobj, RENDER_ZMODE_ALWAYS);
+    grMaterial_801C8858(jobj, RENDER_NO_ZUPDATE);
     gp->x11_flags.b012 = 1;
 }
 
