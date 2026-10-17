@@ -328,7 +328,7 @@ void make_full_dependancy_mtx(int num, const u32* dep, u32* full)
                 }
             }
         }
-    } while (changed != false);
+    } while (changed);
 }
 
 void HSD_TExpSchedule(int num, HSD_TExpDag* list, HSD_TExp** result,
