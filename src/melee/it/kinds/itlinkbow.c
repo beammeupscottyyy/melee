@@ -195,7 +195,7 @@ bool itLinkbow_UnkMotion5_Anim(Item_GObj* arg0)
             (item->x5CC_currentAnimFrame >= 24.0f))
         {
             itLinkBow_Logic100_Destroyed(arg0);
-            return 1;
+            return true;
         }
         break;
     default:
@@ -204,23 +204,23 @@ bool itLinkbow_UnkMotion5_Anim(Item_GObj* arg0)
     }
 
     if (item->xDD4_itemVar.linkbow.x4 == NULL) {
-        return 1;
+        return true;
     }
     if (item->owner != item->xDD4_itemVar.linkbow.x4) {
-        return 1;
+        return true;
     }
     if (item->owner != NULL) {
         switch (item->kind) {
         case It_Kind_Link_Bow:
         case It_Kind_CLink_Bow:
             if (ftLk_SpecialN_IsActiveAnd2071b6(item->owner) != 0) {
-                return 1;
+                return true;
             }
             break;
         case It_Kind_Kirby_CLinkBow:
         case It_Kind_Kirby_LinkBow:
             if (ftKb_SpecialNLk800FB470(item->owner) != 0) {
-                return 1;
+                return true;
             }
             break;
         default:
@@ -228,7 +228,7 @@ bool itLinkbow_UnkMotion5_Anim(Item_GObj* arg0)
         }
     }
 
-    return 0;
+    return false;
 }
 
 void itLinkbow_UnkMotion5_Phys(HSD_GObj* arg0)
@@ -246,12 +246,12 @@ bool itLinkbow_UnkMotion5_Coll(Item_GObj* arg0)
     jobj = HSD_GObjGetHSDObj(arg0);
     scale.x = scale.y = scale.z = item->xDD4_itemVar.linkbow.x0;
     HSD_JObjSetScale(jobj, &scale);
-    return 0;
+    return false;
 }
 
 bool itLinkbow_UnkMotion6_Anim(Item_GObj* arg0)
 {
-    return 1;
+    return true;
 }
 
 void itLinkbow_UnkMotion6_Phys(HSD_GObj* arg0)
@@ -261,7 +261,7 @@ void itLinkbow_UnkMotion6_Phys(HSD_GObj* arg0)
 
 bool itLinkbow_UnkMotion6_Coll(Item_GObj* arg0)
 {
-    return 1;
+    return true;
 }
 
 void itLinkBow_Logic100_EvtUnk(Item_GObj* arg0, Item_GObj* arg1)
