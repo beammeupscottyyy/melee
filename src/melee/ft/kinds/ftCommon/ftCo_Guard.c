@@ -108,7 +108,7 @@ bool ftCo_80091AD8(Fighter_GObj* gobj, int mv_x20)
             ret0 = false;
         }
     }
-    if (ret0 != false) {
+    if (ret0) {
         fp->mv.co.guard.x20 = mv_x20;
         return true;
     }

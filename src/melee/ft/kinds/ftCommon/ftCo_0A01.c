@@ -6798,7 +6798,7 @@ static inline void ftCo_CpuUpdateFoodItemTarget(Fighter* fp, bool* is_food)
         } else {
             *is_food = false;
         }
-        if (*is_food == false) {
+        if (!*is_food) {
             data->x4C = NULL;
             return;
         }

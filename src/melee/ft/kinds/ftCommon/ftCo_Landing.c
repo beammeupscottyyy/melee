@@ -53,7 +53,7 @@ void ftCo_Landing_Enter(Fighter_GObj* gobj, FtMotionId msid,
         break;
     case Ft_Kind_Peach:
         fp->u.pe.specialairn_used = false;
-        if (allow_interrupt == true) {
+        if (allow_interrupt) {
             ftPe_8011D598(gobj);
         }
     default:

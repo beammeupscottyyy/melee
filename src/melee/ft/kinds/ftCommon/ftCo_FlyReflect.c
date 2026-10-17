@@ -147,7 +147,7 @@ bool ftCo_800C17CC(Fighter_GObj* gobj)
     } else {
         ret = false;
     }
-    if (ret != false) {
+    if (ret) {
         return 1;
     }
     return 0;
