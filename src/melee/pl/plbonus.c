@@ -599,14 +599,14 @@ void fn_80039618(int player)
     {
         setFlag(player, 8);
     }
-    if (gm_801720B4() == 0) {
+    if (!gm_801720B4()) {
         s32 dmg = (s32) table->x0_staleMoveTable.xC64;
         if ((f32) dmg >= 400.0f) {
             setFlag(player, 0x20);
         } else if ((f32) dmg >= 350.0f) {
             setFlag(player, 0x1F);
         } else if ((f32) dmg >= 300.0f) {
-            if (gm_8016B3A0() == 0) {
+            if (!gm_8016B3A0()) {
                 setFlag(player, 0x1E);
             }
         } else if ((f32) dmg >= 250.0f) {
@@ -767,7 +767,7 @@ void fn_8003B044(int player)
             setFlag(player, 0x57);
         }
     }
-    if (gm_801720B4() == 0 && temp_r31->xD2C == 0) {
+    if (!gm_801720B4() && temp_r31->xD2C == 0) {
         setFlag(player, 0x6B);
     }
     if (!gm_8016B3A0() && gm_8016B558() >= 3) {
@@ -899,7 +899,7 @@ void fn_8003BD60(int player)
         {
             setFlag(player, 0x30);
         }
-        if (gm_801720B4() == 0 &&
+        if (!gm_801720B4() &&
             pl_CalculateAverage(temp_r31->xD2C, gm_GetFrameCount()) >=
                 pl_804D6470->x78)
         {
@@ -1129,7 +1129,7 @@ void fn_8003CC84(int player)
         pl_80041524(player);
         pl_80041BFC(player);
         pl_800418F4(player);
-        if (Player_8003221C(player) != 0) {
+        if (Player_8003221C(player)) {
             switch (ftLib_GetMotionId(temp_r29)) {
             case 0xC:
             case 0xD:
@@ -1138,17 +1138,17 @@ void fn_8003CC84(int player)
             case 0:
             case 1:
             case 2:
-                if ((gm_8016B3D8() != 0) || (gm_801720F8() == 0)) {
+                if (gm_8016B3D8() || !gm_801720F8()) {
                     setFlag(player, 0x8C);
                 }
                 break;
             case 4:
-                if ((gm_8016B3D8() != 0) || (gm_801720F8() == 0)) {
+                if (gm_8016B3D8() || !gm_801720F8()) {
                     setFlag(player, 0x8D);
                 }
                 break;
             }
-            if ((gm_8016B204() == 0) && (gm_8016B110() == 0)) {
+            if (!gm_8016B204() && !gm_8016B110()) {
                 switch (gm_8016AEEC()) {
                 case 0x0:
                     setFlag(player, 0x8F);
@@ -1161,14 +1161,14 @@ void fn_8003CC84(int player)
                     break;
                 }
             }
-            if (ftLib_IsDead(temp_r29) == 0) {
-                if (ft_800898C0(temp_r29) != 0) {
+            if (!ftLib_IsDead(temp_r29)) {
+                if (ft_800898C0(temp_r29)) {
                     setFlag(player, 0x8B);
                 }
                 if (temp_r31->xDD0.xDD0_value & 1) {
                     setFlag(player, 0x8A);
                 }
-                if (ft_80087988(temp_r29) != 0) {
+                if (ft_80087988(temp_r29)) {
                     setFlag(player, 0xA7);
                 }
                 for (i = 0; i < 6; i++) {
@@ -1178,10 +1178,10 @@ void fn_8003CC84(int player)
                         setFlag(player, 0xA8);
                     }
                 }
-                if (ft_800879D8(temp_r29) != 0) {
+                if (ft_800879D8(temp_r29)) {
                     setFlag(player, 0xA9);
                 }
-                if (ft_800879F8(temp_r29) != 0) {
+                if (ft_800879F8(temp_r29)) {
                     setFlag(player, 0xBE);
                 }
                 temp_ret = Player_GetDamage(player);
