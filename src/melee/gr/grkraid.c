@@ -543,7 +543,7 @@ bool grKraid_801FF0E0(Ground_GObj* gobj, int flag)
         val = 0x82;
     }
     comp = gp->u.kraid2.xC >= val ? true : false;
-    if (comp != false) {
+    if (comp) {
         ftLib_StartRumbleAll(0xC, 0x0);
     }
     return comp;
