@@ -227,7 +227,7 @@ Range Y
 Range X
 */
 
-/// @brief Spawns GFX
+/// Spawns GFX
 void ftAction_80071028(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     Fighter* fp = GET_FIGHTER(gobj);
@@ -277,13 +277,13 @@ void ftAction_80071028(Fighter_GObj* gobj, CommandInfo* cmd)
     }
 }
 
-/// @brief Skips GFX Spawn
+/// Skips GFX Spawn
 void ftAction_800711DC(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     SKIP_CMD(cmd, 5);
 }
 
-/// @brief Spawns Hitboxes
+/// Spawns Hitboxes
 void ftAction_8007121C(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     Fighter* fp;
@@ -362,7 +362,7 @@ void ftAction_8007121C(Fighter_GObj* gobj, CommandInfo* cmd)
     ftCommon_80080484(fp);
 }
 
-/// @brief Skips Hitbox Spawn
+/// Skips Hitbox Spawn
 void ftAction_800715EC(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     SKIP_CMD(cmd, 5);
@@ -377,7 +377,7 @@ void ftAction_800715EC(Fighter_GObj* gobj, CommandInfo* cmd)
   - name: Damage
     bitCount: 23
 */
-/// @brief Adjust Hitbox Damage
+/// Adjust Hitbox Damage
 void ftAction_8007162C(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     HitCapsule* hit =
@@ -394,7 +394,7 @@ void ftAction_8007168C(Fighter_GObj* gobj, CommandInfo* cmd)
     SKIP_CMD(cmd, 1);
 }
 
-/// @brief Adjusts Hitbox Scale
+/// Adjusts Hitbox Scale
 void ftAction_8007169C(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     Fighter* fp = GET_FIGHTER(gobj);
@@ -408,7 +408,7 @@ void ftAction_800716F8(Fighter_GObj* gobj, CommandInfo* cmd)
     SKIP_CMD(cmd, 1);
 }
 
-/// @brief Sets Hitbox flags
+/// Sets Hitbox flags
 void ftAction_80071708(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     Fighter* fp = GET_FIGHTER(gobj);
@@ -547,7 +547,7 @@ void ftAction_80071A58(Fighter_GObj* gobj, CommandInfo* cmd)
     NEXT_CMD(cmd);
 }
 
-/// @brief Sets Hurt Capsule State
+/// Sets Hurt Capsule State
 void ftAction_80071A9C(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     ftColl_8007B128(gobj, cmd->x8.u->set_hurt_state.bone_idx,
@@ -555,7 +555,7 @@ void ftAction_80071A9C(Fighter_GObj* gobj, CommandInfo* cmd)
     NEXT_CMD(cmd);
 }
 
-/// @brief Sets Jab Combo
+/// Sets Jab Combo
 void ftAction_80071AE8(Fighter_GObj* gobj, CommandInfo* cmd)
 {
     Fighter* fp = GET_FIGHTER(gobj);
@@ -1153,7 +1153,7 @@ void ftAction_80072CD8(Fighter_GObj* gobj, CommandInfo* cmd)
     fp = gobj->user_data;
     sp60 = 1;
 
-    if (ft_80084BFC(gobj, &sp64, &sp60, &gfx_id) != false) {
+    if (ft_80084BFC(gobj, &sp64, &sp60, &gfx_id)) {
         if (sp64 != -1) {
             _cmd.x8.u = cmd_words;
             cmd_words[0] = cmd->x8.u[0];
@@ -1212,8 +1212,8 @@ void ftAction_80072E4C(Fighter_GObj* gobj, CommandInfo* cmd)
     gfx_id = -1;
     cmd_flag = cmd->x8.u->unk_fx_0.x1_b0_7;
     cmd_flag &= 1;
-    if ((ft_80084C38(gobj, &sp64, &sp60, &gfx_id) != false) &&
-        (cmd_flag == 0) && (sp64 != -1))
+    if ((ft_80084C38(gobj, &sp64, &sp60, &gfx_id)) && (cmd_flag == 0) &&
+        (sp64 != -1))
     {
         _cmd.x8.u = cmd_words;
         cmd_words[0] = cmd->x8.u[0];
@@ -1345,7 +1345,7 @@ void ftAction_80073240(Fighter_GObj* fighter_gobj)
             eventCode =
                 gmScriptEventCast(ftCommand->x8.u, gmScriptEventDefault)
                     ->opcode;
-            if (Command_Execute(ftCommand, eventCode) == false) {
+            if (!Command_Execute(ftCommand, eventCode)) {
                 eventCode -= 0xA;
                 ftAction_803C06E8[eventCode](fighter_gobj, ftCommand);
             }
@@ -1381,7 +1381,7 @@ void ftAction_80073354(Fighter_GObj* gobj)
                 float timer = cmd->timer;
                 eventCode =
                     gmScriptEventCast(cmd->x8.u, gmScriptEventDefault)->opcode;
-                if (Command_Execute(cmd, eventCode) == false) {
+                if (!Command_Execute(cmd, eventCode)) {
                     eventCode -= 0xA;
                     ftAction_803C07AC[eventCode](gobj, cmd);
                 }
