@@ -60,7 +60,7 @@ void ftKb_PkSpecialN_Anim(Fighter_GObj* gobj)
     ftKb_DatAttrs* da = fp->dat_attrs;
     PAD_STACK(4);
 
-    if (fp->cmd_vars[ftPk_SpecialN_Cmd0] == true) {
+    if (fp->cmd_vars[ftPk_SpecialN_Cmd0]) {
         fp->cmd_vars[ftPk_SpecialN_Cmd0] = false;
 
         if (!fp->cmd_vars[ftPk_SpecialN_Cmd1]) {
@@ -106,7 +106,7 @@ void ftKb_PkSpecialAirN_Anim(Fighter_GObj* gobj)
     float landing_lag;
     PAD_STACK(4);
 
-    if (fp->cmd_vars[ftPk_SpecialN_Cmd0] == true) {
+    if (fp->cmd_vars[ftPk_SpecialN_Cmd0]) {
         fp->cmd_vars[ftPk_SpecialN_Cmd0] = false;
 
         if (!fp->cmd_vars[ftPk_SpecialN_Cmd1]) {
