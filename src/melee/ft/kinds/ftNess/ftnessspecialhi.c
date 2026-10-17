@@ -133,7 +133,7 @@ bool ftNs_SpecialHi_ItemPKThunder_CheckNessCollide(HSD_GObj* gobj)
         pos = fp->cur_pos;
         pos.y += 5.0f * fp->x34_scale.y;
         it_802AB3F0(fp->u.ns.pkthunder_gobj, &pair, 0);
-        if (check_distance(&pos, &pair) == true) {
+        if (check_distance(&pos, &pair)) {
             fp->mv.ns.specialhi.thunderColl = 2;
             it_802AB3F0(fp->u.ns.pkthunder_gobj, &fp->mv.ns.specialhi.collPos1,
                         0);
@@ -627,7 +627,7 @@ void ftNs_SpecialHiHold_Anim(HSD_GObj* gobj)
             ftNs_SpecialHiStopGFX(gobj);
         }
     } else if (it_802AB568(fp->u.ns.pkthunder_gobj) == gobj) {
-        if (ftNs_SpecialHi_ItemPKThunder_CheckNessCollide(gobj) == true) {
+        if (ftNs_SpecialHi_ItemPKThunder_CheckNessCollide(gobj)) {
             ftNs_SpecialHi_Enter(gobj);
         }
     } else {
@@ -730,7 +730,7 @@ void ftNs_SpecialAirHiHold_Anim(HSD_GObj* gobj)
             ftNs_SpecialHiStopGFX(gobj);
         }
     } else if (it_802AB568(fp->u.ns.pkthunder_gobj) == gobj) {
-        if (ftNs_SpecialHi_ItemPKThunder_CheckNessCollide(gobj) == true) {
+        if (ftNs_SpecialHi_ItemPKThunder_CheckNessCollide(gobj)) {
             NessFloatMath_PKThunder2(gobj);
             Fighter_ChangeMotionState(gobj, ftNs_MS_SpecialAirHi, Ft_MF_None,
                                       0.0f, 1.0f, 0.0f, NULL);
@@ -1122,7 +1122,7 @@ void ftNs_SpecialHiStart_Coll(
     Fighter* fp;
 
     fp = gobj->user_data;
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftCommon_8007D60C(fp);
         Fighter_ChangeMotionState(gobj, ftNs_MS_SpecialAirHiStart,
                                   FTNESS_SPECIALHI_COLL_FLAG,
@@ -1137,7 +1137,7 @@ void ftNs_SpecialHiHold_Coll(HSD_GObj* gobj) // Ness's grounded PK Thunder
     Fighter* fp;
 
     fp = gobj->user_data;
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftCommon_8007D60C(fp);
         Fighter_ChangeMotionState(gobj, ftNs_MS_SpecialAirHiHold,
                                   FTNESS_SPECIALHI_COLL_FLAG,
@@ -1152,7 +1152,7 @@ void ftNs_SpecialHiEnd_Coll(
     Fighter* fp;
 
     fp = gobj->user_data;
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftCommon_8007D60C(fp);
         Fighter_ChangeMotionState(gobj, ftNs_MS_SpecialAirHiEnd,
                                   FTNESS_SPECIALHI_COLL_FLAG,
@@ -1168,7 +1168,7 @@ void ftNs_SpecialHi_Coll(HSD_GObj* gobj)
     Fighter* fp0;
 
     fp0 = gobj->user_data;
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         u32 env_flags = fp0->coll_data.env_flags;
 
         if (env_flags & Collide_LeftWallMask ||
@@ -1264,7 +1264,7 @@ void ftNs_SpecialAirHiStart_Coll(
     Fighter* fp;
 
     fp = gobj->user_data;
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftNs_MS_SpecialHiStart,
                                         FTNESS_SPECIALHI_COLL_FLAG);
     }
@@ -1278,7 +1278,7 @@ void ftNs_SpecialAirHiHold_Coll(
     Fighter* fp;
 
     fp = gobj->user_data;
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftNs_MS_SpecialHiHold,
                                         FTNESS_SPECIALHI_COLL_FLAG);
     }
@@ -1291,7 +1291,7 @@ void ftNs_SpecialAirHiEnd_Coll(
     Fighter* fp;
 
     fp = gobj->user_data;
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftNs_MS_SpecialHiEnd,
                                         FTNESS_SPECIALHI_COLL_FLAG);
     }
@@ -1352,7 +1352,7 @@ void ftNs_SpecialAirHi_Coll(HSD_GObj* gobj)
     } else {
         ledge_dir = -1;
     }
-    if (ft_CheckGroundAndLedge(gobj, ledge_dir) != false) {
+    if (ft_CheckGroundAndLedge(gobj, ledge_dir)) {
         if (lbVector_Angle(&fp->coll_data.floor.normal, &fp->self_vel) >
             (0.01745329238474369f *
              (90.0f + ness_attr->x64_PK_THUNDER_2_WALLHUG_ANGLE)))
@@ -1431,7 +1431,7 @@ void ftNs_SpecialAirHiRebound_Coll(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
 
-    if (ft_CheckGroundAndLedge(gobj, 0) == true) {
+    if (ft_CheckGroundAndLedge(gobj, 0)) {
         fp->self_vel.z = 0.0f;
         fp->self_vel.y = 0.0f;
         fp->self_vel.x = 0.0f;
@@ -1440,7 +1440,7 @@ void ftNs_SpecialAirHiRebound_Coll(HSD_GObj* gobj)
         ftCo_80097D40(gobj);
         return;
     }
-    if (ftCliffCommon_80081298(gobj) != false) {
+    if (ftCliffCommon_80081298(gobj)) {
         ftCliffCommon_80081370(gobj);
     }
 }
