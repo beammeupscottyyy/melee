@@ -144,7 +144,7 @@ u8 mnDiagram_GetNameByIndex(int idx)
 
 bool mnDiagram_IsDistanceOverflow(u32 distance)
 {
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         if (distance >= 0x274A6) {
             return true;
         }
@@ -158,7 +158,7 @@ bool mnDiagram_IsDistanceOverflow(u32 distance)
 
 u32 mnDiagram_ConvertDistanceForDisplay(u32 distance)
 {
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         if (distance >= 0x274A6) {
             return distance / 160934;
         }
@@ -316,7 +316,7 @@ int mnDiagram_GetFighterTotalKOs(u8 field_index)
     int total = 0;
     int selkind;
     for (selkind = 0; selkind < SELKIND_COUNT; selkind++) {
-        if (mn_IsFighterUnlocked(selkind) != 0) {
+        if (mn_IsFighterUnlocked(selkind)) {
             total += GetPersistentFighterData(field_index)
                          ->fighter_kos[(u8) selkind];
         }
@@ -456,7 +456,7 @@ u8 mnDiagram_GetPrevFighterIndex(s32 idx)
         if (idx < 0) {
             return original;
         }
-    } while (mn_IsFighterUnlocked(*ptr) == 0);
+    } while (!mn_IsFighterUnlocked(*ptr));
 
     return idx;
 }
@@ -475,12 +475,12 @@ u8 mnDiagram_GetNextFighterIndex(s32 idx)
         if (idx >= SELKIND_COUNT) {
             return original;
         }
-    } while (mn_IsFighterUnlocked(*ptr) == 0);
+    } while (!mn_IsFighterUnlocked(*ptr));
 
     return idx;
 }
 
-/// @brief Gets play time for a specific fighter under a name tag.
+/// Gets play time for a specific fighter under a name tag.
 /// @param name_idx Name tag index.
 /// @param fighter_idx Fighter index (0-24).
 /// @return Play time in seconds for this fighter under this name.
@@ -545,7 +545,7 @@ int mnDiagram_GetRankedFighterForName(int rank, int name_idx,
 
     // Find the rank-th unlocked fighter
     for (i = 0; i < SELKIND_COUNT; i++) {
-        if (gm_IsCKindUnlocked(gm_SelKindToCKind(entries[i].selkind)) != 0) {
+        if (gm_IsCKindUnlocked(gm_SelKindToCKind(entries[i].selkind))) {
             if (rank != 0) {
                 rank--;
                 // Check for ties - skip fighters with same value
@@ -593,7 +593,7 @@ u8 mnDiagram_GetLeastPlayedFighter(u8 name_idx)
     // Find fighter with minimum play time
     min_fighter = 0;
     for (i = 1; i < SELKIND_COUNT; i++) {
-        if (mn_IsFighterUnlocked(i) != 0) {
+        if (mn_IsFighterUnlocked(i)) {
             if (GetPersistentNameData(name_idx)
                     ->play_time_by_fighter[min_fighter] >
                 GetPersistentNameData(name_idx)->play_time_by_fighter[i])
@@ -606,7 +606,7 @@ u8 mnDiagram_GetLeastPlayedFighter(u8 name_idx)
     // Count unlocked fighters with zero play time
     count = 0;
     for (i = 0; i < SELKIND_COUNT; i++) {
-        if (mn_IsFighterUnlocked(i) != 0 &&
+        if (mn_IsFighterUnlocked(i) &&
             GetPersistentNameData(name_idx)->play_time_by_fighter[i] == 0U)
         {
             count++;
@@ -619,7 +619,7 @@ u8 mnDiagram_GetLeastPlayedFighter(u8 name_idx)
     // Check for ties
     count = 0;
     for (i = 0; i < SELKIND_COUNT; i++) {
-        if (mn_IsFighterUnlocked(i) != 0 && i != min_fighter) {
+        if (mn_IsFighterUnlocked(i) && i != min_fighter) {
             if (GetPersistentNameData(name_idx)->play_time_by_fighter[i] ==
                 GetPersistentNameData(name_idx)
                     ->play_time_by_fighter[min_fighter])
@@ -659,12 +659,12 @@ void mnDiagram_SortFightersByKOs(void)
         candidate = &dst[++j];
         max_idx = i;
         for (; j < SELKIND_COUNT; candidate++, j++) {
-            if (mn_IsFighterUnlocked(*candidate) != 0) {
+            if (mn_IsFighterUnlocked(*candidate)) {
                 if ((totals[mnDiagram_FighterDisplayOrder[max_idx]] <
                      totals[*candidate]) ||
-                    ((mn_IsFighterUnlocked(
-                          mnDiagram_FighterDisplayOrder[max_idx]) == 0) &&
-                     (mn_IsFighterUnlocked(*candidate) != 0)))
+                    (!mn_IsFighterUnlocked(
+                         mnDiagram_FighterDisplayOrder[max_idx]) &&
+                     mn_IsFighterUnlocked(*candidate)))
                 {
                     max_idx = j;
                 }
@@ -795,7 +795,7 @@ static inline s32 mnDiagram_FindPrevFighter(u8* sorted,
         if (found < 0) {
             return cur;
         }
-    } while (mn_IsFighterUnlocked(*p) == 0);
+    } while (!mn_IsFighterUnlocked(*p));
     return (u8) found;
 }
 
@@ -813,7 +813,7 @@ static inline u8 mnDiagram_FindNextFighter(u8* sorted,
         if (found >= SELKIND_COUNT) {
             return cur;
         }
-    } while (mn_IsFighterUnlocked(*p) == 0);
+    } while (!mn_IsFighterUnlocked(*p));
     return found;
 }
 
@@ -851,7 +851,7 @@ static inline s32 mnDiagram_FindPrevFighterWrap(u8* sorted, s32 cur)
         if (found < 0) {
             return (u8) cur;
         }
-    } while (mn_IsFighterUnlocked(*p) == 0);
+    } while (!mn_IsFighterUnlocked(*p));
     return (u8) found;
 }
 
@@ -906,7 +906,7 @@ static inline u8 mnDiagram_GetVisibleFighterCursorFrom(u8* sorted, int start,
             if (idx >= SELKIND_COUNT) {
                 return SELKIND_COUNT;
             }
-        } while (mn_IsFighterUnlocked(*p2) == 0);
+        } while (!mn_IsFighterUnlocked(*p2));
         remaining--;
     }
     return result;
@@ -937,7 +937,7 @@ static inline u8 mnDiagram_GetVisibleFighterColumnForInput(u8* sorted,
             if (*index >= SELKIND_COUNT) {
                 return SELKIND_COUNT;
             }
-        } while (mn_IsFighterUnlocked(*p2) == 0);
+        } while (!mn_IsFighterUnlocked(*p2));
         remaining--;
     }
     return result;
@@ -973,7 +973,7 @@ static inline u8 mnDiagram_GetVisibleFighterRowForInput(u8* sorted,
             if (*index >= SELKIND_COUNT) {
                 return SELKIND_COUNT;
             }
-        } while (mn_IsFighterUnlocked(*p2) == 0);
+        } while (!mn_IsFighterUnlocked(*p2));
         remaining--;
     }
     return result;
@@ -1003,7 +1003,7 @@ static inline u8 mnDiagram_GetVisibleFighterFromPointer(const u8* sorted,
             if (idx >= SELKIND_COUNT) {
                 return SELKIND_COUNT;
             }
-        } while (mn_IsFighterUnlocked(*p2) == 0);
+        } while (!mn_IsFighterUnlocked(*p2));
         remaining--;
     }
     return result;
@@ -1850,7 +1850,7 @@ void mnDiagram_UpdateScrollArrows(HSD_GObj* gobj)
                     result2 = SELKIND_COUNT;
                     goto dn_fc_done;
                 }
-            } while (mn_IsFighterUnlocked(*ptr) == 0);
+            } while (!mn_IsFighterUnlocked(*ptr));
             count--;
         } while (count >= 0);
     dn_fc_done:
