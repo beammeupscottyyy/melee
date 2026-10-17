@@ -138,7 +138,7 @@ void ft_800895E0(Fighter* fp, int arg1)
         val = sp18;
     }
     if (val.x0.x2073 == 0x62) {
-        if (fp->item_gobj != NULL && it_8026B6C8(fp->item_gobj) != 0) {
+        if (fp->item_gobj != NULL && it_8026B6C8(fp->item_gobj)) {
             sp14.x2070_int = 0x44003D;
             val = sp14;
         }
@@ -226,13 +226,9 @@ ft_800898B4_t* ft_800898B4(Fighter_GObj* gobj)
 bool ft_800898C0(HSD_GObj* gobj)
 {
     Fighter* ft = GET_FIGHTER(gobj);
-    if ((ft->x2070.x0.x2073 == 113 || ft->x2070.x0.x2073 == 114 ||
-         ft->x2070.x0.x2073 == 99) ||
-        ftFx_AppealS_CheckIfUsed(ft))
-    {
-        return true;
-    }
-    return false;
+    return ((ft->x2070.x0.x2073 == 113 || ft->x2070.x0.x2073 == 114 ||
+             ft->x2070.x0.x2073 == 99) ||
+            ftFx_AppealS_CheckIfUsed(ft));
 }
 
 s32 ft_80089914(HSD_GObj* gobj, int msid)
