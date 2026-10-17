@@ -91,8 +91,8 @@ void grFigureGet_OnDemoInit(int unused) {}
 void grFigureGet_OnInit(void)
 {
     yakumono_param = Ground_GetYakumonoParam();
-    stage_info.unk8C.b4 = 0;
-    stage_info.unk8C.b5 = 1;
+    stage_info.unk8C.b4 = false;
+    stage_info.unk8C.b5 = true;
     grFigureGet_802195CC(0);
     grFigureGet_802195CC(1);
     Ground_801C39C0();
@@ -262,7 +262,7 @@ void grFigureGet_80219898(Ground_GObj* gobj)
         } else {
             gp->u.figureget.x0 = temp_r3 - 1;
         }
-    } else if (grFigureGet_80219C50(gobj) != 0) {
+    } else if (grFigureGet_80219C50(gobj)) {
         for (var_r30 = 0; var_r30 < gp->u.figureget.x8; var_r30++) {
             gm_8017E280((u16) gp->u.figureget.x1C[var_r30], 1U);
         }
