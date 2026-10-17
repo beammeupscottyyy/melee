@@ -435,7 +435,7 @@ void grGreens_80213C10(Ground_GObj* gobj)
         }
 
         gp->u.greens2.xC--;
-        if (grAnime_801C84A4(gobj, 0, 7) != 0) {
+        if (grAnime_801C84A4(gobj, 0, 7)) {
             if (gp->u.greens2.xC > 0) {
                 gp->u.greens2.x8 = HSD_Randi(8);
                 grAnime_801C8138(gobj, gp->map_id,
@@ -482,7 +482,7 @@ void grGreens_80213C10(Ground_GObj* gobj)
         switch (gp->u.greens2.x8) {
         case 0:
         case 5:
-            if (grAnime_801C83D0(gobj, 0, 7) != 0) {
+            if (grAnime_801C83D0(gobj, false, 7)) {
                 gp->u.greens2.x8++;
                 grAnime_801C8138(
                     gobj, gp->map_id,
@@ -495,7 +495,7 @@ void grGreens_80213C10(Ground_GObj* gobj)
             break;
 
         case 1:
-            if (grAnime_801C83D0(gobj, 0, 7) != 0) {
+            if (grAnime_801C83D0(gobj, false, 7)) {
                 gp->u.greens2.x8++;
                 grAnime_801C8138(
                     gobj, gp->map_id,
@@ -509,7 +509,7 @@ void grGreens_80213C10(Ground_GObj* gobj)
             break;
 
         case 2:
-            if (grAnime_801C84A4(gobj, 0, 7) != 0) {
+            if (grAnime_801C84A4(gobj, 0, 7)) {
                 gp->u.greens2.xC++;
                 if ((float) gp->u.greens2.xC > yakumono_param->x50) {
                     gp->u.greens2.x8++;
@@ -529,7 +529,7 @@ void grGreens_80213C10(Ground_GObj* gobj)
             break;
 
         case 3:
-            if (grAnime_801C83D0(gobj, 0, 7) != 0) {
+            if (grAnime_801C83D0(gobj, false, 7)) {
                 int wind_dir;
 
                 gp->u.greens2.x8++;
@@ -558,7 +558,7 @@ void grGreens_80213C10(Ground_GObj* gobj)
         case 4:
             Camera_RequestQuake(QuakeKind_Loop, NULL);
             gp->u.greens2.x18 = gp->u.greens2.x14 + 1;
-            if (grAnime_801C84A4(gobj, 0, 7) != 0) {
+            if (grAnime_801C84A4(gobj, 0, 7)) {
                 int wind_dir;
 
                 gp->u.greens2.xC++;
@@ -594,7 +594,7 @@ void grGreens_80213C10(Ground_GObj* gobj)
             break;
 
         case 6:
-            if (grAnime_801C83D0(gobj, 0, 7) != 0) {
+            if (grAnime_801C83D0(gobj, false, 7)) {
                 {
                     Ground* cur_gp = GET_GROUND(gobj);
                     cur_gp->u.greens2.x0 = (cur_gp->u.greens2.x0 + 1) % 10;
@@ -618,7 +618,7 @@ void grGreens_80213C10(Ground_GObj* gobj)
             gp->u.greens2.x20 =
                 randrange(yakumono_param->x60, yakumono_param->x5C - 1);
             gp->u.greens2.x24 = HSD_Randi(2);
-        } else if (grAnime_801C83D0(gobj, 0, 7) != 0) {
+        } else if (grAnime_801C83D0(gobj, false, 7)) {
             if (gp->u.greens2.x20 < 0) {
                 {
                     Ground* cur_gp = GET_GROUND(gobj);
@@ -1162,7 +1162,7 @@ void grGreens_80215ED8(Ground_GObj* gobj, int col, int row)
     }
 
     if (gp->u.greens.x8_blocks[row][col].x1_2) {
-        if (grMaterial_801C8E48(gp->u.greens.x8_blocks[row][col].x10) != 0) {
+        if (grMaterial_801C8E48(gp->u.greens.x8_blocks[row][col].x10)) {
             gp->u.greens.x8_blocks[row][col].x1_3 = 1;
         }
         return;
