@@ -215,7 +215,7 @@ static void fn_80227188(void)
 
     gobj = Camera_80030A50();
     if (db_CameraInfoDisplay != NULL) {
-        if ((gobj != NULL) && (db_ShowCameraInfo != 0)) {
+        if (gobj != NULL && db_ShowCameraInfo) {
             if (db_CameraInfoDisplayTimer > 1) {
                 cobj = gobj->hsd_obj;
                 HSD_CObjGetEyePosition(cobj, &camera);
@@ -282,8 +282,8 @@ static void fn_80227188(void)
 void fn_CheckCameraInfo(int player, int buttons_down, int buttons_pressed,
                         f32 cstick_x, f32 cstick_y)
 {
-    if (gm_8018841C() == 0 && gm_GetCurrentGameMode() != GM_CAMERA_MODE) {
-        if (Camera_80030178() == 0 && Camera_80030154() == 0 &&
+    if (!gm_8018841C() && gm_GetCurrentGameMode() != GM_CAMERA_MODE) {
+        if (!Camera_80030178() && !Camera_80030154() &&
             (ABS(cstick_x) > 0.6F || ABS(cstick_y) > 0.6F))
         {
             fn_CheckCameraInfo_helper();
@@ -294,9 +294,9 @@ void fn_CheckCameraInfo(int player, int buttons_down, int buttons_pressed,
                 if ((buttons_down &
                      (HSD_PAD_Y | HSD_PAD_X | HSD_PAD_L | HSD_PAD_R)) == 0)
                 {
-                    if (Camera_80030178() != 0) {
+                    if (Camera_80030178()) {
                         Camera_8002FEEC(player);
-                    } else if (Camera_80030154() != 0) {
+                    } else if (Camera_80030154()) {
                         Camera_800300F0();
                     } else {
                         Camera_8003006C();
@@ -305,12 +305,12 @@ void fn_CheckCameraInfo(int player, int buttons_down, int buttons_pressed,
             }
         }
     }
-    if (Camera_80030154() != 0) {
+    if (Camera_80030154()) {
         fn_802277E8(Camera_80030A50(), player);
-    } else if (Camera_80030178() != 0) {
+    } else if (Camera_80030178()) {
         fn_80227904(Camera_80030A50(), player);
     }
-    if (Camera_80030178() != 0 && db.MiscStageVisualsStatus - 3 <= 1) {
+    if (Camera_80030178() && db.MiscStageVisualsStatus - 3 <= 1) {
         if (buttons_pressed & HSD_PAD_B) {
             db_ShowCameraInfo = !db_ShowCameraInfo;
         }
