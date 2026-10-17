@@ -1352,7 +1352,7 @@ void _tyDisplay_8031A4EC(HSD_GObj* arg0)
         return;
     }
 
-    if (mn_8022F218() != 0) {
+    if (mn_8022F218()) {
         sfxBack();
         mn_8022F268();
         ((TyModeState*) Toy_804A284C)->x4 = 1;
@@ -1868,9 +1868,9 @@ void tyDisplay_Scene_OnEnter(void* arg0)
     tyDisplay_SetGridSize(cfg, grid);
 
     {
-        s32 jp = lbLang_IsSavedLanguageJP();
+        bool jp = lbLang_IsSavedLanguageJP();
         const char* archive_name;
-        if (jp != 0) {
+        if (jp) {
             archive_name = "TyMnDisp.dat";
         } else {
             archive_name = "TyMnDisp.usd";
@@ -2336,7 +2336,7 @@ void tyDisplay_8031C2CC(void)
 
 s32 tyDisplay_8031C2EC(void)
 {
-    if (Toy_80304B0C(5) != 0) {
+    if (Toy_80304B0C(5)) {
         if (HSD_Randi(2) == 0) {
             return Toy_80305058(2, 5, 1, 65.0f);
         }
@@ -2368,10 +2368,10 @@ s32 tyDisplay_8031C354(s32 id, s32 buf[], s32 max, s32 kind)
         if (i == id) {
             continue;
         }
-        if (Toy_80304CC8(i) == 0) {
+        if (!Toy_80304CC8(i)) {
             continue;
         }
-        if (Toy_803049F4(i) == 0) {
+        if (!Toy_803049F4(i)) {
             continue;
         }
         other = tyDisplay_8031B9DC(i);
