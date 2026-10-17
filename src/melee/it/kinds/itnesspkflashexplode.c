@@ -122,10 +122,7 @@ bool itNessPKFlashExplode_UnkMotion0_Anim(Item_GObj* gobj)
     ip->x5D4_hitboxes[0].hit.scale =
         ip->xDD4_itemVar.pkflushexplode.xDD8 * scale.x;
 
-    if (it_80272C6C(gobj) == false) {
-        return true;
-    }
-    return false;
+    return !it_80272C6C(gobj);
 }
 
 void itNessPKFlashExplode_UnkMotion0_Phys(Item_GObj* gobj)
