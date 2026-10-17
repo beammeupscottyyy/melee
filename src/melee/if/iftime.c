@@ -200,7 +200,7 @@ void ifTime_UpdateTimers(HSD_GObj* arg0)
     seconds = gm_8016AEEC();
     centiseconds = gm_8016AF0C();
     ifTime_SetTime(jobj, seconds, centiseconds);
-    if (gm_8016B110() == 0 && centiseconds == 0 && seconds == 5) {
+    if (!gm_8016B110() && centiseconds == 0 && seconds == 5) {
         HSD_JObj* jobj2 =
             HSD_JObjLoadJoint(x->countdown_timer_models[0]->joint);
         if (jobj2 == NULL) {
