@@ -170,7 +170,7 @@ void ftFx_SpecialHiHoldAir_Phys(HSD_GObj* gobj)
 
 void ftFx_SpecialHiHold_Coll(HSD_GObj* gobj)
 {
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftFx_SpecialHiHold_GroundToAir(gobj);
     }
 }
@@ -297,7 +297,7 @@ void ftFx_SpecialHi_Coll(HSD_GObj* gobj)
 
     fp->mv.fx.SpecialHi.unk2 += 1;
 
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftFx_SpecialHi_GroundToAir(gobj);
         return;
     }
@@ -352,7 +352,7 @@ void ftFx_SpecialAirHi_Coll(HSD_GObj* gobj)
      * sliver of sense but it matches so whatever :D
      * @todo This match is definitely fake.
      */
-    if (ftCliffCommon_80081298(gobj) == false) {
+    if (!ftCliffCommon_80081298(gobj)) {
         do {
             s32 envFlags = collData->env_flags;
             float var;
@@ -447,7 +447,7 @@ void ftFx_SpecialAirHi_AirToGround(HSD_GObj* gobj)
         sp20.z = 0.0f;
 
         if (!(lbVector_AngleXY(&collData->floor.normal, &sp20) < HALF_PI32) &&
-            (ftCo_8009A134(gobj) == false))
+            !ftCo_8009A134(gobj))
         {
             ftCommon_UpdateFacing(fp);
 
@@ -455,7 +455,7 @@ void ftFx_SpecialAirHi_AirToGround(HSD_GObj* gobj)
                                       0.0f, 1.0f, 0.0f, NULL);
 
             tempAttrs = fp->dat_attrs;
-            fp->x2223_b4 = 1;
+            fp->x2223_b4 = true;
 
             fp->mv.fx.SpecialHi.travelFrames =
                 tempAttrs->x68_FOX_FIREFOX_DURATION;
@@ -599,7 +599,7 @@ void ftFx_SpecialHiLanding_Coll(HSD_GObj* gobj)
     Fighter* fp = GET_FIGHTER(gobj);
     ftFox_DatAttrs* da = fp->dat_attrs;
 
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftCo_80096900(gobj, 1, 0, true, da->x8C_FOX_FIREFOX_FREEFALL_MOBILITY,
                       da->x90_FOX_FIREFOX_LANDING_LAG);
     }
