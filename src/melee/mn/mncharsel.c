@@ -534,12 +534,12 @@ void mnCharSel_8025C020(int arg0)
         } else {
             HSD_SisLib_803A70A0(mnCharSel_804D6CDC, 0, "%08d",
                                 getClassicHighscore(hud_index));
-            if (gmMainLib_8015D0D8(hud_index) != 0) {
+            if (gmMainLib_8015D0D8(hud_index)) {
                 HSD_JObjClearFlags(sp7C, JOBJ_HIDDEN);
             }
         }
         HSD_SisLib_803A70A0(mnCharSel_804D6CE4, 0, "%09d", gm_80162C48());
-        if (gm_80162D1C() != 0) {
+        if (gm_80162D1C()) {
             sp7C = inline3(0x43, gm_80162D6C());
             HSD_JObjClearFlags(sp7C, JOBJ_HIDDEN);
         }
@@ -551,12 +551,12 @@ void mnCharSel_8025C020(int arg0)
         } else {
             HSD_SisLib_803A70A0(mnCharSel_804D6CDC, 0, "%08d",
                                 getAdventureHighscore(hud_index));
-            if (gmMainLib_8015D200(hud_index) != 0) {
+            if (gmMainLib_8015D200(hud_index)) {
                 HSD_JObjClearFlags(sp7C, JOBJ_HIDDEN);
             }
         }
         HSD_SisLib_803A70A0(mnCharSel_804D6CE4, 0, "%09d", gm_80162E44());
-        if (gm_80162F18() != 0) {
+        if (gm_80162F18()) {
             sp7C = inline3(0x43, gm_80162F68());
             HSD_JObjClearFlags(sp7C, JOBJ_HIDDEN);
         }
@@ -568,12 +568,12 @@ void mnCharSel_8025C020(int arg0)
         } else {
             HSD_SisLib_803A70A0(mnCharSel_804D6CDC, 0, "%08d",
                                 getAllStarHighscore(hud_index));
-            if (gmMainLib_8015D328(hud_index) != 0) {
+            if (gmMainLib_8015D328(hud_index)) {
                 HSD_JObjClearFlags(sp7C, JOBJ_HIDDEN);
             }
         }
         HSD_SisLib_803A70A0(mnCharSel_804D6CE4, 0, "%09d", gm_80163040());
-        if (gm_80163114() != 0) {
+        if (gm_80163114()) {
             sp7C = inline3(0x43, gm_80163164());
             HSD_JObjClearFlags(sp7C, JOBJ_HIDDEN);
         }
@@ -582,7 +582,7 @@ void mnCharSel_8025C020(int arg0)
         if (arg0 == 0) {
             int target_count = gm_8016332C(hud_index);
             if (target_count != -1U) {
-                if (lbLang_IsSavedLanguageJP() != 0) {
+                if (lbLang_IsSavedLanguageJP()) {
                     HSD_SisLib_803A70A0(mnCharSel_804D6CDC, 0, "%d \x8c\xc2",
                                         target_count);
                 } else {
@@ -596,7 +596,7 @@ void mnCharSel_8025C020(int arg0)
             }
         }
         lb_80011E24(mnCharSel_804D6CC8, &sp7C, 3, -1);
-        if (gm_801634D4(&sp7B, &sp7A, &sp79, &sp78) != 0) {
+        if (gm_801634D4(&sp7B, &sp7A, &sp79, &sp78)) {
             drawTimeText(mnCharSel_804D6CE4, mnCharSel_804D6CE8, sp7B, sp7A,
                          sp79, sp78);
             HSD_JObjClearFlagsAll(sp7C, JOBJ_HIDDEN);
@@ -634,7 +634,7 @@ void mnCharSel_8025C020(int arg0)
         break;
     case STADIUM_MULTIMAN_10:
         if (arg0 == 0) {
-            if (gm_8016365C(hud_index) != 0) {
+            if (gm_8016365C(hud_index)) {
                 show_kos(mnCharSel_804D6CDC, gm_80163690(hud_index));
             } else {
                 gm_801636D8(hud_index, &sp7B, &sp7A, &sp79, &sp78);
@@ -643,7 +643,7 @@ void mnCharSel_8025C020(int arg0)
             }
         }
         lb_80011E24(mnCharSel_804D6CC8, &sp7C, 3, -1);
-        if (gm_80163838(&sp7B, &sp7A, &sp79, &sp78) != 0) {
+        if (gm_80163838(&sp7B, &sp7A, &sp79, &sp78)) {
             drawTimeText(mnCharSel_804D6CE4, mnCharSel_804D6CE8, sp7B, sp7A,
                          sp79, sp78);
             HSD_JObjClearFlagsAll(sp7C, JOBJ_HIDDEN);
@@ -655,7 +655,7 @@ void mnCharSel_8025C020(int arg0)
         break;
     case STADIUM_MULTIMAN_100:
         if (arg0 == 0) {
-            if (gm_801639C0(hud_index) != 0) {
+            if (gm_801639C0(hud_index)) {
                 show_kos(mnCharSel_804D6CDC, gm_801639F4(hud_index));
             } else {
                 gm_80163A3C(hud_index, &sp7B, &sp7A, &sp79, &sp78);
@@ -664,7 +664,7 @@ void mnCharSel_8025C020(int arg0)
             }
         }
         lb_80011E24(mnCharSel_804D6CC8, &sp7C, 3, -1);
-        if (gm_80163B9C(&sp7B, &sp7A, &sp79, &sp78) != 0) {
+        if (gm_80163B9C(&sp7B, &sp7A, &sp79, &sp78)) {
             drawTimeText(mnCharSel_804D6CE4, mnCharSel_804D6CE8, sp7B, sp7A,
                          sp79, sp78);
             HSD_JObjClearFlagsAll(sp7C, JOBJ_HIDDEN);
@@ -754,7 +754,7 @@ void mnCharSel_8025D1C4(int port, int mode)
     HSD_JObj* next3;
     HSD_Text* text;
     f32 star_x;
-    s32 show_stars;
+    bool show_stars;
     int star_count;
     CSSData* css = mnCharSel_804D6CB0;
     CSSKOStar* stars;
@@ -1140,11 +1140,11 @@ bool mnCharSel_8025DAA0(int door)
 
 static inline void pickUniqueCostume(int door)
 {
-    if (mnCharSel_8025DAA0(door) != 0) {
+    if (mnCharSel_8025DAA0(door)) {
         int v = 0;
         for (;;) {
             mnCharSel_803F0DFC.doors[door].costume = v;
-            if (mnCharSel_8025DAA0(door) == 0) {
+            if (!mnCharSel_8025DAA0(door)) {
                 break;
             }
             v += 1;
@@ -1185,7 +1185,7 @@ void mnCharSel_8025DB34(u8 arg0)
     /* Name display */
     if (mnCharSel_803F0E8C[arg0].data->use_tag == 0 && (int) sel_icon < 0x19) {
         mnCharSel_803F0E8C[arg0].data->text->default_kerning = 1;
-        if (lbLang_IsSavedLanguageUS() != 0 && (int) sel_icon == 0x16) {
+        if (lbLang_IsSavedLanguageUS() && (int) sel_icon == 0x16) {
             HSD_SisLib_803A70A0(mnCharSel_803F0E8C[arg0].data->text, 0,
                                 (char*) mnCharSel_803F0A48.gnw_name);
         } else {
@@ -3709,15 +3709,17 @@ void fn_80262F44(HSD_GObj* gobj)
                 }
                 goto hide;
             }
-        teams_ok: {
-            CSSTag* tag = mnCharSel_803F0E8C;
-            for (i = 0; i < (s32) mnCharSel_804D6CF5; i++) {
-                if (mnCharSel_804A0BC0[i]->x5 == 1 || tag[i].data->state != 0)
-                {
-                    goto hide;
+        teams_ok:
+            {
+                CSSTag* tag = mnCharSel_803F0E8C;
+                for (i = 0; i < (s32) mnCharSel_804D6CF5; i++) {
+                    if (mnCharSel_804A0BC0[i]->x5 == 1 ||
+                        tag[i].data->state != 0)
+                    {
+                        goto hide;
+                    }
                 }
             }
-        }
 
             if (mnCharSel_804D6CF7 == 0) {
                 HSD_ForeachAnim(jobj, JOBJ_TYPE, ALL_TYPE_MASK,
@@ -3883,7 +3885,7 @@ void fn_802633B0(HSD_GObj* gobj)
     case 1:
         mnCharSel_8025D1C4((s32) tag->port, 1);
         if (mnCharSel_803F0DFC.doors[tag->port].sel_icon < 0x19U) {
-            if (lbLang_IsSavedLanguageUS() != 0 &&
+            if (lbLang_IsSavedLanguageUS() &&
                 mnCharSel_803F0DFC.doors[tag->port].sel_icon == 0x16)
             {
                 HSD_SisLib_803A70A0(tag->name_ls, 0,
@@ -4039,7 +4041,7 @@ void fn_802633B0(HSD_GObj* gobj)
             row = (s32) cursor_row;
 
             if ((s32) cursor_row == 0) {
-                if (lbLang_IsSavedLanguageUS() != 0 &&
+                if (lbLang_IsSavedLanguageUS() &&
                     mnCharSel_803F0DFC.doors[tag->port].sel_icon == 0x16)
                 {
                     HSD_SisLib_803A70A0(tag->text, 0,
@@ -4071,7 +4073,7 @@ void fn_802633B0(HSD_GObj* gobj)
                 tag->state = 4;
                 sfxMove();
             } else if ((s32) tag->next_tag == row) {
-                if (IsNameListFull() == 0) {
+                if (!IsNameListFull()) {
                     if (mnCharSel_804D6CF5 == 1) {
                         mnCharSel_804D6CF9 = mnCharSel_804D6CF0;
                     } else {
@@ -4355,7 +4357,7 @@ s32 mnCharSel_802640A0(void)
     HSD_ForeachAnim(mnCharSel_804D6CC0, JOBJ_TYPE, ALL_TYPE_MASK,
                     HSD_AObjStopAnim, AOBJ_ARG_AOV, 0, 0);
 
-    if (gm_IsCKindUnlocked(CKind_Luigi) == 0) {
+    if (!gm_IsCKindUnlocked(CKind_Luigi)) {
         row_a = 2;
         row_b = 0x13;
     } else {
@@ -4455,7 +4457,7 @@ s32 mnCharSel_802640A0(void)
         HSD_ForeachAnim(mnCharSel_804D6CC4, JOBJ_TYPE, ALL_TYPE_MASK,
                         HSD_AObjStopAnim, AOBJ_ARG_AOV, 0, 0);
         ck = mnCharSel_804D6CB0->vs.start.players[mnCharSel_804D6CF1].ckind;
-        if ((s8) ck >= CKind_Playable_Count || gm_IsCKindUnlocked(ck) == 0) {
+        if ((s8) ck >= CKind_Playable_Count || !gm_IsCKindUnlocked(ck)) {
             u8* char_kinds;
             s32 icon_off;
             do {
@@ -4553,7 +4555,7 @@ s32 mnCharSel_802640A0(void)
                             icons[found].char_kind &&
                         gm_IsCKindUnlocked(
                             mnCharSel_804D6CB0->vs.start.players[player]
-                                .ckind) != 0)
+                                .ckind))
                     {
                         break;
                     }
@@ -4989,7 +4991,7 @@ s32 mnCharSel_802640A0(void)
             text->font_size.x = 0.07f;
             text->font_size.y = 0.055f;
             text->default_kerning = 1;
-            if (lbLang_IsSavedLanguageJP() != 0) {
+            if (lbLang_IsSavedLanguageJP()) {
                 HSD_SisLib_803A6B98(text, 0.0f, 0.0f, "\x82\x8d");
                 HSD_SisLib_803A6B98(text, 0.0f, 35.0f, "\x82\x8d");
             } else {
@@ -5314,7 +5316,7 @@ void mnCharSel_Scene_OnEnter(void* arg0)
     lbAudioAx_8002702C(2, 8);
     lbAudioAx_80027168();
     lbAudioAx_80027648();
-    if (lbLang_IsSavedLanguageJP() != 0) {
+    if (lbLang_IsSavedLanguageJP()) {
         mnCharSel_804D6CD0 = lbArchive_LoadArchive("MnSlChr.dat");
         mnCharSel_804D6CD4 = lbArchive_LoadArchive("MnExtAll.dat");
     } else {
@@ -5325,7 +5327,7 @@ void mnCharSel_Scene_OnEnter(void* arg0)
         HSD_ArchiveGetPublicAs(struct MnSelectChrDataTable, mnCharSel_804D6CD0,
                                "MnSelectChrDataTable");
     css_models = &css_data_table->models;
-    if (lbLang_IsSavedLanguageJP() != 0) {
+    if (lbLang_IsSavedLanguageJP()) {
         HSD_SisLib_803A62A0(0, "SdSlChr.dat", "SIS_SelCharData");
     } else {
         HSD_SisLib_803A62A0(0, "SdSlChr.usd", "SIS_SelCharData");
@@ -5401,7 +5403,7 @@ void mnCharSel_Scene_OnFrame(void)
         }
         lbDvd_80018254();
     }
-    if (mn_8022F218() != 0) {
+    if (mn_8022F218()) {
         sfxBack();
         lb_800145F4();
         mn_8022F138(1, 8);
