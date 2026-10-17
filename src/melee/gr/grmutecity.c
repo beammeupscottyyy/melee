@@ -432,7 +432,7 @@ void grMuteCity_801EFDF8(Ground_GObj* gobj)
     gp->u.mutecity.xD2 = 0;
     gp->u.mutecity.xD8 = 0.932775f;
     gp->u.mutecity.xD4 = 0.932775f;
-    gp->u.mutecity.xD0_flags.b0 = 0;
+    gp->u.mutecity.xD0_flags.b0 = false;
     gp->u.mutecity.xDC = Ground_801C3FA4(gobj, 5);
     gp->u.mutecity.xE0 = Ground_801C3FA4(gobj, 9);
 
@@ -510,7 +510,7 @@ void grMuteCity_801F0120(Ground_GObj* gobj)
     }
     grMuteCity_801F04B8(gobj);
     grMuteCity_801F0948(gobj);
-    if (ground->u.mutecity.xD0_flags.b0 != 0) {
+    if (ground->u.mutecity.xD0_flags.b0) {
         grMuteCity_801F0D20(gobj);
     }
     grMuteCity_801F1328();
@@ -781,7 +781,7 @@ void grMuteCity_801F04B8(Ground_GObj* gobj)
         return;
     }
 
-    if (lb_8000B134(Ground_801C3FA4(gobj, 0x1A)) != 0) {
+    if (lb_8000B134(Ground_801C3FA4(gobj, 0x1A))) {
         gp->u.mutecity.xC4 = 0;
         HSD_JObjReqAnimAll(gp->u.mutecity.xC8->hsd_obj, 1.0f);
     }
@@ -820,17 +820,17 @@ void grMuteCity_801F04B8(Ground_GObj* gobj)
             break;
         case 8:
             mpLib_80057BC0(4);
-            gp->u.mutecity.xD0_flags.b0 = 0;
+            gp->u.mutecity.xD0_flags.b0 = false;
             break;
         case 18:
-            gp->u.mutecity.xD0_flags.b1 = 1;
+            gp->u.mutecity.xD0_flags.b1 = true;
             break;
         case 19:
-            gp->u.mutecity.xD0_flags.b1 = 0;
+            gp->u.mutecity.xD0_flags.b1 = false;
             break;
         case 9:
             mpJointListAdd(4);
-            gp->u.mutecity.xD0_flags.b0 = 1;
+            gp->u.mutecity.xD0_flags.b0 = true;
             gp->u.mutecity.xD4 = fval;
             gp->u.mutecity.xD8 = fval;
             break;
@@ -1785,7 +1785,7 @@ void grMuteCity_801F290C(Ground_GObj* gobj)
     HSD_GObj* lgobj;
     s32 i;
     HSD_LObj* lobj;
-    if (grLib_801C96E8(gobj) != 0) {
+    if (grLib_801C96E8(gobj)) {
         if (gp->u.mutecity2.xC4_flags.b0) {
             lgobj = HSD_GObjPLinkHead[HSD_GOBJ_PLINK_LIGHT];
             while (lgobj != NULL) {
