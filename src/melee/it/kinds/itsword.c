@@ -423,7 +423,7 @@ bool itSword_UnkMotion2_Anim(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
     itSwordAttributes* attrs =
         &ip->xC4_article_data->x4_specialAttributes->sword;
-    if (ip->owner != NULL && ftLib_IsSwordSwing(ip->owner) != true) {
+    if (ip->owner != NULL && !ftLib_IsSwordSwing(ip->owner)) {
         inlineA1(gobj);
     }
     if (ip->xDD4_itemVar.sword.x3C == 0) {
