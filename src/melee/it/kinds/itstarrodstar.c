@@ -82,10 +82,7 @@ void itStarrodstar_UnkMotion0_Phys(Item_GObj* gobj)
 
 bool itStarrodstar_UnkMotion0_Coll(Item_GObj* gobj)
 {
-    if (it_8026DFB0(gobj) != 0) {
-        return true;
-    }
-    return false;
+    return it_8026DFB0(gobj);
 }
 
 bool itStarRodStar_Logic36_DmgDealt(Item_GObj* arg0)
