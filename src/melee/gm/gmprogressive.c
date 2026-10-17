@@ -26,7 +26,7 @@ static struct gm_80480D70_t {
     int x14;
     u32 x18;
     u32 x1C;
-    u8 x20;
+    bool x20;
 } gm_80480D70;
 
 static void gm_801AD088(void)
@@ -47,7 +47,7 @@ static void gm_801AD088(void)
     GObj_SetupGXLinkMax(gobj, HSD_GObj_803910D8, 0);
     gobj->gxlink_prios = 0x4801;
     gm_80480D70.xC = HSD_SisLib_803A611C(0, 0, 0xE, 0xF, 0, 0xE, 8, 0);
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         HSD_SisLib_803A62A0(0, "SdProge.usd", "SIS_ProgeData");
     } else {
         HSD_SisLib_803A62A0(0, "SdProge.dat", "SIS_ProgeData");
@@ -164,9 +164,9 @@ void gm_Scene_ProgScan_OnFrame(void)
         }
         if (gm_80480D70.x10 == 0 || gm_80480D70.x14 != 0) {
             gm_80480D70.x18++;
-            gm_80480D70.x20 = 1;
+            gm_80480D70.x20 = true;
         }
-        if (gm_80480D70.x20 != 0 && gm_80480D70.x18 >= 0x12C) {
+        if (gm_80480D70.x20 && gm_80480D70.x18 >= 0x12C) {
             gm_801A4B60();
         }
     }
@@ -188,7 +188,7 @@ void gm_Scene_ProgScan_OnEnter(UNK_T arg0)
     gm_80480D70.x14 = var_r0;
     gm_80480D70.x18 = 0;
     gm_80480D70.x1C = 0;
-    gm_80480D70.x20 = 0;
+    gm_80480D70.x20 = false;
 }
 
 void gm_Scene_ProgScan_OnExit(UNK_T arg0)
