@@ -27,7 +27,7 @@ void ftCo_800CD140(Fighter_GObj* gobj, int arg1, int arg2, int arg3,
 
 void ftCo_800CD1BC(Fighter_GObj* gobj)
 {
-    if (ftAnim_IsFramesRemaining(gobj) == 0) {
+    if (!ftAnim_IsFramesRemaining(gobj)) {
         ft_8008A2BC(gobj);
         ftCommon_8007E7E4(gobj, 1);
     }
@@ -36,7 +36,7 @@ void ftCo_800CD1BC(Fighter_GObj* gobj)
 void ftCo_800CD204(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if ((fp->input.held_buttons[0] & HSD_PAD_A) == 0) {
+    if (!(fp->input.held_buttons[0] & HSD_PAD_A)) {
         fp->mv.co.swing.x0 = 0;
     }
     if (ftCheckThrowB3(fp) && fp->mv.co.swing.x0 != 0) {
@@ -58,7 +58,7 @@ void ftCo_800CD278(Fighter_GObj* gobj)
 
 void ftCo_800CD2C4(Fighter_GObj* gobj, void (*cb)(Fighter_GObj*))
 {
-    if (ft_800827A0(gobj) == false) {
+    if (!ft_800827A0(gobj)) {
         cb(gobj);
         ftCo_Fall_Enter(gobj);
     }
