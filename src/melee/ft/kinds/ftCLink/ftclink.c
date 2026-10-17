@@ -344,7 +344,7 @@ void ftCl_Init_OnItemPickupExt(HSD_GObj* gobj, bool flag)
 
     Fighter* fp = gobj->user_data;
 
-    if (itIsHeavy(fp->item_gobj) == true) {
+    if (itIsHeavy(fp->item_gobj)) {
         ftParts_80074A4C(gobj, 1, 1);
     }
 
@@ -368,7 +368,7 @@ void ftCl_Init_OnItemDropExt(HSD_GObj* gobj, bool flag)
 
     Fighter* fp = gobj->user_data;
 
-    if (itIsHeavy(fp->item_gobj) == true) {
+    if (itIsHeavy(fp->item_gobj)) {
         ftParts_80074A4C(gobj, 1, 0);
     }
 
