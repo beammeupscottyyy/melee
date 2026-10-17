@@ -518,7 +518,7 @@ void db_CheckAndSpawnItem(int player)
         return;
     }
     spawnItem.kind = db_ItemAndPokemonMenu.CurrentlySelectedItem;
-    if (Item_80266F3C() == false && spawnItem.kind < It_Kind_Common_End) {
+    if (!Item_80266F3C() && spawnItem.kind < It_Kind_Common_End) {
         return;
     }
     Player_LoadPlayerCoords(player, &spawnItem.prev_pos);
@@ -530,7 +530,7 @@ void db_CheckAndSpawnItem(int player)
     spawnItem.vel.x = spawnItem.vel.y = spawnItem.vel.z = 0.0F;
     spawnItem.x0_parent_gobj = NULL;
     spawnItem.x4_parent_gobj2 = spawnItem.x0_parent_gobj;
-    spawnItem.x44_flag.x0.b0 = 1;
+    spawnItem.x44_flag.x0.b0 = true;
     spawnItem.x40 = 0;
     if (spawnItem.kind < It_Kind_Common_End &&
         Item_804A0C64.x0 >= (u32) it_804D6D28->x0)
@@ -549,7 +549,7 @@ void db_CheckAndSpawnItem(int player)
         it_804A0F60[spawnItem.kind - It_Kind_Section_Stage_Extended_Start] !=
             NULL)
     {
-        if (spawnItem.kind != It_Kind_M_Ball || it_8026C704() == false) {
+        if (spawnItem.kind != It_Kind_M_Ball || !it_8026C704()) {
             {
                 HSD_GObj* gobj = Item_80268B18(&spawnItem);
                 if (gobj != NULL) {
