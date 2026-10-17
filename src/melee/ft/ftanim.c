@@ -79,7 +79,7 @@ void ftAnim_GetNextMatAnimJointInTree(HSD_MatAnimJoint** pjoint, int* pdepth)
                     var_r0 = NULL;
                     break;
                 }
-                if (ftAnim_804590D8_unk[i - 1]->next != 0U) {
+                if (ftAnim_804590D8_unk[i - 1]->next != NULL) {
                     var_r0 = ftAnim_804590D8_unk[--i]->next;
                     break;
                 }
@@ -114,7 +114,7 @@ void ftAnim_GetNextJointInTree(HSD_Joint** pjoint, s32* pdepth)
                     var_r0 = NULL;
                     break;
                 }
-                if (ftAnim_804590D8_F0[i - 1]->next != 0U) {
+                if (ftAnim_804590D8_F0[i - 1]->next != NULL) {
                     var_r0 = ftAnim_804590D8_F0[--i]->next;
                     break;
                 }
@@ -562,7 +562,7 @@ float ftAnim_8006F3DC(Fighter_GObj* fighter_gobj)
                 !fp->parts[i].x8.x0.flags_b5)
             {
                 HSD_AObj* aobj = fp->parts[i].joint->aobj;
-                if (aobj != 0) {
+                if (aobj != NULL) {
                     return aobj->curr_frame;
                 }
             }
