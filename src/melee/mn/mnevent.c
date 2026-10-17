@@ -45,7 +45,7 @@ static inline s32 mnEvent_CountUnlocked(void)
     s32 count = 0;
 
     for (i = 0; i < 0x33; i++) {
-        if (gmMainLib_8015CEFC(i) != 0) {
+        if (gmMainLib_8015CEFC(i)) {
             count += 1;
         }
     }
@@ -225,7 +225,7 @@ void mnEvent_8024D15C(s32 idx, s32 event_id)
             data->gobjs[idx] = NULL;
         }
 
-        if (gmMainLib_8015CEFC(event_id) != 0) {
+        if (gmMainLib_8015CEFC(event_id)) {
             mnEvent_CreateIconForSlot(idx, &data->gobjs[idx], &icon_jobj_0A,
                                       &icon_jobj_0C, &icon_pos);
         }
@@ -304,7 +304,7 @@ void mnEvent_8024D5B0(HSD_GObj* gobj, u8 event)
     if ((gm_801BEB8C((u32) gm_801BEBC0((((u32) temp_r27) & 0xFFu) & 0xFFu)) &
          0xFFu) != 0)
     {
-        if (gmMainLib_8015CEFC((s32) gm_801BEBC0(event & 0xFFFFFFFFu)) != 0) {
+        if (gmMainLib_8015CEFC((s32) gm_801BEBC0(event & 0xFFFFFFFFu))) {
             mn_8022EA78(sp18, 2, (temp_r30 / 60 / 60) % 60);
             mn_8022EA78(sp14, 2, (temp_r30 / 60) % 60);
             mn_8022EA78(sp10, 2,
@@ -321,9 +321,7 @@ void mnEvent_8024D5B0(HSD_GObj* gobj, u8 event)
                             sp14, sp10);
         return;
     }
-    if (gmMainLib_8015CEFC((s32) gm_801BEBC0(event & 0xFFFFFFFFFFFFFFFFu)) !=
-        0)
-    {
+    if (gmMainLib_8015CEFC((s32) gm_801BEBC0(event & 0xFFFFFFFFFFFFFFFFu))) {
         HSD_SisLib_803A6B98(time_text, 0.0f, 0.0f, "%d", temp_r30);
         return;
     }
@@ -708,7 +706,7 @@ void mnEvent_8024E838(int event_idx, bool first_time)
     mn_804A04F0.hovered_selection = 0;
     mnEvent_804D6C65 = event_idx;
 
-    if (first_time != false) {
+    if (first_time) {
         mnEvent_804D6C64 = 0x14;
     } else {
         mnEvent_804D6C64 = 0;
@@ -724,7 +722,7 @@ void mnEvent_8024E838(int event_idx, bool first_time)
         &MenMainConEv.shapeanim_joint, "MenMainConEv_Top_shapeanim_joint",
         &MenMainMarkEv.joint, "MenMainMarkEv_Top_joint", 0);
 
-    if (first_time == false) {
+    if (!first_time) {
         mnEvent_8024E524(event_idx);
     }
 
