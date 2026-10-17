@@ -107,7 +107,7 @@ void it_802AD6B8(Item_GObj* gobj)
 {
     if (gobj != NULL) {
         Item* ip = GET_ITEM(gobj);
-        ip->xDD4_itemVar.nessbat.x0 = 0;
+        ip->xDD4_itemVar.nessbat.x0 = NULL;
         ip->owner = NULL;
         Item_8026A8EC(gobj);
     }
@@ -140,9 +140,7 @@ bool itNessbat_UnkMotion0_Anim(Item_GObj* gobj)
     }
 
     if (ip->xDD4_itemVar.nessbat.x0 != NULL) {
-        if (ftNs_AttackS4_CheckNessBatRemove(ip->xDD4_itemVar.nessbat.x0) ==
-            true)
-        {
+        if (ftNs_AttackS4_CheckNessBatRemove(ip->xDD4_itemVar.nessbat.x0)) {
             itNessbat_ClearOwnerRef(gobj);
             if (itNessbat_RemoveItem(gobj)) {
                 return true;
@@ -170,7 +168,7 @@ bool itNessbat_UnkMotion1_Anim(Item_GObj* gobj)
         Item* ip = GET_ITEM(gobj);
         if (ip != NULL) {
             if (ip->xDD4_itemVar.nessbat.x0 != NULL) {
-                if (ftCo_800BF228(ip->xDD4_itemVar.nessbat.x0) == true) {
+                if (ftCo_800BF228(ip->xDD4_itemVar.nessbat.x0)) {
                     Vec3 scale;
                     HSD_GObj* owner = ip->xDD4_itemVar.nessbat.x0;
                     Item_CopyJObjScale(GET_JOBJ(gobj), GET_JOBJ(owner),
