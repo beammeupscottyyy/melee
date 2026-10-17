@@ -332,7 +332,7 @@ void ftMs_SpecialN_801371FC(HSD_GObj* gobj)
         msid = ftMs_MS_SpecialAirNEnd1;
     }
     ftCommon_GroundToAirStateChange(gobj, fp, msid, mf);
-    if (fp->x2219_b0 == true) {
+    if (fp->x2219_b0) {
         Fighter_SetEffectHitlagCallbacks(fp);
     }
 }
@@ -352,7 +352,7 @@ void ftMs_SpecialN_801372A8(HSD_GObj* gobj)
         msid = ftMs_MS_SpecialNEnd1;
     }
     ftCommon_AirToGroundStateChange(gobj, fp, msid, mf);
-    if (fp->x2219_b0 == true) {
+    if (fp->x2219_b0) {
         Fighter_SetEffectHitlagCallbacks(fp);
     }
 }
