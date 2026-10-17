@@ -189,7 +189,7 @@ void it_802998A0(Item_GObj* gobj, HSD_GObj* fighter_gobj, s32 arg2)
 bool itLgunbeam_UnkMotion0_Anim(HSD_GObj* gobj)
 {
     PAD_STACK(4 * 4);
-    if (it_80273130(gobj) == 1) {
+    if (it_80273130(gobj)) {
         efLib_DestroyAll(gobj);
         return true;
     }
