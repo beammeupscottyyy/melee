@@ -56,7 +56,7 @@ void it_802F23EC(Item_GObj* gobj, Fighter_GObj* owner_gobj, f32 facing_dir)
     it_802762BC(ip);
     it_802F23EC_inline(gobj);
     it_802756D0(gobj);
-    it_80274ECC(gobj, 1);
+    it_80274ECC(gobj, true);
     it_80274C88(gobj);
     it_8026BD54(gobj);
     it_80273408(gobj);
@@ -138,7 +138,7 @@ void it_802F2810(HSD_GObj* gobj)
     it_8026BB44((Item_GObj*) gobj);
     it_802756D0((Item_GObj*) gobj);
     it_802762BC(ip);
-    it_80274ECC((Item_GObj*) gobj, 1);
+    it_80274ECC((Item_GObj*) gobj, true);
     it_80273408((Item_GObj*) gobj);
 }
 
