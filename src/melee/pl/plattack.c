@@ -25,7 +25,7 @@ static inline void clearAttackStats(struct plAttackStats* s)
     s->x1A8 = 0;
 }
 
-///< brief resets the players stats
+/// Resets the player's stats.
 void plAttack_8003759C(u32 slot)
 {
     plActionStats* stats;
