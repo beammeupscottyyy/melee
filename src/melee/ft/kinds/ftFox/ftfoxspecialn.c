@@ -142,7 +142,7 @@ void ftFx_SpecialN_RemoveBlaster(HSD_GObj* gobj)
         it_802AEAB4(fp->u.fx.x222C_blasterGObj);
         fp->u.fx.x222C_blasterGObj = NULL;
     }
-    if (ftFx_Init_800E5534(gobj) == false) {
+    if (!ftFx_Init_800E5534(gobj)) {
         Fighter_SetDamageCallback(gobj, NULL);
     }
 }
@@ -227,6 +227,7 @@ static inline void ftFox_SpecialN_SpawnBlaster(HSD_GObj* gobj, Fighter* fp,
     }
 
     OSReport("ftToSpecialNFox::Caution!!!\n");
+    /// @todo Needs byte-matching #HSD_ASSERT macro form.
     __assert("ftfoxspecialn.c", assert_line, "0");
 }
 
@@ -329,7 +330,7 @@ void ftFx_SpecialNLoop_Anim(HSD_GObj* gobj)
 
     ftFox_SpecialN_UpdateBlaster(fp);
     if (!ftAnim_IsFramesRemaining(gobj)) {
-        if (fp->mv.fx.SpecialN.isBlasterLoop == true) {
+        if (fp->mv.fx.SpecialN.isBlasterLoop) {
             ftFox_SpecialN_BeginLoopTransition(gobj, fp, ftFx_MS_SpecialNLoop);
             ftFox_SpecialN_FinishLoopTransition(fp);
         } else {
@@ -407,7 +408,7 @@ void ftFx_SpecialAirNLoop_Anim(HSD_GObj* gobj)
 
     ftFox_SpecialN_UpdateBlaster(fp);
     if (!ftAnim_IsFramesRemaining(gobj)) {
-        if (fp->mv.fx.SpecialN.isBlasterLoop == true) {
+        if (fp->mv.fx.SpecialN.isBlasterLoop) {
             ftFox_SpecialN_BeginLoopTransition(gobj, fp,
                                                ftFx_MS_SpecialAirNLoop);
             Fighter_SetDamageCallback(gobj, ftFx_Init_800E5588);
