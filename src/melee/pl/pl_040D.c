@@ -32,8 +32,9 @@ void pl_80040ED4(int slot, int arg1, int arg2, int arg3, int arg4, f32 arg5)
     struct pl_x5EC_t* temp_r31 = Player_GetUnk6A8Ptr(slot);
     struct pl_x5EC_t* temp_r3 = Player_GetUnk6A8Ptr(arg2);
     if (arg3 != 1) {
-        if (arg4 != 0x4C && arg4 != 0x5A && arg4 != 0x5B && arg4 != 0x5C &&
-            arg4 != 0x60)
+        if (arg4 != StatsAttack_HarisenSwing1 &&
+            arg4 != StatsAttack_FireFlowerShoot && arg4 != StatsAttack_Screw &&
+            arg4 != StatsAttack_ScopeRapid && arg4 != StatsAttack_Pokeball)
         {
             var_r0 = true;
         } else {
@@ -66,8 +67,9 @@ void pl_80040FBC(int slot, int unused, int arg2, int arg3, int arg4)
         if (arg4 == 1 && temp_r3->xD50 != 0) {
             temp_r29->x10[slot].x12_b0 = true;
         }
-        if (arg4 != 0x4C && arg4 != 0x5A && arg4 != 0x5B && arg4 != 0x5C &&
-            arg4 != 0x60)
+        if (arg4 != StatsAttack_HarisenSwing1 &&
+            arg4 != StatsAttack_FireFlowerShoot && arg4 != StatsAttack_Screw &&
+            arg4 != StatsAttack_ScopeRapid && arg4 != StatsAttack_Pokeball)
         {
             var_r0 = true;
         } else {
@@ -99,7 +101,7 @@ void pl_800410F4(int slot, int unused, int arg2, int arg3, int arg4)
     if (arg3 != 1) {
         if (temp_r3->x10[slot].xC != 0 && temp_r3->x10[slot].xC == arg4) {
             temp_r3->x10[slot].x8++;
-            if (temp_r3->x10[slot].xC == 0x5A &&
+            if (temp_r3->x10[slot].xC == StatsAttack_FireFlowerShoot &&
                 temp_r3->x10[slot].x8 >= pl_804D6470->x17C)
             {
                 pl_80038788(slot, 0xC3, 1);
