@@ -31,13 +31,13 @@
 /* 160564 */ char* gm_80160564(CharacterKind, GameModeKind);
 
 /**
- * @brief Returns the index used in the bitmask to represent whether or not the
+ * Returns the index used in the bitmask to represent whether or not the
  * provided character is unlocked.
  */
 /* 1605EC */ u8 gm_SelKindToUnlockIndex(SelectableCharacterKind);
 
 /**
- * @brief Returns the index used in the bitmask to represent whether or not the
+ * Returns the index used in the bitmask to represent whether or not the
  * provided character is unlocked.
  */
 /* 160638 */ s8 gm_CKindToUnlockIndex(CharacterKind);
@@ -129,7 +129,7 @@
 /* 163FA4 */ int fn_80163FA4(u8);
 
 /**
- * @brief Convert a #SelectableCharacterKind into its #CharacterKind.
+ * Convert a #SelectableCharacterKind into its #CharacterKind.
  *
  * Indexes #selkind_to_ckind_map with @p selkind. #SELKIND_ZELDA_SEAK resolves
  * to #CharacterKind::CKind_Zelda; the Sheik half is dropped because
@@ -143,7 +143,7 @@
 /* 16400C */ u8 gm_SelKindToCKind(u8 selkind);
 
 /**
- * @brief Convert a #CharacterKind into its #SelectableCharacterKind.
+ * Convert a #CharacterKind into its #SelectableCharacterKind.
  *
  * Indexes #ckind_to_selkind_map with @p ckind. Both
  * #CharacterKind::CKind_Zelda and #CharacterKind::CKind_Seak collapse onto
@@ -186,7 +186,7 @@
 /* 1650E8 */ void fn_801650E8(void);
 
 /**
- * @brief Enables the pause camera for the given player.
+ * Enables the pause camera for the given player.
  *
  * If @p playerSlot is @c -1, switches to the pause camera with slot @c 0xB and
  * id @c 5 (see #Camera_SetUpPauseCamera). Otherwise, switches only when the

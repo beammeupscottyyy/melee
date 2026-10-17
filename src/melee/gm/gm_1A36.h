@@ -10,7 +10,7 @@
 /* 1A3714 */ void gm_801A3714(s32, u64, u64);
 
 /**
- * @brief Evaluates all controller inputs, updating #controller_map for each
+ * Evaluates all controller inputs, updating #controller_map for each
  * controller.
  *
  * Reads button, trigger, repeat, and release state from

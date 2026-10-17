@@ -1163,7 +1163,7 @@ void gm_DoPauseChecksAndRoutine(VsSceneController* arg0, int arg1)
 }
 
 /**
- * @brief Returns the player id pressing unpause, or @c -1 if none.
+ * Returns the player id pressing unpause, or @c -1 if none.
  *
  * In retail builds, checks for a newly pressed Start button. When @c DbLevel
  * >= DbLKind_DebugRom, accepts D-Pad Up (@c HSD_PAD_DPADUP, @c 1 << 3) plus X
