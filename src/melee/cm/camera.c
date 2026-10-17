@@ -2505,7 +2505,7 @@ void Camera_8002D318(void* unused)
     CameraBounds bounds;
 
     gobj = Player_GetEntity(game_camera.x2C4);
-    if (gobj != NULL && ftLib_IsSleeping(gobj) == false &&
+    if (gobj != NULL && !ftLib_IsSleeping(gobj) &&
         (subject = ftLib_GetCameraSubject(gobj)) != NULL &&
         Camera_8002928C(subject) &&
         Camera_80029124(&subject->bone_pos, 0) == CAM_BOUNDS_INSIDE &&
