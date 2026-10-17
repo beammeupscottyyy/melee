@@ -52,7 +52,7 @@ void ftPk_SpecialN_Anim(Fighter_GObj* gobj)
 
     PAD_STACK(4);
 
-    if (fp->cmd_vars[ftPk_SpecialN_Cmd0] == true) {
+    if (fp->cmd_vars[ftPk_SpecialN_Cmd0]) {
         fp->cmd_vars[ftPk_SpecialN_Cmd0] = false;
 
         if (!fp->cmd_vars[ftPk_SpecialN_Cmd1]) {
@@ -91,11 +91,11 @@ void ftPk_SpecialAirN_Anim(HSD_GObj* gobj)
     ftPikachuAttributes* pika_attr = fp->dat_attrs;
     PAD_STACK(4);
 
-    if (fp->cmd_vars[ftPk_SpecialN_Cmd0] == 1) {
-        fp->cmd_vars[ftPk_SpecialN_Cmd0] = 0;
+    if (fp->cmd_vars[ftPk_SpecialN_Cmd0]) {
+        fp->cmd_vars[ftPk_SpecialN_Cmd0] = false;
 
         if (!fp->cmd_vars[ftPk_SpecialN_Cmd1]) {
-            fp->cmd_vars[ftPk_SpecialN_Cmd1] = 1;
+            fp->cmd_vars[ftPk_SpecialN_Cmd1] = true;
             it_pos.x =
                 (fp->x34_scale.y *
                  (pika_attr->specialairn_spawn_offset.x * fp->facing_dir)) +
@@ -123,7 +123,7 @@ void ftPk_SpecialAirN_Anim(HSD_GObj* gobj)
         if (pika_attr->specialairn_landing_lag == 0.0f) {
             ftCo_Fall_Enter(gobj);
         } else {
-            ftCo_80096900(gobj, 1, 0, 1, 1.0f,
+            ftCo_80096900(gobj, 1, 0, true, 1.0f,
                           pika_attr->specialairn_landing_lag);
         }
     }
