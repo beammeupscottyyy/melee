@@ -1111,7 +1111,7 @@ void ftCo_800B683C(Fighter* fp)
             return;
         }
     }
-    if (ftCo_IsGrabbing(fp) != 0) {
+    if (ftCo_IsGrabbing(fp)) {
         float tmp = HSD_Randf();
         if ((f32) (tmp * (1.0 + temp_r31->x94)) < 0.5f) {
             if (var_r30) {
@@ -1234,7 +1234,7 @@ int ftCo_800B732C(Fighter* fp)
     if (fp->ground_or_air == GA_Air) {
         return 0;
     }
-    if (ftCo_800A3200(temp_r0) != 0) {
+    if (ftCo_800A3200(temp_r0)) {
         if (temp_r0->cur_pos.y < fp->cur_pos.y) {
             return 0;
         }
@@ -1258,13 +1258,13 @@ int ftCo_800B732C(Fighter* fp)
     if (temp_r29->kind == 0x10) {
         return ftCo_800B7638(fp);
     }
-    if (ftCo_800A2BD4(fp) == 0) {
+    if (!ftCo_800A2BD4(fp)) {
         return 0;
     }
     if (temp_r29->level < 4) {
         return 0;
     }
-    if (ftCo_800A28D0(fp, 4.0f) != 0) {
+    if (ftCo_800A28D0(fp, 4.0f)) {
         return 0;
     }
     if (temp_r0->ground_or_air == GA_Air) {
@@ -1957,7 +1957,7 @@ void ftCo_800B9020(Fighter* fp)
     } else if (temp_r31->xA4 != 0) {
         ftCo_800B4880(fp, temp_r31->xA4);
         temp_r31->xA4 = 0;
-    } else if (ftCo_800B9CBC(fp) != 0) {
+    } else if (ftCo_800B9CBC(fp)) {
         if (temp_r31->xA4 != 0) {
             ftCo_800B4880(fp, temp_r31->xA4);
             temp_r31->xA4 = 0;
@@ -2175,7 +2175,7 @@ bool ftCo_800B9A04(Fighter* fp, Item* arg1, f32 arg2, f32 arg3)
         temp_r31->xA4 = 2;
         return true;
     }
-    if (ftCo_800A59C0(arg1) != 0) {
+    if (ftCo_800A59C0(arg1)) {
         temp_f1_2 = it_8026B924(fp->item_gobj);
         if (temp_f1_2 < 0.00001F && temp_f1_2 > -0.00001F) {
             var_r0 = true;
@@ -2186,7 +2186,7 @@ bool ftCo_800B9A04(Fighter* fp, Item* arg1, f32 arg2, f32 arg3)
             temp_r31->xA4 = 0x28;
             return true;
         }
-        if (ftCo_800A2C08(fp) == 0) {
+        if (!ftCo_800A2C08(fp)) {
             return false;
         }
         if (arg2 < 0.08726646192371845 && arg2 > -0.08726646192371845 &&
@@ -2202,11 +2202,11 @@ bool ftCo_800B9A04(Fighter* fp, Item* arg1, f32 arg2, f32 arg3)
         temp_r31->xA4 = 0x2A;
         return true;
     }
-    if (ftCo_800A5A5C(arg1) != 0) {
+    if (ftCo_800A5A5C(arg1)) {
         temp_r31->xA4 = 2;
         return true;
     }
-    if (ftCo_800A5A28(arg1) != 0) {
+    if (ftCo_800A5A28(arg1)) {
         if (arg2 > 1.3089969288557768) {
             temp_r31->xA4 = 0xD;
             return true;
@@ -2215,7 +2215,7 @@ bool ftCo_800B9A04(Fighter* fp, Item* arg1, f32 arg2, f32 arg3)
             temp_r31->xA4 = 0xE;
             return true;
         }
-        if (ftCo_800A2C08(fp) == 0) {
+        if (!ftCo_800A2C08(fp)) {
             return false;
         }
         if (arg2 < 0.26179938577115536 && arg2 > -0.26179938577115536) {
@@ -2450,7 +2450,7 @@ void ftCo_800BA674(Fighter* fp, Fighter* arg1)
 
 static inline void inline0(Fighter* fp, Item* temp_r30_3)
 {
-    if (ftCo_800A2998(fp, 1.0f) != 0) {
+    if (ftCo_800A2998(fp, 1.0f)) {
         ftCo_800B9F90(fp);
     } else if (fp->cur_pos.x - temp_r30_3->pos.x > 0.0) {
         ftCo_800BA160(fp);
