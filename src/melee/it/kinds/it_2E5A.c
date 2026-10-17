@@ -118,7 +118,7 @@ bool it_802E5AC4(Item_GObj* item_gobj, bool arg_check)
                 sp40 = item->x40_vel;
                 lbVector_Mirror(&sp40, &coll_data->floor.normal);
                 lbVector_Add_xy(&sp28, &sp40);
-                if (mpCollGetSpeedFloor(coll_data, &sp40) != 0) {
+                if (mpCollGetSpeedFloor(coll_data, &sp40)) {
                     lbVector_Add_xy(&sp34, &sp40);
                 }
                 check2 = true;
@@ -137,7 +137,7 @@ bool it_802E5AC4(Item_GObj* item_gobj, bool arg_check)
                 item->x64_vec_unk2 = sp34;
                 item->x40_vel = sp28;
             }
-            if (it_80276D9C(item_gobj, 1) != 0) {
+            if (it_80276D9C(item_gobj, 1)) {
                 it_8027321C(item_gobj);
                 it_80277C40(item_gobj, 0);
                 it_80275640(item_gobj, comm_attr->x58);
@@ -148,8 +148,8 @@ bool it_802E5AC4(Item_GObj* item_gobj, bool arg_check)
             item->x40_vel.x *= spec_attr->x14;
             item->xD50_landNum += 1;
             if (item->xD50_landNum >= 3U) {
-                if (!(item->xDCF_flag.x0.b0)) {
-                    item->xDCF_flag.x0.b0 = 1;
+                if (!item->xDCF_flag.x0.b0) {
+                    item->xDCF_flag.x0.b0 = true;
                 }
             }
         }
@@ -312,7 +312,7 @@ static inline void it_802E6380_inline(Item_GObj* item_gobj)
 {
     Item* item = GET_ITEM(item_gobj);
     item->xDD4_itemVar.it_2E5A.x18.x0.b0 =
-        (item->xDD4_itemVar.it_2E5A.x18.x0.b1 = 0);
+        (item->xDD4_itemVar.it_2E5A.x18.x0.b1 = false);
 
     if (item->xDD4_itemVar.it_2E5A.x8 != 0) {
         it_2E5A_Attrs* attr =
@@ -367,7 +367,7 @@ s32 it_802E6380(Item_GObj* item_gobj, it_802E5FXX_struct* arg1)
 
     item->xDD4_itemVar.it_2E5A.x14 = attr->x8;
     item->xDD4_itemVar.it_2E5A.x8 = arg1->x14;
-    item->xDCD_flag.x0.b6 = 1;
+    item->xDCD_flag.x0.b6 = true;
 
     {
         s32 tier_idx = off;
@@ -404,16 +404,16 @@ bool it_802E657C(Item_GObj* item_gobj)
         if (temp_f0_2 <= 0.0f) {
             temp_r4 = item->xDD4_itemVar.it_2E5A.x18.x0.b0;
             if (!temp_r4) {
-                item->xDD4_itemVar.it_2E5A.x18.x0.b0 = 1;
+                item->xDD4_itemVar.it_2E5A.x18.x0.b0 = true;
             }
         } else {
             item->xDD4_itemVar.it_2E5A.x10 = temp_f0_2 - 1.0f;
         }
         temp_f1 = item->xDD4_itemVar.it_2E5A.x14;
         if (temp_f1 <= 0.0f) {
-            if (item->xDCD_flag.x0.b5 != 1) {
+            if (!item->xDCD_flag.x0.b5) {
                 it_80275444(item_gobj);
-                item->xDD4_itemVar.it_2E5A.x18.x0.b1 = 1;
+                item->xDD4_itemVar.it_2E5A.x18.x0.b1 = true;
             }
         } else {
             item->xDD4_itemVar.it_2E5A.x14 = temp_f1 - 1.0f;
@@ -481,7 +481,7 @@ bool it_2E5A_UnkMotion0_Coll(HSD_GObj* item_gobj)
     if (it_802E5AC4(item_gobj, 1)) {
         it_802E6888(item_gobj);
         item->xD50_landNum = 0;
-        item->xDCF_flag.x0.b0 = 0;
+        item->xDCF_flag.x0.b0 = false;
     }
     return false;
 }
