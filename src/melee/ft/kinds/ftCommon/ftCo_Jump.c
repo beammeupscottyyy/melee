@@ -95,7 +95,7 @@ bool ftCo_800CB024(Fighter_GObj* gobj)
         ftCo_KneeBend_Enter(gobj, JumpInput_CStick);
         return true;
     }
-    return 0;
+    return false;
 }
 
 void ftCo_800CB110(Fighter_GObj* gobj, bool arg1, f32 jump_mul)
