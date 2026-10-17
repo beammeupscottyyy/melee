@@ -166,7 +166,7 @@ bool itFflower_UnkMotion0_Anim(Item_GObj* gobj)
     msid_check(gobj, ip);
 
     flag = ip->xDC8_word.flags.x2;
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         Item_80268E5C(gobj, 0, ITEM_ANIM_UPDATE);
         if (flag != 0) {
             it_80274F10(gobj);
@@ -195,7 +195,7 @@ bool itFflower_UnkMotion6_Anim(Item_GObj* gobj)
 
     msid_check(gobj, ip);
 
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
     }
     return false;
@@ -235,18 +235,18 @@ bool itFflower_UnkMotion5_Anim(Item_GObj* gobj)
 
     switch (ip->msid) {
     case 2:
-        if (it_80272C6C(gobj) == false) {
+        if (!it_80272C6C(gobj)) {
             Item_80268E5C(gobj, 2, ITEM_ANIM_UPDATE);
         }
         break;
     case 3:
     case 4:
-        if (it_80272C6C(gobj) == false) {
+        if (!it_80272C6C(gobj)) {
             Item_80268E5C(gobj, 4, ITEM_ANIM_UPDATE);
         }
         break;
     case 5:
-        if (it_80272C6C(gobj) == false) {
+        if (!it_80272C6C(gobj)) {
             Item_80268E5C(gobj, 2, ITEM_ANIM_UPDATE);
         }
         break;
@@ -327,7 +327,7 @@ bool itFflower_UnkMotion7_Anim(Item_GObj* gobj)
 
     msid_check(gobj, ip);
 
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         Item_80268E5C(gobj, 7, ITEM_ANIM_UPDATE);
     }
     return false;
