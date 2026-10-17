@@ -139,7 +139,7 @@ static bool throwVegIfHeld(HSD_GObj* gobj, FtMotionId msid)
 void ftPe_SpecialLw_Enter(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if (throwVegIfHeld(gobj, ftCo_MS_LightThrowF4) != true) {
+    if (!throwVegIfHeld(gobj, ftCo_MS_LightThrowF4)) {
         fp->x2210.throw_flags = 0;
         Fighter_ChangeMotionState(gobj, ftPe_MS_SpecialLw, Ft_MF_None, 0, 1, 0,
                                   NULL);
