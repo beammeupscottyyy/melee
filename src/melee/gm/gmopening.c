@@ -1,5 +1,8 @@
 #include "gmopening.h"
 
+#include <melee/cm/forward.h>
+#include <melee/if/forward.h>
+
 #include <stdio.h>
 
 #include "gm_unsplit.h"
@@ -165,17 +168,17 @@ void gm_Scene_Opening_OnEnter(UNK_T arg0)
     gmTitle_801A19AC();
     gmTitle_801A1944();
 
-    temp_r3 = GObj_Create(0x13, 0x14, 0);
+    temp_r3 = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     gm_804D67F4 = temp_r3;
-    gm_801A9DD0(temp_r3, 0x280, 0x1E0, 8, 0);
+    gm_801A9DD0(temp_r3, 640, 480, 8, 0);
     temp_r3->gxlink_prios = 0x800;
 
-    temp_r3_2 = GObj_Create(0x13, 0x14, 0);
-    gm_801A9DD0(temp_r3_2, 0x280, 0x1E0, 0xB, 1);
+    temp_r3_2 = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
+    gm_801A9DD0(temp_r3_2, 640, 480, 0xB, 1);
     temp_r3_2->gxlink_prios = 0x20000;
     gmTitle_801A185C();
 
-    temp_r3_3 = GObj_Create(0xE, 0xF, 0);
+    temp_r3_3 = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     gm_804D67E8 = temp_r3_3;
     GObj_SetupGXLink(temp_r3_3, lbMthp_8001F67C, 0xB, 0);
     lbMthp_8001F624(temp_r3_3, 640, 480);
@@ -222,7 +225,7 @@ void gm_Scene_Opening_OnFrame(void)
         gm_804D67E2 = 1;
     }
     if (gm_804D67D4 == NULL && gm_804D67EC >= 0x1C6 && gm_804D67EC < 0x202) {
-        temp_r3_2 = GObj_Create(0xEU, 0xFU, 0U);
+        temp_r3_2 = GObj_Create(HSD_GOBJ_CLASS_UI, 0xFU, 0U);
         HSD_GObjObject_80390A70(temp_r3_2, HSD_SObjLib_804D7960, NULL);
         GObj_SetupGXLink(temp_r3_2, HSD_SObjLib_803A49E0, 0x11U, 0U);
         temp_r3_3 =

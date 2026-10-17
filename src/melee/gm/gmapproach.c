@@ -1,5 +1,9 @@
 #include "gmapproach.h"
 
+#include <melee/cm/forward.h>
+#include <melee/if/forward.h>
+#include <melee/lb/forward.h>
+
 #include "gm_unsplit.h"
 #include "gmscene.h"
 #include <melee/lb/lbarchive.h>
@@ -99,18 +103,18 @@ static void gm_801ADB04(void)
 
     gm_80480D98.x0 =
         lbArchive_80016DBC("NtAppro", &spC, "ScNtcApproach_scene_data", 0);
-    gobj = GObj_Create(0x13, 0x14, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     cobj = HSD_CObjLoadDesc(spC->cameras[0].desc);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
     GObj_SetupGXLinkMax(gobj, HSD_GObj_803910D8, 0);
     gobj->gxlink_prios = 0x4801;
 
-    gobj = GObj_Create(0xB, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_LIGHT, 0xF, 0);
     lobj = lb_80011AC4(spC->lights);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_LightKind, lobj);
     GObj_SetupGXLink(gobj, HSD_GObj_LObjCallback, 0, 0);
 
-    gobj = GObj_Create(0xE, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     jobj = HSD_JObjLoadJoint(spC->models[0]->joint);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
     GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, 0xB, 0);

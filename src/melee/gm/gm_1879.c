@@ -1,5 +1,9 @@
 #include "gm_1879.h"
 
+#include <melee/cm/forward.h>
+#include <melee/if/forward.h>
+#include <melee/lb/forward.h>
+
 #include "gm_1A36.h"
 #include "gm_1A3F.h"
 #include "gm_unsplit.h"
@@ -308,7 +312,7 @@ static inline void gm_80187F48_OnEnter_inline(gm_80187F48_EnterData* arg0)
     lbAudioAx_80027168();
     lbAudioAx_80027648();
 
-    gobj = GObj_Create(0x13, 0x14, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
     data->x8 = gobj;
     cobj = HSD_CObjLoadDesc(data->x4->desc);
     HSD_GObjObject_80390A70(gobj, HSD_GObj_CameraKind, cobj);
@@ -318,7 +322,7 @@ static inline void gm_80187F48_OnEnter_inline(gm_80187F48_EnterData* arg0)
     HSD_CObjReqAnim(cobj, 0.0f);
 
     {
-        HSD_GObj* scene_gobj = GObj_Create(0x13, 0x14, 0);
+        HSD_GObj* scene_gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
         HSD_CObj* scene_cobj = HSD_CObjLoadDesc(data->x0->cameras[0].desc);
         HSD_GObjObject_80390A70(scene_gobj, HSD_GObj_CameraKind, scene_cobj);
         GObj_SetupGXLinkMax(scene_gobj, HSD_GObj_803910D8, 8);
@@ -326,7 +330,8 @@ static inline void gm_80187F48_OnEnter_inline(gm_80187F48_EnterData* arg0)
     }
 
     {
-        HSD_GObj* light_gobj = GObj_Create(0xB, 3, 0);
+        HSD_GObj* light_gobj =
+            GObj_Create(HSD_GOBJ_CLASS_LIGHT, HSD_GOBJ_PLINK_LIGHT, 0);
         HSD_LObj* lobj = lb_80011AC4(data->x0->lights);
         HSD_GObjObject_80390A70(light_gobj, HSD_GObj_LightKind, lobj);
         GObj_SetupGXLink(light_gobj, HSD_GObj_LObjCallback, 0xA, 0);
@@ -341,7 +346,7 @@ static inline void gm_80187F48_OnEnter_inline(gm_80187F48_EnterData* arg0)
         int model_stage;
         int model_anim_idx;
 
-        model_gobj = GObj_Create(0xE, 0xF, 0);
+        model_gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
         model_jobj = HSD_JObjLoadJoint(
             data->x0->models[11 - state->stage_index]->joint);
         lb_80011C18(model_jobj, 0x08000000);
@@ -364,7 +369,7 @@ static inline void gm_80187F48_OnEnter_inline(gm_80187F48_EnterData* arg0)
     }
 
     {
-        HSD_GObj* model_gobj = GObj_Create(0xE, 0xF, 0);
+        HSD_GObj* model_gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
         HSD_JObj* model_jobj = HSD_JObjLoadJoint(data->x0->models[12]->joint);
         int model_anim_idx;
         DynamicModelDesc* model_desc;

@@ -10,6 +10,9 @@
 /// whose functions anchor at 0x803DB458). Splitting here reproduces the
 /// retail anchor exactly; keeping the tables in gmregenddisp.c compiles the
 /// same instructions with displacements 0x460/0x79C/0xAB8 instead.
+#include <melee/cm/forward.h>
+#include <melee/if/forward.h>
+
 #include "forward.h"
 #include "gm_1A36.h"
 #include "gm_1A3F.h"
@@ -90,15 +93,15 @@ void gm_Scene_Congrats_OnEnter(UNK_T unused)
 
     gmRegend_InputDelayTimer = 0x1E;
     gmRegend_ExitTimer = 0;
-    sobj_gobj = GObj_Create(0x13, 0x14, 0);
-    HSD_SObjLib_803A55DC(sobj_gobj, 0x280, 0x1E0, 8);
+    sobj_gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
+    HSD_SObjLib_803A55DC(sobj_gobj, 640, 480, 8);
     sobj_gobj->gxlink_prios = 0x800;
     lbAudioAx_80026F2C(0x12);
     lbAudioAx_8002702C(2, 0x10);
     lbAudioAx_80027168();
     lbAudioAx_80027648();
     lbBgFlash_800209F4();
-    gobj = GObj_Create(0xE, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     HSD_GObjObject_80390A70(gobj, HSD_SObjLib_804D7960, NULL);
     GObj_SetupGXLink(gobj, lbMthp8001F928, 0xB, 0);
     ckind = gm_801BEFB0();

@@ -1,5 +1,6 @@
 #include "gm_1884.h"
 
+#include <melee/if/forward.h>
 #include <melee/it/forward.h>
 
 #include "forward.h"
@@ -834,9 +835,9 @@ void fn_80189B88(void)
     sub = &gm_80473814;
     sub->x00 = 0;
     sub->x01 = 0;
-    HSD_GObj_SetupProc(GObj_Create(0xE, 2, 0), (HSD_GObjEvent) fn_801891F4,
-                       0x15);
-    gobj = GObj_Create(0xE, 0xF, 0);
+    HSD_GObj_SetupProc(GObj_Create(HSD_GOBJ_CLASS_UI, 2, 0),
+                       (HSD_GObjEvent) fn_801891F4, 0x15);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     jobj = HSD_JObjLoadJoint((*lbl_804D662C)->joint);
     gm_80473814.gobj = gobj;
     HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);

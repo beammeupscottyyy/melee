@@ -1,5 +1,8 @@
 #include "gmhowto.h"
 
+#include <melee/cm/forward.h>
+#include <melee/if/forward.h>
+
 #include "gm_unsplit.h"
 #include "gmmain_lib.h"
 #include "gmopening.h"
@@ -31,15 +34,15 @@ void gm_Scene_HowTo_OnEnter(void* unused)
     HSD_GObj* gobj;
     PAD_STACK(8);
 
-    gobj = GObj_Create(0x13, 0x14, 0);
-    gm_801A9DD0(gobj, 0x280, 0x1E0, 8, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_CAMERA, 0x14, 0);
+    gm_801A9DD0(gobj, 640, 480, 8, 0);
     gobj->gxlink_prios = 1 << 0xB;
 
-    gobj = GObj_Create(0xE, 0xF, 0);
+    gobj = GObj_Create(HSD_GOBJ_CLASS_UI, 0xF, 0);
     gm_804D6850 = gobj;
     HSD_GObjObject_80390A70(gobj, HSD_SObjLib_804D7960, NULL);
     GObj_SetupGXLink(gobj, lbMthp_8001F67C, 0xB, 0);
-    lbMthp_8001F624(gobj, 0x280, 0x1E0);
+    lbMthp_8001F624(gobj, 640, 480);
     lbAudioAx_80023F28(0x24);
     lbAudioAx_80024E50(1);
     lbMthp_8001F410("MvHowto.mth", gm_803DD2C0, 0, 0, 0);
