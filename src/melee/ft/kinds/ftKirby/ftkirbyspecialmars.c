@@ -531,7 +531,7 @@ void ftKb_SpecialNPe_8010BF90(Fighter_GObj* gobj)
     ftCommon_8007D5D4(fp);
     Fighter_ChangeMotionState(gobj, msid, 0x0C4C708E, fp->cur_anim_frame, 1.0f,
                               0.0f, NULL);
-    if (fp->x2219_b0 == true) {
+    if (fp->x2219_b0) {
         Fighter_SetEffectHitlagCallbacks(fp);
     }
 }
@@ -553,7 +553,7 @@ void ftKb_SpecialNPe_8010C06C(Fighter_GObj* gobj)
     ftCommon_8007D7FC(fp);
     Fighter_ChangeMotionState(gobj, msid, 0x0C4C708E, fp->cur_anim_frame, 1.0f,
                               0.0f, NULL);
-    if (fp->x2219_b0 == true) {
+    if (fp->x2219_b0) {
         Fighter_SetEffectHitlagCallbacks(fp);
     }
 }

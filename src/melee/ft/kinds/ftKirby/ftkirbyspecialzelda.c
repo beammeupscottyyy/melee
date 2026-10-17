@@ -201,7 +201,7 @@ void ftKb_SpecialNSk_80105E8C(Fighter_GObj* gobj)
                                     ftZd_MF_SpecialN_Coll);
     fp = (Fighter*) (new_var = HSD_GObjGetUserData(gobj));
     da = fp->dat_attrs;
-    if (fp->x2219_b0 == true) {
+    if (fp->x2219_b0) {
         Fighter_SetEffectHitlagCallbacks(fp);
     }
     if (fp->cmd_vars[0] == 2U) {
@@ -220,7 +220,7 @@ void ftKb_SpecialNSk_80105F3C(Fighter_GObj* gobj)
                                     ftZd_MF_SpecialN_Coll);
     fp = (Fighter*) (new_var = HSD_GObjGetUserData(gobj));
     da = fp->dat_attrs;
-    if (fp->x2219_b0 == true) {
+    if (fp->x2219_b0) {
         Fighter_SetEffectHitlagCallbacks(fp);
     }
     if (fp->cmd_vars[0] == 2U) {

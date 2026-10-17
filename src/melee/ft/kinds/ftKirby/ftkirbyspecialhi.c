@@ -73,7 +73,7 @@ void ftKb_SpecialHi_Enter(Fighter_GObj* gobj)
     ftAnim_8006EBA4(gobj);
     fp = GET_FIGHTER(gobj);
     efSync_Spawn(0x494, gobj);
-    fp->x2219_b0 = 1;
+    fp->x2219_b0 = true;
     Fighter_SetEffectHitlagCallbacks(fp);
 }
 
@@ -90,7 +90,7 @@ void ftKb_SpecialAirHi_Enter(Fighter_GObj* gobj)
     ftAnim_8006EBA4(gobj);
     fp = GET_FIGHTER(gobj);
     efSync_Spawn(0x494, gobj);
-    fp->x2219_b0 = 1;
+    fp->x2219_b0 = true;
     Fighter_SetEffectHitlagCallbacks(fp);
 }
 
