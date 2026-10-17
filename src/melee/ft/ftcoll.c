@@ -1609,7 +1609,7 @@ void ftColl_80078C70(Fighter_GObj* this_gobj)
                                                             this_fp->x34_scale
                                                                 .y,
                                                             this_fp->cur_pos
-                                                                .z))
+                                                                .z) != false)
                                                     {
                                                         if (hit0->element !=
                                                             (u32)
@@ -1621,7 +1621,8 @@ void ftColl_80078C70(Fighter_GObj* this_gobj)
                                                                     this_fp,
                                                                     (HitCapsule*) &this_fp
                                                                         ->hurt_capsules
-                                                                            [n]))
+                                                                            [n]) !=
+                                                                false)
                                                             {
                                                                 if (((int) this_fp
                                                                          ->x1988 !=
