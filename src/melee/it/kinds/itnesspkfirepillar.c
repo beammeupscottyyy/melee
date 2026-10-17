@@ -124,7 +124,7 @@ bool itNesspkfirepillar_UnkMotion0_Coll(Item_GObj* item_gobj)
     } else {
         it_8026D82C(item_gobj);
     }
-    return 0;
+    return false;
 }
 
 bool itNesspkfirepillar_Logic24_DmgReceived(Item_GObj* item_gobj)
@@ -136,7 +136,7 @@ bool itNesspkfirepillar_Logic24_DmgReceived(Item_GObj* item_gobj)
     if (item->xD44_lifeTimer <= 0.0F) {
         item->xD44_lifeTimer = get_min_life();
     }
-    return 0;
+    return false;
 }
 
 void itNesspkfirepillar_Logic24_EvtUnk(Item_GObj* item_gobj,
