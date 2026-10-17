@@ -103,12 +103,12 @@ Item_GObj* ftpickupitem_800942A0(Fighter_GObj* gobj, u32 flags)
         Item_GObj* result = NULL;
         while (cur != NULL) {
             if (Item_IsGrabbable(cur)) {
-                enum_t unk_enum = itIsHeavy(cur);
+                bool is_heavy = itIsHeavy(cur);
                 if ((!fp->x2222_b4 || !it_8026B47C(cur)) &&
                     (fp->item_gobj == NULL || it_8026B4F0(cur)))
                 {
-                    if ((unk_enum == false && flags & (1 << 0)) ||
-                        (unk_enum == true && flags & (1 << 1)))
+                    if ((!is_heavy && flags & (1 << 0)) ||
+                        (is_heavy && flags & (1 << 1)))
                     {
                         Vec3 it_pos;
                         Vec4* vec;
@@ -118,8 +118,8 @@ Item_GObj* ftpickupitem_800942A0(Fighter_GObj* gobj, u32 flags)
                         {
                             float x_range = itGetGrabRangeX(cur);
                             float y_range = itGetGrabRangeY(cur);
-                            vec = unk_enum == false ? offset0
-                                                    : &pickup->gr_heavy_offset;
+                            vec =
+                                !is_heavy ? offset0 : &pickup->gr_heavy_offset;
                             {
                                 float x1 = vec->z;
                                 float x0 =
@@ -277,7 +277,7 @@ void ftpickupitem_800948A8(Fighter_GObj* gobj, Item_GObj* item_gobj)
     ftpickupitem_80094818(gobj, true);
     {
         Fighter_Part ret_part;
-        if (itIsHeavy(item_gobj) == false) {
+        if (!itIsHeavy(item_gobj)) {
             if (itGetKind(item_gobj) == It_Kind_WStar) {
                 ret_part = FtPart_TopN;
             } else {
@@ -288,7 +288,7 @@ void ftpickupitem_800948A8(Fighter_GObj* gobj, Item_GObj* item_gobj)
         }
         pl_8003E854(fp->player_idx, fp->is_sub_fighter, item_gobj);
         Item_8026AB54(item_gobj, gobj, ret_part);
-        if (itIsHeavy(item_gobj) == 1) {
+        if (itIsHeavy(item_gobj)) {
             ft_800881D8(fp, fp->ft_data->x4C_sfx->x2C, 127, 64);
         }
     }
