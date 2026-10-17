@@ -52,7 +52,7 @@ void ftPp_SpecialAirN_Enter(HSD_GObj* gobj)
     fp->cmd_vars[0] = 0;
     fp->u.nn.x222C = NULL;
 
-    if ((s32) fp->u.nn.x224C == false) {
+    if (!fp->u.nn.x224C) {
         fp->self_vel.y = icattr->x4;
         fp->u.nn.x224C = true;
         fp->u.nn.x2250 = 0.0f;

@@ -119,9 +119,10 @@ bool ftPp_SpecialS_80120FE0(Fighter_GObj* gobj)
         }
     }
     return false;
-end: {
-    // original code returns without a value
-}
+end:
+    {
+        // original code returns without a value
+    }
 }
 
 void ftPp_SpecialS_801210C8(Fighter_GObj* arg0)
@@ -210,9 +211,7 @@ static inline bool checkNanaInRange(Fighter_GObj* gobj)
         Vec3* nana_pos = &GET_FIGHTER(nana_gobj)->cur_pos;
         f32 dx = SQ(fp->cur_pos.x - nana_pos->x);
         f32 dy = SQ(fp->cur_pos.y - nana_pos->y);
-        if (sqrtf__Ff(dx + dy) < da->x7C &&
-            ftNn_Init_8012300C(nana_gobj) == true)
-        {
+        if (sqrtf__Ff(dx + dy) < da->x7C && ftNn_Init_8012300C(nana_gobj)) {
             return true;
         }
     }
