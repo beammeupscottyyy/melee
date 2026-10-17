@@ -108,7 +108,7 @@ bool it_802D9A2C(Item_GObj* gobj)
     }
     temp_r3 = ftLib_FindNearestOpponent(&ip->pos, NULL);
     if (temp_r3 != NULL) {
-        if (it_8027CA7C(temp_r3) != 0) {
+        if (it_8027CA7C(temp_r3)) {
             return ip->xDD4_itemVar.likelike.x3C;
         }
         ftLib_GetPos(temp_r3, &sp10);
@@ -246,7 +246,7 @@ bool itLikelike_UnkMotion0_Coll(Item_GObj* gobj)
 
 bool itLikelike_UnkMotion7_Anim(Item_GObj* gobj)
 {
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         it_802DA104(gobj);
     }
     return false;
@@ -258,7 +258,7 @@ void itLikelike_UnkMotion7_Phys(Item_GObj* gobj)
     itLikelikeAttributes* attrs = GET_ATTRS(ip);
 
     if (ip->xDD4_itemVar.likelike.x4C <= 0) {
-        if (it_802D9A2C(gobj) != 0) {
+        if (it_802D9A2C(gobj)) {
             it_802DB074(gobj);
             return;
         }
@@ -347,7 +347,7 @@ void itLikelike_UnkMotion1_Phys(Item_GObj* gobj)
     }
     temp_r3_2 = ip->xDD4_itemVar.likelike.x4C;
     if (temp_r3_2 == 0) {
-        if (it_802D9A2C(gobj) != 0) {
+        if (it_802D9A2C(gobj)) {
             it_802DB074(gobj);
             return;
         }
@@ -503,7 +503,7 @@ bool itLikelike_UnkMotion2_Coll(Item_GObj* gobj)
     if (coll_result != 0) {
         ip->xC30 = temp_r31->ceiling.index;
     }
-    if (it_802762D8(gobj) != 0) {
+    if (it_802762D8(gobj)) {
         ip->facing_dir = -ip->facing_dir;
         ip->x40_vel.x *= -1.0f;
     } else if (it_80276308(gobj) != 0) {
@@ -617,7 +617,7 @@ void itLikelike_UnkMotion5_Phys(Item_GObj* gobj)
     ItemAttr* temp_r4;
     PAD_STACK(8);
 
-    if (((s32) ip->msid == 5) && (it_802D9A2C(gobj) != 0)) {
+    if (((s32) ip->msid == 5) && it_802D9A2C(gobj)) {
         it_802DB398(gobj);
         return;
     }
@@ -654,7 +654,7 @@ void it_802DABC0(Item_GObj* gobj)
 bool itLikelike_UnkMotion17_Anim(Item_GObj* gobj)
 {
     PAD_STACK(16);
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         it_8026D5CC(gobj);
         it_802D9DDC(gobj);
     }
@@ -719,7 +719,7 @@ bool itLikelike_UnkMotion16_Anim(Item_GObj* gobj)
     itLikelikeAttributes* attr2;
     PAD_STACK(0x10);
 
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         ip->facing_dir = it_8026B684(&ip->pos);
         if (ip->xDD4_itemVar.likelike.x38 == 0) {
             ip2 = GET_ITEM(gobj);
@@ -891,7 +891,7 @@ bool itLikelike_UnkMotion12_Anim(Item_GObj* gobj)
     PAD_STACK(16);
 
     ip = GET_ITEM(gobj);
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         it_8026D5CC(gobj);
         if (ip->xDD4_itemVar.likelike.x50 != NULL) {
             it_802DB8A8(gobj);
@@ -922,7 +922,7 @@ bool itLikelike_UnkMotion12_Coll(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
 
     if ((enum GroundOrAir) ip->ground_or_air == GA_Air) {
-        if (it_8026DA08(gobj) != 0) {
+        if (it_8026DA08(gobj)) {
             it_802762B0(ip);
             it_80273454(gobj);
         }
@@ -950,9 +950,9 @@ bool itLikelike_UnkMotion9_Anim(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
     PAD_STACK(16);
 
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         it_8026D5CC(gobj);
-        if (ip->xDD4_itemVar.likelike.x50 != 0U) {
+        if (ip->xDD4_itemVar.likelike.x50 != NULL) {
             it_802DB8A8(gobj);
         } else {
             it_802D9DDC(gobj);
@@ -988,9 +988,9 @@ bool itLikelike_UnkMotion10_Anim(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
     PAD_STACK(16);
 
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         it_8026D5CC(gobj);
-        if (ip->xDD4_itemVar.likelike.x50 != 0U) {
+        if (ip->xDD4_itemVar.likelike.x50 != NULL) {
             it_802DB8A8(gobj);
         } else {
             it_802D9DDC(gobj);
