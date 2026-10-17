@@ -93,13 +93,13 @@ void ft_8007C77C(Fighter_GObj* gobj)
         if (ip->kind != It_Kind_Unk4) {
             continue;
         }
-        var_r29 = 0;
-        if (ftLib_IsSamePlayer(gobj, ip->owner) != 0) {
+        var_r29 = false;
+        if (ftLib_IsSamePlayer(gobj, ip->owner)) {
             if (ip->xDD4_itemVar.unk4.xDEC_b1) {
-                var_r29 = 1;
+                var_r29 = true;
             }
         } else if (ip->xDD4_itemVar.unk4.xDEC_b0) {
-            var_r29 = 1;
+            var_r29 = true;
         }
         if (!var_r29) {
             continue;
