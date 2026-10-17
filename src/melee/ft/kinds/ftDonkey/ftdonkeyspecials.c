@@ -113,7 +113,7 @@ void doAirTransition(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     ftCommon_GroundToAirStateChange(gobj, fp, ftDk_MS_SpecialAirS, coll_mf);
-    if (fp->x2219_b0 == true) {
+    if (fp->x2219_b0) {
         Fighter_SetEffectHitlagCallbacks(fp);
     }
 }
@@ -122,7 +122,7 @@ static void doGroundTransition(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     ftCommon_AirToGroundStateChange(gobj, fp, ftDk_MS_SpecialS, coll_mf);
-    if (fp->x2219_b0 == true) {
+    if (fp->x2219_b0) {
         Fighter_SetEffectHitlagCallbacks(fp);
     }
 }
