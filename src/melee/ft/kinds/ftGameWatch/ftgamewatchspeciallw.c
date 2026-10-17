@@ -347,7 +347,7 @@ void ftGw_SpecialAirLw_Phys(HSD_GObj* gobj)
 /// Mr. Game & Watch's grounded Oil Panic Loop Collision callback
 void ftGw_SpecialLw_Coll(HSD_GObj* gobj)
 {
-    if (ft_800827A0(gobj) == false) {
+    if (!ft_800827A0(gobj)) {
         ftGw_SpecialLw_GroundToAir(gobj);
     }
 }
@@ -355,7 +355,7 @@ void ftGw_SpecialLw_Coll(HSD_GObj* gobj)
 /// Mr. Game & Watch's aerial Oil Panic Loop Collision callback
 void ftGw_SpecialAirLw_Coll(HSD_GObj* gobj)
 {
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         ftGw_SpecialAirLw_AirToGround(gobj);
     }
 }
