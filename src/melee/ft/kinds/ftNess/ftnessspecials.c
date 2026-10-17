@@ -34,14 +34,14 @@ void ftNs_SpecialS_ItemPKFireSpawn(
     float PKFireLaunch;
     float PKFireVel;
 
-    if (fp->x2210.x0.throw_flags_b0 != 0) {
+    if (fp->x2210.x0.throw_flags_b0) {
         fp->x2210.x0.throw_flags_b0 = 0;
         FlagResult = true;
     } else {
         FlagResult = false;
     }
 
-    if (FlagResult != false) {
+    if (FlagResult) {
         lb_8000B1CC(fp->parts[FtPart_R2ndNa].joint, NULL, &ItemBonePos);
 
         ItemBonePos.x += ness_attr->x30_PKFIRE_SPAWN_X * fp->facing_dir;
@@ -138,7 +138,7 @@ void ftNs_SpecialAirS_Phys(
 void ftNs_SpecialS_Coll(
     HSD_GObj* gobj) // Ness's grounded PK Fire Collision callback
 {
-    if (ft_800827A0(gobj) == false) {
+    if (!ft_800827A0(gobj)) {
         ftCo_Fall_Enter(gobj);
     }
 }
@@ -151,7 +151,7 @@ void ftNs_SpecialAirS_Coll(
     ftNessAttributes* ness_attr;
 
     ness_attr = fp->dat_attrs;
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         ftCo_LandingFallSpecial_Enter(gobj, false,
                                       ness_attr->x38_PKFIRE_LANDING_LAG);
     }
