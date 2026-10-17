@@ -257,25 +257,25 @@ void ft_80088C5C(Fighter_GObj* gobj)
         lbAudioAx_800265C4(gobj, fp->x2160);
         fp->x2160 = -1;
     }
-    if (fp->x214C != -1 && lbAudioAx_800265C4(gobj, fp->x214C) == 1) {
+    if (fp->x214C != -1 && lbAudioAx_800265C4(gobj, fp->x214C)) {
         ft_80088828(fp);
     }
-    if (fp->x2144 != -1 && lbAudioAx_800265C4(gobj, fp->x2144) == 1) {
+    if (fp->x2144 != -1 && lbAudioAx_800265C4(gobj, fp->x2144)) {
         ft_80088770(fp);
     }
-    if (fp->x2148 != -1 && lbAudioAx_800265C4(gobj, fp->x2148) == 1) {
+    if (fp->x2148 != -1 && lbAudioAx_800265C4(gobj, fp->x2148)) {
         ft_800887CC(fp);
     }
-    if (fp->x2150 != -1 && lbAudioAx_800265C4(gobj, fp->x2150) == 1) {
+    if (fp->x2150 != -1 && lbAudioAx_800265C4(gobj, fp->x2150)) {
         ft_80088884(fp);
     }
-    if (fp->x2154 != -1 && lbAudioAx_800265C4(gobj, fp->x2154) == 1) {
+    if (fp->x2154 != -1 && lbAudioAx_800265C4(gobj, fp->x2154)) {
         ft_800888E0(fp);
     }
-    if (fp->x2158 != -1 && lbAudioAx_800265C4(gobj, fp->x2158) == 1) {
+    if (fp->x2158 != -1 && lbAudioAx_800265C4(gobj, fp->x2158)) {
         ft_8008893C(fp);
     }
-    if (fp->x215C != -1 && lbAudioAx_800265C4(gobj, fp->x215C) == 1) {
+    if (fp->x215C != -1 && lbAudioAx_800265C4(gobj, fp->x215C)) {
         ft_80088998(fp);
     }
     lbAudioAx_80023870(0x83D61, 0, 0x40, fp->player_idx * 2 + 0x36);
