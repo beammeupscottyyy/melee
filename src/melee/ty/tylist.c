@@ -411,7 +411,7 @@ void _tyList_80313464(TyListArg* arg)
         arg->jobjs[1] = NULL;
     }
 
-    if (Toy_80304924(val) != 0) {
+    if (Toy_80304924(val)) {
         arg->jobjs[1] =
             _tyList_80313508(state->gobj, "ToyFigureListMarkN_Top_joint",
                              -8.4f, arg->x30, 0.0f);
@@ -686,7 +686,7 @@ static void _tyList_80313BD8(HSD_GObj* gobj)
         g->x10 = 0;
     }
 
-    if (mn_8022F218() != 0) {
+    if (mn_8022F218()) {
         sfxBack();
         HSD_GObjProc_RemoveProc(HSD_GObj_CurrentInvokedProc);
         Toy_80310660(0);
@@ -887,7 +887,7 @@ void _tyList_80314504(HSD_GObj* gobj, intptr_t unused)
 {
     TyListData* data = (TyListData*) gobj;
 
-    if (HSD_CObjSetCurrent(data->cobj) != 0) {
+    if (HSD_CObjSetCurrent(data->cobj)) {
         HSD_SetEraseColor(0, 0, 0, 0xFF);
         HSD_CObjEraseScreen(data->cobj, 1, 0, 0);
         HSD_GObj_80390ED0(gobj, 7);
@@ -1040,7 +1040,7 @@ void _tyList_803148E4(s32 arg0)
             }
         }
 
-        if (Toy_80304924(Toy_sbss_804D6EDC[state->selectedIdx]) != 0) {
+        if (Toy_80304924(Toy_sbss_804D6EDC[state->selectedIdx])) {
             Toy_80304988(Toy_sbss_804D6EDC[state->selectedIdx]);
         }
     }
