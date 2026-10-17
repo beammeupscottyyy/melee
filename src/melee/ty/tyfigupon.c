@@ -178,7 +178,7 @@ s32 _tyFigupon_80314B54(void)
     s32 count = 0;
 
     for (i = 0; i < TY_TROPHY_COUNT; i++) {
-        if (Toy_80304CC8(i) != 0) {
+        if (Toy_80304CC8(i)) {
             if (Toy_803048C0(i) != 0) {
                 s32 result = (s32) Toy_803060BC(i, 6);
                 if (result != 8 && (u32) result > 1) {
@@ -370,7 +370,7 @@ static inline void tyFigupon_CountRemaining(s32* remaining)
     done = _tyFigupon_80314B54();
     count = 0;
     for (i = 0; i < 9; i++) {
-        if (i != 8 && (u32) i > 1U && Toy_80304B0C(i) != 0) {
+        if (i != 8 && (u32) i > 1U && Toy_80304B0C(i)) {
             count += Toy_80304B94(i);
         }
     }
@@ -386,7 +386,7 @@ static inline void tyFigupon_UpdateRemainingCount(struct un_804D6EF4_t* ef4)
     done = _tyFigupon_80314B54();
     count = 0;
     for (i = 0; i < 9; i++) {
-        if (i != 8 && (u32) i > 1U && Toy_80304B0C(i) != 0) {
+        if (i != 8 && (u32) i > 1U && Toy_80304B0C(i)) {
             count += Toy_80304B94(i);
         }
     }
@@ -985,7 +985,7 @@ void _tyFigupon_80316C24(HSD_GObj* arg0)
         }
     }
 
-    if (mn_8022F218() != 0) {
+    if (mn_8022F218()) {
         sfxBack();
         mn_8022F268();
         ((TyModeState*) Toy_804A284C)->x4 = 1;
@@ -1367,7 +1367,7 @@ void _tyFigupon_80317A60(void)
         HSD_SisLib_803A611C(0, data->x0, 0xB, 0xB, 0, 0x3E, 0, 0);
     data->x14 = HSD_SisLib_803A5ACC(0, _tyFigupon_804D6EFC, 5.2f, 5.2f, 17.2f,
                                     448.0f, 64.0f);
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         text = data->x14;
         text->x34.x = 1.6f;
         text->x34.y = 0.7f;
@@ -1380,7 +1380,7 @@ void _tyFigupon_80317A60(void)
     text->font_size.x = 0.0235f;
     text->font_size.y = 0.0715f;
     data->x14->default_alignment = 1;
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         data->x14->default_kerning = 1;
     }
     data->x14->default_fitting = 1;
@@ -1393,7 +1393,7 @@ void _tyFigupon_80317A60(void)
     text->font_size.x = 0.027f;
     text->font_size.y = 0.028f;
     data->x18->default_kerning = 1;
-    if (lbLang_IsSavedLanguageUS() != 0) {
+    if (lbLang_IsSavedLanguageUS()) {
         text = data->x18;
         text->x34.x = 0.8f;
         text->x34.y = 0.8f;
@@ -1460,7 +1460,7 @@ void tyFigupon_Scene_OnEnter(void* arg0)
     Toy_8031263C();
     Toy_80305918(3, 0, 1);
     ((TyModeState*) Toy_804A284C)->x0 = 1;
-    if (lbLang_IsSavedLanguageJP() != 0) {
+    if (lbLang_IsSavedLanguageJP()) {
         archive_name = "TyMnFigp.dat";
     } else {
         archive_name = "TyMnFigp.usd";
