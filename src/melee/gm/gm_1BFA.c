@@ -161,7 +161,7 @@ void gm_ModeState_Prize_OnEnter(GameModeState* arg0)
     void** temp_r3;
     s32 var_r30;
     gm_GetGameModeStateEnterData(arg0);
-    var_r31 = 0;
+    var_r31 = NULL;
     gm_GetChallengerData();
     var_r30 = 0;
     memzero(gm_8049E558, 0x42);
@@ -176,7 +176,7 @@ void gm_ModeState_Prize_OnEnter(GameModeState* arg0)
         int var_r25;
         u32 KP;
         for (var_r25 = 0, KP = 1; var_r25 < 0x42; var_r25++) {
-            if (gm_8017219C(var_r25) != 0) {
+            if (gm_8017219C(var_r25)) {
                 temp_r3 = gm_801BFC60(var_r25, var_r30, 0,
                                       *gmMainLib_8015D804(var_r25), var_r31);
                 gm_8049E558[var_r25] = KP;
@@ -207,7 +207,7 @@ void gm_ModeState_Prize_OnEnter(GameModeState* arg0)
     gm_80173EEC();
     gm_80172898(0xFFFFU);
     for (var_r28_3 = 0; var_r28_3 < 0x42; var_r28_3++, p3++) {
-        if (*p3 == 0 && gm_8017219C(var_r28_3) != 0) {
+        if (*p3 == 0 && gm_8017219C(var_r28_3)) {
             var_r31 = gm_801BFC60(var_r28_3, var_r30, 0,
                                   *gmMainLib_8015D804(var_r28_3), var_r31);
             var_r30 += 1;
@@ -235,7 +235,7 @@ void gm_ModeState_Prize_OnEnter(GameModeState* arg0)
     gm_80172174();
     gm_80174180();
     if (var_r31 != NULL) {
-        *var_r31 = 0;
+        *var_r31 = NULL;
     }
     lbCardGame_SetupArchive();
 }
