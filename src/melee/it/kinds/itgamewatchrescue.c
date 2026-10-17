@@ -101,7 +101,7 @@ bool itGamewatchrescue_UnkMotion1_Anim(Item_GObj* item_gobj)
     PAD_STACK(8);
 
     if (rescue_gobj != NULL) {
-        if (ftGw_SpecialHi_ItemCheckRescueRemove(rescue_gobj) == true) {
+        if (ftGw_SpecialHi_ItemCheckRescueRemove(rescue_gobj)) {
             it_802C8158(item_gobj);
             clearRescue(item_gobj);
             return true;
