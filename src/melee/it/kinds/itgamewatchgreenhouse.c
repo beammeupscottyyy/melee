@@ -74,7 +74,7 @@ void itGamewatchGreenhouse_PickedUp(Item_GObj* item_gobj)
     item->xDB0_itcmd_var1 = 0;
     item->xDAC_itcmd_var0 = 0;
     if (item->owner != NULL) {
-        if (ftGw_Attack11_ItemGreenhouse_CheckAttack11(item->owner) != 0) {
+        if (ftGw_Attack11_ItemGreenhouse_CheckAttack11(item->owner)) {
             Item_80268E5C(item_gobj, 1, ITEM_ANIM_UPDATE);
         } else {
             Item_80268E5C(item_gobj, 0, ITEM_ANIM_UPDATE);
@@ -130,7 +130,7 @@ bool itGamewatchGreenhouse_Motion2_Anim(Item_GObj* item_gobj)
     Item* item;
     PAD_STACK(0x10);
 
-    if (it_80272C6C(item_gobj) == 0) {
+    if (!it_80272C6C(item_gobj)) {
         Item_80268E5C(item_gobj, 2, ITEM_ANIM_UPDATE);
     }
     if (greenhouse_Check(item_gobj)) {
