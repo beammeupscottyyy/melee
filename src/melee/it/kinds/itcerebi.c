@@ -70,7 +70,7 @@ void it_802D3FA0(Item_GObj* gobj)
 
 bool itCerebi_UnkMotion1_Anim(Item_GObj* gobj)
 {
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         it_802D4070(gobj);
     }
     return false;
@@ -102,10 +102,7 @@ void it_802D4070(Item_GObj* gobj)
 bool itCerebi_UnkMotion2_Anim(Item_GObj* gobj)
 {
     Item* item = GET_ITEM(gobj);
-    if (item->pos.y > Stage_GetBlastZoneTopOffset()) {
-        return true;
-    }
-    return false;
+    return item->pos.y > Stage_GetBlastZoneTopOffset();
 }
 
 void itCerebi_UnkMotion2_Phys(Item_GObj* gobj)
