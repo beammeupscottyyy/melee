@@ -363,14 +363,13 @@ s32 ft_80087D0C(Fighter* fighter, s32 sfx_id)
         switch (fighter->kind) {
         case Ft_Kind_Popo:
         case Ft_Kind_Nana:
-            if (0x1FBFD <= sfx && sfx <= 0x1FC62 &&
-                ftCommon_80080144(fighter) == true)
+            if (0x1FBFD <= sfx && sfx <= 0x1FC62 && ftCommon_80080144(fighter))
             {
                 sfx += 0x66;
             }
 
             if (0x1FC63 <= sfx && sfx <= 0x1FCC8 &&
-                ftCommon_80080144(fighter) != true)
+                !ftCommon_80080144(fighter))
             {
                 sfx -= 0x66;
             }
