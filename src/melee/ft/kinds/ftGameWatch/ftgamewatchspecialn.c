@@ -131,7 +131,7 @@ static inline void ftGameWatch_SpecialN_ChefLoop(HSD_GObj* gobj)
         fp->cmd_vars[2] = 0U;
         if (((float) fp->mv.gw.SpecialN.maxSausage <
              gawAttrs->x1C_GAMEWATCH_CHEF_MAX) &&
-            ((s32) fp->mv.gw.SpecialN.isChefLoopDisable == false))
+            !fp->mv.gw.SpecialN.isChefLoopDisable)
         {
             ftGw_SpecialN_Loop(gobj, gawAttrs->x18_GAMEWATCH_CHEF_LOOPFRAME);
         }
@@ -158,7 +158,7 @@ static inline void ftGameWatch_SpecialAirN_ChefLoop(HSD_GObj* gobj)
 
     if (fp->cmd_vars[2] != 0U) {
         fp->cmd_vars[2] = 0U;
-        if (((s32) fp->mv.gw.SpecialN.isChefLoopDisable == false) &&
+        if (!fp->mv.gw.SpecialN.isChefLoopDisable &&
             ((float) fp->mv.gw.SpecialN.maxSausage <
              gawAttrs->x1C_GAMEWATCH_CHEF_MAX))
         {
@@ -189,7 +189,7 @@ void ftGw_SpecialN_IASA(HSD_GObj* gobj)
     Fighter* fp = fp = GET_FIGHTER(gobj);
     ftGameWatchAttributes* gawAttrs = gawAttrs = getFtSpecialAttrsD(fp);
 
-    if ((fp->input.held_buttons[0] & HSD_PAD_B) == false) {
+    if (!(fp->input.held_buttons[0] & HSD_PAD_B)) {
         fp->mv.gw.SpecialN.isChefLoopDisable = true;
     }
     if (fp->cmd_vars[1] != 0 && (fp->input.pressed_buttons & HSD_PAD_B) &&
@@ -207,7 +207,7 @@ void ftGw_SpecialAirN_IASA(HSD_GObj* gobj)
     Fighter* fp = fp = GET_FIGHTER(gobj);
     ftGameWatchAttributes* gawAttrs = gawAttrs = getFtSpecialAttrsD(fp);
 
-    if ((fp->input.held_buttons[0] & HSD_PAD_B) == false) {
+    if (!(fp->input.held_buttons[0] & HSD_PAD_B)) {
         fp->mv.gw.SpecialN.isChefLoopDisable = true;
     }
     if (fp->cmd_vars[1] != 0 && (fp->input.pressed_buttons & HSD_PAD_B) &&
@@ -234,7 +234,7 @@ void ftGw_SpecialAirN_Phys(HSD_GObj* gobj)
 /// Collision callback
 void ftGw_SpecialN_Coll(HSD_GObj* gobj)
 {
-    if (ft_800827A0(gobj) == false) {
+    if (!ft_800827A0(gobj)) {
         ftGw_SpecialN_GroundToAir(gobj);
     }
 }
@@ -244,7 +244,7 @@ void ftGw_SpecialN_Coll(HSD_GObj* gobj)
 /// callback
 void ftGw_SpecialAirN_Coll(HSD_GObj* gobj)
 {
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         ftGw_SpecialAirN_AirToGround(gobj);
     }
 }
