@@ -152,7 +152,7 @@ void ftKb_NsSpecialNHold_Anim(HSD_GObj* gobj)
             fp->u.kb.ns_flash_gobj = NULL;
             return;
         }
-        if (it_802AA7F0(fp->u.kb.ns_flash_gobj) == 1 &&
+        if (it_802AA7F0(fp->u.kb.ns_flash_gobj) &&
             fp->motion_id != ftKb_MS_NsSpecialNHold1)
         {
             Fighter_ChangeMotionState(gobj, ftKb_MS_NsSpecialNHold1,
@@ -218,7 +218,7 @@ void ftKb_NsSpecialAirNHold_Anim(Fighter_GObj* gobj)
             fp->u.kb.ns_flash_gobj = NULL;
             return;
         }
-        if (it_802AA7F0(fp->u.kb.ns_flash_gobj) == 1 &&
+        if (it_802AA7F0(fp->u.kb.ns_flash_gobj) &&
             fp->motion_id != ftKb_MS_NsSpecialAirNHold1)
         {
             Fighter_ChangeMotionState(gobj, ftKb_MS_NsSpecialAirNHold1,
@@ -260,7 +260,7 @@ void ftKb_NsSpecialNHold_IASA(Fighter_GObj* gobj)
             } else {
                 result = false;
             }
-            if (result != true) {
+            if (!result) {
                 return;
             }
         }
@@ -299,7 +299,7 @@ void ftKb_NsSpecialAirNHold_IASA(Fighter_GObj* gobj)
             } else {
                 result = false;
             }
-            if (result != true) {
+            if (!result) {
                 return;
             }
         }
