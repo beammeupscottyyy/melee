@@ -151,7 +151,7 @@ void fn_800DE798(Fighter_GObj* gobj)
 static inline int calcKnockbackAngle(bool is_upward)
 {
     int kb_angle;
-    if (is_upward != 0) {
+    if (is_upward) {
         kb_angle = 90;
     } else {
         kb_angle = -1;
@@ -176,7 +176,7 @@ void ftCo_800DE7C0(Fighter_GObj* gobj, Fighter_GObj* victim, bool is_upward)
 {
     Fighter* fp = GET_FIGHTER(gobj);
 
-    if (victim != 0) {
+    if (victim != NULL) {
         fp->x21EC = fn_800DE798;
         fp->mv.co.fighterthrow.victim = victim;
     }
