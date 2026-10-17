@@ -739,13 +739,13 @@ bool mn_80229938(MenuKind menu_kind, s32 selection)
     return true;
 }
 
-/// @brief returns the amount of unlocked selections
+/// Returns the amount of unlocked selections.
 int mn_80229A04(MenuKind kind, int selection)
 {
     int i;
     int count = 0;
     for (i = 0; i < selection; i++) {
-        if (mn_80229938(kind, i) != false) {
+        if (mn_80229938(kind, i)) {
             count++;
         }
     }
@@ -1055,7 +1055,7 @@ void mn_8022A5D0(HSD_GObj* gp, MainMenuSelection selection)
         spA0[i] = var_r0;
     }
     for (var_r26 = 0; var_r26 < option_count; var_r26++) {
-        if (mn_80229938(mn_804A04F0.cur_menu, var_r26) != 0) {
+        if (mn_80229938(mn_804A04F0.cur_menu, var_r26)) {
             var_r24 = mn_80229A04(mn_804A04F0.cur_menu, var_r26);
             lb_8001204C(spA0[var_r24], sp84, mn_803EAE7C, 7);
             temp_r22_2 = (selection == var_r26) * 0xC;
@@ -1377,7 +1377,7 @@ static inline u8 CountUnlockedSelections(MenuKind kind)
     int i;
     u8 count = 0;
     for (i = 0; i < mn_803EB6B0[kind].selection_count; i++) {
-        if (mn_80229938(kind, i) != 0) {
+        if (mn_80229938(kind, i)) {
             count++;
         }
     }
@@ -1459,7 +1459,7 @@ HSD_GObj* mn_8022B3A0(u8 state)
     }
     for (i = 0; i < option_count; i++) {
         model = &MenMainCursor_Top;
-        if (mn_80229938(mn_804A04F0.cur_menu, i) != 0) {
+        if (mn_80229938(mn_804A04F0.cur_menu, i)) {
             menu_kind = mn_804A04F0.cur_menu;
             unlocked_index = mn_80229A04(menu_kind, i);
             HSD_JObjReqAnim(option_jobjs[unlocked_index], unlocked_count);
@@ -1880,7 +1880,7 @@ static inline void decrement_selection(u8 selection_count, s32 menu_kind)
         } else {
             mn_804A04F0.hovered_selection = selection_count - 1;
         }
-    } while (mn_80229938(menu_kind, mn_804A04F0.hovered_selection) == 0);
+    } while (!mn_80229938(menu_kind, mn_804A04F0.hovered_selection));
 }
 
 static inline void increment_selection(u8 selection_count, MenuKind menu_kind)
@@ -1891,10 +1891,10 @@ static inline void increment_selection(u8 selection_count, MenuKind menu_kind)
         } else {
             mn_804A04F0.hovered_selection++;
         }
-    } while (mn_80229938(menu_kind, mn_804A04F0.hovered_selection) == 0);
+    } while (!mn_80229938(menu_kind, mn_804A04F0.hovered_selection));
 }
 
-/// @brief Special Vs menu think
+/// Special Vs menu think.
 void mn_8022C4F4(HSD_GObj* gp)
 {
     HSD_GObj* gobj;
@@ -2194,7 +2194,7 @@ void mn_8022CC28(HSD_GObj* gp)
                 mn_804A04F0.hovered_selection =
                     (RegMatchMenuSelection) SEL_REG_ALLSTAR;
             }
-        } while (mn_80229938(6, (s32) mn_804A04F0.hovered_selection) == 0);
+        } while (!mn_80229938(6, (s32) mn_804A04F0.hovered_selection));
     } else if (buttons & MenuInput_Down) {
         sfxMove();
         do {
@@ -2206,11 +2206,11 @@ void mn_8022CC28(HSD_GObj* gp)
             } else {
                 mn_804A04F0.hovered_selection++;
             }
-        } while (mn_80229938(6, (s32) mn_804A04F0.hovered_selection) == 0);
+        } while (!mn_80229938(6, (s32) mn_804A04F0.hovered_selection));
     }
 }
 
-/// @brief Data menu think
+/// Data menu think.
 void mn_8022CE6C(HSD_GObj* gp)
 {
     HSD_GObjProc* think;
@@ -2288,7 +2288,7 @@ void mn_8022CE6C(HSD_GObj* gp)
                 mn_804A04F0.hovered_selection =
                     (DataMenuSelection) SEL_DATA_SPECIAL;
             }
-        } while (mn_80229938(5, (s32) mn_804A04F0.hovered_selection) == 0);
+        } while (!mn_80229938(5, (s32) mn_804A04F0.hovered_selection));
     } else if (buttons & MenuInput_Down) {
         sfxMove();
         do {
@@ -2300,11 +2300,11 @@ void mn_8022CE6C(HSD_GObj* gp)
             } else {
                 mn_804A04F0.hovered_selection++;
             }
-        } while (mn_80229938(5, (s32) mn_804A04F0.hovered_selection) == 0);
+        } while (!mn_80229938(5, (s32) mn_804A04F0.hovered_selection));
     }
 }
 
-/// @brief Settings menu think
+/// Settings menu think.
 void mn_8022D104(HSD_GObj* gp)
 {
     int selection_count;
@@ -2371,7 +2371,7 @@ void mn_8022D104(HSD_GObj* gp)
             } else {
                 mn_804A04F0.hovered_selection = (u8) selection_count - 1;
             }
-        } while (mn_80229938(4, mn_804A04F0.hovered_selection) == 0);
+        } while (!mn_80229938(4, mn_804A04F0.hovered_selection));
     } else if (buttons & 2) {
         sfxMove();
         do {
@@ -2380,7 +2380,7 @@ void mn_8022D104(HSD_GObj* gp)
             } else {
                 mn_804A04F0.hovered_selection++;
             }
-        } while (mn_80229938(4, mn_804A04F0.hovered_selection) == 0);
+        } while (!mn_80229938(4, mn_804A04F0.hovered_selection));
     }
 }
 
@@ -2444,7 +2444,7 @@ void mn_8022D34C(HSD_GObj* gp)
                 mn_804A04F0.hovered_selection =
                     (TrophyMenuSelection) SEL_TOY_COLLECTION;
             }
-        } while (mn_80229938(3, mn_804A04F0.hovered_selection) == 0);
+        } while (!mn_80229938(3, mn_804A04F0.hovered_selection));
     } else if (buttons & MenuInput_Down) {
         sfxMove();
         do {
@@ -2455,11 +2455,11 @@ void mn_8022D34C(HSD_GObj* gp)
             } else {
                 mn_804A04F0.hovered_selection++;
             }
-        } while (mn_80229938(3, mn_804A04F0.hovered_selection) == 0);
+        } while (!mn_80229938(3, mn_804A04F0.hovered_selection));
     }
 }
 
-/// @brief Versus menu think
+/// Versus menu think.
 void mn_8022D594(HSD_GObj* gp)
 {
     HSD_GObjProc* think;
@@ -2632,7 +2632,7 @@ void mn_8022D7F4(HSD_GObj* gp)
             } else {
                 mn_804A04F0.hovered_selection = (u8) selection_count - 1;
             }
-        } while (mn_80229938(1, mn_804A04F0.hovered_selection) == 0);
+        } while (!mn_80229938(1, mn_804A04F0.hovered_selection));
     } else if (buttons & MenuInput_Down) {
         sfxMove();
         do {
@@ -2642,11 +2642,11 @@ void mn_8022D7F4(HSD_GObj* gp)
             } else {
                 mn_804A04F0.hovered_selection++;
             }
-        } while (mn_80229938(1, mn_804A04F0.hovered_selection) == 0);
+        } while (!mn_80229938(1, mn_804A04F0.hovered_selection));
     }
 }
 
-/// @brief Main menu input think
+/// Main menu input think.
 void mn_8022DB10(HSD_GObj* gp)
 {
     MenuExitData* data;
