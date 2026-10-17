@@ -34,7 +34,7 @@ bool fn_800D9558(Fighter_GObj* gobj)
             fp->u.ss.x223C = it_802B7C18(gobj, &bonePos, fp->facing_dir);
             if (fp->u.ss.x223C == NULL) {
                 ft_8008A2BC(gobj);
-                return 1;
+                return true;
             }
             fp->accessory2_cb = (void (*)(HSD_GObj*)) it_802BAC80;
             fp->death1_cb = (void (*)(HSD_GObj*)) it_802BAC3C;
@@ -79,7 +79,7 @@ bool fn_800D9558(Fighter_GObj* gobj)
                     {
                         it_802B7B84(fp->u.ss.x223C);
                         ft_8008A2BC(gobj);
-                        return 1;
+                        return true;
                     }
                     vel.x = grappleAttrs->x40;
                     vel.y = 0.0f;
@@ -94,7 +94,7 @@ bool fn_800D9558(Fighter_GObj* gobj)
             }
         }
     }
-    return 0;
+    return false;
 }
 
 static const Vec3 lbl_803B7510 = { 1.0f, 0.0f, 0.0f };
@@ -124,7 +124,7 @@ bool fn_800D9930(Fighter_GObj* gobj)
             fp->u.ss.x223C = it_802B7C18(gobj, &bonePos, fp->facing_dir);
             if (fp->u.ss.x223C == NULL) {
                 ft_8008A2BC(gobj);
-                return 1;
+                return true;
             }
             fp->accessory2_cb = (void (*)(HSD_GObj*)) it_802BAC80;
             fp->death1_cb = (void (*)(HSD_GObj*)) it_802BAC3C;
@@ -168,7 +168,7 @@ bool fn_800D9930(Fighter_GObj* gobj)
             }
         }
     }
-    return 0;
+    return false;
 }
 
 void fn_800D9C64(Fighter_GObj* gobj)
