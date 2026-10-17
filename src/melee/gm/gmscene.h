@@ -32,7 +32,7 @@
 /* 1A4BD4 */ void gm_801A4BD4(void);
 
 /**
- * @brief Finds the #GameScene for a given scene kind.
+ * Finds the #GameScene for a given scene kind.
  *
  * Walks the global #GameScene table (from #gm_GetAllGameScenes)
  * comparing each entry's #GameScene::class_id against @p kind until a
@@ -44,7 +44,7 @@
 /* 1A4CE0 */ GameScene* gm_FindGameSceneHandler(u8 kind);
 
 /**
- * @brief Main per-scene loop invoked from @c gm_801A4014.
+ * Main per-scene loop invoked from @c gm_801A4014.
  *
  * Runs until #gm_80479D58_t::unk_C becomes non-zero, calling @p on_frame each
  * frame after pad/input processing.

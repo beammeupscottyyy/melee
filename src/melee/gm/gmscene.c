@@ -1,5 +1,7 @@
 #include "gmscene.h"
 
+#include <melee/if/forward.h>
+
 #include "gm_1A36.h"
 #include "gm_unsplit.h"
 #include "gmmain_lib.h"
@@ -189,13 +191,13 @@ void gm_801A4B88(struct GameSceneInfo* info)
     gm_804D6720 = info;
 }
 
-/// @brief returns a pointer to the current scenes enter data
+/// Returns a pointer to the current scenes enter data
 void* gm_GetCurrentSceneEnterData(void)
 {
     return gm_804D6720->enter_data;
 }
 
-/// @brief returns a pointer to the current scenes exit data
+/// Returns a pointer to the current scenes exit data
 void* gm_GetCurrentSceneExitData(void)
 {
     return gm_804D6720->exit_data;
@@ -236,7 +238,7 @@ void gm_801A4BD4(void)
     HSD_GObjInit(&gobj_init_data);
     hsd_80392474();
     un_802FF78C();
-    gm_804D672C = GObj_Create(14, 0, 0);
+    gm_804D672C = GObj_Create(HSD_GOBJ_CLASS_UI, 0, 0);
     if (gm_804D672C != NULL) {
         HSD_GObj_SetupProc(gm_804D672C, fn_801A4BD0, 0);
     }
