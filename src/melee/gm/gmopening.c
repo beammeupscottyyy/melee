@@ -25,9 +25,9 @@
 /* 4D67D4 */ static HSD_GObj* gm_804D67D4;
 /* 4D67D8 */ static HSD_GObj* gm_804D67D8;
 /* 4D67DC */ static bool gm_804D67DC;
-/* 4D67E0 */ static u8 gm_804D67E0;
-/* 4D67E1 */ static u8 gm_804D67E1;
-/* 4D67E2 */ static u8 gm_804D67E2;
+/* 4D67E0 */ static bool gm_804D67E0;
+/* 4D67E1 */ static bool gm_804D67E1;
+/* 4D67E2 */ static bool gm_804D67E2;
 /* 4D67E4 */ static u32 gm_804D67E4;
 /* 4D67E8 */ static HSD_GObj* gm_804D67E8;
 /* 4D67F4 */ HSD_GObj* gm_804D67F4;
@@ -148,14 +148,14 @@ void gm_Scene_Opening_OnEnter(UNK_T arg0)
     HSD_GObj* temp_r3_3;
     PAD_STACK(8);
 
-    gm_804D67D0 = 0;
-    gm_804D67D4 = 0;
-    gm_804D67D8 = 0;
+    gm_804D67D0 = false;
+    gm_804D67D4 = NULL;
+    gm_804D67D8 = NULL;
     gm_804D67EC = 0;
-    gm_804D67E0 = 0;
-    gm_804D67E1 = 0;
-    gm_804D67DC = 0;
-    gm_804D67E2 = 0;
+    gm_804D67E0 = false;
+    gm_804D67E1 = false;
+    gm_804D67DC = false;
+    gm_804D67E2 = false;
     gmTitle_801A1AC0();
     lbAudioAx_80026F2C(0x12);
     lbAudioAx_8002702C(2, 4);
@@ -202,24 +202,24 @@ void gm_Scene_Opening_OnFrame(void)
     } else {
         gm_804D67EC = (u32) temp_r3;
     }
-    if (lbLang_IsSettingUS() != 0) {
-        if (gm_804D67E0 == 0 && gm_804D67EC >= 5034) {
+    if (lbLang_IsSettingUS()) {
+        if (!gm_804D67E0 && gm_804D67EC >= 5034) {
             lbAudioAx_800237A8(0x4E21, 0x7F, 0x40);
-            gm_804D67E0 = 1;
+            gm_804D67E0 = true;
         }
     } else {
-        if (gm_804D67E0 == 0 && gm_804D67EC >= 4980) {
+        if (!gm_804D67E0 && gm_804D67EC >= 4980) {
             lbAudioAx_800237A8(0x4E22, 0x7F, 0x40);
-            gm_804D67E0 = 1;
+            gm_804D67E0 = true;
         }
-        if (gm_804D67E1 == 0 && gm_804D67EC >= 5100) {
+        if (!gm_804D67E1 && gm_804D67EC >= 5100) {
             lbAudioAx_800237A8(0x4E23, 0x7F, 0x40);
-            gm_804D67E1 = 1;
+            gm_804D67E1 = true;
         }
     }
-    if ((gm_804D67E2 == 0) && (gm_804D67EC >= 4980)) {
+    if (!gm_804D67E2 && gm_804D67EC >= 4980) {
         gmMainLib_8015F500();
-        gm_804D67E2 = 1;
+        gm_804D67E2 = true;
     }
     if (gm_804D67D4 == NULL && gm_804D67EC >= 0x1C6 && gm_804D67EC < 0x202) {
         temp_r3_2 = GObj_Create(0xEU, 0xFU, 0U);
