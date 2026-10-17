@@ -171,9 +171,7 @@ u8 gm_8017E430(void)
 u8 gm_8017E440(void)
 {
     UnkAdventureData* r31 = gm_GetAdventureData();
-    if (gm_RumbleEnabledForPlayer(r31->x0.x0.slot, r31->x0.x0.nametag) ==
-        false)
-    {
+    if (!gm_RumbleEnabledForPlayer(r31->x0.x0.slot, r31->x0.x0.nametag)) {
         return 4;
     }
     return r31->x0.x0.slot;
