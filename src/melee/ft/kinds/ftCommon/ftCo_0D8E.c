@@ -52,7 +52,7 @@ bool fn_800D8EC8(Fighter_GObj* gobj)
                 it_802A2BA4(gobj, &bonePos, fp->facing_dir, attrs->xBC);
             if (fp->u.lk.xC == NULL) {
                 ft_8008A2BC(gobj);
-                return 1;
+                return true;
             }
             fp->accessory2_cb = it_802A7AF0;
             fp->death1_cb = it_802A7AAC;
@@ -81,7 +81,7 @@ bool fn_800D8EC8(Fighter_GObj* gobj)
                     {
                         it_802A2B10(fp->u.lk.xC);
                         ft_8008A2BC(gobj);
-                        return 1;
+                        return true;
                     }
                     vel.x = hookAttrs->x38 * fp->facing_dir;
                     vel.y = 0.0f;
@@ -105,7 +105,7 @@ bool fn_800D8EC8(Fighter_GObj* gobj)
             }
         }
     }
-    return 0;
+    return false;
 }
 
 bool fn_800D9228(Fighter_GObj* gobj)
