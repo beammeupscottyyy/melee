@@ -290,7 +290,7 @@ static void ftGw_SpecialAirS_AirToGround(HSD_GObj*);
 /// Collision callback
 void ftGw_SpecialS_Coll(HSD_GObj* gobj)
 {
-    if (ft_800827A0(gobj) == false) {
+    if (!ft_800827A0(gobj)) {
         ftGw_SpecialS_GroundToAir(gobj);
     }
 }
@@ -298,7 +298,7 @@ void ftGw_SpecialS_Coll(HSD_GObj* gobj)
 /// 0x8014CA4C - Mr. Game & Watch's Aerial Judgement Collision callback
 void ftGw_SpecialAirS_Coll(HSD_GObj* gobj)
 {
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         ftGw_SpecialAirS_AirToGround(gobj);
     }
 }
