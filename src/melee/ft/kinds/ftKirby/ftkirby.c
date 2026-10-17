@@ -2665,7 +2665,7 @@ void ftKb_Init_OnItemPickup(HSD_GObj* gobj, bool arg1)
 void ftKb_Init_OnItemInvisible(Fighter_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if (itIsHeavy(fp->item_gobj) == false) {
+    if (!itIsHeavy(fp->item_gobj)) {
         ftAnim_80070CC4(gobj, 1);
     }
 }

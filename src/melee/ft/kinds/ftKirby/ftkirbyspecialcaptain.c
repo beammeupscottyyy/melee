@@ -202,7 +202,7 @@ void ftKb_CaSpecialN_Coll(Fighter_GObj* gobj)
     ftKirby_MotionState msid;
     PAD_STACK(8);
 
-    if (ft_800827A0(gobj) == false) {
+    if (!ft_800827A0(gobj)) {
         fp = getFighter(gobj);
         ftCommon_8007D5D4(fp);
         fp2 = getFighter(gobj);

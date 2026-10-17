@@ -160,7 +160,7 @@ void ftKb_SpecialNPr_801010D4(Fighter_GObj* gobj, bool unk, MotionFlags flags,
     PAD_STACK(8);
     fp->facing_dir = fp->mv.pr.specialn.x34.x;
     ftColl_8007AFF8(gobj);
-    if (unk == false) {
+    if (!unk) {
         FtMotionId msid;
         if (fp->facing_dir == 1.0f) {
             msid = ftKb_MS_PrSpecialNEndR;

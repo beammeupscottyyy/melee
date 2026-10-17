@@ -457,7 +457,7 @@ void ftKb_FxSpecialNLoop_Anim(HSD_GObj* gobj)
         it_802AE538(fp->u.kb.xB0);
     }
     if (!ftAnim_IsFramesRemaining(gobj)) {
-        if (fp->mv.fx.SpecialN.isBlasterLoop == true) {
+        if (fp->mv.fx.SpecialN.isBlasterLoop) {
             fp->x21EC = ftKb_SpecialNFx_OnChangeAction;
             Fighter_ChangeMotionState(
                 temp = gobj, ftKbGetLoopMotionId(gobj),
@@ -566,7 +566,7 @@ void ftKb_FxSpecialAirNLoop_Anim(HSD_GObj* gobj)
         it_802AE538(fp->u.kb.xB0);
     }
     if (!ftAnim_IsFramesRemaining(gobj)) {
-        if (fp->mv.fx.SpecialN.isBlasterLoop == true) {
+        if (fp->mv.fx.SpecialN.isBlasterLoop) {
             fp->x21EC = ftKb_SpecialNFx_OnChangeAction;
             Fighter_ChangeMotionState(
                 temp = gobj, ftKbGetAirLoopMotionId(gobj),
