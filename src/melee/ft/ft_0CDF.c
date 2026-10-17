@@ -16,7 +16,7 @@ void ftCo_800CDF5C(Fighter_GObj* fighter_gobj)
     Fighter* fighter;
     fighter = fighter_gobj->user_data;
     fighter->x2210.throw_flags = 0;
-    if (it_8026B594(fighter->item_gobj) == false) {
+    if (!it_8026B594(fighter->item_gobj)) {
         Fighter_ChangeMotionState(fighter_gobj, ftCo_MS_LGunShoot, 0U, 0.0f,
                                   1.0f, 0.0f, NULL);
     } else {
@@ -37,7 +37,7 @@ void ftCo_800CE010(Fighter_GObj* fighter_gobj)
 
     fighter = fighter_gobj->user_data;
     fighter->x2210.throw_flags = 0;
-    if (it_8026B594(fighter->item_gobj) == false) {
+    if (!it_8026B594(fighter->item_gobj)) {
         Fighter_ChangeMotionState(fighter_gobj, ftCo_MS_LGunShootAir, 0U, 0.0f,
                                   1.0f, 0.0f, NULL);
     } else {

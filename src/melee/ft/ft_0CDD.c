@@ -15,7 +15,7 @@ void ftCo_Attack_800CDD14(Fighter_GObj* fighter_gobj)
 {
     Fighter* fighter = GET_FIGHTER(fighter_gobj);
 
-    if (ftpickupitem_80094790(fighter_gobj) == false) {
+    if (!ftpickupitem_80094790(fighter_gobj)) {
         switch (itGetKind(fighter->item_gobj)) {
         case It_Kind_L_Gun:
             ftCo_800CDF5C(fighter_gobj);
@@ -54,7 +54,7 @@ void ftCo_800CDDA0(Fighter_GObj* fighter_gobj)
 
 void ftCo_800CDE18(Fighter_GObj* fighter_gobj)
 {
-    if (ftAnim_IsFramesRemaining(fighter_gobj) == false) {
+    if (!ftAnim_IsFramesRemaining(fighter_gobj)) {
         ftCommon_8007D92C(fighter_gobj);
     }
 }
