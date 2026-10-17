@@ -310,7 +310,7 @@ static bool setupTopHalfCamera(HSD_CObj* cobj)
     GXRenderModeObj* rmode = HSD_VIGetRenderMode();
 
     if (cobj->viewport.ymin >= rmode->efbHeight) {
-        return 0;
+        return false;
     }
     left = cobj->viewport.xmin;
     right = cobj->viewport.xmax;
@@ -390,7 +390,7 @@ static bool setupBottomHalfCamera(HSD_CObj* cobj)
     screen_top = rmode->efbHeight - 8;
 
     if (cobj->viewport.ymax < screen_top) {
-        return 0;
+        return false;
     }
 
     top = cobj->scissor.top;

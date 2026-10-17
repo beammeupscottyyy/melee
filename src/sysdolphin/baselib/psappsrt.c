@@ -15,7 +15,7 @@ bool psInitAppSRT(int num, int size)
     hsd_804D78D8 = 0;
     HSD_PSAppSrt_804D7958[0] = (u16) size;
     HSD_ObjAllocInit(&HSD_PSAppSrt_804D10B0, size, 4U);
-    return 0;
+    return false;
 }
 
 HSD_psAppSRT* psAddGeneratorAppSRT(s32 status, u16 idnum)

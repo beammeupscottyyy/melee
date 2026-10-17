@@ -287,13 +287,13 @@ void hsd_80393844(void)
 bool hsd_80393A04(void)
 {
     if (hsd_804D78A0 == 0) {
-        return 0;
+        return false;
     }
     if (FIOQuery() == 0) {
         hsd_804D78A0 = 0;
-        return 0;
+        return false;
     }
-    return 1;
+    return true;
 }
 
 void hsd_80393A54(int level)
