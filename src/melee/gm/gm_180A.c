@@ -174,8 +174,8 @@ void fn_80180C60(HSD_GObj* gobj)
             JOBJ_HIDDEN);
     }
 
-    d = lbLang_IsSavedLanguageUS() != 0 ? (s32) ((f64) (f32) dist / 0.304788)
-                                        : dist;
+    d = lbLang_IsSavedLanguageUS() ? (s32) ((f64) (f32) dist / 0.304788)
+                                   : dist;
     disp = d;
     if (d > 0x1869F) {
         disp = 0x1869F;
