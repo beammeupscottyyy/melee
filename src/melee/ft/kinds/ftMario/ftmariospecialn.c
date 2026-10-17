@@ -89,7 +89,7 @@ void ftMr_SpecialN_Phys(HSD_GObj* gobj)
 
 void ftMr_SpecialN_Coll(HSD_GObj* gobj)
 {
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftMr_SpecialN_GroundToAir(gobj);
     }
 }
@@ -99,7 +99,7 @@ void ftMr_SpecialN_ItemFireSpawn(HSD_GObj* gobj)
     Vec3 coords;
     Fighter* fp;
 
-    s32 flag_res;
+    bool flag_res;
 
     int rand_val_800E0D1C;
 
@@ -114,7 +114,7 @@ void ftMr_SpecialN_ItemFireSpawn(HSD_GObj* gobj)
         flag_res = false;
     }
 
-    if (flag_res != 0) {
+    if (flag_res) {
         lb_8000B1CC(fp->parts[ftParts_GetBoneIndex(fp, FtPart_L1stNb)].joint,
                     NULL, &coords);
         if (fp->kind == Ft_Kind_Mario) {
