@@ -8,7 +8,7 @@
 void ftCo_800CD350(Fighter_GObj* gobj, int arg1, int arg2, float arg3)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    ftCo_800CD140(gobj, arg1, 0, arg2, arg3);
+    ftCo_800CD140(gobj, arg1, Ft_MF_None, arg2, arg3);
     fp->take_dmg_cb = ft_800CD31C;
 }
 
@@ -35,7 +35,7 @@ void ftCo_SwordSwing_Coll(Fighter_GObj* gobj)
 void ftCo_800CD418(Fighter_GObj* gobj, int arg1, int arg2, float arg3)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    ftCo_800CD140(gobj, arg1, 0, arg2, arg3);
+    ftCo_800CD140(gobj, arg1, Ft_MF_None, arg2, arg3);
     fp->take_dmg_cb = ft_800CD31C;
 }
 
@@ -62,7 +62,7 @@ void ftCo_BatSwing_Coll(Fighter_GObj* gobj)
 void ftCo_800CD4E0(Fighter_GObj* gobj, int arg1, int arg2, float arg3)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    ftCo_800CD140(gobj, arg1, 0x400, arg2, arg3);
+    ftCo_800CD140(gobj, arg1, Ft_MF_SkipParasol, arg2, arg3);
     fp->take_dmg_cb = ft_800CD31C;
 }
 
@@ -91,7 +91,7 @@ void ftCo_800CD5A8(Fighter_GObj* gobj, int arg1, int arg2, float arg3)
     Fighter* fp = GET_FIGHTER(gobj);
     fp->cmd_vars[0] = 0;
     fp->mv.co.swing.x8 = 0.0f;
-    ftCo_800CD140(gobj, arg1, 0, arg2, arg3);
+    ftCo_800CD140(gobj, arg1, Ft_MF_None, arg2, arg3);
     fp->deal_dmg_cb = ft_800CD65C;
     fp->take_dmg_cb = ft_800CD604;
 }
@@ -102,7 +102,7 @@ void ft_800CD604(Fighter_GObj* gobj)
     if (fp->item_gobj != NULL) {
         it_8029282C(fp->item_gobj);
         it_80292A28(fp->item_gobj);
-        ftCommon_8007E7E4(gobj, 1);
+        ftCommon_8007E7E4(gobj, true);
     }
 }
 
@@ -121,8 +121,7 @@ void ftCo_HarisenSwing_Anim(Fighter_GObj* gobj)
     if (fp->item_gobj != NULL) {
         if (fp->mv.co.swing.x8 > 0.0f) {
             fp->mv.co.swing.x8 -= 1.0f;
-            if (fp->mv.co.swing.x8 <= 0.0f ||
-                ftAnim_IsFramesRemaining(gobj) == 0)
+            if (fp->mv.co.swing.x8 <= 0.0f || !ftAnim_IsFramesRemaining(gobj))
             {
                 it_8029282C(fp->item_gobj);
             }
