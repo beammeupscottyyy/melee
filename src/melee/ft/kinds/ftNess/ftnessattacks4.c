@@ -34,7 +34,7 @@ void ftNs_AttackS4_Enter(HSD_GObj* gobj) // Ness's F-Smash Motion State handler
 
     fp = GET_FIGHTER(gobj);
 
-    fp->allow_interrupt = 0;
+    fp->allow_interrupt = false;
 
     fp->cmd_vars[0] = false;
 
@@ -107,7 +107,7 @@ void ftNs_AttackS4_Anim(HSD_GObj* gobj) // Ness's F-Smash Animation callback
                 gobj, &ness_attr->xB8_BASEBALL_BAT,
                 ftNs_AttackS4_OnReflect); // Create reflect bubble
         }
-    } else if (fighter_data1->cmd_vars[0] == false) {
+    } else if (!fighter_data1->cmd_vars[0]) {
         fighter_data1->reflecting = false; // Toggle reflect bubble OFF
     }
 
@@ -133,7 +133,7 @@ void ftNs_AttackS4_IASA(HSD_GObj* gobj) // Ness's F-Smash IASA Callback
 
     u8 _[8];
 
-    if (fp->allow_interrupt != 0) {
+    if (fp->allow_interrupt) {
         if (fp->u.ns.bat_gobj != NULL) {
             it_802AD6B8(fp->u.ns.bat_gobj);
             fp->u.ns.bat_gobj = NULL;
