@@ -229,7 +229,7 @@ static bool itDrmariopill_UnkMotion0_Coll(Item_GObj* gobj)
 {
     it_8026D9A0(gobj);
     it_8026B3A8(gobj);
-    if (it_8027781C(gobj) != 0) {
+    if (it_8027781C(gobj)) {
         Item* ip = GET_ITEM(gobj);
         itDrMarioPillAttributes* attrs = GET_ATTRS(ip);
         if (my_sqrtf(VEC2_SQ_LEN(ip->x40_vel)) < attrs->x10) {
@@ -244,7 +244,7 @@ void itDrMarioPill_802C0DBC(Item_GObj* gobj)
 {
     Item* ip;
 
-    if (gobj != 0) {
+    if (gobj != NULL) {
         ip = GET_ITEM(gobj);
         if (ip != NULL) {
             ip->xDD4_itemVar.drmariopill.x4 = NULL;
@@ -273,12 +273,12 @@ static inline bool itDrMarioPill_Motion2_Anim_sub(Item_GObj* arg_gobj)
             if (gobj && (ip->owner == gobj)) {
                 ftDr_Init_801498A0(gobj);
             }
-            ip->xDD4_itemVar.drmariopill.x4 = 0;
+            ip->xDD4_itemVar.drmariopill.x4 = NULL;
             ip->on_accessory = NULL;
         }
     }
     if (arg_gobj && (ip = arg_gobj->user_data)) {
-        ip->xDD4_itemVar.drmariopill.x4 = 0;
+        ip->xDD4_itemVar.drmariopill.x4 = NULL;
         ret = true;
         ip->on_accessory = NULL;
     } else {
