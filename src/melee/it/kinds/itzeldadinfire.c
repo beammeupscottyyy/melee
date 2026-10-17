@@ -102,7 +102,7 @@ void it_802C3D44(Item_GObj* gobj)
         Item* ip = GET_ITEM(gobj);
         if (ip != NULL) {
             ip->owner = NULL;
-            ip->xDD4_itemVar.zeldadinfire.xDE0 = 0;
+            ip->xDD4_itemVar.zeldadinfire.xDE0 = NULL;
             ip->xDC8_word.flags.x13 = 0;
         }
     }
@@ -167,9 +167,9 @@ bool itZeldadinfire_UnkMotion0_Anim(Item_GObj* gobj)
         if (ip->xDD4_itemVar.zeldadinfire.xDD8 >= attrs->x4) {
             ip->xDD4_itemVar.zeldadinfire.xDD8 = attrs->x4;
         }
-        if (ip->xDD4_itemVar.zeldadinfire.xDE0 != 0 &&
+        if (ip->xDD4_itemVar.zeldadinfire.xDE0 != NULL &&
             ip->owner == ip->xDD4_itemVar.zeldadinfire.xDE0 &&
-            ftZd_SpecialLw_8013B574(ip->xDD4_itemVar.zeldadinfire.xDE0) == 1)
+            ftZd_SpecialLw_8013B574(ip->xDD4_itemVar.zeldadinfire.xDE0))
         {
             itZeldadinfire_UnkMotion0_Anim_inline(gobj);
         }
@@ -178,7 +178,7 @@ bool itZeldadinfire_UnkMotion0_Anim(Item_GObj* gobj)
                           ((attrs->xC - attrs->x8) / attrs->x4) +
                       attrs->x8;
     HSD_JObjSetScale(jobj, &v);
-    if (it_80273130(gobj) == 1) {
+    if (it_80273130(gobj)) {
         itZeldadinfire_UnkMotion0_Anim_inline(gobj);
     }
     return false;
@@ -195,12 +195,12 @@ bool itZeldadinfire_UnkMotion1_Anim(Item_GObj* gobj)
                           ((attrs->xC - attrs->x8) / attrs->x4) +
                       attrs->x8;
     HSD_JObjSetScale(jobj, &v);
-    if (it_80273130(gobj) == 1) {
+    if (it_80273130(gobj)) {
         if (ip->xDD4_itemVar.zeldadinfire.xDF4 != 0) {
             efLib_DestroyAll(gobj);
             ip->xDD4_itemVar.zeldadinfire.xDF4 = 0;
         }
-        if (ip->xDD4_itemVar.zeldadinfire.xDE0 != 0 &&
+        if (ip->xDD4_itemVar.zeldadinfire.xDE0 != NULL &&
             ip->xDD4_itemVar.zeldadinfire.xDE0 == ip->owner)
         {
             it_802C4580(ip->owner, gobj, &ip->pos, ip->facing_dir,
@@ -221,9 +221,9 @@ void itZeldadinfire_UnkMotion0_Phys(Item_GObj* gobj)
     float f1;
     float f2;
     if (ip->xDD4_itemVar.zeldadinfire.xDDC == 0) {
-        if (ip->xDD4_itemVar.zeldadinfire.xDE0 != 0 &&
+        if (ip->xDD4_itemVar.zeldadinfire.xDE0 != NULL &&
             ip->owner == ip->xDD4_itemVar.zeldadinfire.xDE0 &&
-            ftZd_SpecialLw_8013B540(ip->xDD4_itemVar.zeldadinfire.xDE0) == 1)
+            ftZd_SpecialLw_8013B540(ip->xDD4_itemVar.zeldadinfire.xDE0))
         {
             float *f3, *f4;
             f3 = &f1;
