@@ -120,7 +120,7 @@ void ftNs_SpecialAirLwStart_Anim(
 
     fighter_data2 = fp = GET_FIGHTER(gobj);
 
-    if ((fighter_data2->input.held_buttons[0] & HSD_PAD_B) == false) {
+    if (!(fighter_data2->input.held_buttons[0] & HSD_PAD_B)) {
         fighter_data2->mv.ns.speciallw.isRelease = 1;
     }
 
@@ -186,7 +186,7 @@ void ftNs_SpecialAirLwStart_Phys(HSD_GObj* gobj)
 void ftNs_SpecialLwStart_Coll(
     HSD_GObj* gobj) // Ness's grounded PSI Magnet Start Collision callback
 {
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftNs_SpecialLwStart_GroundToAir(gobj);
     }
 }
@@ -195,7 +195,7 @@ void ftNs_SpecialLwStart_Coll(
 void ftNs_SpecialAirLwStart_Coll(
     HSD_GObj* gobj) // Ness's aerial PSI Magnet Start Collision callback
 {
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         ftNs_SpecialAirLwStart_AirToGround(gobj);
     }
 }
@@ -233,7 +233,7 @@ void ftNs_SpecialLwHold_Anim(
     Fighter* fp;
 
     fp = GET_FIGHTER(gobj);
-    if ((fp->input.held_buttons[0] & HSD_PAD_B) == false) {
+    if (!(fp->input.held_buttons[0] & HSD_PAD_B)) {
         fp->mv.ns.speciallw.isRelease = 1;
     }
 
@@ -269,7 +269,7 @@ void ftNs_SpecialAirLwHold_Anim(
     u8 _[8];
 
     fp = GET_FIGHTER(gobj);
-    if ((fp->input.held_buttons[0] & HSD_PAD_B) == false) {
+    if (!(fp->input.held_buttons[0] & HSD_PAD_B)) {
         fp->mv.ns.speciallw.isRelease = 1;
     }
 
@@ -346,7 +346,7 @@ void ftNs_SpecialAirLwHold_Phys(HSD_GObj* gobj)
 void ftNs_SpecialLwHold_Coll(
     HSD_GObj* gobj) // Ness's grounded PSI Magnet Hold Collision callback
 {
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftNs_SpecialLwHold_GroundToAir(gobj);
     }
 }
@@ -355,7 +355,7 @@ void ftNs_SpecialLwHold_Coll(
 void ftNs_SpecialAirLwHold_Coll(
     HSD_GObj* gobj) // Ness's aerial PSI Magnet Hold Collision callback
 {
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         ftNs_SpecialAirLwHold_AirToGround(gobj);
     }
 }
@@ -560,7 +560,7 @@ void ftNs_SpecialLwTurn_Coll(
     HSD_GObj* gobj) // Ness's grounded PSI Magnet Turnaround Collision
                     // callback - _
 {
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftNs_SpecialLwTurn_GroundToAir(gobj);
     }
 }
@@ -570,7 +570,7 @@ void ftNs_SpecialAirLwTurn_Coll(
     HSD_GObj* gobj) // Ness's aerial PSI Magnet Turnaround Collision
                     // callback - _
 {
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         ftNs_SpecialAirLwTurn_AirToGround(gobj);
     }
 }
@@ -809,7 +809,7 @@ void ftNs_SpecialAirLwHit_Phys(
 void ftNs_SpecialLwHit_Coll(
     HSD_GObj* gobj) // Ness's grounded PSI Magnet Absorb Collision callback
 {
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftNs_SpecialLwHit_GroundToAir(gobj);
     }
 }
@@ -818,7 +818,7 @@ void ftNs_SpecialLwHit_Coll(
 void ftNs_SpecialAirLwHit_Coll(
     HSD_GObj* gobj) // Ness's aerial PSI Magnet Absorb Collision callback
 {
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         ftNs_SpecialAirLwHit_AirToGround(gobj);
     }
 }
@@ -987,7 +987,7 @@ void ftNs_SpecialLwEnd_Coll(
 void ftNs_SpecialAirLwEnd_Coll(
     HSD_GObj* gobj) // Ness's aerial PSI Magnet End Collision callback
 {
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         ftNs_SpecialAirLwEnd_AirToGround(gobj);
     }
 }
