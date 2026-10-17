@@ -115,10 +115,7 @@ bool itThunder_UnkMotion2_Anim(Item_GObj* gobj)
     if (!it_80272C6C(gobj)) {
         itThunder_UnkMotion2_Anim_inline2(gobj);
     }
-    if (item->pos.y > Stage_GetBlastZoneTopOffset()) {
-        return true;
-    }
-    return false;
+    return item->pos.y > Stage_GetBlastZoneTopOffset();
 }
 
 void itThunder_UnkMotion2_Phys(Item_GObj* gobj)
@@ -179,7 +176,7 @@ static void itThunder_UnkMotion0_Phys_inline(Item_GObj* gobj)
 
 void itThunder_UnkMotion0_Phys(Item_GObj* gobj)
 {
-    if (it_8027A09C(gobj) != 0) {
+    if (it_8027A09C(gobj)) {
         itThunder_UnkMotion0_Phys_inline(gobj);
     }
 }
