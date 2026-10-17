@@ -488,7 +488,7 @@ void ftMt_SpecialNStart_Anim(HSD_GObj* gobj)
         }
     }
     if (!ftAnim_IsFramesRemaining(gobj)) {
-        if (((s32) fp->mv.mt.SpecialN.isFull == true) ||
+        if (fp->mv.mt.SpecialN.isFull ||
             ((float) fp->u.mt.x2234_shadowBallCharge ==
              mewtwoAttrs->x0_MEWTWO_SHADOWBALL_CHARGE_CYCLES))
         {
@@ -549,7 +549,7 @@ void ftMt_SpecialNLoop_Anim(HSD_GObj* gobj)
         fp->mv.mt.SpecialN.releaseLag = 0;
         ftMewtwo_SpecialN_CreateHeldShadow(gobj, &sp28, &sp1C);
         ftMt_SpecialN_PlayChargeSFX(gobj);
-        if ((s32) fp->mv.mt.SpecialN.x2348 == false) {
+        if (!fp->mv.mt.SpecialN.x2348) {
             fp->mv.mt.SpecialN.x2344++;
             if (fp->mv.mt.SpecialN.x2344 >
                 mewtwoAttrs->xC_MEWTWO_SHADOWBALL_CHARGE_ITERATIONS)
@@ -656,7 +656,7 @@ void ftMt_SpecialAirNStart_Anim(HSD_GObj* gobj)
     }
     fp->mv.mt.SpecialN.isFull = false;
     if (!ftAnim_IsFramesRemaining(gobj)) {
-        if (((s32) fp->mv.mt.SpecialN.isFull == true) ||
+        if (fp->mv.mt.SpecialN.isFull ||
             ((float) fp->u.mt.x2234_shadowBallCharge ==
              mewtwoAttrs->x0_MEWTWO_SHADOWBALL_CHARGE_CYCLES))
         {
@@ -692,7 +692,7 @@ void ftMt_SpecialAirNLoop_Anim(HSD_GObj* gobj)
         fp->mv.mt.SpecialN.releaseLag = 0;
         ftMewtwo_SpecialN_CreateHeldShadow(gobj, &sp28, &sp1C);
         ftMt_SpecialN_PlayChargeSFX(gobj);
-        if ((s32) fp->mv.mt.SpecialN.x2348 == false) {
+        if (!fp->mv.mt.SpecialN.x2348) {
             fp->mv.mt.SpecialN.x2344++;
             if (fp->mv.mt.SpecialN.x2344 >
                 mewtwoAttrs->xC_MEWTWO_SHADOWBALL_CHARGE_ITERATIONS)
@@ -708,7 +708,7 @@ void ftMt_SpecialAirNLoop_Anim(HSD_GObj* gobj)
                         1.0f, 0.0f, NULL);
                     fp->u.mt.x2234_shadowBallCharge =
                         (s32) mewtwoAttrs->x0_MEWTWO_SHADOWBALL_CHARGE_CYCLES;
-                    fp->mv.mt.SpecialN.x2348 = 1;
+                    fp->mv.mt.SpecialN.x2348 = true;
                     ftCommon_8007EBAC(fp, 12, 0U);
 
                     lb_8000B1CC(fp->parts[FtPart_TopN].joint, &sp34, &sp40);
@@ -780,7 +780,7 @@ void ftMt_SpecialNLoop_IASA(HSD_GObj* gobj)
 
     u8 _[48];
 
-    if (ftCo_8009917C(gobj) != false) {
+    if (ftCo_8009917C(gobj)) {
         ftMewtwo_SpecialN_RemoveShadowBall2(gobj);
     } else {
         recentInput = fp->input.pressed_buttons;
@@ -816,21 +816,21 @@ void ftMt_SpecialNLoopFull_IASA(HSD_GObj* gobj)
 
     u8 _[48];
 
-    if (ftCo_8009917C(gobj) != false) {
+    if (ftCo_8009917C(gobj)) {
         ftMewtwo_SpecialN_RemoveShadowBall2(gobj);
     } else {
         recentInput = fp->input.pressed_buttons;
-        if ((recentInput & HSD_PAD_A) != false) {
+        if (recentInput & HSD_PAD_A) {
             Fighter_ChangeMotionState(gobj, ftMt_MS_SpecialNEnd, Ft_MF_None,
                                       0.0f, 1.0f, 0.0f, NULL);
             ftMewtwo_SpecialN_SetCall(gobj);
             return;
         }
-        if ((recentInput & HSD_PAD_B) != false) {
+        if (recentInput & HSD_PAD_B) {
             Fighter_ChangeMotionState(gobj, ftMt_MS_SpecialNEnd, Ft_MF_None,
                                       0.0f, 1.0f, 0.0f, NULL);
             ftMewtwo_SpecialN_SetCall(gobj);
-        } else if ((recentInput & HSD_PAD_LR) != false) {
+        } else if (recentInput & HSD_PAD_LR) {
             Fighter_ChangeMotionState(gobj, ftMt_MS_SpecialNCancel, Ft_MF_None,
                                       0.0f, 1.0f, 0.0f, NULL);
             ftMewtwo_SpecialN_RemoveShadowBall2(gobj);
@@ -868,21 +868,19 @@ void ftMt_SpecialAirNLoop_IASA(HSD_GObj* gobj)
     u8 _[32];
 
     recentInput = fp->input.pressed_buttons;
-    if (((recentInput & HSD_PAD_A) != false) &&
-        (fp->mv.mt.SpecialN.releaseLag <= 0))
-    {
+    if ((recentInput & HSD_PAD_A) && (fp->mv.mt.SpecialN.releaseLag <= 0)) {
         Fighter_ChangeMotionState(gobj, ftMt_MS_SpecialAirNEnd, Ft_MF_None,
                                   0.0f, 1.0f, 0.0f, NULL);
         ftMewtwo_SpecialN_SetCall(gobj);
         return;
     }
-    if ((recentInput & HSD_PAD_B) != false) {
+    if (recentInput & HSD_PAD_B) {
         if (fp->mv.mt.SpecialN.releaseLag <= 0) {
             Fighter_ChangeMotionState(gobj, ftMt_MS_SpecialAirNEnd, Ft_MF_None,
                                       0.0f, 1.0f, 0.0f, NULL);
             ftMewtwo_SpecialN_SetCall(gobj);
         }
-    } else if ((recentInput & HSD_PAD_LR) != false) {
+    } else if (recentInput & HSD_PAD_LR) {
         Fighter_ChangeMotionState(gobj, ftMt_MS_SpecialAirNCancel, Ft_MF_None,
                                   0.0f, 1.0f, 0.0f, NULL);
         ftMewtwo_SpecialN_RemoveShadowBall2(gobj);
@@ -899,17 +897,17 @@ void ftMt_SpecialAirNLoopFull_IASA(HSD_GObj* gobj)
     u8 _[32];
 
     recentInput = fp->input.pressed_buttons;
-    if ((recentInput & HSD_PAD_A) != false) {
+    if (recentInput & HSD_PAD_A) {
         Fighter_ChangeMotionState(gobj, ftMt_MS_SpecialAirNEnd, Ft_MF_None,
                                   0.0f, 1.0f, 0.0f, NULL);
         ftMewtwo_SpecialN_SetCall(gobj);
         return;
     }
-    if ((recentInput & HSD_PAD_B) != false) {
+    if (recentInput & HSD_PAD_B) {
         Fighter_ChangeMotionState(gobj, ftMt_MS_SpecialAirNEnd, Ft_MF_None,
                                   0.0f, 1.0f, 0.0f, NULL);
         ftMewtwo_SpecialN_SetCall(gobj);
-    } else if ((recentInput & HSD_PAD_LR) != false) {
+    } else if (recentInput & HSD_PAD_LR) {
         Fighter_ChangeMotionState(gobj, ftMt_MS_SpecialAirNCancel, Ft_MF_None,
                                   0.0f, 1.0f, 0.0f, NULL);
         ftMewtwo_SpecialN_RemoveShadowBall2(gobj);
@@ -998,7 +996,7 @@ void ftMt_SpecialNStart_Coll(HSD_GObj* gobj)
 
     u8 _[4];
 
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftCommon_GroundToAirStateChange(gobj, fp, ftMt_MS_SpecialAirNStart,
                                         ftMt_MF_SpecialN_Coll);
         ftMewtwo_SpecialN_SetCall(gobj);
@@ -1012,7 +1010,7 @@ void ftMt_SpecialNLoop_Coll(HSD_GObj* gobj)
 
     u8 _[4];
 
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftCommon_GroundToAirStateChange(gobj, fp, ftMt_MS_SpecialAirNLoop,
                                         ftMt_MF_SpecialNLoop_Coll);
         ftMewtwo_SpecialN_SetCall(gobj);
@@ -1026,7 +1024,7 @@ void ftMt_SpecialNLoopFull_Coll(HSD_GObj* gobj)
 
     u8 _[4];
 
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftCommon_GroundToAirStateChange(gobj, fp, ftMt_MS_SpecialAirNLoopFull,
                                         ftMt_MF_SpecialNLoop_Coll);
         ftMewtwo_SpecialN_SetCall(gobj);
@@ -1040,7 +1038,7 @@ void ftMt_SpecialNCancel_Coll(HSD_GObj* gobj)
 
     u8 _[4];
 
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftCommon_GroundToAirStateChange(gobj, fp, ftMt_MS_SpecialAirNCancel,
                                         ftMt_MF_SpecialN_Coll);
         ftMewtwo_SpecialN_SetCall(gobj);
@@ -1054,7 +1052,7 @@ void ftMt_SpecialNEnd_Coll(HSD_GObj* gobj)
 
     u8 _[4];
 
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         ftCommon_GroundToAirStateChange(gobj, fp, ftMt_MS_SpecialAirNEnd,
                                         ftMt_MF_SpecialN_Coll);
         ftMewtwo_SpecialN_SetCall(gobj);
@@ -1068,7 +1066,7 @@ void ftMt_SpecialAirNStart_Coll(HSD_GObj* gobj)
 
     u8 _[4];
 
-    if (ft_80081D0C(gobj) == true) {
+    if (ft_80081D0C(gobj)) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftMt_MS_SpecialNStart,
                                         ftMt_MF_SpecialN_Coll);
         ftMewtwo_SpecialN_SetCall(gobj);
@@ -1082,7 +1080,7 @@ void ftMt_SpecialAirNLoop_Coll(HSD_GObj* gobj)
 
     u8 _[4];
 
-    if (ft_80081D0C(gobj) == true) {
+    if (ft_80081D0C(gobj)) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftMt_MS_SpecialNLoop,
                                         ftMt_MF_SpecialNLoop_Coll);
         ftMewtwo_SpecialN_SetCall(gobj);
@@ -1096,7 +1094,7 @@ void ftMt_SpecialAirNLoopFull_Coll(HSD_GObj* gobj)
 
     u8 _[4];
 
-    if (ft_80081D0C(gobj) == true) {
+    if (ft_80081D0C(gobj)) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftMt_MS_SpecialNLoopFull,
                                         ftMt_MF_SpecialNLoop_Coll);
         ftMewtwo_SpecialN_SetCall(gobj);
@@ -1110,7 +1108,7 @@ void ftMt_SpecialAirNCancel_Coll(HSD_GObj* gobj)
 
     u8 _[4];
 
-    if (ft_80081D0C(gobj) == true) {
+    if (ft_80081D0C(gobj)) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftMt_MS_SpecialNCancel,
                                         ftMt_MF_SpecialN_Coll);
         ftMewtwo_SpecialN_SetCall(gobj);
@@ -1124,7 +1122,7 @@ void ftMt_SpecialAirNEnd_Coll(HSD_GObj* gobj)
 
     u8 _[4];
 
-    if (ft_80081D0C(gobj) == true) {
+    if (ft_80081D0C(gobj)) {
         ftCommon_AirToGroundStateChange(gobj, fp, ftMt_MS_SpecialNEnd,
                                         ftMt_MF_SpecialN_Coll);
         ftMewtwo_SpecialN_SetCall(gobj);
