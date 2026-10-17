@@ -49,7 +49,7 @@ static bool fn_8008998C(Fighter* fp, IKState* ik, Vec3* normal)
     }
 
     if (ABS(delta_y) < 0.0001f) {
-        return 0;
+        return false;
     }
 
     pos_x = pos->x;
@@ -67,7 +67,7 @@ static bool fn_8008998C(Fighter* fp, IKState* ik, Vec3* normal)
     }
 
     pos->y += delta_y;
-    return 1;
+    return true;
 }
 
 void ft_80089B08(Fighter_GObj* gobj)
