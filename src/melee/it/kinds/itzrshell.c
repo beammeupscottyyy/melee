@@ -117,9 +117,9 @@ Item_GObj* it_802E0488(s32 arg0, Vec3* arg1, s32 arg2)
         it->xDD4_itemVar.zrshell.xE10 = arg0;
         Item_80268E5C(it_gp, 0xC, ITEM_ANIM_UPDATE);
         HSD_JObjAnimAll(GET_JOBJ(it_gp));
-        if (it_802DDA84(it_gp) != false) {
+        if (it_802DDA84(it_gp)) {
             it_802762B0(it);
-            if (it_80277040(it_gp) == false) {
+            if (!it_80277040(it_gp)) {
                 it_802DE0F0(it_gp);
             } else {
                 it_2725_Logic11_EnteredAir(it_gp);
