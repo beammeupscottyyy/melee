@@ -346,7 +346,7 @@ void ftCa_SpecialSStart_Coll(HSD_GObj* gobj)
         ft_80084104(gobj);
         return;
     }
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         efLib_DestroyAll(gobj);
         ftCommon_8007D60C(fp);
         if (da->specials_miss_landing_lag == 0) {
@@ -397,7 +397,7 @@ void ftCa_SpecialAirSStart_Coll(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
     ftCaptain_DatAttrs* da = fp->dat_attrs;
-    if (ft_80081D0C(gobj) == true) {
+    if (ft_80081D0C(gobj)) {
         efLib_DestroyAll(gobj);
         ftCo_LandingFallSpecial_Enter(gobj, false,
                                       da->specials_miss_landing_lag);
@@ -411,7 +411,7 @@ void ftCa_SpecialAirS_Coll(HSD_GObj* gobj)
     Fighter* fp = GET_FIGHTER(gobj);
     ftCaptain_DatAttrs* da = fp->dat_attrs;
     u8 _[8];
-    if (ft_80081D0C(gobj) == true) {
+    if (ft_80081D0C(gobj)) {
         fp->gr_vel = fp->self_vel.x;
         efLib_DestroyAll(gobj);
         ftCo_LandingFallSpecial_Enter(gobj, false,
