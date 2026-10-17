@@ -669,7 +669,7 @@ void grFourside_801F3CC8(Ground_GObj* gobj)
             } else {
                 other_active = true;
             }
-            if (other_active == false) {
+            if (!other_active) {
                 HSD_JObjClearFlagsAll(jobj, JOBJ_HIDDEN);
                 grAnime_801C8138(gobj, gp->map_id, 0);
                 gp->u.fourside2.x1 = 0;
@@ -701,7 +701,7 @@ void grFourside_801F3CC8(Ground_GObj* gobj)
             } else {
                 other_active = true;
             }
-            if (other_active == false) {
+            if (!other_active) {
                 grAnime_801C8138(gobj, gp->map_id, 2);
                 gp->u.fourside2.x0 = 3;
                 Ground_801C53EC(0x704E2);
