@@ -66,7 +66,7 @@ void gm_Scene_CameraVs_OnFrame(void)
     u64 button;
 
     data = &gmCamera_VsCameraTextLayout;
-    if ((lbSnap_8001D338(0) != 0) || (lbSnap_8001D338(1) != 0)) {
+    if (lbSnap_8001D338(0) || lbSnap_8001D338(1)) {
         for (i = 0; i < 3; i++) {
             if (data->x4.text[i] != NULL) {
                 HSD_SisLib_803A5CC4(data->x4.text[i]);
@@ -74,7 +74,7 @@ void gm_Scene_CameraVs_OnFrame(void)
             }
         }
         gmCamera_801A33BC();
-    } else if (mn_8022F218() != 0) {
+    } else if (mn_8022F218()) {
         sfxBack();
         mn_8022F268();
         *gmCamera_VsCameraTextLayout.x0 = 2;
