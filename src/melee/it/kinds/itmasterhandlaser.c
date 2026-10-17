@@ -100,7 +100,7 @@ void it_802F0484(HSD_GObj* gobj)
 bool itMasterhandlaser_UnkMotion0_Anim(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         it_802F0484(gobj);
     }
     if (ip->xDD4_itemVar.masterhandlaser.x0) {
