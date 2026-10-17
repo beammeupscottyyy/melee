@@ -135,7 +135,7 @@ void ftGw_AttackS4_IASA(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
 
-    if (fp->allow_interrupt != false) {
+    if (fp->allow_interrupt) {
         ftCo_Wait_IASA(gobj);
     }
 }
