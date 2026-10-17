@@ -251,8 +251,8 @@ bool itNesspkthunderball_UnkMotion0_Anim(Item_GObj* gobj)
         (ip->xDD4_itemVar.pkthunder.xF04 != NULL))
     {
         if (ip->owner == ip->xDD4_itemVar.pkthunder.xF04) {
-            if (ftNs_SpecialHi_CheckSpecialHiHold(
-                    ip->xDD4_itemVar.pkthunder.xF04) != true)
+            if (!ftNs_SpecialHi_CheckSpecialHiHold(
+                    ip->xDD4_itemVar.pkthunder.xF04))
             {
                 return true;
             }
