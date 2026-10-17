@@ -106,7 +106,7 @@ bool itClinkmilk_UnkMotion1_Anim(Item_GObj* gobj)
     }
 
     if (ip->xDD4_itemVar.clinkmilk.x0 != NULL) {
-        if (ftCl_Init_8014920C(ip->xDD4_itemVar.clinkmilk.x0) == true) {
+        if (ftCl_Init_8014920C(ip->xDD4_itemVar.clinkmilk.x0)) {
             itCLinkMilk_NotifyParent(gobj);
             if (itCLinkMilk_Destroy(gobj)) {
                 return true;
