@@ -21,8 +21,8 @@ void ftCo_KneeBend_Enter(Fighter_GObj* gobj, ftCo_JumpInput jump_input)
     Fighter* fp = GET_FIGHTER(gobj);
     fp->mv.co.kneebend.jump_input = jump_input;
     fp->mv.co.kneebend.is_short_hop = false;
-    Fighter_ChangeMotionState(gobj, ftCo_MS_KneeBend, 0U, 0.0F, 1.0F, 0.0F,
-                              NULL);
+    Fighter_ChangeMotionState(gobj, ftCo_MS_KneeBend, Ft_MF_None, 0.0F, 1.0F,
+                              0.0F, NULL);
 }
 
 void ftCo_KneeBend_Anim(Fighter_GObj* gobj)
