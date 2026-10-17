@@ -141,8 +141,8 @@ void ftGw_AttackLw3_Enter(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
 
-    if (ftpickupitem_80094790(gobj) == false) {
-        fp->allow_interrupt = 0;
+    if (!ftpickupitem_80094790(gobj)) {
+        fp->allow_interrupt = false;
         Fighter_ChangeMotionState(gobj, ftGw_MS_AttackLw3, Ft_MF_None, 0.0f,
                                   1.0f, 0.0f, NULL);
         ftAnim_8006EBA4(gobj);
