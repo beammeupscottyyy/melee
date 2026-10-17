@@ -324,15 +324,15 @@ void grPushOn_80218888(Ground_GObj* gobj)
         player_pos.x = 0.0f;
     }
 
-    if (gp->u.pushon.gobj != 0) {
+    if (gp->u.pushon.gobj != NULL) {
         i = 0;
         while (i < gp->u.pushon.count) {
             HSD_LObj* lobj = gp->u.pushon.lobjs[i];
-            s32 type = lobj->flags & 3;
+            s32 type = lobj->flags & LOBJ_TYPE_MASK;
 
-            if (type == 0) {
+            if (type == LOBJ_AMBIENT) {
                 distances[i] = -100.0f;
-            } else if (type == 1 || type == 2) {
+            } else if (type == LOBJ_INFINITE || type == LOBJ_POINT) {
                 HSD_LObjGetPosition(lobj, &pos1);
                 dx = player_pos.x - pos1.x;
                 dy = player_pos.y - pos1.y;
@@ -341,7 +341,7 @@ void grPushOn_80218888(Ground_GObj* gobj)
                     f32 dy2 = dy * dy;
                     distances[i] = sqrtf(dx2 + dy2);
                 }
-            } else if (type == 3) {
+            } else if (type == LOBJ_SPOT) {
                 HSD_LObjGetPosition(lobj, &pos2);
                 distances[i] = ABS(player_pos.x - pos2.x);
             } else {
@@ -387,8 +387,7 @@ void grPushOn_80218888(Ground_GObj* gobj)
         ref_dist = distances[sorted[1]];
 
         for (i = 1; i < (int) gp->u.pushon.count; i++) {
-            if (HSD_LObjGetPosition(gp->u.pushon.lobjs[sorted[i]],
-                                    &light_pos) != 0)
+            if (HSD_LObjGetPosition(gp->u.pushon.lobjs[sorted[i]], &light_pos))
             {
                 weight = ref_dist / distances[sorted[i]];
                 lbVector_Sub(&light_pos, &player_pos);
@@ -439,8 +438,7 @@ void grPushOn_80218888(Ground_GObj* gobj)
         pad_stack(color);
 
         /* Copy position from 2nd nearest */
-        if (HSD_LObjGetPosition(gp->u.pushon.lobjs[sorted[1]], &temp_pos) == 0)
-        {
+        if (!HSD_LObjGetPosition(gp->u.pushon.lobjs[sorted[1]], &temp_pos)) {
             temp_pos.z = 0.0f;
             temp_pos.y = 0.0f;
             temp_pos.x = 0.0f;
@@ -448,8 +446,7 @@ void grPushOn_80218888(Ground_GObj* gobj)
         HSD_LObjSetPosition(gp->u.pushon.spot_light, &temp_pos);
 
         /* Copy interest from 2nd nearest */
-        if (HSD_LObjGetInterest(gp->u.pushon.lobjs[sorted[1]], &temp_pos) == 0)
-        {
+        if (!HSD_LObjGetInterest(gp->u.pushon.lobjs[sorted[1]], &temp_pos)) {
             temp_pos.z = 0.0f;
             temp_pos.y = 0.0f;
             temp_pos.x = 0.0f;
