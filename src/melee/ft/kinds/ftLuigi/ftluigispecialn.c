@@ -103,7 +103,7 @@ void ftLg_SpecialN_Coll(HSD_GObj* gobj)
 {
     Fighter* fp;
 
-    if (ft_80082708(gobj) == false) {
+    if (!ft_80082708(gobj)) {
         fp = GET_FIGHTER(gobj);
         ftCommon_GroundToAirStateChange(gobj, fp, ftLg_MS_SpecialAirN,
                                         ftLg_MF_SpecialN_Coll);
@@ -116,7 +116,7 @@ void ftLg_SpecialAirN_Coll(HSD_GObj* gobj)
 {
     Fighter* fp;
 
-    if (ft_80081D0C(gobj) != false) {
+    if (ft_80081D0C(gobj)) {
         fp = GET_FIGHTER(gobj);
         ftCommon_AirToGroundStateChange(gobj, fp, ftLg_MS_SpecialN,
                                         ftLg_MF_SpecialN_Coll);
@@ -139,7 +139,7 @@ void ftLg_SpecialN_FireSpawn(HSD_GObj* gobj)
         flag = false;
     }
 
-    if (flag != false) {
+    if (flag) {
         lb_8000B1CC(fp->parts[ftParts_GetBoneIndex(fp, FtPart_L1stNb)].joint,
                     NULL, &sp10);
         it_802C01AC(gobj, &sp10, It_Kind_Luigi_Fire, fp->facing_dir);
