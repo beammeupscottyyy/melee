@@ -295,7 +295,7 @@ void ftKb_SpecialNLk800FB880(Fighter_GObj* gobj)
     }
     ftAnim_SetAnimRate(gobj, anim_rate);
     ftAnim_8006EBA4(gobj);
-    if (ftKb_SpecialNLk800FB5F4(gobj) == true) {
+    if (ftKb_SpecialNLk800FB5F4(gobj)) {
         ftKb_SpecialNLk_UnsetArrow(gobj);
         ftKb_SpecialNLk_UnsetBow(gobj);
         ft_8008A2BC(gobj);
@@ -336,7 +336,7 @@ void ftKb_SpecialNLk800FBA00(Fighter_GObj* gobj)
     }
     ftAnim_SetAnimRate(gobj, anim_rate);
     ftAnim_8006EBA4(gobj);
-    if (ftKb_SpecialNLk800FB5F4(gobj) == true) {
+    if (ftKb_SpecialNLk800FB5F4(gobj)) {
         ftKb_SpecialNLk_UnsetArrow(gobj);
         ftKb_SpecialNLk_UnsetBow(gobj);
         switch (fp->u.kb.hat.kind) {
@@ -382,7 +382,7 @@ void ftKb_LkSpecialNStart_Anim(Fighter_GObj* gobj)
         break;
     }
     ftAnim_SetAnimRate(gobj, anim_rate);
-    if (ftKb_SpecialNLk800FB500(gobj) == false) {
+    if (!ftKb_SpecialNLk800FB500(gobj)) {
         Fighter* fp2 = GET_FIGHTER(gobj);
         a = vg->a;
         b = vg->b;
@@ -455,7 +455,7 @@ void ftKb_LkSpecialAirNStart_Anim(Fighter_GObj* gobj)
         fp->mv.lk.specialn.x0.x = 1.0F;
         fp->cmd_vars[2] = 0;
     }
-    if (ftKb_SpecialNLk800FB500(gobj) == false) {
+    if (!ftKb_SpecialNLk800FB500(gobj)) {
         fp = GET_FIGHTER(gobj);
         a = vg->a;
         b = vg->b;
