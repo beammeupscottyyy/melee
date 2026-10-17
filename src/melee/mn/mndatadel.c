@@ -148,7 +148,7 @@ void mnDataDel_8024E940(void)
     gmMainLib_8015F490();
     var_r30 = (i = 0);
     for (i = 0; i < 0x1D; i++) {
-        if ((gm_80164430(gm_801641CC(i)) != 0) &&
+        if (gm_80164430(gm_801641CC(i)) &&
             ((gm_IsStageUnlocked((u16) i) & (0xFFFF & 0xFF)) != 0))
         {
             var_r30 = 1;
@@ -261,7 +261,7 @@ union mnDataDel_AnimateWarning_cursor {
     HSD_JObj* slots[5];
 };
 
-/// @brief animates the warning modal
+/// Animates the warning modal.
 static inline void mnDataDel_AnimateWarning(HSD_JObj* root, HSD_GObj* gobj,
                                             struct WarnCmnData* data,
                                             HSD_JObj** panel,
@@ -338,7 +338,7 @@ void fn_8024ECCC(HSD_GObj* arg0)
     mnDataDel_AnimateWarning(root, arg0, data, &panel, &exclaim);
 }
 
-/// @brief creates the warning modal
+/// Creates the warning modal.
 void mnDataDel_8024EEC0(void)
 {
     HSD_JObj* child;
@@ -384,7 +384,7 @@ void mnDataDel_8024EEC0(void)
         HSD_JObjAnimAll(no);
     }
 
-    if (lbLang_IsSavedLanguageUS() != false) {
+    if (lbLang_IsSavedLanguageUS()) {
         lb_80011E24(root, &cursor_yes, WARN_JOINT_CURSOR_YES, -1);
         lb_80011E24(root, &cursor_no, WARN_JOINT_CURSOR_NO, -1);
         {
