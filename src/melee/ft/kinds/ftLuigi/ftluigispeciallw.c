@@ -251,9 +251,7 @@ static ftCollisionBox ftLg_SpecialLw_CollisionBox = {
 static inline void ftLuigi_SpecialLw_UnkAngle(HSD_GObj* gobj)
 {
     Fighter* fp = GET_FIGHTER(gobj);
-    if ((fp->cmd_vars[3] != 0U) &&
-        ((s32) fp->mv.lg.SpecialLw.isUnkColl != false))
-    {
+    if ((fp->cmd_vars[3] != 0U) && fp->mv.lg.SpecialLw.isUnkColl) {
         ftPartSetRotX(fp, 0,
                       fp->facing_dir * atan2f(fp->coll_data.floor.normal.x,
                                               fp->coll_data.floor.normal.y));
@@ -276,7 +274,7 @@ void ftLg_SpecialLw_Coll(HSD_GObj* gobj)
         } else {
             fp->mv.lg.SpecialLw.isUnkColl = true;
         }
-    } else if (ft_800824A0(gobj, &ftLg_SpecialLw_CollisionBox) == false) {
+    } else if (!ft_800824A0(gobj, &ftLg_SpecialLw_CollisionBox)) {
         ftLuigi_SpecialLw_GroundToAir(gobj);
         fp->mv.lg.SpecialLw.isUnkColl = false;
     } else {
@@ -310,7 +308,7 @@ void ftLg_SpecialAirLw_Coll(HSD_GObj* gobj)
 
     u8 _[16];
 
-    if (ft_800824A0(gobj, &ftLg_SpecialLw_CollisionBox) != false) {
+    if (ft_800824A0(gobj, &ftLg_SpecialLw_CollisionBox)) {
         ftLuigi_SpecialAirLw_AirToGround(gobj);
         fp->mv.lg.SpecialLw.isUnkColl = true;
     } else {
