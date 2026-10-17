@@ -103,11 +103,11 @@ void grDisplay_801C5DB0(HSD_GObj* gobj, intptr_t code)
                     return;
                 }
             }
-        } else if (Ground_801C2C8C(HSD_GObj_804D7818->hsd_obj) != false) {
+        } else if (Ground_801C2C8C(HSD_GObj_804D7818->hsd_obj)) {
             return;
         }
 
-        if (Camera_80030A78() == false && Camera_80030AC4() != false) {
+        if (!Camera_80030A78() && Camera_80030AC4()) {
             if (gp->x10_flags.b2 == 0) {
                 HSD_FogSet(0);
             }
@@ -127,7 +127,7 @@ void grDisplay_801C5DB0(HSD_GObj* gobj, intptr_t code)
                 HSD_GObj_JObjCallback(gobj, code);
             }
 
-            if (gp->x10_flags.b2 == 0 && Camera_80030A78() == false &&
+            if (gp->x10_flags.b2 == 0 && !Camera_80030A78() &&
                 Ground_801C1E18() != 0)
             {
                 foggobj = Ground_801C1E84();
