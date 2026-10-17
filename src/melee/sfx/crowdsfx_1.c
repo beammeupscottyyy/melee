@@ -15,9 +15,9 @@ bool un_80322258(float arg)
     if (arg < val2c + mpLib_80458868[1].left ||
         arg > mpLib_80458868[1].right - val2c)
     {
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
 
 s32 un_80322298(float arg)
