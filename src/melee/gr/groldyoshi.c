@@ -185,7 +185,7 @@ void grOldYoshi_8020EAFC(Ground_GObj* gobj)
     grAnime_801C8138(gobj, gp->map_id, 0);
     for (i = 0; i < 3; i++) {
         gp->u.oldyoshicloud.cloud[i].xC4_0123 = 0;
-        gp->u.oldyoshicloud.cloud[i].xC4_4 = 0;
+        gp->u.oldyoshicloud.cloud[i].xC4_4 = false;
         gp->u.oldyoshicloud.cloud[i].xC4_567 = 0;
         gp->u.oldyoshicloud.cloud[i].xD4 = 0.0f;
         gp->u.oldyoshicloud.cloud[i].xD0 = 0.0f;
@@ -213,7 +213,7 @@ void grOldYoshi_8020EC10(Ground_GObj* arg)
         // int test = HSD_Randi(3);
         switch (gp->u.oldyoshicloud.cloud[i].xC4_0123) {
         case 0:
-            if (gp->u.oldyoshicloud.cloud[i].xC4_4 != 0) {
+            if (gp->u.oldyoshicloud.cloud[i].xC4_4) {
                 // grOldYoshi_8020F31C(0,0,0,0,0,0);
                 gp->u.oldyoshicloud.cloud[i].xD4 = grOldYoshi_8020F31C(
                     gp->u.oldyoshicloud.cloud[i].xD4, yakumono_param->x8,
@@ -288,7 +288,7 @@ void grOldYoshi_8020EC10(Ground_GObj* arg)
         HSD_JObjSetTranslateY(gp->u.oldyoshicloud.cloud[i].xC8,
                               gp->u.oldyoshicloud.cloud[i].xCC -
                                   gp->u.oldyoshicloud.cloud[i].xD0);
-        gp->u.oldyoshicloud.cloud[i].xC4_4 = 0;
+        gp->u.oldyoshicloud.cloud[i].xC4_4 = false;
     }
     Ground_UpdateMapColl(arg);
     return;
@@ -355,7 +355,7 @@ void grOldYoshi_8020F088(Ground_GObj* arg)
         if ((HSD_JObjGetFlags(jobj) & 0x10) != 0) {
             HSD_JObjClearFlagsAll(jobj, JOBJ_HIDDEN);
         }
-        if (grAnime_801C83D0(arg, 0, 7) != 0) {
+        if (grAnime_801C83D0(arg, false, 7)) {
             HSD_JObjSetFlagsAll(jobj, JOBJ_HIDDEN);
             gp->u.oldyoshiguest.xC4 =
                 rand_range(yakumono_param->x16, yakumono_param->x14);
@@ -383,7 +383,7 @@ void fn_8020F2A8(void* user_data, int joint_id, CollData* coll, int coll_x50,
     if (i == 3) {
         return;
     }
-    gp->u.oldyoshicloud.cloud[i].xC4_4 = 1;
+    gp->u.oldyoshicloud.cloud[i].xC4_4 = true;
     return;
 }
 
