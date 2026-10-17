@@ -196,7 +196,7 @@ bool it_802E8CD8(Item_GObj* gobj)
     } else if (ip->msid == 8) {
         it_802E9494(gobj);
     } else if (ip->xC9C > (attr->x0->x0 * attr->x8)) {
-        if (it_802EA804(gobj, 15.0f) != 0) {
+        if (it_802EA804(gobj, 15.0f)) {
             it_802E9738(gobj);
         } else if ((ip->xDD4_itemVar.leadead.x50 > 1) && (HSD_Randi(2) == 0)) {
             if (HSD_Randf() < it_804D6D40->x8) {
@@ -288,7 +288,7 @@ static inline void itLeadead_UnkMotion2_Anim_inline(Item_GObj* gobj)
 
 bool itLeadead_UnkMotion2_Anim(Item_GObj* gobj)
 {
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         itLeadead_UnkMotion2_Anim_inline(gobj);
     }
     return false;
@@ -328,7 +328,7 @@ void itLeadead_UnkMotion2_Phys(Item_GObj* gobj)
 bool itLeadead_UnkMotion2_Coll(Item_GObj* gobj)
 {
     PAD_STACK(8);
-    if (it_8026D8A4(gobj, it_802E9BA0) != 0) {
+    if (it_8026D8A4(gobj, it_802E9BA0)) {
         if (it_80276308(gobj) != 0) {
             it_802E9BA0(gobj);
         }
@@ -378,7 +378,7 @@ void it_802E93C8(Item_GObj* gobj)
     itLeadeadAttributes* attr =
         &ip->xC4_article_data->x4_specialAttributes->leadead;
     s32 facing;
-    if (it_8027B798(gobj, &ip->x40_vel) != 0) {
+    if (it_8027B798(gobj, &ip->x40_vel)) {
         if (ip->x40_vel.y <= 0.2f) {
             ip->x40_vel.y = 0.2f;
         }
@@ -404,7 +404,7 @@ void it_802E9494(Item_GObj* gobj)
     itLeadeadAttributes* attr =
         &ip->xC4_article_data->x4_specialAttributes->leadead;
     f32 fall_speed;
-    if (it_8027B798(gobj, &ip->x40_vel) != 0) {
+    if (it_8027B798(gobj, &ip->x40_vel)) {
         if (ip->x40_vel.y <= 0.2f) {
             ip->x40_vel.y = 0.2f;
         }
@@ -584,7 +584,7 @@ bool itLeadead_UnkMotion9_Anim(Item_GObj* gobj)
         it_802EA478(gobj, 0, 0);
     }
     ip->xDD4_itemVar.leadead.x44++;
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         ip->xDD4_itemVar.leadead.x48 = 0xA;
         it_802E8F24_inline(gobj);
     }
@@ -629,7 +629,7 @@ bool itLeadead_UnkMotion3_Anim(Item_GObj* gobj)
         mpCollSetFacingDir(&ip->x378_itemColl, facing);
     }
     ip->xDD4_itemVar.leadead.x48--;
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         itLeadead_UnkMotion3_Anim_inline(gobj);
         itLeadead_UnkMotion2_Anim_inline(gobj);
     }
@@ -692,7 +692,7 @@ bool itLeadead_UnkMotion4_Coll(Item_GObj* gobj)
 {
     Item* ip = gobj->user_data;
     it_8026D62C(gobj, it_802E9308);
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         if (it_80276308(gobj) != 0) {
             it_802E9BA0(gobj);
         } else {
@@ -707,7 +707,7 @@ bool itLeadead_UnkMotion4_Coll(Item_GObj* gobj)
 bool itLeadead_UnkMotion5_Anim(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         HSD_JObj* jobj;
         Item_80268E5C(gobj, 5, ITEM_ANIM_UPDATE | ITEM_HIT_PRESERVE);
         jobj = it_80272CC0(gobj, 1);
@@ -728,7 +728,7 @@ bool itLeadead_UnkMotion6_Anim(Item_GObj* gobj)
     Item* ip = GET_ITEM(gobj);
     itLeadeadAttributes* attr =
         &ip->xC4_article_data->x4_specialAttributes->leadead;
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         ip->xDD4_itemVar.leadead.x4C = attr->x1C;
         ip->xDD4_itemVar.leadead.x48 = 0;
         it_802E8F24_inline(gobj);
@@ -751,7 +751,7 @@ void itLeadead_Logic1_PickedUp(Item_GObj* gobj)
 
 bool itLeadead_UnkMotion13_Anim(Item_GObj* gobj)
 {
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         Item_80268E5C(gobj, 0xD, ITEM_ANIM_UPDATE);
     }
     return false;
@@ -775,7 +775,7 @@ void itLeadead_Logic1_Thrown(Item_GObj* gobj)
 
 bool itLeadead_UnkMotion14_Anim(Item_GObj* gobj)
 {
-    if (it_80272C6C(gobj) == 0) {
+    if (!it_80272C6C(gobj)) {
         Item_80268E5C(gobj, 0xE, 0x12);
     }
     return false;
@@ -955,7 +955,7 @@ s32 it_802EA6F4(Item_GObj* gobj)
             HSD_GObj* fighter = ftLib_FindNearestOpponent(&ip->pos, NULL);
             if (fighter != NULL) {
                 f32 dx, dy;
-                if (it_8027CA7C(fighter) != 0) {
+                if (it_8027CA7C(fighter)) {
                     return 0;
                 }
                 ftLib_GetPos(fighter, &sp18);
