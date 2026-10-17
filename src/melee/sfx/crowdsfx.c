@@ -76,7 +76,7 @@ void un_80321AF4(HSD_GObj* gobj)
     cur = HSD_GObjPLinkHead[HSD_GOBJ_PLINK_FIGHTER];
 
     while (cur != NULL) {
-        if (ftLib_IsDead(cur) == 0) {
+        if (!ftLib_IsDead(cur)) {
             if (ftLib_IsSleeping_8008731C(cur) == 0) {
                 ftLib_GetPos(cur, &pos);
 
@@ -156,7 +156,7 @@ void un_80321D30(u32 arg0, f32 arg1)
     data = crowdsfx_ptr;
     cat = un_80322298(arg1);
     if (cat >= 2) {
-        if (un_80321EBC(arg0, arg1) != 0) {
+        if (un_80321EBC(arg0, arg1)) {
             un_80321CE8();
             return;
         }
@@ -199,12 +199,12 @@ bool un_80321EBC(u32 arg0, f32 arg1)
         ftLib_GetPercent(gobj) < gCrowdConfig->x1C ||
         data->x10 < gCrowdConfig->cheer_limit || data->xC == arg0)
     {
-        return 0;
+        return false;
     }
 
     data->x14 = ftLib_8008746C(gobj);
     if (data->x14 == 0x83D60) {
-        return 0;
+        return false;
     }
 
     {
@@ -229,7 +229,7 @@ bool un_80321EBC(u32 arg0, f32 arg1)
     port = ftLib_IsSubFighter(gobj);
     pl_8003FDA0(ftLib_GetPlayerIndex(gobj), port);
 
-    return 1;
+    return true;
 }
 
 bool un_8032201C(u32 arg0, s32 cat)
