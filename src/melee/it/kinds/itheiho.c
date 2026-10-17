@@ -99,7 +99,7 @@ void it_802D8894(Item_GObj* gobj)
 
 bool itHeiho_UnkMotion0_Anim(Item_GObj* gobj)
 {
-    return 0;
+    return false;
 }
 
 void itHeiho_UnkMotion0_Phys(Item_GObj* gobj)
@@ -114,7 +114,7 @@ void itHeiho_UnkMotion0_Phys(Item_GObj* gobj)
 
 bool itHeiho_UnkMotion0_Coll(Item_GObj* gobj)
 {
-    return 0;
+    return false;
 }
 
 void it_802D8918(Item_GObj* gobj)
@@ -148,7 +148,7 @@ bool itHeiho_UnkMotion1_Anim(Item_GObj* gobj)
     if (ip->xDD4_itemVar.heiho.x2C > 0x3C0) {
         HSD_AObjSetFlags(child->aobj, 0x10000000U);
     }
-    return 0;
+    return false;
 }
 
 void itHeiho_UnkMotion1_Phys(Item_GObj* gobj)
@@ -188,12 +188,12 @@ bool itHeiho_UnkMotion1_Coll(Item_GObj* gobj)
     } else if (temp_r31 == 1) {
         itHeiho_UnkMotion1_Anim_inline(gobj, 1);
     }
-    return 0;
+    return false;
 }
 
 bool itHeiho_UnkMotion2_Anim(Item_GObj* gobj)
 {
-    return 0;
+    return false;
 }
 
 static void it_802D8EC8_inline(Item_GObj* gobj)
@@ -225,12 +225,12 @@ void itHeiho_UnkMotion2_Phys(Item_GObj* gobj)
 
 bool itHeiho_UnkMotion2_Coll(Item_GObj* gobj)
 {
-    return 0;
+    return false;
 }
 
 bool itHeiho_UnkMotion3_Anim(Item_GObj* gobj)
 {
-    return 0;
+    return false;
 }
 
 void itHeiho_UnkMotion3_Phys(Item_GObj* gobj)
@@ -247,7 +247,7 @@ void itHeiho_UnkMotion3_Phys(Item_GObj* gobj)
 bool itHeiho_UnkMotion3_Coll(Item_GObj* gobj)
 {
     it_8026DA70(gobj);
-    return 0;
+    return false;
 }
 
 bool it_802D8EC8(Item_GObj* gobj)
@@ -276,7 +276,7 @@ bool it_802D8EC8(Item_GObj* gobj)
         it_802D98AC(gobj);
         Item_80268E5C((HSD_GObj*) gobj, 3, ITEM_ANIM_UPDATE);
     }
-    return 0;
+    return false;
 }
 
 void it_802D9168(Item_GObj* gobj)
@@ -327,7 +327,7 @@ bool itHeiho_UnkMotion4_Anim(Item_GObj* gobj)
         HSD_AObjSetRate(child->aobj, 2.0F);
     }
     HSD_AObjSetRate(child->u.dobj->mobj->tobj->aobj, 2.0F);
-    return 0;
+    return false;
 }
 
 void itHeiho_UnkMotion4_Phys(Item_GObj* gobj)
@@ -368,7 +368,7 @@ bool itHeiho_UnkMotion4_Coll(Item_GObj* gobj)
     } else if (temp_r31 == 1) {
         it_802D9168(gobj);
     }
-    return 0;
+    return false;
 }
 
 void it_802D96B0(Item_GObj* gobj)
