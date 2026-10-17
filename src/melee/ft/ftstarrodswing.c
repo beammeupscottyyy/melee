@@ -49,7 +49,7 @@ void ft_800CD914(Fighter_GObj* gobj)
     if (fp->item_gobj != NULL) {
         HSD_ASSERT(100, itGetKind(fp->item_gobj) == It_Kind_StarRod);
         if (fp->cmd_vars[0] != 540000) {
-            if (it_8026B594(fp->item_gobj) == 0) {
+            if (!it_8026B594(fp->item_gobj)) {
                 ft_PlaySFX(fp, fp->cmd_vars[0], 127, 64);
             } else {
                 ft_PlaySFX(fp, 234, 127, 64);
@@ -59,7 +59,7 @@ void ft_800CD914(Fighter_GObj* gobj)
         if (ftCheckThrowB0(fp)) {
             it_80292394(fp->item_gobj, &v);
             lb_8000B1CC(fp->parts[x].joint, &v, &v2);
-            if (it_8026B594(fp->item_gobj) == false) {
+            if (!it_8026B594(fp->item_gobj)) {
                 efAsync_Spawn(gobj, &GET_FIGHTER(gobj)->x60C, 5, 1070, NULL,
                               &v2, &fp->facing_dir);
                 it_802923BC(fp->item_gobj, &v2, fp->facing_dir,

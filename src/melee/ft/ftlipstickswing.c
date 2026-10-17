@@ -51,7 +51,7 @@ void ft_800CDB9C(Fighter_GObj* gobj)
     HSD_ASSERT(99, itGetKind(fp->item_gobj) == It_Kind_LipStick);
     if (fp->item_gobj != NULL) {
         if (fp->cmd_vars[0] != 540000) {
-            if (it_8026B594(fp->item_gobj) == 0) {
+            if (!it_8026B594(fp->item_gobj)) {
                 ft_PlaySFX(fp, fp->cmd_vars[0], 127, 64);
             } else {
                 ft_PlaySFX(fp, 288, 127, 64);
@@ -61,7 +61,7 @@ void ft_800CDB9C(Fighter_GObj* gobj)
         if (ftCheckThrowB0(fp)) {
             it_80295748(fp->item_gobj, &v);
             lb_8000B1CC(fp->parts[x].joint, &v, &v2);
-            if (it_8026B594(fp->item_gobj) == false) {
+            if (!it_8026B594(fp->item_gobj)) {
                 it_80295770(fp->item_gobj, &v2, fp->facing_dir,
                             fp->cmd_vars[1]);
             } else {
