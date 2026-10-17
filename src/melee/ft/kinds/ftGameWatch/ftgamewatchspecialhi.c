@@ -250,7 +250,7 @@ void ftGw_SpecialAirHi_Coll(HSD_GObj* gobj)
 
     if (fp->cur_anim_frame > 4.0f) {
         if (fp->self_vel.y >= 0.0f) {
-            if (ft_80081D0C(gobj) != false) {
+            if (ft_80081D0C(gobj)) {
                 ftGw_SpecialHi_ItemRescueRemove(gobj);
                 ftCommon_8007D7FC(fp);
                 ftCo_LandingFallSpecial_Enter(
@@ -264,10 +264,10 @@ void ftGw_SpecialAirHi_Coll(HSD_GObj* gobj)
             } else {
                 ledgeGrabDir = -1;
             }
-            if (ft_CheckGroundAndLedge(gobj, ledgeGrabDir) != false) {
+            if (ft_CheckGroundAndLedge(gobj, ledgeGrabDir)) {
                 ftCo_LandingFallSpecial_Enter(
                     gobj, false, gawAttrs->x60_GAMEWATCH_RESCUE_LANDING);
-            } else if (ftCliffCommon_80081298(gobj) != false) {
+            } else if (ftCliffCommon_80081298(gobj)) {
                 ftCliffCommon_80081370(gobj);
             }
         }
