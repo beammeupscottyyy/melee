@@ -55,7 +55,7 @@ void HSD_TExpRef(HSD_TExp* texp, u8 sel)
     HSD_TExpType type = HSD_TExpGetType(texp);
     switch (type) {
     case HSD_TE_TEV:
-        if (sel == true) {
+        if (sel == HSD_TE_RGB) {
             texp->tev.c_ref += 1;
             return;
         } else {
@@ -80,7 +80,7 @@ void HSD_TExpUnref(HSD_TExp* texp, u8 sel)
         if (type >= HSD_TE_CNST || type != HSD_TE_TEV) {
             return;
         }
-        if (sel == true) {
+        if (sel == HSD_TE_RGB) {
             if (texp->tev.c_ref != 0) {
                 texp->tev.c_ref -= 1;
             }

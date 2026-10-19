@@ -148,7 +148,7 @@ HSD_MemoryEntry* GetMemoryEntry(s32 idx)
                     break;
                 }
             }
-            if (found == false) {
+            if (!found) {
                 for (i = idx + 1; i < nb_memory_list; i++) {
                     if (memory_list[i] != NULL) {
                         entry->next = memory_list[i];
