@@ -56,10 +56,10 @@ void it_8026D62C(Item_GObj* gobj, HSD_GObjEvent arg1)
     test = mpColl_8004B108(coll);
     ip->pos = coll->cur_pos;
 
-    if (test != false) {
+    if (test) {
         ip->xC30 = (u32) coll->floor.index;
     }
-    if (test == false) {
+    if (!test) {
         it_802762BC(ip);
         arg1(gobj);
         return;
@@ -84,10 +84,10 @@ void it_8026D6F4(Item_GObj* gobj, HSD_GObjEvent arg1)
     test = mpColl_8004B108(coll);
     ip->pos = coll->cur_pos;
 
-    if (test != false) {
+    if (test) {
         ip->xC30 = coll->floor.index;
     }
-    if (test == false) {
+    if (!test) {
         arg1(gobj);
     }
 }
@@ -107,10 +107,10 @@ void it_8026D78C(Item_GObj* gobj, HSD_GObjEvent arg1)
     test = mpColl_8004B108(coll);
     ip->pos = coll->cur_pos;
 
-    if (test != false) {
+    if (test) {
         ip->xC30 = coll->floor.index;
     }
-    if (test == false) {
+    if (!test) {
         arg1(gobj);
         it_802762BC(ip);
     }
@@ -156,11 +156,11 @@ bool it_8026D8A4(Item_GObj* gobj, HSD_GObjEvent arg1)
         test = mpColl_8004B2DC(coll);
         ip->pos = coll->cur_pos;
 
-        if (test != false) {
+        if (test) {
             ip->xC30 = coll->floor.index;
         }
     }
-    if (it_802762D8(gobj) != false) {
+    if (it_802762D8(gobj)) {
         arg1(gobj);
     }
     return test;
@@ -169,7 +169,7 @@ bool it_8026D8A4(Item_GObj* gobj, HSD_GObjEvent arg1)
 void it_8026D938(Item_GObj* gobj, HSD_GObjEvent arg1)
 {
     Item* ip = GET_ITEM(gobj);
-    if (mpLib_80054ED8(ip->xC30) == false) {
+    if (!mpLib_80054ED8(ip->xC30)) {
         ip->xC30 = -1;
         arg1(gobj);
     }
@@ -255,7 +255,7 @@ bool it_8026DB40(Item_GObj* gobj)
 
     test = mpColl_800471F8(coll);
     ip->pos = coll->cur_pos;
-    if (test != false) {
+    if (test) {
         ip->xC30 = coll->floor.index;
     }
     return test |= it_80276308(gobj);
@@ -482,7 +482,7 @@ void it_8026E15C(Item_GObj* gobj, HSD_GObjEvent arg1)
             } else {
                 res2 = false;
             }
-            if (res2 != false) {
+            if (res2) {
                 arg1(gobj);
             }
         }
@@ -736,7 +736,7 @@ void it_8026E8C4(Item_GObj* item_gobj, HSD_GObjEvent arg1, HSD_GObjEvent arg2)
     if (chk) {
         item->xC30 = coll->floor.index;
     }
-    if (chk == false) {
+    if (!chk) {
         it_802762BC(item);
         arg2(item_gobj);
         return;
@@ -758,7 +758,7 @@ bool it_8026E9A4(HSD_GObj* gobj, Vec3* arg1, Vec3* arg2, Vec3* arg3)
     PAD_STACK(4);
 
     if (mpCheckAllRemap(&p, NULL, NULL, arg3, -1, -1, arg1->x, arg1->y,
-                        arg2->x, arg2->y) == true)
+                        arg2->x, arg2->y))
     {
         *arg2 = p;
         return true;
@@ -774,7 +774,7 @@ bool it_8026EA20(HSD_GObj* gobj, Vec3* arg1, Vec3* arg2, Vec3* arg3, int* arg4,
     PAD_STACK(4);
 
     if (mpCheckAllRemap(&p, arg4, flags_out, arg3, -1, -1, arg1->x, arg1->y,
-                        arg2->x, arg2->y) == true)
+                        arg2->x, arg2->y))
     {
         *arg2 = p;
         return true;
@@ -789,7 +789,7 @@ bool it_8026EA9C(HSD_GObj* gobj, Vec3* arg1, Vec3* arg2, Vec3* arg3, int* arg4,
     PAD_STACK(4);
 
     if (mpCheckAllRemap(&p, arg4, flags_out, arg3, -1, arg6, arg1->x, arg1->y,
-                        arg2->x, arg2->y) == true)
+                        arg2->x, arg2->y))
     {
         *arg2 = p;
         return true;
