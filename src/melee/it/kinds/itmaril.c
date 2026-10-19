@@ -53,7 +53,7 @@ static bool itMaril_UnkMotion2_Anim_inline(Item_GObj* gobj)
 bool it_802D66F8(Item_GObj* gobj)
 {
     PAD_STACK(8);
-    if (it_80273130(gobj) == true) {
+    if (it_80273130(gobj)) {
         efLib_DestroyAll(gobj);
         return true;
     }
@@ -224,7 +224,7 @@ bool itMaril_UnkMotion1_Coll(Item_GObj* gobj)
     s32 coll;
     PAD_STACK(8);
     coll = it_8026DB40(gobj);
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         if (coll & 1) {
             it_802D69E4(gobj);
         } else {

@@ -68,7 +68,7 @@ void it_802D09D0(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
 
-    if ((ip->xDC8_word.flags.x13 == false) && (ip->msid != 6)) {
+    if (!ip->xDC8_word.flags.x13 && (ip->msid != 6)) {
         it_802D1204(gobj);
     }
 }
@@ -122,7 +122,7 @@ void it_802D0B04(Item_GObj* gobj)
 
 bool itMarumine_UnkMotion1_Anim(Item_GObj* gobj)
 {
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         it_802D100C(gobj);
     }
     return false;
@@ -136,7 +136,7 @@ bool itMarumine_UnkMotion1_Coll(Item_GObj* gobj)
     itMarumineAttributes* attr =
         &ip->xC4_article_data->x4_specialAttributes->marumine;
 
-    if (it_8026DA08(gobj) == false) {
+    if (!it_8026DA08(gobj)) {
         if (ip->x5CC_currentAnimFrame >= attr->timer) {
             it_802D0C44(gobj);
         }
@@ -186,7 +186,7 @@ void it_802D0D18(Item_GObj* gobj)
 
 bool itMarumine_UnkMotion3_Anim(Item_GObj* gobj)
 {
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         it_802D1204(gobj);
     }
     return false;
@@ -235,7 +235,7 @@ void it_802D0E90(Item_GObj* gobj)
 
 bool itMarumine_UnkMotion4_Anim(Item_GObj* gobj)
 {
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         it_802D1204(gobj);
     }
     return false;
@@ -281,7 +281,7 @@ void it_802D100C(Item_GObj* gobj)
 
 bool itMarumine_UnkMotion5_Anim(Item_GObj* gobj)
 {
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         it_802D1204(gobj);
     }
     return false;
@@ -341,7 +341,7 @@ void it_802D1204(Item_GObj* gobj)
     PAD_STACK(8);
 
     Item_8026AE84(ip, 0x2720, 0x7F, 0x40);
-    if (ip->xDC8_word.flags.x13 != false) {
+    if (ip->xDC8_word.flags.x13) {
         Vec3 vec = it_803B86C8;
         it_80274250(gobj, &vec);
     }
@@ -383,7 +383,7 @@ void itMarumine_UnkMotion0_Phys(Item_GObj* gobj)
 {
     Item* ip;
 
-    if (it_8027A09C(gobj) != false) {
+    if (it_8027A09C(gobj)) {
         ip = GET_ITEM(gobj);
         Item_80268E5C(gobj, 1, ITEM_UNK_0x1);
         Item_SetEffectHitlagCallbacks(ip);
