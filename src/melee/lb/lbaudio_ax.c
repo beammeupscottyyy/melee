@@ -1702,7 +1702,7 @@ static void fn_800262A0(HSD_GObj* gobj)
         return;
     }
 
-    if (ud->x10(gobj) == true) {
+    if (ud->x10(gobj)) {
         if (gobj != NULL) {
             HSD_GObjFree(gobj);
         }
