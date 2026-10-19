@@ -518,7 +518,7 @@ bool fn_802112F4(Ground_GObj* gobj, HSD_GObj* fighter_gobj, Vec3* vel)
     case 1:
         if (grOldPupupu_8021128C(&pos, yakumono_param->x1C,
                                  yakumono_param->x20, yakumono_param->x24,
-                                 yakumono_param->x28) == true)
+                                 yakumono_param->x28))
         {
             vel->x = -yakumono_param->x10;
             return true;
@@ -527,7 +527,7 @@ bool fn_802112F4(Ground_GObj* gobj, HSD_GObj* fighter_gobj, Vec3* vel)
     case 2:
         if (grOldPupupu_8021128C(&pos, yakumono_param->x18,
                                  yakumono_param->x14, yakumono_param->x24,
-                                 yakumono_param->x28) == true)
+                                 yakumono_param->x28))
         {
             vel->x = yakumono_param->x10;
             return true;
