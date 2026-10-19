@@ -55,7 +55,7 @@ bool itPippi_UnkMotion1_Anim(Item_GObj* gobj)
     Item* it = gobj->user_data;
     int timer;
 
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         timer = --it->xDD4_itemVar.pokemon.timer;
         if (it->xDD4_itemVar.pokemon.timer <= 0) {
             it_802D33F8(gobj);
@@ -116,7 +116,7 @@ void it_802D33F8(Item_GObj* gobj)
 bool itPippi_UnkMotion5_Anim(Item_GObj* gobj)
 {
     Item* it = gobj->user_data;
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         Item_80268D34(gobj, it->xD0_itemStateDesc);
     }
     if (it->xDAC_itcmd_var0) {
