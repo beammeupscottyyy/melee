@@ -49,8 +49,8 @@ float mn_8022EC18(HSD_JObj* arg0, AnimLoopSettings* arg1, HSD_TypeMask arg2)
     return var_f31;
 }
 
-/// @brief updates a jobjs animation in accordance to the passed in anim loop
-/// setting
+/// Updates a JObj's animation in accordance to the passed in anim loop
+/// setting.
 /// @param jobj HSD_JObj*
 /// @param anim_loop AnimLoopSettings*
 /// @return the current frame of the jobjs animation
@@ -131,8 +131,8 @@ float mn_8022EE84(HSD_JObj* arg0, AnimLoopSettings* arg1,
     return var_f31;
 }
 
-/// @brief updates a jobjs looping animation.
-/// if the end frame is -0.1f, the animation will stop after reaching the end
+/// Updates a JObj's looping animation.
+/// If the end frame is -0.1f, the animation will stop after reaching the end
 /// frame.
 /// @param arg0 HSD_JObj
 /// @param arg1 AnimLoopSettings
@@ -223,7 +223,7 @@ void mn_8022F268(void)
     gmMainLib_GetGameRules()->force_main_menu = 1;
 }
 
-/// @brief returns the current frame of jobjs animation
+/// Returns the current frame of JObj's animation.
 float mn_8022F298(HSD_JObj* jobj)
 {
     HSD_AObj* aobj;
