@@ -42,7 +42,7 @@ void grDatFiles_801C6038(char* filename, bool bool1, bool bool2)
         HSD_Archive* sp14;
         bool phi_r28;
         char* r4 = filename;
-        if (bool2 != false) {
+        if (bool2) {
             phi_r28 =
                 lbArchive_800171CC(&sp14, r4, &temp_r3->unk4, "map_head", 0);
         } else {
@@ -50,7 +50,7 @@ void grDatFiles_801C6038(char* filename, bool bool1, bool bool2)
             phi_r28 = false;
         }
         temp_r3->unk8 = 0;
-        if (bool1 == false) {
+        if (!bool1) {
             stage_info.coll_data =
                 HSD_ArchiveGetPublicAs(MapCollData, sp14, "coll_data");
             stage_info.param =
@@ -72,7 +72,7 @@ void grDatFiles_801C6038(char* filename, bool bool1, bool bool2)
         }
         temp_r3->unk0 = sp14;
         if (stage_info.map_ptcl != NULL && stage_info.map_texg != NULL) {
-            if (phi_r28 != false) {
+            if (phi_r28) {
                 psInitDataBankLoad(0x40, stage_info.map_ptcl,
                                    stage_info.map_texg, 0, 0);
             } else {
@@ -83,7 +83,7 @@ void grDatFiles_801C6038(char* filename, bool bool1, bool bool2)
         grDatFiles_801C6228(temp_r3->unk4);
     } else {
         temp_r3->unk4 = &grDatFiles_803E0924;
-        if (bool1 == false) {
+        if (!bool1) {
             stage_info.coll_data = NULL;
             stage_info.param = &grDatFiles_803E0848;
             stage_info.itemdata = NULL;
