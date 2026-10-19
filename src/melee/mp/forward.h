@@ -45,7 +45,7 @@ typedef enum mpLib_GroundEnum {
 } mpLib_GroundEnum;
 
 /**
- * @brief Joint collision callback for ground surfaces.
+ * Joint collision callback for ground surfaces.
  * @param user_data Saved untyped data attached to the callback.
  * @param coll_x50 %Unknown, sourced from #CollData::x50.
  *                 `dist` according to #fn_801FC9AC?

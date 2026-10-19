@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Map library.
+ * Map library.
  */
 
 #ifndef GALE01_04D164
