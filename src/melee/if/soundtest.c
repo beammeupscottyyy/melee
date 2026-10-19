@@ -108,7 +108,7 @@ bool un_802FF88C(enum soundtest_callback_arg0 arg0)
         x->x4->scale_x = 16.0f;
         x->x4->scale_y = 32.0f;
     }
-    return 1;
+    return true;
 }
 
 bool un_802FF934(enum soundtest_callback_arg0 arg0)
@@ -124,7 +124,7 @@ bool un_802FF958(enum soundtest_callback_arg0 arg0)
     lbAudioAx_80024614(tmp);
     tmp = un_804D5850;
     lbAudioAx_800245D4(tmp);
-    return 0;
+    return false;
 }
 
 bool un_802FF99C(enum soundtest_callback_arg0 arg0)
@@ -132,7 +132,7 @@ bool un_802FF99C(enum soundtest_callback_arg0 arg0)
     u8 tmp = un_804D6DAC;
     lbAudioAx_80024634(tmp);
     un_802FFB58(arg0);
-    return 0;
+    return false;
 }
 
 bool un_802FF9DC(enum soundtest_callback_arg0 arg0)
@@ -146,23 +146,23 @@ bool un_802FF9DC(enum soundtest_callback_arg0 arg0)
     un_803F9FA4.entries[7].x14 = (f32) un_804D6DB4;
     total = un_804D6DB4 + un_804D6DA8->x18[un_804D6DB0];
     un_803F9FA4.entries[7].x18 = (f32) total;
-    return 0;
+    return false;
 }
 
 bool un_802FFB58(enum soundtest_callback_arg0 arg0)
 {
-    if (arg0 == 1) {
+    if (arg0 == soundtest_callback_1) {
         lbAudioAx_80023694();
         lbAudioAx_80023B24(un_804D6DA8->x14[un_804D6DB4]);
-    } else if (arg0 == 0) {
+    } else if (arg0 == soundtest_callback_0) {
         lbAudioAx_80023694();
     }
-    return 0;
+    return false;
 }
 
 bool un_802FFBAC(enum soundtest_callback_arg0 arg0)
 {
-    if (arg0 == 1) {
+    if (arg0 == soundtest_callback_1) {
         if (un_804D585C == un_804D6DB8) {
             int x = (un_804D6DC0 + 1) & 1;
             un_804D6DC0 = x;
@@ -172,12 +172,12 @@ bool un_802FFBAC(enum soundtest_callback_arg0 arg0)
             un_804D585C = un_804D6DB8;
             un_804D6DC0 = 0;
         }
-    } else if (arg0 == 0) {
+    } else if (arg0 == soundtest_callback_0) {
         lbAudioAx_800236DC();
         un_804D585C = -1;
         un_804D6DC0 = 0;
     }
-    return 0;
+    return false;
 }
 
 bool un_802FFC30(enum soundtest_callback_arg0 arg0)
@@ -191,7 +191,7 @@ bool un_802FFC30(enum soundtest_callback_arg0 arg0)
 
 bool un_802FFC6C(enum soundtest_callback_arg0 update_scene)
 {
-    if (update_scene == true) {
+    if (update_scene == soundtest_callback_1) {
         lbAudioAx_80023694();
         sfxBack();
         lbAudioAx_800236DC();

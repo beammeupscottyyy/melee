@@ -167,11 +167,11 @@ void un_802FFD94(int arg0, void* arg1, soundtest_callback arg2)
 bool fn_802FFE0C(enum soundtest_callback_arg0 arg0)
 {
     switch (arg0) {
-    case 0:
+    case soundtest_callback_0:
         sfxBack();
         un_80304334(un_80302DF0());
         break;
-    case 6:
+    case soundtest_callback_6:
         sfxForward();
         gm_SetNextGameModeStateId(4);
         gm_801A4B60();
@@ -179,13 +179,13 @@ bool fn_802FFE0C(enum soundtest_callback_arg0 arg0)
     default:
         break;
     }
-    return 0;
+    return false;
 }
 
 bool fn_802FFE6C(enum soundtest_callback_arg0 update_scene)
 {
     bool res = update_scene;
-    if (update_scene == false) {
+    if (update_scene == soundtest_callback_0) {
         sfxBack();
         un_80304334(un_80302DF0());
         res = false;
@@ -196,7 +196,7 @@ bool fn_802FFE6C(enum soundtest_callback_arg0 update_scene)
 
 bool un_802FFEA4(enum soundtest_callback_arg0 update_scene)
 {
-    if (update_scene == true) {
+    if (update_scene == soundtest_callback_1) {
         sfxForward();
         gm_SetNextGameModeStateId(0x4);
         gm_801A4B60();
@@ -281,7 +281,7 @@ void un_802FFF2C(StartMeleeData* arg0)
 
 bool un_803001DC(enum soundtest_callback_arg0 update_scene)
 {
-    if (update_scene == true) {
+    if (update_scene == soundtest_callback_1) {
         sfxForward();
         gm_SetNextGameModeStateId(0x1);
         gm_801A4B60();
@@ -293,27 +293,27 @@ bool un_803001DC(enum soundtest_callback_arg0 update_scene)
 bool un_80300218(enum soundtest_callback_arg0 arg0)
 {
     lbLang_SetSavedLanguage(un_803FA258.x0);
-    return 0;
+    return false;
 }
 
 bool un_80300248(enum soundtest_callback_arg0 arg0)
 {
-    if (un_803FA258.x4 && arg0 == 1) {
+    if (un_803FA258.x4 && arg0 == soundtest_callback_1) {
         sfxForward();
         gmMainLib_8015FB68();
     }
-    return 0;
+    return false;
 }
 
 bool un_80300290(enum soundtest_callback_arg0 arg0)
 {
     un_802FFD94(arg0, &un_803FA658, fn_802FFE6C);
-    return 0;
+    return false;
 }
 
 bool un_803002FC(enum soundtest_callback_arg0 update_scene)
 {
-    if (update_scene == true) {
+    if (update_scene == soundtest_callback_1) {
         sfxForward();
         gm_SetNextGameModeStateId(0x2);
         gm_801A4B60();
@@ -333,7 +333,7 @@ bool un_80300338(enum soundtest_callback_arg0 arg0)
     un_803FA258.xF5 = src[0x1869];
     un_803FA258.xF6 = src[0x186A];
     un_803FA258.xF7 = src[0x186B];
-    return 0;
+    return false;
 }
 
 bool un_80300378(enum soundtest_callback_arg0 arg0)
@@ -350,7 +350,7 @@ bool un_80300378(enum soundtest_callback_arg0 arg0)
     un_803FA258.xF6 = ptr[0x186A];
     un_803FA258.xF7 = ptr[0x186B];
 
-    return 0;
+    return false;
 }
 
 bool un_803003C4(enum soundtest_callback_arg0 arg0)
@@ -367,12 +367,12 @@ bool un_803003C4(enum soundtest_callback_arg0 arg0)
     un_803FA258.xF6 = ptr[0x186A];
     un_803FA258.xF7 = ptr[0x186B];
 
-    return 0;
+    return false;
 }
 
 bool un_80300410(enum soundtest_callback_arg0 arg0)
 {
-    if (arg0 == 1) {
+    if (arg0 == soundtest_callback_1) {
         u8* dst;
         sfxForward();
         dst = gmMainLib_8045A6C0;
@@ -382,5 +382,5 @@ bool un_80300410(enum soundtest_callback_arg0 arg0)
         dst[0x186A] = un_803FA258.xF6;
         dst[0x186B] = un_803FA258.xF7;
     }
-    return 0;
+    return false;
 }
