@@ -80,7 +80,7 @@ bool itRaikou_UnkMotion0_Anim(Item_GObj* gobj)
         it->xDB4_itcmd_var2 = 0;
         efLib_DestroyAll(gobj);
     }
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         return true;
     }
     if (it->xDB4_itcmd_var2) {
