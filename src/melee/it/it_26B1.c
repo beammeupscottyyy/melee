@@ -365,7 +365,7 @@ bool it_8026B6C8(HSD_GObj* gobj)
     kind = ip->kind;
     if (((kind >= It_Kind_Monster_Start) && (kind < It_Kind_Monster_End)) ||
         ((itemID_2 = ip->kind,
-          ((itemID_2 < It_Kind_Section_Stage_Extended_Start) == false)) &&
+          (itemID_2 >= It_Kind_Section_Stage_Extended_Start)) &&
          (itemID_2 < It_Kind_Stage_End)))
     {
         itemID_3 = ip->kind;
