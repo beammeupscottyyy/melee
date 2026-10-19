@@ -189,7 +189,7 @@ static inline void HSD_JObjSetScaleItem(Item* it, HSD_JObj* jobj, Vec3* scl)
 
 static inline void HSD_JObjSetFacingDirItem(HSD_JObj* jobj, Item* it)
 {
-    if (it->xDC8_word.flags.x19 == true) {
+    if (it->xDC8_word.flags.x19) {
         HSD_JObjSetRotationY(jobj, M_PI / 2 * it->facing_dir);
     }
 }
@@ -933,7 +933,7 @@ static HSD_GObj* Item_8026862C(SpawnItem* spawnItem)
 
     void* user_data;
 
-    if (Item_8026784C(spawnItem->hold_kind, spawnItem->kind) != false) {
+    if (Item_8026784C(spawnItem->hold_kind, spawnItem->kind)) {
         return NULL;
     }
     gobj = GObj_Create(HSD_GOBJ_CLASS_ITEM, 9, 0);
@@ -966,7 +966,7 @@ static HSD_GObj* Item_8026862C(SpawnItem* spawnItem)
     GObj_InitUserData(gobj, 6, Item_OnUserDataRemove, user_data);
     Item_80267AA8(gobj, spawnItem);
     Item_802680CC(gobj);
-    if (Item_802682F0(gobj) != false) {
+    if (Item_802682F0(gobj)) {
         Item_8026814C(gobj);
         Item_8026849C(gobj);
         it_8027163C(gobj);
