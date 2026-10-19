@@ -707,7 +707,7 @@ void mn_80229894(s32 arg0, u16 arg1, s32 arg2)
     }
 }
 
-/// @brief checks if a menu selection is locked
+/// Checks if a menu selection is locked.
 bool mn_80229938(MenuKind menu_kind, s32 selection)
 {
     if (menu_kind == MENU_KIND_REG && selection == SEL_REG_ALLSTAR) {
@@ -739,13 +739,13 @@ bool mn_80229938(MenuKind menu_kind, s32 selection)
     return true;
 }
 
-/// @brief returns the amount of unlocked selections
+/// Returns the amount of unlocked selections.
 int mn_80229A04(MenuKind kind, int selection)
 {
     int i;
     int count = 0;
     for (i = 0; i < selection; i++) {
-        if (mn_80229938(kind, i) != false) {
+        if (mn_80229938(kind, i)) {
             count++;
         }
     }
@@ -757,7 +757,7 @@ static inline u8 mn_80229A04_dontinline(MenuKind kind, int selection)
     return mn_80229A04(kind, selection);
 }
 
-/// @brief creates the description text for the hovered selection
+/// Creates the description text for the hovered selection.
 static void mn_80229A7C(MainMenuData* data, MenuKind menu_kind, int selection)
 {
     HSD_Text* temp_r3;
@@ -915,7 +915,7 @@ HSD_GObj* mn_80229DC0(void)
 static const Vec3 mn_803B84E8 = { 0 };
 static const Vec3 mn_803B84F4 = { 0 };
 
-/// @brief cursor animation on hover
+/// Cursor animation on hover.
 void mn_80229F60(HSD_GObj* gp, HSD_JObj* root, MainMenuSelection selection)
 {
     float temp_f31;
@@ -979,7 +979,7 @@ void mn_80229F60(HSD_GObj* gp, HSD_JObj* root, MainMenuSelection selection)
     HSD_JObjSetRotationZ(sp54[6], temp_f31);
 }
 
-/// @brief cursor animation on unhover
+/// Cursor animation on unhover.
 void mn_8022A440(HSD_GObj* gp, HSD_JObj* root, MainMenuSelection selection)
 {
     HSD_JObj* sp24[7];
@@ -1015,7 +1015,7 @@ void mn_8022A440(HSD_GObj* gp, HSD_JObj* root, MainMenuSelection selection)
     HSD_JObjSetFlagsAll(sp24[4], JOBJ_HIDDEN);
 }
 
-/// @brief updates cursor animation
+/// Updates cursor animation.
 void mn_8022A5D0(HSD_GObj* gp, MainMenuSelection selection)
 {
     u8 _[8];
@@ -1187,8 +1187,8 @@ void fn_8022AF10(HSD_GObj* gp)
     HSD_JObjAnim(jobj);
 }
 
-/// @brief main menu think func that handles the updating
-/// of objects (animations, text)
+/// Main menu think function that handles the updating
+/// of objects (animations, text).
 void fn_8022AFEC(HSD_GObj* gp)
 {
     /// @todo figure out the inlines
@@ -1365,13 +1365,13 @@ void fn_8022AFEC(HSD_GObj* gp)
     }
 }
 
-/// @brief frame offset of a selection's cursor animation
+/// Frame offset of a selection's cursor animation.
 static inline int GetSelectionFrameOffset(int selection)
 {
     return 2 * selection;
 }
 
-/// @brief counts the unlocked selections of a menu
+/// Counts the unlocked selections of a menu.
 static inline u8 CountUnlockedSelections(MenuKind kind)
 {
     int i;
@@ -1388,7 +1388,7 @@ struct mn_8022B3A0_jobj {
     HSD_JObj* value;
 };
 
-/// @brief sets up a new menu when transitioning from another.
+/// Sets up a new menu when transitioning from another.
 HSD_GObj* mn_8022B3A0(u8 state)
 {
     HSD_JObj* option_jobjs[12];
@@ -1532,7 +1532,7 @@ HSD_GObj* mn_8022B3A0(u8 state)
 
 static const Vec3 mn_803B8500 = { 0, 1, 0 };
 
-/// @brief updates menu camera rotation from the cstick
+/// Updates menu camera rotation from the C-Stick.
 void mn_8022BA1C(HSD_GObj* gp)
 {
     u8 _[0x10];
@@ -1705,7 +1705,7 @@ GXColor* mn_8022BFBC(int arg0)
     }
 }
 
-/// @brief gets the menu light color index
+/// Gets the menu light color index.
 int mn_8022C010(int menu_kind, int selection)
 {
     if (menu_kind == MENU_KIND_MAIN) {
@@ -1894,7 +1894,7 @@ static inline void increment_selection(u8 selection_count, MenuKind menu_kind)
     } while (mn_80229938(menu_kind, mn_804A04F0.hovered_selection) == 0);
 }
 
-/// @brief Special Vs menu think
+/// Special VS menu think function.
 void mn_8022C4F4(HSD_GObj* gp)
 {
     HSD_GObj* gobj;
@@ -2009,7 +2009,7 @@ static inline u8 mn_8022C7CC_inline(void)
     return 0;
 }
 
-/// @brief Stadium menu think
+/// Stadium menu think function.
 void mn_8022C7CC(HSD_GObj* gp)
 {
     HSD_GObjProc* think;
@@ -2068,7 +2068,7 @@ void mn_8022C7CC(HSD_GObj* gp)
     }
 }
 
-/// @brief Records menu think
+/// Records menu think function.
 void mn_8022CA54(HSD_GObj* gp)
 {
     HSD_GObjProc* think;
@@ -2134,7 +2134,7 @@ void mn_8022CA54(HSD_GObj* gp)
     }
 }
 
-/// @brief Regular Match menu think
+/// Regular Match menu think function.
 void mn_8022CC28(HSD_GObj* gp)
 {
     HSD_GObjProc* think;
@@ -2210,7 +2210,7 @@ void mn_8022CC28(HSD_GObj* gp)
     }
 }
 
-/// @brief Data menu think
+/// Data menu think function.
 void mn_8022CE6C(HSD_GObj* gp)
 {
     HSD_GObjProc* think;
@@ -2304,7 +2304,7 @@ void mn_8022CE6C(HSD_GObj* gp)
     }
 }
 
-/// @brief Settings menu think
+/// Settings menu think function.
 void mn_8022D104(HSD_GObj* gp)
 {
     int selection_count;
@@ -2384,7 +2384,7 @@ void mn_8022D104(HSD_GObj* gp)
     }
 }
 
-/// @brief Trohpy menu think
+/// Trophy menu think function.
 void mn_8022D34C(HSD_GObj* gp)
 {
     HSD_GObjProc* think;
@@ -2459,7 +2459,7 @@ void mn_8022D34C(HSD_GObj* gp)
     }
 }
 
-/// @brief Versus menu think
+/// Versus menu think function.
 void mn_8022D594(HSD_GObj* gp)
 {
     HSD_GObjProc* think;
@@ -2546,7 +2546,7 @@ void mn_8022D594(HSD_GObj* gp)
     }
 }
 
-/// @brief Singleplayer menu think
+/// Single-player menu think function.
 void mn_8022D7F4(HSD_GObj* gp)
 {
     int selection_count;
@@ -2646,7 +2646,7 @@ void mn_8022D7F4(HSD_GObj* gp)
     }
 }
 
-/// @brief Main menu input think
+/// Main menu input think function.
 void mn_8022DB10(HSD_GObj* gp)
 {
     MenuExitData* data;
