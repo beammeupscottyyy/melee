@@ -420,7 +420,7 @@ void ftMt_SpecialHi_Enter(HSD_GObj* gobj)
 
         if (!(lbVector_AngleXY(&collData->floor.normal, &stickVec) <
               (float) M_PI_2) &&
-            (ftCo_8009A134(gobj) == false))
+            !ftCo_8009A134(gobj))
         {
             ftCommon_UpdateFacing(fp);
 

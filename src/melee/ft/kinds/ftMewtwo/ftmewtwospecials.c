@@ -112,7 +112,7 @@ void ftMt_SpecialAirS_Enter(HSD_GObj* gobj)
     fp->cmd_vars[1] = 0;
     fp->mv.mt.SpecialS.isConfusionReflect = false;
 
-    if (fp->u.mt.x223C_isConfusionBoost == false) {
+    if (!fp->u.mt.x223C_isConfusionBoost) {
         fp->self_vel.y = mewtwoAttrs->x18_MEWTWO_CONFUSION_AIR_BOOST;
         fp->u.mt.x223C_isConfusionBoost = true;
     }
@@ -270,14 +270,14 @@ void ftMt_SpecialS_ReflectThink(HSD_GObj* gobj)
             gobj, &mewtwoAttrs->x1C_MEWTWO_CONFUSION_REFLECTION,
             ftMt_SpecialS_OnReflect); // Really? A callback that simply
                                       // returns instead of just NULL?
-        fp->x2218_b4 =
-            1; // Here it is... the reason Confusion cannot change ownership.
+        fp->x2218_b4 = true; // Here it is... the reason Confusion cannot
+                             // change ownership.
         fp->mv.mt.SpecialS.isConfusionReflect = true;
         fp->cmd_vars[1] = CONFUSION_REFLECT_NONE;
         return;
 
     case CONFUSION_REFLECT_OFF:
-        if (fp->mv.mt.SpecialS.isConfusionReflect != false) {
+        if (fp->mv.mt.SpecialS.isConfusionReflect) {
             fp->reflecting = false;
             fp->x2218_b4 = false;
             fp->reflect_hit_cb = NULL;
