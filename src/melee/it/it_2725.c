@@ -665,11 +665,11 @@ void it_80273748(Item_GObj* item_gobj, Vec3* pos, Vec3* vel)
         }
         mpCollSetFacingDir(&item->x378_itemColl, int_dir);
     }
-    if (item->xDC8_word.flags.x19 == 1) {
+    if (item->xDC8_word.flags.x19) {
         dir_radians = M_PI_2 * item->facing_dir;
         HSD_JObjSetRotationY(jobj, dir_radians);
     }
-    if (((itIsHeavy(item_gobj) == true) &&
+    if ((itIsHeavy(item_gobj) &&
          (hold_kind = item->hold_kind, (hold_kind != ITEM_HOLD_4)) &&
          (hold_kind != ITEM_HOLD_6)) ||
         (item->hold_kind == ITEM_HOLD_8))
@@ -772,11 +772,11 @@ void it_80273B50(Item_GObj* item_gobj, Vec3* vel)
         }
         mpCollSetFacingDir(&item2->x378_itemColl, int_dir);
     }
-    if (item->xDC8_word.flags.x19 == 1) {
+    if (item->xDC8_word.flags.x19) {
         dir_radians = M_PI_2 * item->facing_dir;
         HSD_JObjSetRotationY(item_jobj1, dir_radians);
     }
-    if (((itIsHeavy(item_gobj) == true) &&
+    if ((itIsHeavy(item_gobj) &&
          (hold_kind = item->hold_kind, (hold_kind != ITEM_HOLD_4)) &&
          (hold_kind != ITEM_HOLD_6)) ||
         (item->hold_kind == ITEM_HOLD_8))
@@ -817,7 +817,7 @@ void it_80273F34(Item_GObj* item_gobj, HSD_GObj* arg_gobj2)
     it_80275BC8(item_gobj, arg_gobj2);
     it_80274DAC(item_gobj);
 
-    if (item->xDC8_word.flags.x19 == 1) {
+    if (item->xDC8_word.flags.x19) {
         rotate = M_PI_2 * item->facing_dir;
         HSD_JObjSetRotationY(item_jobj, rotate);
     }
@@ -850,8 +850,8 @@ void it_80274198(Item_GObj* item_gobj, bool chk)
 
     item = item_gobj->user_data;
     owner_gobj = item->owner;
-    if (item->xDC8_word.flags.x0 != 0) {
-        if (chk == true) {
+    if (item->xDC8_word.flags.x0) {
+        if (chk) {
             x51C_gobj = item->x51C;
             item->owner = x51C_gobj;
             owner_gobj = x51C_gobj;
@@ -868,7 +868,7 @@ void it_802741F4(Item_GObj* item_gobj, bool chk)
     Item* item = GET_ITEM(item_gobj);
     HSD_GObj* owner_gobj = item->owner;
     if (item->xDC8_word.flags.x0) {
-        if (chk == true) {
+        if (chk) {
             HSD_GObj* x51C_gobj = item->x51C;
             item->owner = x51C_gobj;
             owner_gobj = x51C_gobj;
@@ -1029,7 +1029,7 @@ int it_80274658(Item_GObj* item_gobj, f32 arg1)
     if (dir2 != dir1) {
         item->xD3C_spinSpeed = -item->xD3C_spinSpeed;
     }
-    if (item->xDC8_word.flags.x19 != 1) {
+    if (!item->xDC8_word.flags.x19) {
         item->xD3C_spinSpeed *= -item->facing_dir;
     }
     return dir2;
