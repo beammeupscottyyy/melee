@@ -66,7 +66,7 @@ void it_802D3BE0(Item_GObj* gobj)
 
 bool itMew_UnkMotion1_Anim(Item_GObj* gobj)
 {
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         it_802D3C9C(gobj);
     }
     return false;
@@ -132,7 +132,7 @@ void itMew_UnkMotion0_Phys(Item_GObj* gobj)
     Item* ip_arg;
     Item* ip;
 
-    if (it_8027A09C(gobj) != false) {
+    if (it_8027A09C(gobj)) {
         ip_arg = GET_ITEM(gobj);
         it_80273454(gobj);
         ip = GET_ITEM(gobj);

@@ -89,7 +89,7 @@ void it_802CB994(Item_GObj* gobj)
 
 bool itLizardon_UnkMotion1_Anim(Item_GObj* gobj)
 {
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         it_802CBAA8(gobj);
     }
     return false;

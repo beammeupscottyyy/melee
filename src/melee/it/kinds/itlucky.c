@@ -141,7 +141,7 @@ bool it_802D5124(Item_GObj* gobj)
         result = true;
         break;
     }
-    if (result == false) {
+    if (!result) {
         it_802D533C(gobj);
     }
     return result;
