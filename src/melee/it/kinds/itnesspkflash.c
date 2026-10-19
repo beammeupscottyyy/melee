@@ -176,7 +176,7 @@ bool itNesspkflash_UnkMotion0_Anim(Item_GObj* gobj)
     HSD_JObj* jobj = GET_JOBJ(gobj);
     bool holding;
 
-    if (it_80272C6C(gobj) == false) {
+    if (!it_80272C6C(gobj)) {
         Item_80268E5C(gobj, 0, ITEM_ANIM_UPDATE);
     }
 
@@ -204,7 +204,7 @@ bool itNesspkflash_UnkMotion0_Anim(Item_GObj* gobj)
             default:
                 break;
             }
-            if (holding != true) {
+            if (!holding) {
                 Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
                 ip->xD44_lifeTimer = attr->x28_FLASH_EXPLOSION_DELAY;
                 ip->xDAC_itcmd_var0 = 0;
@@ -212,7 +212,7 @@ bool itNesspkflash_UnkMotion0_Anim(Item_GObj* gobj)
         }
     }
 
-    if (it_80273130(gobj) == true) {
+    if (it_80273130(gobj)) {
         Item_80268E5C(gobj, 1, ITEM_ANIM_UPDATE);
         ip->xD44_lifeTimer = attr->x28_FLASH_EXPLOSION_DELAY;
         ip->xDAC_itcmd_var0 = 0;
@@ -296,7 +296,7 @@ void itNesspkflash_UnkMotion0_Phys(Item_GObj* gobj)
             default:
                 break;
             }
-            if (holding == true) {
+            if (holding) {
                 f32 stick_y;
                 f32 stick_x;
                 ftLib_GetLStick(ip->xDD4_itemVar.pkflush.xDE0_PKFlash_Owner,
