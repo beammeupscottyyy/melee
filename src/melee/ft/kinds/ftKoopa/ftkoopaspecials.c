@@ -347,7 +347,7 @@ void ftKp_SpecialSHit_Anim(HSD_GObj* gobj)
                 /// @todo Combine @c fp0 with other branch somehow
                 fp0 = GET_FIGHTER(gobj);
 
-                if ((signed) fp0->mv.kp.unk1.x4 != false) {
+                if (fp0->mv.kp.unk1.x4) {
                     Fighter_ChangeMotionState(gobj, ftKp_MS_SpecialSHit1,
                                               transition_flags0, 0.0F, 1.0F,
                                               0.0F, 0);
