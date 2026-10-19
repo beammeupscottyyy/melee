@@ -95,7 +95,7 @@ u32 it_8026ECE0(Item_GObj* gobj, u32 arg1)
                 idx = 0U;
                 while (idx < 4U) {
                     if (lbColl_80009F54(&ip->x5D4_hitboxes[idx].hit, arg1,
-                                        ip->scl) != false)
+                                        ip->scl))
                     {
                         ret = 1;
                     }
@@ -107,7 +107,7 @@ u32 it_8026ECE0(Item_GObj* gobj, u32 arg1)
                     idx = 0U;
                     while (idx < ip->xAC8_hurtboxNum) {
                         if (lbColl_8000A244(&ip->xACC_itemHurtbox[idx], arg1,
-                                            NULL, 0.0f) != false)
+                                            NULL, 0.0f))
                         {
                             ret = 1;
                         }
@@ -117,8 +117,7 @@ u32 it_8026ECE0(Item_GObj* gobj, u32 arg1)
                     idx = 0U;
                     while (idx < ip->xAC8_hurtboxNum) {
                         if (lbColl_8000A584(&ip->xACC_itemHurtbox[idx],
-                                            ip->xD0C, arg1, NULL,
-                                            0.0f) != false)
+                                            ip->xD0C, arg1, NULL, 0.0f))
                         {
                             ret = 1;
                         }
@@ -128,13 +127,13 @@ u32 it_8026ECE0(Item_GObj* gobj, u32 arg1)
             }
         }
         if (ip->xDAA.xDAA_flag.x0.b4 && ip->xDC8_word.flags.x15 &&
-            (lbGx_8001E2F8((Vec4*) &ip->xBCC_unk, &ip->pos, &it_804D5168, arg1,
-                           ip->facing_dir) != false))
+            lbGx_8001E2F8((Vec4*) &ip->xBCC_unk, &ip->pos, &it_804D5168, arg1,
+                          ip->facing_dir))
         {
             ret = 1;
         }
         if (ip->xDAA.xDAA_flag.x0.b3 && ip->xDD0_flag.x0.b0 &&
-            (lb_800149E0((MtxPtr) &ip->xB54, arg1) != false))
+            lb_800149E0((MtxPtr) &ip->xB54, arg1))
         {
             ret = 1;
         }
