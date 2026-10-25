@@ -3252,6 +3252,18 @@ float fn_80166A8C(register Vec3* src, register Vec3* dst)
     register float x = src->x;
     asm { psq_st x, Vec3.x(dst), 1, qr3 }
     return x;
+#else
+    float x = src->x;
+    u16 val;
+    if (!(x > 0.0f)) {
+        val = 0;
+    } else if (x >= 65535.0f) {
+        val = 65535;
+    } else {
+        val = (u16) x;
+    }
+    *(u16*) &dst->x = val;
+    return x;
 #endif
 }
 
