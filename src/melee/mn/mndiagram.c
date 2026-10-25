@@ -126,7 +126,7 @@ typedef struct mnDiagram_AnimTable {
 static GXColor mnDiagram_PopupTextColor = { 0, 0, 0, 0xFF };
 char mnDiagram_StringTerminator[1] = "";
 
-/// @brief Gets the fighter ID at the given sorted index.
+/// Gets the fighter ID at the given sorted index.
 /// @param idx Index into the sorted fighter list
 /// @return Fighter ID
 u8 mnDiagram_GetFighterByIndex(int idx)
@@ -134,7 +134,7 @@ u8 mnDiagram_GetFighterByIndex(int idx)
     return mnDiagram_FighterDisplayOrder[idx];
 }
 
-/// @brief Gets the name ID at the given sorted index.
+/// Gets the name ID at the given sorted index.
 /// @param idx Index into the sorted name list
 /// @return Name ID
 u8 mnDiagram_GetNameByIndex(int idx)
@@ -259,7 +259,7 @@ static inline int getNamePairKOs(u8 name, u8 opponent)
     return GetPersistentNameData(name)->vs_kos[opponent];
 }
 
-/// @brief Gets total KOs scored by a name against all other names.
+/// Gets total KOs scored by a name against all other names.
 /// @param field_index Index of the name tag to query.
 /// @return Sum of KOs scored by this name against all existing names.
 int mnDiagram_GetNameTotalKOs(u8 field_index)
@@ -293,7 +293,7 @@ static inline int sumNameKOs(u8 field_index, bool falls)
     return total;
 }
 
-/// @brief Gets total falls (deaths) of a name against all other names.
+/// Gets total falls (deaths) of a name against all other names.
 /// @details Iterates through all names and sums how many times each name
 ///          KO'd the target name. This is the column sum of the KO matrix.
 ///          Accesses vs_kos[field_index] in each name's data.
@@ -305,7 +305,7 @@ int mnDiagram_GetNameTotalFalls(u8 field_index)
     return sumNameKOs(field_index, true);
 }
 
-/// @brief Gets total KOs scored by a fighter against all other fighters.
+/// Gets total KOs scored by a fighter against all other fighters.
 /// @details Iterates through all unlocked fighters and sums how many times
 ///          the target fighter KO'd each one. Fighter data uses a similar
 ///          matrix layout to name data.
@@ -324,7 +324,7 @@ int mnDiagram_GetFighterTotalKOs(u8 field_index)
     return total;
 }
 
-/// @brief Gets total falls (deaths) of a fighter against all other fighters.
+/// Gets total falls (deaths) of a fighter against all other fighters.
 /// @details Iterates through all unlocked fighters and sums how many times
 ///          each fighter KO'd the target fighter. This is the column sum
 ///          of the fighter KO matrix.
@@ -405,7 +405,7 @@ void mnDiagram_IntToStr(char* buf, u32 val)
     buf[digit_count] = *mnDiagram_StringTerminator;
 }
 
-/// @brief Gets the previous valid name index.
+/// Gets the previous valid name index.
 /// @param idx Current name index.
 /// @return Previous name index with a valid name, or original if none found.
 u8 mnDiagram_GetPrevNameIndex(s32 idx)
@@ -439,7 +439,7 @@ u8 mnDiagram_GetNextNameIndex(s32 idx)
     return i;
 }
 
-/// @brief Gets the previous valid fighter index.
+/// Gets the previous valid fighter index.
 /// @param idx Current fighter index.
 /// @return Previous fighter index that's unlocked, or original if none found.
 u8 mnDiagram_GetPrevFighterIndex(s32 idx)
@@ -480,7 +480,7 @@ u8 mnDiagram_GetNextFighterIndex(s32 idx)
     return idx;
 }
 
-/// @brief Gets play time for a specific fighter under a name tag.
+/// Gets play time for a specific fighter under a name tag.
 /// @param name_idx Name tag index.
 /// @param fighter_idx Fighter index (0-24).
 /// @return Play time in seconds for this fighter under this name.
@@ -730,7 +730,7 @@ void mnDiagram_SortNamesByKOs(void)
     }
 }
 
-/// @brief Counts the number of unlocked fighters.
+/// Counts the number of unlocked fighters.
 /// @return Number of unlocked fighters.
 int mnDiagram_CountUnlockedFighters(void)
 {
@@ -1050,7 +1050,7 @@ static inline u8 getHoveredColumn(void)
     return (u8) mn_804A04F0.hovered_selection;
 }
 
-/// @brief Per-frame input handler for the VS Records "diagram" grid screen.
+/// Per-frame input handler for the VS Records "diagram" grid screen.
 ///
 /// Dispatches the current frame's menu input:
 ///   - A (0x10):    open the detail popup (mnDiagram_PopupInputProc) for the
@@ -1755,7 +1755,7 @@ static inline void setArrowVisible(HSD_JObj* arrow, bool visible)
     }
 }
 
-/// @brief Updates scroll arrow visibility based on cursor position and
+/// Updates scroll arrow visibility based on cursor position and
 ///        available entries beyond the visible range.
 /// @param[in] gobj The diagram GObj containing arrow JObjs in user_data.
 /// @details Checks 4 arrows: right (10 more cols?), left (cursor > 0?),
@@ -1891,7 +1891,7 @@ static inline void updateScrollArrowVisibility(Diagram* data, int count)
     }
 }
 
-/// @brief Updates scroll arrow visibility based on entry count.
+/// Updates scroll arrow visibility based on entry count.
 /// @details Hides vertical arrows if count <= 7 (fits in visible rows).
 ///          Hides horizontal arrows if count <= 10 (fits in visible columns).
 /// @param gobj The diagram GObj containing arrow JObjs in user_data.

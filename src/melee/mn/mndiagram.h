@@ -10,7 +10,7 @@
 /* 23EA40 */ u8 mnDiagram_GetNameByIndex(int idx);
 
 /**
- * @brief Tests whether a distance is at or above the large-unit threshold.
+ * Tests whether a distance is at or above the large-unit threshold.
  *
  * The threshold is 160934 when #lbLang_IsSavedLanguageUS is true and 100000
  * otherwise. Callers use a true result to select SIS entry @c 0x7F instead of
@@ -22,7 +22,7 @@
 /* 23EA54 */ bool mnDiagram_IsDistanceOverflow(u32 distance);
 
 /**
- * @brief Scales a distance for display with a language-dependent divisor.
+ * Scales a distance for display with a language-dependent divisor.
  *
  * US: @c distance/30.4788 (f64, truncated) below 160934, else
  * @c distance/160934. Otherwise: @c distance/100 below 100000, else
@@ -43,7 +43,7 @@
 /* 23F0DC */ int mnDiagram_GetFighterTotalFalls(u8 field_index);
 
 /**
- * @brief Writes @p val as NUL-terminated decimal text with its low
+ * Writes @p val as NUL-terminated decimal text with its low
  * @p decimal_places digits after a decimal point.
  *
  * Callers pass 0 or 2. With 2, 5 gives "0.05" and 12345 gives "123.45"; with
@@ -57,7 +57,7 @@
                                                 int decimal_places);
 
 /**
- * @brief Writes nonnegative @p seconds as "M:SS" with unpadded minutes.
+ * Writes nonnegative @p seconds as "M:SS" with unpadded minutes.
  *
  * 59 gives "0:59", 60 gives "1:00", and 600000 gives "10000:00"; minutes are
  * neither capped nor split into hours. Callers apply their own limits.
@@ -68,7 +68,7 @@
 /* 23F238 */ void mnDiagram_FormatTime(char* buf, s32 seconds);
 
 /**
- * @brief Writes @p val as NUL-terminated decimal digits.
+ * Writes @p val as NUL-terminated decimal digits.
  *
  * No padding or separators; 0 gives "0". Both callers cap @p val first. This
  * and #mnDiagram_FormatDecimalNumber use the signed #mn_GetDigitCount and

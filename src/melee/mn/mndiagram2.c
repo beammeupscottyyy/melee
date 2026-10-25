@@ -64,7 +64,7 @@ int GetNameCount(void);
 
 /* Diagram2 struct is defined in mn/types.h */
 
-/// @brief Checks if stat type uses time format (H:MM:SS).
+/// Checks if stat type uses time format (H:MM:SS).
 /// @param stat_type The stat type index (VSRecordsStatType)
 /// @return true if stat should display as time
 /// @details Only VSSTAT_PLAY_TIME (0x0B) uses time display format.
@@ -78,7 +78,7 @@ bool mnDiagram2_IsTimeStat(u8 stat_type)
     }
 }
 
-/// @brief Checks if stat type is a distance stat (shown in feet).
+/// Checks if stat type is a distance stat (shown in feet).
 /// @param stat_type The stat type index (VSRecordsStatType)
 /// @return true if stat shows distance in ft.
 /// @details Distance stats: Walk, Run, Fall, Peak Height (0x0E-0x11).
@@ -95,7 +95,7 @@ bool mnDiagram2_IsDistanceStat(u8 stat_type)
     }
 }
 
-/// @brief Checks if stat type is a percentage stat.
+/// Checks if stat type is a percentage stat.
 /// @param stat_type The stat type index (VSRecordsStatType)
 /// @return true if stat displays with decimal percentage
 /// @details Percentage stats: Hit %, Play %, Avg Players (0x03, 0x0C, 0x0D).
@@ -111,7 +111,7 @@ bool mnDiagram2_IsPercentageStat(u8 stat_type)
     }
 }
 
-/// @brief Checks if stat type displays as icon only (no numeric value).
+/// Checks if stat type displays as icon only (no numeric value).
 /// @param stat_type The stat type index (VSRecordsStatType)
 /// @return true if stat displays character icons only
 /// @details Icon-only stats: Most/2nd/Least played fighter (0x15-0x17).
@@ -128,7 +128,7 @@ bool mnDiagram2_IsIconOnlyStat(u8 stat_type)
     }
 }
 
-/// @brief Clears all stat row text objects and icon JObjs.
+/// Clears all stat row text objects and icon JObjs.
 /// @param gobj The diagram GObj
 void mnDiagram2_ClearStatRows(HSD_GObj* gobj)
 {
@@ -160,7 +160,7 @@ void mnDiagram2_ClearStatRows(HSD_GObj* gobj)
     }
 }
 
-/// @brief Updates the header display with fighter/name icon and text.
+/// Updates the header display with fighter/name icon and text.
 /// @param gobj The diagram GObj
 /// @param is_name_mode 0 = Fighter mode, 1 = Name mode
 /// @param entity_idx Fighter or Name selection index
@@ -237,7 +237,7 @@ static inline Diagram2* getCurrentDiagramData(void)
     return mnDiagram2_804D6C18->user_data;
 }
 
-/// @brief Clears and repopulates stat rows based on current selection.
+/// Clears and repopulates stat rows based on current selection.
 /// @details Reads is_name_mode to determine which entity index to use.
 static inline void mnDiagram2_RefreshStatRows(void)
 {
@@ -283,7 +283,7 @@ static inline void updateDiagramMode(u8 is_name_mode)
     mnDiagram2_UpdateHeader(gobj, is_name_mode, entity_idx);
 }
 
-/// @brief Handles input for the VS Records character details page.
+/// Handles input for the VS Records character details page.
 /// @param gobj The diagram GObj (unused, uses global mnDiagram2_804D6C18)
 /// @details Input mapping:
 ///   - Up/Down: Scroll stat rows
@@ -422,7 +422,7 @@ void mnDiagram2_HandleInput(HSD_GObj* gobj)
     }
 }
 
-/// @brief Retrieves a stat value for a fighter or name entry.
+/// Retrieves a stat value for a fighter or name entry.
 /// @param is_name_mode 0 = Fighter mode, 1 = Name mode
 /// @param stat_type Stat category (0x00-0x17), passed as HSD_GObj* due to ABI
 /// @param entity_idx Fighter or Name index
@@ -580,7 +580,7 @@ int mnDiagram2_GetStatValue(u8 is_name_mode, u8 stat_type, u8 entity_idx)
     }
 }
 
-/// @brief Creates a single stat row entry in the VS Records display.
+/// Creates a single stat row entry in the VS Records display.
 /// @param gobj The diagram GObj
 /// @param is_name_mode 0 = Fighter mode, 1 = Name mode
 /// @param stat_type Stat category index (0-23)
@@ -747,7 +747,7 @@ void mnDiagram2_CreateStatRow(HSD_GObj* gobj, u8 is_name_mode, u8 stat_type,
 /// SJIS "－", written into the stat string when a value is unavailable.
 u8 mnDiagram2_804D4FD0[3] = { 0x81, 0x7C, 0 };
 
-/// @brief Populates all 10 visible stat rows in the diagram.
+/// Populates all 10 visible stat rows in the diagram.
 /// @param gobj The diagram GObj
 /// @param scroll_offset Current scroll position (stat type offset)
 /// @param is_name_mode 0 = Fighter mode, 1 = Name mode
@@ -788,7 +788,7 @@ typedef struct MnDiagram2DataLayout {
     AnimLoopSettings anim[2];
 } MnDiagram2DataLayout;
 
-/// @brief Animation completion callback - destroys GObj when animation ends.
+/// Animation completion callback - destroys GObj when animation ends.
 void mnDiagram2_OnAnimComplete(HSD_GObj* gobj)
 {
     Diagram2* data;
@@ -802,7 +802,7 @@ void mnDiagram2_OnAnimComplete(HSD_GObj* gobj)
         HSD_GObjFree(gobj);
     }
 }
-/// @brief Updates navigation arrow visibility based on scroll/selection state.
+/// Updates navigation arrow visibility based on scroll/selection state.
 /// @param gobj The diagram GObj
 /// @details Shows/hides arrows:
 ///   - down_arrow (x34): hidden when at bottom
@@ -878,7 +878,7 @@ void mnDiagram2_UpdateScrollArrows(HSD_GObj* gobj)
         }
     }
 }
-/// @brief Per-frame callback that updates scroll arrows or starts exit
+/// Per-frame callback that updates scroll arrows or starts exit
 /// animation.
 /// @param gobj The diagram GObj
 void mnDiagram2_Think(HSD_GObj* gobj)
@@ -910,7 +910,7 @@ void mnDiagram2_Think(HSD_GObj* gobj)
     }
     mnDiagram2_UpdateScrollArrows(gobj);
 }
-/// @brief GObj destructor callback that frees user data.
+/// GObj destructor callback that frees user data.
 /// @param data The user data to free
 void mnDiagram2_FreeUserData(Diagram2* data)
 {
@@ -919,7 +919,7 @@ void mnDiagram2_FreeUserData(Diagram2* data)
     }
     HSD_Free(data);
 }
-/// @brief Initializes user data fields to default values.
+/// Initializes user data fields to default values.
 /// @param arg The user data struct to initialize
 void mnDiagram2_InitUserData(void* arg, int unused)
 {
@@ -944,7 +944,7 @@ void mnDiagram2_InitUserData(void* arg, int unused)
     data->header_text = NULL;
 }
 
-/// @brief Creates the VS Records diagram GObj and populates initial stat rows.
+/// Creates the VS Records diagram GObj and populates initial stat rows.
 /// @param arg0 Unused parameter
 void mnDiagram2_Create(int arg0)
 {
@@ -1038,7 +1038,7 @@ void mnDiagram2_Create(int arg0)
     mnDiagram2_UpdateHeader(gobj, is_name, entity_idx);
 }
 
-/// @brief Entry point for VS Records page 2 - initializes diagram and input
+/// Entry point for VS Records page 2 - initializes diagram and input
 /// handler.
 void mnDiagram2_Init(void)
 {
@@ -1053,7 +1053,7 @@ void mnDiagram2_Init(void)
     gobj->flags_3 = HSD_GObj_804D783C;
 }
 
-/// @brief Returns the fighter at rank N for a given stat type.
+/// Returns the fighter at rank N for a given stat type.
 /// @param stat_type The stat type to rank by
 /// @param rank The rank to retrieve (0 = highest, 1 = second highest, etc.)
 /// @return Fighter ID at the given rank, or SELKIND_COUNT if no data
@@ -1117,7 +1117,7 @@ u8 mnDiagram2_GetRankedFighter(u8 stat_type, u8 rank)
     return entries[rank].x0.idx;
 }
 
-/// @brief Returns the name entry at rank N for a given stat type.
+/// Returns the name entry at rank N for a given stat type.
 /// @param stat_type The stat type to rank by
 /// @param rank The rank to retrieve (0 = highest, 1 = second highest, etc.)
 /// @return Name ID at the given rank, or 0x78 if rank exceeds name count
@@ -1179,7 +1179,7 @@ u8 mnDiagram2_GetRankedName(u8 stat_type, u8 rank)
     return entries[rank].x0.idx;
 }
 
-/// @brief Computes aggregated fighter ranking across all saved names for icon
+/// Computes aggregated fighter ranking across all saved names for icon
 /// stats.
 /// @param type Stat type (0x15=Most Played, 0x16=2nd Most, 0x17=Least Played)
 /// @param idx Rank index to retrieve
@@ -1269,7 +1269,7 @@ void mnDiagram2_GetAggregatedFighterRank(mnDiagram2_SortEntry* out, u8 type,
     }
 }
 
-/// @brief Clears the detail view (Diagram3 popup) by freeing text objects and
+/// Clears the detail view (Diagram3 popup) by freeing text objects and
 /// removing the ranking-popup JObj's children.
 /// @param gobj The GObj holding the Diagram3 user data (mnDiagram3_804D6C20)
 void mnDiagram2_ClearDetailView(HSD_GObj* gobj)
