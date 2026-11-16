@@ -656,8 +656,8 @@ void mnDiagram2_CreateStatRow(HSD_GObj* gobj, u8 is_name_mode, u8 stat_type,
 
                 {
                     if (mnDiagram2_IsIconOnlyStat(stat_type) &&
-                        (u32) mnDiagram2_GetStatValue(is_name_mode, stat_type,
-                                                      entity) < SELKIND_COUNT)
+                        mnDiagram2_GetStatValue(is_name_mode, stat_type,
+                                                entity) < SELKIND_COUNT)
                     {
                         jobj = mnDiagram_CreateFighterIcon(
                             mnDiagram2_GetStatValue(is_name_mode, stat_type,
@@ -692,13 +692,10 @@ void mnDiagram2_CreateStatRow(HSD_GObj* gobj, u8 is_name_mode, u8 stat_type,
                     text2->default_alignment = 2;
 
                     if (mnDiagram2_IsTimeStat(stat_type)) {
-                        int val = mnDiagram2_GetStatValue(is_name_mode,
+                        u32 val = mnDiagram2_GetStatValue(is_name_mode,
                                                           stat_type, entity);
-                        {
-                            u32 unsigned_val = (u32) val;
-                            if (unsigned_val > 0x927BF) {
-                                val = 0x927BF;
-                            }
+                        if (val > 0x927BF) {
+                            val = 0x927BF;
                         }
                         mnDiagram_FormatTime((char*) str, val);
                     } else {
@@ -712,9 +709,9 @@ void mnDiagram2_CreateStatRow(HSD_GObj* gobj, u8 is_name_mode, u8 stat_type,
                             mnDiagram_IntToStr((char*) str, val);
                         } else {
                             if (mnDiagram2_IsPercentageStat(stat_type)) {
-                                int val = mnDiagram2_GetStatValue(
+                                u32 val = mnDiagram2_GetStatValue(
                                     is_name_mode, stat_type, entity);
-                                if ((u32) val > 0xF423F) {
+                                if (val > 0xF423F) {
                                     val = 0xF423F;
                                 }
                                 mnDiagram_FormatDecimalNumber((char*) str, val,
@@ -725,9 +722,9 @@ void mnDiagram2_CreateStatRow(HSD_GObj* gobj, u8 is_name_mode, u8 stat_type,
                                     str[1] = mnDiagram2_804D4FD0[1];
                                     str[2] = mnDiagram2_804D4FD0[2];
                                 } else {
-                                    int val = mnDiagram2_GetStatValue(
+                                    u32 val = mnDiagram2_GetStatValue(
                                         is_name_mode, stat_type, entity);
-                                    if ((u32) val > 0x98967F) {
+                                    if (val > 0x98967F) {
                                         val = 0x98967F;
                                     }
                                     mnDiagram_FormatDecimalNumber((char*) str,

@@ -500,7 +500,7 @@ void Camera_8002958C(CameraBounds* bounds, CameraTransformState* transform)
 
     new_bounds = bounds;
     if (subject_count != 0) {
-        if (((u32) subject_count) < 5) {
+        if (subject_count < 5) {
             tracking_weight = cm_803BCB9C[subject_count];
         } else {
             tracking_weight = 1.0f;
@@ -1394,7 +1394,7 @@ void Camera_8002B0E0(void)
         }
         if (var_f1 < 0.85f) {
             var_f2 = 0.0f;
-            if (((s32) game_camera.x2BA) > 0) {
+            if (game_camera.x2BA > 0) {
                 game_camera.x2BA = game_camera.x2BA - 1;
             } else {
                 var_f2 = cm_803BCCA0.xE4;
@@ -3807,7 +3807,7 @@ void Camera_8002FEEC(s32 arg0)
     if (Player_GetEntity(arg0) != NULL) {
         box = ftLib_GetCameraSubject(Player_GetEntity(arg0));
         if ((box != NULL) && ((game_camera.mode) != CAMERA_DEBUG_FOLLOW)) {
-            if (game_camera.mode <= (u32) CAMERA_PAUSE) {
+            if (game_camera.mode <= CAMERA_PAUSE) {
                 cm_80453004.last_mode = game_camera.mode;
             }
 
@@ -3847,7 +3847,7 @@ void Camera_8003006C(void)
     HSD_CObj* cobj;
 
     if (game_camera.mode != CAMERA_DEBUG_FREE) {
-        if (game_camera.mode <= (u32) CAMERA_PAUSE) {
+        if (game_camera.mode <= CAMERA_PAUSE) {
             cm_80453004.last_mode = game_camera.mode;
         }
         game_camera.mode = CAMERA_DEBUG_FREE;
@@ -3865,7 +3865,7 @@ void Camera_800300F0(void)
 
 bool Camera_8003010C(void)
 {
-    if ((int) game_camera.mode == CAMERA_FREE) {
+    if (game_camera.mode == CAMERA_FREE) {
         return true;
     }
     return false;
@@ -3873,7 +3873,7 @@ bool Camera_8003010C(void)
 
 bool Camera_80030130(void)
 {
-    if ((int) game_camera.mode == CAMERA_BOSS_INTRO) {
+    if (game_camera.mode == CAMERA_BOSS_INTRO) {
         return true;
     }
     return false;
@@ -3881,7 +3881,7 @@ bool Camera_80030130(void)
 
 bool Camera_80030154(void)
 {
-    if ((int) game_camera.mode == CAMERA_DEBUG_FOLLOW) {
+    if (game_camera.mode == CAMERA_DEBUG_FOLLOW) {
         return true;
     }
     return false;
@@ -3889,7 +3889,7 @@ bool Camera_80030154(void)
 
 bool Camera_80030178(void)
 {
-    if ((int) game_camera.mode == CAMERA_DEBUG_FREE) {
+    if (game_camera.mode == CAMERA_DEBUG_FREE) {
         return true;
     }
     return false;

@@ -391,10 +391,10 @@ void fn_80184AB8(HSD_GObj* arg0)
             }
             break;
         case 0x64:
-            if ((s32) lbl_804D6608 != -1) {
+            if (lbl_804D6608 != -1) {
                 lbAudioAx_800236B8(lbl_804D6608);
             }
-            gm_80168C5C((u32) lbl_8047368C.xF4[0]);
+            gm_80168C5C(lbl_8047368C.xF4[0]);
             return;
         case 0x5:
             for (i = 0; i < (s32) lbl_8047368C.xEF; i++) {
