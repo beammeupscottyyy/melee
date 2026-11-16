@@ -383,9 +383,9 @@ void gm_8017CA38(DebugGameOverData* arg0, Unk1PData* arg1, gmm_x0_528_t* arg2,
             gm_ChangeGameModeAfterCurrentScene(GM_CHALLENGER_APPROACH);
         }
     } else {
-        arg1->xC.x18 = lbTime_8000AEC8((u32) arg0->x4, 1U);
+        arg1->xC.x18 = lbTime_8000AEC8(arg0->x4, 1U);
         arg1->x0.stocks = arg2->stocks;
-        arg1->xC.xD = lbTime_8000AF74((u32) arg1->xC.xD, 1);
+        arg1->xC.xD = lbTime_8000AF74(arg1->xC.xD, 1);
         gm_SetNextGameModeStateId(arg1->x0.mode);
     }
 }
@@ -566,7 +566,7 @@ void gm_8017CE34(StartMeleeData* arg0, Unk1PData* arg1, s8* arg2, u8 arg3,
         arg0->rules.timer_enabled = 0;
     }
 
-    arg0->rules.x18 = (u32) arg1->xC.x18;
+    arg0->rules.x18 = arg1->xC.x18;
     arg0->rules.stkind = (u16) arg7;
     arg0->rules.item_freq = arg1->x48((u8) count, arg1->x0.cpu_level);
 

@@ -1215,8 +1215,8 @@ s32 fn_80161154(MatchEnd* arg0)
         if (spC[i]) {
             if (idx == 4) {
                 idx = i;
-            } else if ((u32) arg0->player_standings[idx].x24 <
-                       (u32) arg0->player_standings[i].x24)
+            } else if (arg0->player_standings[idx].x24 <
+                       arg0->player_standings[i].x24)
             {
                 idx = i;
             }
@@ -1227,7 +1227,7 @@ s32 fn_80161154(MatchEnd* arg0)
     for (i = 0; i < 4; i++) {
         if (spC[i] && idx != i) {
             player = &arg0->player_standings[i];
-            if ((u32) player->x24 == (u32) best_player->x24) {
+            if (player->x24 == best_player->x24) {
                 cnt += 1;
             } else {
                 spC[i] = 0;
@@ -1600,11 +1600,11 @@ void gm_SetupHumanResultsScreen(u8 arg0, u8 arg1)
     }
     {
         struct gmm_retval_EDB0* b = gmMainLib_8015EDB0();
-        b->x0 = SAT_ADD((u32) b->x0, 1, U32_MAX);
+        b->x0 = SAT_ADD(b->x0, 1, U32_MAX);
     }
     {
         struct gmm_retval_EDBC* c = gmMainLib_8015EDBC();
-        c->x0 = SAT_ADD((u32) c->x0, 1, U32_MAX);
+        c->x0 = SAT_ADD(c->x0, 1, U32_MAX);
     }
 }
 
@@ -2874,8 +2874,8 @@ u32 fn_801656A8(MatchEnd* arg0, u32 arg1)
             s32 cnt_lt = 0;
             for (j = 0; j < 6; j++) {
                 if (arg0->player_standings[j].pkind != 3 &&
-                    (u32) arg0->player_standings[arg1].x24 <
-                        (u32) arg0->player_standings[j].x24)
+                    arg0->player_standings[arg1].x24 <
+                        arg0->player_standings[j].x24)
                 {
                     cnt_lt += 1;
                 }
@@ -3097,8 +3097,8 @@ s32 fn_801661E0(MatchEnd* arg0)
                 if (arg0->team_standings[j].active != 0 && i != j &&
                     arg0->team_standings[i].is_big_loser ==
                         arg0->team_standings[j].is_big_loser &&
-                    (u32) arg0->team_standings[i].subscore <
-                        (u32) arg0->team_standings[j].subscore)
+                    arg0->team_standings[i].subscore <
+                        arg0->team_standings[j].subscore)
                 {
                     arg0->team_standings[i].is_small_loser++;
                 }

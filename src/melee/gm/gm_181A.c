@@ -40,7 +40,7 @@ typedef struct RegClearRecordState {
     /* 0x00 */ u8 x0;
     /* 0x01 */ u8 pad_1;
     /* 0x02 */ u16 x2;
-    /* 0x04 */ int x4;
+    /* 0x04 */ u32 x4;
     /* 0x08 */ int x8;
     /* 0x0C */ int xC;
     /* 0x10 */ s8 x10;
@@ -694,7 +694,7 @@ void gm_80182578(void)
             mode = gmMainLib_8015D710(gm_CKindToSelKind((u8) idx));
         }
         if (data->record[0].x0 != 0) {
-            u32 score_store = (u32) data->record[0].x4;
+            u32 score_store = data->record[0].x4;
             if (score_store < score_val) {
                 int i = gm_80182578_GetIndexFromPointer(idx_ptr);
                 int m = *mode_ptr;
@@ -917,7 +917,7 @@ void fn_80182B5C(void)
             gmMainLib_8015D710(gm_CKindToSelKind((u8) idx));
         }
         if (data->record[0].x0 != 0) {
-            if ((u32) data->record[0].x4 < score) {
+            if (data->record[0].x4 < score) {
                 gm_8016B350(0x9C40);
                 gm_8016B364(0x144);
                 gm_80167858((s32) data->record[0].x10,

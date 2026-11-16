@@ -1207,7 +1207,7 @@ bool fn_801791E4(void)
         }
     }
 
-    if ((u32) data->x8 == 0xA0U) {
+    if (data->x8 == 0xA0) {
         return true;
     }
     return false;
@@ -1223,22 +1223,22 @@ static inline void fn_80179350_update(ResultsData* data, MatchEnd* match_end,
 {
     PAD_STACK(8);
 
-    if ((u32) data->x8 == 0 && data->x0_4) {
+    if (data->x8 == 0 && data->x0_4) {
         gm_SetDbPauseFlag(0);
     }
 
-    if ((u32) data->x8 == 0xA2) {
+    if (data->x8 == 0xA2) {
         if (gm_WasMatchCanceled(match_end->outcome) == 0) {
             lbAudioAx_800237A8(0xB5, 0x7F, 0x40);
         }
-    } else if ((u32) data->x8 == 0x2) {
+    } else if (data->x8 == 0x2) {
         if (gm_WasMatchCanceled(match_end->outcome) == 0) {
             lbAudioAx_800237A8(0xC355, 0x7F, 0x40);
             lbAudioAx_800237A8(0x144, 0x7F, 0x40);
         } else {
             lbAudioAx_800237A8(0x148, 0x7F, 0x40);
         }
-    } else if ((u32) data->x8 == 0x9A) {
+    } else if (data->x8 == 0x9A) {
         if (gm_WasMatchCanceled(match_end->outcome) != 0) {
             lbAudioAx_800237A8(0xC350, 0x7F, 0x40);
         } else {
@@ -1301,7 +1301,7 @@ void fn_80179350(HSD_GObj* arg0)
     }
     fn_80179350_update(data, match_end, arg0);
 
-    if ((u32) data->x8 < (u32) -1) {
+    if (data->x8 < U32_MAX) {
         data->x8++;
     }
 }

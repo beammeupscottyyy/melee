@@ -341,8 +341,7 @@ void fn_8017E8A4(int arg0_int)
             ((u8_bits*) &flags[2])->b7 = 1;
         }
 
-        if ((u32) adv->x0.xC.x1C == 0U && arg0->player_standings[0].x44 == 0U)
-        {
+        if (adv->x0.xC.x1C == 0 && arg0->player_standings[0].x44 == 0) {
             ((u8_bits*) &flags[1])->b1 = 1;
         }
 

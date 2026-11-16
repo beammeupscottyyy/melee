@@ -255,12 +255,12 @@ struct gmm_retval_ED98 {
 };
 
 struct gmm_retval_EDB0 {
-    s32 x0;
+    u32 x0;
     s32 x4;
 };
 
 struct gmm_retval_EDBC {
-    s32 x0;
+    u32 x0;
     u32 x4;
     s32 x8;
     u32 xC;
@@ -389,7 +389,7 @@ struct EventData {
     /* 0x0564 */ int x34;
     /* 0x0568 */ u8 x38;
     /* 0x056C */ int x3C;
-    /* 0x0570 */ int x40;
+    /* 0x0570 */ u32 x40;
     /* 0x0574 */ s8 x44;
     /* 0x0575 */ u8 x45;
     /* 0x0578 */ StKind x48;
@@ -529,7 +529,7 @@ typedef struct gm_803DF94C_t {
 
 struct MatchTeamData {
     /* 0x00 */ int score;
-    /* 0x04 */ int subscore;
+    /* 0x04 */ u32 subscore;
     /* 0x08 */ u8 is_big_loser;
     /* 0x09 */ u8 is_small_loser;
     /* 0x0A */ u8 active;
@@ -560,7 +560,7 @@ struct MatchPlayerData {
     u16 kills[GM_MAX_PLAYERS];
     s32 x1C;
     u32 x20;
-    int x24;
+    u32 x24;
     u32 x28;
     int score;
     u32 x30;
@@ -670,8 +670,8 @@ typedef struct Unk1PData_xC {
     /* 12 */ u8 x12;
     /* 13 */ u8 x13;
     /* 14 */ u16 x14;
-    /* 18 */ int x18;
-    /* 1C */ int x1C;
+    /* 18 */ u32 x18;
+    /* 1C */ u32 x1C;
     /* 20 */ u32 x20;
     Unk1PData_x24 x24[3];
 } Unk1PData_xC;
@@ -897,7 +897,7 @@ struct ResultsData {
     /* +04 */ u8 x4; ///< winner?
     /* +05 */ u8 x5; ///< team winner?
     /* +06 */ u8 x6; ///< also winner?
-    /* +08 */ s32 x8;
+    /* +08 */ u32 x8;
     /* +0C */ f32 xC;
     /* +10 */ SceneDesc* pnlsce;
     /* +14 */ SceneDesc* flmsce;
@@ -987,8 +987,8 @@ typedef struct CssSubStruct {
     /* 0x014 */ PlayerInitData saved_players[PAD_MAX_CONTROLLERS];
     /* 0x0A4 */ HSD_GObj* gobj;
     /* 0x0A8 */ HSD_JObj* jobjs[39];
-    /* 0x144 */ s32 anim_frames[39];
-    /* 0x1E0 */ s32 menu_values[7];
+    /* 0x144 */ u32 anim_frames[39];
+    /* 0x1E0 */ u32 menu_values[7];
     /* 0x1FC */ HSD_Text* text;
     /* 0x200 */ u8 pad200[4];
 } CssSubStruct;

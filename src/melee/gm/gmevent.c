@@ -614,7 +614,7 @@ void onExitVs(GameModeState* arg0)
         gmMainLib_8015CEB4(stage);
     }
     gm_8016247C(ev->x3C);
-    gm_80162968((u32) ev->x40 / 60);
+    gm_80162968(ev->x40 / 60);
     if (ev->xB_1) {
         kind = gm_801732D8(ev->unk_535);
     } else {

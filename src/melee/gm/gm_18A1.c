@@ -173,8 +173,7 @@ void fn_8018A364(int arg0_int)
             ((u8_bits*) &arg0->_x448[2])->b7 = 1;
         }
 
-        if ((u32) data->x0.xC.x1C == 0U && arg0->player_standings[0].x44 == 0)
-        {
+        if (data->x0.xC.x1C == 0 && arg0->player_standings[0].x44 == 0) {
             ((u8_bits*) &arg0->_x448[1])->b1 = 1;
         }
 

@@ -410,8 +410,8 @@ void fn_80188EE8(HSD_GObj* gobj)
     HSD_JObj* jobj;
     HSD_JObj* cursor_jobj;
     HSD_Text* text;
-    s32 val;
-    s32* menu_values;
+    u32 val;
+    u32* menu_values;
     TrainingItemEntry* item_table;
 
     PAD_STACK(8);
@@ -436,9 +436,9 @@ void fn_80188EE8(HSD_GObj* gobj)
 #endif
     }
 
-    HSD_JObjReqAnimAll(sub->jobjs[22], (f32) (u32) sub->anim_frames[22]);
+    HSD_JObjReqAnimAll(sub->jobjs[22], (f32) sub->anim_frames[22]);
     HSD_JObjAnimAll(sub->jobjs[22]);
-    HSD_JObjReqAnimAll(sub->jobjs[1], (f32) (u32) sub->anim_frames[1]);
+    HSD_JObjReqAnimAll(sub->jobjs[1], (f32) sub->anim_frames[1]);
     HSD_JObjAnimAll(sub->jobjs[1]);
 
     sub->text->pos_x =
@@ -456,7 +456,7 @@ void fn_80188EE8(HSD_GObj* gobj)
 
     menu_values = gm_80473814.menu_values;
     jobj = sub->jobjs[13];
-    HSD_JObjReqAnimAll(jobj, (f32) (u32) menu_values[0]);
+    HSD_JObjReqAnimAll(jobj, (f32) menu_values[0]);
     HSD_JObjAnimAll(jobj);
 
     jobj = sub->jobjs[23];
@@ -464,7 +464,7 @@ void fn_80188EE8(HSD_GObj* gobj)
     HSD_JObjAnimAll(jobj);
 
     jobj = sub->jobjs[34];
-    HSD_JObjReqAnimAll(jobj, (f32) (u32) menu_values[0]);
+    HSD_JObjReqAnimAll(jobj, (f32) menu_values[0]);
     HSD_JObjAnimAll(jobj);
 
     val = gm_80473814.menu_values[1];
@@ -477,11 +477,11 @@ void fn_80188EE8(HSD_GObj* gobj)
     }
 
     jobj = sub->jobjs[32];
-    HSD_JObjReqAnimAll(jobj, (f32) (u32) (gm_80473814.menu_values[2] + 1));
+    HSD_JObjReqAnimAll(jobj, (f32) (gm_80473814.menu_values[2] + 1));
     HSD_JObjAnimAll(jobj);
 
     jobj = sub->jobjs[31];
-    HSD_JObjReqAnimAll(jobj, (f32) (u32) gm_80473814.menu_values[3]);
+    HSD_JObjReqAnimAll(jobj, (f32) gm_80473814.menu_values[3]);
     HSD_JObjAnimAll(jobj);
 
     fn_80188D3C(sub->jobjs[27]);
@@ -502,7 +502,7 @@ static inline u32 gm_801891F4_GetTickRate(void)
     return OS_TIMER_CLOCK;
 }
 
-static inline s32* gm_801891F4_GetMenuValues(CssSubStruct* sub)
+static inline u32* gm_801891F4_GetMenuValues(CssSubStruct* sub)
 {
     return sub->menu_values;
 }
@@ -571,7 +571,7 @@ void fn_801891F4(void)
         case 0:
             if (buttons & PAD_ANY_LEFT) {
                 sfxMove();
-                if ((u32) sub->menu_values[sub->x00] != 0) {
+                if (sub->menu_values[sub->x00] != 0) {
                     sub->menu_values[sub->x00]--;
                     return;
                 }
@@ -580,7 +580,7 @@ void fn_801891F4(void)
             }
             if (buttons & PAD_ANY_RIGHT) {
                 sfxMove();
-                if ((u32) sub->menu_values[sub->x00] < 5) {
+                if (sub->menu_values[sub->x00] < 5) {
                     sub->menu_values[sub->x00]++;
                     return;
                 }
@@ -591,14 +591,14 @@ void fn_801891F4(void)
         case 1:
             if (buttons & PAD_ANY_LEFT) {
                 sfxMove();
-                if ((u32) sub->menu_values[sub->x00] != 0) {
+                if (sub->menu_values[sub->x00] != 0) {
                     sub->menu_values[sub->x00]--;
                 } else {
                     sub->menu_values[sub->x00] = 0x1D;
                 }
             } else if (buttons & PAD_ANY_RIGHT) {
                 sfxMove();
-                if ((u32) sub->menu_values[sub->x00] < 0x1D) {
+                if (sub->menu_values[sub->x00] < 0x1D) {
                     sub->menu_values[sub->x00]++;
                 } else {
                     sub->menu_values[sub->x00] = 0;
@@ -620,7 +620,7 @@ void fn_801891F4(void)
         case 2:
             if (buttons & PAD_ANY_LEFT) {
                 sfxMove();
-                if ((u32) sub->menu_values[sub->x00] != 0) {
+                if (sub->menu_values[sub->x00] != 0) {
                     sub->menu_values[sub->x00]--;
                     return;
                 }
@@ -629,7 +629,7 @@ void fn_801891F4(void)
             }
             if (buttons & PAD_ANY_RIGHT) {
                 sfxMove();
-                if ((u32) sub->menu_values[sub->x00] < 2) {
+                if (sub->menu_values[sub->x00] < 2) {
                     sub->menu_values[sub->x00]++;
                     return;
                 }
@@ -640,7 +640,7 @@ void fn_801891F4(void)
         case 3:
             if (buttons & PAD_ANY_LEFT) {
                 sfxMove();
-                if ((u32) sub->menu_values[sub->x00] != 0) {
+                if (sub->menu_values[sub->x00] != 0) {
                     sub->menu_values[sub->x00]--;
                     return;
                 }
@@ -649,7 +649,7 @@ void fn_801891F4(void)
             }
             if (buttons & PAD_ANY_RIGHT) {
                 sfxMove();
-                if ((u32) sub->menu_values[sub->x00] < 5) {
+                if (sub->menu_values[sub->x00] < 5) {
                     sub->menu_values[sub->x00]++;
                     return;
                 }
@@ -660,9 +660,9 @@ void fn_801891F4(void)
         case 4:
             if (buttons & PAD_ANY_LEFT) {
                 sfxMove();
-                if ((u32) sub->menu_values[sub->x00] != 0) {
+                if (sub->menu_values[sub->x00] != 0) {
                     gm_801891F4_GetMenuValues(sub)[sub->x00]--;
-                    if ((u32) sub->menu_values[sub->x00] == 0) {
+                    if (sub->menu_values[sub->x00] == 0) {
                         gm_801A36E0(0, 0x19);
                         return;
                     }
@@ -672,9 +672,9 @@ void fn_801891F4(void)
                 }
             } else if (buttons & PAD_ANY_RIGHT) {
                 sfxMove();
-                if ((u32) sub->menu_values[sub->x00] < 0x3E7) {
+                if (sub->menu_values[sub->x00] < 0x3E7) {
                     sub->menu_values[sub->x00]++;
-                    if ((u32) sub->menu_values[sub->x00] == 0x3E7) {
+                    if (sub->menu_values[sub->x00] == 0x3E7) {
                         gm_801A36E0(0, 0x19);
                         return;
                     }
@@ -699,7 +699,7 @@ void fn_801891F4(void)
         case 6:
             if (buttons & PAD_ANY_LEFT) {
                 sfxMove();
-                if ((u32) sub->menu_values[sub->x00] != 0) {
+                if (sub->menu_values[sub->x00] != 0) {
                     sub->menu_values[sub->x00]--;
                 } else {
                     sub->menu_values[sub->x00] = 2;
@@ -721,7 +721,7 @@ void fn_801891F4(void)
                 }
             } else if (buttons & PAD_ANY_RIGHT) {
                 sfxMove();
-                if ((u32) sub->menu_values[sub->x00] < 2) {
+                if (sub->menu_values[sub->x00] < 2) {
                     sub->menu_values[sub->x00]++;
                 } else {
                     sub->menu_values[sub->x00] = 0;
