@@ -15,6 +15,7 @@ typedef jmp_t jtbl_t[];
 #define sqrtf__Ff(x) sqrtf(x)
 #define sqrtf_accurate(x) sqrtf(x)
 #define __fabs(f) fabsf(f)
+#define __fnmsubs(a, c, b) (-fmaf((a), (c), -(b)))
 #endif
 
 #ifndef UNK_T
