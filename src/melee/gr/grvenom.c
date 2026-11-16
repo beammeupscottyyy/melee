@@ -1155,7 +1155,7 @@ void grVenom_802053B0(Ground_GObj* gobj)
     jobj = gobj->hsd_obj;
     ptr = base + gp->u.venom.xC8;
 
-    if ((u32) ptr[8] == (u32) gobj) {
+    if ((uintptr_t) ptr[8] == (uintptr_t) gobj) {
         if (gp->u.venom.xD4 == 1) {
             gp->u.venom.xD4 = 0;
             grAnime_801C8138(gobj, gp->map_id,

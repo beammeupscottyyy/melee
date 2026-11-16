@@ -1118,7 +1118,7 @@ void fn_80215D50(Item_GObj* item_gobj, Ground* gp, HSD_GObj* gobj)
     return;
 }
 
-s32 grGreens_80215D54(Ground_GObj* gobj, int arg1, int arg2)
+Ground_GObj* grGreens_80215D54(Ground_GObj* gobj, int arg1, int arg2)
 {
     Ground* gp = GET_GROUND(gobj);
     int row;
@@ -1142,7 +1142,7 @@ s32 grGreens_80215D54(Ground_GObj* gobj, int arg1, int arg2)
             row = 0;
         }
     }
-    return (s32) gobj;
+    return gobj;
 }
 
 void grGreens_80215ED8(Ground_GObj* gobj, int col, int row)
