@@ -932,7 +932,7 @@ void grKongo_801D6AFC(void)
                         sp8[i] += yakumono_param->unkA0 * (input + limit);
                     }
                 }
-                if ((u32) i != 14 && grKg_803E188C[i + 1].unk2 == 0) {
+                if (i != 14 && grKg_803E188C[i + 1].unk2 == 0) {
                     f32 input =
                         grKg_803E188C[i + 1].unkC - grKg_803E188C[i].unkC;
                     f32 limit = MTXDegToRad(yakumono_param->unk9C);
@@ -1004,7 +1004,7 @@ void grKongo_801D7134(HSD_GObj* gobj, s32 arg1)
     gp = gobj->user_data;
     grKongo_801D6AFC();
 
-    for (arg1 = 0; (u32) arg1 < 15U; arg1++) {
+    for (arg1 = 0; arg1 < 15; arg1++) {
         grKg_803E188C[arg1].unk14 =
             (f32) (37.8 * tanf(-grKg_803E188C[arg1].unkC));
     }
@@ -1050,7 +1050,7 @@ void grKongo_801D7134(HSD_GObj* gobj, s32 arg1)
         temp = table->unk14;
         id = line_id;
         mpLib_80056758(id, 0.0f, temp, 0.0f, temp);
-        if ((s32) i == 0) {
+        if (i == 0) {
             mpLib_80056758(id - 1, 0.0f, temp, 0.0f, temp);
         } else if (i == 14) {
             mpLib_80056758(id + 1, 0.0f, temp, 0.0f, temp);
@@ -1087,7 +1087,7 @@ void fn_801D7700(void* user_data, int joint_id, CollData* coll, int coll_x50,
 
                 if (idx < 0) {
                     idx2 = 0;
-                } else if ((u32) idx2 >= 15) {
+                } else if (idx2 >= 15) {
                     idx2 = 14;
                 }
 

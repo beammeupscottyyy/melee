@@ -630,13 +630,13 @@ void grBigBlue_801E6904(Ground_GObj* gobj)
 
     gp->u.bigblue.x0_u.x0_s.data[0].index = 0;
     gp->u.bigblue.x0_u.x0_s.data[0].x1 = 0;
-    gp->u.bigblue.x0_u.x0_s.data[0].x50 = 0;
+    gp->u.bigblue.x0_u.x0_s.data[0].x50 = NULL;
     gp->u.bigblue.x0_u.x0_s.data[1].index = 1;
     gp->u.bigblue.x0_u.x0_s.data[1].x1 = 0;
-    gp->u.bigblue.x0_u.x0_s.data[1].x50 = 0;
+    gp->u.bigblue.x0_u.x0_s.data[1].x50 = NULL;
     gp->u.bigblue.x0_u.x0_s.data[2].index = 2;
     gp->u.bigblue.x0_u.x0_s.data[2].x1 = 0;
-    gp->u.bigblue.x0_u.x0_s.data[2].x50 = 0;
+    gp->u.bigblue.x0_u.x0_s.data[2].x50 = NULL;
     gp->u.bigblue.x0_u.x0_s.x0_u.x0_w = 0;
 
     grBigBlue_801E8978(0, NULL, NULL);
@@ -689,7 +689,7 @@ void grBigBlue_801E6C60(Ground_GObj* gobj)
 
         switch ((s8) gp->u.bigblue.x0_u.x0_s.data[i].x1) {
         case 0: {
-            if ((int) grBigBlue_801E89DC(0) != 0) {
+            if (grBigBlue_801E89DC(0) != NULL) {
                 s32 range = yakumono_param->x8C;
                 s32 rand_val;
 
@@ -717,7 +717,7 @@ void grBigBlue_801E6C60(Ground_GObj* gobj)
             break;
         }
         case 1:
-            if ((int) grBigBlue_801E89DC(0) == 0) {
+            if (grBigBlue_801E89DC(0) == NULL) {
                 gp->u.bigblue.x0_u.x0_s.data[i].x1 = 0;
                 break;
             }
@@ -783,7 +783,7 @@ void grBigBlue_801E6C60(Ground_GObj* gobj)
                         }
                     }
 
-                    if ((int) grBigBlue_801E89DC(1) != 0) {
+                    if (grBigBlue_801E89DC(1) != NULL) {
                         gp->u.bigblue.x0_u.x0_s.data[i].x2 = 1;
                         pos.x = -(10.0f + Stage_GetBlastZoneRightOffset());
                     } else if ((s32) gp->u.bigblue.x0_u.x0_s.data[i].x2 == 1) {
@@ -838,7 +838,7 @@ void grBigBlue_801E6C60(Ground_GObj* gobj)
                     gp->u.bigblue.x0_u.x0_s.data[i].x2C = 0;
                     gp->u.bigblue.x0_u.x0_s.data[i].x1 = 3;
                     HSD_JObjClearFlagsAll(jobj, JOBJ_HIDDEN);
-                    gp->u.bigblue.x0_u.x0_s.data[i].x50 = 0;
+                    gp->u.bigblue.x0_u.x0_s.data[i].x50 = NULL;
                     {
                         s32 chance = yakumono_param->xB8;
                         s32 cr;
@@ -849,7 +849,7 @@ void grBigBlue_801E6C60(Ground_GObj* gobj)
                         }
                     }
                     base->u.bigblue.x0_u.manager.flags += 1;
-                    if ((int) grBigBlue_801E89DC(2) == 0) {
+                    if (grBigBlue_801E89DC(2) == NULL) {
                         grBb_YakumonoParam* params = yakumono_param;
                         u32 cnt = base->u.bigblue.x0_u.manager.flags;
                         if ((s32) cnt >= params->x11C) {
@@ -861,7 +861,7 @@ void grBigBlue_801E6C60(Ground_GObj* gobj)
                             }
                         }
                     }
-                    if ((int) grBigBlue_801E89DC(1) == 0) {
+                    if (grBigBlue_801E89DC(1) == NULL) {
                         grBb_YakumonoParam* params = yakumono_param;
                         u32 cnt2 = base->u.bigblue.x0_u.manager.flags;
                         if ((s32) cnt2 >= params->xDC &&
@@ -1394,7 +1394,7 @@ void grBigBlue_801E8A1C(int idx)
         }
 
         spawn.x1C.x0.b0 = 1;
-        gp->u.bigblue.x0_u.x0_s.data[idx].x50 = (s32) it_8026BE84(&spawn);
+        gp->u.bigblue.x0_u.x0_s.data[idx].x50 = it_8026BE84(&spawn);
     }
 }
 
@@ -2309,7 +2309,7 @@ s32 grBigBlue_801EACE8(HSD_JObj* exclude, Vec3* point, f32* out_y,
     jobj = (HSD_JObj*) gobj->hsd_obj;
     gp = gobj->user_data;
 
-    if (exclude != jobj && (int) gp->u.bigblue.x0_u.x0_s.x0_u.x0_s.x0 == 2) {
+    if (exclude != jobj && gp->u.bigblue.x0_u.x0_s.x0_u.x0_s.x0 == 2) {
         HSD_JObjGetTranslation2(jobj, &route_pos);
 
         left_x = route_pos.x - 68.0F * Ground_801C0498() / 2;
@@ -2530,13 +2530,13 @@ void grBigBlue_801EB4AC(Ground_GObj* gobj)
         }
 
         /* Reject if same as current lane */
-        if (gp->u.bigblue.x0_u.x0_s.x0_u.x0_2.cur_lane == (u32) random_lane) {
+        if (gp->u.bigblue.x0_u.x0_s.x0_u.x0_2.cur_lane == random_lane) {
             continue;
         }
 
         /* Direction flag check */
         if (gp->u.bigblue.x0_u.x0_s.x0_u.x0_2.b0) {
-            if ((u32) random_lane > 1) {
+            if (random_lane > 1) {
                 if (random_lane != 4) {
                     continue;
                 }

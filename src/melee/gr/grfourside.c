@@ -232,7 +232,7 @@ void grFourside_801F30A0(void* user_data, int joint_id, CollData* coll,
     PAD_STACK(3 * 4);
 
     gobj = Ground_GetMapGObj(5);
-    val = (s32) coll->x34_flags.b1234 << 3;
+    val = coll->x34_flags.b1234 << 3;
     gp1 = GET_GROUND(gobj);
     val = ((val >> 3) & 0xF);
     if (val == 1) {
@@ -748,7 +748,7 @@ void fn_801F3F74(HSD_GObj* gobj, intptr_t renderpass)
     f32 angle;
     PAD_STACK(4);
 
-    if ((u32) renderpass == 1) {
+    if (renderpass == 1) {
         gp = gobj->user_data;
         HSD_CObjGetEyeVector(HSD_CObjGetCurrent(), &eye);
         abs_y = eye.y;
