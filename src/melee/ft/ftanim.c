@@ -570,6 +570,9 @@ float ftAnim_8006F3DC(Fighter_GObj* fighter_gobj)
     } else {
         return lbGetJObjCurrFrame(fp->x8AC_animSkeleton);
     }
+#ifndef __MWERKS__
+    return fp->cur_anim_frame;
+#endif
 }
 
 float ftAnim_8006F484(Fighter_GObj* fighter_gobj)
@@ -800,6 +803,9 @@ HSD_Joint* ftAnim_8006F994(Fighter* fp, HSD_JObj* jobj, HSD_Joint* joint)
         i += 1;
         ftAnim_GetNextJointInTree(&joint, &depth);
     }
+#ifndef __MWERKS__
+    return joint;
+#endif
 }
 
 void ftAnim_8006FA58(Fighter* fp, Fighter_Part part, HSD_Joint* joint)
