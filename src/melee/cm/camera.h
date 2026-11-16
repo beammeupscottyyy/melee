@@ -67,7 +67,7 @@
 /* 02F488 */ s32 Camera_SetBounds(Vec4*);
 
 /**
- * @brief Switches the camera to pause-camera mode.
+ * Switches the camera to pause-camera mode.
  *
  * Configures pause-camera bounds, eye offset, and zoom from stage data for the
  * given pauser. Called when a match is paused (e.g. via
@@ -86,7 +86,7 @@
 /* 02F4D4 */ void Camera_SetUpPauseCamera(s8, s8, s32);
 
 /**
- * @brief Switches the camera to pause-camera mode with default stage zoom.
+ * Switches the camera to pause-camera mode with default stage zoom.
  *
  * Wrapper around #Camera_SetUpPauseCamera with @p arg2 set to @c 0.
  */
