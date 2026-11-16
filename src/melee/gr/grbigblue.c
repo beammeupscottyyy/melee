@@ -137,11 +137,6 @@ typedef struct grBb_Data803E2EB8 {
     u32 x58[4];
 } grBb_Data803E2EB8;
 
-typedef struct grBb_GroundStateFlag {
-    u8 pad_0[0xCC];
-    s32 xCC;
-} grBb_GroundStateFlag;
-
 GrJoint grBb_803E2938[] = {
     { 36, 34, 10 }, { 37, 34, 10 }, { 38, 34, 7 },  { 39, 34, 7 },
     { 40, 34, 7 },  { 41, 34, 14 }, { 42, 34, 14 }, { 43, 34, 14 },
@@ -1636,8 +1631,8 @@ void grBigBlue_801E93D8(Ground_GObj* gobj)
 
         switch (state) {
         case 0:
-            if (((grBb_GroundStateFlag*) Ground_GetMapGObj(32)->user_data)
-                    ->xCC != 0)
+            if (GET_GROUND(Ground_GetMapGObj(32))
+                    ->u.bigblue.x0_u.manager.event_data[1] != NULL)
             {
                 s32 count = grBigBlue_CountCars();
 
@@ -1756,16 +1751,12 @@ void grBigBlue_801E93D8(Ground_GObj* gobj)
                     HSD_JObjSetFlagsAll(jobj, JOBJ_HIDDEN);
                     *(f32*) (bp + 0xD8) = 0.0f;
                     {
-                        grBb_GroundStateFlag* manager =
-                            Ground_GetMapGObj(32)->user_data;
-                        manager->xCC = 0;
-                    }
-                    {
-                        u8* mgp2 = (u8*) Ground_GetMapGObj(32)->user_data;
+                        Ground* mgp2 = GET_GROUND(Ground_GetMapGObj(32));
+                        mgp2->u.bigblue.x0_u.manager.event_data[1] = NULL;
                         if (jobj != NULL) {
-                            *(u32*) (mgp2 + 0xE0) = (u32) jobj;
+                            mgp2->u.bigblue.x0_u.manager.event_extra = jobj;
                         }
-                        *(s32*) (mgp2 + 0xC8) = 1;
+                        mgp2->u.bigblue.x0_u.manager.event_data[0] = (void*) 1;
                     }
                     *(f32*) (bp + 0xCC) = 0.0f;
                     HSD_JObjSetRotationZ(jobj, 0.0f);
@@ -1879,7 +1870,7 @@ void grBigBlue_801E9F3C(Ground_GObj* gobj)
     HSD_JObjSetScale(jobj, &v);
 
     ((u8*) gp)[0xC4] = 0;
-    *(s32*) ((u8*) GET_GROUND(Ground_GetMapGObj(32)) + 0xD0) = 0;
+    GET_GROUND(Ground_GetMapGObj(32))->u.bigblue.x0_u.x0_s.xD0 = 0.0f;
     grAnime_801C8138(gobj, gp->map_id, 0);
 }
 
@@ -1926,7 +1917,8 @@ void grBigBlue_801EA05C(Ground_GObj* gobj)
 
     switch ((s8) gp->u.bigblue.x0_u.x0_s.x0_u.x0_s.x0) {
     case 0:
-        if (*(s32*) ((u8*) GET_GROUND(Ground_GetMapGObj(32)) + 0xD0) != 0) {
+        if (GET_GROUND(Ground_GetMapGObj(32))->u.bigblue.x0_u.x0_s.xD0 != 0.0f)
+        {
             gp->u.bigblue.x0_u.platform.xC8_timer = 0;
             gp->u.bigblue.x0_u.platform.xD0_timer = 0;
             gp->u.bigblue.x0_u.platform.xCC_timer = 0;
@@ -2179,8 +2171,7 @@ void grBigBlue_801EA05C(Ground_GObj* gobj)
             gp->u.bigblue.x0_u.platform.xEC = 0.0f;
             gp->u.bigblue.x0_u.platform.velocity.z = 0.0f;
             gp->u.bigblue.x0_u.platform.velocity.y = 0.0f;
-            *(u32*) &GET_GROUND(Ground_GetMapGObj(32))
-                 ->u.bigblue.x0_u.x0_s.xD0 = 0;
+            GET_GROUND(Ground_GetMapGObj(32))->u.bigblue.x0_u.x0_s.xD0 = 0.0f;
             gp->u.bigblue.x0_u.x0_s.x0_u.x0_s.x0 = 0;
         }
         break;

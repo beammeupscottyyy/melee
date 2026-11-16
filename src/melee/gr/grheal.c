@@ -28,7 +28,7 @@
 /* 21EFBC */ static void grHeal_8021EFBC(void);
 /* 21EFC0 */ static void grHeal_8021EFC0(void);
 /* 21EFE4 */ static bool grHeal_8021EFE4(void);
-/* 21EFEC */ static Ground_GObj* grHeal_8021EFEC(u32);
+/* 21EFEC */ static Ground_GObj* grHeal_8021EFEC(int);
 /* 21F0D8 */ static void stageGObj0_OnInit(Ground_GObj*);
 /* 21F170 */ static bool stageGObj0_Callback1(Ground_GObj*);
 /* 21F178 */ static void stageGObj0_GObjProc(Ground_GObj*);
@@ -159,7 +159,7 @@ bool grHeal_8021EFE4(void)
     return false;
 }
 
-Ground_GObj* grHeal_8021EFEC(u32 gobj_id)
+Ground_GObj* grHeal_8021EFEC(int gobj_id)
 {
     Ground_GObj* gobj;
     StageCallbacks* callbacks = &stage_callbacks[gobj_id];
@@ -318,7 +318,7 @@ void grHeal_8021F4E8(s32 arg0, HSD_JObj* parent_jobj)
     HSD_JObj* jobj;
     HSD_JObj* child;
 
-    gobj = grHeal_8021EFEC(4U);
+    gobj = grHeal_8021EFEC(4);
     HSD_ASSERT(440, gobj);
     grAnime_801C8138(gobj, 4, 0);
     grAnime_801C7FF8(gobj, 0, 7, 0, (f32) arg0, 0.0F);
@@ -364,7 +364,7 @@ void grHeal_8021F628(s32 arg0, HSD_JObj* jobj_parent)
     HSD_JObj* jobj;
     HSD_JObj* child;
 
-    gobj = grHeal_8021EFEC(2U);
+    gobj = grHeal_8021EFEC(2);
     HSD_ASSERT(513, gobj);
     grAnime_801C8138(gobj, 2, 0);
     grAnime_801C7FF8(gobj, 0, 7, 0, arg0, 0.0F);

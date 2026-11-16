@@ -479,7 +479,7 @@ void grMuteCity_801EFDF8(Ground_GObj* gobj)
     gp->u.mutecity.x110 = NULL;
     if (lgobj != NULL && (lobj = GET_LOBJ(lgobj)) != NULL) {
         while (lobj != NULL) {
-            if ((u32) (lobj->flags & 3) == LOBJ_POINT) {
+            if ((lobj->flags & 3) == LOBJ_POINT) {
                 gp->u.mutecity.x110 = lobj;
                 HSD_LObjSetFlags(gp->u.mutecity.x110, LOBJ_HIDDEN);
             }

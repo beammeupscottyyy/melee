@@ -423,8 +423,8 @@ void grShrineRoute_80208F70(Ground_GObj* gobj)
                 gp->u.shrineroute.xC8 = (u16) result;
                 HSD_ASSERT(0x213, gp->u.map.symbol[ix]);
                 {
-                    s32 mid = ((Ground*) gp->u.map.symbol[(u32) ix]->user_data)
-                                  ->map_id;
+                    s32 mid =
+                        ((Ground*) gp->u.map.symbol[ix]->user_data)->map_id;
                     if (player != NULL) {
                         Player_80031790((s32) ftLib_GetPlayerIndex(player));
                     }
@@ -446,10 +446,9 @@ void grShrineRoute_80208F70(Ground_GObj* gobj)
                         mpLib_80057BC0(6);
                         mpLib_80057BC0(7);
                         temp = grShrineRoute_802088C0(5);
-                        gp->u.shrineroute.xD4 = (u32) temp;
+                        gp->u.shrineroute.xD4 = temp;
                         if (temp != NULL) {
-                            ejobj =
-                                ((HSD_GObj*) gp->u.shrineroute.xD4)->hsd_obj;
+                            ejobj = gp->u.shrineroute.xD4->hsd_obj;
                             HSD_JObjSetFlagsAll(ejobj, JOBJ_HIDDEN);
                             Ground_801C2D24(result, &sp88);
                             HSD_JObjSetTranslate(ejobj, &sp88);

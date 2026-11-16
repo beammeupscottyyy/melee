@@ -1019,13 +1019,13 @@ struct grZebes_GroundVars4 {
     /* +08 gp+CC */ f32 xCC;
     /* +0C gp+D0 */ f32 xD0;
     /* +10 gp+D4 */ f32 xD4;
-    /* +14 gp+D8 */ u32 xD8;
-    /* +18 gp+DC */ u32 xDC;
-    /* +1C gp+E0 */ u32 xE0;
+    /* +14 gp+D8 */ HSD_JObj* xD8;
+    /* +18 gp+DC */ HSD_JObj* xDC;
+    /* +1C gp+E0 */ Item_GObj* xE0;
     /* +20 gp+E4 */ s16 xE4;
     /* +22 gp+E6 */ s16 xE6;
     /* +24 gp+E8 */ s32 xE8;
-    /* +28 gp+EC */ u32 xEC;
+    /* +28 gp+EC */ grZakoGenerator_Config* xEC;
 };
 
 struct grZebes_GroundVars5 {
@@ -1036,18 +1036,18 @@ struct grZebes_GroundVars5 {
     /* +0C gp+D0 */ f32 xD0;
     /* +10 gp+D4 */ f32 xD4;
     /* +14 gp+D8 */ f32 xD8;
-    /* +18 gp+DC */ u32 xDC;
+    /* +18 gp+DC */ HSD_LObj* xDC;
     /* +1C gp+E0 */ u32 xE0;
     /* +20 gp+E4 */ u32 xE4;
     /* +24 gp+E8 */ s16 xE8;
     /* +26 gp+EA */ s16 xEA;
-    /* +28 gp+EC */ u32 xEC;
-    /* +2C gp+F0 */ u32 xF0;
+    /* +28 gp+EC */ s32 xEC;
+    /* +2C gp+F0 */ Ground_GObj* xF0;
     /* +30 gp+F4 */ s16 xF4;
     /* +32 gp+F6 */ s16 xF6;
     /* +34 gp+F8 */ u32 xF8;
-    /* +38 gp+FC */ u32 xFC;
-    /* +3C gp+100 */ u32 x100;
+    /* +38 gp+FC */ grZakoGenerator_Config* xFC;
+    /* +3C gp+100 */ Item_GObj* x100;
 };
 
 struct grRCruise_Entry {
@@ -1648,7 +1648,7 @@ struct grShrineroute_GroundVars {
     /*  +A gp+CE */ u16 xCE;
     /*  +C gp+D0 */ u16 xD0;
     u8 _pad[0xD4 - 0xD2];
-    /* +10 gp+D4 */ u32 xD4;
+    /* +10 gp+D4 */ HSD_GObj* xD4;
     /* +14 gp+D8 */ struct grShrineroute_GroundVars_platforms {
         /* +0 */ Vec3 offset;
         /* +C */ HSD_JObj* jobj;
