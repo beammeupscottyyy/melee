@@ -1721,7 +1721,7 @@ struct grHomeRun_GroundVars {
     /* +04 gp+C8 */ HSD_GObj** back;
     /* +08 gp+CC */ HSD_Text* xCC;
     /* +0C gp+D0 */ HSD_JObj* xD0;
-    /* +10 gp+D4 */ HSD_GObj* xD4;
+    /* +10 gp+D4 */ HSD_GObj* text_gobj;
     /* +14 gp+D8 */ HSD_GObj* bg_gobj[4];
     /* +24 gp+E8 */ struct grHomeRun_GroundVars_xE8_flags {
         u8 b0 : 1;
@@ -1739,8 +1739,8 @@ struct grHomeRun_GroundVars {
 struct grHomeRun_GroundVars2 {
     /* +00 gp+C4 */ u16 xC4;
     /* +02 gp+C6 */ u16 xC6;
-    /* +04 gp+C8 */ int xC8;
-    /* +08 gp+CC */ int xCC;
+    /* +04 gp+C8 */ HSD_Text* text;
+    /* +08 gp+CC */ HSD_JObj* jobj;
     /* +0C gp+D0 */ float xD0;
 };
 

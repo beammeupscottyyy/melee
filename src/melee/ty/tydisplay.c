@@ -1749,7 +1749,7 @@ void _tyDisplay_8031B328(void)
     {
         scene->x00 = GObj_Create(2, 3, 0);
         lobj = Toy_LoadLObjList(lightData, 0);
-        HSD_GObjObject_80390A70(scene->x00, (u32) HSD_GObj_LightKind, lobj);
+        HSD_GObjObject_80390A70(scene->x00, HSD_GObj_LightKind, lobj);
         temp = scene->x00;
         GObj_SetupGXLink(temp, HSD_GObj_LObjCallback, 0x34, 0);
     }
