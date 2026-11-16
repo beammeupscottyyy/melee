@@ -1158,12 +1158,12 @@ void ftColl_80078538(Fighter_GObj* gobj, Vec3* pos, u32 dmg, float ignored,
     if (dmg >= 1) {
         switch (fp->co_attrs.hit_spark_variant) {
         case 0:
-            if (HSD_Randi((s32) p_ftCommonData->x3F4) == 0) {
+            if (HSD_Randi(p_ftCommonData->x3F4) == 0) {
                 efSync_Spawn(0x3EF, 0, pos, &fp->facing_dir);
             }
             break;
         case 1:
-            HSD_Randi((s32) p_ftCommonData->x3F8);
+            HSD_Randi(p_ftCommonData->x3F8);
             break;
         }
     }
@@ -1476,16 +1476,16 @@ void ftColl_80078C70(Fighter_GObj* this_gobj)
                                 hit0 = HitCapsuleGetPtr(victim_fp, j);
 #endif
                                 if ((hit0->state != HitCapsule_Disabled) &&
-                                    (hit0->element !=
-                                     (u32) HitElement_Catch) &&
-                                    ((u32) ((u8) hit0->x42_b5) == true) &&
+                                    (hit0->element != HitElement_Catch) &&
+                                    hit0->x42_b5 &&
                                     ((((u8) hit0->x40_b2) &&
                                       (this_fp->ground_or_air == GA_Air)) ||
                                      (((u8) hit0->x40_b3) &&
-                                      ((int) this_fp->ground_or_air == 0))) &&
+                                      (this_fp->ground_or_air ==
+                                       GA_Ground))) &&
                                     (!((u8) (hit0->x134
                                                  .hit_grabbed_victim_only)) ||
-                                     ((victim_fp->victim_gobj == NULL) != 0) ||
+                                     (victim_fp->victim_gobj == NULL) ||
                                      !((u8) victim_fp->x221B.x221B_b5) ||
                                      (victim_fp->victim_gobj == this_gobj)) &&
                                     (lbColl_8000ACFC(this_fp, hit0) == false))
@@ -1496,15 +1496,13 @@ void ftColl_80078C70(Fighter_GObj* this_gobj)
                                     if (is_same_gobj && (var_r0_2 == false) &&
                                         (this_gobj !=
                                          victim_fp->victim_gobj) &&
-                                        ((int) this_fp->ground_or_air ==
+                                        (this_fp->ground_or_air ==
                                          GA_Ground) &&
-                                        ((int) victim_fp->ground_or_air ==
+                                        (victim_fp->ground_or_air ==
                                          GA_Ground) &&
                                         !((u8) this_fp->x221B.x221B_b5) &&
-                                        (hit0->element !=
-                                         (u32) HitElement_Inert) &&
-                                        ((u32) ((u8) hit0->x40_b0) == true) &&
-                                        (count != 0))
+                                        (hit0->element != HitElement_Inert) &&
+                                        hit0->x40_b0 && (count != 0))
                                     {
                                         flag0 = false;
                                         for (m = 0;
@@ -1591,8 +1589,8 @@ void ftColl_80078C70(Fighter_GObj* this_gobj)
                                             }
                                         } else {
                                         block_81:
-                                            if (((int) this_fp->x1988 != 2) &&
-                                                ((int) this_fp->x198C != 2))
+                                            if (this_fp->x1988 != 2 &&
+                                                this_fp->x198C != 2)
                                             {
                                                 for (n = 0;
                                                      n <
@@ -1818,13 +1816,13 @@ void ftColl_8007925C(Fighter_GObj* gobj)
             if (hurt->state == HitCapsule_Disabled) {
                 continue;
             }
-            if ((u32)((u8) hurt->x42_b5) != true) {
+            if (!hurt->x42_b5) {
                 continue;
             }
             if (!(((u8) hurt->x40_b2) &&
                   (fp->ground_or_air == GA_Air)) &&
                 !(((u8) hurt->x40_b3) &&
-                  ((int) fp->ground_or_air == GA_Ground)))
+                  (fp->ground_or_air == GA_Ground)))
             {
                 continue;
             }
@@ -1993,10 +1991,10 @@ void ftColl_8007925C(Fighter_GObj* gobj)
                     }
                 }
             } else {
-                if ((int) fp->x1988 == 2 || (int) fp->x198C == 2) {
+                if (fp->x1988 == 2 || fp->x198C == 2) {
                     continue;
                 }
-                if ((u32)((u8) hurt->x42_b5) != true) {
+                if (!hurt->x42_b5) {
                     continue;
                 }
 
@@ -2020,8 +2018,8 @@ void ftColl_8007925C(Fighter_GObj* gobj)
                             break;
                         }
 
-                        if (((int) fp->x1988 != 0) ||
-                            ((int) fp->x198C != 0) ||
+                        if (fp->x1988 != 0 ||
+                            fp->x198C != 0 ||
                             fp->x221D_b6 ||
                             fp->hurt_capsules[n].capsule.state != HurtCapsule_Enabled)
                         {
@@ -2037,8 +2035,8 @@ void ftColl_8007925C(Fighter_GObj* gobj)
                             break;
                         }
 
-                        if ((u32) hurt->sfx_kind == 0xDU &&
-                            (u32) hurt->sfx_severity == 2)
+                        if (hurt->sfx_kind == 0xD &&
+                            hurt->sfx_severity == 2)
                         {
                             fp->x215C = lbColl_80005BB0(hurt,
                                 (0x72 + (fp->player_idx * 2) +
@@ -2194,7 +2192,7 @@ static inline void spawnHitEffect(Fighter_GObj* gobj, int effect, Vec3* pos,
 struct DmgResult {
     /* 0x00 */ float dir;
     /* 0x04 */ int angle;
-    /* 0x08 */ int hurt_height;
+    /* 0x08 */ HurtHeight hurt_height;
     /* 0x0C */ float kb;
     /* 0x10 */ Vec3 pos;
     /* 0x1C */ u32 element;
@@ -2318,7 +2316,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
         dir = (fp->cur_pos.x > attacker_fp->cur_pos.x) ? -1.0F : 1.0F;
         {
             HitCapsule* hit = best_entry->xC.hit0;
-            angle = (float) (u32) hit->kb_angle;
+            angle = hit->kb_angle;
             element = hit->element;
             sfx_severity = hit->sfx_severity;
         }
@@ -2338,7 +2336,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
                   : ((item->x40_vel.x < 0.0F) ? 1.0F : -1.0F);
         {
             HitCapsule* hit = best_entry->xC.hit0;
-            angle = (float) (u32) hit->kb_angle;
+            angle = hit->kb_angle;
             element = hit->element;
             sfx_severity = hit->sfx_severity;
         }
@@ -2350,7 +2348,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
 
         dir = fp->facing_dir;
         sfx_severity = 0;
-        angle = (float) (u32) env->kb_angle;
+        angle = env->kb_angle;
         element = env->element;
         break;
     }
@@ -2358,7 +2356,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
         break;
     }
 
-    if ((u32) best_entry->xC.hit0->kb_angle == 0x16A) {
+    if (best_entry->xC.hit0->kb_angle == 0x16A) {
         FighterHurtCapsule* hurt = best_entry->x10.hurt1;
         float dx, dy, abs_dx;
 
@@ -2385,7 +2383,7 @@ void ftColl_8007A06C(Fighter_GObj* gobj, void* dmg_ptr, void* log, size_t idx,
 
     out->dir = dir;
     out->angle = (int) angle;
-    out->hurt_height = (int) best_entry->x10.hurt1->height;
+    out->hurt_height = best_entry->x10.hurt1->height;
     out->kb = best_kb.v;
     out->pos = best_entry->pos;
     out->element = element;

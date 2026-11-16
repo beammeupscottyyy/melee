@@ -72,7 +72,7 @@ static inline void comboCount_Push(Fighter* fp)
     Vec3* pos = &fp->coll_data.floor.normal;
     float temp_f2;
     float var_f2;
-    if ((int) fp->x2090 < p_ftCommonData->x4C8) {
+    if (fp->x2090 < p_ftCommonData->x4C8) {
         var_f2 = p_ftCommonData->x4D0;
     } else {
         var_f2 = p_ftCommonData->x4D4;

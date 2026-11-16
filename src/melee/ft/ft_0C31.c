@@ -212,7 +212,7 @@ void fn_800C69F4(Fighter_GObj* gobj)
 
     temp_r31 = GET_FIGHTER(gobj);
     if (!temp_r31->is_sub_fighter) {
-        temp_r3 = Player_GetEntityAtIndex((s32) temp_r31->player_idx, 1);
+        temp_r3 = Player_GetEntityAtIndex(temp_r31->player_idx, 1);
         if (temp_r3 != NULL) {
             temp_r3_2 = GET_FIGHTER(temp_r3);
             if (!temp_r3_2->is_sleeping) {

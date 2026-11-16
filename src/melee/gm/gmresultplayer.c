@@ -22,6 +22,7 @@
 #include <sysdolphin/baselib/gobjobject.h>
 #include <sysdolphin/baselib/jobj.h>
 #include <sysdolphin/baselib/mobj.h>
+#include <sysdolphin/baselib/mtx.h>
 #include <sysdolphin/baselib/tobj.h>
 #include <sysdolphin/baselib/wobj.h>
 
@@ -600,12 +601,11 @@ bool fn_80177B7C(int slot)
 
     {
         float stick_y = HSD_PadCopyStatus[(u8) slot].nml_stickY;
-        float abs_stick_y = stick_y;
+        float abs_stick_y = fabsf_bitwise(stick_y);
         u32 trigger;
         bool result = false;
         PAD_STACK(16);
 
-        *(u32*) &abs_stick_y &= ~0x80000000;
         if (abs_stick_y < scroll_deadzone) {
             stick_y = 0;
         }
