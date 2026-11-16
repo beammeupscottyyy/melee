@@ -87,7 +87,7 @@ ASSERT_SIZE(struct TmBoxArrays, 0xC);
 /* 18F808 */ int fn_8018F808(void);
 /* 18F888 */ void fn_8018F888(void);
 /* 18FA24 */ void fn_8018FA24(void);
-/* 18FBD8 */ void fn_8018FBD8(UNK_T arg0, s32 arg1);
+/* 18FBD8 */ void fn_8018FBD8(HSD_GObj*, s32);
 /* 18FBE0 */ void fn_8018FBE0(s32, s32, s32, s32, s32, s32, s32);
 /* 18FDC4 */ void fn_8018FDC4(HSD_JObj*, float x, float y, float z);
 /* 18FF9C */ void fn_8018FF9C(HSD_JObj*, float x, float y, float z);

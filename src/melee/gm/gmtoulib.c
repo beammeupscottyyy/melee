@@ -2167,7 +2167,7 @@ char* fn_8018F5F0(void)
 /// it controls various menu jobj states ie animation state, visibility, etc
 u32 fn_8018F62C(HSD_GObj* gobj)
 {
-    return (u32) gobj->user_data;
+    return (uintptr_t) gobj->user_data;
 }
 
 TmData* gm_GetTournamentData(void)
@@ -2338,9 +2338,9 @@ void fn_8018FA24(void)
     tmdata[0x30] = player_count;
 }
 
-void fn_8018FBD8(void* arg0, s32 arg1)
+void fn_8018FBD8(HSD_GObj* gobj, s32 arg1)
 {
-    ((HSD_GObj*) arg0)->user_data = (void*) arg1;
+    gobj->user_data = (void*) (uintptr_t) (u32) arg1;
 }
 
 void fn_8018FBE0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5,
