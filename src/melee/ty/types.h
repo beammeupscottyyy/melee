@@ -134,7 +134,7 @@ struct ToyGlobalsS_ {
 };
 
 struct TyFiguponED4 {
-    /* 0x00 */ u32 x0;
+    /* 0x00 */ HSD_GObj* x0;
     /* 0x04 */ u32 x4;
     /* 0x08 */ u8 pad_08[0x4];
     /* 0x0C */ u32 xC;
@@ -207,7 +207,7 @@ struct TyFiguponData {
     /* 0x04 */ HSD_GObj* x4;
     /* 0x08 */ HSD_GObj* x8;
     /* 0x0C */ u8 pad_0C[0x4];
-    /* 0x10 */ s32 x10;
+    /* 0x10 */ HSD_GObjProc* x10;
     /* 0x14 */ HSD_Text* x14;
     /* 0x18 */ HSD_Text* x18;
     /* 0x1C */ u8 pad_1C[0x4];
