@@ -59,7 +59,7 @@ bool lb_80014638(struct lb_80014638_arg0_t* arg0,
 
 bool lb_80014770(Vec3* arg0, int arg1)
 {
-    if ((u32) arg1 == 2U) {
+    if (arg1 == 2) {
         Vec3* near_pt;
         Vec3* far_pt;
         GXColor* near_clr;

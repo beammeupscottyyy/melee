@@ -394,10 +394,10 @@ void lbRefract_800222A4(void)
         imagedesc0.width = image_width;
         imagedesc0.height = image_height;
 
-        lbl_804336D0.imagedesc[(s32) i].image_ptr = buf;
-        lbl_804336D0.imagedesc[(s32) i].format = GX_TF_IA8;
-        lbl_804336D0.imagedesc[(s32) i].width = 32;
-        lbl_804336D0.imagedesc[(s32) i].height = 32;
+        lbl_804336D0.imagedesc[i].image_ptr = buf;
+        lbl_804336D0.imagedesc[i].format = GX_TF_IA8;
+        lbl_804336D0.imagedesc[i].width = 32;
+        lbl_804336D0.imagedesc[i].height = 32;
     }
 }
 

@@ -477,7 +477,7 @@ void lbShadow_8000F38C(s32 arg0)
                         }
                     }
 
-                    if ((s32) lobj) {
+                    if (lobj != NULL) {
                         fp2->x20A4.x0_b3 = false;
                     } else {
                         fp2->x20A4.x0_b3 = true;

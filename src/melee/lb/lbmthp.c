@@ -57,7 +57,7 @@ typedef struct THPDecComp {
     /* 0x88 */ u32 unk_88;
     /* 0x8C */ u32 unk_8C;
     /* 0x90 */ u32 unk_90;
-    /* 0x94 */ s32 unk_94;
+    /* 0x94 */ u32 unk_94;
     /* 0x98 */ THPFileInfo* unk_98;
     /* 0x9C */ THPDec_8032FD40_Data unk_9C;
     /* 0xA8 */ u16 unk_A8;
@@ -128,7 +128,7 @@ static void fn_8001E910(int arg0, uintptr_t arg1, void* arg2, bool cancelflag)
         if ((streamPlayer->unk_74 != streamPlayer->unk_40) ||
             ((streamPlayer->unk_74 == streamPlayer->unk_40) && did_request))
         {
-            HSD_ASSERTREPORT(289, (u32)streamPlayer->currPackedSize != 0,
+            HSD_ASSERTREPORT(289, streamPlayer->currPackedSize != 0,
                              "filnum = %d, ofs = %d, by sugano.",
                              streamPlayer->file_entrynum,
                              streamPlayer->curr_file_offset);
@@ -332,7 +332,7 @@ static s32 fn_8001EF5C(THPDecComp* data)
     s32 spC;
     BOOL intr;
 
-    if ((u32) data->unk_94 != data->unk_90) {
+    if (data->unk_94 != data->unk_90) {
         intr = OSDisableInterrupts();
         data->unk_98 = THPVideoDecode(&data->unk_A8, &spC, data->unk_98,
                                       data->frame_buffers[data->unk_90]->data,
@@ -405,7 +405,7 @@ s32 fn_8001F13C(THPDecComp* streamPlayer)
         streamPlayer->unk_13C = OSGetTick();
         streamPlayer->unk_138 = 0;
         if (streamPlayer->unk_74 != streamPlayer->unk_40) {
-            HSD_ASSERTREPORT(289, (u32)streamPlayer->currPackedSize != 0,
+            HSD_ASSERTREPORT(289, streamPlayer->currPackedSize != 0,
                              "filnum = %d, ofs = %d, by sugano.",
                              streamPlayer->file_entrynum,
                              streamPlayer->curr_file_offset);

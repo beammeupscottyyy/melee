@@ -152,8 +152,8 @@ void lb_8000FD48(HSD_JObj* jobj, DynamicsDesc* desc, size_t max_count)
 
     desc->count = 0;
 
-    while ((s32) desc->count < (s32) max_count) {
-        if ((s32) desc->count == 0) {
+    while (desc->count < max_count) {
+        if (desc->count == 0) {
             desc->data = (prev = popDynamicsData());
         } else {
             prev->next = popDynamicsData();
