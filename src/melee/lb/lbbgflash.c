@@ -208,7 +208,7 @@ void fn_8001FEC4(HSD_GObj* gobj, intptr_t code)
     }
 
     if (data->x33 != 0) {
-        if ((u32) mode == 3U) {
+        if (mode == 3) {
             GXBegin(GX_QUADS, GX_VTXFMT0, 4);
             GXPosition2f32(0.0f, 0.0f);
             GXColor4u8(0, 0, 0, 0xFF);
@@ -222,9 +222,9 @@ void fn_8001FEC4(HSD_GObj* gobj, intptr_t code)
         return;
     }
 
-    switch ((s32) data->x30) {
+    switch (data->x30) {
     case 0:
-        if ((u32) mode == 3U) {
+        if (mode == 3) {
             y = 0;
             while (y <= data->x38) {
                 if (y == data->x38) {
@@ -337,7 +337,7 @@ void fn_800204C8(void)
         return;
     case 3:
     case 4:
-        switch ((s32) data->x30) {
+        switch (data->x30) {
         case 0: {
             s32* pX;
             s32* pY;

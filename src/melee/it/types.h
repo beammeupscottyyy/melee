@@ -679,12 +679,12 @@ struct SpawnItem {
 };
 
 struct ItemCommonData {
-    s32 x0;
+    u32 x0;
     u32 x4;
     u32 x8;
     u32 xC;
     u32 x10;
-    s32 x14;
+    u32 x14;
     u32 x18;
     u32 x1C;
     u32 x20;
@@ -777,8 +777,8 @@ struct x1C_struct {
 };
 
 struct HSD_ObjAllocUnk {
-    s32 x0;
-    s32 x4;
+    u32 x0;
+    u32 x4;
     s32 x8;
     s32 xC;
     s32 x10;
@@ -788,8 +788,8 @@ struct HSD_ObjAllocUnk {
     s32 x20;
     s32 x24;
     s32 x28;
-    s32 x2C; // u32 or s32?
-    s32 x30; // u32 or s32?
+    u32 x2C;
+    u32 x30;
     s32 x34;
     s32 x38;
     s32 x3C;
@@ -797,12 +797,12 @@ struct HSD_ObjAllocUnk {
     s32 x44;
     s32 x48;
     s32 x4C;
-    s32 x50;
-    s32 x54;
+    u32 x50;
+    u32 x54;
     s32 x58;
     s32 x5C;
-    s32 x60; // u32 or s32?
-    s32 x64; // u32 or s32?
+    s32 x60;
+    s32 x64;
 };
 
 // Weighted random pick table for item selection. Holds N parallel entries:

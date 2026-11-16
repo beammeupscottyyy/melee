@@ -81,8 +81,8 @@ void lbMthp8001FAA0(const char* filename, int width, int height)
 {
     struct lbMthp8001FAA0_header header;
     s32 output;
-    s32 yuv_size;
-    s32 uv_size;
+    u32 yuv_size;
+    u32 uv_size;
     void* context;
     void* decode_buf;
     THPFileInfo* decoded;
@@ -93,12 +93,12 @@ void lbMthp8001FAA0(const char* filename, int width, int height)
     lbFile_80016760(filename, &lbl_804335B8.unk94, &lbl_804335B8.unk98);
     yuv_size = lbl_804335B8.x6C * lbl_804335B8.x6E;
     lbl_804335B8.x20 = HSD_MemAlloc(yuv_size);
-    DCInvalidateRange(lbl_804335B8.x20, (u32) yuv_size);
-    uv_size = (s32) (lbl_804335B8.x6C * lbl_804335B8.x6E) >> 2;
+    DCInvalidateRange(lbl_804335B8.x20, yuv_size);
+    uv_size = (lbl_804335B8.x6C * lbl_804335B8.x6E) >> 2;
     lbl_804335B8.x44 = HSD_MemAlloc(uv_size);
-    DCInvalidateRange(lbl_804335B8.x44, (u32) uv_size);
+    DCInvalidateRange(lbl_804335B8.x44, uv_size);
     lbl_804335B8.x68 = HSD_MemAlloc(uv_size);
-    DCInvalidateRange(lbl_804335B8.x68, (u32) uv_size);
+    DCInvalidateRange(lbl_804335B8.x68, uv_size);
     context = HSD_MemAlloc(0xC);
     memset(&header, 0, sizeof(header));
     header.w = width;

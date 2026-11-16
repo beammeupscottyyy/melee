@@ -380,7 +380,7 @@ int lbSnap_8001DE8C(void* arg0)
 
 static inline int lbSnap_GetSaveDataOffset(struct Unk80433380_0* snap)
 {
-    return snap->xC + ((int) &snap->x38 - (int) snap);
+    return snap->xC + (int) ((uintptr_t) &snap->x38 - (uintptr_t) snap);
 }
 
 int lbSnap_8001DF20(void)
