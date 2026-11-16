@@ -57,7 +57,7 @@ void it_8026D62C(Item_GObj* gobj, HSD_GObjEvent arg1)
     ip->pos = coll->cur_pos;
 
     if (test != false) {
-        ip->xC30 = (u32) coll->floor.index;
+        ip->xC30 = coll->floor.index;
     }
     if (test == false) {
         it_802762BC(ip);

@@ -584,7 +584,7 @@ void fn_80039618(int player)
         u32 falls = Player_GetFalls(player) + gm_80172140();
         if (falls == 0) {
             setFlag(player, 0x63);
-        } else if (falls == (u32) table->x0_staleMoveTable.xC94) {
+        } else if (falls == table->x0_staleMoveTable.xC94) {
             setFlag(player, 0x66);
         }
     }
@@ -617,7 +617,7 @@ void fn_80039618(int player)
             setFlag(player, 0x1B);
         }
     }
-    if ((u32) table->xDC8 != 0) {
+    if (table->xDC8 != 0) {
         if (x358_total == attacks_total) {
             setFlag(player, 0xD);
         } else if (pl_CalculateAverage(x358_total, attacks_total) >=

@@ -197,7 +197,7 @@ void pl_8003D644(int arg0, int arg1, int arg2, int arg3)
             pl_80038824(arg0, 0x84);
         }
         plBonusLib_8003D514(arg0);
-        if ((u32) arg3 == 0x5FU) {
+        if (arg3 == 0x5F) {
             pl_80038788(arg0, 0x9C, 1);
         }
 
@@ -554,7 +554,7 @@ void pl_8003E4A4(int slot, bool arg1, ItemKind arg2[], int count)
     for (i = 0; i < Pl_ItemLog_Terminate; i++) {
         if (seen[i] == 1) {
             table->x0_staleMoveTable.x7AC[i]++;
-            if ((u32) table->x0_staleMoveTable.x7AC[i] == pl_804D6470->x138) {
+            if (table->x0_staleMoveTable.x7AC[i] == pl_804D6470->x138) {
                 pl_80038788(slot, 0x9D, 1);
                 table->x0_staleMoveTable.x7AC[i] = 0;
             }
@@ -1474,8 +1474,8 @@ float pl_800407C8(int arg0)
     temp_r3 = Player_GetStaleMoveTableIndexPtr2(arg0);
     temp_r5 = temp_r3->x0_staleMoveTable.xCEC;
     if (temp_r5 != 0) {
-        float tmp = (u32) temp_r3->x0_staleMoveTable.xCEC;
-        temp_f31 = (u32) temp_r3->x0_staleMoveTable.xCF0;
+        float tmp = temp_r3->x0_staleMoveTable.xCEC;
+        temp_f31 = temp_r3->x0_staleMoveTable.xCF0;
         return pl_CalculateAverage(temp_f31, tmp);
     }
     return 0.0f;

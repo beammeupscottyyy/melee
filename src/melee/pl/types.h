@@ -144,7 +144,7 @@ struct StaleMoveTable {
     /* +5EC */ struct pl_x5EC_t x5EC;
     /* +674 */ u32 x674[Pl_ItemLog_Terminate];
     /* +710 */ int x710[Pl_ItemLog_Terminate];
-    /* +7AC */ int x7AC[Pl_ItemLog_Terminate];
+    /* +7AC */ u32 x7AC[Pl_ItemLog_Terminate];
     /* +848 */ int x848[30];
     /* +8C0 */ struct pl_x8C0_t x8C0;
     /* +8D8 */ struct pl_x8D8_t x8D8;
@@ -157,7 +157,7 @@ struct StaleMoveTable {
     /* +C74 */ float xC74;
     /* +C78 */ float xC78[6];
     /* +C90 */ unsigned int xC90;
-    /* +C94 */ int xC94;
+    /* +C94 */ u32 xC94;
     /* +C98 */ float xC98;
     /* +C9C */ float xC9C;
     /* +CA0 */ float xCA0;
@@ -175,8 +175,8 @@ struct StaleMoveTable {
     /* +CE0 */ float xCE0;
     /* +CE4 */ u32 xCE4;
     /* +CE8 */ u32 xCE8;
-    /* +CEC */ int xCEC;
-    /* +CF0 */ int xCF0;
+    /* +CEC */ u32 xCEC;
+    /* +CF0 */ u32 xCF0;
 };
 ASSERT_SIZE(struct StaleMoveTable, 0xCF4);
 
@@ -235,7 +235,7 @@ struct pl_StaleMoveTableExt_t {
     /* +DBC */ int xDBC;
     /* +DC0 */ float xDC0;
     /* +DC4 */ int xDC4;
-    /* +DC8 */ int xDC8;
+    /* +DC8 */ u32 xDC8;
     /* +DCC */ int xDCC;
     /* +DD0 */ union pl_StaleMoveTableExt_t_xDD0 {
         u8 xDD0_value;
