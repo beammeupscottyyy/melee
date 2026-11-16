@@ -1784,7 +1784,7 @@ void fn_8018E618(int arg0, f32 farg0, int arg1)
 
 void fn_8018E85C(DynamicModelDesc* model, s32 flag)
 {
-    u8* sub;
+    BracketEntrySlot* slot;
     TmData* td;
     HSD_JObj* jobj;
     s32 outer_idx;
@@ -1807,8 +1807,8 @@ void fn_8018E85C(DynamicModelDesc* model, s32 flag)
         }
         inner_idx = 0;
         for (; inner_idx < 4; inner_idx++) {
-            sub = &lbl_80473AB8[outer_idx].x0 + inner_idx * 0x2C;
-            if (sub[0x30] == 0) {
+            slot = &lbl_80473AB8[outer_idx].slots[inner_idx];
+            if (slot->x30 == 0) {
                 continue;
             }
 
@@ -1819,26 +1819,26 @@ void fn_8018E85C(DynamicModelDesc* model, s32 flag)
                         break;
                     }
                 }
-                sub[0x50] = (u8) j;
+                slot->x50 = (u8) j;
                 ptr = (u8*) td + j * 0x12;
-                sub[0x4D] = ptr[0x3A];
-                sub[0x4E] = ptr[0x37];
-                sub[0x4F] = ptr[0x3E];
-                sub[0x51] = ptr[0x38];
-                sub[0x52] = ptr[0x39];
-                *(u16*) (sub + 0x54) = *(u16*) (ptr + 0x40);
+                slot->x4D = ptr[0x3A];
+                slot->x4E = ptr[0x37];
+                slot->x4F = ptr[0x3E];
+                slot->x51 = ptr[0x38];
+                slot->x52 = ptr[0x39];
+                slot->x54 = *(u16*) (ptr + 0x40);
                 bracket_idx++;
             }
 
             gobj = GObj_Create(0xE, 0x1B, 0);
-            *(HSD_GObj**) (sub + 0x2C) = gobj;
-            gobj = *(HSD_GObj**) (sub + 0x2C);
+            slot->x2C = gobj;
+            gobj = slot->x2C;
             jobj = HSD_JObjLoadJoint(model->joint);
             HSD_GObjObject_80390A70(gobj, HSD_GObj_JObjKind, jobj);
             GObj_SetupGXLink(gobj, HSD_GObj_JObjCallback, 4, 2);
             gm_8016895C(jobj, model, 0);
 
-            anim_frame = sub[0x4D] + sub[0x4F] * 0x1E;
+            anim_frame = slot->x4D + slot->x4F * 0x1E;
             HSD_JObjReqAnimAll(jobj, (f32) anim_frame);
             HSD_JObjAnimAll(jobj);
 
@@ -1859,8 +1859,7 @@ void fn_8018E85C(DynamicModelDesc* model, s32 flag)
             if (td->cur_option < 0x1F) {
                 fn_8018AA74(jobj, outer_idx, inner_idx);
             } else {
-                fn_8018FDC4(jobj, (f32) * (s32*) (sub + 0x44),
-                            -(f32) * (s32*) (sub + 0x48), 666.0f);
+                fn_8018FDC4(jobj, (f32) slot->x44, -(f32) slot->x48, 666.0f);
             }
         }
     }
