@@ -533,13 +533,13 @@ void db_CheckAndSpawnItem(int player)
     spawnItem.x44_flag.x0.b0 = 1;
     spawnItem.x40 = 0;
     if (spawnItem.kind < It_Kind_Common_End &&
-        Item_804A0C64.x0 >= (u32) it_804D6D28->x0)
+        Item_804A0C64.x0 >= it_804D6D28->x0)
     {
         OSReport("Item Max Over.\n");
         return;
     }
     if (spawnItem.kind < It_Kind_Monster_End &&
-        Item_804A0C64.x2C >= (u32) it_804D6D28->x14)
+        Item_804A0C64.x2C >= it_804D6D28->x14)
     {
         OSReport("couldn't get Item struct.(CZako)\n");
         return;

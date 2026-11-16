@@ -492,8 +492,8 @@ void fn_80039618(int player)
     }
     {
         u32* p = &x358_counts[1];
-        s32 max;
-        s32 min;
+        u32 max;
+        u32 min;
         int count;
         count = 0;
         min = 0;
@@ -502,10 +502,10 @@ void fn_80039618(int player)
             u32 c = *p;
             if (c != 0) {
                 count++;
-                if (c > (u32) max) {
+                if (c > max) {
                     max = c;
                 }
-                if (min == 0 || c < (u32) min) {
+                if (min == 0 || c < min) {
                     min = c;
                 }
             }
@@ -584,7 +584,7 @@ void fn_80039618(int player)
         u32 falls = Player_GetFalls(player) + gm_80172140();
         if (falls == 0) {
             setFlag(player, 0x63);
-        } else if (falls == (u32) table->x0_staleMoveTable.xC94) {
+        } else if (falls == table->x0_staleMoveTable.xC94) {
             setFlag(player, 0x66);
         }
     }
@@ -594,7 +594,7 @@ void fn_80039618(int player)
         setFlag(player, 0x86);
     }
     if (atk_x1A8 != 0 && atk_x1A8 == x358_x1A8 &&
-        hit_x1A8 == (u32) Player_GetStaleMoveTableIndexPtr2(player)
+        hit_x1A8 == Player_GetStaleMoveTableIndexPtr2(player)
                         ->x0_staleMoveTable.x904[6])
     {
         setFlag(player, 8);
@@ -617,7 +617,7 @@ void fn_80039618(int player)
             setFlag(player, 0x1B);
         }
     }
-    if ((u32) table->xDC8 != 0) {
+    if (table->xDC8 != 0) {
         if (x358_total == attacks_total) {
             setFlag(player, 0xD);
         } else if (pl_CalculateAverage(x358_total, attacks_total) >=

@@ -1372,8 +1372,8 @@ bool it_8027AB64(Item_GObj* item_gobj)
 
     item = item_gobj->user_data;
     temp_kind = gm_8016AEB8();
-    if ((u32) temp_kind != It_Kind_Unset2) { // Matches gm_SetupRulesDefaults
-        if ((u32) temp_kind == 1) {
+    if (temp_kind != It_Kind_Unset2) { // Matches gm_SetupRulesDefaults
+        if (temp_kind == 1) {
             spawn.kind = it_8027A9B8(item);
         } else {
             spawn.kind = temp_kind - It_PKind_Start;

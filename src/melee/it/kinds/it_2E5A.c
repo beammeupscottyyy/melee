@@ -424,7 +424,7 @@ bool it_802E657C(Item_GObj* item_gobj)
 
 void it_802E6658(void)
 {
-    if ((u32) Item_804A0C64.x50 >= it_804D6D28->x20 - 2) {
+    if (Item_804A0C64.x50 >= it_804D6D28->x20 - 2) {
         Item_8026A8EC(it_80272828(It_Kind_Unk4));
     }
 }

@@ -56,7 +56,7 @@ void it_8026C47C(struct it_8026C47C_arg0_t* arg_struct)
     arg_struct->unk18 = 0;
     arg_struct->unk1C = 0;
 
-    while ((u32) it_kind < It_Kind_End) {
+    while (it_kind < It_Kind_End) {
         if (it_80272828(it_kind)) {
             *word |= 1 << bit_idx;
         }
@@ -374,7 +374,7 @@ void it_8026CF04(void)
         for (; i < 4; i++, idx++) {
             it_804A0E60.x4[i] = It_Kind_Monster_Start + i;
             it_804A0E60.xC[idx] = cumulative;
-            (void) it_804A0E60.xC[(u32) (p = &item_common->x128[idx])];
+            (void) it_804A0E60.xC[(uintptr_t) (p = &item_common->x128[idx])];
             cumulative += *p;
         }
     }
