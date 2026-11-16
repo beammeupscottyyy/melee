@@ -25,7 +25,7 @@ target_compile_definitions(melee_game_headers INTERFACE
 
 file(GLOB_RECURSE SOURCES "${_melee_root}/src/melee/**.c" LIST_DIRECTORIES FALSE)
 file(GLOB_RECURSE HSD_SOURCES "${_melee_root}/src/sysdolphin/**.c" LIST_DIRECTORIES FALSE)
-set(SOURCES ${SOURCES} ${HSD_SOURCES})
+set(SOURCES ${SOURCES} ${HSD_SOURCES} "${_melee_root}/src/MSL/trigf.c")
 
 set(EXCLUSIONS
     melee/db/dberror.c # OSContext register usage
