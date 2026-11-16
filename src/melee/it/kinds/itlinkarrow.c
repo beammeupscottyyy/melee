@@ -112,7 +112,7 @@ f32 it_803F6A84[] = {
     2.0f, 3.0f, 4.0f, 5.0f, 6.0f,  7.0f,  8.0f,  9.0f,
 };
 
-s32 itLinkArrow_802A81C4(Item_GObj* gobj)
+void itLinkArrow_802A81C4(Item_GObj* gobj)
 {
     Item* ip = GET_ITEM(gobj);
     HSD_JObj* jobj = GET_JOBJ(gobj);
@@ -303,6 +303,9 @@ bool itLinkArrow_802A850C(Item_GObj* gobj, Vec3* arg1, Vec3* arg2, f32 arg3,
         return it_8026EA20(gobj, &ip->xDD4_itemVar.linkarrow.x18, &ip->pos,
                            &sp68, &ip->xDD4_itemVar.linkarrow.xE4, &flags);
     }
+#ifndef __MWERKS__
+    return false;
+#endif
 }
 
 void itLinkArrow_Logic98_Destroyed(Item_GObj* gobj)

@@ -91,6 +91,9 @@ s32 it_80291D38(Item_GObj* gobj, s32 charge_level)
     case 9:
         return attrs->xC[9];
     }
+#ifndef __MWERKS__
+    return 0;
+#endif
 }
 
 static inline int it_80291DAC_level(Item_GObj* gobj, int arg1)
@@ -131,6 +134,9 @@ int it_80291DAC(Item_GObj* gobj, int arg1)
             }
             level--;
         }
+#ifndef __MWERKS__
+        return 0;
+#endif
     } else {
         return level;
     }

@@ -229,8 +229,8 @@ Item_GObj* it_802E72E0(Item_GObj* parent, HSD_JObj* bone, s32 type, f32 scale,
     return new_gobj;
 }
 
-Item_GObj* it_802E7654(Item_GObj* owner, HSD_JObj* bone, Vec3* target,
-                       s32 type, s32 arg4, f32 scale)
+void it_802E7654(Item_GObj* owner, HSD_JObj* bone, Vec3* target, s32 type,
+                 s32 arg4, f32 scale)
 {
     SpawnItem spawn;
     SpawnItem* sp;
@@ -287,7 +287,6 @@ Item_GObj* it_802E7654(Item_GObj* owner, HSD_JObj* bone, Vec3* target,
         it_802750F8(new_gobj);
         ip->xDCC_flag.b3 = 0;
     }
-    // NOTE: no return
 }
 
 void it_802E79C8(Item_GObj* gobj)
