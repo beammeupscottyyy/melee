@@ -380,7 +380,6 @@ void ftGk_Init_UnkDemoCallbacks0(int arg0, int* arg1, int* arg2)
     }
 }
 
-/// @remarks UB warning: this function may use offset uninitialized
 char* ftGk_Init_GetMotionFileString(enum_t arg0)
 {
     int offset;
@@ -388,6 +387,11 @@ char* ftGk_Init_GetMotionFileString(enum_t arg0)
     switch (arg0) {
     case 15:
         offset = 14;
+#ifndef __MWERKS__
+        break;
+    default:
+        return NULL;
+#endif
     }
 
     return ftGk_Init_803D3984[offset - 14];

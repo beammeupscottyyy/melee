@@ -256,6 +256,11 @@ char* ftMr_Init_GetMotionFileString(enum_t arg0)
         break;
     case 10:
         offset = 15;
+#ifndef __MWERKS__
+        break;
+    default:
+        return NULL;
+#endif
     }
 
     return ftMr_Init_DemoViMotionFilenames[offset - 14];

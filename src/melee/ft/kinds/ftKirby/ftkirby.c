@@ -2734,6 +2734,11 @@ char* ftKb_Init_GetMotionFileString(enum_t arg0)
         break;
     case 14:
         offset = 17;
+#ifndef __MWERKS__
+        break;
+    default:
+        return NULL;
+#endif
     }
 
     return ftKb_Init_803CA5A4[offset - 14];

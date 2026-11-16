@@ -784,7 +784,7 @@ void mnNameNew_GlyphVariantInput(HSD_GObj* gobj)
     PAD_STACK(12);
 
     data = mnNameNew_804D6C08->user_data;
-    buttons = mn_80229624((u32) mnNameNew_PortInUse);
+    buttons = mn_80229624(mnNameNew_PortInUse);
     mn_804A04F0.buttons = buttons;
     count = 0;
     if (buttons & 0x200) {
@@ -966,7 +966,7 @@ void mnNameNew_MainInput(HSD_GObj* arg0)
         return;
     }
 
-    buttons = (mn_804A04F0.buttons = mn_80229624((u32) mnNameNew_PortInUse));
+    buttons = (mn_804A04F0.buttons = mn_80229624(mnNameNew_PortInUse));
     n = 0;
 
     if (buttons & 0x200) {

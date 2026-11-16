@@ -355,6 +355,10 @@ char* ftLg_Init_GetMotionFileString(enum_t arg0)
     case 10:
         offset = 15;
         break;
+#ifndef __MWERKS__
+    default:
+        return NULL;
+#endif
     }
 
     return ftLg_Init_803D0AAC[offset - 14];
