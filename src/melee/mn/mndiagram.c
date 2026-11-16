@@ -1024,6 +1024,9 @@ static inline u8 mnDiagram_GetVisibleFighterCursorFrom2(int start, int rank)
                  0);
         rank--;
     }
+#ifndef __MWERKS__
+    return SELKIND_COUNT;
+#endif
 }
 
 static inline Diagram* mnDiagram_GetCurrentDiagramData(void)

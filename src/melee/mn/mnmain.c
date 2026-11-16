@@ -1703,6 +1703,9 @@ GXColor* mn_8022BFBC(int arg0)
     case 4:
         return &mn_804D4B60;
     }
+#ifndef __MWERKS__
+    return NULL;
+#endif
 }
 
 /// @brief gets the menu light color index
@@ -1751,6 +1754,9 @@ int mn_8022C010(int menu_kind, int selection)
     case MENU_KIND_RECORDS_MISC:
         return 4;
     }
+#ifndef __MWERKS__
+    return 0;
+#endif
 }
 
 MenuFlow mn_804A04F0;

@@ -578,6 +578,9 @@ int mnDiagram2_GetStatValue(u8 is_name_mode, u8 stat_type, u8 entity_idx)
     default:
         break;
     }
+#ifndef __MWERKS__
+    return 0;
+#endif
 }
 
 /// @brief Creates a single stat row entry in the VS Records display.

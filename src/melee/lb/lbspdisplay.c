@@ -649,9 +649,9 @@ void lb_800138D8(HSD_GObj* gobj, s8 size)
 static const Vec3 lb_803B72A8 = { 0.0F, 0.0F, 1.0F };
 static const Vec3 lb_803B72B4 = { 0.0F, 0.0F, 0.0F };
 
-HSD_GObj* lb_800138EC(HSD_ImageDesc* img, GObj_RenderFunc render_func,
-                      int prio, s8 alpha, float pos_x, float pos_y,
-                      float scale_x, float scale_y)
+void lb_800138EC(HSD_ImageDesc* img, GObj_RenderFunc render_func, int prio,
+                 s8 alpha, float pos_x, float pos_y, float scale_x,
+                 float scale_y)
 {
     HSD_GObj* gobj;
     HSD_CObj* cobj;

@@ -28,8 +28,8 @@
 /* 0138AC */ void fn_800138AC(void* ptr);
 /* 0138CC */ void lb_800138CC(HSD_GObj* gobj, HSD_GObjEvent arg1);
 /* 0138D8 */ void lb_800138D8(HSD_GObj* gobj, s8 arg1);
-/* 0138EC */ HSD_GObj* lb_800138EC(HSD_ImageDesc*, GObj_RenderFunc, int, s8,
-                                   float, float, float, float);
+/* 0138EC */ void lb_800138EC(HSD_ImageDesc*, GObj_RenderFunc, int, s8, float,
+                              float, float, float);
 /* 013B14 */ HSD_CObj* lb_80013B14(HSD_CameraDescPerspective*);
 
 #endif

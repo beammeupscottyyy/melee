@@ -215,6 +215,9 @@ static s32 mnStageSw_80235C58(u8 arg0)
         next++;
         curr++;
     }
+#ifndef __MWERKS__
+    return -1;
+#endif
 }
 
 static void mnStageSw_80235DC8(const u8* user_data, s32 buttons)

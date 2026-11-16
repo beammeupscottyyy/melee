@@ -837,6 +837,9 @@ f32 mnName_80238964(u8 index, u8 target, u8 flag)
         }
         return base[6 + (index == target)].start_frame;
     }
+#ifndef __MWERKS__
+    return 0.0f;
+#endif
 }
 
 void mnName_80238A04(HSD_GObj* gobj, u8 target, u8 flag)
