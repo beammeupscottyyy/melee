@@ -749,7 +749,7 @@ void mnDiagram_PopupInputProc(HSD_GObj* gobj)
     HSD_GObjProc* proc;
     Diagram* data = mnDiagram_ScreenGObj->user_data;
     u64 input = Menu_GetAllInputs();
-    if ((u32) input & MenuInput_Back) {
+    if (input & MenuInput_Back) {
         sfxBack();
         HSD_GObjProc_RemoveProc(HSD_GObj_CurrentInvokedProc);
         proc = HSD_GObj_SetupProc(gobj, mnDiagram_InputProc, 0);

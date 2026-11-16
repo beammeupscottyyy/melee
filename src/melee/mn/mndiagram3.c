@@ -458,7 +458,7 @@ void mnDiagram3_HandleInput(HSD_GObj* gobj)
             return;
         }
         down_limit = (data->is_name_mode != 0) ? 0x18 : 0x15;
-        if ((u32) (data->scroll_offset + 0xA) < down_limit) {
+        if (data->scroll_offset + 0xA < down_limit) {
             Vec3 down_label_pos;
             PAD_STACK(16);
 

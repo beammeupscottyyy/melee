@@ -470,10 +470,10 @@ static inline void mnSoundTest_ToggleView(soundtest_user_data* ud)
 
     state = (ud->unk0 == 0) ? 1 : 0;
     ud->unk0 = state;
-    ud = (soundtest_user_data*) (u32) ud->unk0;
+    ud = (soundtest_user_data*) (uintptr_t) ud->unk0;
     gobj = mnSoundTest_804D6C40;
-    mnSoundTest_8024ABF8(gobj, (u32) ud == 0);
-    mnSoundTest_8024AD58(gobj, (u8) (u32) ud);
+    mnSoundTest_8024ABF8(gobj, (uintptr_t) ud == 0);
+    mnSoundTest_8024AD58(gobj, (u8) (uintptr_t) ud);
 }
 
 static inline void mnSoundTest_PlaySampleAnim(HSD_JObj* jobj, HSD_JObj** pj,
@@ -566,7 +566,7 @@ void fn_8024B2B0(mnSoundTest_GObj* arg0)
     }
     if (user_data->unk0 == 0) {
         if (inputs & MenuInput_AButton) {
-            if ((u32) user_data->unk2 == (sound_id = user_data->unk1)) {
+            if (user_data->unk2 == (sound_id = user_data->unk1)) {
                 md2 = mnSoundTest_804D6C40->user_data;
                 lbAudioAx_800236DC();
                 md2->unk2 = 0x50;

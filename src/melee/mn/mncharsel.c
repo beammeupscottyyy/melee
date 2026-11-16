@@ -2052,7 +2052,7 @@ void mnCharSel_8025FB50(u8 door, s32 arg1)
         u8 sel = mnCharSel_803F0DFC.doors[door].sel_icon;
         u8* char_kinds = &icons[0].char_kind;
         lbAudioAx_80023870(icons[sel].sfx, 0x7F, 0x40, sel + 0x8A);
-        gm_80168C5C((u32) char_kinds[sel * sizeof(CSSIcon)]);
+        gm_80168C5C(char_kinds[sel * sizeof(CSSIcon)]);
     }
 }
 
@@ -3709,15 +3709,17 @@ void fn_80262F44(HSD_GObj* gobj)
                 }
                 goto hide;
             }
-        teams_ok: {
-            CSSTag* tag = mnCharSel_803F0E8C;
-            for (i = 0; i < (s32) mnCharSel_804D6CF5; i++) {
-                if (mnCharSel_804A0BC0[i]->x5 == 1 || tag[i].data->state != 0)
-                {
-                    goto hide;
+        teams_ok:
+            {
+                CSSTag* tag = mnCharSel_803F0E8C;
+                for (i = 0; i < (s32) mnCharSel_804D6CF5; i++) {
+                    if (mnCharSel_804A0BC0[i]->x5 == 1 ||
+                        tag[i].data->state != 0)
+                    {
+                        goto hide;
+                    }
                 }
             }
-        }
 
             if (mnCharSel_804D6CF7 == 0) {
                 HSD_ForeachAnim(jobj, JOBJ_TYPE, ALL_TYPE_MASK,

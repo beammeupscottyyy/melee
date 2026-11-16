@@ -44,7 +44,7 @@ static struct lbl_804735A8_t {
     u16 x3C;
     u16 x3E;
 } lbl_804735A8;
-/// @brief related to 1p splash screen
+/// Related to 1p splash screen.
 static struct lbl_804735E8_t {
     HSD_ImageDesc x40[3];
     HSD_ImageDesc x88[3];
@@ -391,13 +391,13 @@ void fn_80184AB8(HSD_GObj* arg0)
             }
             break;
         case 0x64:
-            if ((s32) lbl_804D6608 != -1) {
+            if (lbl_804D6608 != -1) {
                 lbAudioAx_800236B8(lbl_804D6608);
             }
-            gm_80168C5C((u32) lbl_8047368C.xF4[0]);
+            gm_80168C5C(lbl_8047368C.xF4[0]);
             return;
         case 0x5:
-            for (i = 0; i < (s32) lbl_8047368C.xEF; i++) {
+            for (i = 0; i < lbl_8047368C.xEF; i++) {
                 if (i != 0 || lbl_8047368C.xED == 0x78) {
                     fn_80160DE8(lbl_804735A8.x4[7 + i], lbl_8047368C.xF1[i], 0,
                                 0, lbl_804D6604->x57C[lbl_8047368C.xEF].x18[i],
@@ -448,7 +448,7 @@ void fn_80184AB8(HSD_GObj* arg0)
                                     lbl_804D6604->x57C[1].x24[0]);
                 return;
             }
-            for (i = 0; i < (s32) lbl_8047368C.xF0; i++) {
+            for (i = 0; i < lbl_8047368C.xF0; i++) {
                 fn_80160DE8(lbl_804735A8.x4[10 + i], lbl_8047368C.xF4[i], 0, 1,
                             lbl_804D6604->x57C[lbl_8047368C.xF0].x18[i],
                             lbl_804D6604->x57C[lbl_8047368C.xF0].x24[i]);
@@ -666,7 +666,7 @@ void fn_8018575C(HSD_GObj* gobj)
     }
 }
 
-/// @brief Creates splash screen sprite objects from pre-rendered character
+/// Creates splash screen sprite objects from pre-rendered character
 /// images. Distributes 10 image tiles across a grid with random offsets.
 void fn_801857C4(HSD_GObj* arg0)
 {
@@ -837,7 +837,7 @@ s32 fn_80185E34(void)
             Player_80036CF0(player_slot);
             Player_SetPlayerCharacter(player_slot,
                                       (CharacterKind) lbl_8047368C.xF1[i]);
-            Player_SetCostumeId(player_slot, (s32) lbl_8047368C.xF7[i]);
+            Player_SetCostumeId(player_slot, lbl_8047368C.xF7[i]);
             Player_SetPadPort(player_slot, 0);
             Player_SetSlottype(player_slot, Gm_PKind_Demo);
             Player_SetFacingDirection(player_slot, 0.0f);
@@ -863,7 +863,7 @@ void fn_80185F5C(s32 arg0)
             Player_80036CF0(arg0);
             Player_SetPlayerCharacter(arg0,
                                       (CharacterKind) lbl_8047368C.xF4[i]);
-            Player_SetCostumeId(arg0, (s32) lbl_8047368C.xFA[i]);
+            Player_SetCostumeId(arg0, lbl_8047368C.xFA[i]);
             Player_SetPadPort(arg0, 0);
             Player_SetSlottype(arg0, Gm_PKind_Demo);
             Player_SetFacingDirection(arg0, 0.0f);
@@ -919,7 +919,7 @@ void fn_801861B8(void)
     HSD_SisLib_803A611C(0, NULL, 9, 0x14, 0, 0xE, 0, 0x12);
     HSD_SisLib_803A62A0(0, "SdIntro.dat", "SIS_IntroData");
 
-    for (i = 0; i < (s32) lbl_8047368C.xEF; i++) {
+    for (i = 0; i < lbl_8047368C.xEF; i++) {
         lbl_804735A8.x4[7 + i] = (HSD_JObj*) HSD_SisLib_803A6754(0, 0);
         ((HSD_Text*) lbl_804735A8.x4[7 + i])->default_kerning = 1;
         text = (HSD_Text*) lbl_804735A8.x4[7 + i];
@@ -934,7 +934,7 @@ void fn_801861B8(void)
                             lbl_804D6604->x57C[lbl_8047368C.xEF].x24[i]);
     }
 
-    for (i = 0; i < (s32) lbl_8047368C.xF0; i++) {
+    for (i = 0; i < lbl_8047368C.xF0; i++) {
         lbl_804735A8.x4[10 + i] = (HSD_JObj*) HSD_SisLib_803A6754(0, 0);
         ((HSD_Text*) lbl_804735A8.x4[10 + i])->default_kerning = 1;
         text = (HSD_Text*) lbl_804735A8.x4[10 + i];
