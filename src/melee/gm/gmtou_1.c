@@ -1776,7 +1776,7 @@ void fn_8019A86C(TmData* tm, u32 arg1, u32 arg2)
             }
             if (cond != 0) {
                 t->x32 = 1;
-                t->x28 = (u32) lbl_804D4190;
+                t->x28 = lbl_804D4190;
             }
             gm_SetNextGameModeStateId(4U);
             gm_801A4B60();
@@ -1889,7 +1889,7 @@ void fn_8019A86C(TmData* tm, u32 arg1, u32 arg2)
                         }
                         if (cond2 != 0) {
                             t3->x32 = 1;
-                            t3->x28 = (u32) lbl_804D4190;
+                            t3->x28 = lbl_804D4190;
                         }
                         gm_SetNextGameModeStateId(4U);
                         gm_801A4B60();

@@ -1144,7 +1144,6 @@ void grVenom_802053B0(Ground_GObj* gobj)
 {
     Vec3 sp28;
     Vec3 sp1C;
-    s32* ptr;
     HSD_JObj* jobj;
     s32* base;
     Ground* gp;
@@ -1153,9 +1152,8 @@ void grVenom_802053B0(Ground_GObj* gobj)
     gp = gobj->user_data;
     base = (s32*) &grVe_803E5348;
     jobj = gobj->hsd_obj;
-    ptr = base + gp->u.venom.xC8;
 
-    if ((u32) ptr[8] == (u32) gobj) {
+    if (grVe_803E5348.arwing.arwing_gobj[gp->u.venom.xC8] == gobj) {
         if (gp->u.venom.xD4 == 1) {
             gp->u.venom.xD4 = 0;
             grAnime_801C8138(gobj, gp->map_id,
@@ -1163,7 +1161,7 @@ void grVenom_802053B0(Ground_GObj* gobj)
             return;
         }
 
-        switch (ptr[11]) {
+        switch (grVe_803E5348.arwing.arwing_type[gp->u.venom.xC8]) {
         case 1:
         case 2:
         case 3:

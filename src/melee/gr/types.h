@@ -1648,7 +1648,7 @@ struct grShrineroute_GroundVars {
     /*  +A gp+CE */ u16 xCE;
     /*  +C gp+D0 */ u16 xD0;
     u8 _pad[0xD4 - 0xD2];
-    /* +10 gp+D4 */ u32 xD4;
+    /* +10 gp+D4 */ HSD_GObj* xD4;
     /* +14 gp+D8 */ struct grShrineroute_GroundVars_platforms {
         /* +0 */ Vec3 offset;
         /* +C */ HSD_JObj* jobj;

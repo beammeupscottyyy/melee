@@ -1763,7 +1763,7 @@ void grBigBlue_801E93D8(Ground_GObj* gobj)
                     {
                         u8* mgp2 = (u8*) Ground_GetMapGObj(32)->user_data;
                         if (jobj != NULL) {
-                            *(u32*) (mgp2 + 0xE0) = (u32) jobj;
+                            *(HSD_JObj**) (mgp2 + 0xE0) = jobj;
                         }
                         *(s32*) (mgp2 + 0xC8) = 1;
                     }
