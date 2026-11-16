@@ -1558,10 +1558,14 @@ struct grCastle_GroundVars6 {
 
 struct grCastle_GroundVars7 {
     /* +00 gp+C4 */ s16 xC4;
-    /* +02 gp+C6 */ u8 pad_xC6[0xA];
+    /* +02 gp+C6 */ u8 pad_xC6[2];
+    /* +04 gp+C8 */ s16 xC8;
+    /* +06 gp+CA */ s16 xCA;
+    /* +08 gp+CC */ s16 xCC;
+    /* +0A gp+CE */ u8 pad_xCE[2];
     /* +0C gp+D0 */ HSD_GObj* xD0;
-    /* +10 gp+D4 */ u32 xD4;
-    /* +14 gp+D8 */ s32 xD8;
+    /* +10 gp+D4 */ HSD_JObj* xD4;
+    /* +14 gp+D8 */ Item_GObj* xD8;
 };
 
 struct grCastle_Platform {
@@ -1603,13 +1607,14 @@ struct grCastle_GroundVars11 {
         u8 b6 : 1;
         u8 b7 : 1;
     } xC4;
-    /* +01 gp+C5 */ u8 pad_01[3];
+    /* +01 gp+C5 */ u8 pad_01;
+    /* +02 gp+C6 */ s16 xC6;
     /* +04 gp+C8 */ s16 xC8;
     /* +06 gp+CA */ s16 xCA;
-    /* +08 gp+CC */ u32 xCC;
-    /* +0C gp+D0 */ u32 xD0;
-    /* +10 gp+D4 */ u32 xD4;
-    /* +14 gp+D8 */ u32 xD8;
+    /* +08 gp+CC */ HSD_GObj* xCC;
+    /* +0C gp+D0 */ HSD_GObj* xD0;
+    /* +10 gp+D4 */ HSD_GObj* xD4;
+    /* +14 gp+D8 */ CmSubject* xD8;
 };
 
 struct grPura_GroundVars {
