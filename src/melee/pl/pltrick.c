@@ -25,6 +25,9 @@ int pl_80037B2C(struct plActionStats* arg0, int h_player, int idx)
     if (idx < 0x64) {
         return arg0->x504[idx] & (1 << (u8) h_player);
     }
+#ifndef __MWERKS__
+    return 0;
+#endif
 }
 
 void pl_80037BC0(struct plAttackStats* stats, union Struct2070* ev)

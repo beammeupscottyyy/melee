@@ -52,7 +52,7 @@
 /* 1E0140 */ void grCorneria_801E0140(Ground_GObj*);
 /* 1E01A0 */ bool grCorneria_801E01A0(Ground_GObj*);
 /* 1E01A8 */ void grCorneria_801E01A8(Ground_GObj*);
-/* 1E03C8 */ UNK_T grCorneria_801E03C8(Ground_GObj*, int);
+/* 1E03C8 */ void grCorneria_801E03C8(Ground_GObj*, int);
 /* 1E0678 */ void grCorneria_801E0678(void);
 /* 1E08CC */ int grCorneria_801E08CC(void);
 /* 1E0A74 */ int grCorneria_801E0A74(const f32*);

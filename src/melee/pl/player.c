@@ -1649,7 +1649,7 @@ u8 Player_GetFlagsAEBit1(s32 slot)
     return bit1;
 }
 
-u8 Player_SetFlagsAEBit1(int slot, u8 bit1)
+void Player_SetFlagsAEBit1(int slot, u8 bit1)
 {
     StaticPlayer* player;
     Player_CheckSlot(slot);

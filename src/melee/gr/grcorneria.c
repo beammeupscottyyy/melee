@@ -1630,10 +1630,7 @@ void grCorneria_801E01A8(Ground_GObj* gobj)
 
 void grCorneria_801E03C4(Ground_GObj* arg) {}
 
-/** @todo Fake return type, function returns nothing and its return value is
- *        not used either
- */
-UNK_T grCorneria_801E03C8(Ground_GObj* gobj, int id)
+void grCorneria_801E03C8(Ground_GObj* gobj, int id)
 {
     Ground* gp;
     HSD_JObj* jobj = GET_JOBJ(gobj);

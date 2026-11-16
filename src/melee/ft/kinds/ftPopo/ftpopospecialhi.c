@@ -119,9 +119,13 @@ bool ftPp_SpecialS_80120FE0(Fighter_GObj* gobj)
         }
     }
     return false;
-end: {
-    // original code returns without a value
-}
+end:
+    {
+#ifndef __MWERKS__
+        return false;
+#endif
+        // original code returns without a value
+    }
 }
 
 void ftPp_SpecialS_801210C8(Fighter_GObj* arg0)

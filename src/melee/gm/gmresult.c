@@ -315,8 +315,7 @@ void* fn_801748EC(void* list_, s32 mode, s32 idx)
     return &lbl_8046E190[idx];
 }
 
-// Return clearly wrong but match is match
-u8 fn_80174920(struct ResultsPlayerData* data)
+void fn_80174920(struct ResultsPlayerData* data)
 {
     s32 i;
 
