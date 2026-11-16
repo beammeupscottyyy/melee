@@ -2179,8 +2179,7 @@ void grBigBlue_801EA05C(Ground_GObj* gobj)
             gp->u.bigblue.x0_u.platform.xEC = 0.0f;
             gp->u.bigblue.x0_u.platform.velocity.z = 0.0f;
             gp->u.bigblue.x0_u.platform.velocity.y = 0.0f;
-            *(u32*) &GET_GROUND(Ground_GetMapGObj(32))
-                 ->u.bigblue.x0_u.x0_s.xD0 = 0;
+            GET_GROUND(Ground_GetMapGObj(32))->u.bigblue.x0_u.x0_s.xD0 = 0.0f;
             gp->u.bigblue.x0_u.x0_s.x0_u.x0_s.x0 = 0;
         }
         break;

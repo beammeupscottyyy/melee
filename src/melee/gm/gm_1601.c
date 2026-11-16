@@ -1674,8 +1674,8 @@ s32 gm_GetPlayTime(void)
     u32 a;
     u32 b;
 
-    a = *(u32*) gmMainLib_GetVsPlayTime();
-    b = *(u32*) gmMainLib_GetSingleplayerTime();
+    a = *gmMainLib_GetVsPlayTime();
+    b = *gmMainLib_GetSingleplayerTime();
     return a + b > -1 ? -1 : a + b;
 }
 

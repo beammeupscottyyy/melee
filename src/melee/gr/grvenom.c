@@ -867,34 +867,34 @@ void grVenom_8020454C(Ground_GObj* gobj)
                 {
                     gp->u.venom2.xE0_state.x0.b6 = false;
                 }
-                if (gp->u.venom.x20.xE4 < 4200 && 4200 <= frame) {
+                if (gp->u.venom.x20.xE4 < 4200.0F && 4200.0F <= frame) {
                     gp->u.venom2.xE0_state.x0.b0 = true;
                 }
-                if (gp->u.venom.x20.xE4 < 3800 && 3800 <= frame) {
+                if (gp->u.venom.x20.xE4 < 3800.0F && 3800.0F <= frame) {
                     gp->u.venom2.xE0_state.x0.b1 = true;
                 }
-                if (gp->u.venom.x20.xE4 < 4400 && 4400 <= frame) {
+                if (gp->u.venom.x20.xE4 < 4400.0F && 4400.0F <= frame) {
                     Ground_801C5440(gp, 0, 0x6B6C4);
                     gp->u.venom2.xE0_state.x0.b2 = true;
                     mpJointListAdd(2);
                 }
-                if (gp->u.venom.x20.xE4 < 6100 && 6100 <= frame) {
+                if (gp->u.venom.x20.xE4 < 6100.0F && 6100.0F <= frame) {
                     Ground_801C5440(gp, 0, 0x6B6C3);
                     gp->u.venom2.xE0_state.x0.b0 = false;
                     gp->u.venom2.xE0_state.x0.b1 = false;
                     gp->u.venom2.xE0_state.x0.b2 = false;
                     mpLib_80057BC0(2);
                 }
-                if (gp->u.venom.x20.xE4 < 7210 && 7210 <= frame) {
+                if (gp->u.venom.x20.xE4 < 7210.0F && 7210.0F <= frame) {
                     gp->u.venom2.xE0_state.x0.b3 = true;
                 }
-                if (gp->u.venom.x20.xE4 < 6810 && 6810 <= frame) {
+                if (gp->u.venom.x20.xE4 < 6810.0F && 6810.0F <= frame) {
                     gp->u.venom2.xE0_state.x0.b4 = true;
                 }
-                if (gp->u.venom.x20.xE4 < 7410 && 7410 <= frame) {
+                if (gp->u.venom.x20.xE4 < 7410.0F && 7410.0F <= frame) {
                     gp->u.venom2.xE0_state.x0.b5 = true;
                 }
-                if (gp->u.venom.x20.xE4 < 9200 && 9200 <= frame) {
+                if (gp->u.venom.x20.xE4 < 9200.0F && 9200.0F <= frame) {
                     gp->u.venom2.xE0_state.x0.b3 = false;
                     gp->u.venom2.xE0_state.x0.b4 = false;
                     gp->u.venom2.xE0_state.x0.b5 = false;
@@ -1604,17 +1604,17 @@ void grVenom_80205F30(Ground_GObj* gobj)
 
         gp->u.venom.xF0 = gp->u.venom.xF0 + 1;
     } else {
-        if (*(u32*) &gp->u.venom.x1C.xE0 != 0U) {
-            Ground_801C4A08(*(HSD_GObj**) &gp->u.venom.x1C.xE0);
+        if (gp->u.venom.x1C.gobj != NULL) {
+            Ground_801C4A08(gp->u.venom.x1C.gobj);
         }
-        if (*(u32*) &gp->u.venom.x20.xE4 != 0U) {
-            Ground_801C4A08(*(HSD_GObj**) &gp->u.venom.x20.xE4);
+        if (gp->u.venom.x20.gobj != NULL) {
+            Ground_801C4A08(gp->u.venom.x20.gobj);
         }
-        if (*(u32*) &gp->u.venom.x24.xE8 != 0U) {
-            Ground_801C4A08(*(HSD_GObj**) &gp->u.venom.x24.xE8);
+        if (gp->u.venom.x24.gobj != NULL) {
+            Ground_801C4A08(gp->u.venom.x24.gobj);
         }
-        if (*(u32*) &gp->u.venom.x28.xEC != 0U) {
-            Ground_801C4A08(*(HSD_GObj**) &gp->u.venom.x28.xEC);
+        if (gp->u.venom.x28.gobj != NULL) {
+            Ground_801C4A08(gp->u.venom.x28.gobj);
         }
         Ground_801C4A08(gobj);
     }

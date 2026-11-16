@@ -461,12 +461,12 @@ void grKongo_801D577C(Ground_GObj* arg0)
         lbColl_80008D30_arg1 hit = grKg_803B7FB0;
         PAD_STACK(4);
         hit.state = HitCapsule_Enabled;
-        hit.damage = *(u32*) &yakumono_param->unk6C;
-        hit.kb_angle = *(u32*) &yakumono_param->unk70;
-        hit.unkC = *(u32*) &yakumono_param->unk74;
-        hit.unk10 = *(u32*) &yakumono_param->unk78;
-        hit.unk14 = *(u32*) &yakumono_param->unk7C;
-        hit.element = *(u32*) &yakumono_param->unk80;
+        hit.damage = yakumono_param->unk6C;
+        hit.kb_angle = yakumono_param->unk70;
+        hit.unkC = yakumono_param->unk74;
+        hit.unk10 = yakumono_param->unk78;
+        hit.unk14 = yakumono_param->unk7C;
+        hit.element = yakumono_param->unk80;
         angle = (f32) (1.5707963267948966 + (f64) gp->u.kongo3.xD8);
         if (angle < 0.0f) {
             angle += M_TAU;

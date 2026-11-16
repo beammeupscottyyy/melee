@@ -208,17 +208,17 @@ void* gmMainLib_8015CCFC(void)
     return &gmMainLib_GetCardData()->save_data.x1A4C;
 }
 
-void* gmMainLib_GetVsPlayContestants(void)
+u32* gmMainLib_GetVsPlayContestants(void)
 {
     return &gmMainLib_GetCardData()->save_data.x1A30;
 }
 
-void* gmMainLib_GetVsPlayTime(void)
+u32* gmMainLib_GetVsPlayTime(void)
 {
     return &gmMainLib_GetCardData()->save_data.x1A34;
 }
 
-void* gmMainLib_GetCombinedVSPlayTime(void)
+u32* gmMainLib_GetCombinedVSPlayTime(void)
 {
     return &gmMainLib_GetCardData()->save_data.x1A38;
 }
@@ -253,17 +253,17 @@ u32* gmMainLib_GetMatchResetCounter(void)
     return &gmMainLib_GetCardData()->save_data.match_resets;
 }
 
-void* gmMainLib_GetSingleplayerTime(void)
+u32* gmMainLib_GetSingleplayerTime(void)
 {
     return &gmMainLib_GetCardData()->save_data.x1A3C;
 }
 
-void* gmMainLib_8015CD80(void)
+u32* gmMainLib_8015CD80(void)
 {
     return &gmMainLib_GetCardData()->save_data.x1A44;
 }
 
-void* gmMainLib_GetPowerCount(void)
+u32* gmMainLib_GetPowerCount(void)
 {
     return &gmMainLib_GetCardData()->save_data.x1A50;
 }
@@ -273,7 +273,7 @@ int* gm_GetPowerTime(void)
     return &gmMainLib_GetCardData()->save_data.x1A54;
 }
 
-void* gmMainLib_GetTotalDamage(void)
+u32* gmMainLib_GetTotalDamage(void)
 {
     return &gmMainLib_GetCardData()->save_data.x1A58;
 }

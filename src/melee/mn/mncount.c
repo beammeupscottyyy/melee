@@ -421,7 +421,7 @@ SelectableCharacterKind mnCount_GetRowValue_Character(mnCount_row row)
 
 static inline unsigned int mnCount_GetCombinedVSPlayTimeValue(void)
 {
-    return *(unsigned int*) gmMainLib_GetCombinedVSPlayTime();
+    return *gmMainLib_GetCombinedVSPlayTime();
 }
 
 unsigned int mnCount_GetRowValue_Number(int row)
@@ -429,7 +429,7 @@ unsigned int mnCount_GetRowValue_Number(int row)
     unsigned int ret;
     switch (row) {
     case POWER_COUNT:
-        ret = *(unsigned int*) gmMainLib_GetPowerCount();
+        ret = *gmMainLib_GetPowerCount();
         break;
     case POWER_TIME:
         ret = *gm_GetPowerTime();
@@ -438,10 +438,10 @@ unsigned int mnCount_GetRowValue_Number(int row)
         ret = gm_GetPlayTime();
         break;
     case SINGLEPLAYER_TIME:
-        ret = *(unsigned int*) gmMainLib_GetSingleplayerTime();
+        ret = *gmMainLib_GetSingleplayerTime();
         break;
     case VS_PLAY_TIME:
-        ret = *(unsigned int*) gmMainLib_GetVsPlayTime();
+        ret = *gmMainLib_GetVsPlayTime();
         break;
     case COMBINED_VS_PLAY_TIME:
         ret = mnCount_GetCombinedVSPlayTimeValue();
@@ -450,25 +450,25 @@ unsigned int mnCount_GetRowValue_Number(int row)
         ret = gm_GetVsPlayMatchTotal();
         break;
     case TIME_MATCH_TOTAL:
-        ret = *(unsigned int*) gmMainLib_GetTimeMatchTotal();
+        ret = *gmMainLib_GetTimeMatchTotal();
         break;
     case STOCK_MATCH_TOTAL:
-        ret = *(unsigned int*) gmMainLib_GetStockMatchTotal();
+        ret = *gmMainLib_GetStockMatchTotal();
         break;
     case COIN_MATCH_TOTAL:
-        ret = *(unsigned int*) gmMainLib_GetCoinMatchTotal();
+        ret = *gmMainLib_GetCoinMatchTotal();
         break;
     case BONUS_MATCH_TOTAL:
-        ret = *(unsigned int*) gmMainLib_GetBonusMatchTotal();
+        ret = *gmMainLib_GetBonusMatchTotal();
         break;
     case VS_PLAY_CONTESTANTS:
-        ret = *(unsigned int*) gmMainLib_GetVsPlayContestants();
+        ret = *gmMainLib_GetVsPlayContestants();
         break;
     case MATCH_RESET_COUNTER:
-        ret = *(unsigned int*) gmMainLib_GetMatchResetCounter();
+        ret = *gmMainLib_GetMatchResetCounter();
         break;
     case TOTAL_DAMAGE:
-        ret = *(unsigned int*) gmMainLib_GetTotalDamage();
+        ret = *gmMainLib_GetTotalDamage();
         break;
     case KO_TOTAL:
         ret = *gmMainLib_GetKOTotal();

@@ -561,18 +561,22 @@ struct grVenom_GroundVars {
     /* +1C gp+E0 */ union grVenom_GroundVars_x1C {
         f32 xE0;
         s32 xE0_int;
+        HSD_GObj* gobj;
     } x1C;
     /* +20 gp+E4 */ union grVenom_GroundVars_x20 {
         f32 xE4;
         s32 xE4_int;
+        HSD_GObj* gobj;
     } x20;
     /* +24 gp+E8 */ union grVenom_GroundVars_x24 {
         f32 xE8;
         s32 xE8_int;
+        HSD_GObj* gobj;
     } x24;
     /* +28 gp+EC */ union grVenom_GroundVars_x28 {
         f32 xEC;
         s32 xEC_int;
+        HSD_GObj* gobj;
     } x28;
     /* +2C gp+F0 */ s32 xF0;
     /* +30 gp+F4 */ s32 xF4;
