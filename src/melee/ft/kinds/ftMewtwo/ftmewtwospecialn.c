@@ -275,7 +275,7 @@ void ftMt_SpecialN_ReleaseShadowBall(HSD_GObj* gobj)
             facingDir = M_PI;
         }
         it_802C53F0(fp->u.mt.x2230_shadowHeldGObj, &sp38, (float) facingDir,
-                    (float) (u32) fp->u.mt.x2234_shadowBallCharge,
+                    (float) fp->u.mt.x2234_shadowBallCharge,
                     mewtwoAttrs->x0_MEWTWO_SHADOWBALL_CHARGE_CYCLES);
         ftMewtwo_SpecialN_SetRecoil(gobj);
         fp->u.mt.x2234_shadowBallCharge = 0;
@@ -398,7 +398,7 @@ static inline void ftMewtwo_SpecialN_ChangeAction(HSD_GObj* gobj)
     ftMewtwo_SpecialN_SetCall(gobj);
 
     fp->mv.mt.SpecialN.isFull = false;
-    fp->mv.mt.SpecialN.x2344 = (u32) 0;
+    fp->mv.mt.SpecialN.x2344 = 0;
 
     if (fp->u.mt.x2234_shadowBallCharge == 0) {
         releaseLag = mewtwoAttrs->x10_MEWTWO_SHADOWBALL_RELEASE_LAG;
@@ -436,7 +436,7 @@ static inline void ftMewtwo_SpecialAirN_ChangeAction(HSD_GObj* gobj)
     ftMewtwo_SpecialN_SetCall(gobj);
 
     fp->mv.mt.SpecialN.isFull = false;
-    fp->mv.mt.SpecialN.x2344 = (u32) 0;
+    fp->mv.mt.SpecialN.x2344 = 0;
 
     if (fp->u.mt.x2234_shadowBallCharge == 0) {
         releaseLag = mewtwoAttrs->x10_MEWTWO_SHADOWBALL_RELEASE_LAG;

@@ -2857,7 +2857,7 @@ HSD_JObj* ftKb_Init_UnkMotionStates6(Fighter_GObj* gobj)
 
 void ftKb_SpecialN_800EF040(Fighter_GObj* gobj, int arg1, KirbyHatStruct* hat)
 {
-    u32 mask = (u32) hat->hat_dynamics[1];
+    u32 mask = (uintptr_t) hat->hat_dynamics[1];
     if (mask != 0) {
         Fighter* fp = GET_FIGHTER(gobj);
         struct Fighter_804D6540_t* ft_data = Fighter_804D6540[fp->kind];
@@ -3162,7 +3162,7 @@ void ftKb_SpecialN_800EF69C(Fighter_GObj* gobj, int arg1, KirbyHatStruct* hat)
         HSD_ObjFree(&fighter_x2040_alloc_data, fp->u.kb.hat.x1C.data);
         fp->u.kb.hat.x14.data = NULL;
     }
-    mask = (u32) hat->hat_dynamics[1];
+    mask = (uintptr_t) hat->hat_dynamics[1];
     if (mask != 0) {
         ftKb_RemoveHatParts(gobj, mask);
     }

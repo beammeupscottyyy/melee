@@ -230,9 +230,8 @@ void ftKb_SpecialN_800F5B5C(Fighter_GObj* gobj, Vec3* output)
 void ftKb_SpecialN_800F5BA4(Fighter* fp)
 {
     ftKb_DatAttrs* da = fp->dat_attrs;
-    if ((s32) fp->kind == Ft_Kind_Kirby &&
-        (s32) fp->u.kb.hat.kind != Ft_Kind_Kirby && !fp->u.kb.hat.x8_b0 &&
-        (u32) fp->victim_gobj == 0U &&
+    if (fp->kind == Ft_Kind_Kirby && fp->u.kb.hat.kind != Ft_Kind_Kirby &&
+        !fp->u.kb.hat.x8_b0 && fp->victim_gobj == NULL &&
         fp->dmg.x1860_element != HitElement_Cape &&
         HSD_Randi((s32) da->specialn_odds_lose_ability_on_hit) == 0)
     {
@@ -243,16 +242,15 @@ void ftKb_SpecialN_800F5BA4(Fighter* fp)
 void ftKb_SpecialN_800F5C34(Fighter* fp)
 {
     ftKb_DatAttrs* da = fp->dat_attrs;
-    if ((s32) fp->kind == Ft_Kind_Kirby &&
-        (s32) fp->u.kb.hat.kind != Ft_Kind_Kirby && !fp->u.kb.hat.x8_b0 &&
-        (u32) fp->victim_gobj == 0U &&
+    if (fp->kind == Ft_Kind_Kirby && fp->u.kb.hat.kind != Ft_Kind_Kirby &&
+        !fp->u.kb.hat.x8_b0 && fp->victim_gobj == NULL &&
         HSD_Randi((s32) da->specialn_odds_lose_ability_on_hit) == 0)
     {
         s32 msid = fp->motion_id;
         if (msid >= 0x18F && msid < 0x220) {
             ftCo_8008EC90(fp->gobj);
             ftKb_SpecialN_800F5D04(fp->gobj, 1);
-            if ((s32) fp->ground_or_air == GA_Ground) {
+            if (fp->ground_or_air == GA_Ground) {
                 ft_8008A2BC(fp->gobj);
             } else {
                 ftCo_Fall_Enter(fp->gobj);

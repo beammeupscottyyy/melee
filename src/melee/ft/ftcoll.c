@@ -2701,7 +2701,7 @@ void ftColl_8007B320(Fighter_GObj* gobj)
     }
 
     fp->hurt_capsules_len = x30->count;
-    for (i = 0; i < (u32) x30->count; i++) {
+    for (i = 0; i < x30->count; i++) {
         FighterHurtCapsule* hurt = &fp->hurt_capsules[i];
         ftHurtboxInit* init = &x30->inits[i];
         hurt->capsule.bone_idx = init->bone_idx;
@@ -2719,7 +2719,7 @@ void ftColl_8007B320(Fighter_GObj* gobj)
     }
 
     fp->x166C = dyn->x4;
-    for (i = 0; i < (u32) dyn->x4; i++) {
+    for (i = 0; i < dyn->x4; i++) {
         Fighter_x1670_t* dst = &fp->x1670[i];
         AbsorbDesc* init = &dyn->x8[i];
         dst->x24 = init->x0_bone_id;
@@ -2989,7 +2989,7 @@ float ftColl_8007BBCC(UNUSED Fighter_GObj* gobj)
     float dmg = 0;
     size_t i;
     PAD_STACK(8);
-    if (dmg_log0_idx != (u32) 0) {
+    if (dmg_log0_idx != 0) {
         for (i = 0; i < dmg_log0_idx; i++) {
             DmgLogEntry* entry = &dmg_log0[i];
             switch (entry->x0) {
