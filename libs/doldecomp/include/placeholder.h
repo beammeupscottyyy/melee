@@ -14,7 +14,9 @@ typedef jmp_t jtbl_t[];
 #define __frsqrte(x) (1.0 / sqrt(x))
 #define sqrtf__Ff(x) sqrtf(x)
 #define sqrtf_accurate(x) sqrtf(x)
-#define __fabs(f) fabsf(f)
+#define __fabs(f) fabs(f)
+#define __fabsf(f) fabsf(f)
+#define __fnmsubs(a, c, b) (-fmaf((a), (c), -(b)))
 #endif
 
 #ifndef UNK_T

@@ -3283,6 +3283,8 @@ void grBigBlue_801ECB50(Ground_GObj* gobj)
             byte = target_car[0xD4];
 #ifdef MUST_MATCH
             asm { rlwimi byte, st_val, 2, 24, 29 }
+#else
+            byte = (byte & ~0xFC) | ((st_val & 0x3F) << 2);
 #endif
             target_car[0xD4] = byte;
 
@@ -3297,6 +3299,8 @@ void grBigBlue_801ECB50(Ground_GObj* gobj)
                     byte = bp[0xD4];
 #ifdef MUST_MATCH
                     asm { rlwimi byte, st_val, 2, 24, 29 }
+#else
+                    byte = (byte & ~0xFC) | ((st_val & 0x3F) << 2);
 #endif
                     bp[0xD4] = byte;
                 }
@@ -3313,6 +3317,8 @@ void grBigBlue_801ECB50(Ground_GObj* gobj)
                     byte = p[0xD4];
 #ifdef MUST_MATCH
                     asm { rlwimi byte, st_val, 2, 24, 29 }
+#else
+                    byte = (byte & ~0xFC) | ((st_val & 0x3F) << 2);
 #endif
                     p[0xD4] = byte;
                 }
@@ -3330,6 +3336,8 @@ void grBigBlue_801ECB50(Ground_GObj* gobj)
                     byte = p[0xD4];
 #ifdef MUST_MATCH
                     asm { rlwimi byte, st_val, 2, 24, 29 }
+#else
+                    byte = (byte & ~0xFC) | ((st_val & 0x3F) << 2);
 #endif
                     p[0xD4] = byte;
                 }
@@ -3347,6 +3355,8 @@ void grBigBlue_801ECB50(Ground_GObj* gobj)
                     byte = p[0xD4];
 #ifdef MUST_MATCH
                     asm { rlwimi byte, st_val, 2, 24, 29 }
+#else
+                    byte = (byte & ~0xFC) | ((st_val & 0x3F) << 2);
 #endif
                     p[0xD4] = byte;
                 }

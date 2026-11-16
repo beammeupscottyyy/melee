@@ -144,7 +144,6 @@ static const float atanf_lookup[] = {
     0.0,
 };
 
-#ifdef __MWERKS__
 float atanf(float x)
 {
     float const silver_ratio = 2.4142136573791504f;
@@ -240,4 +239,3 @@ float atanf(float x)
     BITWISE(result) |= sign_bit_x;
     return result;
 }
-#endif
