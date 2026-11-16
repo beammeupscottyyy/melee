@@ -17,6 +17,7 @@ typedef struct grGreatBay_YakumonoParam grGreatBay_YakumonoParam;
 typedef struct grHeal_YakumonoParam grHeal_YakumonoParam;
 typedef struct grYorster_YakumonoParam grYorster_YakumonoParam;
 typedef struct grDynamicAttr_UnkStruct grDynamicAttr_UnkStruct;
+typedef struct grZe_AcidState grZe_AcidState;
 typedef struct GrJoint GrJoint;
 typedef struct Ground Ground;
 typedef struct GroundParam GroundParam;
